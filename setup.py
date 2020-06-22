@@ -7,7 +7,7 @@ requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1"]
 
 setup(
     name="pypgx",
-    version="0.0.2",
+    version="0.0.3",
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description="A Python package for PGx research",
