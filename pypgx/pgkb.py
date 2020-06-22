@@ -49,8 +49,6 @@ def _update(result, gene, chemical, table, url, summary, type):
 
 def pgkb(args):
 
-    print(args)
-
     # Get the PharmGKB IDs of CPIC guidelines.
     pgkb_id = []
     base_url = "https://api.pharmgkb.org/v1/data/guideline"
@@ -219,7 +217,7 @@ def pgkb(args):
                 string += f"{chemical}\t{gene}\t{url}\t{type}\t{summary}\t{phenotype}\t{recommendation}\n"
 
     if args.o:
-        with open(args.o) as f:
+        with open(args.o, "w") as f:
             f.write(string)
     else:
         sys.stdout.write(string)
