@@ -1,19 +1,30 @@
 import argparse
 import logging
 
-from pypgx.pgkb import pgkb
+from .pgkb import pgkb
 
 def main():
     logging.basicConfig(level=logging.INFO)
-    logging.info("Who called me?")
 
     parser = argparse.ArgumentParser()
+
     subparsers = parser.add_subparsers(
         dest='tool',
         metavar='tool',
         help='name of tool',
     )
-    pgkb_parser = subparsers.add_parser("pgkb")
+    subparsers.required = True
+
+    pgkb_parser = subparsers.add_parser(
+        "pgkb",
+        help="extract CPIC guidelines using PharmGKB API",
+    )
+    pgkb_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     args = parser.parse_args()
 
     if args.tool == "pgkb":

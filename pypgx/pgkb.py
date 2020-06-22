@@ -1,8 +1,9 @@
 import json
 import time
 import logging
+import sys
 
-from pypgx.common import LINE_BREAK1, LINE_BREAK2
+from .common import LINE_BREAK1, LINE_BREAK2
 
 import requests
 import pandas as pd
@@ -39,17 +40,16 @@ def _update(result, gene, chemical, table, url, summary, type):
     # Update the recommendation for each phenotype.
     phenotypes = table.iloc[:, 0].tolist()
     for i in range(len(phenotypes)):
-        recommandation = ""
+        recommandation = []
         for j in indicies:
-            header = list(table)[j]
+            title = list(table)[j]
             content = str(table.iloc[:,j].tolist()[i])
-            recommandation += f" {header}: {content}"
-        result[chemical][gene]["phenotypes"][phenotypes[i]] = recommandation
+            recommandation.append(f"{title}: {content}")
+        result[chemical][gene]["phenotypes"][phenotypes[i]] = " ".join(recommandation)
 
 def pgkb(args):
-    """
-    Extract the CPIC guidelines using PharmGKB API.
-    """
+
+    print(args)
 
     # Get the PharmGKB IDs of CPIC guidelines.
     pgkb_id = []
@@ -122,7 +122,7 @@ def pgkb(args):
                 _update(result, genes[0], chemical, tables[0], frontend_url, summary, "case3")
 
         # Case 4: This is a simple case where there are one chemical and
-        # identical number of genes and tables. Need to find the correct
+        # identical number of genes and tables. Just need to find the correct
         # gene-table pairs
         elif nc == 1 and ng == nt:
             logging.info("Type: Case 4")
@@ -145,7 +145,7 @@ def pgkb(args):
                 _update(result, gene, chemicals[0], temp[gene], frontend_url, summary, "case4")
 
         # Case 5: This is a complicated case where there are one chemical,
-        # two chemicals and three tables. Need to find the correct
+        # two genes and three tables. Need to find the correct
         # gene-table pairs.
         elif ng == 2 and nc == 1 and nt == 3:
             logging.info("Type: Case 5")
@@ -167,21 +167,25 @@ def pgkb(args):
             for i, gene in enumerate(genes):
                 _update(result, gene, chemicals[0], temp[gene], frontend_url, summary, "case5")
 
-        # Case 6: This guideline (voriconazole and CYP2C19) has separate
+        # Case 6: This guideline (voriconazole-CYP2C19) has separate
         # tables for adult and pediatric patients.
         elif id == "PA166161537":
             _update(result, genes[0], chemicals[0], tables[0], frontend_url, summary, "case6")
 
-        # Case 7: This guideline (atomoxetine and CYP2D6) has separate
+        # Case 7: This guideline (atomoxetine-CYP2D6) has separate
         # tables for adult and pediatric patients.
         elif id == "PA166181885":
             _update(result, genes[0], chemicals[0], tables[1], frontend_url, summary, "case7")
 
+        # Case 8: This guideline has two genes (CACNA1S and RYR1), seven
+        # chemicals and one table.
         elif id == "PA166180457":
             for gene in genes:
                 for chemical in chemicals:
                     _update(result, gene, chemical, tables[0], frontend_url, summary, "case8")
 
+        # Case 9: This guideline (warfarin-CYP2C9, CYP4F2, VKORC1) requires
+        # manual review.
         elif id == "PA166104949":
             logging.warning(LINE_BREAK2)
             logging.warning(f"This guideline requires manual review")
@@ -204,14 +208,18 @@ def pgkb(args):
         time.sleep(2)
         logging.info(LINE_BREAK1)
 
-    header = "chemical\tgene\turl\ttype\tsummary\tphenotype\trecommendation\n"
-    with open("guideline_table.txt", "w") as f:
-        f.write(header)
-        for chemical in sorted(result):
-            for gene in result[chemical]:
-                url = result[chemical][gene]["url"]
-                summary = result[chemical][gene]["summary"]
-                type = result[chemical][gene]["type"]
-                for phenotype in result[chemical][gene]["phenotypes"]:
-                    recommendation = result[chemical][gene]["phenotypes"][phenotype]
-                    f.write(f"{chemical}\t{gene}\t{url}\t{type}\t{summary}\t{phenotype}\t{recommendation}\n")
+    string = "chemical\tgene\turl\ttype\tsummary\tphenotype\trecommendation\n"
+    for chemical in sorted(result):
+        for gene in result[chemical]:
+            url = result[chemical][gene]["url"]
+            summary = result[chemical][gene]["summary"]
+            type = result[chemical][gene]["type"]
+            for phenotype in result[chemical][gene]["phenotypes"]:
+                recommendation = result[chemical][gene]["phenotypes"][phenotype]
+                string += f"{chemical}\t{gene}\t{url}\t{type}\t{summary}\t{phenotype}\t{recommendation}\n"
+
+    if args.o:
+        with open(args.o) as f:
+            f.write(string)
+    else:
+        sys.stdout.write(string)
