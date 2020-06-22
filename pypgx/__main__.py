@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from pgkb import pgkb
+from pypgx.pgkb import pgkb
 
 def main():
     logging.basicConfig(level=logging.INFO)

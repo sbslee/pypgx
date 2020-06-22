@@ -2,7 +2,7 @@ import json
 import time
 import logging
 
-from common import LINE_BREAK1, LINE_BREAK2
+from pypgx.common import LINE_BREAK1, LINE_BREAK2
 
 import requests
 import pandas as pd

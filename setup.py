@@ -3,11 +3,11 @@ from setuptools import setup, find_packages
 with open("README.md", "r") as readme_file:
     readme = readme_file.read()
 
-requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1"]
+requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",]
 
 setup(
     name="pypgx",
-    version="0.0.3",
+    version="0.0.4",
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description="A Python package for PGx research",
