@@ -10,7 +10,8 @@ setup(
     version="0.0.7",
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
-    description="A Python package for PGx research",
+    description=(
+        "PyPGx is a Python package for pharmacogenomics (PGx) research"),
     long_description=readme,
     long_description_content_type="text/markdown",
     url="https://github.com/pypgx/pypgx/",
