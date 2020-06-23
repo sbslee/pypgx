@@ -20,7 +20,7 @@ setup(
         "pypgx.resources.cpic": ["cpicPairs.csv"],
         "pypgx.resources.sg": ["gene_table.txt"],
         "pypgx.resources.pgkb": ["actions.txt"],
-    }
+    },
     install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3.7",
