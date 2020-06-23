@@ -25,6 +25,16 @@ def main():
         help="output to FILE [stdout]",
     )
 
+    report_parser = subparsers.add_parser(
+        "report",
+        help="create HTML report using data from Stargazer",
+    )
+    report_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     args = parser.parse_args()
 
     if args.tool == "pgkb":
