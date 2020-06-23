@@ -31,8 +31,8 @@ def main():
         help="create HTML report using data from Stargazer",
     )
     report_parser.add_argument(
-        "input",
-        help="genotype file from Stargazer",
+        "gt",
+        help="Stargazer genotype file",
     )
     report_parser.add_argument(
         "-o",

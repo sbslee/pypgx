@@ -3,7 +3,7 @@ import csv
 import sys
 import datetime
 
-def _overview_table(genotypes, pairs, genes):
+def _overview_table(gt, pairs, genes):
     table = (
         "<table>\n"
         "<tr>\n"
@@ -18,15 +18,15 @@ def _overview_table(genotypes, pairs, genes):
     )
     words = ["normal", "unknown", "-"]
     for i, gene in enumerate(genes, 1):
-        if any([x in genotypes[gene]["phenotype"] for x in words]):
+        if any([x in gt[gene]["phenotype"] for x in words]):
             color = "black"
         else:
             color = "red"
-        genotype = genotypes[gene]["hap1_main"] + "/" + genotypes[gene]["hap2_main"]
-        score = genotypes[gene]["dip_score"]
-        phenotype = genotypes[gene]["phenotype"]
+        genotype = gt[gene]["hap1_main"] + "/" + gt[gene]["hap2_main"]
+        score = gt[gene]["dip_score"]
+        phenotype = gt[gene]["phenotype"]
         drugs = len([x["Drug"] for x in pairs if x["Gene"] == gene.upper()])
-        guidelines = len([x for x in pairs if x["Gene"] == gene.upper() and x["Guideline"] != ""])
+        guidelines = len([x for x in pairs if x["Gene"] == gene.upper() and x["Guideline"] != "-"])
         table += (
             f"<tr style='color: {color};'>\n"
             f"  <td>{i}</td>\n"
@@ -40,7 +40,7 @@ def _overview_table(genotypes, pairs, genes):
         )
     return table + "</table>"
 
-def _genotype_table(genotypes, genes):
+def _genotype_table(gt, genes):
     table = (
         "<table>\n"
         "<tr>\n"
@@ -53,14 +53,14 @@ def _genotype_table(genotypes, genes):
         "</tr>\n"
     )
     for i, gene in enumerate(genes, 1):
-        hmc1 = "<br />".join(genotypes[gene]["hap1_main_core"].split(","))
-        hmc2 = "<br />".join(genotypes[gene]["hap2_main_core"].split(","))
-        hap1_main = genotypes[gene]["hap1_main"]
-        hap1_score = genotypes[gene]["hap1_score"]
-        hap1_sv = genotypes[gene]["hap1_sv"]
-        hap2_main = genotypes[gene]["hap2_main"]
-        hap2_score = genotypes[gene]["hap2_score"]
-        hap2_sv = genotypes[gene]["hap2_sv"]
+        hmc1 = "<br />".join(gt[gene]["hap1_main_core"].split(","))
+        hmc2 = "<br />".join(gt[gene]["hap2_main_core"].split(","))
+        hap1_main = gt[gene]["hap1_main"]
+        hap1_score = gt[gene]["hap1_score"]
+        hap1_sv = gt[gene]["hap1_sv"]
+        hap2_main = gt[gene]["hap2_main"]
+        hap2_score = gt[gene]["hap2_score"]
+        hap2_sv = gt[gene]["hap2_sv"]
         table += (
             "<tr>\n"
             f"  <td rowspan='2'>{i}</td>\n"
@@ -79,23 +79,31 @@ def _genotype_table(genotypes, genes):
         )
     return table + "</table>"
 
-def _drug_table(genotypes, pairs):
+def _drug_table(gt, pairs):
     table = (
         "<table>\n"
         "<tr>\n"
-        '  <th style="width: 5%;">No.</th>\n'
-        '  <th style="width: 15%;">Drug</th>\n'
-        '  <th style="width: 5%;">Gene</th>\n'
-        '  <th style="width: 5%;">Level</th>\n'
-        '  <th style="width: 10%;">FDA</th>\n'
-        '  <th style="width: 60%;">Guideline</th>\n'
+        "  <th style='width: 5%;'>No.</th>\n"
+        "  <th style='width: 15%;'>Drug</th>\n"
+        "  <th style='width: 5%;'>Gene</th>\n"
+        "  <th style='width: 5%;'>Level</th>\n"
+        "  <th style='width: 10%;'>FDA</th>\n"
+        "  <th style='width: 60%;'>Guideline</th>\n"
         "</tr>\n"
     )
-    for i, pair in enumerate(sorted(pairs, key = lambda x: (x['Drug'].lower(), x['Gene'])), 1):
-        bold = 'bold' if pair['Gene'].lower() in genotypes else 'normal'
-        color = 'black' if bold == 'normal' or any([x in genotypes[pair['Gene'].lower()]['phenotype'] for x in ['normal', 'unknown', '-']]) else 'red'
+    for i, pair in enumerate(sorted(pairs, key = lambda x: (x["Drug"].lower(), x["Gene"])), 1):
+        if pair["Gene"].lower() in gt:
+            bold = "bold"
+        else:
+            bold = "normal"
+        if bold == "normal":
+            color = "black"
+        elif any([x in gt[pair["Gene"].lower()]["phenotype"] for x in ["normal", "unknown", "-"]]):
+            color = "normal"
+        else:
+            color = "red"
         table += (
-        f'<tr style="font-weight: {bold}; color: {color};">\n'
+        f"<tr style='font-weight: {bold}; color: {color};'>\n"
         f"  <td>{i}</td>\n"
         f"  <td>{pair['Drug']}</td>\n"
         f"  <td>{pair['Gene']}</td>\n"
@@ -104,7 +112,7 @@ def _drug_table(genotypes, pairs):
         f"  <td>{pair['Guideline']}</td>\n"
         "</tr>\n"
         )
-    return table + '</table>'
+    return table + "</table>"
 
 def _action_table(actions):
     string = ""
@@ -171,23 +179,22 @@ def report(args):
         if phenotype not in actions[chemical][gene]["pt"]:
             actions[chemical][gene]["pt"][phenotype] = action
 
-
     # Read the genotype file.
-    genotypes = {}
+    gt = {}
     id = ""
-    with open(args.input) as f:
+    with open(args.gt) as f:
         header = next(f).strip().split("\t")
         for line in f:
             fields = line.strip().split("\t")
             gene = fields[0]
             if not id:
                 id = fields[1]
-            genotypes[gene] = dict(zip(header, fields))
+            gt[gene] = dict(zip(header, fields))
     for gene in genes:
-        if gene not in genotypes:
-            genotypes[gene] = dict(zip(header, ["" for x in header]))
-    assessed = [x for x in genes if genotypes[x]["status"] != ""]
-    typed = [x for x in genes if genotypes[x]["status"] == "g"]
+        if gene not in gt:
+            gt[gene] = dict(zip(header, ["-" for x in header]))
+    assessed = [x for x in genes if gt[x]["status"] != "-"]
+    typed = [x for x in genes if gt[x]["status"] == "g"]
 
     # Read the gene-drug paris file.
     pairs = []
@@ -196,7 +203,7 @@ def report(args):
     updated = next(f)[0].replace("Date last updated: ", "")
     header = next(f)
     for fields in f:
-        pairs.append(dict(zip(header, fields)))
+        pairs.append(dict(zip(header, [x if x else '-' for x in fields])))
 
     string = (
         "<!DOCTYPE html>\n"
@@ -281,10 +288,10 @@ def report(args):
         "  PGx genes whose genotype leads to altered phenotype are \n"
         "  shown in <span style='color: red;'>red</span>.\n"
         "</p>\n"
-        f"{_overview_table(genotypes, pairs, genes)}\n"
+        f"{_overview_table(gt, pairs, genes)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Genotypes</h2>\n"
-        f"{_genotype_table(genotypes, genes)}\n"
+        f"{_genotype_table(gt, genes)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Drugs</h2>\n"
         "<p>\n"
@@ -294,7 +301,7 @@ def report(args):
         "  <span style='font-weight: bold; color: red;'>red</span> \n"
         "  if altered phenotype is predicted.\n"
         "</p>\n"
-        f"{_drug_table(genotypes, pairs)}\n"
+        f"{_drug_table(gt, pairs)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Recommendations</h2>\n"
         "<p>\n"
