@@ -2,6 +2,7 @@ import argparse
 import logging
 
 from .pgkb import pgkb
+from .report import report
 
 def main():
     logging.basicConfig(level=logging.INFO)
@@ -30,6 +31,10 @@ def main():
         help="create HTML report using data from Stargazer",
     )
     report_parser.add_argument(
+        "input",
+        help="genotype file from Stargazer",
+    )
+    report_parser.add_argument(
         "-o",
         metavar="FILE",
         help="output to FILE [stdout]",
@@ -39,6 +44,9 @@ def main():
 
     if args.tool == "pgkb":
         pgkb(args)
+
+    elif args.tool == "report":
+        report(args)
 
 if __name__ == "__main__":
     main()
