@@ -7,7 +7,7 @@ requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",]
 
 setup(
     name="pypgx",
-    version="0.0.7",
+    version="0.0.8",
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description=(
@@ -16,6 +16,11 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pypgx/pypgx/",
     packages=find_packages(),
+    package_data={
+        "pypgx.resources.cpic": ["cpicPairs.csv"],
+        "pypgx.resources.sg": ["gene_table.txt"],
+        "pypgx.resources.pgkb": ["actions.txt"],
+    }
     install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3.7",
