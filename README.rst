@@ -13,10 +13,10 @@ The easiest way to install PyPGx is to use ``pip``::
 
     $ pip install pypgx
 
-Running
-=======
+Running in Command Line
+=======================
 
-::
+For getting help::
 
     $ pypgx -h
     usage: pypgx [-h] tool ...
@@ -28,3 +28,24 @@ Running
 
     optional arguments:
       -h, --help  show this help message and exit
+
+For getting tool-specific help (e.g. ``pgkb`` tool)::
+
+    $ pypgx pgkb -h
+    usage: pypgx pgkb [-h] [-o FILE]
+
+    optional arguments:
+      -h, --help  show this help message and exit
+      -o FILE     output to FILE [stdout]
+
+For running in command line (e.g. ``pgkb`` tool)::
+
+    $ pypgx pgkb -o guidelines.txt
+
+Running within Python
+=====================
+For running within Python (e.g. ``pgkb`` tool):
+
+>>> from pypgx.pgkb import pgkb
+>>> guidelines = pgkb("pgkb")
+>>> print(guidelines)
