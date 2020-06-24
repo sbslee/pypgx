@@ -7,7 +7,7 @@ requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",]
 
 setup(
     name="pypgx",
-    version="0.0.9",
+    version="0.0.10",
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description=(
