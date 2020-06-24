@@ -25,6 +25,8 @@ For getting help::
     tool        name of tool
       pgkb      extract CPIC guidelines using PharmGKB API
       report    create HTML report using data from Stargazer
+      sdf2gdf   create GDF file from SDF file
+      bam2sdf   create SDF file from BAM file(s)
 
     optional arguments:
       -h, --help  show this help message and exit

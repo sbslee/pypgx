@@ -1,6 +1,7 @@
 import argparse
 import logging
 import io
+import pkgutil
 
 LINE_BREAK1 = "-" * 70
 LINE_BREAK2 = "*" * 70
@@ -59,6 +60,29 @@ def get_parser():
         help="sample ID",
     )
 
+    bam2sdf_parser = subparsers.add_parser(
+        "bam2sdf",
+        help="create SDF file from BAM file(s)",
+    )
+    bam2sdf_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    bam2sdf_parser.add_argument(
+        "cg",
+        help="control gene",
+    )
+    bam2sdf_parser.add_argument(
+        "bam",
+        nargs="+",
+        help="BAM file",
+    )
+    bam2sdf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def is_namespace(x):
@@ -66,3 +90,34 @@ def is_namespace(x):
 
 def is_file(x):
     return isinstance(x, io.IOBase)
+
+def read_gene_table():
+    result = {}
+    text = pkgutil.get_data(__name__, "resources/sg/gene_table.txt").decode()
+    for line in text.strip().split("\n"):
+        fields = line.split("\t")
+        gene = fields[1]
+        if gene == "name":
+            header = fields
+            continue
+        result[gene] = dict(zip(header, fields))
+    return result
+
+def parse_region(x):
+    return (
+        x.split(":")[0],
+        int(x.split(":")[1].split("-")[0]),
+        int(x.split(":")[1].split("-")[1]),
+    )
+
+def sort_regions(x):
+    def f(x):
+        r = parse_region(x)
+        if "X" in r[0]:
+            chr = 23
+        elif "Y" in r[0]:
+            chr = 24
+        else:
+            chr = int(r[0].replace("chr", ""))
+        return (chr, r[1], r[2])
+    return sorted(x, key = f)
