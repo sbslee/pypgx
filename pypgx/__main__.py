@@ -4,6 +4,7 @@ from .common import get_parser
 
 from .pgkb import pgkb
 from .report import report
+from .sdf2gdf import sdf2gdf
 
 def main():
     parser = get_parser()
@@ -14,6 +15,9 @@ def main():
 
     elif args.tool == "report":
         report(args)
+
+    elif args.tool == "sdf2gdf":
+        sdf2gdf(args)
 
 if __name__ == "__main__":
     main()

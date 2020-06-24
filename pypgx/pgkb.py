@@ -47,7 +47,7 @@ def _update(result, gene, chemical, table, url, summary, type):
             recommandation.append(f"{title}: {content}")
         result[chemical][gene]["pt"][phenotypes[i]] = " ".join(recommandation)
 
-def _pgkb(args):
+def _pgkb():
     # Get the PharmGKB IDs of CPIC guidelines.
     pgkb_id = []
     base_url = "https://api.pharmgkb.org/v1/data/guideline"
@@ -223,15 +223,15 @@ def _pgkb(args):
     return string
 
 def pgkb(*args):
-    if is_namespace(args[0]):
-        is_console = True
+    is_console = is_namespace(args[0])
+
+    if is_console:
         args = args[0]
     else:
-        is_console = False
         parser = get_parser()
         args = parser.parse_args(args)
 
-    result = _pgkb(args)
+    result = _pgkb()
 
     if is_console:
         if args.o:
