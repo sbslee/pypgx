@@ -1,9 +1,9 @@
 import json
 import time
-import logging
 import sys
 
-from .common import LINE_BREAK1, LINE_BREAK2
+from .common import (LINE_BREAK1, LINE_BREAK2,
+    is_namespace, get_parser, logging)
 
 import requests
 import pandas as pd
@@ -22,7 +22,7 @@ def _update(result, gene, chemical, table, url, summary, type):
             "summary": summary,
             "url": url,
             "type": type,
-            "phenotypes": {},
+            "pt": {},
         }
 
     # Get the indicies of column names with the word "recommendation".
@@ -45,10 +45,9 @@ def _update(result, gene, chemical, table, url, summary, type):
             title = list(table)[j]
             content = str(table.iloc[:,j].tolist()[i])
             recommandation.append(f"{title}: {content}")
-        result[chemical][gene]["phenotypes"][phenotypes[i]] = " ".join(recommandation)
+        result[chemical][gene]["pt"][phenotypes[i]] = " ".join(recommandation)
 
-def pgkb(args):
-
+def _pgkb(args):
     # Get the PharmGKB IDs of CPIC guidelines.
     pgkb_id = []
     base_url = "https://api.pharmgkb.org/v1/data/guideline"
@@ -103,7 +102,8 @@ def pgkb(args):
         # one chemical and one table. Nothing much left to parse.
         if ng == nc == nt == 1:
             logging.info("Type: Case 1")
-            _update(result, genes[0], chemicals[0], tables[0], frontend_url, summary, "case1")
+            _update(result, genes[0], chemicals[0], 
+                tables[0], frontend_url, summary, "case1")
 
         # Case 2: This is a simple case where there are one chemical,
         # one table and multiple genes. Nothing much left to parse.
@@ -198,7 +198,11 @@ def pgkb(args):
 
         else:
             logging.warning(LINE_BREAK2)
-            logging.warning(f"Found {len(genes)} genes, {len(chemicals)} chemicals, and {len(tables)} tables")
+            logging.warning(
+                f"Found {len(genes)} genes, "
+                f"{len(chemicals)} chemicals, and "
+                f"{len(tables)} tables"
+            )
             logging.warning(LINE_BREAK2)
             continue
 
@@ -212,12 +216,28 @@ def pgkb(args):
             url = result[chemical][gene]["url"]
             summary = result[chemical][gene]["summary"]
             type = result[chemical][gene]["type"]
-            for phenotype in result[chemical][gene]["phenotypes"]:
-                recommendation = result[chemical][gene]["phenotypes"][phenotype]
+            for phenotype in result[chemical][gene]["pt"]:
+                recommendation = result[chemical][gene]["pt"][phenotype]
                 string += f"{chemical}\t{gene}\t{url}\t{type}\t{summary}\t{phenotype}\t{recommendation}\n"
 
-    if args.o:
-        with open(args.o, "w") as f:
-            f.write(string)
+    return string
+
+def pgkb(*args):
+    if is_namespace(args[0]):
+        is_console = True
+        args = args[0]
     else:
-        sys.stdout.write(string)
+        is_console = False
+        parser = get_parser()
+        args = parser.parse_args(args)
+
+    result = _pgkb(args)
+
+    if is_console:
+        if args.o:
+            with open(args.o, "w") as f:
+                f.write(result)
+        else:
+            sys.stdout.write(result)
+    else:
+        return result
