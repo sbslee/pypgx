@@ -1,3 +1,8 @@
+v0.0.10
+-------
+
+* Updated ``pgkb`` tool to be run within Python.
+
 v0.0.9
 -------
 
