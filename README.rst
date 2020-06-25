@@ -27,27 +27,34 @@ For getting help::
       report    create HTML report using data from Stargazer
       sdf2gdf   create GDF file from SDF file
       bam2sdf   create SDF file from BAM file(s)
+      bam2gdf   create GDF file from BAM file(s)
 
     optional arguments:
       -h, --help  show this help message and exit
 
-For getting tool-specific help (e.g. ``pgkb`` tool)::
+For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
-    $ pypgx pgkb -h
-    usage: pypgx pgkb [-h] [-o FILE]
+    $ pypgx bam2gdf -h
+    usage: pypgx bam2gdf [-h] [-o FILE] tg cg bam [bam ...]
+
+    positional arguments:
+      tg          target gene
+      cg          control gene
+      bam         BAM file
 
     optional arguments:
       -h, --help  show this help message and exit
       -o FILE     output to FILE [stdout]
 
-For running in command line (e.g. ``pgkb`` tool)::
+For running in command line (e.g. ``bam2gdf`` tool)::
 
-    $ pypgx pgkb -o guidelines.txt
+    $ pypgx bam2gdf -o out.gdf cyp2d6 vdr in1.bam in2.bam in3.bam
 
 Running within Python
 =====================
-For running within Python (e.g. ``pgkb`` tool):
+For running within Python (e.g. ``bam2gdf`` tool):
 
->>> from pypgx.pgkb import pgkb
->>> guidelines = pgkb("pgkb")
->>> print(guidelines)
+>>> from pypgx.bam2gdf import bam2gdf
+>>> gdf = bam2gdf("bam2gdf", "cyp2d6", "vdr", "in1.bam", "in2.bam", "in3.bam")
+>>> for line in gdf.split("\n"):
+>>>     print(line)

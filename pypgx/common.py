@@ -2,11 +2,15 @@ import argparse
 import logging
 import io
 import pkgutil
+import sys
+
+import pysam
 
 LINE_BREAK1 = "-" * 70
 LINE_BREAK2 = "*" * 70
 
 logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def get_parser():
     parser = argparse.ArgumentParser()
@@ -83,6 +87,29 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    bam2gdf_parser = subparsers.add_parser(
+        "bam2gdf",
+        help="create GDF file from BAM file(s)",
+    )
+    bam2gdf_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    bam2gdf_parser.add_argument(
+        "cg",
+        help="control gene",
+    )
+    bam2gdf_parser.add_argument(
+        "bam",
+        nargs="+",
+        help="BAM file",
+    )
+    bam2gdf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def is_namespace(x):
@@ -90,6 +117,9 @@ def is_namespace(x):
 
 def is_file(x):
     return isinstance(x, io.IOBase)
+
+def str2file(x):
+    return io.StringIO(x)
 
 def read_gene_table():
     result = {}
@@ -121,3 +151,25 @@ def sort_regions(x):
             chr = int(r[0].replace("chr", ""))
         return (chr, r[1], r[2])
     return sorted(x, key = f)
+
+def sm_tag(x):
+    l = []
+    header = pysam.view("-H", x).strip().split("\n")
+    for line in header:
+        fields = line.split("\t")
+        if "@RG" == fields[0]:
+            for field in fields:
+                if "SM:" in field:
+                    y = field.replace("SM:", "")
+                    l.append(y)
+    l = list(set(l))
+    if len(l) == 0:
+        raise ValueError(f"SM tag not found: {x}")
+    elif len(l) > 1:
+        logger.warning(f"Multiple SM tags found (will use the 1st one): {x}")
+        return l[0]
+    else:
+        return l[0]
+
+def stdout(x):
+    sys.stdout.write(x)

@@ -1,10 +1,11 @@
 import pysam
 import sys
 
-from .common import is_namespace, get_parser, is_file, read_gene_table, logging, parse_region, sort_regions
+from .common import is_namespace, get_parser, is_file, read_gene_table, logging, parse_region, sort_regions, sm_tag
+
+logger = logging.getLogger(__name__)
 
 def _bam2sdf(tg, cg, bam):
-    logger = logging.getLogger(__name__)
 
     genes = read_gene_table()
     targets = [k for k, v in genes.items() if v["type"] == "target"]
@@ -18,24 +19,17 @@ def _bam2sdf(tg, cg, bam):
     sm = []
     sn = []
     for x in bam:
-        has_sm = False
+        sm.append(sm_tag(x))
+
         result = pysam.view("-H", x).strip().split("\n")
         for line in result:
             fields = line.split("\t")
-            if "@RG" == fields[0] and not has_sm:
-                for field in fields:
-                    if "SM:" in field:
-                        y = field.replace("SM:", "")
-                        sm.append(y)
-                        has_sm = True
             if "@SQ" == fields[0]:
                 for field in fields:
                     if "SN:" in field:
                         y = field.replace("SN:", "")
                         if y not in sn:
                             sn.append(y)
-        if not has_sm:
-            raise ValueError(f"SM tag not found from BAM file: {x}")
 
     logger.info(f"Sample IDs: {sm}")
     logger.info(f"Contigs: {sn}")
