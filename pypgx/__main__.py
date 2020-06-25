@@ -1,6 +1,6 @@
 import logging
 
-from .common import get_parser
+from .common import get_parser, stdout
 
 from .pgkb import pgkb
 from .report import report
@@ -8,15 +8,33 @@ from .sdf2gdf import sdf2gdf
 from .bam2sdf import bam2sdf
 from .bam2gdf import bam2gdf
 
+def _pgkb(args):
+    result = pgkb(args.t)
+    if args.o:
+        with open(args.o, "w") as f:
+            f.write(result)
+    else:
+        stdout(result)
+
+def _report(args):
+    f = open(args.gt)
+    result = report(f)
+    f.close()
+    if args.o:
+        with open(args.o, "w") as f:
+            f.write(result)
+    else:
+        sys.stdout.write(result)
+
 def main():
     parser = get_parser()
     args = parser.parse_args()
 
     if args.tool == "pgkb":
-        pgkb(args)
+        _pgkb(args)
 
     elif args.tool == "report":
-        report(args)
+        _report(args)
 
     elif args.tool == "sdf2gdf":
         sdf2gdf(args)

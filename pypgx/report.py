@@ -2,6 +2,7 @@ import pkgutil
 import csv
 import sys
 import datetime
+from typing import TextIO
 
 def _overview_table(gt, pairs, genes):
     table = (
@@ -142,7 +143,16 @@ def _action_table(actions):
             string += table
     return string
 
-def report(args):
+def report(f: TextIO) -> str:
+    """
+    Create HTML report using data from Stargazer.
+    
+    Returns:
+        str: Text version of HTML report.
+
+    Args:
+        f (TextIO): Genotype file.
+    """
 
     # Get the list of genes targeted by Stargazer.
     genes = []
@@ -150,8 +160,8 @@ def report(args):
     for line in text.strip().split("\n"):
         fields = line.split("\t")
         gene = fields[1]
-        type = fields[2]
-        if type == "target":
+        type_ = fields[2]
+        if type_ == "target":
             genes.append(gene)
 
     # Read the actions file.
@@ -182,14 +192,13 @@ def report(args):
     # Read the genotype file.
     gt = {}
     id = ""
-    with open(args.gt) as f:
-        header = next(f).strip().split("\t")
-        for line in f:
-            fields = line.strip().split("\t")
-            gene = fields[0]
-            if not id:
-                id = fields[1]
-            gt[gene] = dict(zip(header, fields))
+    header = next(f).strip().split("\t")
+    for line in f:
+        fields = line.strip().split("\t")
+        gene = fields[0]
+        if not id:
+            id = fields[1]
+        gt[gene] = dict(zip(header, fields))
     for gene in genes:
         if gene not in gt:
             gt[gene] = dict(zip(header, ["-" for x in header]))
@@ -316,8 +325,4 @@ def report(args):
         "</html>\n"
     )
 
-    if args.o:
-        with open(args.o, "w") as f:
-            f.write(string)
-    else:
-        sys.stdout.write(string)
+    return string

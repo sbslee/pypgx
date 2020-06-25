@@ -30,6 +30,11 @@ def get_parser():
         metavar="FILE",
         help="output to FILE [stdout]",
     )
+    pgkb_parser.add_argument(
+        "-t",
+        action='store_true',
+        help="turn on test mode (will only look first three guidelines)",
+    )
 
     report_parser = subparsers.add_parser(
         "report",
