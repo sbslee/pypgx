@@ -7,7 +7,10 @@ PyPGx
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-PyPGx is a Python package for pharmacogenomics (PGx) research. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+PyPGx is a Python package for pharmacogenomics (PGx) research, which can be 
+used as a standalone program and as a Python module.
+
+Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Installation
 ============
@@ -58,15 +61,16 @@ Running within Python
 For running within Python (e.g. ``bam2gdf`` tool):
 
 >>> from pypgx.bam2gdf import bam2gdf
->>> gdf = bam2gdf("bam2gdf", "cyp2d6", "vdr", "in1.bam", "in2.bam", "in3.bam")
+>>> bams = ["in1.bam", "in2.bam"]
+>>> gdf = bam2gdf("cyp2d6", "vdr", bams)
 >>> for line in gdf.split("\n"):
 >>>     print(line)
 
 To give::
 
-    Locus	Total_Depth	Average_Depth_sample	Depth_for_S1	Depth_for_S2	Depth_for_S3
+    Locus	Total_Depth	Average_Depth_sample	Depth_for_S1	Depth_for_S2
     ...
-    chr22:42526563	858	286	237	432	189
-    chr22:42526564	860	286.67	239	433	188
-    chr22:42526565	857	285.67	239	433	185
+    chr22:42539471	190	95	53	137
+    chr22:42539472	192	96	54	138
+    chr22:42539473	190	95	53	137
     ...

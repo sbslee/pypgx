@@ -1,28 +1,22 @@
+from typing import List
+
 from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
-from .common import sm_tag, str2file, is_namespace, get_parser, stdout
+from .common import sm_tag, str2file
 
-def _bam2gdf(tg, cg, bam):
+def bam2gdf(tg : str, cg: str, bam: List[str]) -> str:
+    """
+    Create GDF file from BAM file(s).
+    
+    Returns:
+        str: Text version of GDF file.
+
+    Args:
+        tg (str): Target gene.
+        cg (str): Control gene.
+        bam (list[str]): BAM file(s).
+    """
     sdf = bam2sdf("bam2sdf", tg, cg, *bam)
     sm = [sm_tag(x) for x in bam]
     result = sdf2gdf(str2file(sdf), sm)
     return result
-
-def bam2gdf(*args):
-    is_console = is_namespace(args[0])
-
-    if is_console:
-        result = _bam2gdf(args[0].tg, args[0].cg, args[0].bam)
-    else:
-        parser = get_parser()
-        args = parser.parse_args(args)
-        result = _bam2gdf(args.tg, args.cg, args.bam)
-
-    if is_console:
-        if args[0].o:
-            with open(args[0].o, "w") as f:
-                f.write(result)
-        else:
-            stdout(result)
-    else:
-        return result
