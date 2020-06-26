@@ -17,6 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
+master_doc = "index"
+
 project = 'PyPGx'
 copyright = '2020, Seung-been "Steven" Lee'
 author = 'Seung-been "Steven" Lee'
