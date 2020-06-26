@@ -13,7 +13,7 @@ The easiest way to install PyPGx is to use ``pip``::
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   readme.rst
+   readme
 
 
 
