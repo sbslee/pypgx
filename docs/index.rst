@@ -1,5 +1,7 @@
-PyPGx: A Python package for pharmacogenomics (PGx) research
-===========================================================
+PyPGx
+=====
+
+PyPGx is a Python package for pharmacogenomics (PGx) research.
 
 .. toctree::
    :maxdepth: 2
