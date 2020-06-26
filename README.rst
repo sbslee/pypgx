@@ -4,7 +4,7 @@ PyPGx
 .. image:: https://badge.fury.io/py/pypgx.svg
     :target: https://badge.fury.io/py/pypgx
 
-PyPGx is a Python package for pharmacogenomics (PGx) research.
+PyPGx is a Python package for pharmacogenomics (PGx) research. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Installation
 ============
