@@ -10,7 +10,7 @@ Welcome to PyPGx's documentation!
    :maxdepth: 2
    :caption: Contents:
    
-   .. include:: ../README.rst
+   readme
 
 
 
