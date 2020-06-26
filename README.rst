@@ -3,6 +3,9 @@ PyPGx
 
 .. image:: https://badge.fury.io/py/pypgx.svg
     :target: https://badge.fury.io/py/pypgx
+.. image:: https://readthedocs.org/projects/pypgx/badge/?version=latest
+    :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 PyPGx is a Python package for pharmacogenomics (PGx) research. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
