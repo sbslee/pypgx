@@ -3,6 +3,7 @@ import logging
 import io
 import pkgutil
 import sys
+import gzip
 
 import pysam
 
@@ -115,6 +116,24 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    minivcf_parser = subparsers.add_parser(
+        "minivcf",
+        help="slice a VCF file",
+    )
+    minivcf_parser.add_argument(
+        "vcf",
+        help="VCF file",
+    )
+    minivcf_parser.add_argument(
+        "region",
+        help="genomic region",
+    )
+    minivcf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def is_namespace(x):
@@ -178,3 +197,56 @@ def sm_tag(x):
 
 def stdout(x):
     sys.stdout.write(x)
+
+class VCFFile:
+    def __init__(self, fn):
+        if ".gz" in fn:
+            self.f = gzip.open(fn, "rt")
+        else:
+            self.f = open(fn)
+        self.meta = []
+        self.header = []
+        self.data = []
+
+    def read(self, region = None):
+        if region:
+            r = parse_region(region)
+            for line in self.f:
+                if "##" in line:
+                    self.meta.append(line)
+                    continue
+                fields = line.strip().split("\t")
+                if fields[0] == "#CHROM":
+                    self.header = fields
+                    continue
+                chr = fields[0]
+                pos = int(fields[1])
+                if chr != r[0] or pos < r[1]:
+                    continue
+                if pos > r[2]:
+                    break
+                self.data.append(fields)
+        else:
+            for line in self.f:
+                if "##" in line:
+                    self.meta.append(line)
+                    continue
+                fields = line.strip().split("\t")
+                if fields[0] == "#CHROM":
+                    self.header = fields
+                    continue
+                self.data.append(fields)
+
+    def write(self):
+        string = ""
+        for line in self.meta:
+            string += line
+        string += "\t".join(self.header) + "\n"
+        for fields in self.data:
+            string += "\t".join(fields) + "\n"
+        return string
+
+    def close(self):
+        self.f.close()
+        self.f = None
+

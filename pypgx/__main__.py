@@ -6,6 +6,7 @@ from .report import report
 from .sdf2gdf import sdf2gdf
 from .bam2sdf import bam2sdf
 from .bam2gdf import bam2gdf
+from .minivcf import minivcf
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,14 @@ def _bam2gdf(args):
     else:
         sys.stdout.write(result)
 
+def _minivcf(args):
+    result = minivcf(args.vcf, args.region)
+    if args.o:
+        with open(args.o, "w") as f:
+            f.write(result)
+    else:
+        sys.stdout.write(result)
+
 def main():
     parser = get_parser()
     args = parser.parse_args()
@@ -55,6 +64,9 @@ def main():
 
     elif args.tool == "bam2gdf":
         _bam2gdf(args)
+
+    elif args.tool == "minivcf":
+        _minivcf(args)
 
 if __name__ == "__main__":
     main()
