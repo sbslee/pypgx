@@ -7,6 +7,7 @@ from .sdf2gdf import sdf2gdf
 from .bam2sdf import bam2sdf
 from .bam2gdf import bam2gdf
 from .minivcf import minivcf
+from .merge import merge
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +45,14 @@ def _minivcf(args):
     else:
         sys.stdout.write(result)
 
+def _merge(args):
+    result = merge(args.vcf, args.r)
+    if args.o:
+        with open(args.o, "w") as f:
+            f.write(result)
+    else:
+        sys.stdout.write(result)
+
 def main():
     parser = get_parser()
     args = parser.parse_args()
@@ -67,6 +76,9 @@ def main():
 
     elif args.tool == "minivcf":
         _minivcf(args)
+
+    elif args.tool == "merge":
+        _merge(args)
 
 if __name__ == "__main__":
     main()

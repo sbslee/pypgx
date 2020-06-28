@@ -14,5 +14,5 @@ def minivcf(fn, region):
     vcf = VCFFile(fn)
     vcf.read(region)
     result = vcf.write()
-    return result
     vcf.close()
+    return result

@@ -118,7 +118,7 @@ def get_parser():
 
     minivcf_parser = subparsers.add_parser(
         "minivcf",
-        help="slice a VCF file",
+        help="slice VCF file",
     )
     minivcf_parser.add_argument(
         "vcf",
@@ -126,9 +126,29 @@ def get_parser():
     )
     minivcf_parser.add_argument(
         "region",
-        help="genomic region",
+        help="genomic region (chr:start-end)",
     )
     minivcf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
+    merge_parser = subparsers.add_parser(
+        "merge",
+        help="merge VCF files",
+    )
+    merge_parser.add_argument(
+        "vcf",
+        nargs="+",
+        help="VCF file",
+    )
+    merge_parser.add_argument(
+        "-r",
+        metavar="STR",
+        help="genomic region (chr:start-end)",
+    )
+    merge_parser.add_argument(
         "-o",
         metavar="FILE",
         help="output to FILE [stdout]",

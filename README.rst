@@ -34,7 +34,8 @@ For getting help::
       sdf2gdf   create GDF file from SDF file
       bam2sdf   create SDF file from BAM file(s)
       bam2gdf   create GDF file from BAM file(s)
-      minivcf   slice a VCF file
+      minivcf   slice VCF file
+      merge     merge VCF files
 
     optional arguments:
       -h, --help  show this help message and exit
