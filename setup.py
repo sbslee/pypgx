@@ -14,7 +14,7 @@ setup(
     description=(
         "PyPGx is a Python package for pharmacogenomics (PGx) research"),
     long_description=readme,
-    long_description_content_type="text/markdown",
+    long_description_content_type="text/x-rst",
     url="https://github.com/pypgx/pypgx/",
     packages=find_packages(),
     package_data={
