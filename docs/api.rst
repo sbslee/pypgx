@@ -1,6 +1,9 @@
 API
 ***
 
+This section describes the public API of Python module ``pypgx``. For how to 
+use PyPGx as a command-line program, please see the Commands section.
+
 Major modules
 =============
 
@@ -44,4 +47,13 @@ pypgx.merge module
 ------------------
 
 .. automodule:: pypgx.merge
+    :members:
+
+Auxiliary modules
+=================
+
+pypgx.common module
+-------------------
+
+.. automodule:: pypgx.common
     :members:

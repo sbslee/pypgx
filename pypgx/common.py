@@ -71,6 +71,14 @@ class VCFFile:
         fn: str,
         f: Optional[TextIO] = None,
     ):
+    """
+    VCF file.
+
+    Attributes:
+        fn (str): VCF file.
+        f (TextIO, optional): VCF file.
+    """
+
         if fn:
             if ".gz" in fn:
                 self.f = gzip.open(fn, "rt")
