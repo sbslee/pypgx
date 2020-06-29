@@ -6,12 +6,12 @@ from .common import read_gene_table, logging, sort_regions, sm_tag
 
 logger = logging.getLogger(__name__)
 
-def bam2sdf(tg: str, cg: str, bam: List[str]):
+def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
     """
     Create SDF file from BAM file(s).
     
     Returns:
-        str: Text version of SDF file.
+        str: String representation of SDF file.
 
     Args:
         tg (str): Target gene.

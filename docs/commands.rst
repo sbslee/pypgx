@@ -1,6 +1,9 @@
 Commands
 ********
 
+This section describes how to use PyPGx as a command-line program.
+For the public API of Python module ``pypgx``, please see the API section.
+
 pgkb
 ====
 
@@ -12,7 +15,8 @@ pypgx pgkb [options]
 Description
 -----------
 
-Extract CPIC guidelines using PharmGKB API.
+Extract CPIC guidelines using PharmGKB API. There are no required 
+arguments.
 
 Options
 -------

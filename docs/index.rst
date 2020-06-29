@@ -7,6 +7,7 @@ Welcome to PyPGx's documentation!
 
    readme
    commands
+   api
 
 Indices and tables
 ==================
