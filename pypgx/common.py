@@ -67,7 +67,7 @@ def sm_tag(x):
 
 class VCFFile:
     """
-    VCF File.
+    VCF file ojbect.
 
     Attributes:
        f (TextIO): VCF file.

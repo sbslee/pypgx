@@ -9,13 +9,13 @@ def sdf2gdf(
     ) -> str:
     """
     Create GDF file from SDF file.
-    
+
     Returns:
-        str: String representation of GDF file.
+        str: GDF file.
 
     Args:
         fn (str): SDF file.
-        id (list[str]): List of sample ID(s).
+        id (list[str]): Sample ID(s).
         f (TextIO, optional): SDF file.
     """
 

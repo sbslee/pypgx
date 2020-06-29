@@ -21,7 +21,6 @@ arguments.
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 -t          will only look first three guidelines
 
@@ -36,13 +35,12 @@ pypgx report [options] gt
 Description
 -----------
 
-Create HTML report using data from Stargazer. ``gt`` is input genotype file 
+Create HTML report using data from Stargazer. *gt* is input genotype file 
 from Stargazer.
 
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 
 sdf2gdf
@@ -56,12 +54,11 @@ pypgx sdf2gdf [options] sdf id [id ...]
 Description
 -----------
 
-Create GDF file from SDF file. ``sdf`` is input SDF file. ``id`` is sample ID.
+Create GDF file from SDF file. *sdf* is input SDF file. *id* is sample ID.
 
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 
 bam2sdf
@@ -75,13 +72,12 @@ pypgx bam2sdf [options] tg cg bam [bam ...]
 Description
 -----------
 
-Create SDF file from BAM file(s). ``tg`` is target gene. ``cg`` is control 
-gene. ``bam`` is input BAM file.
+Create SDF file from BAM file(s). *tg* is target gene. *cg* is control 
+gene. *bam* is input BAM file.
 
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 
 bam2gdf
@@ -95,13 +91,12 @@ pypgx bam2gdf [options] tg cg bam [bam ...]
 Description
 -----------
 
-Create GDF file from BAM file(s). ``tg`` is target gene. ``cg`` is control 
-gene. ``bam`` is input BAM file.
+Create GDF file from BAM file(s). *tg* is target gene. *cg* is control 
+gene. *bam* is input BAM file.
 
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 
 minivcf
@@ -115,12 +110,11 @@ pypgx minivcf [options] vcf region
 Description
 -----------
 
-Slice VCF file. ``vcf`` is input VCF file. ``region`` is target region.
+Slice VCF file. *vcf* is input VCF file. *region* is target region.
 
 Options
 -------
 
--h, --help  show this help message and exit
 -o FILE     output to FILE [stdout]
 
 merge
@@ -134,11 +128,10 @@ pypgx merge [options] vcf [vcf ...]
 Description
 -----------
 
-Merge VCF files. ``vcf`` is input VCF file.
+Merge VCF files. *vcf* is input VCF file.
 
 Options
 -------
 
--h, --help  show this help message and exit
--r STR      genomic region (chr:start-end)
+-r STR      target region
 -o FILE     output to FILE [stdout]

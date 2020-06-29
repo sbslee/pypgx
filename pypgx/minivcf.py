@@ -3,13 +3,13 @@ from .common import VCFFile
 def minivcf(fn: str, region: str) -> str:
     """
     Slice VCF file.
-    
+
     Returns:
-        str: String representation of VCF file.
+        str: VCF file.
 
     Args:
-        fn (str): VCF filename.
-        region (str): Genomic region.
+        fn (str): VCF file.
+        region (str): Target region.
     """
 
     vcf = VCFFile(fn)

@@ -149,9 +149,9 @@ def report(
     ) -> str:
     """
     Create HTML report using data from Stargazer.
-    
+
     Returns:
-        str: String representation of HTML report.
+        str: HTML report.
 
     Args:
         fn (str): Genotype file.

@@ -50,12 +50,12 @@ def _update(result, gene, chemical, table, url, summary, type):
 def pgkb(is_test: bool = False) -> str:
     """
     Extract CPIC guidelines using PharmGKB API.
-    
+
     Returns:
-        str: Text version of guideline table.
+        str: Guideline table.
 
     Args:
-        is_test (bool): Only read first three guidelines.
+        is_test (bool): Extract first three guidelines for testing.
     """
 
     # Get the PharmGKB IDs of CPIC guidelines.

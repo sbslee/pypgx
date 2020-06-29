@@ -2,17 +2,21 @@ from typing import Optional, List
 
 from .common import VCFFile
 
-def merge(vcfs: List[str], region: Optional[str] = None) -> str:
+def merge(
+        vcfs: List[str],
+        region: Optional[str] = None
+    ) -> str:
     """
     Merge VCF files.
-    
+
     Returns:
-        str: String representation of VCF file.
+        str: VCF file.
 
     Args:
-        vcfs (str): VCF filenames.
-        region (str, optional): Genomic region (chr:start:end).
+        vcfs (list[str]): VCF files.
+        region (str, optional): Target region.
     """
+
     l = []
     for fn in vcfs:
         vcf = VCFFile(fn)

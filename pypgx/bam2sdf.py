@@ -9,9 +9,9 @@ logger = logging.getLogger(__name__)
 def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
     """
     Create SDF file from BAM file(s).
-    
+
     Returns:
-        str: String representation of SDF file.
+        str: SDF file.
 
     Args:
         tg (str): Target gene.
