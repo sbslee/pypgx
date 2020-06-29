@@ -70,14 +70,14 @@ class VCFFile:
         self,
         fn: str,
         f: Optional[TextIO] = None,
-    ):
-    """
-    VCF file.
+    ) -> None:
+        """
+        Initialize VCF file.
 
-    Attributes:
-        fn (str): VCF file.
-        f (TextIO, optional): VCF file.
-    """
+        Args:
+            fn (str): VCF file.
+            f (TextIO, optional): VCF file.
+        """
 
         if fn:
             if ".gz" in fn:
