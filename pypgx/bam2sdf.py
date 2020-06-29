@@ -1,11 +1,23 @@
-import pysam
-import sys
+from typing import List
 
-from .common import is_namespace, get_parser, is_file, read_gene_table, logging, parse_region, sort_regions, sm_tag
+import pysam
+
+from .common import read_gene_table, logging, sort_regions, sm_tag
 
 logger = logging.getLogger(__name__)
 
-def _bam2sdf(tg, cg, bam):
+def bam2sdf(tg: str, cg: str, bam: List[str]):
+    """
+    Create SDF file from BAM file(s).
+    
+    Returns:
+        str: Text version of SDF file.
+
+    Args:
+        tg (str): Target gene.
+        cg (str): Control gene.
+        bam (list[str]): BAM file(s).
+    """
 
     genes = read_gene_table()
     targets = [k for k, v in genes.items() if v["type"] == "target"]
@@ -52,28 +64,3 @@ def _bam2sdf(tg, cg, bam):
         result += temp
 
     return result
-
-def bam2sdf(*args):
-    is_console = is_namespace(args[0])
-
-    if is_console:
-        tg = args[0].tg
-        cg = args[0].cg
-        bam = args[0].bam
-    else:
-        parser = get_parser()
-        args = parser.parse_args(args)
-        tg = args.tg
-        cg = args.cg
-        bam = args.bam
-
-    result = _bam2sdf(tg, cg, bam)
-
-    if is_console:
-        if args[0].o:
-            with open(args[0].o, "w") as f:
-                f.write(result)
-        else:
-            sys.stdout.write(result)
-    else:
-        return result

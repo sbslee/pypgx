@@ -2,7 +2,7 @@ import pkgutil
 import csv
 import sys
 import datetime
-from typing import TextIO
+from typing import TextIO, Optional
 
 def _overview_table(gt, pairs, genes):
     table = (
@@ -143,15 +143,19 @@ def _action_table(actions):
             string += table
     return string
 
-def report(f: TextIO) -> str:
+def report(
+        fn: str,
+        f: Optional[TextIO] = None
+    ) -> str:
     """
     Create HTML report using data from Stargazer.
     
     Returns:
-        str: Text version of HTML report.
+        str: String representation of HTML report.
 
     Args:
-        f (TextIO): Genotype file.
+        fn (str): Genotype file.
+        f (TextIO, optional): Genotype file.
     """
 
     # Get the list of genes targeted by Stargazer.
@@ -190,6 +194,8 @@ def report(f: TextIO) -> str:
             actions[chemical][gene]["pt"][phenotype] = action
 
     # Read the genotype file.
+    if fn:
+        f = open(fn)
     gt = {}
     id = ""
     header = next(f).strip().split("\t")
@@ -204,6 +210,8 @@ def report(f: TextIO) -> str:
             gt[gene] = dict(zip(header, ["-" for x in header]))
     assessed = [x for x in genes if gt[x]["status"] != "-"]
     typed = [x for x in genes if gt[x]["status"] == "g"]
+    if fn:
+        f.close()
 
     # Read the gene-drug paris file.
     pairs = []

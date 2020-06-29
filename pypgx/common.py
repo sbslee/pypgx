@@ -1,8 +1,6 @@
-import argparse
 import logging
 import io
 import pkgutil
-import sys
 import gzip
 from typing import Optional, TextIO
 
@@ -13,155 +11,6 @@ LINE_BREAK2 = "*" * 70
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-def get_parser():
-    parser = argparse.ArgumentParser()
-    subparsers = parser.add_subparsers(
-        dest="tool",
-        metavar="tool",
-        help="name of tool",
-    )
-    subparsers.required = True
-
-    pgkb_parser = subparsers.add_parser(
-        "pgkb",
-        help="extract CPIC guidelines using PharmGKB API",
-    )
-    pgkb_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-    pgkb_parser.add_argument(
-        "-t",
-        action='store_true',
-        help="turn on test mode (will only look first three guidelines)",
-    )
-
-    report_parser = subparsers.add_parser(
-        "report",
-        help="create HTML report using data from Stargazer",
-    )
-    report_parser.add_argument(
-        "gt",
-        help="Stargazer genotype file",
-    )
-    report_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
-    sdf2gdf_parser = subparsers.add_parser(
-        "sdf2gdf",
-        help="create GDF file from SDF file",
-    )
-    sdf2gdf_parser.add_argument(
-        "sdf",
-        help="SDF file",
-    )
-    sdf2gdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-    sdf2gdf_parser.add_argument(
-        "id",
-        nargs="+",
-        help="sample ID",
-    )
-
-    bam2sdf_parser = subparsers.add_parser(
-        "bam2sdf",
-        help="create SDF file from BAM file(s)",
-    )
-    bam2sdf_parser.add_argument(
-        "tg",
-        help="target gene",
-    )
-    bam2sdf_parser.add_argument(
-        "cg",
-        help="control gene",
-    )
-    bam2sdf_parser.add_argument(
-        "bam",
-        nargs="+",
-        help="BAM file",
-    )
-    bam2sdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
-    bam2gdf_parser = subparsers.add_parser(
-        "bam2gdf",
-        help="create GDF file from BAM file(s)",
-    )
-    bam2gdf_parser.add_argument(
-        "tg",
-        help="target gene",
-    )
-    bam2gdf_parser.add_argument(
-        "cg",
-        help="control gene",
-    )
-    bam2gdf_parser.add_argument(
-        "bam",
-        nargs="+",
-        help="BAM file",
-    )
-    bam2gdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
-    minivcf_parser = subparsers.add_parser(
-        "minivcf",
-        help="slice VCF file",
-    )
-    minivcf_parser.add_argument(
-        "vcf",
-        help="VCF file",
-    )
-    minivcf_parser.add_argument(
-        "region",
-        help="genomic region (chr:start-end)",
-    )
-    minivcf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
-    merge_parser = subparsers.add_parser(
-        "merge",
-        help="merge VCF files",
-    )
-    merge_parser.add_argument(
-        "vcf",
-        nargs="+",
-        help="VCF file",
-    )
-    merge_parser.add_argument(
-        "-r",
-        metavar="STR",
-        help="genomic region (chr:start-end)",
-    )
-    merge_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
-    return parser
-
-def is_namespace(x):
-    return isinstance(x, argparse.Namespace)
-
-def is_file(x):
-    return isinstance(x, io.IOBase)
 
 def str2file(x):
     return io.StringIO(x)
@@ -215,9 +64,6 @@ def sm_tag(x):
         return l[0]
     else:
         return l[0]
-
-def stdout(x):
-    sys.stdout.write(x)
 
 class VCFFile:
     def __init__(
@@ -290,4 +136,3 @@ class VCFFile:
     def close(self):
         self.f.close()
         self.f = None
-

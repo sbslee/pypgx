@@ -1,6 +1,6 @@
 from .common import VCFFile
 
-def minivcf(fn, region):
+def minivcf(fn: str, region: str) -> str:
     """
     Slice VCF file.
     

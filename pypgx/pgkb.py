@@ -1,8 +1,7 @@
 import json
 import time
-import sys
 
-from .common import LINE_BREAK2, is_namespace, get_parser, logging
+from .common import LINE_BREAK2, logging
 
 import requests
 import pandas as pd
@@ -56,8 +55,7 @@ def pgkb(is_test: bool = False) -> str:
         str: Text version of guideline table.
 
     Args:
-        is_test (bool):
-            Turn on test mode (will only look first three guidelines).
+        is_test (bool): Only read first three guidelines.
     """
     # Get the PharmGKB IDs of CPIC guidelines.
     pgkb_id = []
