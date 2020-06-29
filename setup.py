@@ -3,12 +3,14 @@ from setuptools import setup, find_packages
 with open("README.rst", "r") as readme_file:
     readme = readme_file.read()
 
+exec(open("pypgx/version.py").read())
+
 requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1",
     "lxml>=4.5.0", "pysam>=0.16.0",]
 
 setup(
     name="pypgx",
-    version="0.0.19",
+    version=__version__,
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description=(

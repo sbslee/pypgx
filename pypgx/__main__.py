@@ -8,6 +8,7 @@ from .bam2sdf import bam2sdf
 from .bam2gdf import bam2gdf
 from .minivcf import minivcf
 from .merge import merge
+from .version import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +55,7 @@ def _merge(args):
         sys.stdout.write(result)
 
 def main():
+    logger.info(f"PyPGx v{__version__}")
     parser = get_parser()
     args = parser.parse_args()
 
