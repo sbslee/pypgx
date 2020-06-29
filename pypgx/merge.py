@@ -27,5 +27,5 @@ def merge(vcfs, region = None):
         vcf.close()
     
     merged.close()
-    result = merged.write()
+    result = merged.to_str()
     return result

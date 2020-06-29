@@ -4,6 +4,7 @@ import io
 import pkgutil
 import sys
 import gzip
+from typing import Optional, TextIO
 
 import pysam
 
@@ -219,11 +220,18 @@ def stdout(x):
     sys.stdout.write(x)
 
 class VCFFile:
-    def __init__(self, fn):
-        if ".gz" in fn:
-            self.f = gzip.open(fn, "rt")
+    def __init__(
+        self,
+        fn: str,
+        f: Optional[TextIO] = None,
+    ):
+        if fn:
+            if ".gz" in fn:
+                self.f = gzip.open(fn, "rt")
+            else:
+                self.f = open(fn)
         else:
-            self.f = open(fn)
+            self.f = f
         self.meta = []
         self.header = []
         self.data = []
@@ -257,7 +265,7 @@ class VCFFile:
                     continue
                 self.data.append(fields)
 
-    def write(self):
+    def to_str(self) -> str:
         string = ""
         for line in self.meta:
             string += line
@@ -265,6 +273,19 @@ class VCFFile:
         for fields in self.data:
             string += "\t".join(fields) + "\n"
         return string
+
+    def to_file(self, fn: str) -> None:
+        string = self.to_str()
+        with open(fn, "w") as f:
+            f.write(string)
+
+    def unphase(self) -> None:
+        for i in range(len(self.data)):
+            self.data[i][9:] = [x.replace("|", "/") for x in self.data[i][9:]]
+
+    def phase(self) -> None:
+        for i in range(len(self.data)):
+            self.data[i][9:] = [x.replace("/", "|") for x in self.data[i][9:]]
 
     def close(self):
         self.f.close()

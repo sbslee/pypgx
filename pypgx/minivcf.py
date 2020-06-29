@@ -13,6 +13,6 @@ def minivcf(fn, region):
     """
     vcf = VCFFile(fn)
     vcf.read(region)
-    result = vcf.write()
+    result = vcf.to_str()
     vcf.close()
     return result
