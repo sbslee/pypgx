@@ -2,7 +2,7 @@ import logging
 import io
 import pkgutil
 import gzip
-from typing import Optional, TextIO
+from typing import Optional, TextIO, List
 
 import pysam
 
@@ -66,6 +66,16 @@ def sm_tag(x):
         return l[0]
 
 class VCFFile:
+    """
+    VCF File.
+
+    Attributes:
+       f (TextIO): VCF file.
+       meta (list[str]): Meta data.
+       header (list[str]): Header.
+       data (list[str]): Genotype data. 
+    """
+
     def __init__(
         self,
         fn: str,
