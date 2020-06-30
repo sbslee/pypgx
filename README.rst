@@ -36,6 +36,7 @@ For getting help::
       bam2gdf   create GDF file from BAM file(s)
       minivcf   slice VCF file
       merge     merge VCF files
+      summary   create summary using data from Stargazer
 
     optional arguments:
       -h, --help  show this help message and exit
