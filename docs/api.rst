@@ -49,6 +49,12 @@ pypgx.merge module
 .. automodule:: pypgx.merge
     :members:
 
+pypgx.summary module
+--------------------
+
+.. automodule:: pypgx.summary
+    :members:
+
 Auxiliary modules
 =================
 

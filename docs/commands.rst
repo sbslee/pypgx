@@ -135,3 +135,22 @@ Options
 
 -r STR      target region
 -o FILE     output to FILE [stdout]
+
+summary
+=======
+
+Synopsis
+--------
+
+pypgx summary [options] gt tg
+
+Description
+-----------
+
+Create summary file using data from Stargazer. *gt* is input genotype file 
+from Stargazer. *tg* is target gene.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

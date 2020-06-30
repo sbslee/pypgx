@@ -2,7 +2,7 @@ from pypgx.common import read_pt_table, sort_star_names
 
 def summary(gt: str, tg: str) -> str:
     """
-    Create summary using data from Stargazer.
+    Create summary file using data from Stargazer.
 
     Returns:
         str: Summary file.

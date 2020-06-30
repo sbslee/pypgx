@@ -157,7 +157,7 @@ def get_parser():
 
     summary_parser = subparsers.add_parser(
         "summary",
-        help="create summary using data from Stargazer",
+        help="create summary file using data from Stargazer",
     )
     summary_parser.add_argument(
         "gt",
