@@ -76,13 +76,9 @@ class VCFFile:
        data (list[str]): Genotype data. 
     """
 
-    def __init__(
-        self,
-        fn: str,
-        f: Optional[TextIO] = None,
-    ) -> None:
+    def __init__(self, fn: str, f: Optional[TextIO] = None) -> None:
         """
-        Initialize VCF file.
+        Initialize VCF file object.
 
         Args:
             fn (str): VCF file.
@@ -100,7 +96,20 @@ class VCFFile:
         self.header = []
         self.data = []
 
-    def read(self, region = None):
+    def read(self, region: Optional[str] = None) -> None:
+        """
+        Read VCF file.
+        
+        Args:
+            region (str, optional): Target region.
+        
+        Example:
+
+            >>> vcf = VCFFile("in.vcf") # also works with "in.vcf.gz"
+            >>> vcf.read("chr10:96519437-96615962") # read CYP2C19 region only
+
+        """
+
         if region:
             r = parse_region(region)
             for line in self.f:
@@ -130,6 +139,13 @@ class VCFFile:
                 self.data.append(fields)
 
     def to_str(self) -> str:
+        """
+        Return VCF file.
+
+        Returns:
+            str: VCF file.
+        """
+
         string = ""
         for line in self.meta:
             string += line
@@ -139,18 +155,41 @@ class VCFFile:
         return string
 
     def to_file(self, fn: str) -> None:
+        """
+        Write VCF file.
+
+        Args:
+            fn (str): VCF file.
+        """
+
         string = self.to_str()
         with open(fn, "w") as f:
             f.write(string)
 
     def unphase(self) -> None:
+        """
+        Change genotype separator from '|' to '/'.
+        """
+
         for i in range(len(self.data)):
             self.data[i][9:] = [x.replace("|", "/") for x in self.data[i][9:]]
 
     def phase(self) -> None:
+        """
+        Change genotype separator from '/' to '|'.
+
+        .. warning::
+            This is not statistcal phasing.
+
+        """
+
         for i in range(len(self.data)):
             self.data[i][9:] = [x.replace("/", "|") for x in self.data[i][9:]]
 
-    def close(self):
+    def close(self) -> None:
+        """
+        Close VCF file.
+        """
+
         self.f.close()
         self.f = None

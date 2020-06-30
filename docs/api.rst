@@ -57,3 +57,4 @@ pypgx.common module
 
 .. automodule:: pypgx.common
     :members:
+    :undoc-members:
