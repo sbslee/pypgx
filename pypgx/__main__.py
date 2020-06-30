@@ -38,16 +38,16 @@ def get_parser():
     pgkb_parser.add_argument(
         "-t",
         action='store_true',
-        help="turn on test mode (will only look first three guidelines)",
+        help="extract first three guidelines for testing",
     )
 
     report_parser = subparsers.add_parser(
         "report",
-        help="create HTML report using data from Stargazer",
+        help="create HTML report using Stargazer data",
     )
     report_parser.add_argument(
         "gt",
-        help="Stargazer genotype file",
+        help="genotype file",
     )
     report_parser.add_argument(
         "-o",
@@ -130,7 +130,7 @@ def get_parser():
     )
     minivcf_parser.add_argument(
         "region",
-        help="genomic region (chr:start-end)",
+        help="target region",
     )
     minivcf_parser.add_argument(
         "-o",
@@ -150,7 +150,7 @@ def get_parser():
     merge_parser.add_argument(
         "-r",
         metavar="STR",
-        help="genomic region (chr:start-end)",
+        help="target region",
     )
     merge_parser.add_argument(
         "-o",
@@ -160,15 +160,15 @@ def get_parser():
 
     summary_parser = subparsers.add_parser(
         "summary",
-        help="create summary file using data from Stargazer",
-    )
-    summary_parser.add_argument(
-        "gt",
-        help="Stargazer genotype file",
+        help="create summary file using Stargazer data",
     )
     summary_parser.add_argument(
         "tg",
         help="target gene",
+    )
+    summary_parser.add_argument(
+        "gt",
+        help="genotype file",
     )
     summary_parser.add_argument(
         "-o",
@@ -185,7 +185,7 @@ def get_parser():
         help="target gene",
     )
     meta_parser.add_argument(
-        "sum",
+        "sf",
         nargs="+",
         help="summary file",
     )
@@ -240,11 +240,11 @@ def main():
         output(args.o, result)
     
     elif args.tool == "summary":
-        result = summary(args.gt, args.tg)
+        result = summary(args.tg, args.gt)
         output(args.o, result)
 
     elif args.tool == "meta":
-        result = meta(args.tg, args.sum)
+        result = meta(args.tg, args.sf)
         output(args.o, result)
 
 if __name__ == "__main__":

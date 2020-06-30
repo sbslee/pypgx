@@ -27,16 +27,16 @@ For getting help::
     $ pypgx -h
     usage: pypgx [-h] tool ...
 
-    positional arguments:
+  positional arguments:
     tool        name of tool
       pgkb      extract CPIC guidelines using PharmGKB API
-      report    create HTML report using data from Stargazer
+      report    create HTML report using Stargazer data
       sdf2gdf   create GDF file from SDF file
       bam2sdf   create SDF file from BAM file(s)
       bam2gdf   create GDF file from BAM file(s)
       minivcf   slice VCF file
       merge     merge VCF files
-      summary   create summary file using data from Stargazer
+      summary   create summary file using Stargazer data
       meta      create meta file from summary files
 
     optional arguments:

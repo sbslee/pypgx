@@ -148,7 +148,7 @@ def report(
         f: Optional[TextIO] = None
     ) -> str:
     """
-    Create HTML report using data from Stargazer.
+    Create HTML report using Stargazer data.
 
     Returns:
         str: HTML report.

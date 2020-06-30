@@ -3,14 +3,14 @@ from typing import List
 
 from pypgx.common import sort_star_names, read_pt_table
 
-def _append1(d, i, name, count, percentage, sv, hap_score):
+def _append1(d, i, name, count, p, sv, hap_score):
     if name not in d:
         d[name] = [sv, hap_score]
         for j in range(i):
             d[name].append(".")
             d[name].append(".")
     d[name].append(count)
-    d[name].append(percentage)
+    d[name].append(p)
 
 def _append2(d, i):
     for name in d:
@@ -18,7 +18,7 @@ def _append2(d, i):
             d[name].append(".")
             d[name].append(".")
 
-def meta(tg: str, sum: List[str]) -> str:
+def meta(tg: str, sf: List[str]) -> str:
     """
     Create meta file from summary files.
 
@@ -27,17 +27,17 @@ def meta(tg: str, sum: List[str]) -> str:
 
     Args:
         tg (str): Target gene.
-        sum (list[str]): Summary file.
+        sf (list[str]): Summary file.
     """
 
     dicts = {}
     header1 = ["type", "name", "sv", "hap_score"]
 
-    for i in range(len(sum)):
-        summary = sum[i]
+    for i in range(len(sf)):
+        summary = sf[i]
         prefix = os.path.basename(summary)
-        header1.append("N_" + prefix)
-        header1.append("P_" + prefix)
+        header1.append("n_" + prefix)
+        header1.append("p_" + prefix)
         with open(summary) as f:
             header2 = next(f).strip().split("\t")
             for line in f:
@@ -47,37 +47,39 @@ def meta(tg: str, sum: List[str]) -> str:
                 sv = fields[2]
                 hap_score = fields[3]
                 count = fields[4]
-                percentage = fields[5]
+                p = fields[5]
                 if type not in dicts:
                     dicts[type] = {}
-                _append1(dicts[type], i, name, count, percentage, sv, hap_score)
+                _append1(dicts[type], i, name, count, p, sv, hap_score)
         for type in dicts:
             _append2(dicts[type], i)
-
 
     temp = []
     temp.append(header1)
 
     for type in dicts:
         if type == "samp":
-            for subtype in ["total", "sv"]:
-                temp.append(["samp", subtype] + dicts[type][subtype])
+            for x in ["total", "sv"]:
+                temp.append(["samp", x] + dicts[type][x])
 
         elif type == "haps":
-            for subtype in ["total", "unique"]:
-                temp.append(["haps", subtype] + dicts[type][subtype])
+            for x in ["total", "unique"]:
+                temp.append(["haps", x] + dicts[type][x])
 
         elif type == "star":
-            for allele in sort_star_names(list(dicts[type])):
-                temp.append(["star", allele] + dicts[type][allele])
+            for x in sort_star_names(list(dicts[type])):
+                temp.append(["star", x] + dicts[type][x])
 
         elif type == "pt":
-            for phenotype in sorted(list(dicts[type]), key = list(read_pt_table()[tg]).index):
-                temp.append(["pt", phenotype] + dicts[type][phenotype])
+            for x in sorted(
+                    list(dicts[type]),
+                    key = list(read_pt_table()[tg]).index
+                ):
+                temp.append(["pt", x] + dicts[type][x])
 
         else:
-            for subtype in sorted(dicts[type]):
-                temp.append([type, subtype] + dicts[type][subtype])
+            for x in sorted(dicts[type]):
+                temp.append([type, x] + dicts[type][x])
 
     result = ""
 
