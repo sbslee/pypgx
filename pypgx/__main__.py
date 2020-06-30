@@ -1,6 +1,8 @@
 import sys
 import argparse
 
+from .version import __version__
+
 from .common import logging
 from .pgkb import pgkb
 from .report import report
@@ -10,7 +12,8 @@ from .bam2gdf import bam2gdf
 from .minivcf import minivcf
 from .merge import merge
 from .summary import summary
-from .version import __version__
+from .meta import meta
+
 
 logger = logging.getLogger(__name__)
 
@@ -173,6 +176,25 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    meta_parser = subparsers.add_parser(
+        "meta",
+        help="create meta file from summary files",
+    )
+    meta_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    meta_parser.add_argument(
+        "sum",
+        nargs="+",
+        help="summary file",
+    )
+    meta_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -219,6 +241,10 @@ def main():
     
     elif args.tool == "summary":
         result = summary(args.gt, args.tg)
+        output(args.o, result)
+
+    elif args.tool == "meta":
+        result = meta(args.tg, args.sum)
         output(args.o, result)
 
 if __name__ == "__main__":

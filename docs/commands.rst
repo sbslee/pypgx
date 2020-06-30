@@ -154,3 +154,22 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+meta
+====
+
+Synopsis
+--------
+
+pypgx meta [options] tg sum [sum ...]
+
+Description
+-----------
+
+Create meta file from summary files. *tg* is target gene. *sum* is 
+input summary file.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

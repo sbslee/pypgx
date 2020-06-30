@@ -37,6 +37,7 @@ For getting help::
       minivcf   slice VCF file
       merge     merge VCF files
       summary   create summary file using data from Stargazer
+      meta      create meta file from summary files
 
     optional arguments:
       -h, --help  show this help message and exit
