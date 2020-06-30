@@ -9,6 +9,7 @@ from .bam2sdf import bam2sdf
 from .bam2gdf import bam2gdf
 from .minivcf import minivcf
 from .merge import merge
+from .summary import summary
 from .version import __version__
 
 logger = logging.getLogger(__name__)
@@ -154,6 +155,24 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    summary_parser = subparsers.add_parser(
+        "summary",
+        help="create summary using data from Stargazer",
+    )
+    summary_parser.add_argument(
+        "gt",
+        help="Stargazer genotype file",
+    )
+    summary_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    summary_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -196,6 +215,10 @@ def main():
 
     elif args.tool == "merge":
         result = merge(args.vcf, args.r)
+        output(args.o, result)
+    
+    elif args.tool == "summary":
+        result = summary(args.gt, args.tg)
         output(args.o, result)
 
 if __name__ == "__main__":
