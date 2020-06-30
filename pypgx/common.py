@@ -56,14 +56,34 @@ def read_pt_table():
         result[gene][name] = dict(zip(header, fields))
     return result
 
-def parse_region(x):
+def parse_region(region: str) -> List[str]:
+    """
+    Parse region.
+
+    Returns:
+        list[str]: Parsed region [chr, start, end].
+
+    Args:
+        region (str): Region.
+    """
+
     return (
-        x.split(":")[0],
-        int(x.split(":")[1].split("-")[0]),
-        int(x.split(":")[1].split("-")[1]),
+        region.split(":")[0],
+        int(region.split(":")[1].split("-")[0]),
+        int(region.split(":")[1].split("-")[1]),
     )
 
-def sort_regions(x):
+def sort_regions(regions: List[str]) -> List[str]:
+    """
+    Sort regions.
+
+    Returns:
+        list[str]: Sorted regions.
+
+    Args:
+        regions (list[str]): Regions.
+    """
+
     def f(x):
         r = parse_region(x)
         if "X" in r[0]:
@@ -73,26 +93,43 @@ def sort_regions(x):
         else:
             chr = int(r[0].replace("chr", ""))
         return (chr, r[1], r[2])
-    return sorted(x, key = f)
+    return sorted(regions, key = f)
 
-def sm_tag(x):
+def sm_tag(bam: str) -> str:
+    """
+    Extract SM tag from BAM file.
+
+    Returns:
+        str: SM tag
+
+    Args:
+        bam (str): BAM file
+    """
+
+    header = pysam.view("-H", bam).strip().split("\n")
+
     l = []
-    header = pysam.view("-H", x).strip().split("\n")
+
     for line in header:
         fields = line.split("\t")
         if "@RG" == fields[0]:
             for field in fields:
                 if "SM:" in field:
-                    y = field.replace("SM:", "")
-                    l.append(y)
+                    l.append(field.replace("SM:", ""))
+
     l = list(set(l))
-    if len(l) == 0:
-        raise ValueError(f"SM tag not found: {x}")
-    elif len(l) > 1:
-        logger.warning(f"Multiple SM tags found (will use the 1st one): {x}")
-        return l[0]
+
+    if not l:
+        raise ValueError(f"SM tag not found: {bam}")
+
+    if len(l) > 1:
+        logger.warning(
+            f"Multiple SM tags found (will return the first one): {bam}")
+        result = l[0]
     else:
-        return l[0]
+        result = l[0]
+
+    return result
 
 class VCFFile:
     """
@@ -102,16 +139,21 @@ class VCFFile:
        f (TextIO): VCF file.
        meta (list[str]): Meta data.
        header (list[str]): Header.
-       data (list[str]): Genotype data. 
+       data (list[str]): Genotype data.
+
+    Examples:
+
+        >>> vcf = VCFFile("in.vcf") # also works with "in.vcf.gz"
+        >>> vcf.read("chr10:96519437-96615962") # read CYP2C19 region only
+        >>> vcf.unphase()
+        >>> result = vcf.to_str()
+        >>> vcf.to_file("out.vcf")
+        >>> vcf.close()
     """
 
-    def __init__(
-        self,
-        fn: str,
-        f: Optional[TextIO] = None,
-    ) -> None:
+    def __init__(self, fn: str, f: Optional[TextIO] = None) -> None:
         """
-        Initialize VCF file.
+        Initialize VCF file object.
 
         Args:
             fn (str): VCF file.
@@ -129,7 +171,14 @@ class VCFFile:
         self.header = []
         self.data = []
 
-    def read(self, region = None):
+    def read(self, region: Optional[str] = None) -> None:
+        """
+        Read VCF file.
+
+        Args:
+            region (str, optional): Target region.
+        """
+
         if region:
             r = parse_region(region)
             for line in self.f:
@@ -159,6 +208,13 @@ class VCFFile:
                 self.data.append(fields)
 
     def to_str(self) -> str:
+        """
+        Return VCF file.
+
+        Returns:
+            str: VCF file.
+        """
+
         string = ""
         for line in self.meta:
             string += line
@@ -168,18 +224,40 @@ class VCFFile:
         return string
 
     def to_file(self, fn: str) -> None:
+        """
+        Write VCF file.
+
+        Args:
+            fn (str): VCF file.
+        """
+
         string = self.to_str()
         with open(fn, "w") as f:
             f.write(string)
 
     def unphase(self) -> None:
+        """
+        Change genotype separator from '|' to '/'.
+        """
+
         for i in range(len(self.data)):
             self.data[i][9:] = [x.replace("|", "/") for x in self.data[i][9:]]
 
     def phase(self) -> None:
+        """
+        Change genotype separator from '/' to '|'.
+
+        .. warning::
+            This is not statistcal phasing.
+        """
+
         for i in range(len(self.data)):
             self.data[i][9:] = [x.replace("/", "|") for x in self.data[i][9:]]
 
     def close(self):
+        """
+        Close VCF file.
+        """
+
         self.f.close()
         self.f = None
