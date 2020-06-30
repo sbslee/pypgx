@@ -35,7 +35,7 @@ pypgx report [options] gt
 Description
 -----------
 
-Create HTML report using data from Stargazer. *gt* is input genotype file 
+Create HTML report using data from Stargazer. *gt* is genotype file 
 from Stargazer.
 
 Options
@@ -54,7 +54,7 @@ pypgx sdf2gdf [options] sdf id [id ...]
 Description
 -----------
 
-Create GDF file from SDF file. *sdf* is input SDF file. *id* is sample ID.
+Create GDF file from SDF file. *sdf* is SDF file. *id* is sample ID.
 
 Options
 -------
@@ -73,7 +73,7 @@ Description
 -----------
 
 Create SDF file from BAM file(s). *tg* is target gene. *cg* is control 
-gene. *bam* is input BAM file.
+gene. *bam* is BAM file.
 
 Options
 -------
@@ -92,7 +92,7 @@ Description
 -----------
 
 Create GDF file from BAM file(s). *tg* is target gene. *cg* is control 
-gene. *bam* is input BAM file.
+gene. *bam* is BAM file.
 
 Options
 -------
@@ -110,7 +110,7 @@ pypgx minivcf [options] vcf region
 Description
 -----------
 
-Slice VCF file. *vcf* is input VCF file. *region* is target region.
+Slice VCF file. *vcf* is VCF file. *region* is target region.
 
 Options
 -------
@@ -128,7 +128,7 @@ pypgx merge [options] vcf [vcf ...]
 Description
 -----------
 
-Merge VCF files. *vcf* is input VCF file.
+Merge VCF files. *vcf* is VCF file.
 
 Options
 -------
@@ -147,7 +147,7 @@ pypgx summary [options] gt tg
 Description
 -----------
 
-Create summary file using data from Stargazer. *gt* is input genotype file 
+Create summary file using data from Stargazer. *gt* is genotype file 
 from Stargazer. *tg* is target gene.
 
 Options
@@ -161,13 +161,13 @@ meta
 Synopsis
 --------
 
-pypgx meta [options] tg sum [sum ...]
+pypgx meta [options] tg sf [sf ...]
 
 Description
 -----------
 
-Create meta file from summary files. *tg* is target gene. *sum* is 
-input summary file.
+Create meta file from summary files. *tg* is target gene. *sf* is 
+summary file.
 
 Options
 -------
