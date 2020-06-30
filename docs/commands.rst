@@ -35,8 +35,7 @@ pypgx report [options] gt
 Description
 -----------
 
-Create HTML report using data from Stargazer. *gt* is genotype file 
-from Stargazer.
+Create HTML report using Stargazer data. *gt* is genotype file.
 
 Options
 -------
@@ -142,13 +141,13 @@ summary
 Synopsis
 --------
 
-pypgx summary [options] gt tg
+pypgx summary [options] tg gt
 
 Description
 -----------
 
-Create summary file using data from Stargazer. *gt* is genotype file 
-from Stargazer. *tg* is target gene.
+Create summary file using Stargazer data. *tg* is target gene. 
+*gt* is genotype file.
 
 Options
 -------
