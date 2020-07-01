@@ -28,7 +28,7 @@ For getting help::
     usage: pypgx [-h] tool ...
 
   positional arguments:
-    tool        name of tool
+    tool        name of the tool
       pgkb      extract CPIC guidelines using PharmGKB API
       report    create HTML report using Stargazer data
       sdf2gdf   create GDF file from SDF file
@@ -38,6 +38,7 @@ For getting help::
       merge     merge VCF files
       summary   create summary file using Stargazer data
       meta      create meta file from summary files
+      compare   compare genotype files
 
     optional arguments:
       -h, --help  show this help message and exit

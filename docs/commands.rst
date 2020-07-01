@@ -172,3 +172,21 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+compare
+=======
+
+Synopsis
+--------
+
+pypgx compare [options] gt [gt ...]
+
+Description
+-----------
+
+Compare genotype files. *gt* is genotype file.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

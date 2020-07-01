@@ -13,7 +13,7 @@ from .minivcf import minivcf
 from .merge import merge
 from .summary import summary
 from .meta import meta
-
+from .compare import compare
 
 logger = logging.getLogger(__name__)
 
@@ -22,7 +22,7 @@ def get_parser():
     subparsers = parser.add_subparsers(
         dest="tool",
         metavar="tool",
-        help="name of tool",
+        help="name of the tool",
     )
     subparsers.required = True
 
@@ -195,6 +195,21 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    compare_parser = subparsers.add_parser(
+        "compare",
+        help="compare genotype files",
+    )
+    compare_parser.add_argument(
+        "gt",
+        nargs="+",
+        help="genotype file",
+    )
+    compare_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -245,6 +260,10 @@ def main():
 
     elif args.tool == "meta":
         result = meta(args.tg, args.sf)
+        output(args.o, result)
+
+    elif args.tool == "compare":
+        result = compare(args.gt)
         output(args.o, result)
 
 if __name__ == "__main__":
