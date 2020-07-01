@@ -61,6 +61,12 @@ pypgx.meta module
 .. automodule:: pypgx.meta
     :members:
 
+pypgx.compare module
+--------------------
+
+.. automodule:: pypgx.compare
+    :members:
+
 Auxiliary modules
 =================
 
