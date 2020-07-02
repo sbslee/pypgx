@@ -58,21 +58,28 @@ def pgkb(is_test: bool = False) -> str:
         is_test (bool): Extract first three guidelines for testing.
     """
 
-    # Get the PharmGKB IDs of CPIC guidelines.
+    # Get PharmGKB ID for the CPIC guidelines.
     pgkb_id = []
     base_url = "https://api.pharmgkb.org/v1/data/guideline"
-    response = requests.get(f"{base_url}?source=cpic&view=min")
+    request_url = f"{base_url}?source=cpic&view=min"
+    logger.info(f"Request URL: {request_url}")
+    response = requests.get(request_url)
+    logger.info(f"    Response: {response}")
     json = response.json()
     for guideline in json["data"]:
         pgkb_id.append(guideline["id"])
+
+    # Log how many IDs were found.
+    logger.info(f"    Number of guidelines found: {len(pgkb_id)}")
 
     # Get the CPIC guidelines.
     count = 0
     result = {}
     for id in pgkb_id:
-        count += 1
-        if is_test and count > 3:
+        if is_test and count == 3:
             break
+        count += 1
+
         request_url = f"{base_url}/{id}?view=base"
         logger.info(f"Request URL: {request_url}")
         response = requests.get(request_url)
@@ -225,6 +232,9 @@ def pgkb(is_test: bool = False) -> str:
 
         # Wait some time before the next request.
         time.sleep(2)
+
+    # Log the total number of guidelines read.
+    logger.info(f"Total number of guidelines read: {count}")
 
     string = "chemical\tgene\turl\ttype\tsummary\tphenotype\trecommendation\n"
     for chemical in sorted(result):
