@@ -67,6 +67,12 @@ pypgx.compare module
 .. automodule:: pypgx.compare
     :members:
 
+pypgx.remap module
+------------------
+
+.. automodule:: pypgx.remap
+    :members:
+
 Auxiliary modules
 =================
 

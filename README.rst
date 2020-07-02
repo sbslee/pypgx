@@ -39,6 +39,7 @@ For getting help::
       summary   create summary file using Stargazer data
       meta      create meta file from summary files
       compare   compare genotype files
+      remap     remap BAM file(s) to different reference
 
     optional arguments:
       -h, --help  show this help message and exit

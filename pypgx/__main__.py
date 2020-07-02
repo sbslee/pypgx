@@ -14,6 +14,7 @@ from .merge import merge
 from .summary import summary
 from .meta import meta
 from .compare import compare
+from .remap import remap
 
 logger = logging.getLogger(__name__)
 
@@ -210,6 +211,15 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    remap_parser = subparsers.add_parser(
+        "remap",
+        help="remap BAM file(s) to different reference",
+    )
+    remap_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     return parser
 
 def output(fn, result):
@@ -265,6 +275,9 @@ def main():
     elif args.tool == "compare":
         result = compare(args.gt)
         output(args.o, result)
+
+    elif args.tool == "remap":
+        remap(args.conf)
 
 if __name__ == "__main__":
     main()

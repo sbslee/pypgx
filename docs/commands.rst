@@ -190,3 +190,22 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+remap
+=====
+
+Synopsis
+--------
+
+pypgx remap [options] gt conf
+
+Description
+-----------
+
+Remap BAM file(s) to different reference. *conf* is configuration file 
+(see the API section for details).
+
+Options
+-------
+
+There are no options.
