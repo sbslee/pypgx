@@ -40,6 +40,7 @@ For getting help::
       meta      create meta file from summary files
       compare   compare genotype files
       remap     remap BAM file(s) to different reference
+      fq2bam    create BAM file(s) from FASTQ file(s)
 
     optional arguments:
       -h, --help  show this help message and exit

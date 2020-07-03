@@ -73,6 +73,12 @@ pypgx.remap module
 .. automodule:: pypgx.remap
     :members:
 
+pypgx.fq2bam module
+------------------
+
+.. automodule:: pypgx.fq2bam
+    :members:
+
 Auxiliary modules
 =================
 

@@ -15,6 +15,7 @@ from .summary import summary
 from .meta import meta
 from .compare import compare
 from .remap import remap
+from .fq2bam import fq2bam
 
 logger = logging.getLogger(__name__)
 
@@ -220,6 +221,15 @@ def get_parser():
         help="configuration file",
     )
 
+    fq2bam_parser = subparsers.add_parser(
+        "fq2bam",
+        help="create BAM file(s) from FASTQ file(s)",
+    )
+    fq2bam_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     return parser
 
 def output(fn, result):
@@ -278,6 +288,9 @@ def main():
 
     elif args.tool == "remap":
         remap(args.conf)
+
+    elif args.tool == "fq2bam":
+        fq2bam(args.conf)
 
 if __name__ == "__main__":
     main()

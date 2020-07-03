@@ -209,3 +209,22 @@ Options
 -------
 
 There are no options.
+
+fq2bam
+======
+
+Synopsis
+--------
+
+pypgx fq2bam [options] gt conf
+
+Description
+-----------
+
+Create BAM file(s) from FASTQ file(s). *conf* is configuration file 
+(see the API section for details).
+
+Options
+-------
+
+There are no options.
