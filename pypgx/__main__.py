@@ -16,6 +16,7 @@ from .meta import meta
 from .compare import compare
 from .remap import remap
 from .fq2bam import fq2bam
+from .sgea import sgea
 
 logger = logging.getLogger(__name__)
 
@@ -230,6 +231,15 @@ def get_parser():
         help="configuration file",
     )
 
+    sgea_parser = subparsers.add_parser(
+        "sgea",
+        help="run per-project genotyping pipeline (Anaconda-based)",
+    )
+    sgea_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     return parser
 
 def output(fn, result):
@@ -291,6 +301,9 @@ def main():
 
     elif args.tool == "fq2bam":
         fq2bam(args.conf)
+
+    elif args.tool == "sgea":
+        sgea(args.conf)
 
 if __name__ == "__main__":
     main()

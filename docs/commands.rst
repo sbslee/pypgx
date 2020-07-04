@@ -197,7 +197,7 @@ remap
 Synopsis
 --------
 
-pypgx remap [options] gt conf
+pypgx remap [options] conf
 
 Description
 -----------
@@ -216,13 +216,32 @@ fq2bam
 Synopsis
 --------
 
-pypgx fq2bam [options] gt conf
+pypgx fq2bam [options] conf
 
 Description
 -----------
 
 Create BAM file(s) from FASTQ file(s). *conf* is configuration file 
 (see the API section for details).
+
+Options
+-------
+
+There are no options.
+
+sgea
+====
+
+Synopsis
+--------
+
+pypgx sgea [options] conf
+
+Description
+-----------
+
+Run per-project genotyping pipeline (Anaconda-based). *conf* is 
+configuration file (see the API section for details).
 
 Options
 -------

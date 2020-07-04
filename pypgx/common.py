@@ -100,10 +100,10 @@ def sm_tag(bam: str) -> str:
     Extract SM tag from BAM file.
 
     Returns:
-        str: SM tag
+        str: SM tag.
 
     Args:
-        bam (str): BAM file
+        bam (str): BAM file.
     """
 
     header = pysam.view("-H", bam).strip().split("\n")
@@ -130,6 +130,33 @@ def sm_tag(bam: str) -> str:
         result = l[0]
 
     return result
+
+
+
+
+def is_chr(bam: str) -> bool:
+    """
+    Check whether SN tags in BAM file contain "chr" string.
+
+    Returns:
+        bool: True if found.
+
+    Args:
+        bam (str): BAM file.
+    """
+
+    header = pysam.view("-H", bam).strip().split("\n")
+
+    l = []
+
+    for line in header:
+        fields = line.split("\t")
+        if "@SQ" == fields[0]:
+            for field in fields:
+                if "SN:" in field:
+                    l.append(field.replace("SN:", ""))
+
+    return any(["chr" in x for x in l])
 
 class VCFFile:
     """

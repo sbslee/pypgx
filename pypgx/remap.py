@@ -63,19 +63,19 @@ def remap(conf: str) -> None:
         vcf_files.append(vcf_file.strip())
 
     # Read the manifest file.
-    bams = {}
+    bam_files = {}
     with open(manifest_file) as f:
         header = next(f).strip().split("\t")
         i1 = header.index("sample_id")
         i2 = header.index("bam")
         for line in f:
             fields = line.strip().split("\t")
-            id = fields[i1]
+            sample_id = fields[i1]
             bam = fields[i2]
-            bams[id] = bam
+            bam_files[sample_id] = bam
 
     # Log the number of samples.
-    logger.info(f"Number of samples: {len(bams)}")
+    logger.info(f"Number of samples: {len(bam_files)}")
 
     # Make the project directories.
     project_path = f"{project_path}"
@@ -87,14 +87,14 @@ def remap(conf: str) -> None:
     os.mkdir(f"{project_path}/fastq")
 
     # Write the first qsub script.
-    for id in bams:
+    for id in bam_files:
         s = (
             "#!/bin/bash\n"
             "\n"
             f"name={id}\n"
             f"project={project_path}\n"
             f"threads={threads}\n"
-            f"bam1={bams[id]}\n"
+            f"bam1={bam_files[id]}\n"
             f"bam2=$project/temp/$name.collated.bam\n"
             f"bam3=$project/temp/$name.sorted.bam\n"
             f"fastq=$project/fastq/$name.fq\n"
@@ -127,7 +127,7 @@ def remap(conf: str) -> None:
 
 
     # Write the second qsub script.
-    for id in bams:
+    for id in bam_files:
         s = (
             "#!/bin/bash\n"
             "\n"
@@ -181,10 +181,10 @@ def remap(conf: str) -> None:
         with open(f"{project_path}/shell/run-{id}-2.sh", "w") as f:
             f.write(s)
 
-    # Write the qsub script.
+    # Write the shell script for qsub.
     s = f"p={project_path}\n"
 
-    for sample_id in bams:
+    for sample_id in bam_files:
         q = f"qsub -q nick-grad.q -e $p/log -o $p/log {resources}"
         s += (
             "\n"
