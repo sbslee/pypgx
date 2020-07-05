@@ -229,6 +229,25 @@ Options
 
 There are no options.
 
+sgep
+====
+
+Synopsis
+--------
+
+pypgx sgep [options] conf
+
+Description
+-----------
+
+Run per-project genotyping pipeline. *conf* is configuration file 
+(see the API section for details).
+
+Options
+-------
+
+There are no options.
+
 sgea
 ====
 
