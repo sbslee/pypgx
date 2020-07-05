@@ -80,7 +80,6 @@ def sgep(conf: str) -> None:
     logger.info(f"Number of samples: {len(bam_files)}")
 
     # Make the project directories.
-    project_path = f"{project_path}"
     os.mkdir(project_path)
     os.mkdir(f"{project_path}/shell")
     os.mkdir(f"{project_path}/log")

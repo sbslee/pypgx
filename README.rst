@@ -41,8 +41,9 @@ For getting help::
       compare   compare genotype files
       remap     remap BAM file(s) to different reference
       fq2bam    create BAM file(s) from FASTQ file(s)
-      sgep      run per-project genotyping pipeline
-      sgea      run per-project genotyping pipeline (Anaconda-based)
+      sges      run per-sample genotyping with Stargazer
+      sgep      run per-project genotyping pipeline (1)
+      sgea      run per-project genotyping pipeline (2)
 
     optional arguments:
       -h, --help  show this help message and exit

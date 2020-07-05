@@ -16,6 +16,7 @@ from .meta import meta
 from .compare import compare
 from .remap import remap
 from .fq2bam import fq2bam
+from .sges import sges
 from .sgep import sgep
 from .sgea import sgea
 
@@ -232,9 +233,18 @@ def get_parser():
         help="configuration file",
     )
 
+    sges_parser = subparsers.add_parser(
+        "sges",
+        help="run per-sample genotyping with Stargazer",
+    )
+    sges_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     sgep_parser = subparsers.add_parser(
         "sgep",
-        help="run per-project genotyping pipeline",
+        help="run per-project genotyping with Stargazer (1)",
     )
     sgep_parser.add_argument(
         "conf",
@@ -243,7 +253,7 @@ def get_parser():
 
     sgea_parser = subparsers.add_parser(
         "sgea",
-        help="run per-project genotyping pipeline (Anaconda-based)",
+        help="run per-project genotyping with Stargazer (2)",
     )
     sgea_parser.add_argument(
         "conf",
@@ -311,6 +321,9 @@ def main():
 
     elif args.tool == "fq2bam":
         fq2bam(args.conf)
+
+    elif args.tool == "sges":
+        sges(args.conf)
 
     elif args.tool == "sgep":
         sgep(args.conf)

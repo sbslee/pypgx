@@ -79,6 +79,12 @@ pypgx.fq2bam module
 .. automodule:: pypgx.fq2bam
     :members:
 
+pypgx.sges module
+-----------------
+
+.. automodule:: pypgx.sges
+    :members:
+
 pypgx.sgep module
 -----------------
 

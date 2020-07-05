@@ -229,6 +229,25 @@ Options
 
 There are no options.
 
+sges
+====
+
+Synopsis
+--------
+
+pypgx sges [options] conf
+
+Description
+-----------
+
+Run per-sample genotyping with Stargazer. *conf* is configuration file 
+(see the API section for details).
+
+Options
+-------
+
+There are no options.
+
 sgep
 ====
 
@@ -240,7 +259,7 @@ pypgx sgep [options] conf
 Description
 -----------
 
-Run per-project genotyping pipeline. *conf* is configuration file 
+Run per-project genotyping with Stargazer (1). *conf* is configuration file 
 (see the API section for details).
 
 Options
@@ -259,8 +278,8 @@ pypgx sgea [options] conf
 Description
 -----------
 
-Run per-project genotyping pipeline (Anaconda-based). *conf* is 
-configuration file (see the API section for details).
+Run per-project genotyping with Stargazer (2). *conf* is configuration file 
+(see the API section for details).
 
 Options
 -------
