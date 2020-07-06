@@ -115,6 +115,12 @@ pypgx.check module
 .. automodule:: pypgx.check
     :members:
 
+pypgx.liftover module
+---------------------
+
+.. automodule:: pypgx.liftover
+    :members:
+
 Auxiliary modules
 =================
 

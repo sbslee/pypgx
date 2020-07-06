@@ -47,6 +47,7 @@ For getting help::
       cpa       run change point analysis for copy number
       plotcov   plot coverage data to PDF file
       check     check table files for Stargazer
+      liftover  convert variants in SNP table from hg19 to hg38
 
     optional arguments:
       -h, --help  show this help message and exit

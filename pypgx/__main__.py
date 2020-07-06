@@ -22,6 +22,7 @@ from .sgea import sgea
 from .cpa import cpa
 from .plotcov import plotcov
 from .check import check
+from .liftover import liftover
 
 logger = logging.getLogger(__name__)
 
@@ -303,6 +304,28 @@ def get_parser():
         help="SNP table file",
     )
 
+    liftover_parser = subparsers.add_parser(
+        "liftover",
+        help="convert variants in SNP table from hg19 to hg38",
+    )
+    liftover_parser.add_argument(
+        "star",
+        help="star allele table file",
+    )
+    liftover_parser.add_argument(
+        "snp",
+        help="SNP table file",
+    )
+    liftover_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    liftover_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -383,6 +406,10 @@ def main():
 
     elif args.tool == "check":
         check(args.star, args.snp)
+
+    elif args.tool == "liftover":
+        result = liftover(args.star, args.snp, args.tg)
+        output(args.o, result)
 
 if __name__ == "__main__":
     main()

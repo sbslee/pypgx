@@ -340,3 +340,22 @@ Options
 -------
 
 There are no options.
+
+liftover
+========
+
+Synopsis
+--------
+
+pypgx liftover [options] star snp tg
+
+Description
+-----------
+
+Convert variants in SNP table from hg19 to hg38. *star* is star allele
+table file. *snp* is SNP table file. *tg* is target gene.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]
