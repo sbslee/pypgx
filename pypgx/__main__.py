@@ -20,6 +20,7 @@ from .sges import sges
 from .sgep import sgep
 from .sgea import sgea
 from .cpa import cpa
+from .plotcov import plotcov
 
 logger = logging.getLogger(__name__)
 
@@ -275,6 +276,19 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    plotcov_parser = subparsers.add_parser(
+        "plotcov",
+        help="plot coverage data to PDF file",
+    )
+    plotcov_parser.add_argument(
+        "sdf",
+        help="SDF file",
+    )
+    plotcov_parser.add_argument(
+        "out",
+        help="PDF file",
+    )
+
     return parser
 
 def output(fn, result):
@@ -349,6 +363,9 @@ def main():
     elif args.tool == "cpa":
         result = cpa(args.rdata)
         output(args.o, result)
+
+    elif args.tool == "plotcov":
+        plotcov(args.sdf, args.out)
 
 if __name__ == "__main__":
     main()

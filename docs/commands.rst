@@ -303,3 +303,21 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+plotcov
+=======
+
+Synopsis
+--------
+
+pypgx plotcov [options] sdf out
+
+Description
+-----------
+
+Plot coverage data to PDF file. *sdf* is SDF file. *out* is PDF file.
+
+Options
+-------
+
+There are no options.

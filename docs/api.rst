@@ -103,6 +103,12 @@ pypgx.cpa module
 .. automodule:: pypgx.cpa
     :members:
 
+pypgx.plotcov module
+--------------------
+
+.. automodule:: pypgx.plotcov
+    :members:
+
 Auxiliary modules
 =================
 
