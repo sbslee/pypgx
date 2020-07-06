@@ -121,6 +121,12 @@ pypgx.liftover module
 .. automodule:: pypgx.liftover
     :members:
 
+pypgx.peek module
+---------------------
+
+.. automodule:: pypgx.peek
+    :members:
+
 Auxiliary modules
 =================
 

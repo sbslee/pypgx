@@ -359,3 +359,22 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+peek
+====
+
+Synopsis
+--------
+
+pypgx peek [options] tg vcf
+
+Description
+-----------
+
+Find all possible star alleles from VCF file. *tg* is target gene.
+*vcf* is VCF file.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

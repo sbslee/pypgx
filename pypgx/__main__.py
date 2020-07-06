@@ -23,6 +23,7 @@ from .cpa import cpa
 from .plotcov import plotcov
 from .check import check
 from .liftover import liftover
+from .peek import peek
 
 logger = logging.getLogger(__name__)
 
@@ -326,6 +327,24 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    peek_parser = subparsers.add_parser(
+        "peek",
+        help="find all possible star alleles from VCF file",
+    )
+    peek_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    peek_parser.add_argument(
+        "vcf",
+        help="VCF file",
+    )
+    peek_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -409,6 +428,10 @@ def main():
 
     elif args.tool == "liftover":
         result = liftover(args.star, args.snp, args.tg)
+        output(args.o, result)
+
+    elif args.tool == "peek":
+        result = peek(args.tg, args.vcf)
         output(args.o, result)
 
 if __name__ == "__main__":

@@ -48,6 +48,7 @@ For getting help::
       plotcov   plot coverage data to PDF file
       check     check table files for Stargazer
       liftover  convert variants in SNP table from hg19 to hg38
+      peek      find all possible star alleles from VCF file
 
     optional arguments:
       -h, --help  show this help message and exit

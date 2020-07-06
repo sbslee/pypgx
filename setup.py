@@ -17,7 +17,7 @@ setup(
     packages=find_packages(),
     package_data={
         "pypgx.resources.cpic": ["cpicPairs.csv"],
-        "pypgx.resources.sg": ["gene_table.txt", "pt_table.txt"],
+        "pypgx.resources.sg": ["gene_table.txt", "pt_table.txt", "snp_table.txt", "star_table.txt"],
         "pypgx.resources.pgkb": ["actions.txt"],
         "pypgx.resources.r": ["cpa.R", "plotcov.R"],
     },
