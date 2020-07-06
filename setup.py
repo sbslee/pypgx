@@ -19,6 +19,7 @@ setup(
         "pypgx.resources.cpic": ["cpicPairs.csv"],
         "pypgx.resources.sg": ["gene_table.txt", "pt_table.txt"],
         "pypgx.resources.pgkb": ["actions.txt"],
+        "pypgx.resources.r": ["cpa.R"],
     },
     install_requires=requirements,
     classifiers=[

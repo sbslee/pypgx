@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 def sgep(conf: str) -> None:
     """
-    Run per-project genotyping pipeline.
+    Run per-project genotyping with Stargazer (1).
 
     Args:
         conf (str): Configuration file.

@@ -97,6 +97,12 @@ pypgx.sgea module
 .. automodule:: pypgx.sgea
     :members:
 
+pypgx.cpa module
+-----------------
+
+.. automodule:: pypgx.cpa
+    :members:
+
 Auxiliary modules
 =================
 

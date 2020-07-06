@@ -19,6 +19,7 @@ from .fq2bam import fq2bam
 from .sges import sges
 from .sgep import sgep
 from .sgea import sgea
+from .cpa import cpa
 
 logger = logging.getLogger(__name__)
 
@@ -260,6 +261,20 @@ def get_parser():
         help="configuration file",
     )
 
+    cpa_parser = subparsers.add_parser(
+        "cpa",
+        help="run change point analysis in copy number",
+    )
+    cpa_parser.add_argument(
+        "rdata",
+        help="RData file",
+    )
+    cpa_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -330,6 +345,10 @@ def main():
 
     elif args.tool == "sgea":
         sgea(args.conf)
+
+    elif args.tool == "cpa":
+        result = cpa(args.rdata)
+        output(args.o, result)
 
 if __name__ == "__main__":
     main()

@@ -42,8 +42,9 @@ For getting help::
       remap     remap BAM file(s) to different reference
       fq2bam    create BAM file(s) from FASTQ file(s)
       sges      run per-sample genotyping with Stargazer
-      sgep      run per-project genotyping pipeline (1)
-      sgea      run per-project genotyping pipeline (2)
+      sgep      run per-project genotyping with Stargazer (1)
+      sgea      run per-project genotyping with Stargazer (2)
+      cpa       run change point analysis in copy number
 
     optional arguments:
       -h, --help  show this help message and exit

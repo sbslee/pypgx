@@ -285,3 +285,21 @@ Options
 -------
 
 There are no options.
+
+cpa
+===
+
+Synopsis
+--------
+
+pypgx cpa [options] rdata
+
+Description
+-----------
+
+Run change point analysis in copy number. *rdata* is Rdata file.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

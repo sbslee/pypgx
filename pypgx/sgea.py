@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 def sgea(conf: str) -> None:
     """
-    Run per-project genotyping pipeline (Anaconda-based).
+    Run per-project genotyping with Stargazer (2).
 
     Args:
         conf (str): Configuration file.
