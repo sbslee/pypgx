@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 def cpa(rdata: str) -> str:
     """
-    Run change point analysis in copy number.
+    Run change point analysis for copy number.
 
     Returns:
         str: Result file.

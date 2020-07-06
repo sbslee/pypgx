@@ -109,6 +109,12 @@ pypgx.plotcov module
 .. automodule:: pypgx.plotcov
     :members:
 
+pypgx.check module
+------------------
+
+.. automodule:: pypgx.check
+    :members:
+
 Auxiliary modules
 =================
 

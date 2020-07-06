@@ -297,7 +297,7 @@ pypgx cpa [options] rdata
 Description
 -----------
 
-Run change point analysis in copy number. *rdata* is Rdata file.
+Run change point analysis for copy number. *rdata* is Rdata file.
 
 Options
 -------
@@ -316,6 +316,25 @@ Description
 -----------
 
 Plot coverage data to PDF file. *sdf* is SDF file. *out* is PDF file.
+
+Options
+-------
+
+There are no options.
+
+check
+=====
+
+Synopsis
+--------
+
+pypgx check [options] star snp
+
+Description
+-----------
+
+Check table files for Stargazer. *star* is star allele table file. 
+*snp* is SNP table file.
 
 Options
 -------

@@ -21,6 +21,7 @@ from .sgep import sgep
 from .sgea import sgea
 from .cpa import cpa
 from .plotcov import plotcov
+from .check import check
 
 logger = logging.getLogger(__name__)
 
@@ -264,7 +265,7 @@ def get_parser():
 
     cpa_parser = subparsers.add_parser(
         "cpa",
-        help="run change point analysis in copy number",
+        help="run change point analysis for copy number",
     )
     cpa_parser.add_argument(
         "rdata",
@@ -287,6 +288,19 @@ def get_parser():
     plotcov_parser.add_argument(
         "out",
         help="PDF file",
+    )
+
+    check_parser = subparsers.add_parser(
+        "check",
+        help="check table files for Stargazer",
+    )
+    check_parser.add_argument(
+        "star",
+        help="star allele table file",
+    )
+    check_parser.add_argument(
+        "snp",
+        help="SNP table file",
     )
 
     return parser
@@ -366,6 +380,9 @@ def main():
 
     elif args.tool == "plotcov":
         plotcov(args.sdf, args.out)
+
+    elif args.tool == "check":
+        check(args.star, args.snp)
 
 if __name__ == "__main__":
     main()

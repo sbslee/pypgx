@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 
 def plotcov(sdf: str, out: str) -> None:
     """
-    Plot coverage data.
+    Plot coverage data to PDF file.
 
     Args:
         sdf (str): SDF file.

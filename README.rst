@@ -44,8 +44,9 @@ For getting help::
       sges      run per-sample genotyping with Stargazer
       sgep      run per-project genotyping with Stargazer (1)
       sgea      run per-project genotyping with Stargazer (2)
-      cpa       run change point analysis in copy number
+      cpa       run change point analysis for copy number
       plotcov   plot coverage data to PDF file
+      check     check table files for Stargazer
 
     optional arguments:
       -h, --help  show this help message and exit
