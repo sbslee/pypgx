@@ -5,6 +5,16 @@ from .common import logging
 logger = logging.getLogger(__name__)
 
 def cpa(rdata: str) -> str:
+    """
+    Run change point analysis in copy number.
+
+    Returns:
+        str: Result file.
+
+    Args:
+        rdata (str): RData file.
+    """
+
     command = [
         "Rscript", f"{os.path.dirname(__file__)}/resources/r/cpa.R", rdata]
     output = run(command, stdout=PIPE, stderr=PIPE)

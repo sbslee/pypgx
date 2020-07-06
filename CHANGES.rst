@@ -1,3 +1,8 @@
+v0.0.34
+-------
+
+* No significant changes.
+
 v0.0.33
 -------
 
