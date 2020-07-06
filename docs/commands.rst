@@ -378,3 +378,22 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+snp
+===
+
+Synopsis
+--------
+
+pypgx snp [options] tg vcf pair [pair ...]
+
+Description
+-----------
+
+View variant data for sample/star allele pairs. *tg* is target gene.
+*vcf* is VCF file. *pair* is sample/star allele pair.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

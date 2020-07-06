@@ -24,6 +24,7 @@ from .plotcov import plotcov
 from .check import check
 from .liftover import liftover
 from .peek import peek
+from .snp import snp
 
 logger = logging.getLogger(__name__)
 
@@ -345,6 +346,29 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    snp_parser = subparsers.add_parser(
+        "snp",
+        help="view variant data for sample/star allele pairs",
+    )
+    snp_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    snp_parser.add_argument(
+        "vcf",
+        help="VCF file",
+    )
+    snp_parser.add_argument(
+        "pair",
+        nargs="+",
+        help="sample/star allele pair",
+    )
+    snp_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -432,6 +456,10 @@ def main():
 
     elif args.tool == "peek":
         result = peek(args.tg, args.vcf)
+        output(args.o, result)
+
+    elif args.tool == "snp":
+        result = snp(args.tg, args.vcf, args.pair)
         output(args.o, result)
 
 if __name__ == "__main__":
