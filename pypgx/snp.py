@@ -2,10 +2,7 @@ import os
 import copy
 
 from typing import List
-from .common import VCFFile
-
-from .peek import vcf2samples
-from .liftover import SNP, _read_star_table, _read_snp_table, get_codes_key, get_codes_value, Star
+from .common import VCFFile, build_stardb, vcf2samples
 
 def snp(tg: str, vcf: str, pair: List[str]) -> str:
     """
@@ -27,44 +24,14 @@ def snp(tg: str, vcf: str, pair: List[str]) -> str:
 
     finalized_vcf.close()
 
-    star_table = _read_star_table(f"{os.path.dirname(__file__)}/resources/sg/star_table.txt")
-    snp_table = _read_snp_table(f"{os.path.dirname(__file__)}/resources/sg/snp_table.txt")
-
-    snp_db = []
-    for k, v in snp_table[tg].items():
-        snp = SNP()
-        snp.n = k
-        snp.id = v["rs_id"]
-        snp.pos = v[f"hg19_pos"]
-        snp.hg = v[f"hg19_allele"]
-        snp.var = v["var_allele"]
-        snp.wt = v["wt_allele"]
-        snp.fe = get_codes_key(v["functional_effect"])
-        snp.so = get_codes_key(v["sequence_ontology"])
-        snp.vi = get_codes_key(v["variant_impact"])
-        snp.rv = get_codes_key(v[f"hg19_revertant"])
-        snp.data = v
-        snp_db.append(snp)
-
-    # Build the star database for the target gene.
-    star_db = {}
-    for k, v in star_table[tg].items():
-        if not v[f"hg19_has"]:
-            continue
-        star = Star()
-        star.name = k
-        star.score = float(v["score"])
-        star.core = [] if v["hg19_core"] in ["ref", "."] else copy.deepcopy([x for x in snp_db if f"{x.pos}:{x.wt}>{x.var}" in v[f"hg19_core"].split(",")])
-        star.tag = [] if v["hg19_tag"] == "." else copy.deepcopy([x for x in snp_db if f"{x.pos}:{x.wt}>{x.var}" in v[f"hg19_tag"].split(",")])
-        star.sv = "" if v["sv"] == "." else v["sv"]
-        star_db[k] = star
+    stardb = build_stardb(tg)
 
     temp = []
 
     for x in pair:
         table = []
         sample = samples[x.split("/")[0]]
-        star = star_db[x.split("/")[1]]
+        star = stardb[x.split("/")[1]]
         temp.append(["<sample={},star={}>".format(sample.name, star.name)])
         header = [f"hg19_pos", "wt_allele", "var_allele", f"hg19_allele", "type", "so", "impact", "effect", "hap1_allele", "hap2_allele", "gt", "hap1_ad", "hap2_ad", "hap1_af", "hap2_af"]
         temp.append(header)
