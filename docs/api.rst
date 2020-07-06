@@ -98,7 +98,7 @@ pypgx.sgea module
     :members:
 
 pypgx.cpa module
------------------
+----------------
 
 .. automodule:: pypgx.cpa
     :members:
