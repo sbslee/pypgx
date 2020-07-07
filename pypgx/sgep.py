@@ -99,29 +99,12 @@ def sgep(conf: str) -> None:
     regions = sort_regions([target_region, control_region])
 
     # Write the shell script for DepthOfCoverage.
-    s = (
-        f"project={project_path}\n"
-        f"gatk={gatk_tool}\n"
-        f"fasta={fasta_file}\n"
-        f"bam=$project/bam.list\n"
-        f"gdf=$project/{output_prefix}.gdf\n"
-        "\n"
-        f"java -jar $gatk -T DepthOfCoverage \\\n"
-        "  -R $fasta \\\n"
-        "  -I $bam \\\n"
-    )
+    s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
 
-    for region in regions:
-        s += f"  -L {chr_str}{region} \\\n"
+    for sample_id in bam_files:
+        s += f"  {bam_files[sample_id]} \\\n"
 
-    s += (
-        f"  --minMappingQuality {mapping_quality} \\\n"
-        "  --omitIntervalStatistics \\\n"
-        "  --omitPerSampleStats \\\n"
-        "  --omitLocusTable \\\n"
-        "  -U ALLOW_SEQ_DICT_INCOMPATIBILITY \\\n"
-        "  -o $gdf\n"
-    )
+    s += f"  -o {project_path}/{output_prefix}.gdf\n"
 
     with open(f"{project_path}/shell/doc.sh", "w") as f:
         f.write(s)
@@ -165,7 +148,7 @@ def sgep(conf: str) -> None:
     )
 
     for sample_id in bam_files:
-        s += f"  --variant $project/temp/{sample_id}.g.vcf\n"
+        s += f"  --variant $project/temp/{sample_id}.g.vcf \\\n"
 
     s += (
         "  -o $vcf1 \n"
@@ -212,11 +195,11 @@ def sgep(conf: str) -> None:
     )
 
     for sample_id in bam_files:
-        s += f"{q} -N hc $project/shell/hc-{sample_id}.sh\n"
+        s += f"{q} -N hc $p/shell/hc-{sample_id}.sh\n"
 
     s += (
-        f"{q} -hold_jid hc -N post $project/shell/post.sh\n"
-        f"{q} -hold_jid doc,post -N rs $project/shell/rs.sh\n"
+        f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
+        f"{q} -hold_jid doc,post -N rs $p/shell/rs.sh\n"
     )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:

@@ -83,16 +83,12 @@ def sgea(conf: str) -> None:
     os.mkdir(f"{project_path}/temp")
 
     # Write the shell script for bam2gdf.
-    s = (
-        f"project={project_path}\n"
-        "\n"
-        f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
-    )
+    s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
 
     for sample_id in bam_files:
         s += f"  {bam_files[sample_id]} \\\n"
 
-    s += f"  -o $project/{output_prefix}.gdf\n"
+    s += f"  -o {project_path}/{output_prefix}.gdf\n"
 
     with open(f"{project_path}/shell/doc.sh", "w") as f:
         f.write(s)

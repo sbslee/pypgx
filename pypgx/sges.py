@@ -25,9 +25,7 @@ def sges(conf: str) -> None:
             # Make any necessary changes to this section.
             [USER]
             fasta_file = reference.fa
-            manifest_file = manifest.txt
             project_path = path/to/project/
-            target_gene = cyp2d6
             control_gene = vdr
             data_type = wgs
             dbsnp_file = dbsnp.vcf
@@ -140,34 +138,20 @@ def sges(conf: str) -> None:
             "  -o $vcf2 \\\n"
             "  -L $region \\\n"
             "\n"
-            "gdf=$p/gene/$target_gene/$target_gene.gdf\n"
+            "gdf=$p/gene/$tg/$tg.gdf\n"
             "\n"
-            "java -jar $gatk -T DepthOfCoverage \\\n"
-            "  -R $fasta \\\n"
-            "  -I $bam \\\n"
-        )
-
-        for region in regions:
-            s += f"  -L {region} \\\n"
-
-        s += (
-            f"  --minMappingQuality {mapping_quality} \\\n"
-            "  --omitIntervalStatistics \\\n"
-            "  --omitPerSampleStats \\\n"
-            "  --omitLocusTable \\\n"
-            "  -U ALLOW_SEQ_DICT_INCOMPATIBILITY \\\n"
-            "  -o $gdf \\\n"
+            f"pypgx bam2gdf $tg {control_gene} $bam -o $gdf\\\n"
             "\n"
             f"stargazer={stargazer_tool}\n"
             "\n"
             f"python3 $stargazer genotype \\\n"
             f"  -d {data_type} \\\n"
-            "  -t $target_gene \\\n"
+            "  -t $tg \\\n"
             "  --vcf $vcf2 \\\n"
             f"  -c {control_gene} \\\n"
             "  --gdf $gdf \\\n"
-            "  -o $target_gene \\\n"
-            "  --output_dir $p/gene/$target_gene\n"
+            "  -o $tg \\\n"
+            "  --output_dir $p/gene/$tg\n"
         )
 
         with open(
@@ -180,11 +164,11 @@ def sges(conf: str) -> None:
     s = (
         f"p={project_path}\n"
         "\n"
-        f'''head -n1 $p/gene/{select_genes[0]}/{select_genes[0]}.sg-genotype.txt | awk '{{print "gene",$0}}' OFS="\\t" > merged.sg-genotype.txt\n'''
+        f'''head -n1 $p/gene/{select_genes[0]}/{select_genes[0]}.sg-genotype.txt | awk '{{print "gene",$0}}' OFS="\\t" > $p/merged.sg-genotype.txt\n'''
         "\n"
         f"for gene in {' '.join(select_genes)}\n"
         "do\n"
-        f'''  tail -n+2 $p/gene/$gene/$gene.sg-genotype.txt | awk -v var="$gene" '{{print var,$0}}' OFS="\\t" >> merged.sg-genotype.txt\n'''
+        f'''  tail -n+2 $p/gene/$gene/$gene.sg-genotype.txt | awk -v var="$gene" '{{print var,$0}}' OFS="\\t" >> $p/merged.sg-genotype.txt\n'''
         "done\n"
         "\n"
         "pypgx report $p/merged.sg-genotype.txt -o $p/report.html"
@@ -204,7 +188,7 @@ def sges(conf: str) -> None:
         s += f"qsub -V -l mem_requested=30G -o $p/gene/{select_gene}/log -e $p/gene/{select_gene}/log -N run $p/gene/{select_gene}/shell/run.sh\n"
 
     s += (
-        f"qsub -V -l mem_requested=30G -o $p/log -e $p/log -hold_jid run report.sh"
+        f"qsub -V -l mem_requested=30G -o $p/log -e $p/log -hold_jid run $p/report.sh"
     )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
