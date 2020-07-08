@@ -1,7 +1,8 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, read_gene_table, is_chr, sort_regions
+from .common import logging, LINE_BREAK1, is_chr, sort_regions
+from .sglib import read_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -21,6 +22,7 @@ def sges(conf: str) -> None:
             mapping_quality = 1
             output_prefix = pypgx
             target_genes = ALL
+            genome_build = hg19
 
             # Make any necessary changes to this section.
             [USER]
@@ -35,8 +37,8 @@ def sges(conf: str) -> None:
             bam_file = in.bam
     """
 
-    # Read the gene table.
-    genes = read_gene_table()
+    gene_table = read_gene_table(
+        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
 
     # Log the configuration data.
     logger.info(LINE_BREAK1)
@@ -62,8 +64,9 @@ def sges(conf: str) -> None:
     mapping_quality = config["USER"]["mapping_quality"]
     stargazer_tool = config["USER"]["stargazer_tool"]
     data_type = config["USER"]["data_type"]
+    genome_build = config["USER"]["genome_build"]
 
-    t = [k for k, v in genes.items() if v["type"] == "target"]
+    t = [k for k, v in gene_table.items() if v["type"] == "target"]
     
     if target_genes == "ALL":
         select_genes = t
@@ -91,13 +94,13 @@ def sges(conf: str) -> None:
     else:
         chr_str = ""
 
-    control_region = genes[control_gene]["hg19_region"].replace("chr", "")
+    control_region = gene_table[control_gene]["hg19_region"].replace("chr", "")
 
 # -- Shell script for each gene ----------------------------------------------
 
     for select_gene in select_genes:
 
-        target_region = genes[select_gene]["hg19_region"].replace("chr", "")
+        target_region = gene_table[select_gene]["hg19_region"].replace("chr", "")
         regions = sort_regions([target_region, control_region])
 
         s = (
@@ -144,14 +147,14 @@ def sges(conf: str) -> None:
             "\n"
             f"stargazer={stargazer_tool}\n"
             "\n"
-            f"python3 $stargazer genotype \\\n"
-            f"  -d {data_type} \\\n"
-            "  -t $tg \\\n"
-            "  --vcf $vcf2 \\\n"
-            f"  -c {control_gene} \\\n"
-            "  --gdf $gdf \\\n"
-            "  -o $tg \\\n"
-            "  --output_dir $p/gene/$tg\n"
+            f"python3 $stargazer \\\n"
+            f"  {data_type} \\\n"
+            f"  {genome_build} \\\n"
+            "  $tg \\\n"
+            "  $vcf2 \\\n"
+            "  $p/gene/$tg/stargazer\n"
+            f"  --cg {control_gene} \\\n"
+            "  --gdf $gdf\n"
         )
 
         with open(
@@ -164,11 +167,11 @@ def sges(conf: str) -> None:
     s = (
         f"p={project_path}\n"
         "\n"
-        f'''head -n1 $p/gene/{select_genes[0]}/{select_genes[0]}.sg-genotype.txt | awk '{{print "gene",$0}}' OFS="\\t" > $p/merged.sg-genotype.txt\n'''
+        f'''head -n1 $p/gene/{select_genes[0]}/stargazer/genotype.txt | awk '{{print "gene",$0}}' OFS="\\t" > $p/merged.sg-genotype.txt\n'''
         "\n"
         f"for gene in {' '.join(select_genes)}\n"
         "do\n"
-        f'''  tail -n+2 $p/gene/$gene/$gene.sg-genotype.txt | awk -v var="$gene" '{{print var,$0}}' OFS="\\t" >> $p/merged.sg-genotype.txt\n'''
+        f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt | awk -v var="$gene" '{{print var,$0}}' OFS="\\t" >> $p/merged.sg-genotype.txt\n'''
         "done\n"
         "\n"
         "pypgx report $p/merged.sg-genotype.txt -o $p/report.html"

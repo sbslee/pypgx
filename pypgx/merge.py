@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from .common import VCFFile
+from .sglib import VCFFile
 
 def merge(
         vcfs: List[str],

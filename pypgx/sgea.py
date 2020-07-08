@@ -1,7 +1,8 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, read_gene_table, is_chr
+from .common import logging, LINE_BREAK1, is_chr
+from .sglib import read_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -33,8 +34,8 @@ def sgea(conf: str) -> None:
             stargazer_tool = stargazer.py
     """
 
-    # Read the gene table.
-    genes = read_gene_table()
+    gene_table = read_gene_table(
+        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
 
     # Log the configuration data.
     logger.info(LINE_BREAK1)
@@ -94,7 +95,7 @@ def sgea(conf: str) -> None:
         f.write(s)
 
     # Write the shell script for HaplotypeCaller.
-    target_region = genes[target_gene]["hg19_region"].replace("chr", "")
+    target_region = gene_table[target_gene]["hg19_region"].replace("chr", "")
 
     t = [is_chr(v) for k, v in bam_files.items()]
     if all(t):
@@ -175,14 +176,14 @@ def sgea(conf: str) -> None:
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
         f"gdf=$project/{output_prefix}.gdf\n"
         "\n"
-        "python3 $stargazer genotype \\\n"
-        f"  -t {target_gene} \\\n"
-        f"  -c {control_gene} \\\n"
-        "  --vcf $vcf \\\n"
-        "  --gdf $gdf \\\n"
-        f"  -d {data_type} \\\n"
-        f"  -o {output_prefix} \\\n"
-        "  --output_dir $project\n"
+        "python3 $stargazer \\\n"
+        f"  {data_type} \\\n"
+        f"  {genome_build} \\\n"
+        f"  {target_gene} \\\n"
+        "  $vcf \\\n"
+        "  $project/stargazer \\\n"
+        f"  --cg {control_gene} \\\n"
+        "  --gdf $gdf\n"
     )
 
     with open(f"{project_path}/shell/rs.sh", "w") as f:

@@ -1,9 +1,17 @@
-from .common import VCFFile, build_stardb, vcf2samples, parse_vcf_fields
-
 import os
-import copy
 
-def peek(tg, vcf) -> str:
+from .sglib import (
+    VCFFile,
+    vcf2samples,
+    read_gene_table,
+    read_snp_table,
+    build_snpdb,
+    read_star_table,
+    build_stardb,
+    parse_vcf_fields,
+)
+
+def peek(vcf) -> str:
     """
     Find all possible star alleles from VCF file.
 
@@ -11,7 +19,6 @@ def peek(tg, vcf) -> str:
         str: Result file.
 
     Args:
-        tg (str): Target gene.
         vcf (str): VCF file.
     """
 
@@ -19,6 +26,31 @@ def peek(tg, vcf) -> str:
     finalized_vcf = VCFFile(vcf)
     finalized_vcf.read()
     finalized_vcf.header = finalized_vcf.header[:9]
+
+    # Extract the target gene from the VCF file.
+    for line in finalized_vcf.meta:
+        if "##target_gene" in line:
+            tg = line.strip().replace("##target_gene=", "")
+            break
+
+    # Extract the genome build from the VCF file.
+    for line in finalized_vcf.meta:
+        if "##genome_build" in line:
+            gb = line.strip().replace("##genome_build=", "")
+            break
+
+    gene_table = read_gene_table(
+        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+
+    snp_table = read_snp_table(
+        f"{os.path.dirname(__file__)}/resources/sg/snp_table.txt", gene_table)
+
+    snpdb = build_snpdb(tg, gb, snp_table)
+
+    star_table = read_star_table(
+        f"{os.path.dirname(__file__)}/resources/sg/star_table.txt")
+
+    stardb = build_stardb(tg, gb, star_table, snpdb)
 
     for i in range(len(finalized_vcf.data)):
         fields = finalized_vcf.data[i]
@@ -66,16 +98,14 @@ def peek(tg, vcf) -> str:
     # remove non-variants
     snp_list = [x for x in snp_list if x.wt != x.var]
 
-    star_db = build_stardb(tg)
-
     # get candidates
-    cand_list = [v for k, v in star_db.items() if set(v.core).issubset(snp_list) and not v.sv]
+    cand_list = [v for k, v in stardb.items() if set(v.core).issubset(snp_list) and not v.sv]
 
     temp = []
 
     temp.append(['name', 'score', 'core', 'tag', 'callable'])
 
-    for name, star in star_db.items():
+    for name, star in stardb.items():
 
         if star.core:
             core = ",".join([x.summary() for x in star.core])

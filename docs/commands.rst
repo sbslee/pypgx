@@ -366,13 +366,12 @@ peek
 Synopsis
 --------
 
-pypgx peek [options] tg vcf
+pypgx peek [options] vcf
 
 Description
 -----------
 
-Find all possible star alleles from VCF file. *tg* is target gene.
-*vcf* is VCF file.
+Find all possible star alleles from VCF file. *vcf* is VCF file.
 
 Options
 -------
@@ -385,13 +384,13 @@ snp
 Synopsis
 --------
 
-pypgx snp [options] tg vcf pair [pair ...]
+pypgx snp [options] vcf pair [pair ...]
 
 Description
 -----------
 
-View variant data for sample/star allele pairs. *tg* is target gene.
-*vcf* is VCF file. *pair* is sample/star allele pair.
+View variant data for sample/star allele pairs. *vcf* is VCF file. 
+*pair* is sample/star allele pair.
 
 Options
 -------

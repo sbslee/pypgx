@@ -2,7 +2,8 @@ from typing import List
 
 import pysam
 
-from .common import read_gene_table, logging, sort_regions, sm_tag
+from .common import logging, sm_tag
+from .sglib import read_gene_table, sort_regions
 
 logger = logging.getLogger(__name__)
 
@@ -19,9 +20,11 @@ def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
         bam (list[str]): BAM file(s).
     """
 
-    genes = read_gene_table()
-    targets = [k for k, v in genes.items() if v["type"] == "target"]
-    controls = [k for k, v in genes.items() if v["control"] == "yes"]
+    gene_table = read_gene_table(
+        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+
+    targets = [k for k, v in gene_table.items() if v["type"] == "target"]
+    controls = [k for k, v in gene_table.items() if v["control"] == "yes"]
     if tg not in targets:
         raise ValueError(f"'{tg}' is not among target genes: {targets}")
     if cg not in controls:
@@ -52,8 +55,8 @@ def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
     else:
         chr = ""
 
-    tr = genes[tg]["hg19_region"].replace("chr", "")
-    cr = genes[cg]["hg19_region"].replace("chr", "")
+    tr = gene_table[tg]["hg19_region"].replace("chr", "")
+    cr = gene_table[cg]["hg19_region"].replace("chr", "")
 
     regions = sort_regions([tr, cr])
 

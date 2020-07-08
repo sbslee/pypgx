@@ -1,7 +1,7 @@
 import os
 from typing import List
 
-from pypgx.common import sort_star_names, read_pt_table
+from .sglib import sort_star_names, read_phenotype_table
 
 def _append1(d, i, name, count, p, sv, hap_score):
     if name not in d:
@@ -29,6 +29,9 @@ def meta(tg: str, sf: List[str]) -> str:
         tg (str): Target gene.
         sf (list[str]): Summary file.
     """
+
+    phenotype_table = read_phenotype_table(
+        f"{os.path.dirname(__file__)}/resources/sg/phenotype_table.txt")
 
     dicts = {}
     header1 = ["type", "name", "sv", "hap_score"]
@@ -73,7 +76,7 @@ def meta(tg: str, sf: List[str]) -> str:
         elif type == "pt":
             for x in sorted(
                     list(dicts[type]),
-                    key = list(read_pt_table()[tg]).index
+                    key = list(phenotype_table[tg]).index
                 ):
                 temp.append(["pt", x] + dicts[type][x])
 

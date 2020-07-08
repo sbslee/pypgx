@@ -1,4 +1,4 @@
-from .common import VCFFile
+from .sglib import VCFFile
 
 def minivcf(fn: str, region: str) -> str:
     """

@@ -1,6 +1,12 @@
-import copy
+import os
 
-from .common import build_stardb
+from .sglib import (
+    read_gene_table,
+    read_snp_table,
+    build_snpdb,
+    read_star_table,
+    build_stardb,
+)
 
 def liftover(star: str, snp: str, tg: str) -> str:
     """
@@ -15,11 +21,20 @@ def liftover(star: str, snp: str, tg: str) -> str:
         tg (str): Target gene.
     """
 
-    star_db = build_stardb(tg, star, snp)
+    gene_table = read_gene_table(
+        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+
+    snp_table = read_snp_table(snp, gene_table)
+
+    snpdb = build_snpdb(tg, "hg19", snp_table)
+
+    star_table = read_star_table(star)
+
+    stardb = build_stardb(tg, "hg19", star_table, snpdb)
 
     result = ""
 
-    for k, v in star_db.items():
+    for k, v in stardb.items():
         core = []
         for snp in v.core:
             s = "{}:{}>{}".format(snp.data["hg38_pos"], snp.data["wt_allele"], snp.data["var_allele"])

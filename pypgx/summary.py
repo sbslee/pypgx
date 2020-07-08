@@ -1,4 +1,6 @@
-from pypgx.common import read_pt_table, sort_star_names
+import os
+
+from .sglib import sort_star_names, read_phenotype_table
 
 def summary(tg: str, gt: str) -> str:
     """
@@ -11,6 +13,9 @@ def summary(tg: str, gt: str) -> str:
         tg (str): Target gene.
         gt (str): Genotype file.
     """
+
+    phenotype_table = read_phenotype_table(
+        f"{os.path.dirname(__file__)}/resources/sg/phenotype_table.txt")
 
     star_dict = {}   # list all observed star alleles (haplotypes)
     asc_dict = {}    # how many observed alleles had AS=0, 0.5, ...
@@ -126,7 +131,7 @@ def summary(tg: str, gt: str) -> str:
         p = n / s_total
         temp.append(["dsc", dip_score, ".", ".", n, p])
 
-    for x in sorted(pt_dict, key = list(read_pt_table()[tg]).index):
+    for x in sorted(pt_dict, key = list(phenotype_table[tg]).index):
         n = pt_dict[x]
         p = pt_dict[x] / s_total
         temp.append(["pt", x, ".", ".", n, p])

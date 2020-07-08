@@ -143,3 +143,10 @@ pypgx.common module
 .. automodule:: pypgx.common
     :members:
     :undoc-members:
+
+pypgx.sglib module
+------------------
+
+.. automodule:: pypgx.sglib
+    :members:
+    :undoc-members:

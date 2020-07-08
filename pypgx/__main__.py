@@ -333,10 +333,6 @@ def get_parser():
         help="find all possible star alleles from VCF file",
     )
     peek_parser.add_argument(
-        "tg",
-        help="target gene",
-    )
-    peek_parser.add_argument(
         "vcf",
         help="VCF file",
     )
@@ -349,10 +345,6 @@ def get_parser():
     snp_parser = subparsers.add_parser(
         "snp",
         help="view variant data for sample/star allele pairs",
-    )
-    snp_parser.add_argument(
-        "tg",
-        help="target gene",
     )
     snp_parser.add_argument(
         "vcf",
@@ -455,11 +447,11 @@ def main():
         output(args.o, result)
 
     elif args.tool == "peek":
-        result = peek(args.tg, args.vcf)
+        result = peek(args.vcf)
         output(args.o, result)
 
     elif args.tool == "snp":
-        result = snp(args.tg, args.vcf, args.pair)
+        result = snp(args.vcf, args.pair)
         output(args.o, result)
 
 if __name__ == "__main__":
