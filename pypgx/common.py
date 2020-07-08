@@ -1,22 +1,23 @@
-import logging
-import io
-import pkgutil
-import gzip
-from typing import Optional, TextIO, List, Dict
 import os
-import copy
+import logging
+from typing import Dict
 
 import pysam
-from .sglib import sort_regions
+
+from .sglib import (
+    read_gene_table,
+    read_snp_table,
+    build_snpdb,
+    read_star_table,
+    build_stardb,
+    StarAllele,
+)
 
 LINE_BREAK1 = "-" * 70
 LINE_BREAK2 = "*" * 70
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-def str2file(x):
-    return io.StringIO(x)
 
 def sm_tag(bam: str) -> str:
     """
@@ -77,3 +78,29 @@ def is_chr(bam: str) -> bool:
                     l.append(field.replace("SN:", ""))
 
     return any(["chr" in x for x in l])
+
+def get_stardb(tg: str, gb: str) -> Dict[str, StarAllele]:
+    """
+    Get StarAllele database.
+
+    Returns:
+        dict[str, StarAllele]: StarAllele objects.
+
+    Args:
+        tg (str): Target gene.
+        gb (str): Genome build.
+
+    Examples:
+
+        >>> stardb = get_stardb("cyp2d6", "hg19")
+        >>> print(stardb["*2"].score)
+        1.0
+    """
+
+    p = os.path.dirname(__file__)
+    gene_table = read_gene_table(f"{p}/resources/sg/gene_table.txt")
+    snp_table = read_snp_table(f"{p}/resources/sg/snp_table.txt", gene_table)
+    snpdb = build_snpdb(tg, gb, snp_table)
+    star_table = read_star_table(f"{p}/resources/sg/star_table.txt")
+
+    return build_stardb(tg, gb, star_table, snpdb)

@@ -17,7 +17,8 @@ array. Stargazer is freely available for non-profit academic research
 purposes, and can be downloaded from 
 `here <https://stargazer.gs.washington.edu/stargazerweb/>`_.
 
-Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+Documentation is available at 
+`Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Installation
 ============

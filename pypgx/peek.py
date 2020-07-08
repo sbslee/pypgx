@@ -1,15 +1,7 @@
 import os
 
-from .sglib import (
-    VCFFile,
-    vcf2samples,
-    read_gene_table,
-    read_snp_table,
-    build_snpdb,
-    read_star_table,
-    build_stardb,
-    parse_vcf_fields,
-)
+from .common import get_stardb
+from .sglib import VCFFile, parse_vcf_fields, vcf2samples
 
 def peek(vcf) -> str:
     """
@@ -25,32 +17,10 @@ def peek(vcf) -> str:
     # Remove sample data from the VCF file.
     finalized_vcf = VCFFile(vcf)
     finalized_vcf.read()
+    finalized_vcf.close()
     finalized_vcf.header = finalized_vcf.header[:9]
 
-    # Extract the target gene from the VCF file.
-    for line in finalized_vcf.meta:
-        if "##target_gene" in line:
-            tg = line.strip().replace("##target_gene=", "")
-            break
-
-    # Extract the genome build from the VCF file.
-    for line in finalized_vcf.meta:
-        if "##genome_build" in line:
-            gb = line.strip().replace("##genome_build=", "")
-            break
-
-    gene_table = read_gene_table(
-        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
-
-    snp_table = read_snp_table(
-        f"{os.path.dirname(__file__)}/resources/sg/snp_table.txt", gene_table)
-
-    snpdb = build_snpdb(tg, gb, snp_table)
-
-    star_table = read_star_table(
-        f"{os.path.dirname(__file__)}/resources/sg/star_table.txt")
-
-    stardb = build_stardb(tg, gb, star_table, snpdb)
+    stardb = get_stardb(finalized_vcf.tg, finalized_vcf.gb)
 
     for i in range(len(finalized_vcf.data)):
         fields = finalized_vcf.data[i]
@@ -83,9 +53,6 @@ def peek(vcf) -> str:
                 finalized_vcf.data[i].append(f"0{sep}1")
 
     samples = vcf2samples(finalized_vcf, filter=False)
-
-    finalized_vcf.close()
-
     snp_list = []
     
     for name in samples:

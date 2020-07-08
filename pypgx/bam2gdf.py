@@ -1,8 +1,9 @@
+from io import StringIO
 from typing import List
 
 from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
-from .common import sm_tag, str2file
+from .common import sm_tag
 
 def bam2gdf(tg : str, cg: str, bam: List[str]) -> str:
     """
@@ -19,5 +20,5 @@ def bam2gdf(tg : str, cg: str, bam: List[str]) -> str:
 
     sdf = bam2sdf(tg, cg, bam)
     sm = [sm_tag(x) for x in bam]
-    result = sdf2gdf(None, sm, f=str2file(sdf))
+    result = sdf2gdf(None, sm, f=StringIO(sdf))
     return result

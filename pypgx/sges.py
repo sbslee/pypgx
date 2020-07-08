@@ -1,8 +1,8 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, is_chr, sort_regions
-from .sglib import read_gene_table
+from .common import logging, LINE_BREAK1, is_chr
+from .sglib import read_gene_table, sort_regions
 
 logger = logging.getLogger(__name__)
 

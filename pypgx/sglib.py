@@ -181,6 +181,36 @@ class VCFFile:
             new.data = deepcopy(self.data)
         return new
 
+    @property
+    def tg(self) -> str:
+        """
+        Extract target gene from meta data.
+        """
+
+        result = ""
+
+        for line in self.meta:
+            if "##target_gene" in line:
+                result = line.strip().replace("##target_gene=", "")
+                break
+
+        return result
+
+    @property
+    def gb(self) -> str:
+        """
+        Extract genome build from meta data.
+        """
+
+        result = ""
+
+        for line in self.meta:
+            if "##genome_build" in line:
+                result = line.strip().replace("##genome_build=", "")
+                break
+
+        return result
+
 class SNPAllele:
     def __init__(self):
         self.pos = '' # reference genome position

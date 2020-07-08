@@ -1,8 +1,8 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, is_chr, sort_regions
-from .sglib import read_gene_table
+from .common import logging, LINE_BREAK1, is_chr
+from .sglib import read_gene_table, sort_regions
 
 logger = logging.getLogger(__name__)
 
@@ -187,7 +187,7 @@ def sgep(conf: str) -> None:
         f.write(s)
 
     # Write the shell script for qsub.
-    q = "qsub -cwd -V -l mem_requested=30G -e $p/log -o $p/log"
+    q = "qsub -V -l mem_requested=30G -e $p/log -o $p/log"
     s = (
         f"p={project_path}\n"
         "\n"
