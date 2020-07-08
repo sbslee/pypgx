@@ -33,7 +33,6 @@ def sges(conf: str) -> None:
             dbsnp_file = dbsnp.vcf
             stargazer_tool = stargazer.py
             gatk_tool = gatk.jar
-            sample_id = my_sample
             bam_file = in.bam
     """
 

@@ -2,7 +2,7 @@ import configparser
 import os
 
 from .common import logging, LINE_BREAK1, is_chr
-from .sglib import read_gene_table, sort_regions
+from .sglib import read_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +14,7 @@ def sgep(conf: str) -> None:
         conf (str): Configuration file.
 
     Examples:
+
         .. code-block:: python
 
             # File: example_conf.txt
@@ -22,6 +23,8 @@ def sgep(conf: str) -> None:
             mapping_quality = 1
             output_prefix = pypgx
             genome_build = hg19
+            control_gene = NONE
+            vcf_only = FALSE
 
             # Make any necessary changes to this section.
             [USER]
@@ -64,6 +67,7 @@ def sgep(conf: str) -> None:
     dbsnp_file = config["USER"]["dbsnp_file"]
     stargazer_tool = config["USER"]["stargazer_tool"]
     gatk_tool = config["USER"]["gatk_tool"]
+    vcf_only = config["USER"].getboolean("vcf_only")
 
     # Read the manifest file.
     bam_files = {}
@@ -95,20 +99,18 @@ def sgep(conf: str) -> None:
         raise ValueError("Mixed types of SN tags found.")
 
     target_region = gene_table[target_gene]["hg19_region"].replace("chr", "")
-    control_region = gene_table[control_gene]["hg19_region"].replace("chr", "")
 
-    regions = sort_regions([target_region, control_region])
+    if not vcf_only:
+        # Write the shell script for DepthOfCoverage.
+        s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
 
-    # Write the shell script for DepthOfCoverage.
-    s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
+        for sample_id in bam_files:
+            s += f"  {bam_files[sample_id]} \\\n"
 
-    for sample_id in bam_files:
-        s += f"  {bam_files[sample_id]} \\\n"
+        s += f"  -o {project_path}/{output_prefix}.gdf\n"
 
-    s += f"  -o {project_path}/{output_prefix}.gdf\n"
-
-    with open(f"{project_path}/shell/doc.sh", "w") as f:
-        f.write(s)
+        with open(f"{project_path}/shell/doc.sh", "w") as f:
+            f.write(s)
 
     # Write the shell script for HaplotypeCaller.
     for sample_id in bam_files:
@@ -179,9 +181,13 @@ def sgep(conf: str) -> None:
         f"  {target_gene} \\\n"
         "  $vcf \\\n"
         "  $project/stargazer \\\n"
-        f"  --cg {control_gene} \\\n"
-        "  --gdf $gdf\n"
     )
+
+    if not vcf_only:
+        s += (
+            f"  --cg {control_gene} \\\n"
+            "  --gdf $gdf\n"
+        )
 
     with open(f"{project_path}/shell/rs.sh", "w") as f:
         f.write(s)
@@ -191,16 +197,21 @@ def sgep(conf: str) -> None:
     s = (
         f"p={project_path}\n"
         "\n"
-        f"{q} -N doc $p/shell/doc.sh\n"
     )
+
+    if not vcf_only:
+        s += f"{q} -N doc $p/shell/doc.sh\n"
 
     for sample_id in bam_files:
         s += f"{q} -N hc $p/shell/hc-{sample_id}.sh\n"
 
-    s += (
-        f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
-        f"{q} -hold_jid doc,post -N rs $p/shell/rs.sh\n"
-    )
+    s += f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
+
+    if vcf_only:
+        s += f"{q} -hold_jid post -N rs $p/shell/rs.sh\n"
+
+    else:
+        s += f"{q} -hold_jid doc,post -N rs $p/shell/rs.sh\n"
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)

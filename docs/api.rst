@@ -56,7 +56,7 @@ pypgx.summary module
     :members:
 
 pypgx.meta module
---------------------
+-----------------
 
 .. automodule:: pypgx.meta
     :members:
@@ -74,7 +74,7 @@ pypgx.remap module
     :members:
 
 pypgx.fq2bam module
-------------------
+-------------------
 
 .. automodule:: pypgx.fq2bam
     :members:
@@ -122,17 +122,16 @@ pypgx.liftover module
     :members:
 
 pypgx.peek module
----------------------
+-----------------
 
 .. automodule:: pypgx.peek
     :members:
 
 pypgx.snp module
----------------------
+----------------
 
 .. automodule:: pypgx.snp
     :members:
-
 
 Auxiliary modules
 =================
@@ -150,3 +149,46 @@ pypgx.sglib module
 .. automodule:: pypgx.sglib
     :members:
     :undoc-members:
+
+Configuration arguments
+=======================
+
+A number of PyPGx commands (e.g. sgep) accept a configuration file as input. 
+This table summarizes the configuration arguments.
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - bam_file
+     - Bam file.
+   * - control_gene
+     - Control gene for Stargazer. [NONE]
+   * - data_type
+     - Input data type (wgs, ts, chip).
+   * - dbsnp_file
+     - dbSNP VCF file.
+   * - fasta_file
+     - Reference sequence file.
+   * - gatk_tool
+     - Path to GATK file.
+   * - genome_build
+     - Genome build (hg19, hg38). [hg19]
+   * - manifest_file
+     - Manifest file.
+   * - mapping_quality
+     - Minimum mapping quality used for counting reads. [1]
+   * - output_prefix
+     - Output prefix. [pypgx]
+   * - project_path
+     - Path to output project directory.
+   * - stargazer_tool
+     - Path to Stargazer directory.
+   * - target_gene
+     - Target gene for Stargazer.
+   * - target_genes
+     - Target genes for Stargazer. [ALL]
+   * - vcf_only
+     - If true, do not use read depth data. [FALSE]
