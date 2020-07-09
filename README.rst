@@ -85,7 +85,7 @@ For running within Python (e.g. ``bam2gdf`` tool):
 
 >>> from pypgx.bam2gdf import bam2gdf
 >>> bams = ["in1.bam", "in2.bam"]
->>> gdf = bam2gdf("cyp2d6", "vdr", bams)
+>>> gdf = bam2gdf("hg19", "cyp2d6", "vdr", bams)
 >>> for line in gdf.split("\n"):
 >>>     print(line)
 
