@@ -24,6 +24,7 @@ def sgea(conf: str) -> None:
             genome_build = hg19
             control_gene = NONE
             vcf_only = FALSE
+            qsub_options = NONE
 
             # Make any necessary changes to this section.
             [USER]
@@ -65,6 +66,7 @@ def sgea(conf: str) -> None:
     stargazer_tool = config["USER"]["stargazer_tool"]
     genome_build = config["USER"]["genome_build"]
     vcf_only = config["USER"].getboolean("vcf_only")
+    qsub_options = config["USER"]["qsub_options"]
 
     # Read the manifest file.
     bam_files = {}
@@ -199,7 +201,11 @@ def sgea(conf: str) -> None:
         f.write(s)
 
     # Write the shell script for qsub.
-    q = "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log"
+    q = "qsub -e $p/log -o $p/log"
+
+    if qsub_options != "NONE":
+        q += f" {qsub_options}"
+
     s = (
         f"p={project_path}\n"
         "\n"

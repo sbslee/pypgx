@@ -25,6 +25,7 @@ def sges(conf: str) -> None:
             genome_build = hg19
             control_gene = NONE
             vcf_only = FALSE
+            qsub_options = NONE
 
             # Make any necessary changes to this section.
             [USER]
@@ -67,6 +68,7 @@ def sges(conf: str) -> None:
     data_type = config["USER"]["data_type"]
     genome_build = config["USER"]["genome_build"]
     vcf_only = config["USER"].getboolean("vcf_only")
+    qsub_options = config["USER"]["qsub_options"]
 
     t = [k for k, v in gene_table.items() if v["type"] == "target"]
     
@@ -190,16 +192,21 @@ def sges(conf: str) -> None:
 
 # -- Shell script for qsub ---------------------------------------------------
 
+    if qsub_options == "NONE":
+        q = "qsub"
+    else:
+        q = f"qsub {qsub_options}"
+
     s = (
         f"p={project_path}\n"
         "\n"
     )
 
     for select_gene in select_genes:
-        s += f"qsub -V -l mem_requested=30G -o $p/gene/{select_gene}/log -e $p/gene/{select_gene}/log -N run $p/gene/{select_gene}/shell/run.sh\n"
+        s += f"{q} -o $p/gene/{select_gene}/log -e $p/gene/{select_gene}/log -N run $p/gene/{select_gene}/shell/run.sh\n"
 
     s += (
-        f"qsub -V -l mem_requested=30G -o $p/log -e $p/log -hold_jid run $p/report.sh"
+        f"{q} -o $p/log -e $p/log -hold_jid run $p/report.sh"
     )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:

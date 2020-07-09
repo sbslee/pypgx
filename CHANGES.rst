@@ -1,3 +1,8 @@
+v0.0.47
+-------
+
+* Updated configuration arguments.
+
 v0.0.46
 -------
 

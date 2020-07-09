@@ -184,6 +184,8 @@ This table summarizes the configuration arguments.
      - Output prefix. [pypgx]
    * - project_path
      - Path to output project directory.
+   * - qsub_options
+     - Options for qsub (e.g. -V -l mem_requested=10G).
    * - stargazer_tool
      - Path to Stargazer directory.
    * - target_gene
