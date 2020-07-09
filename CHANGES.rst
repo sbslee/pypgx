@@ -1,7 +1,12 @@
+v0.0.45
+-------
+
+* Added VCF only mode to ``sgea`` tool.
+
 v0.0.44
 -------
 
-* No significant changes.
+* Added VCF only mode to ``sgep`` tool.
 
 v0.0.43
 -------
@@ -175,47 +180,47 @@ v0.0.10
 * Updated ``pgkb`` tool to be run within Python.
 
 v0.0.9
--------
+------
 
 * No significant changes.
 
 v0.0.8
--------
+------
 
 * No significant changes.
 
 v0.0.7
--------
+------
 
 * Added ``report`` tool.
 * Added ``resources`` directory.
 
 v0.0.6
--------
+------
 
 * No significant changes.
 
 v0.0.5
--------
+------
 
 * No significant changes.
 
-v.0.0.4
--------
+v0.0.4
+------
 
 * Added ``pgkb`` tool.
 
 v0.0.3
--------
+------
 
 * Added common.py.
 
 v0.0.2
--------
+------
 
 * No significant changes.
 
 v0.0.1
--------
+------
 
 * Initial release.

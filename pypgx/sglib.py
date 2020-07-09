@@ -77,12 +77,17 @@ class VCFFile:
         self.header = []
         self.data = []
 
-    def read(self, region: Optional[str] = None) -> None:
+    def read(
+        self,
+        region: Optional[str] = None,
+        tidy = False,
+    ) -> None:
         """
         Read VCF file.
 
         Args:
             region (str, optional): Target region.
+            tidy (bool): Remove "chr" string.
         """
 
         if region:
@@ -91,26 +96,45 @@ class VCFFile:
                 if "##" in line:
                     self.meta.append(line)
                     continue
+
                 fields = line.strip().split("\t")
+
                 if fields[0] == "#CHROM":
                     self.header = fields
                     continue
+
                 chr = fields[0]
                 pos = int(fields[1])
-                if chr != r[0] or pos < r[1]:
+
+                if chr.replace("chr", "") != r[0].replace("chr", ""):
                     continue
+
+                if pos < r[1]:
+                    continue
+
                 if pos > r[2]:
                     break
+
+                if tidy:
+                    fields[0] = fields[0].replace("chr", "")
+
                 self.data.append(fields)
+
         else:
             for line in self.f:
                 if "##" in line:
                     self.meta.append(line)
                     continue
+
                 fields = line.strip().split("\t")
+
                 if fields[0] == "#CHROM":
                     self.header = fields
                     continue
+
+                if tidy:
+                    fields[0] = fields[0].replace("chr", "")
+
                 self.data.append(fields)
 
     def to_str(self) -> str:
@@ -172,13 +196,18 @@ class VCFFile:
         """
         Copy VCF file.
         """
+
         new = VCFFile()
+
         if "meta" in l:
             new.meta = deepcopy(self.meta)
+
         if "header" in l:
             new.header = deepcopy(self.header)
+
         if "data" in l:
             new.data = deepcopy(self.data)
+
         return new
 
     @property

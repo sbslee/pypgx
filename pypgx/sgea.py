@@ -21,6 +21,9 @@ def sgea(conf: str) -> None:
             [DEFAULT]
             mapping_quality = 1
             output_prefix = pypgx
+            genome_build = hg19
+            control_gene = NONE
+            vcf_only = FALSE
 
             # Make any necessary changes to this section.
             [USER]
@@ -31,7 +34,7 @@ def sgea(conf: str) -> None:
             control_gene = vdr
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            stargazer_tool = stargazer.py
+            stargazer_tool = Stargazer_v1.0.9
     """
 
     gene_table = read_gene_table(
@@ -60,6 +63,8 @@ def sgea(conf: str) -> None:
     data_type = config["USER"]["data_type"]
     dbsnp_file = config["USER"]["dbsnp_file"]
     stargazer_tool = config["USER"]["stargazer_tool"]
+    genome_build = config["USER"]["genome_build"]
+    vcf_only = config["USER"].getboolean("vcf_only")
 
     # Read the manifest file.
     bam_files = {}
@@ -83,19 +88,20 @@ def sgea(conf: str) -> None:
     os.mkdir(f"{project_path}/log")
     os.mkdir(f"{project_path}/temp")
 
-    # Write the shell script for bam2gdf.
-    s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
+    if not vcf_only:
+        # Write the shell script for bam2gdf.
+        s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
 
-    for sample_id in bam_files:
-        s += f"  {bam_files[sample_id]} \\\n"
+        for sample_id in bam_files:
+            s += f"  {bam_files[sample_id]} \\\n"
 
-    s += f"  -o {project_path}/{output_prefix}.gdf\n"
+        s += f"  -o {project_path}/{output_prefix}.gdf\n"
 
-    with open(f"{project_path}/shell/doc.sh", "w") as f:
-        f.write(s)
+        with open(f"{project_path}/shell/doc.sh", "w") as f:
+            f.write(s)
 
     # Write the shell script for HaplotypeCaller.
-    target_region = gene_table[target_gene]["hg19_region"].replace("chr", "")
+    target_region = gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
 
     t = [is_chr(v) for k, v in bam_files.items()]
     if all(t):
@@ -174,7 +180,6 @@ def sgea(conf: str) -> None:
         f"project={project_path}\n"
         f"stargazer={stargazer_tool}\n"
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
-        f"gdf=$project/{output_prefix}.gdf\n"
         "\n"
         "python3 $stargazer \\\n"
         f"  {data_type} \\\n"
@@ -182,27 +187,37 @@ def sgea(conf: str) -> None:
         f"  {target_gene} \\\n"
         "  $vcf \\\n"
         "  $project/stargazer \\\n"
-        f"  --cg {control_gene} \\\n"
-        "  --gdf $gdf\n"
     )
+
+    if not vcf_only:
+        s += (
+            f"  --cg {control_gene} \\\n"
+            f"  --gdf $project/{output_prefix}.gdf \\\n"
+        )
 
     with open(f"{project_path}/shell/rs.sh", "w") as f:
         f.write(s)
 
     # Write the shell script for qsub.
+    q = "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log"
     s = (
         f"p={project_path}\n"
         "\n"
-        "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log -N doc $p/shell/doc.sh\n"
     )
+
+    if not vcf_only:
+        s += f"{q} -N doc $p/shell/doc.sh\n"
 
     for sample_id in bam_files:
-        s += f"qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log -N hc $p/shell/hc-{sample_id}.sh\n"
+        s += f"{q} -N hc $p/shell/hc-{sample_id}.sh\n"
 
-    s += (
-        "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log -hold_jid hc -N post $p/shell/post.sh\n"
-        "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log -hold_jid doc,post -N rs $p/shell/rs.sh\n"
-    )
+    s += f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
+
+    if vcf_only:
+        s += f"{q} -hold_jid post -N rs $p/shell/rs.sh\n"
+
+    else:
+        s += f"{q} -hold_jid doc,post -N rs $p/shell/rs.sh\n"
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)
