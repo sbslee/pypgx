@@ -32,8 +32,7 @@ def get_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "-V",
-        "--version",
+        "-v",
         action="store_true",
         help="print the PyPGx version number and exit"
     )
@@ -389,7 +388,7 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
 
-    if args.version:
+    if args.v:
         print(f"PyPGx v{__version__}")
         sys.exit()
 

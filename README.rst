@@ -30,42 +30,43 @@ Running in Command Line
 For getting help::
 
     $ pypgx -h
-    usage: pypgx [-h] [-V] tool ...
+    usage: pypgx [-h] [-v] tool ...
 
-  positional arguments:
-    tool        name of the tool
-      pgkb      extract CPIC guidelines using PharmGKB API
-      report    create HTML report using Stargazer data
-      sdf2gdf   create GDF file from SDF file
-      bam2sdf   create SDF file from BAM file(s)
-      bam2gdf   create GDF file from BAM file(s)
-      minivcf   slice VCF file
-      merge     merge VCF files
-      summary   create summary file using Stargazer data
-      meta      create meta file from summary files
-      compare   compare genotype files
-      remap     remap BAM file(s) to different reference
-      fq2bam    create BAM file(s) from FASTQ file(s)
-      sges      run per-sample genotyping with Stargazer
-      sgep      run per-project genotyping with Stargazer (1)
-      sgea      run per-project genotyping with Stargazer (2)
-      cpa       run change point analysis for copy number
-      plotcov   plot coverage data to PDF file
-      check     check table files for Stargazer
-      liftover  convert variants in SNP table from hg19 to hg38
-      peek      find all possible star alleles from VCF file
-      snp       view variant data for sample/star allele pairs
+    positional arguments:
+      tool        name of the tool
+        pgkb      extract CPIC guidelines using PharmGKB API
+        report    create HTML report using Stargazer data
+        sdf2gdf   create GDF file from SDF file
+        bam2sdf   create SDF file from BAM file(s)
+        bam2gdf   create GDF file from BAM file(s)
+        minivcf   slice VCF file
+        merge     merge VCF files
+        summary   create summary file using Stargazer data
+        meta      create meta file from summary files
+        compare   compare genotype files
+        remap     remap BAM file(s) to different reference
+        fq2bam    create BAM file(s) from FASTQ file(s)
+        sges      run per-sample genotyping with Stargazer
+        sgep      run per-project genotyping with Stargazer (1)
+        sgea      run per-project genotyping with Stargazer (2)
+        cpa       run change point analysis for copy number
+        plotcov   plot coverage data to PDF file
+        check     check table files for Stargazer
+        liftover  convert variants in SNP table from hg19 to hg38
+        peek      find all possible star alleles from VCF file
+        snp       view variant data for sample/star allele pairs
 
     optional arguments:
       -h, --help  show this help message and exit
-      -V, --version  print the PyPGx version number and exit
+      -v          print the PyPGx version number and exit
 
 For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
     $ pypgx bam2gdf -h
-    usage: pypgx bam2gdf [-h] [-o FILE] tg cg bam [bam ...]
+    usage: pypgx bam2gdf [-h] [-o FILE] gb tg cg bam [bam ...]
 
     positional arguments:
+      gb          genome build (hg19, hg38)
       tg          target gene
       cg          control gene
       bam         BAM file
