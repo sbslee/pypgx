@@ -157,7 +157,7 @@ def sges(conf: str) -> None:
             f"  {genome_build} \\\n"
             "  $tg \\\n"
             "  $vcf2 \\\n"
-            "  $p/gene/$tg/stargazer\n"
+            "  $p/gene/$tg/stargazer \\\n"
         )
 
         if not vcf_only:
