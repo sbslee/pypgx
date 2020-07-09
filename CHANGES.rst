@@ -1,3 +1,8 @@
+v0.0.46
+-------
+
+* Added VCF only mode to ``sges`` tool.
+
 v0.0.45
 -------
 

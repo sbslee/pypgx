@@ -2,7 +2,7 @@ import configparser
 import os
 
 from .common import logging, LINE_BREAK1, is_chr
-from .sglib import read_gene_table, sort_regions
+from .sglib import read_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +23,8 @@ def sges(conf: str) -> None:
             output_prefix = pypgx
             target_genes = ALL
             genome_build = hg19
+            control_gene = NONE
+            vcf_only = FALSE
 
             # Make any necessary changes to this section.
             [USER]
@@ -64,6 +66,7 @@ def sges(conf: str) -> None:
     stargazer_tool = config["USER"]["stargazer_tool"]
     data_type = config["USER"]["data_type"]
     genome_build = config["USER"]["genome_build"]
+    vcf_only = config["USER"].getboolean("vcf_only")
 
     t = [k for k, v in gene_table.items() if v["type"] == "target"]
     
@@ -93,14 +96,10 @@ def sges(conf: str) -> None:
     else:
         chr_str = ""
 
-    control_region = gene_table[control_gene]["hg19_region"].replace("chr", "")
-
 # -- Shell script for each gene ----------------------------------------------
 
     for select_gene in select_genes:
-
-        target_region = gene_table[select_gene]["hg19_region"].replace("chr", "")
-        regions = sort_regions([target_region, control_region])
+        target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
 
         s = (
             f"p={project_path}\n"
@@ -140,10 +139,16 @@ def sges(conf: str) -> None:
             "  -o $vcf2 \\\n"
             "  -L $region \\\n"
             "\n"
-            "gdf=$p/gene/$tg/$tg.gdf\n"
-            "\n"
-            f"pypgx bam2gdf $tg {control_gene} $bam -o $gdf\\\n"
-            "\n"
+        )
+
+        if not vcf_only:
+            s += (
+                f"pypgx bam2gdf $tg {control_gene} $bam \\\n"
+                "  -o $p/gene/$tg/$tg.gdf \\\n"
+                "\n"
+            )
+
+        s += (
             f"stargazer={stargazer_tool}\n"
             "\n"
             f"python3 $stargazer \\\n"
@@ -152,9 +157,13 @@ def sges(conf: str) -> None:
             "  $tg \\\n"
             "  $vcf2 \\\n"
             "  $p/gene/$tg/stargazer\n"
-            f"  --cg {control_gene} \\\n"
-            "  --gdf $gdf\n"
         )
+
+        if not vcf_only:
+            s += (
+                f"  --cg {control_gene} \\\n"
+                "  --gdf $p/gene/$tg/$tg.gdf \\\n"
+            )
 
         with open(
             f"{project_path}/gene/{select_gene}/shell/run.sh", "w"

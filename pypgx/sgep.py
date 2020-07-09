@@ -98,7 +98,7 @@ def sgep(conf: str) -> None:
     else:
         raise ValueError("Mixed types of SN tags found.")
 
-    target_region = gene_table[target_gene]["hg19_region"].replace("chr", "")
+    target_region = gene_table[target_gene]["{genome_build}_region"].replace("chr", "")
 
     if not vcf_only:
         # Write the shell script for DepthOfCoverage.
