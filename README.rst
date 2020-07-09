@@ -30,7 +30,7 @@ Running in Command Line
 For getting help::
 
     $ pypgx -h
-    usage: pypgx [-h] [-v] tool ...
+    usage: pypgx [-h] [--version] tool ...
 
     positional arguments:
       tool        name of the tool
@@ -58,7 +58,7 @@ For getting help::
 
     optional arguments:
       -h, --help  show this help message and exit
-      -v          print the PyPGx version number and exit
+      --version   print the PyPGx version number and exit
 
 For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
