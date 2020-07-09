@@ -103,8 +103,8 @@ def sgep(conf: str) -> None:
     target_region = gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
 
     if not vcf_only:
-        # Write the shell script for DepthOfCoverage.
-        s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
+        # Write the shell script for bam2gdf.
+        s = f"pypgx bam2gdf {genome_build} {target_gene} {control_gene} \\\n"
 
         for sample_id in bam_files:
             s += f"  {bam_files[sample_id]} \\\n"

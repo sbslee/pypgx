@@ -98,8 +98,7 @@ def sges(conf: str) -> None:
     else:
         chr_str = ""
 
-# -- Shell script for each gene ----------------------------------------------
-
+    # Write the shell script for genotyping pipeline.
     for select_gene in select_genes:
         target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
 
@@ -145,7 +144,7 @@ def sges(conf: str) -> None:
 
         if not vcf_only:
             s += (
-                f"pypgx bam2gdf $tg {control_gene} $bam \\\n"
+                f"pypgx bam2gdf {genome_build} $tg {control_gene} $bam \\\n"
                 "  -o $p/gene/$tg/$tg.gdf \\\n"
                 "\n"
             )
@@ -172,8 +171,7 @@ def sges(conf: str) -> None:
         ) as f:
             f.write(s)
 
-# -- Shell script for reporting ----------------------------------------------
-
+    # Write the shell script for report.
     s = (
         f"p={project_path}\n"
         "\n"
@@ -190,8 +188,7 @@ def sges(conf: str) -> None:
     with open(f"{project_path}/report.sh", "w") as f:
         f.write(s)
 
-# -- Shell script for qsub ---------------------------------------------------
-
+    # Write the shell script for qsub.
     if qsub_options == "NONE":
         q = "qsub"
     else:

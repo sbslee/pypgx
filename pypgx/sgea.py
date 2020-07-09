@@ -92,7 +92,7 @@ def sgea(conf: str) -> None:
 
     if not vcf_only:
         # Write the shell script for bam2gdf.
-        s = f"pypgx bam2gdf {target_gene} {control_gene} \\\n"
+        s = f"pypgx bam2gdf {genome_build} {target_gene} {control_gene} \\\n"
 
         for sample_id in bam_files:
             s += f"  {bam_files[sample_id]} \\\n"
