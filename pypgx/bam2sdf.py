@@ -8,7 +8,12 @@ from .sglib import read_gene_table, sort_regions
 
 logger = logging.getLogger(__name__)
 
-def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
+def bam2sdf(
+        gb:str,
+        tg: str,
+        cg: str,
+        bam: List[str]
+    ) -> str:
     """
     Create SDF file from BAM file(s).
 
@@ -16,6 +21,7 @@ def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
         str: SDF file.
 
     Args:
+        gb (str): Genome build (hg19, hg38).
         tg (str): Target gene.
         cg (str): Control gene.
         bam (list[str]): BAM file(s).
@@ -56,8 +62,8 @@ def bam2sdf(tg: str, cg: str, bam: List[str]) -> str:
     else:
         chr = ""
 
-    tr = gene_table[tg]["hg19_region"].replace("chr", "")
-    cr = gene_table[cg]["hg19_region"].replace("chr", "")
+    tr = gene_table[tg][f"{gb}_region"].replace("chr", "")
+    cr = gene_table[cg][f"{gb}_region"].replace("chr", "")
 
     regions = sort_regions([tr, cr])
 

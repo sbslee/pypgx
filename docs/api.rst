@@ -150,17 +150,17 @@ pypgx.sglib module
     :members:
     :undoc-members:
 
-Configuration arguments
-=======================
+Configuration parameters
+========================
 
 A number of PyPGx commands (e.g. sgep) accept a configuration file as input. 
-This table summarizes the configuration arguments.
+This table summarizes the configuration parameters.
 
 .. list-table::
    :widths: 25 75
    :header-rows: 1
 
-   * - Argument
+   * - Parameter
      - Summary
    * - bam_file
      - Bam file.

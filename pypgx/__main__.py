@@ -30,12 +30,19 @@ logger = logging.getLogger(__name__)
 
 def get_parser():
     parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "-V",
+        "--version",
+        action="store_true",
+        help="print the PyPGx version number and exit"
+    )
+
     subparsers = parser.add_subparsers(
         dest="tool",
         metavar="tool",
         help="name of the tool",
     )
-    subparsers.required = True
 
     pgkb_parser = subparsers.add_parser(
         "pgkb",
@@ -48,7 +55,7 @@ def get_parser():
     )
     pgkb_parser.add_argument(
         "-t",
-        action='store_true',
+        action="store_true",
         help="extract first three guidelines for testing",
     )
 
@@ -90,6 +97,10 @@ def get_parser():
         help="create SDF file from BAM file(s)",
     )
     bam2sdf_parser.add_argument(
+        "gb",
+        help="genome build (hg19, hg38)",
+    )
+    bam2sdf_parser.add_argument(
         "tg",
         help="target gene",
     )
@@ -111,6 +122,10 @@ def get_parser():
     bam2gdf_parser = subparsers.add_parser(
         "bam2gdf",
         help="create GDF file from BAM file(s)",
+    )
+    bam2gdf_parser.add_argument(
+        "gb",
+        help="genome build (hg19, hg38)",
     )
     bam2gdf_parser.add_argument(
         "tg",
@@ -371,12 +386,16 @@ def output(fn, result):
         sys.stdout.write(result)
 
 def main():
-    logger.info(f"PyPGx v{__version__}")
     parser = get_parser()
     args = parser.parse_args()
 
+    if args.version:
+        print(f"PyPGx v{__version__}")
+        sys.exit()
+
+    logger.info(f"PyPGx v{__version__}")
     logger.info(f"""Command: '{" ".join(sys.argv)}'""")
-    
+
     if args.tool == "pgkb":
         result = pgkb(args.t)
         output(args.o, result)
@@ -390,11 +409,11 @@ def main():
         output(args.o, result)
 
     elif args.tool == "bam2sdf":
-        result = bam2sdf(args.tg, args.cg, args.bam)
+        result = bam2sdf(args.gb, args.tg, args.cg, args.bam)
         output(args.o, result)
 
     elif args.tool == "bam2gdf":
-        result = bam2gdf(args.tg, args.cg, args.bam)
+        result = bam2gdf(args.gb, args.tg, args.cg, args.bam)
         output(args.o, result)
 
     elif args.tool == "minivcf":
@@ -453,6 +472,8 @@ def main():
     elif args.tool == "snp":
         result = snp(args.vcf, args.pair)
         output(args.o, result)
+
+    logger.info("PyPGx finished")
 
 if __name__ == "__main__":
     main()

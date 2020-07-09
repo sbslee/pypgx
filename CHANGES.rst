@@ -1,7 +1,12 @@
+v0.0.48
+-------
+
+* Updated ``bam2gdf`` tool to support hg38.
+
 v0.0.47
 -------
 
-* Updated configuration arguments.
+* Updated configuration parameters.
 
 v0.0.46
 -------

@@ -66,13 +66,13 @@ bam2sdf
 Synopsis
 --------
 
-pypgx bam2sdf [options] tg cg bam [bam ...]
+pypgx bam2sdf [options] gb tg cg bam [bam ...]
 
 Description
 -----------
 
-Create SDF file from BAM file(s). *tg* is target gene. *cg* is control 
-gene. *bam* is BAM file.
+Create SDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
+*tg* is target gene. *cg* is control gene. *bam* is BAM file.
 
 Options
 -------
@@ -85,13 +85,13 @@ bam2gdf
 Synopsis
 --------
 
-pypgx bam2gdf [options] tg cg bam [bam ...]
+pypgx bam2gdf [options] gb tg cg bam [bam ...]
 
 Description
 -----------
 
-Create GDF file from BAM file(s). *tg* is target gene. *cg* is control 
-gene. *bam* is BAM file.
+Create GDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
+*tg* is target gene. *cg* is control gene. *bam* is BAM file.
 
 Options
 -------
