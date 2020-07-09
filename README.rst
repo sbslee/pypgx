@@ -77,7 +77,7 @@ For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
 For running in command line (e.g. ``bam2gdf`` tool)::
 
-    $ pypgx bam2gdf -o out.gdf cyp2d6 vdr in1.bam in2.bam in3.bam
+    $ pypgx bam2gdf hg19 cyp2d6 vdr in1.bam in2.bam -o out.gdf
 
 Running within Python
 =====================
