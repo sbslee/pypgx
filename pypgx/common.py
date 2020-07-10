@@ -104,3 +104,14 @@ def get_stardb(tg: str, gb: str) -> Dict[str, StarAllele]:
     star_table = read_star_table(f"{p}/resources/sg/star_table.txt")
 
     return build_stardb(tg, gb, star_table, snpdb)
+
+def get_gene_table() -> Dict[str, Dict[str, str]]:
+    """
+    Get gene table object.
+
+    Returns:
+        dict[str, dict[str, str]]: Gene table object.
+    """
+
+    p = os.path.dirname(__file__)
+    return read_gene_table(f"{p}/resources/sg/gene_table.txt")

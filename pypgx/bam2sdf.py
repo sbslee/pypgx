@@ -3,8 +3,8 @@ from typing import List
 
 import pysam
 
-from .common import logging, sm_tag
-from .sglib import read_gene_table, sort_regions
+from .common import logging, sm_tag, get_gene_table
+from .sglib import sort_regions
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +27,7 @@ def bam2sdf(
         bam (list[str]): BAM file(s).
     """
 
-    gene_table = read_gene_table(
-        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+    gene_table = get_gene_table()
 
     targets = [k for k, v in gene_table.items() if v["type"] == "target"]
     controls = [k for k, v in gene_table.items() if v["control"] == "yes"]

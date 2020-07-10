@@ -12,7 +12,8 @@ def fq2bam(conf: str) -> None:
     Args:
         conf (str): Configuration file.
 
-    Examples:
+    This is what a typical configuration file for ``fq2bam`` looks like:
+
         .. code-block:: python
 
             # File: example_conf.txt
@@ -30,6 +31,34 @@ def fq2bam(conf: str) -> None:
             vcf_files = in1.vcf, in2.vcf, in3.vcf
             library = awesome_experiment
             bed_file = in.bed
+
+    This table summarizes the configuration parameters specific to ``fq2bam``:
+
+        .. list-table::
+           :widths: 25 75
+           :header-rows: 1
+
+           * - Parameter
+             - Summary
+           * - bed_file
+             - BED file.
+           * - fasta_file
+             - Reference sequence file.
+           * - library
+             - Sequencing library name.
+           * - manifest_file
+             - Manifest file.
+           * - platform
+             - Sequencing platform.
+           * - project_path
+             - Path to output project directory.
+           * - read_length
+             - Sequence read length.
+           * - threads
+             - Number of threads.
+           * - vcf_files
+             - VCF files used for GATK-BQSR.
+
     """
 
     # Log the configuration data.

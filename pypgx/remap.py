@@ -12,7 +12,8 @@ def remap(conf: str) -> None:
     Args:
         conf (str): Configuration file.
 
-    Examples:
+    This is what a typical configuration file for ``remap`` looks like:
+
         .. code-block:: python
 
             # File: example_conf.txt
@@ -32,6 +33,37 @@ def remap(conf: str) -> None:
             library = awesome_experiment
             gatk_tool = gatk.jar
             picard_tool = picard.jar
+
+    This table summarizes the configuration parameters specific to ``remap``:
+
+        .. list-table::
+           :widths: 25 75
+           :header-rows: 1
+
+           * - Parameter
+             - Summary
+           * - fasta_file
+             - Reference sequence file.
+           * - gatk_tool
+             - Path to GATK file.
+           * - java_heap
+             - Java heap size.
+           * - library
+             - Sequencing library name.
+           * - manifest_file
+             - Manifest file.
+           * - picard_tool
+             - Path to Picard file.
+           * - platform
+             - Sequencing platform.
+           * - project_path
+             - Path to output project directory.
+           * - resources
+             - Options for qsub.
+           * - threads
+             - Number of threads.
+           * - vcf_files
+             - VCF files used for GATK-BQSR.
     """
 
     # Log the configuration data.

@@ -1,8 +1,7 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, is_chr
-from .sglib import read_gene_table
+from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +12,8 @@ def sges(conf: str) -> None:
     Args:
         conf (str): Configuration file.
 
-    Examples:
+    This is what a typical configuration file for ``sges`` looks like:
+
         .. code-block:: python
 
             # File: example_conf.txt
@@ -31,16 +31,54 @@ def sges(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             project_path = path/to/project/
-            control_gene = vdr
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            stargazer_tool = stargazer.py
+            stargazer_tool = Stargazer_v1.0.9
             gatk_tool = gatk.jar
             bam_file = in.bam
+            qsub_options = -l mem_requested=10G
+            target_genes = cyp2b6, cyp2d6, dpyd
+            control_gene = vdr
+
+    This table summarizes the configuration parameters specific to ``sges``:
+
+        .. list-table::
+           :widths: 25 75
+           :header-rows: 1
+
+           * - Parameter
+             - Summary
+           * - bam_file
+             - BAM file.
+           * - control_gene
+             - Control gene.
+           * - data_type
+             - Input data type (wgs, ts, chip).
+           * - dbsnp_file
+             - dbSNP VCF file.
+           * - fasta_file
+             - Reference sequence file.
+           * - gatk_tool
+             - Path to GATK file.
+           * - genome_build
+             - Genome build (hg19, hg38).
+           * - mapping_quality
+             - Minimum mapping quality used for counting reads.
+           * - output_prefix
+             - Output prefix.
+           * - project_path
+             - Path to output project directory.
+           * - qsub_options
+             - Options for qsub.
+           * - stargazer_tool
+             - Path to Stargazer directory.
+           * - target_genes
+             - Target genes.
+           * - vcf_only
+             - If true, do not use read depth data.
     """
 
-    gene_table = read_gene_table(
-        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+    gene_table = get_gene_table()
 
     # Log the configuration data.
     logger.info(LINE_BREAK1)
@@ -145,7 +183,7 @@ def sges(conf: str) -> None:
         if not vcf_only:
             s += (
                 f"pypgx bam2gdf {genome_build} $tg {control_gene} $bam \\\n"
-                "  -o $p/gene/$tg/$tg.gdf \\\n"
+                f"  -o $p/gene/$tg/{output_prefix}.gdf \\\n"
                 "\n"
             )
 
@@ -163,7 +201,7 @@ def sges(conf: str) -> None:
         if not vcf_only:
             s += (
                 f"  --cg {control_gene} \\\n"
-                "  --gdf $p/gene/$tg/$tg.gdf \\\n"
+                f"  --gdf $p/gene/$tg/{output_prefix}.gdf \\\n"
             )
 
         with open(

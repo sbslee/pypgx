@@ -4,13 +4,13 @@ Commands
 This section describes how to use PyPGx as a command-line program.
 For the public API of Python module ``pypgx``, please see the API section.
 
-pgkb
-====
+pgkb command
+============
 
 Synopsis
 --------
 
-pypgx pgkb [options]
+pypgx pgkb *[options]*
 
 Description
 -----------
@@ -22,15 +22,15 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
--t          will only look first three guidelines
+-t          extract first three guidelines for testing
 
-report
-======
+report command
+==============
 
 Synopsis
 --------
 
-pypgx report [options] gt
+pypgx report *[options] gt*
 
 Description
 -----------
@@ -42,13 +42,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-sdf2gdf
-=======
+sdf2gdf command
+===============
 
 Synopsis
 --------
 
-pypgx sdf2gdf [options] sdf id [id ...]
+pypgx sdf2gdf *[options] sdf id [id ...]*
 
 Description
 -----------
@@ -60,13 +60,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-bam2sdf
-=======
+bam2sdf command
+===============
 
 Synopsis
 --------
 
-pypgx bam2sdf [options] gb tg cg bam [bam ...]
+pypgx bam2sdf *[options] gb tg cg bam [bam ...]*
 
 Description
 -----------
@@ -79,13 +79,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-bam2gdf
-=======
+bam2gdf command
+===============
 
 Synopsis
 --------
 
-pypgx bam2gdf [options] gb tg cg bam [bam ...]
+pypgx bam2gdf *[options] gb tg cg bam [bam ...]*
 
 Description
 -----------
@@ -98,13 +98,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-minivcf
-=======
+minivcf command
+===============
 
 Synopsis
 --------
 
-pypgx minivcf [options] vcf region
+pypgx minivcf *[options] vcf region*
 
 Description
 -----------
@@ -116,13 +116,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-merge
-========
+merge command
+=============
 
 Synopsis
 --------
 
-pypgx merge [options] vcf [vcf ...]
+pypgx merge *[options] vcf [vcf ...]*
 
 Description
 -----------
@@ -135,13 +135,13 @@ Options
 -r STR      target region
 -o FILE     output to FILE [stdout]
 
-summary
-=======
+summary command
+===============
 
 Synopsis
 --------
 
-pypgx summary [options] tg gt
+pypgx summary *[options] tg gt*
 
 Description
 -----------
@@ -154,13 +154,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-meta
-====
+meta command
+============
 
 Synopsis
 --------
 
-pypgx meta [options] tg sf [sf ...]
+pypgx meta *[options] tg sf [sf ...]*
 
 Description
 -----------
@@ -173,13 +173,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-compare
-=======
+compare command
+===============
 
 Synopsis
 --------
 
-pypgx compare [options] gt [gt ...]
+pypgx compare *[options] gt [gt ...]*
 
 Description
 -----------
@@ -191,108 +191,108 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-remap
-=====
+remap command
+=============
 
 Synopsis
 --------
 
-pypgx remap [options] conf
+pypgx remap *[options] conf*
 
 Description
 -----------
 
-Remap BAM file(s) to different reference. *conf* is configuration file 
-(see the API section for details).
+Remap BAM file(s) to different reference. *conf* is configuration file. 
+See the API section for details.
 
 Options
 -------
 
 There are no options.
 
-fq2bam
-======
+fq2bam command
+==============
 
 Synopsis
 --------
 
-pypgx fq2bam [options] conf
+pypgx fq2bam *[options] conf*
 
 Description
 -----------
 
-Create BAM file(s) from FASTQ file(s). *conf* is configuration file 
-(see the API section for details).
+Create BAM file(s) from FASTQ file(s). *conf* is configuration file. 
+See the API section for details.
 
 Options
 -------
 
 There are no options.
 
-sges
-====
+sges command
+============
 
 Synopsis
 --------
 
-pypgx sges [options] conf
+pypgx sges *[options] conf*
 
 Description
 -----------
 
-Run per-sample genotyping with Stargazer. *conf* is configuration file 
-(see the API section for details).
+Run per-sample genotyping with Stargazer. *conf* is configuration file. 
+See the API section for details.
 
 Options
 -------
 
 There are no options.
 
-sgep
-====
+sgep command
+============
 
 Synopsis
 --------
 
-pypgx sgep [options] conf
+pypgx sgep *[options] conf*
 
 Description
 -----------
 
-Run per-project genotyping with Stargazer (1). *conf* is configuration file 
-(see the API section for details).
+Run per-project genotyping with Stargazer (1). *conf* is configuration file. 
+See the API section for details.
 
 Options
 -------
 
 There are no options.
 
-sgea
-====
+sgea command
+============
 
 Synopsis
 --------
 
-pypgx sgea [options] conf
+pypgx sgea *[options] conf*
 
 Description
 -----------
 
-Run per-project genotyping with Stargazer (2). *conf* is configuration file 
-(see the API section for details).
+Run per-project genotyping with Stargazer (2). *conf* is configuration file. 
+See the API section for details.
 
 Options
 -------
 
 There are no options.
 
-cpa
-===
+cpa command
+===========
 
 Synopsis
 --------
 
-pypgx cpa [options] rdata
+pypgx cpa *[options] rdata*
 
 Description
 -----------
@@ -304,13 +304,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-plotcov
-=======
+plotcov command
+===============
 
 Synopsis
 --------
 
-pypgx plotcov [options] sdf out
+pypgx plotcov *[options] sdf out*
 
 Description
 -----------
@@ -322,13 +322,13 @@ Options
 
 There are no options.
 
-check
-=====
+check command
+=============
 
 Synopsis
 --------
 
-pypgx check [options] star snp
+pypgx check *[options] star snp*
 
 Description
 -----------
@@ -341,13 +341,13 @@ Options
 
 There are no options.
 
-liftover
-========
+liftover command
+================
 
 Synopsis
 --------
 
-pypgx liftover [options] star snp tg
+pypgx liftover *[options] star snp tg*
 
 Description
 -----------
@@ -360,13 +360,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-peek
-====
+peek command
+============
 
 Synopsis
 --------
 
-pypgx peek [options] vcf
+pypgx peek *[options] vcf*
 
 Description
 -----------
@@ -378,13 +378,13 @@ Options
 
 -o FILE     output to FILE [stdout]
 
-snp
-===
+snp command
+===========
 
 Synopsis
 --------
 
-pypgx snp [options] vcf pair [pair ...]
+pypgx snp *[options] vcf pair [pair ...]*
 
 Description
 -----------

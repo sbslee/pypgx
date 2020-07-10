@@ -1,8 +1,7 @@
 import configparser
 import os
 
-from .common import logging, LINE_BREAK1, is_chr
-from .sglib import read_gene_table
+from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
 logger = logging.getLogger(__name__)
 
@@ -13,7 +12,7 @@ def sgep(conf: str) -> None:
     Args:
         conf (str): Configuration file.
 
-    Examples:
+    This is what a typical configuration file for ``sgep`` looks like:
 
         .. code-block:: python
 
@@ -33,15 +32,52 @@ def sgep(conf: str) -> None:
             manifest_file = manifest.txt
             project_path = path/to/project/
             target_gene = cyp2d6
-            control_gene = vdr
             data_type = wgs
             dbsnp_file = dbsnp.vcf
             stargazer_tool = Stargazer_v1.0.9
             gatk_tool = gatk.jar
+            control_gene = vdr
+            qsub_options = -V -l mem_requested=10G
+
+    This table summarizes the configuration parameters specific to ``sgep``:
+
+        .. list-table::
+           :widths: 25 75
+           :header-rows: 1
+
+           * - Parameter
+             - Summary
+           * - control_gene
+             - Control gene.
+           * - data_type
+             - Input data type (wgs, ts, chip).
+           * - dbsnp_file
+             - dbSNP VCF file.
+           * - fasta_file
+             - Reference sequence file.
+           * - gatk_tool
+             - Path to GATK file.
+           * - genome_build
+             - Genome build (hg19, hg38).
+           * - manifest_file
+             - Manifest file.
+           * - mapping_quality
+             - Minimum mapping quality used for counting reads.
+           * - output_prefix
+             - Output prefix.
+           * - project_path
+             - Path to output project directory.
+           * - qsub_options
+             - Options for qsub.
+           * - stargazer_tool
+             - Path to Stargazer directory.
+           * - target_gene
+             - Target gene.
+           * - vcf_only
+             - If true, do not use read depth data.
     """
 
-    gene_table = read_gene_table(
-        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+    gene_table = get_gene_table()
 
     # Log the configuration data.
     logger.info(LINE_BREAK1)

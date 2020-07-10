@@ -1,7 +1,8 @@
 import os
 
+from .common import get_gene_table
+
 from .sglib import (
-    read_gene_table,
     read_snp_table,
     build_snpdb,
     read_star_table,
@@ -21,8 +22,7 @@ def liftover(star: str, snp: str, tg: str) -> str:
         tg (str): Target gene.
     """
 
-    gene_table = read_gene_table(
-        f"{os.path.dirname(__file__)}/resources/sg/gene_table.txt")
+    gene_table = get_gene_table()
 
     snp_table = read_snp_table(snp, gene_table)
 
@@ -37,13 +37,21 @@ def liftover(star: str, snp: str, tg: str) -> str:
     for k, v in stardb.items():
         core = []
         for snp in v.core:
-            s = "{}:{}>{}".format(snp.data["hg38_pos"], snp.data["wt_allele"], snp.data["var_allele"])
+            s = "{}:{}>{}".format(
+                snp.data["hg38_pos"],
+                snp.data["wt_allele"],
+                snp.data["var_allele"]
+            )
             core.append(s)
         if not core:
             core = ["."]
         tag = []
         for snp in v.tag:
-            s = "{}:{}>{}".format(snp.data["hg38_pos"], snp.data["wt_allele"], snp.data["var_allele"])
+            s = "{}:{}>{}".format(
+                snp.data["hg38_pos"],
+                snp.data["wt_allele"],
+                snp.data["var_allele"]
+            )
             tag.append(s)
         if not tag:
             tag = ["."]
