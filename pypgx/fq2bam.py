@@ -27,7 +27,7 @@ def fq2bam(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             manifest_file = manifest.txt
-            project_path = path/to/project/
+            project_path = /path/to/project/
             vcf_files = in1.vcf, in2.vcf, in3.vcf
             library = awesome_experiment
             bed_file = in.bed
@@ -43,7 +43,7 @@ def fq2bam(conf: str) -> None:
            * - bed_file
              - BED file.
            * - fasta_file
-             - Reference sequence file.
+             - Reference FASTA file.
            * - library
              - Sequencing library name.
            * - manifest_file
@@ -51,13 +51,13 @@ def fq2bam(conf: str) -> None:
            * - platform
              - Sequencing platform.
            * - project_path
-             - Path to output project directory.
+             - Output project directory.
            * - read_length
              - Sequence read length.
            * - threads
              - Number of threads.
            * - vcf_files
-             - VCF files used for GATK-BQSR.
+             - Reference VCF files used for base quality score recalibration.
 
     """
 

@@ -22,7 +22,6 @@ def sges(conf: str) -> None:
             mapping_quality = 1
             output_prefix = pypgx
             target_genes = ALL
-            genome_build = hg19
             control_gene = NONE
             vcf_only = FALSE
             qsub_options = NONE
@@ -30,13 +29,14 @@ def sges(conf: str) -> None:
             # Make any necessary changes to this section.
             [USER]
             fasta_file = reference.fa
-            project_path = path/to/project/
+            project_path = /path/to/project/
+            genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
             stargazer_tool = Stargazer_v1.0.9
-            gatk_tool = gatk.jar
+            gatk_tool = GenomeAnalysisTK.jar
             bam_file = in.bam
-            qsub_options = -l mem_requested=10G
+            qsub_options = -l mem_requested=2G
             target_genes = cyp2b6, cyp2d6, dpyd
             control_gene = vdr
 
@@ -53,29 +53,29 @@ def sges(conf: str) -> None:
            * - control_gene
              - Control gene.
            * - data_type
-             - Input data type (wgs, ts, chip).
+             - Data type (wgs, ts, chip).
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
-             - Reference sequence file.
+             - Reference FASTA file.
            * - gatk_tool
-             - Path to GATK file.
+             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - mapping_quality
-             - Minimum mapping quality used for counting reads.
+             - Minimum mapping quality for read detph.
            * - output_prefix
              - Output prefix.
            * - project_path
-             - Path to output project directory.
+             - Output project directory.
            * - qsub_options
-             - Options for qsub.
+             - Options for qsub command.
            * - stargazer_tool
-             - Path to Stargazer directory.
+             - Stargazer program.
            * - target_genes
              - Target genes.
            * - vcf_only
-             - If true, do not use read depth data.
+             - If true, skip copy number analysis.
     """
 
     gene_table = get_gene_table()

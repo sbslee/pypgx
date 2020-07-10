@@ -21,7 +21,6 @@ def sgea(conf: str) -> None:
             [DEFAULT]
             mapping_quality = 1
             output_prefix = pypgx
-            genome_build = hg19
             control_gene = NONE
             vcf_only = FALSE
             qsub_options = NONE
@@ -30,12 +29,13 @@ def sgea(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             manifest_file = manifest.txt
-            project_path = path/to/project/
+            project_path = /path/to/project/
             target_gene = cyp2d6
-            control_gene = vdr
+            genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
             stargazer_tool = Stargazer_v1.0.9
+            control_gene = vdr
 
     This table summarizes the configuration parameters specific to ``sgea``:
 
@@ -48,29 +48,29 @@ def sgea(conf: str) -> None:
            * - control_gene
              - Control gene.
            * - data_type
-             - Input data type (wgs, ts, chip).
+             - Data type (wgs, ts, chip).
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
-             - Reference sequence file.
+             - Reference FASTA file.
            * - genome_build
              - Genome build (hg19, hg38).
            * - manifest_file
              - Manifest file.
            * - mapping_quality
-             - Minimum mapping quality used for counting reads.
+             - Minimum mapping quality for read depth.
            * - output_prefix
              - Output prefix.
            * - project_path
-             - Path to output project directory.
+             - Output project directory.
            * - qsub_options
-             - Options for qsub.
+             - Options for qsub command.
            * - stargazer_tool
-             - Path to Stargazer directory.
+             - Stargazer program.
            * - target_gene
              - Target gene.
            * - vcf_only
-             - If true, do not use read depth data.
+             - If true, skip copy number analysis.
     """
 
     gene_table = get_gene_table()

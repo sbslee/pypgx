@@ -21,7 +21,6 @@ def sgep(conf: str) -> None:
             [DEFAULT]
             mapping_quality = 1
             output_prefix = pypgx
-            genome_build = hg19
             control_gene = NONE
             vcf_only = FALSE
             qsub_options = NONE
@@ -30,12 +29,13 @@ def sgep(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             manifest_file = manifest.txt
-            project_path = path/to/project/
+            project_path = /path/to/project/
             target_gene = cyp2d6
+            genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
             stargazer_tool = Stargazer_v1.0.9
-            gatk_tool = gatk.jar
+            gatk_tool = GenomeAnalysisTK.jar
             control_gene = vdr
             qsub_options = -V -l mem_requested=10G
 
@@ -50,31 +50,31 @@ def sgep(conf: str) -> None:
            * - control_gene
              - Control gene.
            * - data_type
-             - Input data type (wgs, ts, chip).
+             - Data type (wgs, ts, chip).
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
-             - Reference sequence file.
+             - Reference FASTA file.
            * - gatk_tool
-             - Path to GATK file.
+             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - manifest_file
              - Manifest file.
            * - mapping_quality
-             - Minimum mapping quality used for counting reads.
+             - Minimum mapping quality for read depth.
            * - output_prefix
              - Output prefix.
            * - project_path
-             - Path to output project directory.
+             - Output project directory.
            * - qsub_options
-             - Options for qsub.
+             - Options for qsub command.
            * - stargazer_tool
-             - Path to Stargazer directory.
+             - Stargazer program.
            * - target_gene
              - Target gene.
            * - vcf_only
-             - If true, do not use read depth data.
+             - If true, skip copy number analysis.
     """
 
     gene_table = get_gene_table()
@@ -211,7 +211,6 @@ def sgep(conf: str) -> None:
         f"project={project_path}\n"
         f"stargazer={stargazer_tool}\n"
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
-        f"gdf=$project/{output_prefix}.gdf\n"
         "\n"
         f"python3 $stargazer \\\n"
         f"  {data_type} \\\n"
@@ -224,7 +223,7 @@ def sgep(conf: str) -> None:
     if not vcf_only:
         s += (
             f"  --cg {control_gene} \\\n"
-            "  --gdf $gdf\n"
+            f"  --gdf $project/{output_prefix}.gdf \\\n"
         )
 
     with open(f"{project_path}/shell/rs.sh", "w") as f:
