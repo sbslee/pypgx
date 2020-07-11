@@ -8,6 +8,7 @@ Welcome to PyPGx's documentation!
    readme
    commands
    api
+   changelog
 
 Indices and tables
 ==================
