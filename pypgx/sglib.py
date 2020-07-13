@@ -3,34 +3,6 @@ import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
 
-CODES = {
-    "vi0": "vi_unknown_impact",
-    "vi1": "vi_low_impact",
-    "vi2": "vi_moderate_impact",
-    "vi3": "vi_high_impact",
-    "so0": "so_unknown_variant",
-    "so1": "so_synonymous_variant",
-    "so2": "so_missense_variant",
-    "so3": "so_frameshift_variant",
-    "so4": "so_intron_variant",
-    "so5": "so_splice_donor_variant",
-    "so6": "so_inframe_deletion",
-    "so7": "so_stop_gained",
-    "so8": "so_downstream_gene_variant",
-    "so9": "so_3_prime_UTR_variant",
-    "so10": "so_upstream_gene_variant",
-    "so11": "so_splice_acceptor_variant",
-    "so12": "so_inframe_insertion",
-    "so13": "so_start_lost",
-    "so14": "so_5_prime_UTR_variant",
-    "so15": "so_stop_lost",
-    "fe0": "fe_unknown_effect",
-    "fe1": "fe_no_effect",
-    "rv0": "rv_unknown",
-    "rv1": "rv_true",
-    "rv2": "rv_false",
-}
-
 class VCFFile:
     """
     VCF file ojbect.
@@ -273,10 +245,10 @@ class SNPAllele:
 
     def summary(self):
         return (
-            f'<{self.pos}:{self.wt}>{self.var}:'
+            f'<{self.rs}:{self.pos}:{self.wt}>{self.var}:'
             f'{self.ad}/{self.td}:{self.af:.2f}:'
-            f'{get_codes_value(self.so)}:{get_codes_value(self.rv)}:'
-            f'{get_codes_value(self.vi)}:{get_codes_value(self.fe)}>'
+            f'{self.so}:{self.rv}:'
+            f'{self.vi}:{self.fe}>'
         )
 
 class StarAllele:
@@ -385,8 +357,15 @@ class BioHaplotype:
         self.remove_star(sX)
 
 class BioSample:
-    def __init__(self):
-        self.name = "" # sample ID
+    def __init__(self, name: str) -> None:
+        """
+        Initialize a BioSample object.
+
+        Args:
+            name (str): Sample ID.
+        """
+
+        self.name = name
         self.gt = False # true if genotyped
         self.sv = ["no_sv", "no_sv"] # one SV call per haplotype
         self.pt = "" # predicted phenotype
@@ -394,27 +373,25 @@ class BioSample:
         self.dip_cand = [] # candidate stars
         self.hap = [BioHaplotype(), BioHaplotype()]
 
-def vcf2samples(
+def vcf2biosamples(
         vcf: VCFFile,
         filter: bool = False
-    ) -> Dict[str, BioSample]:
+    ) -> List[BioSample]:
     """
-    Convert VCFFile object to BioSample objects.
+    Convert a VCFFile object to a list of BioSample objects.
 
     Returns:
-        dict[str, BioSample]: BioSample objects.
+        list[BioSample]: A list of BioSample objects.
 
     Args:
-        vcf (VCFFile): VCF file.
-        filter (bool): Exclude unphased markers.
-
+        vcf (VCFFile): A VCFFile object.
+        filter (bool): Exclude any unphased markers.
     """
 
-    result = {}
+    result = []
 
     for name in vcf.header[9:]:
-        biosample = BioSample()
-        biosample.name = name
+        biosample = BioSample(name)
         i = vcf.header.index(name)
 
         for fields in vcf.data:
@@ -458,7 +435,7 @@ def vcf2samples(
 
                 biosample.hap[j].obs.append(snpallele)
 
-        result[name] = biosample
+        result.append(biosample)
 
     return result
 
@@ -552,17 +529,6 @@ def parse_vcf_fields(fields):
         "info": fields[7].split(";"),
         "format": fields[8].split(":")
     }
-
-def get_codes_key(value):
-    for k, v in CODES.items():
-        if value == v:
-            return k
-    return value
-
-def get_codes_value(key):
-    if key in CODES:
-        return CODES[key]
-    return key
 
 def read_gene_table(
         fn: str
@@ -701,10 +667,10 @@ def build_snpdb(
         snpallele.hg = v[f'{gb}_allele']
         snpallele.var = v['var_allele']
         snpallele.wt = v['wt_allele']
-        snpallele.fe = get_codes_key(v['functional_effect'])
-        snpallele.so = get_codes_key(v['sequence_ontology'])
-        snpallele.vi = get_codes_key(v['variant_impact'])
-        snpallele.rv = get_codes_key(v[f'{gb}_revertant'])
+        snpallele.fe = v['functional_effect']
+        snpallele.so = v['sequence_ontology']
+        snpallele.vi = v['variant_impact']
+        snpallele.rv = v[f'{gb}_revertant']
         snpallele.data = v
         result.append(snpallele)
 

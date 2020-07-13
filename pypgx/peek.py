@@ -1,7 +1,7 @@
 import os
 
 from .common import get_stardb
-from .sglib import VCFFile, parse_vcf_fields, vcf2samples
+from .sglib import VCFFile, parse_vcf_fields, vcf2biosamples
 
 def peek(vcf) -> str:
     """
@@ -52,12 +52,12 @@ def peek(vcf) -> str:
             for j in range(n):
                 finalized_vcf.data[i].append(f"0{sep}1")
 
-    samples = vcf2samples(finalized_vcf, filter=False)
+    biosamples = vcf2biosamples(finalized_vcf, filter=False)
     snp_list = []
     
-    for name in samples:
-        snp_list += samples[name].hap[0].obs
-        snp_list += samples[name].hap[1].obs
+    for biosample in biosamples:
+        snp_list += biosample.hap[0].obs
+        snp_list += biosample.hap[1].obs
     
     # remove duplicates
     snp_list = list(set(snp_list))

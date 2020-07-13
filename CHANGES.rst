@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.53
+-------
+
+* Updated sglib.py.
+
 v0.0.52
 -------
 

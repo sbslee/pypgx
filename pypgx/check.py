@@ -161,7 +161,7 @@ def check(star: str, snp: str) -> None:
             raise ValueError(f"Unmatched variant count: {name} (#{number}) should count {count}")
         if rev and (hg != var or wt == hg or wt == var):
             raise ValueError(f"Conflicting data: {name} is marked as revertant")
-        if cadd >= 30 and impact != "vi_high_impact":
+        if cadd >= 30 and impact != "high_impact":
             raise ValueError(f"Conflicting data: {name} has CADD >= 30 and {impact}")
         
         # check associated phenotype
@@ -177,7 +177,7 @@ def check(star: str, snp: str) -> None:
             phenotype = "."
         if causal != phenotype:
             raise ValueError(f"Incorrect phenotype information: {name} ({','.join(causal)}) should have {phenotype}")
-        if causal not in [".", "unknown_function", "normal_function", "IV/Normal"] and impact != "vi_high_impact":
+        if causal not in [".", "unknown_function", "normal_function", "IV/Normal"] and impact != "high_impact":
             raise ValueError(f"Incorrect impact information: {name} ({impact}; {causal}) should have high_impact")
 
     logger.info("    Variant counts: Pass")
