@@ -106,7 +106,7 @@ def get_parser():
     )
     bam2sdf_parser.add_argument(
         "cg",
-        help="control gene",
+        help="control gene or region",
     )
     bam2sdf_parser.add_argument(
         "bam",
@@ -133,7 +133,7 @@ def get_parser():
     )
     bam2gdf_parser.add_argument(
         "cg",
-        help="control gene",
+        help="control gene or region",
     )
     bam2gdf_parser.add_argument(
         "bam",

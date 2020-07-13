@@ -20,7 +20,7 @@ def bam2gdf(
     Args:
         gb (str): Genome build (hg19, hg38).
         tg (str): Target gene.
-        cg (str): Control gene.
+        cg (str): Control gene or region.
         bam (list[str]): BAM file(s).
     """
 

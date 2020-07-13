@@ -23,7 +23,6 @@ def sges(conf: str) -> None:
             output_prefix = pypgx
             target_genes = ALL
             control_gene = NONE
-            vcf_only = FALSE
             qsub_options = NONE
 
             # Make any necessary changes to this section.
@@ -51,7 +50,7 @@ def sges(conf: str) -> None:
            * - bam_file
              - BAM file.
            * - control_gene
-             - Control gene.
+             - Control gene or region.
            * - data_type
              - Data type (wgs, ts, chip).
            * - dbsnp_file
@@ -74,8 +73,6 @@ def sges(conf: str) -> None:
              - Stargazer program.
            * - target_genes
              - Target genes.
-           * - vcf_only
-             - If true, skip copy number analysis.
     """
 
     gene_table = get_gene_table()
@@ -105,7 +102,6 @@ def sges(conf: str) -> None:
     stargazer_tool = config["USER"]["stargazer_tool"]
     data_type = config["USER"]["data_type"]
     genome_build = config["USER"]["genome_build"]
-    vcf_only = config["USER"].getboolean("vcf_only")
     qsub_options = config["USER"]["qsub_options"]
 
     t = [k for k, v in gene_table.items() if v["type"] == "target"]
@@ -180,7 +176,7 @@ def sges(conf: str) -> None:
             "\n"
         )
 
-        if not vcf_only:
+        if control_gene != "NONE":
             s += (
                 f"pypgx bam2gdf {genome_build} $tg {control_gene} $bam \\\n"
                 f"  -o $p/gene/$tg/{output_prefix}.gdf \\\n"
@@ -198,7 +194,7 @@ def sges(conf: str) -> None:
             "  $p/gene/$tg/stargazer \\\n"
         )
 
-        if not vcf_only:
+        if control_gene != "NONE":
             s += (
                 f"  --cg {control_gene} \\\n"
                 f"  --gdf $p/gene/$tg/{output_prefix}.gdf \\\n"

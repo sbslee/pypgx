@@ -72,7 +72,7 @@ Description
 -----------
 
 Create SDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
-*tg* is target gene. *cg* is control gene. *bam* is BAM file.
+*tg* is target gene. *cg* is control gene or region. *bam* is BAM file.
 
 Options
 -------
@@ -91,7 +91,7 @@ Description
 -----------
 
 Create GDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
-*tg* is target gene. *cg* is control gene. *bam* is BAM file.
+*tg* is target gene. *cg* is control gene or region. *bam* is BAM file.
 
 Options
 -------

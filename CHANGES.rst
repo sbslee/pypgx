@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.54
+-------
+
+* Increased compatibility with Stargazer.
+
 v0.0.53
 -------
 

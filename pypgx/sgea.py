@@ -22,7 +22,6 @@ def sgea(conf: str) -> None:
             mapping_quality = 1
             output_prefix = pypgx
             control_gene = NONE
-            vcf_only = FALSE
             qsub_options = NONE
 
             # Make any necessary changes to this section.
@@ -46,7 +45,7 @@ def sgea(conf: str) -> None:
            * - Parameter
              - Summary
            * - control_gene
-             - Control gene.
+             - Control gene or region.
            * - data_type
              - Data type (wgs, ts, chip).
            * - dbsnp_file
@@ -69,8 +68,6 @@ def sgea(conf: str) -> None:
              - Stargazer program.
            * - target_gene
              - Target gene.
-           * - vcf_only
-             - If true, skip copy number analysis.
     """
 
     gene_table = get_gene_table()
@@ -99,7 +96,6 @@ def sgea(conf: str) -> None:
     dbsnp_file = config["USER"]["dbsnp_file"]
     stargazer_tool = config["USER"]["stargazer_tool"]
     genome_build = config["USER"]["genome_build"]
-    vcf_only = config["USER"].getboolean("vcf_only")
     qsub_options = config["USER"]["qsub_options"]
 
     # Read the manifest file.
@@ -124,7 +120,7 @@ def sgea(conf: str) -> None:
     os.mkdir(f"{project_path}/log")
     os.mkdir(f"{project_path}/temp")
 
-    if not vcf_only:
+    if control_gene != "NONE":
         # Write the shell script for bam2gdf.
         s = f"pypgx bam2gdf {genome_build} {target_gene} {control_gene} \\\n"
 
@@ -225,7 +221,7 @@ def sgea(conf: str) -> None:
         "  $project/stargazer \\\n"
     )
 
-    if not vcf_only:
+    if control_gene != "NONE":
         s += (
             f"  --cg {control_gene} \\\n"
             f"  --gdf $project/{output_prefix}.gdf \\\n"
@@ -245,7 +241,7 @@ def sgea(conf: str) -> None:
         "\n"
     )
 
-    if not vcf_only:
+    if control_gene != "NONE":
         s += f"{q} -N doc $p/shell/doc.sh\n"
 
     for sample_id in bam_files:
@@ -253,7 +249,7 @@ def sgea(conf: str) -> None:
 
     s += f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
 
-    if vcf_only:
+    if control_gene == "NONE":
         s += f"{q} -hold_jid post -N rs $p/shell/rs.sh\n"
 
     else:
