@@ -26,8 +26,6 @@ from .liftover import liftover
 from .peek import peek
 from .snp import snp
 
-logger = logging.getLogger(__name__)
-
 def get_parser():
     parser = argparse.ArgumentParser()
 
@@ -389,6 +387,7 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
 
+    logger = logging.getLogger(__name__)
     logger.info(f"PyPGx v{__version__}")
     logger.info(f"""Command: '{" ".join(sys.argv)}'""")
 
@@ -468,6 +467,9 @@ def main():
     elif args.tool == "snp":
         result = snp(args.vcf, args.pair)
         output(args.o, result)
+
+    else:
+        pass
 
     logger.info("PyPGx finished")
 

@@ -91,7 +91,7 @@ def sges(conf: str) -> None:
 
     # Parse the configuration data.
     target_genes = config["USER"]["target_genes"]
-    project_path = config["USER"]["project_path"]
+    project_path = os.path.realpath(config["USER"]["project_path"])
     bam_file = config["USER"]["bam_file"]
     gatk_tool = config["USER"]["gatk_tool"]
     fasta_file = config["USER"]["fasta_file"]

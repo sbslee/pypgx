@@ -122,7 +122,7 @@ def pgkb(is_test: bool = False) -> str:
         # one chemical and one table. Nothing much left to parse.
         if ng == nc == nt == 1:
             logger.info("    Type: Case 1")
-            _update(result, genes[0], chemicals[0], 
+            _update(result, genes[0], chemicals[0],
                 tables[0], frontend_url, summary, "case1")
 
         # Case 2: This is a simple case where there are one chemical,
@@ -130,14 +130,16 @@ def pgkb(is_test: bool = False) -> str:
         elif ng > 1 and nc == nt == 1:
             logger.info("    Type: Case 2")
             for gene in genes:
-                _update(result, gene, chemicals[0], tables[0], frontend_url, summary, "case2")
+                _update(result, gene, chemicals[0],
+                    tables[0], frontend_url, summary, "case2")
 
         # Case 3: This is a simple case where there are one gene
         # one table and multiple chemicals. Nothing much left to parse.
         elif nc > 1 and ng == nt == 1:
             logger.info("    Type: Case 3")
             for chemical in chemicals:
-                _update(result, genes[0], chemical, tables[0], frontend_url, summary, "case3")
+                _update(result, genes[0], chemical,
+                    tables[0], frontend_url, summary, "case3")
 
         # Case 4: This is a simple case where there are one chemical and
         # identical number of genes and tables. Just need to find the correct
@@ -160,7 +162,8 @@ def pgkb(is_test: bool = False) -> str:
                 logger.warning(LINE_BREAK2)
                 continue
             for i, gene in enumerate(genes):
-                _update(result, gene, chemicals[0], temp[gene], frontend_url, summary, "case4")
+                _update(result, gene, chemicals[0],
+                    temp[gene], frontend_url, summary, "case4")
 
         # Case 5: This is a complicated case where there are one chemical,
         # two genes and three tables. Need to find the correct
@@ -173,7 +176,8 @@ def pgkb(is_test: bool = False) -> str:
                 for gene in genes:
                     if gene in "".join(list(table)) and gene not in seen:
                         seen.append(gene)
-                    if table.iloc[:, 0].str.contains(gene, regex=False).any() and gene not in seen:
+                    if table.iloc[:, 0].str.contains(
+                        gene, regex=False).any() and gene not in seen:
                         seen.append(gene)
                 if len(seen) == 1:
                     temp[seen[0]] = table
@@ -183,19 +187,22 @@ def pgkb(is_test: bool = False) -> str:
                 logger.warning(LINE_BREAK2)
                 continue
             for i, gene in enumerate(genes):
-                _update(result, gene, chemicals[0], temp[gene], frontend_url, summary, "case5")
+                _update(result, gene, chemicals[0],
+                    temp[gene], frontend_url, summary, "case5")
 
         # Case 6: This guideline (voriconazole-CYP2C19) has separate
         # tables for adult and pediatric patients.
         elif id == "PA166161537":
             logger.info("    Type: Case 6")
-            _update(result, genes[0], chemicals[0], tables[0], frontend_url, summary, "case6")
+            _update(result, genes[0], chemicals[0],
+                tables[0], frontend_url, summary, "case6")
 
         # Case 7: This guideline (atomoxetine-CYP2D6) has separate
         # tables for adult and pediatric patients.
         elif id == "PA166181885":
             logger.info("    Type: Case 7")
-            _update(result, genes[0], chemicals[0], tables[1], frontend_url, summary, "case7")
+            _update(result, genes[0], chemicals[0],
+                tables[1], frontend_url, summary, "case7")
 
         # Case 8: This guideline has two genes (CACNA1S and RYR1), seven
         # chemicals and one table.
@@ -203,7 +210,8 @@ def pgkb(is_test: bool = False) -> str:
             logger.info("    Type: Case 8")
             for gene in genes:
                 for chemical in chemicals:
-                    _update(result, gene, chemical, tables[0], frontend_url, summary, "case8")
+                    _update(result, gene, chemical,
+                        tables[0], frontend_url, summary, "case8")
 
         # Case 9: This guideline (warfarin-CYP2C9, CYP4F2, VKORC1) requires
         # manual review.
@@ -244,6 +252,8 @@ def pgkb(is_test: bool = False) -> str:
             type = result[chemical][gene]["type"]
             for phenotype in result[chemical][gene]["pt"]:
                 recommendation = result[chemical][gene]["pt"][phenotype]
-                string += f"{chemical}\t{gene}\t{url}\t{type}\t{summary}\t{phenotype}\t{recommendation}\n"
+                string += (
+                    f"{chemical}\t{gene}\t{url}\t{type}\t"
+                        f"{summary}\t{phenotype}\t{recommendation}\n")
 
     return string

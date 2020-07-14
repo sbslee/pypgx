@@ -227,6 +227,7 @@ class SNPAllele:
         self.fe = '' # functional effect
         self.vi = '' # variant impact
         self.rv = '' # reverting variant
+        self.gb = '' # genome build
         self.data = {}
 
     @property
@@ -243,12 +244,18 @@ class SNPAllele:
     def __hash__(self):
         return hash(self.key)
 
-    def summary(self):
+    def summary(self) -> str:
+        """
+        Return SNP summary.
+
+        Returns:
+            str: Summary of this SNPAllele object.
+        """
+
         return (
-            f'<{self.rs}:{self.pos}:{self.wt}>{self.var}:'
-            f'{self.ad}/{self.td}:{self.af:.2f}:'
-            f'{self.so}:{self.rv}:'
-            f'{self.vi}:{self.fe}>'
+            f"[{self.rs}:{self.gb}:{self.pos}:{self.wt}>{self.var}:"
+            f"{self.ad}/{self.td}:{self.af:.2f}:"
+            f"{self.so}:{self.rv}:{self.vi}:{self.fe}]"
         )
 
 class StarAllele:
@@ -427,6 +434,7 @@ def vcf2biosamples(
                 snpallele.vi = vi[k]
                 snpallele.fe = fe[k]
                 snpallele.rv = rv[k]
+                snpallele.gb = vcf.gb
 
                 if "AD" in v["format"]:
                     ad = [int(x) for x in fields[i].split(":")[1].split(",")]
@@ -671,6 +679,7 @@ def build_snpdb(
         snpallele.so = v['sequence_ontology']
         snpallele.vi = v['variant_impact']
         snpallele.rv = v[f'{gb}_revertant']
+        snpallele.gb = gb
         snpallele.data = v
         result.append(snpallele)
 
