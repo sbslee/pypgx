@@ -23,7 +23,7 @@ setup(
             "snp_table.txt",
             "star_table.txt",
         ],
-        "pypgx.resources.pgkb": ["actions.txt"],
+        "pypgx.resources.pgkb": ["action_table.txt"],
         "pypgx.resources.r": ["cpa.R", "plotcov.R"],
     },
     install_requires=requirements,

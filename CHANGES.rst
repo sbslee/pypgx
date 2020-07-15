@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.57
+-------
+
+* Updated report.py.
+
 v0.0.56
 -------
 

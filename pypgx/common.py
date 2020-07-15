@@ -1,6 +1,6 @@
 import os
 import logging
-from typing import Dict
+from typing import Dict, List
 
 import pysam
 
@@ -115,3 +115,12 @@ def get_gene_table() -> Dict[str, Dict[str, str]]:
 
     p = os.path.dirname(__file__)
     return read_gene_table(f"{p}/resources/sg/gene_table.txt")
+
+def get_target_genes() -> List[str]:
+    """Get the list of target gene names.
+
+    Returns:
+        list[str]: A list of gene names.
+    """
+    gene_table = get_gene_table()
+    return [k for k, v in gene_table.items() if v["type"] == "target"]

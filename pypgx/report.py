@@ -1,10 +1,12 @@
-import pkgutil
+import os
 import csv
 import sys
 import datetime
+import pkgutil
 from typing import TextIO, Optional
+from .common import get_target_genes
 
-def _overview_table(gt, pairs, genes):
+def _add_overview_section(genotype_table, pair_table, target_genes):
     table = (
         "<table>\n"
         "<tr>\n"
@@ -18,16 +20,16 @@ def _overview_table(gt, pairs, genes):
         "</tr>\n"
     )
     words = ["normal", "unknown", "-"]
-    for i, gene in enumerate(genes, 1):
-        if any([x in gt[gene]["phenotype"] for x in words]):
+    for i, gene in enumerate(target_genes, 1):
+        if any([x in genotype_table[gene]["phenotype"] for x in words]):
             color = "black"
         else:
             color = "red"
-        genotype = gt[gene]["hap1_main"] + "/" + gt[gene]["hap2_main"]
-        score = gt[gene]["dip_score"]
-        phenotype = gt[gene]["phenotype"]
-        drugs = len([x["Drug"] for x in pairs if x["Gene"] == gene.upper()])
-        guidelines = len([x for x in pairs if x["Gene"] == gene.upper() and x["Guideline"] != "-"])
+        genotype = genotype_table[gene]["hap1_main"] + "/" + genotype_table[gene]["hap2_main"]
+        score = genotype_table[gene]["dip_score"]
+        phenotype = genotype_table[gene]["phenotype"]
+        drugs = len([x["Drug"] for x in pair_table if x["Gene"] == gene.upper()])
+        guidelines = len([x for x in pair_table if x["Gene"] == gene.upper() and x["Guideline"] != "-"])
         table += (
             f"<tr style='color: {color};'>\n"
             f"  <td>{i}</td>\n"
@@ -41,7 +43,7 @@ def _overview_table(gt, pairs, genes):
         )
     return table + "</table>"
 
-def _genotype_table(gt, genes):
+def _add_genotypes_section(genotype_table, target_genes):
     table = (
         "<table>\n"
         "<tr>\n"
@@ -53,15 +55,15 @@ def _genotype_table(gt, genes):
         "  <th style='width: 10%;'>SVs</th>\n"
         "</tr>\n"
     )
-    for i, gene in enumerate(genes, 1):
-        hmc1 = "<br />".join(gt[gene]["hap1_main_core"].split(","))
-        hmc2 = "<br />".join(gt[gene]["hap2_main_core"].split(","))
-        hap1_main = gt[gene]["hap1_main"]
-        hap1_score = gt[gene]["hap1_score"]
-        hap1_sv = gt[gene]["hap1_sv"]
-        hap2_main = gt[gene]["hap2_main"]
-        hap2_score = gt[gene]["hap2_score"]
-        hap2_sv = gt[gene]["hap2_sv"]
+    for i, gene in enumerate(target_genes, 1):
+        hmc1 = "<br />".join(genotype_table[gene]["hap1_main_core"].split(","))
+        hmc2 = "<br />".join(genotype_table[gene]["hap2_main_core"].split(","))
+        hap1_main = genotype_table[gene]["hap1_main"]
+        hap1_score = genotype_table[gene]["hap1_score"]
+        hap1_sv = genotype_table[gene]["hap1_sv"]
+        hap2_main = genotype_table[gene]["hap2_main"]
+        hap2_score = genotype_table[gene]["hap2_score"]
+        hap2_sv = genotype_table[gene]["hap2_sv"]
         table += (
             "<tr>\n"
             f"  <td rowspan='2'>{i}</td>\n"
@@ -80,7 +82,7 @@ def _genotype_table(gt, genes):
         )
     return table + "</table>"
 
-def _drug_table(gt, pairs):
+def _add_drugs_section(genotype_table, pair_table):
     table = (
         "<table>\n"
         "<tr>\n"
@@ -92,14 +94,14 @@ def _drug_table(gt, pairs):
         "  <th style='width: 60%;'>Guideline</th>\n"
         "</tr>\n"
     )
-    for i, pair in enumerate(sorted(pairs, key = lambda x: (x["Drug"].lower(), x["Gene"])), 1):
-        if pair["Gene"].lower() in gt:
+    for i, pair in enumerate(sorted(pair_table, key = lambda x: (x["Drug"].lower(), x["Gene"])), 1):
+        if pair["Gene"].lower() in genotype_table:
             bold = "bold"
         else:
             bold = "normal"
         if bold == "normal":
             color = "black"
-        elif any([x in gt[pair["Gene"].lower()]["phenotype"] for x in ["normal", "unknown", "-"]]):
+        elif any([x in genotype_table[pair["Gene"].lower()]["phenotype"] for x in ["normal", "unknown", "-"]]):
             color = "normal"
         else:
             color = "red"
@@ -115,13 +117,13 @@ def _drug_table(gt, pairs):
         )
     return table + "</table>"
 
-def _action_table(actions):
+def _add_recommendations_section(action_table):
     string = ""
-    for chemical in actions:
-        for gene in actions[chemical]:
+    for chemical in action_table:
+        for gene in action_table[chemical]:
             description = (
-                f"{actions[chemical][gene]['summary']} "
-                f"[PharmGKB Link: {actions[chemical][gene]['url']}]"
+                f"{action_table[chemical][gene]['summary']} "
+                f"[PharmGKB Link: {action_table[chemical][gene]['url']}]"
             )
             table = (
                 f"<h3>{chemical}-{gene}</h3>\n"
@@ -132,16 +134,86 @@ def _action_table(actions):
                 "  <th style='width: 80%;'>Recommendation</th>\n"
                 "</tr>\n"
             )
-            for phenotype in actions[chemical][gene]["pt"]:
+            for phenotype in action_table[chemical][gene]["pt"]:
                 table += (
                     "<tr>\n"
                     f"  <td>{phenotype}</td>\n"
-                    f"  <td>{actions[chemical][gene]['pt'][phenotype]}</td>\n"
+                    f"  <td>{action_table[chemical][gene]['pt'][phenotype]}</td>\n"
                     "</tr>\n"
                 )
             table += "</table>\n"
             string += table
     return string
+
+def _read_action_table():
+    result = {}
+    p = os.path.dirname(__file__)
+
+    with open(f"{p}/resources/pgkb/action_table.txt") as f:
+        next(f)
+
+        for line in f:
+            fields = line.strip().split("\t")
+            chemical = fields[0]
+            gene = fields[1]
+            url = fields[2]
+            summary = fields[4]
+            phenotype = fields[5]
+            action = fields[6]
+
+            if chemical not in result:
+                result[chemical] = {}
+
+            if gene not in result[chemical]:
+                result[chemical][gene] = {
+                    "summary": summary,
+                    "url": url,
+                    "pt": {},
+                }
+
+            if phenotype not in result[chemical][gene]["pt"]:
+                result[chemical][gene]["pt"][phenotype] = action
+
+    return result
+
+def _read_pair_table():
+    result1 = []
+    p = os.path.dirname(__file__)
+
+    with open(f"{p}/resources/cpic/cpicPairs.csv") as f:
+        result2 = next(f).strip().strip('"').replace(
+            "Date last updated: ", "")
+        header = next(f).strip().split(",")
+        for line in f:
+            fields = line.replace(", ", "/").strip().split(",")
+            t = [x if x else "-" for x in fields]
+            t = dict(zip(header, t))
+            result1.append(t)
+
+    return result1, result2
+
+def _read_genotype_file(f, fn):
+    result1 = {}
+    result2 = ""
+
+    if fn:
+        f = open(fn)
+
+    header = next(f).strip().split("\t")
+
+    for line in f:
+        fields = line.strip().split("\t")
+        gene = fields[0]
+
+        if not result2:
+            result2 = fields[1]
+
+        result1[gene] = dict(zip(header, fields))
+
+    if fn:
+        f.close()
+
+    return result1, result2
 
 def report(
         fn: str,
@@ -158,69 +230,17 @@ def report(
         f (TextIO, optional): Genotype file.
     """
 
-    # Get the list of genes targeted by Stargazer.
-    genes = []
-    text = pkgutil.get_data(__name__, "resources/sg/gene_table.txt").decode()
-    for line in text.strip().split("\n"):
-        fields = line.split("\t")
-        gene = fields[1]
-        type_ = fields[2]
-        if type_ == "target":
-            genes.append(gene)
+    target_genes = get_target_genes()
+    action_table = _read_action_table()
+    pair_table, cpic_date = _read_pair_table()
+    genotype_table, sample_id = _read_genotype_file(f, fn)
 
-    # Read the actions file.
-    actions = {}
-    text = pkgutil.get_data(__name__, "resources/pgkb/actions.txt").decode()
-    for line in text.strip().split("\n"):
-        fields = line.split("\t")
-        chemical = fields[0]
-        gene = fields[1]
-        url = fields[2]
-        summary = fields[4]
-        phenotype = fields[5]
-        action = fields[6]
-        if chemical == "chemical":
-            header = fields
-            continue
-        if chemical not in actions:
-            actions[chemical] = {}
-        if gene not in actions[chemical]:
-            actions[chemical][gene] = {
-                "summary": summary,
-                "url": url,
-                "pt": {},
-            }
-        if phenotype not in actions[chemical][gene]["pt"]:
-            actions[chemical][gene]["pt"][phenotype] = action
+    for target_gene in target_genes:
+        if target_gene not in genotype_table:
+            genotype_table[gene] = dict(zip(header, ["-" for x in header]))
 
-    # Read the genotype file.
-    if fn:
-        f = open(fn)
-    gt = {}
-    id = ""
-    header = next(f).strip().split("\t")
-    for line in f:
-        fields = line.strip().split("\t")
-        gene = fields[0]
-        if not id:
-            id = fields[1]
-        gt[gene] = dict(zip(header, fields))
-    for gene in genes:
-        if gene not in gt:
-            gt[gene] = dict(zip(header, ["-" for x in header]))
-    assessed = [x for x in genes if gt[x]["status"] != "-"]
-    typed = [x for x in genes if gt[x]["status"] == "g"]
-    if fn:
-        f.close()
-
-    # Read the gene-drug paris file.
-    pairs = []
-    text = pkgutil.get_data(__name__, "resources/cpic/cpicPairs.csv").decode()
-    f = csv.reader(text.strip().split("\n"))
-    updated = next(f)[0].replace("Date last updated: ", "")
-    header = next(f)
-    for fields in f:
-        pairs.append(dict(zip(header, [x if x else '-' for x in fields])))
+    assessed = [x for x in target_genes if genotype_table[x]["status"] != "-"]
+    typed = [x for x in target_genes if genotype_table[x]["status"] == "g"]
 
     string = (
         "<!DOCTYPE html>\n"
@@ -245,9 +265,9 @@ def report(
         "<body>\n"
         "<h1>Stargazer Report</h1>\n"
         "<p>\n"
-        f"  Sample ID: {id}<br />\n"
+        f"  Sample ID: {sample_id}<br />\n"
         f"  Date: {datetime.datetime.now()}<br />\n"
-        f"  Genes examined: {len(assessed)}/{len(genes)}<br />\n"
+        f"  Genes examined: {len(assessed)}/{len(target_genes)}<br />\n"
         f"  Genotypes called: {len(typed)}/{len(assessed)}<br />\n"
         "</p>\n"
         "<h2>Introduction</h2>\n"
@@ -280,8 +300,8 @@ def report(
         "  patient care. Most importantly, CPIC provides detailed \n"
         "  guidelines for helping clinicians understand how available \n"
         "  genetic test results should be used to optimize drug \n"
-        f"  therapy. As of {updated}, there are \n"
-        f"  {len(pairs)} gene/drug pairs listed in the CPIC \n"
+        f"  therapy. As of {cpic_date}, there are \n"
+        f"  {len(pair_table)} gene/drug pairs listed in the CPIC \n"
         "  website (https://cpicpgx.org). Finally, the Food and Drug \n"
         "  Administration (FDA) provides additional guidance by \n"
         "  requiring applicable PGx test information be included in \n"
@@ -305,10 +325,10 @@ def report(
         "  PGx genes whose genotype leads to altered phenotype are \n"
         "  shown in <span style='color: red;'>red</span>.\n"
         "</p>\n"
-        f"{_overview_table(gt, pairs, genes)}\n"
+        f"{_add_overview_section(genotype_table, pair_table, target_genes)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Genotypes</h2>\n"
-        f"{_genotype_table(gt, genes)}\n"
+        f"{_add_genotypes_section(genotype_table, target_genes)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Drugs</h2>\n"
         "<p>\n"
@@ -318,7 +338,7 @@ def report(
         "  <span style='font-weight: bold; color: red;'>red</span> \n"
         "  if altered phenotype is predicted.\n"
         "</p>\n"
-        f"{_drug_table(gt, pairs)}\n"
+        f"{_add_drugs_section(genotype_table, pair_table)}\n"
         "<p style='page-break-before: always;'>\n"
         "<h2>Recommendations</h2>\n"
         "<p>\n"
@@ -328,7 +348,7 @@ def report(
         "  <span style='font-weight: bold; color: red;'>red</span> \n"
         "  if altered phenotype is predicted.\n"
         "</p>\n"
-        f"{_action_table(actions)}\n"
+        f"{_add_recommendations_section(action_table)}\n"
         "</body>\n"
         "</html>\n"
     )
