@@ -1,5 +1,6 @@
 import configparser
-import os
+from os import mkdir
+from os.path import realpath
 
 from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
@@ -90,16 +91,16 @@ def sges(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
+    project_path = realpath(config["USER"]["project_path"])
+    bam_file = realpath(config["USER"]["bam_file"])
+    gatk_tool = realpath(config["USER"]["gatk_tool"])
+    fasta_file = realpath(config["USER"]["fasta_file"])
+    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
+    stargazer_tool = realpath(config["USER"]["stargazer_tool"])
     target_genes = config["USER"]["target_genes"]
-    project_path = os.path.realpath(config["USER"]["project_path"])
-    bam_file = config["USER"]["bam_file"]
-    gatk_tool = config["USER"]["gatk_tool"]
-    fasta_file = config["USER"]["fasta_file"]
-    dbsnp_file = config["USER"]["dbsnp_file"]
     output_prefix = config["USER"]["output_prefix"]
     control_gene = config["USER"]["control_gene"]
     mapping_quality = config["USER"]["mapping_quality"]
-    stargazer_tool = config["USER"]["stargazer_tool"]
     data_type = config["USER"]["data_type"]
     genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
@@ -117,15 +118,15 @@ def sges(conf: str) -> None:
                 raise ValueError(f"Unrecognized target gene found: {gene}")
 
     # Make the project directories.
-    os.mkdir(project_path)
-    os.mkdir(f"{project_path}/log")
-    os.mkdir(f"{project_path}/gene")
+    mkdir(project_path)
+    mkdir(f"{project_path}/log")
+    mkdir(f"{project_path}/gene")
 
     for select_gene in select_genes:
-        os.mkdir(f"{project_path}/gene/{select_gene}")
-        os.mkdir(f"{project_path}/gene/{select_gene}/temp")
-        os.mkdir(f"{project_path}/gene/{select_gene}/shell")
-        os.mkdir(f"{project_path}/gene/{select_gene}/log")
+        mkdir(f"{project_path}/gene/{select_gene}")
+        mkdir(f"{project_path}/gene/{select_gene}/temp")
+        mkdir(f"{project_path}/gene/{select_gene}/shell")
+        mkdir(f"{project_path}/gene/{select_gene}/log")
 
     if is_chr(bam_file):
         chr_str = "chr"

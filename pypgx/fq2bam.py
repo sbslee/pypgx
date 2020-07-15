@@ -1,5 +1,6 @@
 import configparser
-import os
+from os import mkdir
+from os.path import realpath
 
 from .common import logging, LINE_BREAK1
 
@@ -82,21 +83,21 @@ def fq2bam(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
-    manifest_file = config["USER"]["manifest_file"]
-    project_path = os.path.realpath(config["USER"]["project_path"])
-    threads = config["USER"]["threads"]
-    fasta_file = config["USER"]["fasta_file"]
+    manifest_file = realpath(config["USER"]["manifest_file"])
+    project_path = realpath(config["USER"]["project_path"])
+    fasta_file = realpath(config["USER"]["fasta_file"])
+    bed_file = realpath(config["USER"]["bed_file"])
     platform = config["USER"]["platform"]
     library = config["USER"]["library"]
+    threads = config["USER"]["threads"]
     read_length = config["USER"]["read_length"]
-    bed_file = config["USER"]["bed_file"]
     qsub_options1 = config["USER"]["qsub_options1"]
     qsub_options2 = config["USER"]["qsub_options2"]
 
     vcf_files = []
 
     for vcf_file in config["USER"]["vcf_files"].split(","):
-        vcf_files.append(vcf_file.strip())
+        vcf_files.append(realpath(vcf_file.strip()))
 
     # Read the manifest file.
     fastq_files = {}
@@ -120,12 +121,12 @@ def fq2bam(conf: str) -> None:
     logger.info(f"Number of samples: {len(fastq_files)}")
 
     # Make the project directories.
-    os.mkdir(project_path)
-    os.mkdir(f"{project_path}/shell")
-    os.mkdir(f"{project_path}/bam")
-    os.mkdir(f"{project_path}/log")
-    os.mkdir(f"{project_path}/temp")
-    os.mkdir(f"{project_path}/stat")
+    mkdir(project_path)
+    mkdir(f"{project_path}/shell")
+    mkdir(f"{project_path}/bam")
+    mkdir(f"{project_path}/log")
+    mkdir(f"{project_path}/temp")
+    mkdir(f"{project_path}/stat")
 
     # Write the first shell script.
     for sample_id in fastq_files:

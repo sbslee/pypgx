@@ -1,5 +1,6 @@
 import configparser
-import os
+from os import mkdir
+from os.path import realpath
 
 from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
@@ -85,16 +86,16 @@ def sgea(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
+    project_path = realpath(config["USER"]["project_path"])
+    manifest_file = realpath(config["USER"]["manifest_file"])
+    stargazer_tool = realpath(config["USER"]["stargazer_tool"])
+    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
+    fasta_file = realpath(config["USER"]["fasta_file"])
     mapping_quality = config["USER"]["mapping_quality"]
     output_prefix = config["USER"]["output_prefix"]
-    manifest_file = config["USER"]["manifest_file"]
-    project_path = os.path.realpath(config["USER"]["project_path"])
-    fasta_file = config["USER"]["fasta_file"]
     target_gene = config["USER"]["target_gene"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
-    dbsnp_file = config["USER"]["dbsnp_file"]
-    stargazer_tool = config["USER"]["stargazer_tool"]
     genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
 
@@ -115,10 +116,10 @@ def sgea(conf: str) -> None:
 
     # Make the project directories.
     project_path = f"{project_path}"
-    os.mkdir(project_path)
-    os.mkdir(f"{project_path}/shell")
-    os.mkdir(f"{project_path}/log")
-    os.mkdir(f"{project_path}/temp")
+    mkdir(project_path)
+    mkdir(f"{project_path}/shell")
+    mkdir(f"{project_path}/log")
+    mkdir(f"{project_path}/temp")
 
     if control_gene != "NONE":
         # Write the shell script for bam2gdf.
