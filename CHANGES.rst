@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.56
+-------
+
+* Updated fq2bam.py and remap.py.
+
 v0.0.55
 -------
 

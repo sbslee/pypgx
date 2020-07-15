@@ -22,6 +22,8 @@ def fq2bam(conf: str) -> None:
             platform = illumina
             threads = 1
             read_length = 150
+            qsub_options1 = NONE
+            qsub_options2 = NONE
 
             # Make any necessary changes to this section.
             [USER]
@@ -31,6 +33,9 @@ def fq2bam(conf: str) -> None:
             vcf_files = in1.vcf, in2.vcf, in3.vcf
             library = awesome_experiment
             bed_file = in.bed
+            threads = 15
+            qsub_options1 = -V -q biall.q -S /bin/bash -pe pePAC 15
+            qsub_options2 = -V -q biall.q -S /bin/bash
 
     This table summarizes the configuration parameters specific to ``fq2bam``:
 
@@ -52,13 +57,16 @@ def fq2bam(conf: str) -> None:
              - Sequencing platform.
            * - project_path
              - Output project directory.
+           * - qsub_options1
+             - Options for the first qsub command. Recommended to set a parallel environment.
+           * - qsub_options2
+             - Options for the second qsub command.
            * - read_length
              - Sequence read length.
            * - threads
              - Number of threads.
            * - vcf_files
              - Reference VCF files used for base quality score recalibration.
-
     """
 
     # Log the configuration data.
@@ -82,6 +90,8 @@ def fq2bam(conf: str) -> None:
     library = config["USER"]["library"]
     read_length = config["USER"]["read_length"]
     bed_file = config["USER"]["bed_file"]
+    qsub_options1 = config["USER"]["qsub_options1"]
+    qsub_options2 = config["USER"]["qsub_options2"]
 
     vcf_files = []
 
@@ -285,13 +295,22 @@ def fq2bam(conf: str) -> None:
     s = f"p={project_path}\n"
 
     for sample_id in fastq_files:
-        q = "qsub -V -q biall.q -S /bin/bash -e $p/log -o $p/log"
+        q1 = "qsub -e $p/log -o $p/log"
+
+        if qsub_options1 != "NONE":
+            q1 += f" {qsub_options1}"
+
+        q2 = "qsub -e $p/log -o $p/log"
+
+        if qsub_options2 != "NONE":
+            q2 += f" {qsub_options2}"
+
         s += (
             "\n"
             f"n1=run-{sample_id}-1\n"
             f"n2=run-{sample_id}-2\n"
-            f"{q} -N $n1 -pe pePAC {threads}  $p/shell/$n1.sh\n"
-            f"{q} -N $n2 -hold_jid $n1 $p/shell/$n2.sh\n"
+            f"{q1} -N $n1 $p/shell/$n1.sh\n"
+            f"{q2} -N $n2 -hold_jid $n1 $p/shell/$n2.sh\n"
         )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:

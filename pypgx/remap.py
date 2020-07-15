@@ -22,7 +22,8 @@ def remap(conf: str) -> None:
             platform = illumina
             threads = 1
             java_heap = -Xmx2g
-            resources = -l mem_requested=2G
+            qsub_options1 = NONE
+            qsub_options2 = NONE
 
             # Make any necessary changes to this section.
             [USER]
@@ -33,6 +34,8 @@ def remap(conf: str) -> None:
             library = awesome_experiment
             gatk_tool = GenomeAnalysisTK.jar
             picard_tool = picard.jar
+            qsub_options1 = -q nick-grad.q -l mem_requested=2G -pe serial 1
+            qsub_options2 = -q nick-grad.q -l mem_requested=2G
 
     This table summarizes the configuration parameters specific to ``remap``:
 
@@ -58,8 +61,10 @@ def remap(conf: str) -> None:
              - Sequencing platform.
            * - project_path
              - Output project directory.
-           * - resources
-             - Options for qsub command.
+           * - qsub_options1
+             - Options for the first qsub command. Recommended to set a parallel environment.
+           * - qsub_options2
+             - Options for the second qsub command.
            * - threads
              - Number of threads.
            * - vcf_files
@@ -86,9 +91,10 @@ def remap(conf: str) -> None:
     picard_tool = config["USER"]["picard_tool"]
     java_heap = config["USER"]["java_heap"]
     gatk_tool = config["USER"]["gatk_tool"]
-    resources = config["USER"]["resources"]
     project_path = os.path.realpath(config["USER"]["project_path"])
     library = config["USER"]["library"]
+    qsub_options1 = config["USER"]["qsub_options1"]
+    qsub_options2 = config["USER"]["qsub_options2"]
 
     vcf_files = []
     for vcf_file in config["USER"]["vcf_files"].split(","):
@@ -217,13 +223,22 @@ def remap(conf: str) -> None:
     s = f"p={project_path}\n"
 
     for sample_id in bam_files:
-        q = f"qsub -q nick-grad.q -e $p/log -o $p/log {resources}"
+        q1 = f"qsub -e $p/log -o $p/log"
+
+        if qsub_options1 != "NONE":
+            q1 += f" {qsub_options1}"
+
+        q2 = f"qsub -e $p/log -o $p/log"
+
+        if qsub_options2 != "NONE":
+            q2 += f" {qsub_options2}"
+
         s += (
             "\n"
             f"n1=run-{sample_id}-1\n"
             f"n2=run-{sample_id}-2\n"
-            f"{q} -N $n1 -pe serial {threads} $p/shell/$n1.sh\n"
-            f"{q} -N $n2 -hold_jid $n1 $p/shell/$n2.sh\n"
+            f"{q1} -N $n1 $p/shell/$n1.sh\n"
+            f"{q2} -N $n2 -hold_jid $n1 $p/shell/$n2.sh\n"
         )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
