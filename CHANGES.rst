@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.61
+-------
+
+* Updated bam2vcf.py.
+
 v0.0.60
 -------
 

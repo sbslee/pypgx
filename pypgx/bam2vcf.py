@@ -53,42 +53,18 @@ def bam2vcf(
          "-f", fasta,
          "-a", "AD",
          "-r", f"{chr_str}{tr}",
-    ]
+    ] + bam
 
-    logger.info("Command for bcftools-mpileup:")
-    logger.info("    '{}'".format(" ".join(command + bam)))
-
-    p1 = Popen(
-        command + bam,
-        stdout=PIPE,
-        stderr=PIPE
-    )
+    p1 = Popen(command, stdout=PIPE)
 
     command = ["bcftools", "call", "-mv", "-Ov"]
 
-    logger.info("Command for bcftools-call:")
-    logger.info("    '{} FILE'".format(" ".join(command)))
-
-    p2 = Popen(
-        command,
-        stdin=p1.stdout, # p1.stdout is a real file
-        stdout=PIPE,
-        stderr=PIPE
-    )
-
-    e1 = p1.stderr.read()
+    p2 = Popen(command, stdin=p1.stdout, stdout=PIPE)
 
     p1.stdout.close()
-    p1.stderr.close()
 
-    out, e2 = p2.communicate()
+    out = p2.communicate()[0]
 
-    logger.info("Message from bcftools-mpileup:")
-    logger.info(f"    {e1}")
-
-    logger.info("Message from bcftools-call:")
-    logger.info(f"    {e2}")
- 
     result = out.decode("utf-8")
 
     return result
