@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.60
+-------
+
+* Added elapsed run time to logging.
+
 v0.0.59
 -------
 

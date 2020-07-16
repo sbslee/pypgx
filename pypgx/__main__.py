@@ -1,5 +1,7 @@
 import sys
 import argparse
+import timeit
+import datetime
 
 from .version import __version__
 
@@ -412,6 +414,7 @@ def output(fn, result):
         sys.stdout.write(result)
 
 def main():
+    start_time = timeit.default_timer()
     parser = get_parser()
     args = parser.parse_args()
 
@@ -503,6 +506,12 @@ def main():
     else:
         pass
 
+    stop_time = timeit.default_timer()
+    elapsed_time = str(
+        datetime.timedelta(seconds=(stop_time - start_time))
+    ).split(".")[0]
+
+    logger.info(f"Elapsed time: {elapsed_time}")
     logger.info("PyPGx finished")
 
 if __name__ == "__main__":
