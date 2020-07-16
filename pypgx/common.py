@@ -124,3 +124,21 @@ def get_target_genes() -> List[str]:
     """
     gene_table = get_gene_table()
     return [k for k, v in gene_table.items() if v["type"] == "target"]
+
+def get_target_region(tg: str, gb: str) -> str:
+    """Get the genomic region for the target gene.
+
+    Returns:
+        str: Genomic region.
+
+    Args:
+        tg (str): Target gene.
+        gb (str): Genome build (hg19, hg38).
+    """
+    gene_table = get_gene_table()
+    target_genes = [k for k, v in gene_table.items() if v["type"] == "target"]
+
+    if tg not in target_genes:
+        raise ValueError(f"'{tg}' is not among target genes: {target_genes}")
+
+    return gene_table[tg][f"{gb}_region"]

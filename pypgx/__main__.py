@@ -25,6 +25,7 @@ from .check import check
 from .liftover import liftover
 from .peek import peek
 from .snp import snp
+from .bam2vcf import bam2vcf
 
 def get_parser():
     parser = argparse.ArgumentParser()
@@ -374,6 +375,33 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    bam2vcf_parser = subparsers.add_parser(
+        "bam2vcf",
+        help="create VCF file from BAM file(s)",
+    )
+    bam2vcf_parser.add_argument(
+        "gb",
+        help="genome build (hg19, hg38)",
+    )
+    bam2vcf_parser.add_argument(
+        "tg",
+        help="target gene or region"
+    )
+    bam2vcf_parser.add_argument(
+        "fa",
+        help="FASTA file"
+    )
+    bam2vcf_parser.add_argument(
+        "bam",
+        nargs="+",
+        help="BAM file",
+    )
+    bam2vcf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -466,6 +494,10 @@ def main():
 
     elif args.tool == "snp":
         result = snp(args.vcf, args.pair)
+        output(args.o, result)
+
+    elif args.tool == "bam2vcf":
+        result = bam2vcf(args.gb, args.tg, args.fa, args.bam)
         output(args.o, result)
 
     else:

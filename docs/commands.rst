@@ -396,3 +396,30 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+bam2vcf command
+===============
+
+Synopsis
+--------
+
+pypgx bam2vcf *[options] gb tg fa bam [bam ...]*
+
+Description
+-----------
+
+Create a single- or multi-sample VCF file from one or more BAM files.
+*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target gene 
+(e.g. 'cyp2d6') or region (e.g. 'chr22:42512500-42551883'). 
+*fa* is the reference FASTA file. *bam* is the input BAM file(s). 
+
+.. note::
+
+    This is essentially a wrapper for the ``mpileup`` and ``call`` 
+    commands from the BCFtools program; therefore, you must have 
+    BCFtools installed before running this command.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

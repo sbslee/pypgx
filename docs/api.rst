@@ -133,6 +133,12 @@ pypgx.snp module
 .. automodule:: pypgx.snp
     :members:
 
+pypgx.bam2vcf module
+--------------------
+
+.. automodule:: pypgx.bam2vcf
+    :members:
+
 Auxiliary modules
 =================
 
