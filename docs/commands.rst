@@ -462,3 +462,41 @@ Options
 -------
 
 There are no options.
+
+genotype command
+================
+
+Synopsis
+--------
+
+pypgx bam2vcf *[options] fa sg dt gb tg out bam [bam ...]*
+
+Description
+-----------
+
+Call star alleles from BAM file(s).
+
+This command runs the Stargazer genotyping pipeline without the need for 
+Sun Grid Engine (SGE). It uses the ``bam2vcf`` tool to create the input 
+VCF file (which is essentially a wrapper of, and therefore requires, the 
+BCFtools program) and the ``bam2gdf`` tool to create the input GDF file. 
+It then runs the Stargazer program to perform genotype analysis.
+
+In order to detect strctural variation, Stargazer needs read depth data 
+(i.e. a GDF file) for copy number analysis. Providing the optional 
+argument ``--cg`` will generate a GDF file.
+
+*fa* is the reference FASTA file. *sg* is the Stargazer program. *dt* is the
+sequencing data type. Use 'wgs' for whole genome sequencing data and 
+'ts' for targeted sequencing data. *gb* is the genome build ('hg19' or 
+'hg38'). *tg* is the target gene (e.g. 'cyp2d6'). *out* is the output 
+project directory. *bam* is the input BAM file(s).
+
+.. note::
+
+    BCFtools and Stargazer must be pre-installed.
+
+Options
+-------
+
+--cg STR    control gene (e.g. 'vdr') or region (e.g. 'chr12:48232319-48301814')

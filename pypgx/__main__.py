@@ -28,6 +28,7 @@ from .liftover import liftover
 from .peek import peek
 from .snp import snp
 from .bam2vcf import bam2vcf
+from .genotype import genotype
 
 def get_parser():
     parser = argparse.ArgumentParser()
@@ -394,13 +395,52 @@ def get_parser():
         help="FASTA file"
     )
     bam2vcf_parser.add_argument(
-        "out",
-        help="output VCF file"
-    )
-    bam2vcf_parser.add_argument(
         "bam",
         nargs="+",
         help="BAM file",
+    )
+    bam2vcf_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
+    genotype_parser = subparsers.add_parser(
+        "genotype",
+        help="call star alleles from BAM file(s)",
+    )
+    genotype_parser.add_argument(
+        "fa",
+        help="FASTA file"
+    )
+    genotype_parser.add_argument(
+        "sg",
+        help="Stargazer program",
+    )
+    genotype_parser.add_argument(
+        "dt",
+        help="input data type",
+    )
+    genotype_parser.add_argument(
+        "gb",
+        help="genome build",
+    )
+    genotype_parser.add_argument(
+        "tg",
+        help="target gene",
+    )
+    genotype_parser.add_argument(
+        "out",
+        help="output project directory",
+    )
+    genotype_parser.add_argument(
+        "bam",
+        nargs="+",
+        help="BAM file",
+    )
+    genotype_parser.add_argument(
+        "--cg",
+        help="control gene",
     )
 
     return parser
@@ -499,7 +539,11 @@ def main():
         output(args.o, result)
 
     elif args.tool == "bam2vcf":
-        bam2vcf(args.gb, args.tg, args.fa, args.out, args.bam)
+        result = bam2vcf(args.gb, args.tg, args.fa, args.bam)
+        output(args.o, result)
+
+    elif args.tool == "genotype":
+        genotype(args.fa, args.sg, args.dt, args.gb, args.tg, args.out, args.bam, args.cg)
 
     else:
         pass

@@ -139,6 +139,12 @@ pypgx.bam2vcf module
 .. automodule:: pypgx.bam2vcf
     :members:
 
+pypgx.genotype module
+---------------------
+
+.. automodule:: pypgx.genotype
+    :members:
+
 Auxiliary modules
 =================
 

@@ -12,18 +12,20 @@ def bam2vcf(
         gb: str,
         tg: str,
         fasta: str,
-        out: str,
         bam: List[str],
-    ) -> None:
+    ) -> str:
     """Create a VCF file from BAM file(s).
 
     This command outputs a single- or multi-sample VCF file from one or 
     more input BAM files. The output VCF file will only contain variants
     within the target gene or region. This is essentially a wrapper with
-    certain parameters for various commands from the BCFtools program 
+    particular parameters for various commands from the BCFtools program 
     (e.g. ``mpileup`` and ``call``). This means the called variants will be 
     already normalized and filtered, ready for the downstream genotype 
     analysis by the Stargazer program.
+
+    Returns:
+        (str): VCF file in text.
 
     Args:
         gb (str):
@@ -33,8 +35,6 @@ def bam2vcf(
             region (e.g. 'chr22:42512500-42551883').
         fasta (str):
             Reference FASTA file.
-        out (str):
-            Output VCF file.
         bam (str):
             List of BAM files.
 
@@ -91,12 +91,17 @@ def bam2vcf(
         "-o", f"{td}/calls.norm.bcf"
     ])
 
-    run([
+    command = [
         "bcftools", "filter",
         f"{td}/calls.norm.bcf",
         "-Ov",
         "--IndelGap", "5",
-        "-o", out,
-    ])
+    ]
+
+    output = run(command, stdout=PIPE)
+
+    result = output.stdout.decode("utf-8")
 
     tmp_dir.cleanup()
+
+    return result

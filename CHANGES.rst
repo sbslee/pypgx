@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.63
+-------
+
+* Added ``genotype`` tool.
+
 v0.0.62
 -------
 
