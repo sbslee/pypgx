@@ -15,8 +15,9 @@ pypgx pgkb *[options]*
 Description
 -----------
 
-Extract CPIC guidelines using PharmGKB API. There are no required 
-arguments.
+Extract CPIC guidelines using PharmGKB API.
+
+There are no required arguments.
 
 Options
 -------
@@ -35,7 +36,9 @@ pypgx report *[options] gt*
 Description
 -----------
 
-Create HTML report using Stargazer data. *gt* is genotype file.
+Create HTML report using Stargazer data.
+
+*gt* is the genotype file from Stargazer.
 
 Options
 -------
@@ -53,7 +56,9 @@ pypgx sdf2gdf *[options] sdf id [id ...]*
 Description
 -----------
 
-Create GDF file from SDF file. *sdf* is SDF file. *id* is sample ID.
+Create GDF file from SDF file.
+
+*sdf* is SDF file. *id* is sample ID.
 
 Options
 -------
@@ -71,8 +76,11 @@ pypgx bam2sdf *[options] gb tg cg bam [bam ...]*
 Description
 -----------
 
-Create SDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
-*tg* is target gene. *cg* is control gene or region. *bam* is BAM file.
+Create SDF file from BAM file(s).
+
+*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target 
+gene (e.g. 'cyp2d6'). *cg* is the control gene (e.g. 'vdr') or 
+region (e.g. 'chr12:48232319-48301814'). *bam* is the BAM file.
 
 Options
 -------
@@ -90,8 +98,11 @@ pypgx bam2gdf *[options] gb tg cg bam [bam ...]*
 Description
 -----------
 
-Create GDF file from BAM file(s). *gb* is genome build (hg19, hg38). 
-*tg* is target gene. *cg* is control gene or region. *bam* is BAM file.
+Create GDF file from BAM file(s).
+
+*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target 
+gene (e.g. 'cyp2d6'). *cg* is the control gene (e.g. 'vdr') or 
+region (e.g. 'chr12:48232319-48301814'). *bam* is the BAM file.
 
 Options
 -------
@@ -109,7 +120,9 @@ pypgx minivcf *[options] vcf region*
 Description
 -----------
 
-Slice VCF file. *vcf* is VCF file. *region* is target region.
+Slice VCF file.
+
+*vcf* is VCF file. *region* is target region.
 
 Options
 -------
@@ -127,7 +140,9 @@ pypgx merge *[options] vcf [vcf ...]*
 Description
 -----------
 
-Merge VCF files. *vcf* is VCF file.
+Merge VCF files.
+
+*vcf* is VCF file.
 
 Options
 -------
@@ -165,8 +180,9 @@ pypgx meta *[options] tg sf [sf ...]*
 Description
 -----------
 
-Create meta file from summary files. *tg* is target gene. *sf* is 
-summary file.
+Create meta file from summary files.
+
+*tg* is target gene. *sf* is summary file.
 
 Options
 -------
@@ -184,7 +200,9 @@ pypgx compare *[options] gt [gt ...]*
 Description
 -----------
 
-Compare genotype files. *gt* is genotype file.
+Compare genotype files.
+
+*gt* is genotype file.
 
 Options
 -------
@@ -202,8 +220,9 @@ pypgx remap *[options] conf*
 Description
 -----------
 
-Remap BAM file(s) to different reference. *conf* is configuration file. 
-See the API section for details.
+Remap BAM file(s) to different reference.
+
+*conf* is configuration file. See the API section for details.
 
 Options
 -------
@@ -221,8 +240,9 @@ pypgx fq2bam *[options] conf*
 Description
 -----------
 
-Create BAM file(s) from FASTQ file(s). *conf* is configuration file. 
-See the API section for details.
+Create BAM file(s) from FASTQ file(s).
+
+*conf* is configuration file. See the API section for details.
 
 Options
 -------
@@ -240,8 +260,9 @@ pypgx sges *[options] conf*
 Description
 -----------
 
-Run per-sample genotyping with Stargazer. *conf* is configuration file. 
-See the API section for details.
+Run per-sample genotyping with Stargazer.
+
+*conf* is configuration file. See the API section for details.
 
 Options
 -------
@@ -259,8 +280,9 @@ pypgx sgep *[options] conf*
 Description
 -----------
 
-Run per-project genotyping with Stargazer (1). *conf* is configuration file. 
-See the API section for details.
+Run per-project genotyping with Stargazer (1).
+
+*conf* is configuration file. See the API section for details.
 
 Options
 -------
@@ -278,8 +300,9 @@ pypgx sgea *[options] conf*
 Description
 -----------
 
-Run per-project genotyping with Stargazer (2). *conf* is configuration file. 
-See the API section for details.
+Run per-project genotyping with Stargazer (2).
+
+*conf* is configuration file. See the API section for details.
 
 Options
 -------
@@ -315,7 +338,9 @@ pypgx plotcov *[options] sdf out*
 Description
 -----------
 
-Plot coverage data to PDF file. *sdf* is SDF file. *out* is PDF file.
+Plot coverage data to PDF file.
+
+*sdf* is SDF file. *out* is PDF file.
 
 Options
 -------
@@ -333,8 +358,9 @@ pypgx check *[options] star snp*
 Description
 -----------
 
-Check table files for Stargazer. *star* is star allele table file. 
-*snp* is SNP table file.
+Check table files for Stargazer.
+
+*star* is star allele table file. *snp* is SNP table file.
 
 Options
 -------
@@ -352,8 +378,10 @@ pypgx liftover *[options] star snp tg*
 Description
 -----------
 
-Convert variants in SNP table from hg19 to hg38. *star* is star allele
-table file. *snp* is SNP table file. *tg* is target gene.
+Convert variants in SNP table from hg19 to hg38.
+
+*star* is star allele table file. *snp* is SNP table file. 
+*tg* is target gene.
 
 Options
 -------
@@ -371,7 +399,9 @@ pypgx peek *[options] vcf*
 Description
 -----------
 
-Find all possible star alleles from VCF file. *vcf* is VCF file.
+Find all possible star alleles from VCF file.
+
+*vcf* is VCF file.
 
 Options
 -------
@@ -389,8 +419,9 @@ pypgx snp *[options] vcf pair [pair ...]*
 Description
 -----------
 
-View variant data for sample/star allele pairs. *vcf* is VCF file. 
-*pair* is sample/star allele pair.
+View variant data for sample/star allele pairs.
+
+*vcf* is VCF file. *pair* is sample/star allele pair.
 
 Options
 -------
@@ -403,23 +434,31 @@ bam2vcf command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] gb tg fa bam [bam ...]*
+pypgx bam2vcf *[options] gb tg fa bam out [bam ...]*
 
 Description
 -----------
 
-Create a single- or multi-sample VCF file from one or more BAM files.
+Create a VCF file from BAM file(s).
+
+This command outputs a single- or multi-sample VCF file from one or 
+more input BAM files. The output VCF file will only contain variants
+within the target gene or region. This is essentially a wrapper with
+certain parameters for various commands from the BCFtools program 
+(e.g. ``mpileup`` and ``call``). This means the called variants will be 
+already normalized and filtered, ready for the downstream genotype 
+analysis by the Stargazer program.
+
 *gb* is the genome build ('hg19' or 'hg38'). *tg* is the target gene 
 (e.g. 'cyp2d6') or region (e.g. 'chr22:42512500-42551883'). 
-*fa* is the reference FASTA file. *bam* is the input BAM file(s). 
+*fa* is the reference FASTA file. *out* is the output VCF file.
+*bam* is the input BAM file(s). 
 
 .. note::
 
-    This is essentially a wrapper for the ``mpileup`` and ``call`` 
-    commands from the BCFtools program; therefore, you must have 
-    BCFtools installed before running this command.
+    BCFtools must be pre-installed.
 
 Options
 -------
 
--o FILE     output to FILE [stdout]
+There are no options.

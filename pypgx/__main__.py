@@ -99,7 +99,7 @@ def get_parser():
     )
     bam2sdf_parser.add_argument(
         "gb",
-        help="genome build (hg19, hg38)",
+        help="genome build",
     )
     bam2sdf_parser.add_argument(
         "tg",
@@ -126,7 +126,7 @@ def get_parser():
     )
     bam2gdf_parser.add_argument(
         "gb",
-        help="genome build (hg19, hg38)",
+        help="genome build",
     )
     bam2gdf_parser.add_argument(
         "tg",
@@ -383,7 +383,7 @@ def get_parser():
     )
     bam2vcf_parser.add_argument(
         "gb",
-        help="genome build (hg19, hg38)",
+        help="genome build",
     )
     bam2vcf_parser.add_argument(
         "tg",
@@ -394,14 +394,13 @@ def get_parser():
         help="FASTA file"
     )
     bam2vcf_parser.add_argument(
+        "out",
+        help="output VCF file"
+    )
+    bam2vcf_parser.add_argument(
         "bam",
         nargs="+",
         help="BAM file",
-    )
-    bam2vcf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
     )
 
     return parser
@@ -500,8 +499,7 @@ def main():
         output(args.o, result)
 
     elif args.tool == "bam2vcf":
-        result = bam2vcf(args.gb, args.tg, args.fa, args.bam)
-        output(args.o, result)
+        bam2vcf(args.gb, args.tg, args.fa, args.out, args.bam)
 
     else:
         pass
