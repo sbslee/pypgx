@@ -414,10 +414,6 @@ def get_parser():
         help="FASTA file"
     )
     genotype_parser.add_argument(
-        "sg",
-        help="Stargazer program",
-    )
-    genotype_parser.add_argument(
         "dt",
         help="input data type",
     )
@@ -543,7 +539,7 @@ def main():
         output(args.o, result)
 
     elif args.tool == "genotype":
-        genotype(args.fa, args.sg, args.dt, args.gb, args.tg, args.out, args.bam, args.cg)
+        genotype(args.fa, args.dt, args.gb, args.tg, args.out, args.bam, args.cg)
 
     else:
         pass

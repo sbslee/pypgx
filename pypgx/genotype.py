@@ -7,7 +7,6 @@ from .bam2gdf import bam2gdf
 
 def genotype(
         fa: str,
-        sg: str,
         dt: str,
         gb: str,
         tg: str,
@@ -30,8 +29,6 @@ def genotype(
     Args:
         fa (str):
             Reference FASTA file.
-        sg (str):
-            Stargazer program.
         dt (str):
             Sequencing data type. Use 'wgs' for whole 
             genome sequencing data and 'ts' for targeted 
@@ -67,7 +64,7 @@ def genotype(
             f.write(gdf)
 
     command = [
-        "python3", sg,
+        "stargazer",
         dt,
         gb,
         tg,
