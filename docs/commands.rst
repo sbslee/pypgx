@@ -324,6 +324,10 @@ Kit (GATK) v4 while the latter uses GATK v3.
 
 *conf* is configuration file. See the API section for details.
 
+.. note::
+
+    SGE, Stargazer, and GATK must be pre-installed.
+
 Options
 -------
 
