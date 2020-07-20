@@ -7,11 +7,19 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 logger = logging.getLogger(__name__)
 
 def sgea(conf: str) -> None:
-    """
-    Run per-project genotyping with Stargazer (2).
+    """Run per-project genotyping with Stargazer (2).
+
+    This command runs the per-project genotyping pipeline by submitting 
+    jobs to the Sun Grid Engine (SGE) cluster. The main difference between
+    ``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
+    Kit (GATK) v4 while the latter uses GATK v3.
 
     Args:
         conf (str): Configuration file.
+
+    .. note::
+
+        SGE, Stargazer, and GATK must be pre-installed.
 
     This is what a typical configuration file for ``sgea`` looks like:
 
@@ -34,7 +42,6 @@ def sgea(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            stargazer_tool = Stargazer_v1.0.9
             control_gene = vdr
 
     This table summarizes the configuration parameters specific to ``sgea``:
@@ -65,8 +72,6 @@ def sgea(conf: str) -> None:
              - Output project directory.
            * - qsub_options
              - Options for qsub command.
-           * - stargazer_tool
-             - Stargazer program.
            * - target_gene
              - Target gene.
     """
@@ -88,7 +93,6 @@ def sgea(conf: str) -> None:
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
     manifest_file = realpath(config["USER"]["manifest_file"])
-    stargazer_tool = realpath(config["USER"]["stargazer_tool"])
     dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     mapping_quality = config["USER"]["mapping_quality"]
@@ -211,10 +215,9 @@ def sgea(conf: str) -> None:
     # Write the shell script for Stargazer.
     s = (
         f"project={project_path}\n"
-        f"stargazer={stargazer_tool}\n"
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
         "\n"
-        "python3 $stargazer \\\n"
+        "stargazer \\\n"
         f"  {data_type} \\\n"
         f"  {genome_build} \\\n"
         f"  {target_gene} \\\n"
