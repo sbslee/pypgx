@@ -7,11 +7,17 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 logger = logging.getLogger(__name__)
 
 def sgep(conf: str) -> None:
-    """
-    Run per-project genotyping with Stargazer (1).
+    """Run per-project genotyping with Stargazer (1).
+
+    This command runs the per-project genotyping pipeline by submitting 
+    jobs to the Sun Grid Engine (SGE) cluster.
 
     Args:
         conf (str): Configuration file.
+
+    .. note::
+
+        SGE and Stargazer must be pre-installed.
 
     This is what a typical configuration file for ``sgep`` looks like:
 
@@ -34,7 +40,6 @@ def sgep(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            stargazer_tool = Stargazer_v1.0.9
             gatk_tool = GenomeAnalysisTK.jar
             control_gene = vdr
             qsub_options = -V -l mem_requested=10G
@@ -69,8 +74,6 @@ def sgep(conf: str) -> None:
              - Output project directory.
            * - qsub_options
              - Options for qsub command.
-           * - stargazer_tool
-             - Stargazer program.
            * - target_gene
              - Target gene.
     """
@@ -92,7 +95,6 @@ def sgep(conf: str) -> None:
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
     dbsnp_file = realpath(config["USER"]["dbsnp_file"])
-    stargazer_tool = realpath(config["USER"]["stargazer_tool"])
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     gatk_tool = realpath(config["USER"]["gatk_tool"])
@@ -206,10 +208,9 @@ def sgep(conf: str) -> None:
     # Write the shell script for Stargazer.
     s = (
         f"project={project_path}\n"
-        f"stargazer={stargazer_tool}\n"
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
         "\n"
-        f"python3 $stargazer \\\n"
+        f"stargazer \\\n"
         f"  {data_type} \\\n"
         f"  {genome_build} \\\n"
         f"  {target_gene} \\\n"

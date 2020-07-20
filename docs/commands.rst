@@ -290,7 +290,14 @@ Description
 
 Run per-project genotyping with Stargazer (1).
 
+This command runs the per-project genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster.
+
 *conf* is configuration file. See the API section for details.
+
+.. note::
+
+    SGE and Stargazer must be pre-installed.
 
 Options
 -------
