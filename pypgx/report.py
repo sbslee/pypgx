@@ -192,7 +192,7 @@ def _read_pair_table():
 
     return result1, result2
 
-def _read_genotype_file(f, fn):
+def _read_genotype_file(f, fn, target_genes):
     result1 = {}
     result2 = ""
 
@@ -212,6 +212,10 @@ def _read_genotype_file(f, fn):
 
     if fn:
         f.close()
+
+    for target_gene in target_genes:
+        if target_gene not in result1:
+            result1[target_gene] = dict(zip(header, ["-" for x in header]))
 
     return result1, result2
 
@@ -233,11 +237,7 @@ def report(
     target_genes = get_target_genes()
     action_table = _read_action_table()
     pair_table, cpic_date = _read_pair_table()
-    genotype_table, sample_id = _read_genotype_file(f, fn)
-
-    for target_gene in target_genes:
-        if target_gene not in genotype_table:
-            genotype_table[gene] = dict(zip(header, ["-" for x in header]))
+    genotype_table, sample_id = _read_genotype_file(f, fn, target_genes)
 
     assessed = [x for x in target_genes if genotype_table[x]["status"] != "-"]
     typed = [x for x in target_genes if genotype_table[x]["status"] == "g"]

@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.66
+-------
+
+* Updated sges.py and report.py.
+
 v0.0.65
 -------
 

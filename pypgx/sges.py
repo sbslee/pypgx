@@ -7,11 +7,18 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 logger = logging.getLogger(__name__)
 
 def sges(conf: str) -> None:
-    """
-    Run per-sample genotyping with Stargazer.
+    """Run per-sample genotyping with Stargazer.
+
+    This command runs the per-sample genotyping pipeline by submitting 
+    jobs to the Sun Grid Engine (SGE) cluster. After genotype analysis by 
+    Stargazer, it will generate a HTML report using the ``report`` tool.
 
     Args:
         conf (str): Configuration file.
+
+    .. note::
+
+        SGE and Stargazer must be pre-installed.
 
     This is what a typical configuration file for ``sges`` looks like:
 
@@ -33,7 +40,6 @@ def sges(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            stargazer_tool = Stargazer_v1.0.9
             gatk_tool = GenomeAnalysisTK.jar
             bam_file = in.bam
             qsub_options = -l mem_requested=2G
@@ -70,8 +76,6 @@ def sges(conf: str) -> None:
              - Output project directory.
            * - qsub_options
              - Options for qsub command.
-           * - stargazer_tool
-             - Stargazer program.
            * - target_genes
              - Target genes.
     """
@@ -96,7 +100,6 @@ def sges(conf: str) -> None:
     gatk_tool = realpath(config["USER"]["gatk_tool"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     dbsnp_file = realpath(config["USER"]["dbsnp_file"])
-    stargazer_tool = realpath(config["USER"]["stargazer_tool"])
     target_genes = config["USER"]["target_genes"]
     output_prefix = config["USER"]["output_prefix"]
     control_gene = config["USER"]["control_gene"]
@@ -185,9 +188,7 @@ def sges(conf: str) -> None:
             )
 
         s += (
-            f"stargazer={stargazer_tool}\n"
-            "\n"
-            f"python3 $stargazer \\\n"
+            f"stargazer \\\n"
             f"  {data_type} \\\n"
             f"  {genome_build} \\\n"
             "  $tg \\\n"
@@ -210,11 +211,11 @@ def sges(conf: str) -> None:
     s = (
         f"p={project_path}\n"
         "\n"
-        f'''head -n1 $p/gene/{select_genes[0]}/stargazer/genotype.txt | awk '{{print "gene",$0}}' OFS="\\t" > $p/merged.sg-genotype.txt\n'''
+        f'''head -n1 $p/gene/{select_genes[0]}/stargazer/genotype.txt > $p/merged.sg-genotype.txt\n'''
         "\n"
         f"for gene in {' '.join(select_genes)}\n"
         "do\n"
-        f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt | awk -v var="$gene" '{{print var,$0}}' OFS="\\t" >> $p/merged.sg-genotype.txt\n'''
+        f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt >> $p/merged.sg-genotype.txt\n'''
         "done\n"
         "\n"
         "pypgx report $p/merged.sg-genotype.txt -o $p/report.html"

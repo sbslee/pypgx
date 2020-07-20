@@ -262,7 +262,15 @@ Description
 
 Run per-sample genotyping with Stargazer.
 
+This command runs the per-sample genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster. After genotype analysis by 
+Stargazer, it will generate a HTML report using the ``report`` tool.
+
 *conf* is configuration file. See the API section for details.
+
+.. note::
+
+    SGE and Stargazer must be pre-installed.
 
 Options
 -------
