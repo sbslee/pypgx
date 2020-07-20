@@ -469,7 +469,7 @@ genotype command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] fa dt gb tg out bam [bam ...]*
+pypgx bam2vcf *[options] fa dt gb tg out [bam]*
 
 Description
 -----------
@@ -484,13 +484,17 @@ It then runs the Stargazer program to perform genotype analysis.
 
 In order to detect strctural variation, Stargazer needs read depth data 
 (i.e. a GDF file) for copy number analysis. Providing the optional 
-argument ``--cg`` will generate a GDF file.
+argument ``--cg`` will generate a GDF file. If this argument is not 
+used, Stargazer will run as VCF-only mode.
 
 *fa* is the reference FASTA file. *dt* is the sequencing data type; 
 use 'wgs' for whole genome sequencing data and 'ts' for targeted sequencing 
 data. *gb* is the genome build ('hg19' or 'hg38'). *tg* is the target gene 
 (e.g. 'cyp2d6'). *out* is the output project directory. *bam* is the 
 input BAM file(s).
+
+If you have many input BAM files, you may want to use the ``--bd`` or 
+``--bl`` argument instead of manually listing individual files for *bam*.
 
 .. note::
 
@@ -499,4 +503,6 @@ input BAM file(s).
 Options
 -------
 
+--bd DIR    directory containing BAM files
+--bl FILE   list of BAM files, one file per line
 --cg STR    control gene (e.g. 'vdr') or region (e.g. 'chr12:48232319-48301814')

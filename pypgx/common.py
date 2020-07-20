@@ -1,6 +1,6 @@
 import os
 import logging
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import pysam
 
@@ -142,3 +142,41 @@ def get_target_region(tg: str, gb: str) -> str:
         raise ValueError(f"'{tg}' is not among target genes: {target_genes}")
 
     return gene_table[tg][f"{gb}_region"]
+
+def get_file_list(
+        td: str,
+        fe: Optional[str] = None
+    ) -> List[str]:
+    """ Get the list of files from the target directory.
+
+    Returns:
+        list[str]: List of files.
+
+    Args:
+        td (str): Target directory.
+        fe (str, optional): File extension.
+    """
+    result = []
+    for r, d, f in os.walk(td):
+        for fn in f:
+            if fe and not fn.endswith(fe):
+                continue
+            result.append(os.path.join(r, fn))
+    return result
+
+def read_file_list(fl: str) -> List[str]:
+    """ Get the list of files from the list file.
+
+        Returns:
+            list[str]: List of files.
+
+        Args:
+            fl (str): List file.
+    """
+    result = []
+    with open(fl) as f:
+        for line in f:
+            if not line.strip():
+                continue
+            result.append(line.strip())
+    return result

@@ -4,8 +4,12 @@ import timeit
 import datetime
 
 from .version import __version__
+from .common import (
+    logging,
+    get_file_list,
+    read_file_list,
+)
 
-from .common import logging
 from .pgkb import pgkb
 from .report import report
 from .sdf2gdf import sdf2gdf
@@ -431,11 +435,22 @@ def get_parser():
     )
     genotype_parser.add_argument(
         "bam",
-        nargs="+",
+        nargs="?",
         help="BAM file",
     )
     genotype_parser.add_argument(
+        "--bd",
+        metavar="DIR",
+        help="directory containing BAM files",
+    )
+    genotype_parser.add_argument(
+        "--bl",
+        metavar="FILE",
+        help="list of BAM files, one file per line"
+    )
+    genotype_parser.add_argument(
         "--cg",
+        metavar="STR",
         help="control gene",
     )
 
@@ -539,7 +554,15 @@ def main():
         output(args.o, result)
 
     elif args.tool == "genotype":
-        genotype(args.fa, args.dt, args.gb, args.tg, args.out, args.bam, args.cg)
+        if args.bam:
+            bam = args.bam
+        elif args.bd:
+            bam = get_file_list(args.bd, ".bam")
+        elif args.bl:
+            bam = read_file_list(args.bl) 
+        else:
+            raise ValueError("BAM files not provided")
+        genotype(args.fa, args.dt, args.gb, args.tg, args.out, bam, args.cg)
 
     else:
         pass

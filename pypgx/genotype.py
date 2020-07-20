@@ -24,7 +24,8 @@ def genotype(
 
     In order to detect strctural variation, Stargazer needs read depth data 
     (i.e. a GDF file) for copy number analysis. Providing the optional 
-    argument ``--cg`` will generate a GDF file.
+    argument ``--cg`` will generate a GDF file. If this argument is not 
+    used, Stargazer will run as VCF-only mode.
 
     Args:
         fa (str):

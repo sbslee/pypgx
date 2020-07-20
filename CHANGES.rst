@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.65
+-------
+
+* Updated genotype.py.
+
 v0.0.64
 -------
 
