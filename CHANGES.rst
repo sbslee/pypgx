@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.71
+-------
+
+* Updated gt2pt.py for CYP2C19 gene.
+
 v0.0.70
 -------
 

@@ -1,5 +1,25 @@
 from .common import get_stardb
 
+def _phenotype_cyp2c19(stardb, hap1, hap2):
+    as1 = _hap2as(stardb, hap1)
+    as2 = _hap2as(stardb, hap2)
+    total = as1 + as2
+    if total < 0:
+        result = "unknown_metabolizer"
+    elif total == 0:
+        result = "poor_metabolizer"
+    elif 0 < total <= 1.25:
+        result = "intermediate_metabolizer"
+    elif 1.25 < total <= 2:
+        result = "normal_metabolizer"
+    elif 2 < total < 2.5:
+        result = "rapid_metabolizer"
+    elif total >= 2.5:
+        result = "ultrarapid_metabolizer"
+    else:
+        result = "undetermined_metabolizer"
+    return result
+
 def _phenotype_cyp2d6(stardb, hap1, hap2):
     as1 = _hap2as(stardb, hap1)
     as2 = _hap2as(stardb, hap2)
@@ -46,7 +66,10 @@ def phenotype(
     """
     stardb = get_stardb(gene, "hg19")
 
-    if gene == "cyp2d6":
+    if gene == "cyp2c19":
+        result = _phenotype_cyp2c19(stardb, hap1, hap2)
+
+    elif gene == "cyp2d6":
         result = _phenotype_cyp2d6(stardb, hap1, hap2)
 
     else:
