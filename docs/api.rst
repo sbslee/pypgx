@@ -145,6 +145,13 @@ pypgx.genotype module
 .. automodule:: pypgx.genotype
     :members:
 
+pypgx.gt2pt module
+------------------
+
+.. automodule:: pypgx.gt2pt
+    :members:
+    :undoc-members:
+
 Auxiliary modules
 =================
 

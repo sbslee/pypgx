@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.70
+-------
+
+* Added ``gt2pt`` tool (only supports CYP2D6 gene for now).
+
 v0.0.69
 -------
 

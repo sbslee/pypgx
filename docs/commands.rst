@@ -167,7 +167,8 @@ Description
 -----------
 
 Create summary file using Stargazer data. *tg* is target gene. 
-*gt* is genotype file.
+
+*gt* is the genotype file from Stargazer.
 
 Options
 -------
@@ -207,7 +208,7 @@ Description
 
 Compare genotype files.
 
-*gt* is genotype file.
+*gt* is the genotype file from Stargazer.
 
 Options
 -------
@@ -539,3 +540,23 @@ Options
 --bd DIR    directory containing BAM files
 --bl FILE   list of BAM files, one file per line
 --cg STR    control gene (e.g. 'vdr') or region (e.g. 'chr12:48232319-48301814')
+
+gt2pt command
+=============
+
+Synopsis
+--------
+
+pypgx snp *[options] gt*
+
+Description
+-----------
+
+Predict phenotypes from star allele calls.
+
+*gt* is the genotype file from Stargazer.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

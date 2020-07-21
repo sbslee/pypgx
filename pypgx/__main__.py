@@ -33,6 +33,7 @@ from .peek import peek
 from .snp import snp
 from .bam2vcf import bam2vcf
 from .genotype import genotype
+from .gt2pt import gt2pt
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -495,6 +496,20 @@ def get_parser():
         help="control gene",
     )
 
+    gt2pt_parser = subparsers.add_parser(
+        "gt2pt",
+        help="predict phenotypes from star allele calls",
+    )
+    gt2pt_parser.add_argument(
+        "gt",
+        help="genotype file",
+    )
+    gt2pt_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
+
     return parser
 
 def output(fn, result):
@@ -599,6 +614,10 @@ def main():
     elif args.tool == "genotype":
         bam = _get_bam_list(args.bam, args.bd, args.bl)
         genotype(args.fa, args.dt, args.gb, args.tg, args.out, bam, args.cg)
+
+    elif args.tool == "gt2pt":
+        result = gt2pt(args.gt)
+        output(args.o, result)
 
     else:
         pass
