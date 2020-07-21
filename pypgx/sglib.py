@@ -1,7 +1,7 @@
 # This script is shared between Stargazer and PyPGx.
 # Author: Seung-been "Steven" Lee
 # Email: sbstevenlee@gmail.com
-# Last updated: 2020-07-21 14:39
+# Last updated: 2020-07-21 19:38
 
 import gzip
 import statistics
@@ -398,7 +398,6 @@ class BioSample:
         self.name = name
         self.gt = False # true if genotyped
         self.sv = ["no_sv", "no_sv"] # one SV call per haplotype
-        self.pt = "" # predicted phenotype
         self.ssr = -100.0 # sum of squared residuals
         self.dip_cand = [] # candidate stars
         self.hap = [BioHaplotype(), BioHaplotype()]
@@ -769,40 +768,5 @@ def build_stardb(
             starallele.sv = v["sv"]
 
         result[k] = starallele
-
-    return result
-
-def read_phenotype_table(
-        fn: Optional[str],
-    ) -> Dict[str, Dict[str, Dict[str, str]]]:
-    """
-    Read phenotype table file.
-
-    Returns:
-        dict[str, dict[str, dict[str, str]]]: Phenotype table object.
-
-    Args:
-        fn (str): Phenotype table file.
-
-    Examples:
-        >>> phenotype_table = read_phenotype_table("phenotype_table.txt")
-        >>> print(phenotype_table["cyp2d6"]["poor_metabolizer"]["rules"])
-        ==:0,
-    """
-
-    result = {}
-
-    with open(fn) as f:
-        header = next(f).strip().split("\t")
-
-        for line in f:
-            fields = line.strip().split("\t")
-            gene = fields[0]
-            name = fields[2]
-
-            if gene not in result:
-                result[gene] = {}
-
-            result[gene][name] = dict(zip(header, fields))
 
     return result

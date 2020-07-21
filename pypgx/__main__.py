@@ -227,10 +227,6 @@ def get_parser():
         help="create summary file using Stargazer data",
     )
     summary_parser.add_argument(
-        "tg",
-        help="target gene",
-    )
-    summary_parser.add_argument(
         "gt",
         help="genotype file",
     )
@@ -243,10 +239,6 @@ def get_parser():
     meta_parser = subparsers.add_parser(
         "meta",
         help="create meta file from summary files",
-    )
-    meta_parser.add_argument(
-        "tg",
-        help="target gene",
     )
     meta_parser.add_argument(
         "sf",
@@ -558,11 +550,11 @@ def main():
         output(args.o, result)
     
     elif args.tool == "summary":
-        result = summary(args.tg, args.gt)
+        result = summary(args.gt)
         output(args.o, result)
 
     elif args.tool == "meta":
-        result = meta(args.tg, args.sf)
+        result = meta(args.sf)
         output(args.o, result)
 
     elif args.tool == "compare":

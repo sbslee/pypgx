@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.72
+-------
+
+* Updated summary.py and meta.py.
+
 v0.0.71
 -------
 

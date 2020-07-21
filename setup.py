@@ -19,7 +19,6 @@ setup(
         "pypgx.resources.cpic": ["cpicPairs.csv"],
         "pypgx.resources.sg": [
             "gene_table.txt",
-            "phenotype_table.txt",
             "snp_table.txt",
             "star_table.txt",
         ],

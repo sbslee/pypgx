@@ -161,12 +161,12 @@ summary command
 Synopsis
 --------
 
-pypgx summary *[options] tg gt*
+pypgx summary *[options] gt*
 
 Description
 -----------
 
-Create summary file using Stargazer data. *tg* is target gene. 
+Create summary file using Stargazer data.
 
 *gt* is the genotype file from Stargazer.
 
@@ -181,14 +181,14 @@ meta command
 Synopsis
 --------
 
-pypgx meta *[options] tg sf [sf ...]*
+pypgx meta *[options] sf [sf ...]*
 
 Description
 -----------
 
 Create meta file from summary files.
 
-*tg* is target gene. *sf* is summary file.
+*sf* is the summary file from the ``summary`` command.
 
 Options
 -------

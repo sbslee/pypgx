@@ -1,7 +1,7 @@
 import os
 from typing import List
 
-from .sglib import sort_star_names, read_phenotype_table
+from .sglib import sort_star_names
 
 def _append1(d, i, name, count, p, sv, hap_score):
     if name not in d:
@@ -18,7 +18,7 @@ def _append2(d, i):
             d[name].append(".")
             d[name].append(".")
 
-def meta(tg: str, sf: List[str]) -> str:
+def meta(sf: List[str]) -> str:
     """
     Create meta file from summary files.
 
@@ -26,13 +26,8 @@ def meta(tg: str, sf: List[str]) -> str:
         str: Meta file.
 
     Args:
-        tg (str): Target gene.
         sf (list[str]): Summary file.
     """
-
-    phenotype_table = read_phenotype_table(
-        f"{os.path.dirname(__file__)}/resources/sg/phenotype_table.txt")
-
     dicts = {}
     header1 = ["type", "name", "sv", "hap_score"]
 
@@ -72,13 +67,6 @@ def meta(tg: str, sf: List[str]) -> str:
         elif type == "star":
             for x in sort_star_names(list(dicts[type])):
                 temp.append(["star", x] + dicts[type][x])
-
-        elif type == "pt":
-            for x in sorted(
-                    list(dicts[type]),
-                    key = list(phenotype_table[tg]).index
-                ):
-                temp.append(["pt", x] + dicts[type][x])
 
         else:
             for x in sorted(dicts[type]):

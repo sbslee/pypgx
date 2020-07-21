@@ -1,8 +1,8 @@
 import os
 
-from .sglib import sort_star_names, read_phenotype_table
+from .sglib import sort_star_names
 
-def summary(tg: str, gt: str) -> str:
+def summary(gt: str) -> str:
     """
     Create summary file using Stargazer data.
 
@@ -10,18 +10,12 @@ def summary(tg: str, gt: str) -> str:
         str: Summary file.
 
     Args:
-        tg (str): Target gene.
         gt (str): Genotype file.
     """
-
-    phenotype_table = read_phenotype_table(
-        f"{os.path.dirname(__file__)}/resources/sg/phenotype_table.txt")
-
     star_dict = {}   # list all observed star alleles (haplotypes)
     asc_dict = {}    # how many observed alleles had AS=0, 0.5, ...
     hsc_dict = {}    # how many sample haplotypes had AS=0, 0.5, ...
     dsc_dict = {}    # how many samples had AS=0, 0.5, ...
-    pt_dict = {}     # list all observed phenotypes
     sampsv_dict = {} # how many samples had zero SVs, one SV, or two SVs 
     sv_dict = {}     # list all observed SV calls
 
@@ -33,12 +27,11 @@ def summary(tg: str, gt: str) -> str:
         next(f)
         for line in f:
             fields = line.strip().split("\t")
-            hap1_main = fields[2]
-            hap2_main = fields[3]
-            hap1_score = fields[6]
-            hap2_score = fields[7]
-            dip_score = fields[8]
-            phenotype = fields[9]
+            hap1_main = fields[3]
+            hap2_main = fields[4]
+            hap1_score = fields[7]
+            hap2_score = fields[8]
+            dip_score = fields[9]
             dip_sv = fields[10]
             hap1_sv = fields[11]
             hap2_sv = fields[12]
@@ -49,8 +42,6 @@ def summary(tg: str, gt: str) -> str:
                 star_dict[hap2_main] = [hap2_sv, hap2_score, 0]
             if dip_score not in dsc_dict:
                 dsc_dict[dip_score]= 0
-            if phenotype not in pt_dict:
-                pt_dict[phenotype] = 0
             if dip_sv != "no_sv,no_sv":
                 s_sv += 1
 
@@ -75,7 +66,6 @@ def summary(tg: str, gt: str) -> str:
             star_dict[hap1_main][2] += 1
             star_dict[hap2_main][2] += 1
             dsc_dict[dip_score] += 1
-            pt_dict[phenotype] += 1
             sampsv_dict[sv_count] += 1
             sv_dict[hap1_sv] += 1
             sv_dict[hap2_sv] += 1
@@ -130,11 +120,6 @@ def summary(tg: str, gt: str) -> str:
         n = dsc_dict[dip_score]
         p = n / s_total
         temp.append(["dsc", dip_score, ".", ".", n, p])
-
-    for x in sorted(pt_dict, key = list(phenotype_table[tg]).index):
-        n = pt_dict[x]
-        p = pt_dict[x] / s_total
-        temp.append(["pt", x, ".", ".", n, p])
 
     result = ""
 
