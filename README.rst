@@ -65,16 +65,18 @@ For getting help::
 For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
     $ pypgx bam2gdf -h
-    usage: pypgx bam2gdf [-h] [-o FILE] gb tg cg bam [bam ...]
+    usage: pypgx bam2gdf [-h] [--bd DIR] [--bl FILE] [-o FILE] gb tg cg [bam]
 
     positional arguments:
-      gb          genome build (hg19, hg38)
+      gb          genome build
       tg          target gene
-      cg          control gene
+      cg          control gene or region
       bam         BAM file
 
     optional arguments:
       -h, --help  show this help message and exit
+      --bd DIR    directory containing BAM files
+      --bl FILE   list of BAM files, one file per line
       -o FILE     output to FILE [stdout]
 
 For running in command line (e.g. ``bam2gdf`` tool)::

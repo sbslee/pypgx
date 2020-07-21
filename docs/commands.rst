@@ -93,7 +93,7 @@ bam2gdf command
 Synopsis
 --------
 
-pypgx bam2gdf *[options] gb tg cg bam [bam ...]*
+pypgx bam2gdf *[options] gb tg cg [bam]*
 
 Description
 -----------
@@ -102,11 +102,16 @@ Create GDF file from BAM file(s).
 
 *gb* is the genome build ('hg19' or 'hg38'). *tg* is the target 
 gene (e.g. 'cyp2d6'). *cg* is the control gene (e.g. 'vdr') or 
-region (e.g. 'chr12:48232319-48301814'). *bam* is the BAM file.
+region (e.g. 'chr12:48232319-48301814'). *bam* is the input BAM file(s).
+
+If you have many input BAM files, you may want to use the ``--bd`` or 
+``--bl`` argument instead of manually listing individual files for *bam*.
 
 Options
 -------
 
+--bd DIR    directory containing BAM files
+--bl FILE   list of BAM files, one file per line
 -o FILE     output to FILE [stdout]
 
 minivcf command
@@ -458,7 +463,7 @@ bam2vcf command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] gb tg fa bam out [bam ...]*
+pypgx bam2vcf *[options] gb tg fa [bam]*
 
 Description
 -----------
@@ -475,8 +480,10 @@ analysis by the Stargazer program.
 
 *gb* is the genome build ('hg19' or 'hg38'). *tg* is the target gene 
 (e.g. 'cyp2d6') or region (e.g. 'chr22:42512500-42551883'). 
-*fa* is the reference FASTA file. *out* is the output VCF file.
-*bam* is the input BAM file(s). 
+*fa* is the reference FASTA file. *bam* is the input BAM file(s). 
+
+If you have many input BAM files, you may want to use the ``--bd`` or 
+``--bl`` argument instead of manually listing individual files for *bam*.
 
 .. note::
 
@@ -485,7 +492,9 @@ analysis by the Stargazer program.
 Options
 -------
 
-There are no options.
+--bd DIR    directory containing BAM files
+--bl FILE   list of BAM files, one file per line
+-o FILE     output to FILE [stdout]
 
 genotype command
 ================

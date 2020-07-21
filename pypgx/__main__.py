@@ -34,6 +34,27 @@ from .snp import snp
 from .bam2vcf import bam2vcf
 from .genotype import genotype
 
+def _get_bam_list(bc, bd, bl):
+    """Get the list of BAM files.
+
+    Returns:
+        list[str]: List of BAM files.
+
+    Args:
+        bc (list[str]): List of BAM files from the console.
+        bd (str): Path to directory containing BAM files.
+        bl (str): Path to file containing BAM filenames.
+    """
+    if bc:
+        result = bc
+    elif bd:
+        result = get_file_list(bd, ".bam")
+    elif bl:
+        result = read_file_list(bl)
+    else:
+        raise ValueError("BAM files not provided")
+    return result
+
 def get_parser():
     parser = argparse.ArgumentParser()
 
@@ -143,8 +164,18 @@ def get_parser():
     )
     bam2gdf_parser.add_argument(
         "bam",
-        nargs="+",
+        nargs="?",
         help="BAM file",
+    )
+    bam2gdf_parser.add_argument(
+        "--bd",
+        metavar="DIR",
+        help="directory containing BAM files",
+    )
+    bam2gdf_parser.add_argument(
+        "--bl",
+        metavar="FILE",
+        help="list of BAM files, one file per line"
     )
     bam2gdf_parser.add_argument(
         "-o",
@@ -400,8 +431,18 @@ def get_parser():
     )
     bam2vcf_parser.add_argument(
         "bam",
-        nargs="+",
+        nargs="?",
         help="BAM file",
+    )
+    bam2vcf_parser.add_argument(
+        "--bd",
+        metavar="DIR",
+        help="directory containing BAM files",
+    )
+    bam2vcf_parser.add_argument(
+        "--bl",
+        metavar="FILE",
+        help="list of BAM files, one file per line"
     )
     bam2vcf_parser.add_argument(
         "-o",
@@ -489,7 +530,8 @@ def main():
         output(args.o, result)
 
     elif args.tool == "bam2gdf":
-        result = bam2gdf(args.gb, args.tg, args.cg, args.bam)
+        bam = _get_bam_list(args.bam, args.bd, args.bl)
+        result = bam2gdf(args.gb, args.tg, args.cg, bam)
         output(args.o, result)
 
     elif args.tool == "minivcf":
@@ -550,18 +592,12 @@ def main():
         output(args.o, result)
 
     elif args.tool == "bam2vcf":
-        result = bam2vcf(args.gb, args.tg, args.fa, args.bam)
+        bam = _get_bam_list(args.bam, args.bd, args.bl)
+        result = bam2vcf(args.gb, args.tg, args.fa, bam)
         output(args.o, result)
 
     elif args.tool == "genotype":
-        if args.bam:
-            bam = args.bam
-        elif args.bd:
-            bam = get_file_list(args.bd, ".bam")
-        elif args.bl:
-            bam = read_file_list(args.bl) 
-        else:
-            raise ValueError("BAM files not provided")
+        bam = _get_bam_list(args.bam, args.bd, args.bl)
         genotype(args.fa, args.dt, args.gb, args.tg, args.out, bam, args.cg)
 
     else:

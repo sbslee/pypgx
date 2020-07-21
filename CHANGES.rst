@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.69
+-------
+
+* Updated bam2gdf.py and bam2vcf.py.
+
 v0.0.68
 -------
 
