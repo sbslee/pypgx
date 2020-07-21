@@ -1,25 +1,16 @@
 import configparser
-from os import mkdir
-from os.path import realpath
+import os
 
 from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
 logger = logging.getLogger(__name__)
 
 def sgea(conf: str) -> None:
-    """Run per-project genotyping with Stargazer (2).
-
-    This command runs the per-project genotyping pipeline by submitting 
-    jobs to the Sun Grid Engine (SGE) cluster. The main difference between
-    ``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
-    Kit (GATK) v4 while the latter uses GATK v3.
+    """
+    Run per-project genotyping with Stargazer (2).
 
     Args:
         conf (str): Configuration file.
-
-    .. note::
-
-        SGE, Stargazer, and GATK must be pre-installed.
 
     This is what a typical configuration file for ``sgea`` looks like:
 
@@ -42,6 +33,7 @@ def sgea(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
+            stargazer_tool = Stargazer_v1.0.9
             control_gene = vdr
 
     This table summarizes the configuration parameters specific to ``sgea``:
@@ -72,6 +64,8 @@ def sgea(conf: str) -> None:
              - Output project directory.
            * - qsub_options
              - Options for qsub command.
+           * - stargazer_tool
+             - Stargazer program.
            * - target_gene
              - Target gene.
     """
@@ -91,15 +85,16 @@ def sgea(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
-    project_path = realpath(config["USER"]["project_path"])
-    manifest_file = realpath(config["USER"]["manifest_file"])
-    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
-    fasta_file = realpath(config["USER"]["fasta_file"])
     mapping_quality = config["USER"]["mapping_quality"]
     output_prefix = config["USER"]["output_prefix"]
+    manifest_file = config["USER"]["manifest_file"]
+    project_path = os.path.realpath(config["USER"]["project_path"])
+    fasta_file = config["USER"]["fasta_file"]
     target_gene = config["USER"]["target_gene"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
+    dbsnp_file = config["USER"]["dbsnp_file"]
+    stargazer_tool = config["USER"]["stargazer_tool"]
     genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
 
@@ -120,10 +115,10 @@ def sgea(conf: str) -> None:
 
     # Make the project directories.
     project_path = f"{project_path}"
-    mkdir(project_path)
-    mkdir(f"{project_path}/shell")
-    mkdir(f"{project_path}/log")
-    mkdir(f"{project_path}/temp")
+    os.mkdir(project_path)
+    os.mkdir(f"{project_path}/shell")
+    os.mkdir(f"{project_path}/log")
+    os.mkdir(f"{project_path}/temp")
 
     if control_gene != "NONE":
         # Write the shell script for bam2gdf.
@@ -215,9 +210,10 @@ def sgea(conf: str) -> None:
     # Write the shell script for Stargazer.
     s = (
         f"project={project_path}\n"
+        f"stargazer={stargazer_tool}\n"
         f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
         "\n"
-        "stargazer \\\n"
+        "python3 $stargazer \\\n"
         f"  {data_type} \\\n"
         f"  {genome_build} \\\n"
         f"  {target_gene} \\\n"

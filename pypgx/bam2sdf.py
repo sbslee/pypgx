@@ -4,7 +4,7 @@ from typing import List
 import pysam
 
 from .common import logging, sm_tag, get_gene_table
-from .sglib import sort_regions
+from .sglib import sort_regions, merge_region
 
 logger = logging.getLogger(__name__)
 
@@ -29,25 +29,35 @@ def bam2sdf(
 
     gene_table = get_gene_table()
 
-    targets = [k for k, v in gene_table.items() if v["type"] == "target"]
+    targets = [k for k, v in gene_table.items() if (v["type"] == "target") and (v[f"{gb}_support"] == 'yes')]
 
-    if tg not in targets:
-        raise ValueError(f"'{tg}' is not among target genes: {targets}")
+    controls = [k for k, v in gene_table.items() if v["control"] == "yes"]
+    cr = gene_table[cg][f"{gb}_region"].replace("chr", "")
 
-    tr = gene_table[tg][f"{gb}_region"].replace("chr", "")
+    # multiple genes:
+    select_genes = []
+    select_regions = {}
 
-    if "chr" in cg or ":" in cg:
-        cr = cg.replace("chr", "")
-
+    if tg == "ALL":
+        select_genes = targets
+        for gene in select_genes:
+            select_regions[gene] = gene_table[gene][f"{gb}_region"].replace("chr", "")
     else:
-        controls = [k for k, v in gene_table.items() if v["control"] == "yes"]
+        for gene in tg.split(","):
+            if gene_table[gene][f"{gb}_support"] == 'no':
+                print('Gene {} is not support in {}'.format(gene, gb))
+                pass
+            else:
+                select_genes.append(gene.strip().lower())
+                select_regions[gene] = gene_table[gene][f"{gb}_region"].replace("chr", "")
+                
+        for gene in select_genes:
+            if gene not in targets:
+                raise ValueError(f"Unrecognized target gene found: {gene}")
 
-        if cg not in controls:
-            raise ValueError(f"'{cg}' is not among control genes: {controls}")
-
-        cr = gene_table[cg][f"{gb}_region"].replace("chr", "")
-
-    regions = sort_regions([tr, cr])
+    select_regions[cg] = cr
+    regions = sort_regions(list(select_regions.values()))
+    regions = merge_region(regions)
 
     # Get sample and sequence names from BAM headers.
     sm = []

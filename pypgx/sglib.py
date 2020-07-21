@@ -2,6 +2,8 @@ import gzip
 import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
+import pandas as pd
+from sympy import Interval, Union
 
 class VCFFile:
     """
@@ -524,6 +526,48 @@ def sort_regions(regions: List[str]) -> List[str]:
             chr = int(r[0].replace("chr", ""))
         return (chr, r[1], r[2])
     return sorted(regions, key = f)
+
+def merge_region(regions: List[str]) -> List[str]:
+    
+    def union(data):
+        """ Union of a list of intervals e.g. [(1,2),(3,4)] """
+        intervals = [Interval(begin, end) for (begin, end) in data]
+        u = Union(*intervals)
+        return [u] if isinstance(u, Interval) \
+        else list(u.args)
+
+    # Get intervals for rows
+    def f(x,position=None):
+        """
+        Returns an interval for the row. The start and stop position indicate the minimum
+            and maximum position of all overlapping ranges within the group.
+        Args: 
+            position (str, optional): Returns an integer indicating start or stop position.
+        """
+        intervals = union(x)
+        if position and position.lower() == 'start':
+            group = x.str[0].apply(lambda y: [l.start for g,l in enumerate(intervals) if l.contains(y)][0])
+        elif position and position.lower() == 'end':
+            group = x.str[0].apply(lambda y: [l.end for g,l in enumerate(intervals) if l.contains(y)][0])
+        else:
+            group = x.str[0].apply(lambda y: [l for g,l in enumerate(intervals) if l.contains(y)][0])
+        return group
+    
+    merge_regions = []
+    for region_ in regions:
+        merge_regions.append(parse_region(region_))
+        
+    df = pd.DataFrame(merge_regions, columns=['chr', 'start', 'end'])
+    df['start_end'] = df[['start', 'end']].apply(list, axis=1)
+
+    # Assign each row to an interval and add start/end columns
+    df['start_interval'] = df[['chr',
+        'start_end']].groupby(['chr']).transform(f,'start')
+    df['end_interval'] = df[['chr',
+        'start_end']].groupby(['chr']).transform(f,'end')
+    df = df.groupby(['chr','start_interval','end_interval']).size().reset_index()  
+    df = (df['chr'].astype(str) + ':' + df['start_interval'].astype(str) + '-' + df['end_interval'].astype(str)).to_string(index=False).split('\n')
+    return [x.strip(' ') for x in df]
 
 def parse_vcf_fields(fields):
     return {
