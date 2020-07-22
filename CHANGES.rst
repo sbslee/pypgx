@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.75
+-------
+
+Fixed a bug in the Drugs section for report.py.
+
 v0.0.74
 -------
 

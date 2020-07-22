@@ -96,17 +96,26 @@ def _add_drugs_section(genotype_table, pair_table):
         "  <th style='width: 60%;'>Guideline</th>\n"
         "</tr>\n"
     )
-    for i, pair in enumerate(sorted(pair_table, key = lambda x: (x["Drug"].lower(), x["Gene"])), 1):
-        if pair["Gene"].lower() in genotype_table:
+    for i, pair in enumerate(sorted(
+        pair_table, key = lambda x: (x["Drug"].lower(), x["Gene"])), 1):
+
+        gn = pair["Gene"].lower() # gene name
+
+        # Gene-drug pairs are bolded if a genotype is available for the gene.
+        if gn in genotype_table and genotype_table[gn]["hap1_main"] != "-":
             bold = "bold"
         else:
             bold = "normal"
+
+        # Gene-drug pairs are in red if altered phenotype is predicted.
         if bold == "normal":
             color = "black"
-        elif any([x in genotype_table[pair["Gene"].lower()]["phenotype"] for x in ["normal", "unknown", "-"]]):
-            color = "normal"
+        elif any([x in genotype_table[gn]["phenotype"]
+            for x in ["normal", "unknown", "-"]]):
+            color = "black"
         else:
             color = "red"
+
         table += (
         f"<tr style='font-weight: {bold}; color: {color};'>\n"
         f"  <td>{i}</td>\n"
