@@ -97,6 +97,18 @@ pypgx.sgea module
 .. automodule:: pypgx.sgea
     :members:
 
+pypgx.xgep module
+------------------
+
+.. automodule:: pypgx.xgep
+    :members:
+
+pypgx.xgea module
+------------------
+
+.. automodule:: pypgx.xgea
+    :members:
+
 pypgx.cpa module
 ----------------
 
@@ -151,12 +163,6 @@ pypgx.gt2pt module
 .. automodule:: pypgx.gt2pt
     :members:
     :undoc-members:
-
-pypgx.xgep module
-------------------
-
-.. automodule:: pypgx.xgep
-    :members:
 
 Auxiliary modules
 =================

@@ -11,11 +11,15 @@ PyPGx is a Python package for pharmacogenomics (PGx) research, which can be
 used as a standalone program and as a Python module. Documentation is 
 available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
-For genotype analysis PyPGx relies on Stargazer, a bioinformatics tool for 
+Stargazer
+=========
+
+For genotype analyses PyPGx relies on Stargazer, a bioinformatics tool for 
 calling star alleles (haplotypes) in PGx genes using data from 
 next-generation sequencing (NGS) or single nucleotide polymorphism (SNP) 
-array. Stargazer is free for academic use and can be downloaded from 
-`here <https://stargazer.gs.washington.edu/stargazerweb/>`_.
+array. For more information, please visit Stargazer's 
+`official webpage <https://stargazer.gs.washington.edu/stargazerweb>`_ and 
+`Github repository <https://github.com/sbslee/stargazer>`_.
 
 Installation
 ============
@@ -49,6 +53,8 @@ For getting help::
         sges      run per-sample genotyping for multiple genes with SGE
         sgep      run per-project genotyping for single gene with SGE (1)
         sgea      run per-project genotyping for single gene with SGE (2)
+        xgep      run per-project genotyping for multiple genes with SGE (1)
+        xgea      run per-project genotyping for multiple genes with SGE (2)
         cpa       run change point analysis for copy number
         plotcov   plot coverage data to PDF file
         check     check table files for Stargazer
@@ -58,13 +64,12 @@ For getting help::
         bam2vcf   create VCF file from BAM file(s)
         genotype  call star alleles from BAM file(s)
         gt2pt     call phenotypes from star alleles
-        xgep      run per-project genotyping for multiple genes with SGE (1)
 
     optional arguments:
       -h, --help  show this help message and exit
       --version   print the PyPGx version number and exit
 
-For getting tool-specific help (e.g. ``bam2gdf`` tool)::
+For getting tool-specific help::
 
     $ pypgx bam2gdf -h
     usage: pypgx bam2gdf [-h] [--bd DIR] [--bl FILE] [-o FILE]
@@ -82,17 +87,17 @@ For getting tool-specific help (e.g. ``bam2gdf`` tool)::
       --bl FILE   list of BAM files, one file per line
       -o FILE     output to FILE [stdout]
 
-For running in command line (e.g. ``bam2gdf`` tool)::
+For running in command line::
 
     $ pypgx bam2gdf hg19 cyp2d6 vdr in1.bam in2.bam -o out.gdf
 
 Running within Python
 =====================
-For running within Python (e.g. ``bam2gdf`` tool):
+For running within Python:
 
 >>> from pypgx.bam2gdf import bam2gdf
->>> bams = ["in1.bam", "in2.bam"]
->>> gdf = bam2gdf("hg19", "cyp2d6", "vdr", bams)
+>>> bam = ["in1.bam", "in2.bam"]
+>>> gdf = bam2gdf("hg19", "cyp2d6", "vdr", bam)
 >>> for line in gdf.split("\n"):
 >>>     print(line)
 

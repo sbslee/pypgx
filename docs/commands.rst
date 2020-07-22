@@ -339,6 +339,62 @@ Options
 
 There are no options.
 
+xgep command
+============
+
+Synopsis
+--------
+
+pypgx xgep *[options] conf*
+
+Description
+-----------
+
+Run per-project genotyping for multiple genes with SGE (1).
+
+This command runs the per-project genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
+extension of the ``sgep`` command to genotype multiple genes.
+
+*conf* is the configuration file. See the API section for details.
+
+.. note::
+
+    SGE and Stargazer must be pre-installed.
+
+Options
+-------
+
+There are no options.
+
+xgea command
+============
+
+Synopsis
+--------
+
+pypgx xgea *[options] conf*
+
+Description
+-----------
+
+Run per-project genotyping for multiple genes with SGE (2).
+
+This command runs the per-project genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
+extension of the ``sgea`` command to genotype multiple genes.
+
+*conf* is the configuration file. See the API section for details.
+
+.. note::
+
+    SGE and Stargazer must be pre-installed.
+
+Options
+-------
+
+There are no options.
+
 cpa command
 ===========
 
@@ -560,31 +616,3 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
-
-xgep command
-============
-
-Synopsis
---------
-
-pypgx xgep *[options] conf*
-
-Description
------------
-
-Run per-project genotyping for multiple genes with SGE (1).
-
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
-extension of the ``sgep`` command to genotype multiple genes.
-
-*conf* is the configuration file. See the API section for details.
-
-.. note::
-
-    SGE and Stargazer must be pre-installed.
-
-Options
--------
-
-There are no options.

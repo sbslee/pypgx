@@ -2,26 +2,27 @@ import configparser
 from os import mkdir
 from os.path import realpath
 
-from .sgep import sgep
+from .sgea import sgea
 from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 
 logger = logging.getLogger(__name__)
 
-def xgep(conf: str) -> None:
-    """Run per-project genotyping for multiple genes with SGE (1).
+def xgea(conf: str) -> None:
+    """Run per-project genotyping for multiple genes with SGE (2).
 
     This command runs the per-project genotyping pipeline by submitting 
-    jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
-    extension of the ``sgep`` command to genotype multiple genes.
+    jobs to the Sun Grid Engine (SGE) cluster. The main difference between
+    ``xgea`` and ``xgep`` is that the former uses Genome Analysis Tool 
+    Kit (GATK) v4 while the latter uses GATK v3.
 
     Args:
         conf (str): Configuration file.
 
     .. note::
 
-        SGE and Stargazer must be pre-installed.
+        SGE, Stargazer, and GATK must be pre-installed.
 
-    This is what a typical configuration file for ``xgep`` looks like:
+    This is what a typical configuration file for ``xgea`` looks like:
 
         .. code-block:: python
 
@@ -42,12 +43,10 @@ def xgep(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             dbsnp_file = dbsnp.vcf
-            gatk_tool = GenomeAnalysisTK.jar
             control_gene = vdr
-            qsub_options = -V -l mem_requested=10G
             target_genes = cyp2b6, cyp2d6
 
-    This table summarizes the configuration parameters specific to ``xgep``:
+    This table summarizes the configuration parameters specific to ``xgea``:
 
         .. list-table::
            :widths: 25 75
@@ -63,8 +62,6 @@ def xgep(conf: str) -> None:
              - dbSNP VCF file.
            * - fasta_file
              - Reference FASTA file.
-           * - gatk_tool
-             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - manifest_file
@@ -96,16 +93,15 @@ def xgep(conf: str) -> None:
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
-    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     manifest_file = realpath(config["USER"]["manifest_file"])
+    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    gatk_tool = realpath(config["USER"]["gatk_tool"])
     mapping_quality = config["USER"]["mapping_quality"]
     output_prefix = config["USER"]["output_prefix"]
-    genome_build = config["USER"]["genome_build"]
     target_genes = config["USER"]["target_genes"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
+    genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
 
     t = [k for k, v in gene_table.items() if v["type"] == "target"]
@@ -149,11 +145,10 @@ def xgep(conf: str) -> None:
             f"genome_build = {genome_build}\n"
             f"data_type = {data_type}\n"
             f"dbsnp_file = {dbsnp_file}\n"
-            f"gatk_tool = {gatk_tool}\n"
             f"qsub_options = {qsub_options}\n"
         )
 
         with open(f"{project_path}/conf-{select_gene}.txt", "w") as f:
             f.write(s)
 
-        sgep(f"{project_path}/conf-{select_gene}.txt")
+        sgea(f"{project_path}/conf-{select_gene}.txt")

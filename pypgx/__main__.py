@@ -35,6 +35,7 @@ from .bam2vcf import bam2vcf
 from .genotype import genotype
 from .gt2pt import gt2pt
 from .xgep import xgep
+from .xgea import xgea
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -312,6 +313,24 @@ def get_parser():
         help="configuration file",
     )
 
+    xgep_parser = subparsers.add_parser(
+        "xgep",
+        help="run per-project genotyping for multiple genes with SGE (1)",
+    )
+    xgep_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
+    xgea_parser = subparsers.add_parser(
+        "xgea",
+        help="run per-project genotyping for multiple genes with SGE (2)",
+    )
+    xgea_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     cpa_parser = subparsers.add_parser(
         "cpa",
         help="run change point analysis for copy number",
@@ -503,15 +522,6 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    xgep_parser = subparsers.add_parser(
-        "xgep",
-        help="run per-project genotyping for multiple genes with SGE (1)",
-    )
-    xgep_parser.add_argument(
-        "conf",
-        help="configuration file",
-    )
-
     return parser
 
 def output(fn, result):
@@ -586,6 +596,12 @@ def main():
     elif args.tool == "sgea":
         sgea(args.conf)
 
+    elif args.tool == "xgep":
+        xgep(args.conf)
+
+    elif args.tool == "xgea":
+        xgea(args.conf)
+
     elif args.tool == "cpa":
         result = cpa(args.rdata)
         output(args.o, result)
@@ -620,9 +636,6 @@ def main():
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
         output(args.o, result)
-
-    elif args.tool == "xgep":
-        xgep(args.conf)
 
     else:
         pass
