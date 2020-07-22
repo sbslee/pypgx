@@ -46,9 +46,9 @@ For getting help::
         compare   compare genotype files
         remap     remap BAM file(s) to different reference
         fq2bam    create BAM file(s) from FASTQ file(s)
-        sges      run per-sample genotyping with Stargazer
-        sgep      run per-project genotyping with Stargazer (1)
-        sgea      run per-project genotyping with Stargazer (2)
+        sges      run per-sample genotyping for multiple genes with SGE
+        sgep      run per-project genotyping for single gene with SGE (1)
+        sgea      run per-project genotyping for single gene with SGE (2)
         cpa       run change point analysis for copy number
         plotcov   plot coverage data to PDF file
         check     check table files for Stargazer
@@ -58,6 +58,7 @@ For getting help::
         bam2vcf   create VCF file from BAM file(s)
         genotype  call star alleles from BAM file(s)
         gt2pt     call phenotypes from star alleles
+        xgep      run per-project genotyping for multiple genes with SGE (1)
 
     optional arguments:
       -h, --help  show this help message and exit
@@ -66,7 +67,8 @@ For getting help::
 For getting tool-specific help (e.g. ``bam2gdf`` tool)::
 
     $ pypgx bam2gdf -h
-    usage: pypgx bam2gdf [-h] [--bd DIR] [--bl FILE] [-o FILE] gb tg cg [bam]
+    usage: pypgx bam2gdf [-h] [--bd DIR] [--bl FILE] [-o FILE]
+                         gb tg cg [bam [bam ...]]
 
     positional arguments:
       gb          genome build

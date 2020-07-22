@@ -7,7 +7,7 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table
 logger = logging.getLogger(__name__)
 
 def sgea(conf: str) -> None:
-    """Run per-project genotyping with Stargazer (2).
+    """Run per-project genotyping for single gene with SGE (2).
 
     This command runs the per-project genotyping pipeline by submitting 
     jobs to the Sun Grid Engine (SGE) cluster. The main difference between

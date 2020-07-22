@@ -228,7 +228,7 @@ Description
 
 Remap BAM file(s) to different reference.
 
-*conf* is configuration file. See the API section for details.
+*conf* is the configuration file. See the API section for details.
 
 Options
 -------
@@ -248,7 +248,7 @@ Description
 
 Create BAM file(s) from FASTQ file(s).
 
-*conf* is configuration file. See the API section for details.
+*conf* is the configuration file. See the API section for details.
 
 Options
 -------
@@ -266,13 +266,13 @@ pypgx sges *[options] conf*
 Description
 -----------
 
-Run per-sample genotyping with Stargazer.
+Run per-sample genotyping for multiple genes with SGE.
 
 This command runs the per-sample genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster. After genotype analysis by 
 Stargazer, it will generate a HTML report using the ``report`` tool.
 
-*conf* is configuration file. See the API section for details.
+*conf* is the configuration file. See the API section for details.
 
 .. note::
 
@@ -294,12 +294,12 @@ pypgx sgep *[options] conf*
 Description
 -----------
 
-Run per-project genotyping with Stargazer (1).
+Run per-project genotyping for single gene with SGE (1).
 
 This command runs the per-project genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster.
 
-*conf* is configuration file. See the API section for details.
+*conf* is the configuration file. See the API section for details.
 
 .. note::
 
@@ -321,14 +321,14 @@ pypgx sgea *[options] conf*
 Description
 -----------
 
-Run per-project genotyping with Stargazer (2).
+Run per-project genotyping for single gene with SGE (2).
 
 This command runs the per-project genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster. The main difference between
 ``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
 Kit (GATK) v4 while the latter uses GATK v3.
 
-*conf* is configuration file. See the API section for details.
+*conf* is the configuration file. See the API section for details.
 
 .. note::
 
@@ -560,3 +560,31 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+xgep command
+============
+
+Synopsis
+--------
+
+pypgx xgep *[options] conf*
+
+Description
+-----------
+
+Run per-project genotyping for multiple genes with SGE (1).
+
+This command runs the per-project genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
+extension of the ``sgep`` command to genotype multiple genes.
+
+*conf* is the configuration file. See the API section for details.
+
+.. note::
+
+    SGE and Stargazer must be pre-installed.
+
+Options
+-------
+
+There are no options.

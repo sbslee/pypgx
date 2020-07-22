@@ -34,6 +34,7 @@ from .snp import snp
 from .bam2vcf import bam2vcf
 from .genotype import genotype
 from .gt2pt import gt2pt
+from .xgep import xgep
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -286,7 +287,7 @@ def get_parser():
 
     sges_parser = subparsers.add_parser(
         "sges",
-        help="run per-sample genotyping with Stargazer",
+        help="run per-sample genotyping for multiple genes with SGE",
     )
     sges_parser.add_argument(
         "conf",
@@ -295,7 +296,7 @@ def get_parser():
 
     sgep_parser = subparsers.add_parser(
         "sgep",
-        help="run per-project genotyping with Stargazer (1)",
+        help="run per-project genotyping for single gene with SGE (1)",
     )
     sgep_parser.add_argument(
         "conf",
@@ -304,7 +305,7 @@ def get_parser():
 
     sgea_parser = subparsers.add_parser(
         "sgea",
-        help="run per-project genotyping with Stargazer (2)",
+        help="run per-project genotyping for single gene with SGE (2)",
     )
     sgea_parser.add_argument(
         "conf",
@@ -502,6 +503,15 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    xgep_parser = subparsers.add_parser(
+        "xgep",
+        help="run per-project genotyping for multiple genes with SGE (1)",
+    )
+    xgep_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     return parser
 
 def output(fn, result):
@@ -610,6 +620,9 @@ def main():
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
         output(args.o, result)
+
+    elif args.tool == "xgep":
+        xgep(args.conf)
 
     else:
         pass

@@ -152,6 +152,12 @@ pypgx.gt2pt module
     :members:
     :undoc-members:
 
+pypgx.xgep module
+------------------
+
+.. automodule:: pypgx.xgep
+    :members:
+
 Auxiliary modules
 =================
 
