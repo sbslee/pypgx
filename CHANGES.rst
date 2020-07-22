@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.74
+-------
+
+* Fixed incorrect argument setting for BAM files.
+
 v0.0.73
 -------
 

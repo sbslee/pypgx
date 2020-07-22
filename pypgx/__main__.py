@@ -165,7 +165,7 @@ def get_parser():
     )
     bam2gdf_parser.add_argument(
         "bam",
-        nargs="?",
+        nargs="*",
         help="BAM file",
     )
     bam2gdf_parser.add_argument(
@@ -424,7 +424,7 @@ def get_parser():
     )
     bam2vcf_parser.add_argument(
         "bam",
-        nargs="?",
+        nargs="*",
         help="BAM file",
     )
     bam2vcf_parser.add_argument(
@@ -469,7 +469,7 @@ def get_parser():
     )
     genotype_parser.add_argument(
         "bam",
-        nargs="?",
+        nargs="*",
         help="BAM file",
     )
     genotype_parser.add_argument(

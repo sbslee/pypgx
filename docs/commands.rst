@@ -93,7 +93,7 @@ bam2gdf command
 Synopsis
 --------
 
-pypgx bam2gdf *[options] gb tg cg [bam]*
+pypgx bam2gdf *[options] gb tg cg [bam [bam ...]]*
 
 Description
 -----------
@@ -464,7 +464,7 @@ bam2vcf command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] gb tg fa [bam]*
+pypgx bam2vcf *[options] gb tg fa [bam [bam ...]]*
 
 Description
 -----------
@@ -503,7 +503,7 @@ genotype command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] fa dt gb tg out [bam]*
+pypgx genotype *[options] fa dt gb tg out [bam [bam ...]]*
 
 Description
 -----------
