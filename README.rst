@@ -57,7 +57,7 @@ For getting help::
         snp       view variant data for sample/star allele pairs
         bam2vcf   create VCF file from BAM file(s)
         genotype  call star alleles from BAM file(s)
-        gt2pt     predict phenotypes from star allele calls
+        gt2pt     call phenotypes from star alleles
 
     optional arguments:
       -h, --help  show this help message and exit

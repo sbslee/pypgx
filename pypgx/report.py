@@ -4,7 +4,9 @@ import sys
 import datetime
 import pkgutil
 from typing import TextIO, Optional
+
 from .common import get_target_genes
+from .gt2pt import phenotyper
 
 def _add_overview_section(genotype_table, pair_table, target_genes):
     table = (
@@ -238,6 +240,13 @@ def report(
     action_table = _read_action_table()
     pair_table, cpic_date = _read_pair_table()
     genotype_table, sample_id = _read_genotype_file(f, fn, target_genes)
+
+    for k, v in genotype_table.items():
+        if v["hap1_main"] == "-":
+            pt = "-"
+        else:
+            pt = phenotyper(k, v["hap1_main"], v["hap2_main"])
+        genotype_table[k]["phenotype"] = pt
 
     assessed = [x for x in target_genes if genotype_table[x]["status"] != "-"]
     typed = [x for x in target_genes if genotype_table[x]["status"] == "g"]

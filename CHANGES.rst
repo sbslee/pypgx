@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.73
+-------
+
+* Updated report.py and gt2pt.py.
+
 v0.0.72
 -------
 

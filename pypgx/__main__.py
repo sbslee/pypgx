@@ -490,7 +490,7 @@ def get_parser():
 
     gt2pt_parser = subparsers.add_parser(
         "gt2pt",
-        help="predict phenotypes from star allele calls",
+        help="call phenotypes from star alleles",
     )
     gt2pt_parser.add_argument(
         "gt",

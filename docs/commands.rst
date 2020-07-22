@@ -552,9 +552,9 @@ pypgx snp *[options] gt*
 Description
 -----------
 
-Predict phenotypes from star allele calls.
+Call phenotypes from star alleles.
 
-*gt* is the genotype file from Stargazer.
+*gt* is the genotype file from Stargazer. See the API section for details.
 
 Options
 -------
