@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.78
+-------
+
+* Replaced HaplotypeCaller with BCFtools for sges.py and sgep.py.
+
 v0.0.77
 -------
 

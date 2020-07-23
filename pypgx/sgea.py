@@ -12,7 +12,7 @@ def sgea(conf: str) -> None:
     This command runs the per-project genotyping pipeline by submitting 
     jobs to the Sun Grid Engine (SGE) cluster. The main difference between
     ``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
-    Kit (GATK) v4 while the latter uses GATK v3.
+    Kit (GATK) v4 while the latter uses BCFtools.
 
     Args:
         conf (str): Configuration file.

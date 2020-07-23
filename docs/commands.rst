@@ -276,7 +276,7 @@ Stargazer, it will generate a HTML report using the ``report`` tool.
 
 .. note::
 
-    SGE and Stargazer must be pre-installed.
+    BCFtools, SGE and Stargazer must be pre-installed.
 
 Options
 -------
@@ -303,7 +303,7 @@ jobs to the Sun Grid Engine (SGE) cluster.
 
 .. note::
 
-    SGE and Stargazer must be pre-installed.
+    BCFtools, SGE and Stargazer must be pre-installed.
 
 Options
 -------
@@ -326,7 +326,7 @@ Run per-project genotyping for single gene with SGE (2).
 This command runs the per-project genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster. The main difference between
 ``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
-Kit (GATK) v4 while the latter uses GATK v3.
+Kit (GATK) v4 while the latter uses BCFtools.
 
 *conf* is the configuration file. See the API section for details.
 

@@ -18,7 +18,7 @@ def sges(conf: str) -> None:
 
     .. note::
 
-        SGE and Stargazer must be pre-installed.
+        BCFtools, SGE and Stargazer must be pre-installed.
 
     This is what a typical configuration file for ``sges`` looks like:
 
@@ -39,8 +39,6 @@ def sges(conf: str) -> None:
             project_path = /path/to/project/
             genome_build = hg19
             data_type = wgs
-            dbsnp_file = dbsnp.vcf
-            gatk_tool = GenomeAnalysisTK.jar
             bam_file = in.bam
             qsub_options = -l mem_requested=2G
             target_genes = cyp2b6, cyp2d6, dpyd
@@ -60,12 +58,8 @@ def sges(conf: str) -> None:
              - Control gene or region.
            * - data_type
              - Data type (wgs, ts, chip).
-           * - dbsnp_file
-             - dbSNP VCF file.
            * - fasta_file
              - Reference FASTA file.
-           * - gatk_tool
-             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - mapping_quality
@@ -97,9 +91,7 @@ def sges(conf: str) -> None:
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
     bam_file = realpath(config["USER"]["bam_file"])
-    gatk_tool = realpath(config["USER"]["gatk_tool"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     target_genes = config["USER"]["target_genes"]
     output_prefix = config["USER"]["output_prefix"]
     control_gene = config["USER"]["control_gene"]
@@ -122,14 +114,10 @@ def sges(conf: str) -> None:
 
     # Make the project directories.
     mkdir(project_path)
-    mkdir(f"{project_path}/log")
     mkdir(f"{project_path}/gene")
 
     for select_gene in select_genes:
         mkdir(f"{project_path}/gene/{select_gene}")
-        mkdir(f"{project_path}/gene/{select_gene}/temp")
-        mkdir(f"{project_path}/gene/{select_gene}/shell")
-        mkdir(f"{project_path}/gene/{select_gene}/log")
 
     if is_chr(bam_file):
         chr_str = "chr"
@@ -141,69 +129,20 @@ def sges(conf: str) -> None:
         target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
 
         s = (
-            f"p={project_path}\n"
-            f"tg={select_gene}\n"
-            f"gatk={gatk_tool}\n"
-            f"fasta={fasta_file}\n"
-            f"dbsnp={dbsnp_file}\n"
-            f"bam={bam_file}\n"
-            f"region={chr_str}{target_region}\n"
-            f"gvcf=$p/gene/$tg/temp/{output_prefix}.g.vcf\n"
-            "\n"
-            "java -jar $gatk -T HaplotypeCaller \\\n"
-            "  -R $fasta \\\n"
-            "  -D $dbsnp \\\n"
-            "  -I $bam \\\n"
-            "  -o $gvcf \\\n"
-            "  -L $region \\\n"
-            "  --emitRefConfidence GVCF \\\n"
-            "  -U ALLOW_SEQ_DICT_INCOMPATIBILITY \\\n"
-            "\n"
-            f"vcf1=$p/gene/$tg/temp/{output_prefix}.joint.vcf\n"
-            "\n"
-            "java -jar $gatk -T GenotypeGVCFs \\\n"
-            "  -R $fasta \\\n"
-            "  -D $dbsnp \\\n"
-            "  -o $vcf1 \\\n"
-            "  -L $region \\\n"
-            "  --variant $gvcf \\\n"
-            "\n"
-            f"vcf2=$p/gene/$tg/{output_prefix}.joint.filtered.vcf\n"
-            "\n"
-            "java -jar $gatk -T VariantFiltration \\\n"
-            "  -R $fasta \\\n"
-            "  --filterExpression 'QUAL <= 50.0' \\\n"
-            "  --filterName QUALFilter \\\n"
-            "  --variant $vcf1 \\\n"
-            "  -o $vcf2 \\\n"
-            "  -L $region \\\n"
-            "\n"
-        )
-
-        if control_gene != "NONE":
-            s += (
-                f"pypgx bam2gdf {genome_build} $tg {control_gene} $bam \\\n"
-                f"  -o $p/gene/$tg/{output_prefix}.gdf \\\n"
-                "\n"
-            )
-
-        s += (
-            f"stargazer \\\n"
+            "pypgx genotype \\\n"
+            f"  {fasta_file} \\\n"
             f"  {data_type} \\\n"
             f"  {genome_build} \\\n"
-            "  $tg \\\n"
-            "  $vcf2 \\\n"
-            "  $p/gene/$tg/stargazer \\\n"
+            f"  {select_gene} \\\n"
+            f"  {project_path}/gene/{select_gene}/stargazer \\\n"
+            f"  {bam_file} \\\n"
         )
 
         if control_gene != "NONE":
-            s += (
-                f"  --cg {control_gene} \\\n"
-                f"  --gdf $p/gene/$tg/{output_prefix}.gdf \\\n"
-            )
+            s += f"  --cg {control_gene}\n"
 
         with open(
-            f"{project_path}/gene/{select_gene}/shell/run.sh", "w"
+            f"{project_path}/gene/{select_gene}/run.sh", "w"
         ) as f:
             f.write(s)
 
@@ -211,14 +150,14 @@ def sges(conf: str) -> None:
     s = (
         f"p={project_path}\n"
         "\n"
-        f'''head -n1 $p/gene/{select_genes[0]}/stargazer/genotype.txt > $p/merged.sg-genotype.txt\n'''
+        f'''head -n1 $p/gene/{select_genes[0]}/stargazer/genotype.txt > $p/genotype.merged.txt\n'''
         "\n"
         f"for gene in {' '.join(select_genes)}\n"
         "do\n"
-        f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt >> $p/merged.sg-genotype.txt\n'''
+        f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt >> $p/genotype.merged.txt\n'''
         "done\n"
         "\n"
-        "pypgx report $p/merged.sg-genotype.txt -o $p/report.html"
+        "pypgx report $p/genotype.merged.txt -o $p/report.html"
     )
 
     with open(f"{project_path}/report.sh", "w") as f:
@@ -236,10 +175,10 @@ def sges(conf: str) -> None:
     )
 
     for select_gene in select_genes:
-        s += f"{q} -o $p/gene/{select_gene}/log -e $p/gene/{select_gene}/log -N run $p/gene/{select_gene}/shell/run.sh\n"
+        s += f"{q} -o $p/gene/{select_gene} -e $p/gene/{select_gene} -N run $p/gene/{select_gene}/run.sh\n"
 
     s += (
-        f"{q} -o $p/log -e $p/log -hold_jid run $p/report.sh"
+        f"{q} -o $p -e $p -hold_jid run $p/report.sh"
     )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:

@@ -41,8 +41,6 @@ def xgep(conf: str) -> None:
             project_path = /path/to/project/
             genome_build = hg19
             data_type = wgs
-            dbsnp_file = dbsnp.vcf
-            gatk_tool = GenomeAnalysisTK.jar
             control_gene = vdr
             qsub_options = -V -l mem_requested=10G
             target_genes = cyp2b6, cyp2d6
@@ -59,12 +57,8 @@ def xgep(conf: str) -> None:
              - Control gene or region.
            * - data_type
              - Data type (wgs, ts, chip).
-           * - dbsnp_file
-             - dbSNP VCF file.
            * - fasta_file
              - Reference FASTA file.
-           * - gatk_tool
-             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - manifest_file
@@ -96,10 +90,8 @@ def xgep(conf: str) -> None:
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
-    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    gatk_tool = realpath(config["USER"]["gatk_tool"])
     mapping_quality = config["USER"]["mapping_quality"]
     output_prefix = config["USER"]["output_prefix"]
     genome_build = config["USER"]["genome_build"]
@@ -148,8 +140,6 @@ def xgep(conf: str) -> None:
             f"control_gene = {control_gene}\n"
             f"genome_build = {genome_build}\n"
             f"data_type = {data_type}\n"
-            f"dbsnp_file = {dbsnp_file}\n"
-            f"gatk_tool = {gatk_tool}\n"
             f"qsub_options = {qsub_options}\n"
         )
 

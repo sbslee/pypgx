@@ -17,7 +17,7 @@ def sgep(conf: str) -> None:
 
     .. note::
 
-        SGE and Stargazer must be pre-installed.
+        BCFtools, SGE and Stargazer must be pre-installed.
 
     This is what a typical configuration file for ``sgep`` looks like:
 
@@ -39,8 +39,6 @@ def sgep(conf: str) -> None:
             target_gene = cyp2d6
             genome_build = hg19
             data_type = wgs
-            dbsnp_file = dbsnp.vcf
-            gatk_tool = GenomeAnalysisTK.jar
             control_gene = vdr
             qsub_options = -V -l mem_requested=10G
 
@@ -56,12 +54,8 @@ def sgep(conf: str) -> None:
              - Control gene or region.
            * - data_type
              - Data type (wgs, ts, chip).
-           * - dbsnp_file
-             - dbSNP VCF file.
            * - fasta_file
              - Reference FASTA file.
-           * - gatk_tool
-             - GATK program.
            * - genome_build
              - Genome build (hg19, hg38).
            * - manifest_file
@@ -94,10 +88,8 @@ def sgep(conf: str) -> None:
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
-    dbsnp_file = realpath(config["USER"]["dbsnp_file"])
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    gatk_tool = realpath(config["USER"]["gatk_tool"])
     mapping_quality = config["USER"]["mapping_quality"]
     output_prefix = config["USER"]["output_prefix"]
     genome_build = config["USER"]["genome_build"]
@@ -125,7 +117,6 @@ def sgep(conf: str) -> None:
     mkdir(project_path)
     mkdir(f"{project_path}/shell")
     mkdir(f"{project_path}/log")
-    mkdir(f"{project_path}/temp")
 
     t = [is_chr(v) for k, v in bam_files.items()]
     if all(t):
@@ -146,69 +137,24 @@ def sgep(conf: str) -> None:
 
         s += f"  -o {project_path}/{output_prefix}.gdf\n"
 
-        with open(f"{project_path}/shell/doc.sh", "w") as f:
+        with open(f"{project_path}/shell/bam2gdf.sh", "w") as f:
             f.write(s)
 
-    # Write the shell script for HaplotypeCaller.
-    for sample_id in bam_files:
-        s = (
-            f"project={project_path}\n"
-            f"gatk={gatk_tool}\n"
-            f"fasta={fasta_file}\n"
-            f"dbsnp={dbsnp_file}\n"
-            f"bam={bam_files[sample_id]}\n"
-            f"gvcf=$project/temp/{sample_id}.g.vcf\n"
-            "\n"
-            f"java -jar $gatk -T HaplotypeCaller \\\n"
-            "  -R $fasta \\\n"
-            "  -D $dbsnp \\\n"
-            "  --emitRefConfidence GVCF \\\n"
-            "  -U ALLOW_SEQ_DICT_INCOMPATIBILITY \\\n"
-            "  -I $bam \\\n"
-            "  -o $gvcf \\\n"
-            f"  -L {chr_str}{target_region}\n"
-        )
-
-        with open(f"{project_path}/shell/hc-{sample_id}.sh", "w") as f:
-            f.write(s)
-
-    # Write the shell script for post-HaplotypeCaller.
-    s = (
-        f"project={project_path}\n"
-        f"gatk={gatk_tool}\n"
-        f"fasta={fasta_file}\n"
-        f"dbsnp={dbsnp_file}\n"
-        f"vcf1=$project/temp/{output_prefix}.joint.vcf\n"
-        f"vcf2=$project/{output_prefix}.joint.filtered.vcf\n"
-        "\n"
-        f"java -jar $gatk -T GenotypeGVCFs \\\n"
-        "  -R $fasta \\\n"
-        "  -D $dbsnp \\\n"
-        f"  -L {chr_str}{target_region} \\\n"
-    )
+    # Write the shell script for bam2vcf.
+    s = f"pypgx bam2vcf {genome_build} {target_gene} {fasta_file} \\\n"
 
     for sample_id in bam_files:
-        s += f"  --variant $project/temp/{sample_id}.g.vcf \\\n"
+        s += f"  {bam_files[sample_id]} \\\n"    
 
-    s += (
-        "  -o $vcf1 \n"
-        "\n"
-        f"java -jar $gatk -T VariantFiltration \\\n"
-        "  -R $fasta \\\n"
-        "  --filterExpression 'QUAL <= 50.0' \\\n"
-        "  --filterName QUALFilter \\\n"
-        "  --variant $vcf1 \\\n"
-        f"  -L {chr_str}{target_region} \\\n"
-        "  -o $vcf2\n"
-    )
+    s += f"  -o {project_path}/{output_prefix}.vcf\n"
 
-    with open(f"{project_path}/shell/post.sh", "w") as f:
+    with open(f"{project_path}/shell/bam2vcf.sh", "w") as f:
         f.write(s)
 
     # Write the shell script for Stargazer.
     s = (
         f"project={project_path}\n"
-        f"vcf=$project/{output_prefix}.joint.filtered.vcf\n"
+        f"vcf=$project/{output_prefix}.vcf\n"
         "\n"
         f"stargazer \\\n"
         f"  {data_type} \\\n"
@@ -224,7 +170,7 @@ def sgep(conf: str) -> None:
             f"  --gdf $project/{output_prefix}.gdf \\\n"
         )
 
-    with open(f"{project_path}/shell/rs.sh", "w") as f:
+    with open(f"{project_path}/shell/stargazer.sh", "w") as f:
         f.write(s)
 
     # Write the shell script for qsub.
@@ -239,18 +185,15 @@ def sgep(conf: str) -> None:
     )
 
     if control_gene != "NONE":
-        s += f"{q} -N doc $p/shell/doc.sh\n"
+        s += f"{q} -N bam2gdf $p/shell/bam2gdf.sh\n"
 
-    for sample_id in bam_files:
-        s += f"{q} -N hc $p/shell/hc-{sample_id}.sh\n"
-
-    s += f"{q} -hold_jid hc -N post $p/shell/post.sh\n"
+    s += f"{q} -N bam2vcf $p/shell/bam2vcf.sh\n"
 
     if control_gene == "NONE":
-        s += f"{q} -hold_jid post -N rs $p/shell/rs.sh\n"
+        s += f"{q} -hold_jid bam2vcf -N stargazer $p/shell/stargazer.sh\n"
 
     else:
-        s += f"{q} -hold_jid doc,post -N rs $p/shell/rs.sh\n"
+        s += f"{q} -hold_jid bam2gdf,bam2vcf -N stargazer $p/shell/stargazer.sh\n"
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)
