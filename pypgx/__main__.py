@@ -36,6 +36,7 @@ from .genotype import genotype
 from .gt2pt import gt2pt
 from .xgep import xgep
 from .xgea import xgea
+from .bam2vcf2 import bam2vcf2
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -522,6 +523,51 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    bam2vcf2_parser = subparsers.add_parser(
+        "bam2vcf2",
+        help="create a VCF file from BAM files",
+    )
+    bam2vcf2_parser.add_argument(
+        "snp_caller",
+        help="SNP caller ('gatk' or 'bcftools')"
+    )
+    bam2vcf2_parser.add_argument(
+        "fasta_file",
+        help="reference FASTA file"
+    )
+    bam2vcf2_parser.add_argument(
+        "dbsnp_file",
+        help="dbSNP VCF file"
+    )
+    bam2vcf2_parser.add_argument(
+        "target_region",
+        help="target gene (e.g. 'cyp2d6') or region (e.g. ‘chr22:42512500-42551883’)"
+    )
+    bam2vcf2_parser.add_argument(
+        "output_file",
+        help="output VCF file"
+    )
+    bam2vcf2_parser.add_argument(
+        "bam_file",
+        nargs="*",
+        help="input BAM file"
+    )
+    bam2vcf2_parser.add_argument(
+        "--bam_dir",
+        metavar="DIR",
+        help="any BAM files in DIR will be used as input [null]"
+    )
+    bam2vcf2_parser.add_argument(
+        "--bam_list",
+        metavar="FILE",
+        help="list of BAM files, one file per line [null]"
+    )
+    bam2vcf2_parser.add_argument(
+        "--temp_dir",
+        metavar="DIR",
+        help="temporary files will be written to DIR [/tmp]"
+    )
+
     return parser
 
 def output(fn, result):
@@ -636,6 +682,11 @@ def main():
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
         output(args.o, result)
+
+    elif args.tool == "bam2vcf2":
+        d = vars(args)
+        del d["tool"]
+        bam2vcf2(**d)
 
     else:
         pass
