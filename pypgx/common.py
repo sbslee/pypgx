@@ -1,5 +1,7 @@
 import os
 import logging
+import random
+import string
 from typing import Dict, List, Optional
 
 import pysam
@@ -180,3 +182,11 @@ def read_file_list(fl: str) -> List[str]:
                 continue
             result.append(line.strip())
     return result
+
+def randstr(
+    chars: str = string.ascii_uppercase + string.digits,
+    n: int = 5
+) -> str:
+    """Generate a random string of length n."""
+    first = random.choice(string.ascii_lowercase)
+    return first + "".join(random.choice(chars) for _ in range(n))

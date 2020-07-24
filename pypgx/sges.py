@@ -2,7 +2,7 @@ import configparser
 from os import mkdir
 from os.path import realpath
 
-from .common import logging, LINE_BREAK1, is_chr, get_gene_table
+from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
 
 logger = logging.getLogger(__name__)
 
@@ -10,8 +10,10 @@ def sges(conf: str) -> None:
     """Run per-sample genotyping for multiple genes with SGE.
 
     This command runs the per-sample genotyping pipeline by submitting 
-    jobs to the Sun Grid Engine (SGE) cluster. After genotype analysis by 
-    Stargazer, it will generate a HTML report using the ``report`` tool.
+    jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys 
+    the ``genotype`` command to multiple genes in parallel. After genotype 
+    analysis is complete, it will merge the genotype results and then 
+    generate a HTML report using the ``report`` command.
 
     Args:
         conf (str): Configuration file.
@@ -25,10 +27,12 @@ def sges(conf: str) -> None:
         .. code-block:: python
 
             # File: example_conf.txt
+            # To execute:
+            #   $ pypgx sges example_conf.txt
+            #   $ sh ./myproject/example-qsub.sh
+
             # Do not make any changes to this section.
             [DEFAULT]
-            mapping_quality = 1
-            output_prefix = pypgx
             target_genes = ALL
             control_gene = NONE
             qsub_options = NONE
@@ -36,12 +40,12 @@ def sges(conf: str) -> None:
             # Make any necessary changes to this section.
             [USER]
             fasta_file = reference.fa
-            project_path = /path/to/project/
+            project_path = ./myproject
             genome_build = hg19
             data_type = wgs
             bam_file = in.bam
             qsub_options = -l mem_requested=2G
-            target_genes = cyp2b6, cyp2d6, dpyd
+            target_genes = cyp2b6, cyp2d6
             control_gene = vdr
 
     This table summarizes the configuration parameters specific to ``sges``:
@@ -62,10 +66,6 @@ def sges(conf: str) -> None:
              - Reference FASTA file.
            * - genome_build
              - Genome build (hg19, hg38).
-           * - mapping_quality
-             - Minimum mapping quality for read detph.
-           * - output_prefix
-             - Output prefix.
            * - project_path
              - Output project directory.
            * - qsub_options
@@ -93,9 +93,7 @@ def sges(conf: str) -> None:
     bam_file = realpath(config["USER"]["bam_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     target_genes = config["USER"]["target_genes"]
-    output_prefix = config["USER"]["output_prefix"]
     control_gene = config["USER"]["control_gene"]
-    mapping_quality = config["USER"]["mapping_quality"]
     data_type = config["USER"]["data_type"]
     genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
@@ -170,15 +168,19 @@ def sges(conf: str) -> None:
         q = f"qsub {qsub_options}"
 
     s = (
+        "#!/bin/bash\n"
+        "\n"
         f"p={project_path}\n"
         "\n"
     )
 
+    jid = randstr()
+
     for select_gene in select_genes:
-        s += f"{q} -o $p/gene/{select_gene} -e $p/gene/{select_gene} -N run $p/gene/{select_gene}/run.sh\n"
+        s += f"{q} -o $p/gene/{select_gene} -e $p/gene/{select_gene} -N {jid} $p/gene/{select_gene}/run.sh\n"
 
     s += (
-        f"{q} -o $p -e $p -hold_jid run $p/report.sh"
+        f"{q} -o $p -e $p -hold_jid {jid} $p/report.sh"
     )
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:

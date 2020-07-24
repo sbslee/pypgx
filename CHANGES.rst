@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.0.79
+-------
+
+* Updated sgep.py, xgep.py and sges.py.
+
 v0.0.78
 -------
 

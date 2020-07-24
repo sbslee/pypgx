@@ -2,7 +2,7 @@ import configparser
 from os import mkdir
 from os.path import realpath
 
-from .common import logging, LINE_BREAK1, is_chr, get_gene_table
+from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
 
 logger = logging.getLogger(__name__)
 
@@ -24,10 +24,12 @@ def sgep(conf: str) -> None:
         .. code-block:: python
 
             # File: example_conf.txt
+            # To execute:
+            #   $ pypgx sgep example_conf.txt
+            #   $ sh ./myproject/example-qsub.sh
+
             # Do not make any changes to this section.
             [DEFAULT]
-            mapping_quality = 1
-            output_prefix = pypgx
             control_gene = NONE
             qsub_options = NONE
 
@@ -35,7 +37,7 @@ def sgep(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             manifest_file = manifest.txt
-            project_path = /path/to/project/
+            project_path = ./myproject
             target_gene = cyp2d6
             genome_build = hg19
             data_type = wgs
@@ -60,10 +62,6 @@ def sgep(conf: str) -> None:
              - Genome build (hg19, hg38).
            * - manifest_file
              - Manifest file.
-           * - mapping_quality
-             - Minimum mapping quality for read depth.
-           * - output_prefix
-             - Output prefix.
            * - project_path
              - Output project directory.
            * - qsub_options
@@ -90,8 +88,6 @@ def sgep(conf: str) -> None:
     project_path = realpath(config["USER"]["project_path"])
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    mapping_quality = config["USER"]["mapping_quality"]
-    output_prefix = config["USER"]["output_prefix"]
     genome_build = config["USER"]["genome_build"]
     target_gene = config["USER"]["target_gene"]
     control_gene = config["USER"]["control_gene"]
@@ -135,7 +131,7 @@ def sgep(conf: str) -> None:
         for sample_id in bam_files:
             s += f"  {bam_files[sample_id]} \\\n"
 
-        s += f"  -o {project_path}/{output_prefix}.gdf\n"
+        s += f"  -o {project_path}/pypgx.gdf\n"
 
         with open(f"{project_path}/shell/bam2gdf.sh", "w") as f:
             f.write(s)
@@ -146,7 +142,7 @@ def sgep(conf: str) -> None:
     for sample_id in bam_files:
         s += f"  {bam_files[sample_id]} \\\n"    
 
-    s += f"  -o {project_path}/{output_prefix}.vcf\n"
+    s += f"  -o {project_path}/pypgx.vcf\n"
 
     with open(f"{project_path}/shell/bam2vcf.sh", "w") as f:
         f.write(s)
@@ -154,20 +150,19 @@ def sgep(conf: str) -> None:
     # Write the shell script for Stargazer.
     s = (
         f"project={project_path}\n"
-        f"vcf=$project/{output_prefix}.vcf\n"
         "\n"
         f"stargazer \\\n"
         f"  {data_type} \\\n"
         f"  {genome_build} \\\n"
         f"  {target_gene} \\\n"
-        "  $vcf \\\n"
+        "  $project/pypgx.vcf \\\n"
         "  $project/stargazer \\\n"
     )
 
     if control_gene != "NONE":
         s += (
             f"  --cg {control_gene} \\\n"
-            f"  --gdf $project/{output_prefix}.gdf \\\n"
+            f"  --gdf $project/pypgx.gdf \\\n"
         )
 
     with open(f"{project_path}/shell/stargazer.sh", "w") as f:
@@ -180,20 +175,24 @@ def sgep(conf: str) -> None:
         q += f" {qsub_options}"
 
     s = (
+        "#!/bin/bash\n"
+        "\n"
         f"p={project_path}\n"
         "\n"
     )
 
-    if control_gene != "NONE":
-        s += f"{q} -N bam2gdf $p/shell/bam2gdf.sh\n"
+    jid = randstr()
 
-    s += f"{q} -N bam2vcf $p/shell/bam2vcf.sh\n"
+    if control_gene != "NONE":
+        s += f"{q} -N {jid}-bam2gdf $p/shell/bam2gdf.sh\n"
+
+    s += f"{q} -N {jid}-bam2vcf $p/shell/bam2vcf.sh\n"
 
     if control_gene == "NONE":
-        s += f"{q} -hold_jid bam2vcf -N stargazer $p/shell/stargazer.sh\n"
+        s += f"{q} -hold_jid {jid}-bam2vcf -N {jid}-stargazer $p/shell/stargazer.sh\n"
 
     else:
-        s += f"{q} -hold_jid bam2gdf,bam2vcf -N stargazer $p/shell/stargazer.sh\n"
+        s += f"{q} -hold_jid {jid}-bam2gdf,{jid}-bam2vcf -N {jid}-stargazer $p/shell/stargazer.sh\n"
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)

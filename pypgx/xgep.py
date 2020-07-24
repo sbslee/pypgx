@@ -19,17 +19,19 @@ def xgep(conf: str) -> None:
 
     .. note::
 
-        SGE and Stargazer must be pre-installed.
+        BCFtools, SGE and Stargazer must be pre-installed.
 
     This is what a typical configuration file for ``xgep`` looks like:
 
         .. code-block:: python
 
             # File: example_conf.txt
+            # To execute:
+            #   $ pypgx xgep example_conf.txt
+            #   $ sh ./myproject/example-qsub.sh
+
             # Do not make any changes to this section.
             [DEFAULT]
-            mapping_quality = 1
-            output_prefix = pypgx
             control_gene = NONE
             qsub_options = NONE
             target_genes = ALL
@@ -38,7 +40,7 @@ def xgep(conf: str) -> None:
             [USER]
             fasta_file = reference.fa
             manifest_file = manifest.txt
-            project_path = /path/to/project/
+            project_path = ./myproject
             genome_build = hg19
             data_type = wgs
             control_gene = vdr
@@ -63,10 +65,6 @@ def xgep(conf: str) -> None:
              - Genome build (hg19, hg38).
            * - manifest_file
              - Manifest file.
-           * - mapping_quality
-             - Minimum mapping quality for read depth.
-           * - output_prefix
-             - Output prefix.
            * - project_path
              - Output project directory.
            * - qsub_options
@@ -92,8 +90,6 @@ def xgep(conf: str) -> None:
     project_path = realpath(config["USER"]["project_path"])
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
-    mapping_quality = config["USER"]["mapping_quality"]
-    output_prefix = config["USER"]["output_prefix"]
     genome_build = config["USER"]["genome_build"]
     target_genes = config["USER"]["target_genes"]
     control_gene = config["USER"]["control_gene"]
@@ -114,20 +110,17 @@ def xgep(conf: str) -> None:
 
     # Make the project directories.
     mkdir(project_path)
+    mkdir(f"{project_path}/gene")
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
+        f.write("#!/bin/bash\n\n")
         for select_gene in select_genes:
-            f.write(f"sh {project_path}/{select_gene}/example-qsub.sh\n")
-
+            f.write(f"sh {project_path}/gene/{select_gene}/example-qsub.sh\n")
 
     for select_gene in select_genes:
-        p = f"{project_path}/{select_gene}"
-
         s = (
             "# Do not make any changes to this section.\n"
             "[DEFAULT]\n"
-            "mapping_quality = 1\n"
-            "output_prefix = pypgx\n"
             "control_gene = NONE\n"
             "qsub_options = NONE\n"
             "\n"
@@ -135,7 +128,7 @@ def xgep(conf: str) -> None:
             "[USER]\n"
             f"fasta_file = {fasta_file}\n"
             f"manifest_file = {manifest_file}\n"
-            f"project_path = {p}\n"
+            f"project_path = {project_path}/gene/{select_gene}\n"
             f"target_gene = {select_gene}\n"
             f"control_gene = {control_gene}\n"
             f"genome_build = {genome_build}\n"

@@ -269,8 +269,10 @@ Description
 Run per-sample genotyping for multiple genes with SGE.
 
 This command runs the per-sample genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. After genotype analysis by 
-Stargazer, it will generate a HTML report using the ``report`` tool.
+jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys 
+the ``genotype`` command to multiple genes in parallel. After genotype 
+analysis is complete, it will merge the genotype results and then 
+generate a HTML report using the ``report`` command.
 
 *conf* is the configuration file. See the API section for details.
 
@@ -360,7 +362,7 @@ extension of the ``sgep`` command to genotype multiple genes.
 
 .. note::
 
-    SGE and Stargazer must be pre-installed.
+    BCFtools, SGE and Stargazer must be pre-installed.
 
 Options
 -------
