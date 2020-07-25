@@ -47,22 +47,16 @@ region (e.g. ‘chr22:42512500-42551883’).
 Options
 -------
 
---bam_dir DIR       any BAM files in DIR will be used as input [null]
---bam_list FILE     list of BAM files, one file per line [null]
---control_gene STR  control gene
---dbsnp_file FILE   dbSNP VCF file
---temp_dir DIR      temporary files will be written to DIR [/tmp]
-
-| **--bam_dir DIR**
-|     any BAM files in DIR will be used as input [null]
-| --bam_list FILE
+| **\-\-bam_dir** *DIR*
+|     any BAM files in *DIR* will be used as input [null]
+| **\-\-bam_list** *FILE*
 |     list of BAM files, one file per line [null]
-| --control_gene STR
+| **\-\-control_gene** *STR*
 |     control gene
-| --dbsnp_file FILE
+| **\-\-dbsnp_file** *FILE*
 |     dbSNP VCF file
-| --temp_dir DIR
-|     temporary files will be written to DIR [/tmp]
+| **\-\-temp_dir** *DIR*
+|     temporary files will be written to *DIR* [/tmp]
 
 gt2pt command
 =============
