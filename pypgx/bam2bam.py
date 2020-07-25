@@ -6,7 +6,7 @@ from .common import logging, LINE_BREAK1
 
 logger = logging.getLogger(__name__)
 
-def remap(conf: str) -> None:
+def bam2bam(conf: str) -> None:
     """
     Remap BAM file(s) to different reference.
 

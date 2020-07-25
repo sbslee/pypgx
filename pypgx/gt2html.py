@@ -230,7 +230,7 @@ def _read_genotype_file(f, fn, target_genes):
 
     return result1, result2
 
-def report(
+def gt2html(
         fn: str,
         f: Optional[TextIO] = None
     ) -> str:

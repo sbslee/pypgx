@@ -5,6 +5,7 @@ import string
 from typing import Dict, List, Optional
 from tempfile import TemporaryDirectory
 import pysam
+from functools import wraps
 
 from .sglib import (
     read_gene_table,
@@ -192,6 +193,7 @@ def randstr(
     return first + "".join(random.choice(chars) for _ in range(n))
 
 def temp_env(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         if "temp_dir" in kwargs and kwargs["temp_dir"]:
             temp_obj = None
@@ -208,6 +210,7 @@ def temp_env(func):
     return wrapper
 
 def bam_getter(func):
+    @wraps(func)
     def wrapper(*args, **kwargs):
         if kwargs["bam_file"]:
             input_files = kwargs["bam_file"]

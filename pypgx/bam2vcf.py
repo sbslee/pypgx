@@ -179,8 +179,8 @@ def bam2vcf(
         fasta_file (str):
             Reference FASTA file.
         target_gene (str):
-            Target gene (e.g. 'cyp2d6') or region 
-            (e.g.‘chr22:42512500-42551883’).
+            Target gene (e.g. 'cyp2d6') or 
+            region (e.g.‘chr22:42512500-42551883’).
         output_file (str):
             Output VCF file.
         genome_build (str):

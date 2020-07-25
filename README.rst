@@ -38,32 +38,30 @@ For getting help::
 
     positional arguments:
       tool        name of the tool
+        bam2gt    convert BAM files to a genotype file
+        gt2pt     convert a genotype file to phenotypes
+        bam2vcf   convert BAM files to a VCF file
+        bam2gdf   convert BAM files to a GDF file
+        gt2html   convert a genotype file to an HTML report
+        bam2html  convert a BAM file to an HTML report [SGE]
+        sgep      convert BAM files to a genotype file [SGE]
+        xgep      convert BAM files to genotype files [SGE]
+        fq2bam    convert FASTQ files to BAM files [SGE]
+        bam2bam   realign BAM files to another reference genome [SGE]
+        bam2sdf   convert BAM files to a SDF file
+        sdf2gdf   convert a SDF file to a GDF file
         pgkb      extract CPIC guidelines using PharmGKB API
-        report    create HTML report using Stargazer data
-        sdf2gdf   create GDF file from SDF file
-        bam2sdf   create SDF file from BAM file(s)
-        bam2gdf   create GDF file from BAM file(s)
         minivcf   slice VCF file
         merge     merge VCF files
         summary   create summary file using Stargazer data
         meta      create meta file from summary files
         compare   compare genotype files
-        remap     remap BAM file(s) to different reference
-        fq2bam    create BAM file(s) from FASTQ file(s)
-        sges      run per-sample genotyping for multiple genes with SGE
-        sgep      run per-project genotyping for single gene with SGE (1)
-        sgea      run per-project genotyping for single gene with SGE (2)
-        xgep      run per-project genotyping for multiple genes with SGE (1)
-        xgea      run per-project genotyping for multiple genes with SGE (2)
         cpa       run change point analysis for copy number
         plotcov   plot coverage data to PDF file
         check     check table files for Stargazer
         liftover  convert variants in SNP table from hg19 to hg38
         peek      find all possible star alleles from VCF file
         snp       view variant data for sample/star allele pairs
-        bam2vcf   create VCF file from BAM file(s)
-        genotype  call star alleles from BAM file(s)
-        gt2pt     call phenotypes from star alleles
 
     optional arguments:
       -h, --help  show this help message and exit

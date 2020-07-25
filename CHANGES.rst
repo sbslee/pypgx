@@ -1,6 +1,13 @@
 Changelog
 *********
 
+v0.1.1
+------
+
+* Renamed report.py to gt2html.py.
+* Renamed remap.py to bam2bam.py.
+* Renamed sges.py to bam2html.py
+
 v0.1.0
 ------
 

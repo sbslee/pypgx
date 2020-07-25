@@ -6,7 +6,7 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
 
 logger = logging.getLogger(__name__)
 
-def sges(conf: str) -> None:
+def bam2html(conf: str) -> None:
     """Run per-sample genotyping for multiple genes with SGE.
 
     This command runs the per-sample genotyping pipeline by submitting 

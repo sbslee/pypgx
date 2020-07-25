@@ -7,22 +7,65 @@ use PyPGx as a command-line program, please see the Commands section.
 Major modules
 =============
 
-pypgx.pgkb module
------------------
-
-.. automodule:: pypgx.pgkb
-    :members:
-
-pypgx.report module
+pypgx.bam2gt module
 -------------------
 
-.. automodule:: pypgx.report
+.. automodule:: pypgx.bam2gt
     :members:
 
-pypgx.sdf2gdf module
+pypgx.gt2pt module
+------------------
+
+.. automodule:: pypgx.gt2pt
+    :members:
+    :undoc-members:
+
+pypgx.bam2vcf module
 --------------------
 
-.. automodule:: pypgx.sdf2gdf
+.. automodule:: pypgx.bam2vcf
+    :members:
+
+pypgx.bam2gdf module
+--------------------
+
+.. automodule:: pypgx.bam2gdf
+    :members:
+
+pypgx.gt2html module
+--------------------
+
+.. automodule:: pypgx.gt2html
+    :members:
+
+pypgx.bam2html module
+---------------------
+
+.. automodule:: pypgx.bam2html
+    :members:
+
+pypgx.sgep module
+-----------------
+
+.. automodule:: pypgx.sgep
+    :members:
+
+pypgx.xgep module
+------------------
+
+.. automodule:: pypgx.xgep
+    :members:
+
+pypgx.fq2bam module
+-------------------
+
+.. automodule:: pypgx.fq2bam
+    :members:
+
+pypgx.bam2bam module
+--------------------
+
+.. automodule:: pypgx.bam2bam
     :members:
 
 pypgx.bam2sdf module
@@ -31,10 +74,16 @@ pypgx.bam2sdf module
 .. automodule:: pypgx.bam2sdf
     :members:
 
-pypgx.bam2gdf module
+pypgx.sdf2gdf module
 --------------------
 
-.. automodule:: pypgx.bam2gdf
+.. automodule:: pypgx.sdf2gdf
+    :members:
+
+pypgx.pgkb module
+-----------------
+
+.. automodule:: pypgx.pgkb
     :members:
 
 pypgx.minivcf module
@@ -65,36 +114,6 @@ pypgx.compare module
 --------------------
 
 .. automodule:: pypgx.compare
-    :members:
-
-pypgx.remap module
-------------------
-
-.. automodule:: pypgx.remap
-    :members:
-
-pypgx.fq2bam module
--------------------
-
-.. automodule:: pypgx.fq2bam
-    :members:
-
-pypgx.sges module
------------------
-
-.. automodule:: pypgx.sges
-    :members:
-
-pypgx.sgep module
------------------
-
-.. automodule:: pypgx.sgep
-    :members:
-
-pypgx.xgep module
-------------------
-
-.. automodule:: pypgx.xgep
     :members:
 
 pypgx.cpa module
@@ -132,25 +151,6 @@ pypgx.snp module
 
 .. automodule:: pypgx.snp
     :members:
-
-pypgx.bam2vcf module
---------------------
-
-.. automodule:: pypgx.bam2vcf
-    :members:
-
-pypgx.bam2gt module
--------------------
-
-.. automodule:: pypgx.bam2gt
-    :members:
-
-pypgx.gt2pt module
-------------------
-
-.. automodule:: pypgx.gt2pt
-    :members:
-    :undoc-members:
 
 Auxiliary modules
 =================
