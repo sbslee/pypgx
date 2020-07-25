@@ -91,22 +91,10 @@ pypgx.sgep module
 .. automodule:: pypgx.sgep
     :members:
 
-pypgx.sgea module
------------------
-
-.. automodule:: pypgx.sgea
-    :members:
-
 pypgx.xgep module
 ------------------
 
 .. automodule:: pypgx.xgep
-    :members:
-
-pypgx.xgea module
-------------------
-
-.. automodule:: pypgx.xgea
     :members:
 
 pypgx.cpa module
@@ -151,10 +139,10 @@ pypgx.bam2vcf module
 .. automodule:: pypgx.bam2vcf
     :members:
 
-pypgx.genotype module
----------------------
+pypgx.bam2gt module
+-------------------
 
-.. automodule:: pypgx.genotype
+.. automodule:: pypgx.bam2gt
     :members:
 
 pypgx.gt2pt module

@@ -42,6 +42,7 @@ def sgep(conf: str) -> None:
             genome_build = hg19
             data_type = wgs
             control_gene = vdr
+            snp_caller = gatk
             qsub_options = -V -l mem_requested=10G
 
     This table summarizes the configuration parameters specific to ``sgep``:
@@ -93,6 +94,7 @@ def sgep(conf: str) -> None:
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
     qsub_options = config["USER"]["qsub_options"]
+    snp_caller = config["USER"]["snp_caller"]
 
     # Read the manifest file.
     bam_files = {}
@@ -137,12 +139,18 @@ def sgep(conf: str) -> None:
             f.write(s)
 
     # Write the shell script for bam2vcf.
-    s = f"pypgx bam2vcf {genome_build} {target_gene} {fasta_file} \\\n"
+
+    s = (
+        "pypgx bam2vcf \\\n"
+        f"  {snp_caller} \\\n"
+        f"  {fasta_file} \\\n"
+        f"  {target_gene} \\\n"
+        f"  {project_path}/pypgx.vcf \\\n"
+        f"  {genome_build} \\\n"
+    )
 
     for sample_id in bam_files:
-        s += f"  {bam_files[sample_id]} \\\n"    
-
-    s += f"  -o {project_path}/pypgx.vcf\n"
+        s += f"  {bam_files[sample_id]} \\\n"
 
     with open(f"{project_path}/shell/bam2vcf.sh", "w") as f:
         f.write(s)

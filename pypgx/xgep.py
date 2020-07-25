@@ -94,6 +94,7 @@ def xgep(conf: str) -> None:
     target_genes = config["USER"]["target_genes"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
+    snp_caller = config["USER"]["snp_caller"]
     qsub_options = config["USER"]["qsub_options"]
 
     t = [k for k, v in gene_table.items() if v["type"] == "target"]
@@ -133,6 +134,7 @@ def xgep(conf: str) -> None:
             f"control_gene = {control_gene}\n"
             f"genome_build = {genome_build}\n"
             f"data_type = {data_type}\n"
+            f"snp_caller = {snp_caller}\n"
             f"qsub_options = {qsub_options}\n"
         )
 

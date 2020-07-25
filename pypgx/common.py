@@ -3,7 +3,7 @@ import logging
 import random
 import string
 from typing import Dict, List, Optional
-
+from tempfile import TemporaryDirectory
 import pysam
 
 from .sglib import (
@@ -190,3 +190,45 @@ def randstr(
     """Generate a random string of length n."""
     first = random.choice(string.ascii_lowercase)
     return first + "".join(random.choice(chars) for _ in range(n))
+
+def temp_env(func):
+    def wrapper(*args, **kwargs):
+        if "temp_dir" in kwargs and kwargs["temp_dir"]:
+            temp_obj = None
+            temp_path = os.path.realpath(kwargs["temp_dir"])
+        else:
+            temp_obj = TemporaryDirectory()
+            temp_path = temp_obj.name
+
+        func(*args, **kwargs, temp_path=temp_path)
+
+        if temp_obj:
+            temp_obj.cleanup()
+
+    return wrapper
+
+def bam_getter(func):
+    def wrapper(*args, **kwargs):
+        if kwargs["bam_file"]:
+            input_files = kwargs["bam_file"]
+        elif kwargs["bam_dir"]:
+            bam_path = os.path.realpath(kwargs["bam_dir"])
+            input_files = []
+            for r, d, f in os.walk(bam_path):
+                for x in f:
+                    if x.endswith("bam"):
+                        input_files.append(f"{bam_path}/{x}")
+        elif kwargs["bam_list"]:
+            input_files = []
+            with open(kwargs["bam_list"]) as f:
+                for line in f:
+                    input_files.append(line.strip())
+        else:
+            input_files = []
+
+        if not input_files:
+            raise ValueError("No input BAM files found")
+
+        func(*args, **kwargs, input_files=input_files)
+
+    return wrapper

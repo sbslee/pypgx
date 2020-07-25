@@ -312,35 +312,6 @@ Options
 
 There are no options.
 
-sgea command
-============
-
-Synopsis
---------
-
-pypgx sgea *[options] conf*
-
-Description
------------
-
-Run per-project genotyping for single gene with SGE (2).
-
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. The main difference between
-``sgea`` and ``sgep`` is that the former uses Genome Analysis Tool 
-Kit (GATK) v4 while the latter uses BCFtools.
-
-*conf* is the configuration file. See the API section for details.
-
-.. note::
-
-    SGE, Stargazer, and GATK must be pre-installed.
-
-Options
--------
-
-There are no options.
-
 xgep command
 ============
 
@@ -363,34 +334,6 @@ extension of the ``sgep`` command to genotype multiple genes.
 .. note::
 
     BCFtools, SGE and Stargazer must be pre-installed.
-
-Options
--------
-
-There are no options.
-
-xgea command
-============
-
-Synopsis
---------
-
-pypgx xgea *[options] conf*
-
-Description
------------
-
-Run per-project genotyping for multiple genes with SGE (2).
-
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
-extension of the ``sgea`` command to genotype multiple genes.
-
-*conf* is the configuration file. See the API section for details.
-
-.. note::
-
-    SGE and Stargazer must be pre-installed.
 
 Options
 -------
@@ -555,13 +498,13 @@ Options
 --bl FILE   list of BAM files, one file per line
 -o FILE     output to FILE [stdout]
 
-genotype command
-================
+bam2gt command
+==============
 
 Synopsis
 --------
 
-pypgx genotype *[options] fa dt gb tg out [bam [bam ...]]*
+pypgx bam2gt *[options] fa dt gb tg out [bam [bam ...]]*
 
 Description
 -----------

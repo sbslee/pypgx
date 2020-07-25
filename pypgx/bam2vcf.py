@@ -1,107 +1,287 @@
-import logging
-from subprocess import Popen, PIPE, run
-from typing import List
-from tempfile import TemporaryDirectory
+import os
+import subprocess
+from typing import Optional, List
+from .common import get_target_region, is_chr, temp_env, bam_getter
 
-from .common import get_target_region, is_chr
+def _run_haplotypecaller(
+        fasta_file,
+        input_file,
+        gvcf_file,
+        target_region
+    ):
+    command = [
+        "gatk", "HaplotypeCaller",
+        "-R", fasta_file,
+        "--emit-ref-confidence", "GVCF",
+        "-I", input_file,
+        "-O", gvcf_file,
+        "-L", target_region,
+    ]
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+    subprocess.run(command, check=True)
 
-def bam2vcf(
-        gb: str,
-        tg: str,
-        fasta: str,
-        bam: List[str],
-    ) -> str:
-    """Create a VCF file from BAM file(s).
+def _run_combinegvcfs(
+        fasta_file,
+        target_region,
+        gvcf_files,
+        vcf_file
+    ):
+    command = [
+        "gatk", "CombineGVCFs",
+        "-R", fasta_file,
+        "-L", target_region,
+        "-O", vcf_file,
+    ]
 
-    This command outputs a single- or multi-sample VCF file from one or 
-    more input BAM files. The output VCF file will only contain variants
-    within the target gene or region. This is essentially a wrapper with
-    particular parameters for various commands from the BCFtools program 
-    (e.g. ``mpileup`` and ``call``). This means the called variants will be 
-    already normalized and filtered, ready for the downstream genotype 
-    analysis by the Stargazer program.
+    for gvcf_file in gvcf_files:
+        command += [
+            "--variant", gvcf_file
+        ]
 
-    Returns:
-        (str): VCF file in text.
+    subprocess.run(command, check=True)
 
-    Args:
-        gb (str):
-            Genome build ('hg19' or 'hg38').
-        tg (str):
-            Target gene (e.g. 'cyp2d6') or 
-            region (e.g. 'chr22:42512500-42551883').
-        fasta (str):
-            Reference FASTA file.
-        bam (str):
-            List of BAM files.
+def _run_genotypegvcfs(
+        fasta_file,
+        dbsnp_file,
+        target_region,
+        vcf_file1,
+        vcf_file2
+    ):
+    command = [
+        "gatk", "GenotypeGVCFs",
+        "-R", fasta_file,
+        "-O", vcf_file2,
+        "-L", target_region,
+        "--variant", vcf_file1,
+    ]
 
-    .. note::
+    if dbsnp_file:
+        command += ["-D", dbsnp_file]
 
-        BCFtools must be pre-installed.
-    """
-    tmp_dir = TemporaryDirectory()
-    td = tmp_dir.name
+    subprocess.run(command, check=True)
 
-    if ":" in tg:
-        tr = tg.replace("chr", "")
-    else:
-        tr = get_target_region(tg, gb).replace("chr", "")
+def _run_variantfiltration(
+        fasta_file,
+        target_region,
+        vcf_file,
+        output_file
+    ):
+    command = [
+        "gatk", "VariantFiltration",
+        "-R", fasta_file,
+        "-L", target_region,
+        "-O", output_file,
+        "--filter-expression", "QUAL <= 50.0",
+        "--filter-name", "QUALFilter",
+        "--variant", vcf_file,
+    ]
 
-    t = [is_chr(x) for x in bam]
+    subprocess.run(command, check=True)
 
-    if all(t):
-        chr_str = "chr"
-    elif not any(t):
-        chr_str = ""
-    else:
-        raise ValueError("Mixed types of SN tags found.")
-
+def _run_mpileup(
+        fasta_file,
+        target_region,
+        input_files,
+        vcf_file
+    ):
     command = [
         "bcftools", "mpileup",
         "-Ou",
-         "-f", fasta,
-         "-a", "AD",
-         "-r", f"{chr_str}{tr}",
-         "--max-depth", "1000",
-    ] + bam
+        "-f", fasta_file,
+        "-a", "AD",
+        "-r", target_region,
+        "--max-depth", "1000",
+        "-o", vcf_file,
+    ] + input_files
 
-    p = Popen(command, stdout=PIPE)
+    subprocess.run(command, check=True)
 
+def _run_call(
+        vcf_file1,
+        vcf_file2
+    ):
     command = [
         "bcftools", "call",
+        vcf_file1,
         "-Oz",
         "-mv",
-        "-o", f"{td}/calls.vcf.gz",
+        "-o", vcf_file2
     ]
 
-    run(command, stdin=p.stdout)
+    subprocess.run(command, check=True)
 
-    p.stdout.close()
+def _run_index(vcf_file):
+    command = [
+        "bcftools", "index",
+        vcf_file,
+    ]
 
-    run(["bcftools", "index", f"{td}/calls.vcf.gz"])
+    subprocess.run(command, check=True)
 
-    run([
+def _run_norm(
+        fasta_file,
+        vcf_file1,
+        vcf_file2
+    ):
+    command = [
         "bcftools", "norm",
-        f"{td}/calls.vcf.gz",
+        vcf_file1,
         "-Ob",
-        "-f", fasta,
-        "-o", f"{td}/calls.norm.bcf"
-    ])
+        "-f", fasta_file,
+        "-o", vcf_file2,
+    ]
 
+    subprocess.run(command, check=True)
+
+def _run_filter(
+        vcf_file1,
+        output_file
+    ):
     command = [
         "bcftools", "filter",
-        f"{td}/calls.norm.bcf",
+        vcf_file1,
         "-Ov",
         "--IndelGap", "5",
+        "-o", output_file,
     ]
 
-    output = run(command, stdout=PIPE)
+    subprocess.run(command, check=True)
 
-    result = output.stdout.decode("utf-8")
+@bam_getter
+@temp_env
+def bam2vcf(
+        snp_caller: str,
+        fasta_file: str,
+        target_gene: str,
+        output_file: str,
+        genome_build: str,
+        bam_file: List[str],
+        bam_dir: Optional[str] = None,
+        bam_list: Optional[str] = None,
+        dbsnp_file: Optional[str] = None,
+        temp_dir: Optional[str] = None,
+        temp_path: str = None,
+        input_files: List[str] = None,
+    ) -> None:
+    """Create a VCF file from BAM files.
 
-    tmp_dir.cleanup()
+    This command creates a single- or multi-sample VCF file from one or 
+    more input BAM files. The output VCF file will only contain variants 
+    within the target gene or region. The command is essentially a wrapper 
+    for the Genome Analysis Toolkit (GATK) and the BCFtools program with 
+    pre-specified parameters. This means the called variants will be 
+    already normalized and filtered, ready for the downstream genotype 
+    analysis by the Stargazer program.
 
-    return result
+    Args:
+        snp_caller (str):
+            SNP caller ('gatk' or 'bcftools').
+        fasta_file (str):
+            Reference FASTA file.
+        target_gene (str):
+            Target gene (e.g. 'cyp2d6') or region 
+            (e.g.‘chr22:42512500-42551883’).
+        output_file (str):
+            Output VCF file.
+        genome_build (str):
+            Genome build ('hg19' or 'hg38').
+        bam_file (list[str]):
+            List of input BAM files.
+        bam_dir (str, optional):
+            Any BAM files in this directory will be used as input.
+        bam_list (str, optional):
+            List of BAM files, one file per line.
+        dbsnp_file (str, optional):
+            dbSNP VCF file used by GATK to add rs numbers.
+        temp_dir (str, optional):
+            Temporary files will be written to this directory (default: /tmp).
+        temp_path (str):
+            Automatically determined by @temp_env.
+        input_files (list[str]):
+            Automatically determined by @bam_getter.
+    """
+    # Pick the chromosome string.
+    _ = [is_chr(x) for x in input_files]
+
+    if all(_):
+        chr_str = "chr"
+    elif not any(_):
+        chr_str = ""
+    else:
+        raise ValueError("Mixed types of SN tags found.")    
+
+    # Get the study region.
+    if ":" in target_gene:
+        target_region = chr_str + target_gene.replace("chr", "")
+    else:
+        target_region = chr_str + get_target_region(
+            target_gene, genome_build).replace("chr", "")
+
+    # Run the selected SNP caller.
+    if snp_caller == "gatk":
+
+        gvcf_files = []
+
+        for i, input_file in enumerate(input_files):
+            gvcf_file = f"{temp_path}/{i}.g.vcf"
+            gvcf_files.append(gvcf_file)
+
+            _run_haplotypecaller(
+                fasta_file,
+                input_file,
+                gvcf_file,
+                target_region
+            )
+
+        _run_combinegvcfs(
+            fasta_file,
+            target_region,
+            gvcf_files,
+            f"{temp_path}/combined.g.vcf"
+        )
+
+        _run_genotypegvcfs(
+            fasta_file,
+            dbsnp_file,
+            target_region,
+            f"{temp_path}/combined.g.vcf",
+            f"{temp_path}/combined.joint.vcf"
+        )
+
+        _run_variantfiltration(
+            fasta_file,
+            target_region,
+            f"{temp_path}/combined.joint.vcf",
+            output_file
+        )
+
+    elif snp_caller == "bcftools":
+        _run_mpileup(
+            fasta_file,
+            target_region,
+            input_files,
+            f"{temp_path}/uncompressed.bcf"
+        )
+
+        _run_call(
+            f"{temp_path}/uncompressed.bcf",
+            f"{temp_path}/calls.vcf.gz"
+        )
+
+        _run_index(
+            f"{temp_path}/calls.vcf.gz"
+        )
+
+        _run_norm(
+            fasta_file,
+            f"{temp_path}/calls.vcf.gz",
+            f"{temp_path}/calls.norm.bcf"
+        )
+
+        _run_filter(
+            f"{temp_path}/calls.norm.bcf",
+            output_file
+        )
+
+    else:
+        raise ValueError(f"Incorrect SNP caller: {snp_caller}")

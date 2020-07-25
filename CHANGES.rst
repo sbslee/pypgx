@@ -1,6 +1,14 @@
 Changelog
 *********
 
+v0.1.0
+------
+
+* Renamed genotype.py to bam2gt.py.
+* The new bam2vcf.py can support both GATK and BCFtools for SNP calling.
+* The new sgep.py and xgep.py can support both GATK and BCFtools for SNP 
+  calling. Consequently, sgea.py and xgea.py were removed.
+
 v0.0.80
 -------
 
