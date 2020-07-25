@@ -49,12 +49,16 @@ Options
 
 | **\-\-bam_dir** *DIR*
 |     any BAM files in *DIR* will be used as input [null]
+
 | **\-\-bam_list** *FILE*
 |     list of BAM files, one file per line [null]
+
 | **\-\-control_gene** *STR*
 |     control gene
+
 | **\-\-dbsnp_file** *FILE*
 |     dbSNP VCF file
+
 | **\-\-temp_dir** *DIR*
 |     temporary files will be written to *DIR* [/tmp]
 
