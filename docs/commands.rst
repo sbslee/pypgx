@@ -7,31 +7,20 @@ For the public API of Python module ``pypgx``, please see the API section.
 bam2gt command
 ==============
 
-.. code-block::
+Synopsis
+--------
 
-    $ pypgx bam2gt -h
-    usage: pypgx bam2gt [-h] [--bam_dir DIR] [--bam_list FILE]
-                        [--control_gene STR] [--dbsnp_file FILE] [--temp_dir DIR]
-                        snp_caller fasta_file target_gene genome_build data_type
-                        proj_dir [bam_file [bam_file ...]]
+| pypgx bam2gt [options] \\
+|   *snp_caller* \\
+|   *fasta_file* \\
+|   *target_gene* \\
+|   *genome_build* \\
+|   *data_type* \\
+|   *proj_dir* \\
+|   *[bam_file [bam_file ...]]*
 
-    positional arguments:
-      snp_caller          SNP caller ('gatk' or 'bcftools')
-      fasta_file          reference FASTA file
-      target_gene         target gene (e.g. 'cyp2d6') or region (e.g.
-                          ‘chr22:42512500-42551883’)
-      genome_build        genome build ('hg19' or 'hg38')
-      data_type           input data type ('wgs' or 'ts')
-      proj_dir            output project directory
-      bam_file            input BAM file
-
-    optional arguments:
-      -h, --help          show this help message and exit
-      --bam_dir DIR       any BAM files in DIR will be used as input [null]
-      --bam_list FILE     list of BAM files, one file per line [null]
-      --control_gene STR  control gene
-      --dbsnp_file FILE   dbSNP VCF file
-      --temp_dir DIR      temporary files will be written to DIR [/tmp]
+Description
+-----------
 
 Convert BAM files to a genotype file.
 
@@ -45,6 +34,24 @@ In order to detect strctural variation, Stargazer requires read
 depth data (i.e. a GDF file) for copy number analysis. Providing 
 the optional argument ``--control_gene`` will generate a GDF file. 
 If this argument is not provided, Stargazer will run as VCF-only mode.
+
+*snp_caller* is the SNP caller ('gatk' or 'bcftools'). 
+*fasta_file* is the reference FASTA file.
+*target_gene* is the target gene (e.g. 'cyp2d6') or 
+region (e.g. ‘chr22:42512500-42551883’). 
+*genome_build* is the genome build ('hg19' or 'hg38'). 
+*data_type* is the input data type ('wgs' or 'ts'). 
+*proj_dir* is the output project directory. 
+*bam_file* is the input BAM file.
+
+Options
+-------
+
+  --bam_dir DIR       any BAM files in DIR will be used as input [null]
+  --bam_list FILE     list of BAM files, one file per line [null]
+  --control_gene STR  control gene
+  --dbsnp_file FILE   dbSNP VCF file
+  --temp_dir DIR      temporary files will be written to DIR [/tmp]
 
 gt2pt command
 =============
