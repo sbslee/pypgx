@@ -30,6 +30,7 @@ author = 'Seung-been "Steven" Lee'
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx_rtd_theme",
 ]
 
 napoleon_google_docstring = True
