@@ -192,6 +192,11 @@ def get_parser():
         help="dbSNP VCF file, used by GATK to add rs numbers"
     )
     bam2vcf_parser.add_argument(
+        "--java_options",
+        metavar="STR",
+        help="Java-specific arguments for GATK (e.g. '-Xmx4G')"
+    )
+    bam2vcf_parser.add_argument(
         "--temp_dir",
         metavar="DIR",
         help="temporary files will be written to this directory"

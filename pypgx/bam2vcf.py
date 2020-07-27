@@ -7,7 +7,8 @@ def _run_haplotypecaller(
         fasta_file,
         input_file,
         gvcf_file,
-        target_region
+        target_region,
+        java_options
     ):
     command = [
         "gatk", "HaplotypeCaller",
@@ -16,26 +17,29 @@ def _run_haplotypecaller(
         "-I", input_file,
         "-O", gvcf_file,
         "-L", target_region,
+        "--QUIET",
     ]
+
+    if java_options:
+        command += ["--java-options", java_options]
 
     subprocess.run(command, check=True)
 
-def _run_combinegvcfs(
-        fasta_file,
+def _run_genomicsdbimport(
         target_region,
         gvcf_files,
-        vcf_file
+        datastore
     ):
     command = [
-        "gatk", "CombineGVCFs",
-        "-R", fasta_file,
-        "-L", target_region,
-        "-O", vcf_file,
+        "gatk", "GenomicsDBImport",
+        "--intervals", target_region,
+        "--genomicsdb-workspace-path", datastore,
+        "--QUIET",
     ]
 
     for gvcf_file in gvcf_files:
         command += [
-            "--variant", gvcf_file
+            "-V", gvcf_file
         ]
 
     subprocess.run(command, check=True)
@@ -43,20 +47,23 @@ def _run_combinegvcfs(
 def _run_genotypegvcfs(
         fasta_file,
         dbsnp_file,
-        target_region,
-        vcf_file1,
-        vcf_file2
+        datastore,
+        vcf_file,
+        java_options
     ):
     command = [
         "gatk", "GenotypeGVCFs",
         "-R", fasta_file,
-        "-O", vcf_file2,
-        "-L", target_region,
-        "--variant", vcf_file1,
+        "-V", datastore,
+        "-O", vcf_file,
+        "--QUIET",
     ]
 
     if dbsnp_file:
         command += ["-D", dbsnp_file]
+
+    if java_options:
+        command += ["--java-options", java_options]
 
     subprocess.run(command, check=True)
 
@@ -74,6 +81,7 @@ def _run_variantfiltration(
         "--filter-expression", "QUAL <= 50.0",
         "--filter-name", "QUALFilter",
         "--variant", vcf_file,
+        "--QUIET",
     ]
 
     subprocess.run(command, check=True)
@@ -159,6 +167,7 @@ def bam2vcf(
         bam_dir: Optional[str] = None,
         bam_list: Optional[str] = None,
         dbsnp_file: Optional[str] = None,
+        java_options: Optional[str] = None,
         temp_dir: Optional[str] = None,
         **kwargs
     ) -> None:
@@ -192,8 +201,23 @@ def bam2vcf(
             List of input BAM files, one file per line.
         dbsnp_file (str, optional):
             dbSNP VCF file used by GATK to add rs numbers.
+        java_options (str, optional):
+            Java-specific arguments for GATK (e.g. '-Xmx4G').
         temp_dir (str, optional):
             Temporary files will be written to this directory.
+
+    .. warning::
+        GATK and/or BCFtools must be pre-installed.
+
+    .. note::
+        Generally, GATK is more accurate but much slower than BCFtools. 
+        For instance, SNP calling for 70 WGS samples for the CYP2D6 gene 
+        takes 19 min with the ``gatk`` caller but only 2 min with the 
+        ``bcftools`` caller. Therefore, if you have many samples and you do 
+        not have access to Sun Grid Engine (SGE) for parallelism, we 
+        recommend that you use ``bcftools``. If you have access to SGE and 
+        you want to use GATK instead of BCFtools, please check other 
+        SGE-based commands in PyPGx (e.g. ``sgep``).
     """
     # Parse keyward arguments from the decorators.
     temp_path = kwargs["temp_path"]
@@ -229,28 +253,28 @@ def bam2vcf(
                 fasta_file,
                 input_file,
                 gvcf_file,
-                target_region
+                target_region,
+                java_options
             )
 
-        _run_combinegvcfs(
-            fasta_file,
+        _run_genomicsdbimport(
             target_region,
             gvcf_files,
-            f"{temp_path}/combined.g.vcf"
+            f"{temp_path}/datastore"
         )
 
         _run_genotypegvcfs(
             fasta_file,
             dbsnp_file,
-            target_region,
-            f"{temp_path}/combined.g.vcf",
-            f"{temp_path}/combined.joint.vcf"
+            f"gendb://{temp_path}/datastore",
+            f"{temp_path}/.joint.vcf",
+            java_options
         )
 
         _run_variantfiltration(
             fasta_file,
             target_region,
-            f"{temp_path}/combined.joint.vcf",
+            f"{temp_path}/.joint.vcf",
             output_file
         )
 

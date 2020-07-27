@@ -91,17 +91,7 @@ For running in command line::
 
     $ pypgx bam2gdf hg19 cyp2d6 vdr out.gdf in1.bam in2.bam
 
-Running within Python
-=====================
-For running within Python:
-
->>> from pypgx.bam2gdf import bam2gdf
->>> bam = ["in1.bam", "in2.bam"]
->>> gdf = bam2gdf("hg19", "cyp2d6", "vdr", bam)
->>> for line in gdf.split("\n"):
->>>     print(line)
-
-To give::
+The output GDF file will look like::
 
     Locus	Total_Depth	Average_Depth_sample	Depth_for_S1	Depth_for_S2
     ...
@@ -109,3 +99,17 @@ To give::
     chr22:42539472	192	96	54	138
     chr22:42539473	190	95	53	137
     ...
+
+Running within Python
+=====================
+For running within Python:
+
+>>> from pypgx.gt2pt import phenotyper
+>>> phenotyper("cyp2d6", "*1", "*1")
+'normal_metabolizer'
+>>> phenotyper("cyp2d6", "*1", "*4")
+'intermediate_metabolizer'
+>>> phenotyper("cyp2d6", "*1", "*2x2")
+'ultrarapid_metabolizer'
+>>> phenotyper("cyp2d6", "*5", "*2x2")
+'normal_metabolizer'

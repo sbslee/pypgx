@@ -1,8 +1,13 @@
 Changelog
 *********
 
+v0.1.3
+------
+
+* Added GATK argument ``java_options`` to bam2vcf.py.
+
 v0.1.2
--------
+------
 
 * No significant changes.
 

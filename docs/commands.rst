@@ -104,9 +104,18 @@ reference FASTA file. *target_gene* is the name or region of target gene
 *output_file*. *genome_build* is the genome build ('hg19' or 'hg38'). 
 *bam_file* are the input BAM files.
 
-.. note::
+.. warning::
+    GATK and/or BCFtools must be pre-installed.
 
-    BCFtools must be pre-installed.
+.. note::
+    Generally, GATK is more accurate but much slower than BCFtools. 
+    For instance, SNP calling for 70 WGS samples for the CYP2D6 gene 
+    takes 19 min with the ``gatk`` caller but only 2 min with the 
+    ``bcftools`` caller. Therefore, if you have many samples and you do 
+    not have access to Sun Grid Engine (SGE) for parallelism, we 
+    recommend that you use ``bcftools``. If you have access to SGE and 
+    you want to use GATK instead of BCFtools, please check other 
+    SGE-based commands in PyPGx (e.g. ``sgep``).
 
 Options
 -------
@@ -114,6 +123,7 @@ Options
 --bam_dir DIR      use all BAM files in this directory as input
 --bam_list FILE    list of input BAM files, one file per line
 --dbsnp_file FILE  dbSNP VCF file, used by GATK to add rs numbers
+--java_options STR  Java-specific arguments for GATK (e.g. '-Xmx4G')
 --temp_dir DIR     temporary files will be written to this directory
 
 bam2gdf command
