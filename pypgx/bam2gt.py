@@ -19,9 +19,8 @@ def bam2gt(
         control_gene: Optional[str] = None,
         dbsnp_file: Optional[str] = None,
         temp_dir: Optional[str] = None,
-        temp_path: str = None,
-        input_files: List[str] = None,
-    ) -> None:
+        **kwargs
+   ) -> None:
     """Convert BAM files to a genotype file.
 
     This command runs the entire genotyping pipeline for BAM files, 
@@ -41,30 +40,31 @@ def bam2gt(
         fasta_file (str):
             Reference FASTA file.
         target_gene (str):
-            Target gene (e.g. ‘cyp2d6’) or 
-            region (e.g.‘chr22:42512500-42551883’).
+            Name of target gene (e.g. 'cyp2d6').
         genome_build (str):
             Genome build ('hg19' or 'hg38').
         data_type (str):
-            Input data type ('wgs' or 'ts').
+            Type of sequencing data ('wgs' or 'ts').
         proj_dir (str):
-            Output project directory.
+            Output files will be written to this directory.
         bam_file (list[str]):
-            List of input BAM files.
+            Input BAM files.
         bam_dir (str, optional):
-            Any BAM files in this directory will be used as input.
+            Use all BAM files in this directory as input.
         bam_list (str, optional):
-            List of BAM files, one file per line.
+            List of input BAM files, one file per line.
         control_gene (str, optional):
+            Name or region of control gene (e.g. ‘vdr’, 
+            ‘chr12:48232319-48301814’)
         dbsnp_file (str, optional):
             dbSNP VCF file used by GATK to add rs numbers.
         temp_dir (str, optional):
-            Temporary files will be written to this directory (default: /tmp).
-        temp_path (str):
-            Automatically determined by @temp_env.
-        input_files (list[str]):
-            Automatically determined by @bam_getter.
-    """
+            Temporary files will be written to this directory.
+  """
+    # Parse keyward arguments from the decorators.
+    temp_path = kwargs["temp_path"]
+    input_files = kwargs["input_files"]
+
     # Create the input VCF file.
     bam2vcf(
         snp_caller,
@@ -81,11 +81,9 @@ def bam2gt(
             genome_build,
             target_gene,
             control_gene,
-            input_files
+            f"{temp_path}/pypgx.gdf",
+            bam_file = input_files
         )
-
-        with open(f"{temp_path}/pypgx.gdf", "w") as f:
-            f.write(gdf)
 
     # Run Stargazer.
     command = [

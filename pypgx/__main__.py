@@ -86,7 +86,7 @@ def get_parser():
     )
     bam2gt_parser.add_argument(
         "target_gene",
-        help="target gene (e.g. 'cyp2d6') or region (e.g. ‘chr22:42512500-42551883’)"
+        help="name of target gene (e.g. 'cyp2d6')"
     )
     bam2gt_parser.add_argument(
         "genome_build",
@@ -94,41 +94,42 @@ def get_parser():
     )
     bam2gt_parser.add_argument(
         "data_type",
-        help="input data type ('wgs' or 'ts')",
+        help="type of sequencing data ('wgs' or 'ts')",
     )
     bam2gt_parser.add_argument(
         "proj_dir",
-        help="output project directory",
+        help="output files will be written to this directory",
     )
     bam2gt_parser.add_argument(
         "bam_file",
         nargs="*",
-        help="input BAM file"
+        help="input BAM files"
     )
     bam2gt_parser.add_argument(
         "--bam_dir",
         metavar="DIR",
-        help="any BAM files in DIR will be used as input [null]"
+        help="use all BAM files in this directory as input"
     )
     bam2gt_parser.add_argument(
         "--bam_list",
         metavar="FILE",
-        help="list of BAM files, one file per line [null]"
+        help="list of input BAM files, one file per line"
     )
     bam2gt_parser.add_argument(
         "--control_gene",
         metavar="STR",
-        help="control gene",
+        help="name or region of control gene (e.g. ‘vdr’, "
+            + "‘chr12:48232319-48301814’)"
     )
     bam2gt_parser.add_argument(
         "--dbsnp_file",
         metavar="FILE",
-        help="dbSNP VCF file"
+        help="dbSNP VCF file, used by GATK to add rs numbers"
     )
     bam2gt_parser.add_argument(
         "--temp_dir",
         metavar="DIR",
-        help="temporary files will be written to DIR [/tmp]"
+        help="temporary files will be written to this directory"
     )
 
     gt2pt_parser = subparsers.add_parser(
@@ -159,11 +160,12 @@ def get_parser():
     )
     bam2vcf_parser.add_argument(
         "target_gene",
-        help="target gene (e.g. 'cyp2d6') or region (e.g. ‘chr22:42512500-42551883’)"
+        help="name or region of target gene (e.g. ‘cyp2d6’, "
+            + "‘chr22:42512500-42551883’)"
     )
     bam2vcf_parser.add_argument(
         "output_file",
-        help="output VCF file"
+        help="write output to this file"
     )
     bam2vcf_parser.add_argument(
         "genome_build",
@@ -172,27 +174,27 @@ def get_parser():
     bam2vcf_parser.add_argument(
         "bam_file",
         nargs="*",
-        help="input BAM file"
+        help="input BAM files"
     )
     bam2vcf_parser.add_argument(
         "--bam_dir",
         metavar="DIR",
-        help="any BAM files in DIR will be used as input [null]"
+        help="use all BAM files in this directory as input"
     )
     bam2vcf_parser.add_argument(
         "--bam_list",
         metavar="FILE",
-        help="list of BAM files, one file per line [null]"
+        help="list of input BAM files, one file per line"
     )
     bam2vcf_parser.add_argument(
         "--dbsnp_file",
         metavar="FILE",
-        help="dbSNP VCF file used by GATK to add rs numbers [null]"
+        help="dbSNP VCF file, used by GATK to add rs numbers"
     )
     bam2vcf_parser.add_argument(
         "--temp_dir",
         metavar="DIR",
-        help="temporary files will be written to DIR [/tmp]"
+        help="temporary files will be written to this directory"
     )
 
     bam2gdf_parser = subparsers.add_parser(
@@ -200,36 +202,36 @@ def get_parser():
         help="convert BAM files to a GDF file",
     )
     bam2gdf_parser.add_argument(
-        "gb",
-        help="genome build",
+        "genome_build",
+        help="genome build ('hg19' or 'hg38')",
     )
     bam2gdf_parser.add_argument(
-        "tg",
-        help="target gene",
+        "target_gene",
+        help="name of target gene (e.g. 'cyp2d6')",
     )
     bam2gdf_parser.add_argument(
-        "cg",
-        help="control gene or region",
+        "control_gene",
+        help="name or region of control gene (e.g. ‘vdr’, "
+            + "‘chr12:48232319-48301814’)"
     )
     bam2gdf_parser.add_argument(
-        "bam",
+        "output_file",
+        help="write output to this file"
+    )
+    bam2gdf_parser.add_argument(
+        "bam_file",
         nargs="*",
-        help="BAM file",
+        help="input BAM files"
     )
     bam2gdf_parser.add_argument(
-        "--bd",
+        "--bam_dir",
         metavar="DIR",
-        help="directory containing BAM files",
+        help="use all BAM files in this directory as input"
     )
     bam2gdf_parser.add_argument(
-        "--bl",
+        "--bam_list",
         metavar="FILE",
-        help="list of BAM files, one file per line"
-    )
-    bam2gdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        help="list of input BAM files, one file per line"
     )
 
     gt2html_parser = subparsers.add_parser(
@@ -562,9 +564,9 @@ def main():
         bam2vcf(**d)
 
     elif args.tool == "bam2gdf":
-        bam = _get_bam_list(args.bam, args.bd, args.bl)
-        result = bam2gdf(args.gb, args.tg, args.cg, bam)
-        output(args.o, result)
+        d = vars(args)
+        del d["tool"]
+        bam2gdf(**d)
 
     elif args.tool == "gt2html":
         result = gt2html(args.gt)

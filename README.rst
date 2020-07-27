@@ -70,24 +70,26 @@ For getting help::
 For getting tool-specific help::
 
     $ pypgx bam2gdf -h
-    usage: pypgx bam2gdf [-h] [--bd DIR] [--bl FILE] [-o FILE]
-                         gb tg cg [bam [bam ...]]
+    usage: pypgx bam2gdf [-h] [--bam_dir DIR] [--bam_list FILE]
+                         genome_build target_gene control_gene output_file
+                         [bam_file [bam_file ...]]
 
     positional arguments:
-      gb          genome build
-      tg          target gene
-      cg          control gene or region
-      bam         BAM file
+      genome_build     genome build ('hg19' or 'hg38')
+      target_gene      name of target gene (e.g. 'cyp2d6')
+      control_gene     name or region of control gene (e.g. ‘vdr’,
+                       ‘chr12:48232319-48301814’)
+      output_file      write output to this file
+      bam_file         input BAM files
 
     optional arguments:
-      -h, --help  show this help message and exit
-      --bd DIR    directory containing BAM files
-      --bl FILE   list of BAM files, one file per line
-      -o FILE     output to FILE [stdout]
+      -h, --help       show this help message and exit
+      --bam_dir DIR    use all BAM files in this directory as input
+      --bam_list FILE  list of input BAM files, one file per line
 
 For running in command line::
 
-    $ pypgx bam2gdf hg19 cyp2d6 vdr in1.bam in2.bam -o out.gdf
+    $ pypgx bam2gdf hg19 cyp2d6 vdr out.gdf in1.bam in2.bam
 
 Running within Python
 =====================

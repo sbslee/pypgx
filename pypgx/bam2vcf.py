@@ -160,8 +160,7 @@ def bam2vcf(
         bam_list: Optional[str] = None,
         dbsnp_file: Optional[str] = None,
         temp_dir: Optional[str] = None,
-        temp_path: str = None,
-        input_files: List[str] = None,
+        **kwargs
     ) -> None:
     """Create a VCF file from BAM files.
 
@@ -182,24 +181,24 @@ def bam2vcf(
             Target gene (e.g. 'cyp2d6') or 
             region (e.g.‘chr22:42512500-42551883’).
         output_file (str):
-            Output VCF file.
+            Write output to this file.
         genome_build (str):
             Genome build ('hg19' or 'hg38').
         bam_file (list[str]):
-            List of input BAM files.
+            Input BAM files.
         bam_dir (str, optional):
-            Any BAM files in this directory will be used as input.
+            Use all BAM files in this directory as input.
         bam_list (str, optional):
-            List of BAM files, one file per line.
+            List of input BAM files, one file per line.
         dbsnp_file (str, optional):
             dbSNP VCF file used by GATK to add rs numbers.
         temp_dir (str, optional):
-            Temporary files will be written to this directory (default: /tmp).
-        temp_path (str):
-            Automatically determined by @temp_env.
-        input_files (list[str]):
-            Automatically determined by @bam_getter.
+            Temporary files will be written to this directory.
     """
+    # Parse keyward arguments from the decorators.
+    temp_path = kwargs["temp_path"]
+    input_files = kwargs["input_files"]
+
     # Pick the chromosome string.
     _ = [is_chr(x) for x in input_files]
 

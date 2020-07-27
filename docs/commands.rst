@@ -35,24 +35,21 @@ depth data (i.e. a GDF file) for copy number analysis. Providing
 the optional argument ``--control_gene`` will generate a GDF file. 
 If this argument is not provided, Stargazer will run as VCF-only mode.
 
-*snp_caller* is the SNP caller ('gatk' or 'bcftools'). 
-*fasta_file* is the reference FASTA file.
-*target_gene* is the target gene (e.g. 'cyp2d6') or 
-region (e.g. ‘chr22:42512500-42551883’). 
-*genome_build* is the genome build ('hg19' or 'hg38'). 
-*data_type* is the input data type ('wgs' or 'ts'). 
-*proj_dir* is the output project directory. 
-*bam_file* is the input BAM file.
+*snp_caller* is the SNP caller ('gatk' or 'bcftools'). *fasta_file* is the 
+reference FASTA file. *target_gene* is the name of target gene (e.g. 
+'cyp2d6'). *genome_build* is the genome build ('hg19' or 'hg38'). 
+*data_type* is the type of sequencing data ('wgs' or 'ts'). Output files 
+will be written to *proj_dir*. *bam_file* are the input BAM files.
 
 Options
 -------
 
--h, --help          show this help message and exit
---bam_dir DIR       any BAM files in DIR will be used as input
---bam_list FILE     list of BAM files, one file per line
---control_gene STR  control gene
---dbsnp_file FILE   dbSNP VCF file
---temp_dir DIR      temporary files will be written to DIR
+--bam_dir DIR       use all BAM files in this directory as input
+--bam_list FILE     list of input BAM files, one file per line
+--control_gene STR  name or region of control gene (e.g. ‘vdr’,
+                    ‘chr12:48232319-48301814’)
+--dbsnp_file FILE   dbSNP VCF file, used by GATK to add rs numbers
+--temp_dir DIR      temporary files will be written to this directory
 
 gt2pt command
 =============
@@ -80,12 +77,18 @@ bam2vcf command
 Synopsis
 --------
 
-pypgx bam2vcf *[options] gb tg fa [bam [bam ...]]*
+| pypgx bam2vcf *[options]* \\
+|   *snp_caller* \\
+|   *fasta_file* \\
+|   *target_gene* \\
+|   *output_file* \\
+|   *genome_build* \\
+|   *[bam_file [bam_file ...]]*
 
 Description
 -----------
 
-Create a VCF file from BAM file(s).
+Convert BAM files to a VCF file.
 
 This command outputs a single- or multi-sample VCF file from one or 
 more input BAM files. The output VCF file will only contain variants
@@ -95,12 +98,11 @@ certain parameters for various commands from the BCFtools program
 already normalized and filtered, ready for the downstream genotype 
 analysis by the Stargazer program.
 
-*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target gene 
-(e.g. 'cyp2d6') or region (e.g. 'chr22:42512500-42551883'). 
-*fa* is the reference FASTA file. *bam* is the input BAM file(s). 
-
-If you have many input BAM files, you may want to use the ``--bd`` or 
-``--bl`` argument instead of manually listing individual files for *bam*.
+*snp_caller* is the SNP caller ('gatk' or 'bcftools'). *fasta_file* is the 
+reference FASTA file. *target_gene* is the name or region of target gene 
+(e.g. 'cyp2d6', 'chr22:42512500-42551883'). Output will be written to 
+*output_file*. *genome_build* is the genome build ('hg19' or 'hg38'). 
+*bam_file* are the input BAM files.
 
 .. note::
 
@@ -109,9 +111,10 @@ If you have many input BAM files, you may want to use the ``--bd`` or
 Options
 -------
 
---bd DIR    directory containing BAM files
---bl FILE   list of BAM files, one file per line
--o FILE     output to FILE [stdout]
+--bam_dir DIR      use all BAM files in this directory as input
+--bam_list FILE    list of input BAM files, one file per line
+--dbsnp_file FILE  dbSNP VCF file, used by GATK to add rs numbers
+--temp_dir DIR     temporary files will be written to this directory
 
 bam2gdf command
 ===============
@@ -119,27 +122,28 @@ bam2gdf command
 Synopsis
 --------
 
-pypgx bam2gdf *[options] gb tg cg [bam [bam ...]]*
+| pypgx bam2gdf *[options]* \\
+|   *genome_build* \\
+|   *target_gene* \\
+|   *control_gene* \\
+|   *output_file* \\
+|   *[bam_file [bam_file ...]]*
 
 Description
 -----------
 
-Create GDF file from BAM file(s).
+Convert BAM files to a GDF file.
 
-*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target 
-gene (e.g. 'cyp2d6'). *cg* is the control gene (e.g. 'vdr') or 
-region (e.g. 'chr12:48232319-48301814'). *bam* is the input BAM file(s).
-
-If you have many input BAM files, you may want to use the ``--bd`` or 
-``--bl`` argument instead of manually listing individual files for *bam*.
+*genome_build* is the genome build ('hg19' or 'hg38'). *target_gene* is 
+the name of target gene (e.g. 'cyp2d6'). *control_gene* is the name or 
+region of control gene (e.g. 'vdr', 'chr12:48232319-48301814'). Output will 
+be written to *output_file*. *bam_file* are the input BAM files.
 
 Options
 -------
 
---bd DIR    directory containing BAM files
---bl FILE   list of BAM files, one file per line
--o FILE     output to FILE [stdout]
-
+--bam_dir DIR    use all BAM files in this directory as input
+--bam_list FILE  list of input BAM files, one file per line
 
 gt2html command
 ===============
