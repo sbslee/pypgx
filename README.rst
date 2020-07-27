@@ -47,6 +47,7 @@ For getting help::
         sgep      convert BAM files to a genotype file [SGE]
         xgep      convert BAM files to genotype files [SGE]
         fq2bam    convert FASTQ files to BAM files [SGE]
+        bam2vcf2  convert BAM files to a VCF file [SGE]
         bam2bam   realign BAM files to another reference genome [SGE]
         bam2sdf   convert BAM files to a SDF file
         sdf2gdf   convert a SDF file to a GDF file

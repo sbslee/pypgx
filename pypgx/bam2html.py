@@ -39,6 +39,7 @@ def bam2html(conf: str) -> None:
 
             # Make any necessary changes to this section.
             [USER]
+            snp_caller = gatk
             fasta_file = reference.fa
             project_path = ./myproject
             genome_build = hg19
@@ -89,6 +90,7 @@ def bam2html(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
+    snp_caller = config["USER"]["snp_caller"]
     project_path = realpath(config["USER"]["project_path"])
     bam_file = realpath(config["USER"]["bam_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
@@ -127,17 +129,18 @@ def bam2html(conf: str) -> None:
         target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
 
         s = (
-            "pypgx genotype \\\n"
+            "pypgx bam2gt \\\n"
+            f"  {snp_caller} \\\n"
             f"  {fasta_file} \\\n"
-            f"  {data_type} \\\n"
-            f"  {genome_build} \\\n"
             f"  {select_gene} \\\n"
+            f"  {genome_build} \\\n"
+            f"  {data_type} \\\n"
             f"  {project_path}/gene/{select_gene}/stargazer \\\n"
             f"  {bam_file} \\\n"
         )
 
         if control_gene != "NONE":
-            s += f"  --cg {control_gene}\n"
+            s += f"  --control_gene {control_gene}\n"
 
         with open(
             f"{project_path}/gene/{select_gene}/run.sh", "w"
@@ -155,7 +158,7 @@ def bam2html(conf: str) -> None:
         f'''  tail -n+2 $p/gene/$gene/stargazer/genotype.txt >> $p/genotype.merged.txt\n'''
         "done\n"
         "\n"
-        "pypgx report $p/genotype.merged.txt -o $p/report.html"
+        "pypgx gt2html $p/genotype.merged.txt -o $p/report.html"
     )
 
     with open(f"{project_path}/report.sh", "w") as f:

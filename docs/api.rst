@@ -62,6 +62,12 @@ pypgx.fq2bam module
 .. automodule:: pypgx.fq2bam
     :members:
 
+pypgx.bam2vcf2 module
+---------------------
+
+.. automodule:: pypgx.bam2vcf2
+    :members:
+
 pypgx.bam2bam module
 --------------------
 

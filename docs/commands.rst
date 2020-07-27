@@ -90,11 +90,11 @@ Description
 
 Convert BAM files to a VCF file.
 
-This command outputs a single- or multi-sample VCF file from one or 
-more input BAM files. The output VCF file will only contain variants
-within the target gene or region. This is essentially a wrapper with
-certain parameters for various commands from the BCFtools program 
-(e.g. ``mpileup`` and ``call``). This means the called variants will be 
+This command creates a single- or multi-sample VCF file from one or 
+more input BAM files. The output VCF file will only contain variants 
+within the target gene or region. The command is essentially a wrapper 
+for the Genome Analysis Toolkit (GATK) and the BCFtools program with 
+pre-specified parameters. This means the called variants will be 
 already normalized and filtered, ready for the downstream genotype 
 analysis by the Stargazer program.
 
@@ -144,10 +144,24 @@ Description
 
 Convert BAM files to a GDF file.
 
+This command calculates read depth from BAM files and then outputs a
+GDF (GATK-DepthOfCoverage Format) file, which is one of the input 
+files for the Stargazer program. Even though ``gatk DepthOfCoverage`` 
+could still be used to make GDF files, we recommend that you use this 
+command because the former is too heavy (i.e. requires too much memory) 
+for such a simple task (i.e. counting reads). The latter uses 
+``samtools depth`` under the hood, which is way faster and requires 
+way less memory. Another nice about using ``bam2gdf`` instead of 
+``samtools depth`` is that everything is already parametrized for 
+compatibility with Stargazer. 
+
 *genome_build* is the genome build ('hg19' or 'hg38'). *target_gene* is 
 the name of target gene (e.g. 'cyp2d6'). *control_gene* is the name or 
 region of control gene (e.g. 'vdr', 'chr12:48232319-48301814'). Output will 
 be written to *output_file*. *bam_file* are the input BAM files.
+
+.. note::
+    You do NOT need to install ``samtools`` to run this command.
 
 Options
 -------
@@ -216,14 +230,14 @@ pypgx sgep *[options] conf*
 Description
 -----------
 
-Run per-project genotyping for single gene with SGE (1).
+Convert BAM files to a genotype file [SGE].
 
 This command runs the per-project genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster.
 
 *conf* is the configuration file. See the API section for details.
 
-.. note::
+.. warning::
 
     BCFtools, SGE and Stargazer must be pre-installed.
 
@@ -272,6 +286,33 @@ Description
 -----------
 
 Create BAM file(s) from FASTQ file(s).
+
+*conf* is the configuration file. See the API section for details.
+
+Options
+-------
+
+There are no options.
+
+bam2vcf2 command
+================
+
+Synopsis
+--------
+
+pypgx bam2vcf2 *[options] conf*
+
+Description
+-----------
+
+Convert BAM files to a VCF file.
+
+This command outputs a single- or multi-sample VCF file from one or 
+more input BAM files. The output VCF file will only contain variants 
+within the target gene or region. This command is essentially a 
+wrapper with pre-specified parameters for the Genome Analysis Toolkit 
+(GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
+GATK run faster.
 
 *conf* is the configuration file. See the API section for details.
 

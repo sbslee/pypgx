@@ -19,6 +19,7 @@ from .bam2html import bam2html
 from .sgep import sgep
 from .xgep import xgep
 from .fq2bam import fq2bam
+from .bam2vcf2 import bam2vcf2
 from .bam2bam import bam2bam
 from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
@@ -285,6 +286,15 @@ def get_parser():
         help="convert FASTQ files to BAM files [SGE]",
     )
     fq2bam_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
+    bam2vcf2_parser = subparsers.add_parser(
+        "bam2vcf2",
+        help="convert BAM files to a VCF file [SGE]",
+    )
+    bam2vcf2_parser.add_argument(
         "conf",
         help="configuration file",
     )
@@ -588,6 +598,9 @@ def main():
 
     elif args.tool == "fq2bam":
         fq2bam(args.conf)
+
+    elif args.tool == "bam2vcf2":
+        bam2vcf2(args.conf)
 
     elif args.tool == "bam2bam":
         bam2bam(args.conf)

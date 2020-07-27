@@ -267,14 +267,14 @@ def bam2vcf(
             fasta_file,
             dbsnp_file,
             f"gendb://{temp_path}/datastore",
-            f"{temp_path}/.joint.vcf",
+            f"{temp_path}/pypgx.joint.vcf",
             java_options
         )
 
         _run_variantfiltration(
             fasta_file,
             target_region,
-            f"{temp_path}/.joint.vcf",
+            f"{temp_path}/pypgx.joint.vcf",
             output_file
         )
 

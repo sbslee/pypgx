@@ -1,6 +1,12 @@
 Changelog
 *********
 
+v0.1.4
+------
+
+* Added bam2vcf2.py (a SGE-based version of bam2vcf.py specifically for 
+  ``gatk`` caller).
+
 v0.1.3
 ------
 

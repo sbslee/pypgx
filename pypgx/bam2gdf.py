@@ -19,6 +19,20 @@ def bam2gdf(
     ) -> None:
     """Convert BAM files to a GDF file.
 
+    This command calculates read depth from BAM files and then outputs a
+    GDF (GATK-DepthOfCoverage Format) file, which is one of the input 
+    files for the Stargazer program. Even though ``gatk DepthOfCoverage`` 
+    could still be used to make GDF files, we recommend that you use this 
+    command because the former is too heavy (i.e. requires too much memory) 
+    for such a simple task (i.e. counting reads). The latter uses 
+    ``samtools depth`` under the hood, which is way faster and requires 
+    way less memory. Another nice about using ``bam2gdf`` instead of 
+    ``samtools depth`` is that everything is already parametrized for 
+    compatibility with Stargazer. 
+
+    .. note::
+        You do NOT need to install ``samtools`` to run this command.
+
     Args:
         genome_build (str):
             Genome build ('hg19' or 'hg38').

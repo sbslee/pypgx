@@ -7,7 +7,7 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
 logger = logging.getLogger(__name__)
 
 def sgep(conf: str) -> None:
-    """Run per-project genotyping for single gene with SGE (1).
+    """Convert BAM files to a genotype file [SGE].
 
     This command runs the per-project genotyping pipeline by submitting 
     jobs to the Sun Grid Engine (SGE) cluster.
@@ -15,7 +15,7 @@ def sgep(conf: str) -> None:
     Args:
         conf (str): Configuration file.
 
-    .. note::
+    .. warning::
 
         BCFtools, SGE and Stargazer must be pre-installed.
 
