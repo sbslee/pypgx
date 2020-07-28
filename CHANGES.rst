@@ -1,6 +1,12 @@
 Changelog
 *********
 
+v0.1.5
+------
+
+* Updated sgep.py to support both GATK (bam2vcf2.py) and BCFtools 
+  (bam2vcf.py).
+
 v0.1.4
 ------
 

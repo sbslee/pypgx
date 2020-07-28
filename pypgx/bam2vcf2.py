@@ -201,15 +201,14 @@ def bam2vcf2(conf: str) -> None:
         "#!/bin/bash\n"
         "\n"
         f"p={project_path}\n"
+        f"j={randstr()}\n"
         "\n"
     )
 
-    jid = randstr()
-
     for i, sample_id in enumerate(bam_files):
-        s += f"{q} -N {jid}-haplotypecaller $p/shell/haplotypecaller-{i}.sh\n"
+        s += f"{q} -N $j-hc $p/shell/haplotypecaller-{i}.sh\n"
 
-    s += f"{q} -hold_jid {jid}-haplotypecaller -N {jid}-post-haplotypecaller $p/shell/post-haplotypecaller.sh\n"
+    s += f"{q} -hold_jid $j-hc -N $j-post-hc $p/shell/post-haplotypecaller.sh\n"
 
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)
