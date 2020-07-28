@@ -118,7 +118,7 @@ def bam2vcf2(conf: str) -> None:
         raise ValueError("Mixed types of SN tags found.")
 
     gene_table = get_gene_table()
-    target_region = gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
+    target_region = chr_str + gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
 
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):

@@ -2,7 +2,7 @@ import configparser
 from os import mkdir
 from os.path import realpath
 from .bam2vcf2 import bam2vcf2
-from .common import logging, get_target_genes, sm_tag, LINE_BREAK1, is_chr, get_gene_table, randstr
+from .common import logging, get_target_genes, sm_tag, LINE_BREAK1, randstr
 
 logger = logging.getLogger(__name__)
 
@@ -241,9 +241,6 @@ def bam2gt2(conf: str) -> None:
            * - target_genes
              - Names of target genes (e.g. 'cyp2d6').
     """
-
-    gene_table = get_gene_table()
-
     # Log the configuration data.
     logger.info(LINE_BREAK1)
     logger.info("Configureation:")
@@ -294,15 +291,6 @@ def bam2gt2(conf: str) -> None:
     # Sort the samples by name since GATK does this.
     bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda x: x[0])}
 
-    # Determine the chromosome string.
-    t = [is_chr(v) for k, v in bam_files.items()]
-    if all(t):
-        chr_str = "chr"
-    elif not any(t):
-        chr_str = ""
-    else:
-        raise ValueError("Mixed types of SN tags found.")
-
     # Log the number of samples.
     logger.info(f"Number of samples: {len(bam_files)}")
 
@@ -327,8 +315,6 @@ def bam2gt2(conf: str) -> None:
         mkdir(gene_path)
         mkdir(f"{gene_path}/shell")
         mkdir(f"{gene_path}/log")
-
-        target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
 
         if control_gene != "NONE":
             _write_bam2gdf_shell(
