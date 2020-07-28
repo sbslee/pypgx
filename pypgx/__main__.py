@@ -34,6 +34,7 @@ from .check import check
 from .liftover import liftover
 from .peek import peek
 from .snp import snp
+from .compare2 import compare2
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -536,14 +537,29 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    return parser
+    compare2_parser = subparsers.add_parser(
+        "compare2",
+        help="compare two genotype files",
+    )
+    compare2_parser.add_argument(
+        "truth_file",
+        help="truth genotype file",
+    )
+    compare2_parser.add_argument(
+        "test_file",
+        help="test genotype file",
+    )
+    compare2_parser.add_argument(
+        "sample_map",
+        help="sample map",
+    )
+    compare2_parser.add_argument(
+        "-o",
+        metavar="FILE",
+        help="output to FILE [stdout]",
+    )
 
-def output(fn, result):
-    if fn:
-        with open(fn, "w") as f:
-            f.write(result)
-    else:
-        sys.stdout.write(result)
+    return parser
 
 def main():
     start_time = timeit.default_timer()
@@ -553,6 +569,8 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info(f"PyPGx v{__version__}")
     logger.info(f"""Command: '{" ".join(sys.argv)}'""")
+
+    result = ""
 
     if args.tool == "bam2gt":
         d = vars(args)
@@ -564,7 +582,6 @@ def main():
 
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
-        output(args.o, result)
 
     elif args.tool == "bam2vcf":
         d = vars(args)
@@ -581,7 +598,6 @@ def main():
 
     elif args.tool == "gt2html":
         result = gt2html(args.gt)
-        output(args.o, result)
 
     elif args.tool == "bam2html":
         bam2html(args.conf)
@@ -594,39 +610,30 @@ def main():
 
     elif args.tool == "bam2sdf":
         result = bam2sdf(args.gb, args.tg, args.cg, args.bam)
-        output(args.o, result)
 
     elif args.tool == "sdf2gdf":
         result = sdf2gdf(args.sdf, args.id)
-        output(args.o, result)
 
     elif args.tool == "pgkb":
         result = pgkb(args.t)
-        output(args.o, result)
 
     elif args.tool == "minivcf":
         result = minivcf(args.vcf, args.region)
-        output(args.o, result)
 
     elif args.tool == "merge":
         result = merge(args.vcf, args.r)
-        output(args.o, result)
     
     elif args.tool == "summary":
         result = summary(args.gt)
-        output(args.o, result)
 
     elif args.tool == "meta":
         result = meta(args.sf)
-        output(args.o, result)
 
     elif args.tool == "compare":
         result = compare(args.gt)
-        output(args.o, result)
 
     elif args.tool == "cpa":
         result = cpa(args.rdata)
-        output(args.o, result)
 
     elif args.tool == "plotcov":
         plotcov(args.sdf, args.out)
@@ -636,15 +643,15 @@ def main():
 
     elif args.tool == "liftover":
         result = liftover(args.star, args.snp, args.tg)
-        output(args.o, result)
 
     elif args.tool == "peek":
         result = peek(args.vcf)
-        output(args.o, result)
 
     elif args.tool == "snp":
         result = snp(args.vcf, args.pair)
-        output(args.o, result)
+
+    elif args.tool == "compare2":
+        result = compare2(**vars(args))
 
     else:
         pass
@@ -656,6 +663,13 @@ def main():
 
     logger.info(f"Elapsed time: {elapsed_time}")
     logger.info("PyPGx finished")
+
+    if hasattr(args, "o") and result:
+        if args.o:
+            with open(args.o, "w") as f:
+                f.write(result)
+        else:
+            sys.stdout.write(result)
 
 if __name__ == "__main__":
     main()

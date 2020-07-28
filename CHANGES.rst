@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.10
+-------
+
+* Added ``compare2`` tool.
+
 v0.1.9
 ------
 

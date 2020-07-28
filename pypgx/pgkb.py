@@ -48,8 +48,7 @@ def _update(result, gene, chemical, table, url, summary, type):
         result[chemical][gene]["pt"][phenotypes[i]] = " ".join(recommandation)
 
 def pgkb(is_test: bool = False) -> str:
-    """
-    Extract CPIC guidelines using PharmGKB API.
+    """Extract CPIC guidelines using PharmGKB API.
 
     Returns:
         str: Guideline table.
