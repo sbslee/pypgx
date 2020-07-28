@@ -13,6 +13,12 @@ pypgx.bam2gt module
 .. automodule:: pypgx.bam2gt
     :members:
 
+pypgx.bam2gt2 module
+--------------------
+
+.. automodule:: pypgx.bam2gt2
+    :members:
+
 pypgx.gt2pt module
 ------------------
 
@@ -24,6 +30,12 @@ pypgx.bam2vcf module
 --------------------
 
 .. automodule:: pypgx.bam2vcf
+    :members:
+
+pypgx.bam2vcf2 module
+---------------------
+
+.. automodule:: pypgx.bam2vcf2
     :members:
 
 pypgx.bam2gdf module
@@ -44,28 +56,10 @@ pypgx.bam2html module
 .. automodule:: pypgx.bam2html
     :members:
 
-pypgx.sgep module
------------------
-
-.. automodule:: pypgx.sgep
-    :members:
-
-pypgx.xgep module
-------------------
-
-.. automodule:: pypgx.xgep
-    :members:
-
 pypgx.fq2bam module
 -------------------
 
 .. automodule:: pypgx.fq2bam
-    :members:
-
-pypgx.bam2vcf2 module
----------------------
-
-.. automodule:: pypgx.bam2vcf2
     :members:
 
 pypgx.bam2bam module

@@ -11,15 +11,14 @@ from .common import (
 )
 
 from .bam2gt import bam2gt
+from .bam2gt2 import bam2gt2
 from .gt2pt import gt2pt
 from .bam2vcf import bam2vcf
+from .bam2vcf2 import bam2vcf2
 from .bam2gdf import bam2gdf
 from .gt2html import gt2html
 from .bam2html import bam2html
-from .sgep import sgep
-from .xgep import xgep
 from .fq2bam import fq2bam
-from .bam2vcf2 import bam2vcf2
 from .bam2bam import bam2bam
 from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
@@ -133,6 +132,15 @@ def get_parser():
         help="temporary files will be written to this directory"
     )
 
+    bam2gt2_parser = subparsers.add_parser(
+        "bam2gt2",
+        help="convert BAM files to genotype files [SGE]",
+    )
+    bam2gt2_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     gt2pt_parser = subparsers.add_parser(
         "gt2pt",
         help="convert a genotype file to phenotypes",
@@ -203,6 +211,15 @@ def get_parser():
         help="temporary files will be written to this directory"
     )
 
+    bam2vcf2_parser = subparsers.add_parser(
+        "bam2vcf2",
+        help="convert BAM files to a VCF file [SGE]",
+    )
+    bam2vcf2_parser.add_argument(
+        "conf",
+        help="configuration file",
+    )
+
     bam2gdf_parser = subparsers.add_parser(
         "bam2gdf",
         help="convert BAM files to a GDF file",
@@ -263,38 +280,11 @@ def get_parser():
         help="configuration file",
     )
 
-    sgep_parser = subparsers.add_parser(
-        "sgep",
-        help="convert BAM files to a genotype file [SGE]",
-    )
-    sgep_parser.add_argument(
-        "conf",
-        help="configuration file",
-    )
-
-    xgep_parser = subparsers.add_parser(
-        "xgep",
-        help="convert BAM files to genotype files [SGE]",
-    )
-    xgep_parser.add_argument(
-        "conf",
-        help="configuration file",
-    )
-
     fq2bam_parser = subparsers.add_parser(
         "fq2bam",
         help="convert FASTQ files to BAM files [SGE]",
     )
     fq2bam_parser.add_argument(
-        "conf",
-        help="configuration file",
-    )
-
-    bam2vcf2_parser = subparsers.add_parser(
-        "bam2vcf2",
-        help="convert BAM files to a VCF file [SGE]",
-    )
-    bam2vcf2_parser.add_argument(
         "conf",
         help="configuration file",
     )
@@ -569,6 +559,9 @@ def main():
         del d["tool"]
         bam2gt(**d)
 
+    elif args.tool == "bam2gt2":
+        bam2gt2(args.conf)
+
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
         output(args.o, result)
@@ -577,6 +570,9 @@ def main():
         d = vars(args)
         del d["tool"]
         bam2vcf(**d)
+
+    elif args.tool == "bam2vcf2":
+        bam2vcf2(args.conf)
 
     elif args.tool == "bam2gdf":
         d = vars(args)
@@ -590,17 +586,8 @@ def main():
     elif args.tool == "bam2html":
         bam2html(args.conf)
 
-    elif args.tool == "sgep":
-        sgep(args.conf)
-
-    elif args.tool == "xgep":
-        xgep(args.conf)
-
     elif args.tool == "fq2bam":
         fq2bam(args.conf)
-
-    elif args.tool == "bam2vcf2":
-        bam2vcf2(args.conf)
 
     elif args.tool == "bam2bam":
         bam2bam(args.conf)

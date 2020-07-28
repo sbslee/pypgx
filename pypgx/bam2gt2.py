@@ -2,7 +2,7 @@ import configparser
 from os import mkdir
 from os.path import realpath
 from .bam2vcf2 import bam2vcf2
-from .common import logging, sm_tag, LINE_BREAK1, is_chr, get_gene_table, randstr
+from .common import logging, get_target_genes, sm_tag, LINE_BREAK1, is_chr, get_gene_table, randstr
 
 logger = logging.getLogger(__name__)
 
@@ -162,47 +162,55 @@ def _write_qsub_shell(
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)
 
-def sgep(conf: str) -> None:
-    """Convert BAM files to a genotype file [SGE].
+def bam2gt2(conf: str) -> None:
+    """Convert BAM files to genotype files [SGE].
 
-    This command runs the per-project genotyping pipeline by submitting 
-    jobs to the Sun Grid Engine (SGE) cluster.
+    This command runs the entire genotyping pipeline for BAM files 
+    with the Sun Grid Engine (SGE) cluster. By default, it will genotype 
+    all genes currently targeted by the Stargazer program (you can specify 
+    select genes too). For each gene, the command runs under the hood 
+    ``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2`` 
+    (i.e. GATK) to create the input VCF file. The input GDF file is 
+    created with the ``bam2gdf`` command. 
 
     Args:
         conf (str): Configuration file.
 
     .. warning::
 
-        BCFtools, SGE and Stargazer must be pre-installed.
+        SGE, Stargazer and BCFtools/GATK must be pre-installed.
 
-    This is what a typical configuration file for ``sgep`` looks like:
+    This is what a typical configuration file for ``bam2gt2`` looks like:
 
         .. code-block:: python
 
             # File: example_conf.txt
             # To execute:
-            #   $ pypgx sgep example_conf.txt
+            #   $ pypgx bam2gt2 example_conf.txt
             #   $ sh ./myproject/example-qsub.sh
 
             # Do not make any changes to this section.
             [DEFAULT]
             control_gene = NONE
+            dbsnp_file = NONE
+            java_options = NONE
             qsub_options = NONE
+            target_genes = ALL
 
             # Make any necessary changes to this section.
             [USER]
-            fasta_file = reference.fa
+            control_gene = vdr
+            data_type = wgs
+            fasta_file = hs37d5.fa
+            genome_build = hg19
             manifest_file = manifest.txt
             project_path = ./myproject
-            target_gene = cyp2d6
-            genome_build = hg19
-            data_type = wgs
-            control_gene = vdr
+            qsub_options = -l mem_requested=2G
             snp_caller = gatk
-            qsub_options = -V -l mem_requested=10G
-            snp_caller = gatk
+            target_genes = cyp2b6, cyp2d6
 
-    This table summarizes the configuration parameters specific to ``sgep``:
+    This table summarizes the configuration parameters specific to 
+    ``bam2gt2``:
 
         .. list-table::
            :widths: 25 75
@@ -213,21 +221,25 @@ def sgep(conf: str) -> None:
            * - control_gene
              - Control gene or region.
            * - data_type
-             - Data type (wgs, ts, chip).
+             - Data type ('wgs' or 'ts').
+           * - dbsnp_file
+             - dbSNP VCF file.
            * - fasta_file
              - Reference FASTA file.
            * - genome_build
-             - Genome build (hg19, hg38).
+             - Genome build ('hg19' or 'hg38').
+           * - java_options
+             - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
            * - manifest_file
              - Manifest file.
            * - project_path
              - Output project directory.
            * - qsub_options
-             - Options for qsub command.
+             - Options for qsub command (e.g. '-l mem_requested=2G').
            * - snp_caller
              - SNP caller (‘gatk’ or ‘bcftools’).
-           * - target_gene
-             - Target gene.
+           * - target_genes
+             - Names of target genes (e.g. 'cyp2d6').
     """
 
     gene_table = get_gene_table()
@@ -249,7 +261,7 @@ def sgep(conf: str) -> None:
     manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     genome_build = config["USER"]["genome_build"]
-    target_gene = config["USER"]["target_gene"]
+    target_genes = config["USER"]["target_genes"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
     qsub_options = config["USER"]["qsub_options"]
@@ -270,17 +282,24 @@ def sgep(conf: str) -> None:
             seq_id = sm_tag(bam)
             bam_files[seq_id] = (bam, sample_id)
 
+    all_genes = get_target_genes()
+
+    if target_genes == "ALL":
+        select_genes = all_genes
+    else:
+        select_genes = []
+
+        for gene in target_genes.split(","):
+            select_genes.append(gene.strip().lower())
+
+        for gene in select_genes:
+            if gene not in all_genes:
+                raise ValueError(f"Unrecognized target gene found: {gene}")
+
     # Sort the samples by name since GATK does this.
     bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda item: item[0])}
 
-    # Log the number of samples.
-    logger.info(f"Number of samples: {len(bam_files)}")
-
-    # Make the project directories.
-    mkdir(project_path)
-    mkdir(f"{project_path}/shell")
-    mkdir(f"{project_path}/log")
-
+    # Determine the chromosome string.
     t = [is_chr(v[0]) for k, v in bam_files.items()]
     if all(t):
         chr_str = "chr"
@@ -289,54 +308,79 @@ def sgep(conf: str) -> None:
     else:
         raise ValueError("Mixed types of SN tags found.")
 
-    target_region = gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
+    # Log the number of samples.
+    logger.info(f"Number of samples: {len(bam_files)}")
 
-    if control_gene != "NONE":
-        _write_bam2gdf_shell(
+    # Make the project directories.
+    mkdir(project_path)
+    mkdir(f"{project_path}/gene")
+
+    s = (
+        "#!/bin/bash\n"
+        "\n"
+    )
+
+    for select_gene in select_genes:
+        s += f"sh {project_path}/gene/{select_gene}/example-qsub.sh\n"
+
+    with open(f"{project_path}/example-qsub.sh", "w") as f:
+        f.write(s)
+
+    for select_gene in select_genes:
+        gene_path = f"{project_path}/gene/{select_gene}"
+
+        mkdir(gene_path)
+        mkdir(f"{gene_path}/shell")
+        mkdir(f"{gene_path}/log")
+
+        target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
+
+        if control_gene != "NONE":
+            _write_bam2gdf_shell(
+                genome_build,
+                select_gene,
+                control_gene,
+                bam_files,
+                f"{gene_path}/pypgx.gdf",
+                f"{gene_path}/shell/bam2gdf.sh"
+            )
+
+        if snp_caller == "bcftools":
+            _write_bam2vcf_shell(
+                fasta_file,
+                select_gene,
+                gene_path,
+                genome_build,
+                bam_files
+            )
+
+        elif snp_caller == "gatk":
+            _write_bam2vcf2_shell(
+                fasta_file,
+                manifest_file,
+                gene_path,
+                select_gene,
+                genome_build,
+                qsub_options,
+                java_options,
+                dbsnp_file
+            )
+
+        else:
+            raise ValueError(f"Incorrect SNP caller: {snp_caller}")
+
+        _write_stargazer_shell(
+            snp_caller,
+            data_type,
             genome_build,
-            target_gene,
-            control_gene,
-            bam_files,
-            f"{project_path}/pypgx.gdf",
-            f"{project_path}/shell/bam2gdf.sh"
+            select_gene,
+            gene_path,
+            control_gene
         )
 
-    if snp_caller == "bcftools":
-        _write_bam2vcf_shell(
-            fasta_file,
-            target_gene,
-            project_path,
-            genome_build,
-            bam_files
-        )
-
-    elif snp_caller == "gatk":
-        _write_bam2vcf2_shell(
-            fasta_file,
-            manifest_file,
-            project_path,
-            target_gene,
-            genome_build,
+        _write_qsub_shell(
+            snp_caller,
             qsub_options,
-            java_options,
-            dbsnp_file
+            control_gene,
+            gene_path
         )
-
-    else:
-        raise ValueError(f"Incorrect SNP caller: {snp_caller}")
-
-    _write_stargazer_shell(
-        snp_caller,
-        data_type,
-        genome_build,
-        target_gene,
-        project_path,
-        control_gene
-    )
-
-    _write_qsub_shell(
-        snp_caller,
-        qsub_options,
-        control_gene,
-        project_path
-    )

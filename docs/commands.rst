@@ -51,6 +51,33 @@ Options
 --dbsnp_file FILE   dbSNP VCF file, used by GATK to add rs numbers
 --temp_dir DIR      temporary files will be written to this directory
 
+bam2gt2 command
+===============
+
+Synopsis
+--------
+
+pypgx bam2gt2 *[options] conf*
+
+Description
+-----------
+
+Convert BAM files to a genotype file [SGE].
+
+This command runs the per-project genotyping pipeline by submitting 
+jobs to the Sun Grid Engine (SGE) cluster.
+
+*conf* is the configuration file. See the API section for details.
+
+.. warning::
+
+    BCFtools, SGE and Stargazer must be pre-installed.
+
+Options
+-------
+
+There are no options.
+
 gt2pt command
 =============
 
@@ -115,7 +142,7 @@ reference FASTA file. *target_gene* is the name or region of target gene
     not have access to Sun Grid Engine (SGE) for parallelism, we 
     recommend that you use ``bcftools``. If you have access to SGE and 
     you want to use GATK instead of BCFtools, please check other 
-    SGE-based commands in PyPGx (e.g. ``sgep``).
+    SGE-based commands in PyPGx (e.g. ``bam2gt2``).
 
 Options
 -------
@@ -125,6 +152,33 @@ Options
 --dbsnp_file FILE  dbSNP VCF file, used by GATK to add rs numbers
 --java_options STR  Java-specific arguments for GATK (e.g. '-Xmx4G')
 --temp_dir DIR     temporary files will be written to this directory
+
+bam2vcf2 command
+================
+
+Synopsis
+--------
+
+pypgx bam2vcf2 *[options] conf*
+
+Description
+-----------
+
+Convert BAM files to a VCF file.
+
+This command outputs a single- or multi-sample VCF file from one or 
+more input BAM files. The output VCF file will only contain variants 
+within the target gene or region. This command is essentially a 
+wrapper with pre-specified parameters for the Genome Analysis Toolkit 
+(GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
+GATK run faster.
+
+*conf* is the configuration file. See the API section for details.
+
+Options
+-------
+
+There are no options.
 
 bam2gdf command
 ===============
@@ -219,61 +273,6 @@ Options
 
 There are no options.
 
-sgep command
-============
-
-Synopsis
---------
-
-pypgx sgep *[options] conf*
-
-Description
------------
-
-Convert BAM files to a genotype file [SGE].
-
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster.
-
-*conf* is the configuration file. See the API section for details.
-
-.. warning::
-
-    BCFtools, SGE and Stargazer must be pre-installed.
-
-Options
--------
-
-There are no options.
-
-xgep command
-============
-
-Synopsis
---------
-
-pypgx xgep *[options] conf*
-
-Description
------------
-
-Run per-project genotyping for multiple genes with SGE (1).
-
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. This is essentially an 
-extension of the ``sgep`` command to genotype multiple genes.
-
-*conf* is the configuration file. See the API section for details.
-
-.. note::
-
-    BCFtools, SGE and Stargazer must be pre-installed.
-
-Options
--------
-
-There are no options.
-
 fq2bam command
 ==============
 
@@ -286,33 +285,6 @@ Description
 -----------
 
 Create BAM file(s) from FASTQ file(s).
-
-*conf* is the configuration file. See the API section for details.
-
-Options
--------
-
-There are no options.
-
-bam2vcf2 command
-================
-
-Synopsis
---------
-
-pypgx bam2vcf2 *[options] conf*
-
-Description
------------
-
-Convert BAM files to a VCF file.
-
-This command outputs a single- or multi-sample VCF file from one or 
-more input BAM files. The output VCF file will only contain variants 
-within the target gene or region. This command is essentially a 
-wrapper with pre-specified parameters for the Genome Analysis Toolkit 
-(GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
-GATK run faster.
 
 *conf* is the configuration file. See the API section for details.
 

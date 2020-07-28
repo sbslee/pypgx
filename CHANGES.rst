@@ -1,6 +1,13 @@
 Changelog
 *********
 
+v0.1.6
+------
+
+* Updated sgep.py to support multiple target genes. Consequently, xgep.py 
+  was removed.
+* Renamed sgep.py to bam2gt2.py.
+
 v0.1.5
 ------
 
