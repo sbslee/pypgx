@@ -605,3 +605,24 @@ Options
 -------
 
 -o FILE     output to FILE [stdout]
+
+compare2 command
+================
+
+Synopsis
+--------
+
+pypgx compare2 *[options] truth_file test_file sample_map*
+
+Description
+-----------
+
+Compare two genotype files.
+
+*truth_file* is the truth genotype file. *test_file* is the test genotype 
+file. *sample_map* is the tab-delimited text file for sample name mapping.
+
+Options
+-------
+
+-o FILE     output to FILE [stdout]

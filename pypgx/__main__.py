@@ -551,7 +551,7 @@ def get_parser():
     )
     compare2_parser.add_argument(
         "sample_map",
-        help="sample map",
+        help="tab-delimited text file for sample name mapping",
     )
     compare2_parser.add_argument(
         "-o",

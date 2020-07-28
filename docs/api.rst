@@ -152,6 +152,12 @@ pypgx.snp module
 .. automodule:: pypgx.snp
     :members:
 
+pypgx.compare2 module
+---------------------
+
+.. automodule:: pypgx.compare2
+    :members:
+
 Auxiliary modules
 =================
 
