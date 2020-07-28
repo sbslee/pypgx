@@ -6,7 +6,7 @@ from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
 logger = logging.getLogger(__name__)
 
 def bam2vcf2(conf: str) -> None:
-    """Convert BAM files to a VCF file.
+    """Convert BAM files to a VCF file [SGE].
 
     This command outputs a single- or multi-sample VCF file from one or 
     more input BAM files. The output VCF file will only contain variants 
@@ -39,7 +39,7 @@ def bam2vcf2(conf: str) -> None:
             # Make any necessary changes to this section.
             [USER]
             fasta_file = reference.fa
-            manifest_file = manifest.txt
+            bam_list = bam-list.txt
             project_path = ./myproject
             target_gene = cyp2d6
             genome_build = hg19
@@ -56,6 +56,8 @@ def bam2vcf2(conf: str) -> None:
 
            * - Parameter
              - Summary
+           * - bam_list
+             - List of input BAM files, one file per line.
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
@@ -87,7 +89,7 @@ def bam2vcf2(conf: str) -> None:
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
-    manifest_file = realpath(config["USER"]["manifest_file"])
+    bam_list = realpath(config["USER"]["bam_list"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     target_gene = config["USER"]["target_gene"]
     genome_build = config["USER"]["genome_build"]
@@ -95,17 +97,11 @@ def bam2vcf2(conf: str) -> None:
     java_options = config["USER"]["java_options"]
     dbsnp_file = config["USER"]["dbsnp_file"]
 
-    # Read the manifest file.
-    bam_files = {}
-    with open(manifest_file) as f:
-        header = next(f).strip().split("\t")
-        i1 = header.index("sample_id")
-        i2 = header.index("bam")
+    bam_files = []
+
+    with open(bam_list) as f:
         for line in f:
-            fields = line.strip().split("\t")
-            sample_id = fields[i1]
-            bam = fields[i2]
-            bam_files[sample_id] = bam
+            bam_files.append(line.strip())
 
     # Make the project directories.
     mkdir(project_path)
@@ -113,7 +109,7 @@ def bam2vcf2(conf: str) -> None:
     mkdir(f"{project_path}/log")
     mkdir(f"{project_path}/temp")
 
-    t = [is_chr(v) for k, v in bam_files.items()]
+    t = [is_chr(x) for x in bam_files]
     if all(t):
         chr_str = "chr"
     elif not any(t):
@@ -125,8 +121,7 @@ def bam2vcf2(conf: str) -> None:
     target_region = gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
 
     # Write the shell script for HaplotypeCaller.
-    for i, sample_id in enumerate(bam_files):
-        bam_file = bam_files[sample_id]
+    for i, bam_file in enumerate(bam_files):
         s = (
             "gatk HaplotypeCaller \\\n"
             f"  -R {fasta_file} \\\n"
@@ -158,7 +153,7 @@ def bam2vcf2(conf: str) -> None:
         "  --QUIET \\\n"
     )
 
-    for i, sample_id in enumerate(bam_files):
+    for i, bam_file in enumerate(bam_files):
         s += f"  -V $p/temp/{i}.g.vcf \\\n"
 
     s += (
@@ -205,7 +200,7 @@ def bam2vcf2(conf: str) -> None:
         "\n"
     )
 
-    for i, sample_id in enumerate(bam_files):
+    for i, bam_file in enumerate(bam_files):
         s += f"{q} -N $j-hc $p/shell/haplotypecaller-{i}.sh\n"
 
     s += f"{q} -hold_jid $j-hc -N $j-post-hc $p/shell/post-haplotypecaller.sh\n"

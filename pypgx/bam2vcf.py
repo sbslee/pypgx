@@ -171,7 +171,7 @@ def bam2vcf(
         temp_dir: Optional[str] = None,
         **kwargs
     ) -> None:
-    """Create a VCF file from BAM files.
+    """Convert BAM files to a VCF file.
 
     This command creates a single- or multi-sample VCF file from one or 
     more input BAM files. The output VCF file will only contain variants 
@@ -215,9 +215,8 @@ def bam2vcf(
         takes 19 min with the ``gatk`` caller but only 2 min with the 
         ``bcftools`` caller. Therefore, if you have many samples and you do 
         not have access to Sun Grid Engine (SGE) for parallelism, we 
-        recommend that you use ``bcftools``. If you have access to SGE and 
-        you want to use GATK instead of BCFtools, please check other 
-        SGE-based commands in PyPGx (e.g. ``sgep``).
+        recommend that you use ``bcftools``. If you have SGE and want to 
+        use GATK, please check ``bam2vcf2``.
     """
     # Parse keyward arguments from the decorators.
     temp_path = kwargs["temp_path"]

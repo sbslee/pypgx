@@ -22,8 +22,8 @@ def _write_bam2gdf_shell(
         f"  {gdf_file} \\\n"
     )
 
-    for seq_id in bam_files:
-        s += f"  {bam_files[seq_id][0]} \\\n"
+    for name in bam_files:
+        s += f"  {bam_files[name]} \\\n"
 
     with open(shell_file, "w") as f:
         f.write(s)
@@ -44,15 +44,15 @@ def _write_bam2vcf_shell(
         f"  {genome_build} \\\n"
     )
 
-    for seq_id in bam_files:
-        s += f"  {bam_files[seq_id][0]} \\\n"
+    for name in bam_files:
+        s += f"  {bam_files[name]} \\\n"
 
     with open(f"{project_path}/shell/bam2vcf.sh", "w") as f:
         f.write(s)
 
 def _write_bam2vcf2_shell(
         fasta_file,
-        manifest_file,
+        bam_list,
         project_path,
         target_gene,
         genome_build,
@@ -70,7 +70,7 @@ def _write_bam2vcf2_shell(
         "# Make any necessary changes to this section.\n"
         "[USER]\n"
         f"fasta_file = {fasta_file}\n"
-        f"manifest_file = {manifest_file}\n"
+        f"bam_list = {bam_list}\n"
         f"project_path = {project_path}/bam2vcf2\n"
         f"target_gene = {target_gene}\n"
         f"genome_build = {genome_build}\n"
@@ -171,7 +171,7 @@ def bam2gt2(conf: str) -> None:
     select genes too). For each gene, the command runs under the hood 
     ``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2`` 
     (i.e. GATK) to create the input VCF file. The input GDF file is 
-    created with the ``bam2gdf`` command. 
+    created with ``bam2gdf``.
 
     Args:
         conf (str): Configuration file.
@@ -199,11 +199,11 @@ def bam2gt2(conf: str) -> None:
 
             # Make any necessary changes to this section.
             [USER]
+            bam_list = bam-list.txt
             control_gene = vdr
             data_type = wgs
             fasta_file = hs37d5.fa
             genome_build = hg19
-            manifest_file = manifest.txt
             project_path = ./myproject
             qsub_options = -l mem_requested=2G
             snp_caller = gatk
@@ -218,6 +218,8 @@ def bam2gt2(conf: str) -> None:
 
            * - Parameter
              - Summary
+           * - bam_list
+             - List of input BAM files, one file per line.
            * - control_gene
              - Control gene or region.
            * - data_type
@@ -230,8 +232,6 @@ def bam2gt2(conf: str) -> None:
              - Genome build ('hg19' or 'hg38').
            * - java_options
              - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
-           * - manifest_file
-             - Manifest file.
            * - project_path
              - Output project directory.
            * - qsub_options
@@ -258,7 +258,6 @@ def bam2gt2(conf: str) -> None:
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
-    manifest_file = realpath(config["USER"]["manifest_file"])
     fasta_file = realpath(config["USER"]["fasta_file"])
     genome_build = config["USER"]["genome_build"]
     target_genes = config["USER"]["target_genes"]
@@ -268,19 +267,15 @@ def bam2gt2(conf: str) -> None:
     snp_caller = config["USER"]["snp_caller"]
     java_options = config["USER"]["java_options"]
     dbsnp_file = config["USER"]["dbsnp_file"]
+    bam_list = realpath(config["USER"]["bam_list"])
 
-    # Read the manifest file.
     bam_files = {}
-    with open(manifest_file) as f:
-        header = next(f).strip().split("\t")
-        i1 = header.index("sample_id")
-        i2 = header.index("bam")
+
+    with open(bam_list) as f:
         for line in f:
-            fields = line.strip().split("\t")
-            sample_id = fields[i1]
-            bam = fields[i2]
-            seq_id = sm_tag(bam)
-            bam_files[seq_id] = (bam, sample_id)
+            bam = line.strip()
+            name = sm_tag(bam)
+            bam_files[name] = bam
 
     all_genes = get_target_genes()
 
@@ -297,10 +292,10 @@ def bam2gt2(conf: str) -> None:
                 raise ValueError(f"Unrecognized target gene found: {gene}")
 
     # Sort the samples by name since GATK does this.
-    bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda item: item[0])}
+    bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda x: x[0])}
 
     # Determine the chromosome string.
-    t = [is_chr(v[0]) for k, v in bam_files.items()]
+    t = [is_chr(v) for k, v in bam_files.items()]
     if all(t):
         chr_str = "chr"
     elif not any(t):
@@ -357,7 +352,7 @@ def bam2gt2(conf: str) -> None:
         elif snp_caller == "gatk":
             _write_bam2vcf2_shell(
                 fasta_file,
-                manifest_file,
+                bam_list,
                 gene_path,
                 select_gene,
                 genome_build,

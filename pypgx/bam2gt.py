@@ -34,6 +34,9 @@ def bam2gt(
     the optional argument ``--control_gene`` will generate a GDF file. 
     If this argument is not provided, Stargazer will run as VCF-only mode.
 
+    .. warning::
+        Stargazer and GATK/BCFtools must be pre-installed.
+
     Args:
         snp_caller (str):
             SNP caller (‘gatk’ or ‘bcftools’).

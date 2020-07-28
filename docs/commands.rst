@@ -41,6 +41,9 @@ reference FASTA file. *target_gene* is the name of target gene (e.g.
 *data_type* is the type of sequencing data ('wgs' or 'ts'). Output files 
 will be written to *proj_dir*. *bam_file* are the input BAM files.
 
+.. warning::
+    Stargazer and GATK/BCFtools must be pre-installed.
+
 Options
 -------
 
@@ -64,14 +67,19 @@ Description
 
 Convert BAM files to a genotype file [SGE].
 
-This command runs the per-project genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster.
+This command runs the entire genotyping pipeline for BAM files 
+with the Sun Grid Engine (SGE) cluster. By default, it will genotype 
+all genes currently targeted by the Stargazer program (you can specify 
+select genes too). For each gene, the command runs under the hood 
+``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2`` 
+(i.e. GATK) to create the input VCF file. The input GDF file is 
+created with ``bam2gdf``.
 
 *conf* is the configuration file. See the API section for details.
 
 .. warning::
 
-    BCFtools, SGE and Stargazer must be pre-installed.
+    SGE, Stargazer and BCFtools/GATK must be pre-installed.
 
 Options
 -------
@@ -140,9 +148,8 @@ reference FASTA file. *target_gene* is the name or region of target gene
     takes 19 min with the ``gatk`` caller but only 2 min with the 
     ``bcftools`` caller. Therefore, if you have many samples and you do 
     not have access to Sun Grid Engine (SGE) for parallelism, we 
-    recommend that you use ``bcftools``. If you have access to SGE and 
-    you want to use GATK instead of BCFtools, please check other 
-    SGE-based commands in PyPGx (e.g. ``bam2gt2``).
+    recommend that you use ``bcftools``. If you have SGE and want to 
+    use GATK, please check ``bam2vcf2``.
 
 Options
 -------
@@ -164,7 +171,7 @@ pypgx bam2vcf2 *[options] conf*
 Description
 -----------
 
-Convert BAM files to a VCF file.
+Convert BAM files to a VCF file [SGE].
 
 This command outputs a single- or multi-sample VCF file from one or 
 more input BAM files. The output VCF file will only contain variants 
@@ -174,6 +181,9 @@ wrapper with pre-specified parameters for the Genome Analysis Toolkit
 GATK run faster.
 
 *conf* is the configuration file. See the API section for details.
+
+.. warning::
+    GATK and SGE must be pre-installed.
 
 Options
 -------
