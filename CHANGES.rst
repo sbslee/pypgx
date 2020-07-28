@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.9
+------
+
+* Added ``-q 1`` argument to ``bcftools`` caller in bam2vcf.py.
+
 v0.1.8
 ------
 

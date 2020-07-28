@@ -98,6 +98,7 @@ def _run_mpileup(
         "-f", fasta_file,
         "-a", "AD",
         "-r", target_region,
+        "-q", "1",
         "--max-depth", "1000",
         "-o", vcf_file,
     ] + input_files
