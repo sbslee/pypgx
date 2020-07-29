@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.11
+-------
+
+* Updated ``bam2gt2`` to accept a list of reference samples.
+
 v0.1.10
 -------
 

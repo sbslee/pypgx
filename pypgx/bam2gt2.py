@@ -90,7 +90,8 @@ def _write_stargazer_shell(
         genome_build,
         target_gene,
         project_path,
-        control_gene
+        control_gene,
+        ref_samples
     ):
 
     if snp_caller == "bcftools":
@@ -114,6 +115,10 @@ def _write_stargazer_shell(
             f"  --cg {control_gene} \\\n"
             f"  --gdf $p/pypgx.gdf \\\n"
         )
+
+    if target_gene in ref_samples:
+        _ = " ".join(ref_samples[target_gene])
+        s += f"  --sl {_} \\\n"
 
     with open(f"{project_path}/shell/stargazer.sh", "w") as f:
         f.write(s)
@@ -195,6 +200,7 @@ def bam2gt2(conf: str) -> None:
             dbsnp_file = NONE
             java_options = NONE
             qsub_options = NONE
+            sample_list = NONE
             target_genes = ALL
 
             # Make any necessary changes to this section.
@@ -236,6 +242,9 @@ def bam2gt2(conf: str) -> None:
              - Output project directory.
            * - qsub_options
              - Options for qsub command (e.g. '-l mem_requested=2G').
+           * - sample_list
+             - List of samples used for inter-sample normalization 
+               (e.g. 'gstt1, sample1, sample2 | ugt2b17, sample3'). 
            * - snp_caller
              - SNP caller (‘gatk’ or ‘bcftools’).
            * - target_genes
@@ -254,17 +263,18 @@ def bam2gt2(conf: str) -> None:
     config.read(conf)
 
     # Parse the configuration data.
-    project_path = realpath(config["USER"]["project_path"])
-    fasta_file = realpath(config["USER"]["fasta_file"])
-    genome_build = config["USER"]["genome_build"]
-    target_genes = config["USER"]["target_genes"]
+    bam_list = realpath(config["USER"]["bam_list"])
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
-    qsub_options = config["USER"]["qsub_options"]
-    snp_caller = config["USER"]["snp_caller"]
-    java_options = config["USER"]["java_options"]
     dbsnp_file = config["USER"]["dbsnp_file"]
-    bam_list = realpath(config["USER"]["bam_list"])
+    fasta_file = realpath(config["USER"]["fasta_file"])
+    genome_build = config["USER"]["genome_build"]
+    java_options = config["USER"]["java_options"]
+    project_path = realpath(config["USER"]["project_path"])
+    qsub_options = config["USER"]["qsub_options"]
+    sample_list = config["USER"]["sample_list"]
+    snp_caller = config["USER"]["snp_caller"]
+    target_genes = config["USER"]["target_genes"]
 
     bam_files = {}
 
@@ -288,7 +298,18 @@ def bam2gt2(conf: str) -> None:
             if gene not in all_genes:
                 raise ValueError(f"Unrecognized target gene found: {gene}")
 
-    # Sort the samples by name since GATK does this.
+    if sample_list == "NONE":
+        ref_samples = {}
+    else:
+        ref_samples = {}
+
+        for gene_section in sample_list.split("|"):
+            fields = [x.strip() for x in gene_section.strip().split(",")]
+            gene = fields[0]
+            names = fields[1:]
+            ref_samples[gene] = names
+
+# Sort the samples by name since GATK does this.
     bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda x: x[0])}
 
     # Log the number of samples.
@@ -356,7 +377,8 @@ def bam2gt2(conf: str) -> None:
             genome_build,
             select_gene,
             gene_path,
-            control_gene
+            control_gene,
+            ref_samples
         )
 
         _write_qsub_shell(
