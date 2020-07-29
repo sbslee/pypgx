@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.12
+-------
+
+Updated ``compare2`` to also output the target gene column.
+
 v0.1.11
 -------
 
