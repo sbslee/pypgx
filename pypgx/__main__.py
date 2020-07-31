@@ -277,7 +277,7 @@ def get_parser():
         help="convert a BAM file to an HTML report [SGE]",
     )
     bam2html_parser.add_argument(
-        "conf",
+        "conf_file",
         help="configuration file",
     )
 
@@ -286,7 +286,7 @@ def get_parser():
         help="convert FASTQ files to BAM files [SGE]",
     )
     fq2bam_parser.add_argument(
-        "conf",
+        "conf_file",
         help="configuration file",
     )
 
@@ -295,7 +295,7 @@ def get_parser():
         help="realign BAM files to another reference genome [SGE]",
     )
     bam2bam_parser.add_argument(
-        "conf",
+        "conf_file",
         help="configuration file",
     )
 
@@ -595,13 +595,13 @@ def main():
         result = gt2html(args.gt)
 
     elif args.tool == "bam2html":
-        bam2html(args.conf)
+        bam2html(**vars(args))
 
     elif args.tool == "fq2bam":
-        fq2bam(args.conf)
+        fq2bam(**vars(args))
 
     elif args.tool == "bam2bam":
-        bam2bam(args.conf)
+        bam2bam(**vars(args))
 
     elif args.tool == "bam2sdf":
         result = bam2sdf(args.gb, args.tg, args.cg, args.bam)

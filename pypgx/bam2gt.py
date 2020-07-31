@@ -39,7 +39,7 @@ def bam2gt(
 
     Args:
         snp_caller (str):
-            SNP caller (‘gatk’ or ‘bcftools’).
+            SNP caller ('gatk' or 'bcftools').
         fasta_file (str):
             Reference FASTA file.
         target_gene (str):
@@ -57,8 +57,8 @@ def bam2gt(
         bam_list (str, optional):
             List of input BAM files, one file per line.
         control_gene (str, optional):
-            Name or region of control gene (e.g. ‘vdr’, 
-            ‘chr12:48232319-48301814’)
+            Name or region of control gene (e.g. 'vdr', 
+            'chr12:48232319-48301814').
         dbsnp_file (str, optional):
             dbSNP VCF file used by GATK to add rs numbers.
         temp_dir (str, optional):

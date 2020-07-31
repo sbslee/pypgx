@@ -1,17 +1,14 @@
-import configparser
 from os import mkdir
 from os.path import realpath
+from .common import conf_env
 
-from .common import logging, LINE_BREAK1
-
-logger = logging.getLogger(__name__)
-
-def fq2bam(conf: str) -> None:
+@conf_env
+def fq2bam(conf_file: str, **kwargs) -> None:
     """
     Create BAM file(s) from FASTQ file(s).
 
     Args:
-        conf (str): Configuration file.
+        conf_file (str): Configuration file.
 
     This is what a typical configuration file for ``fq2bam`` looks like:
 
@@ -69,20 +66,8 @@ def fq2bam(conf: str) -> None:
            * - vcf_files
              - Reference VCF files used for base quality score recalibration.
     """
-
-    # Log the configuration data.
-    logger.info(LINE_BREAK1)
-    logger.info("Configureation:")
-    with open(conf) as f:
-        for line in f:
-            logger.info("    " + line.strip())
-    logger.info(LINE_BREAK1)
-
-    # Read the configuration file.
-    config = configparser.ConfigParser()
-    config.read(conf)
-
     # Parse the configuration data.
+    config = kwargs["config"]
     manifest_file = realpath(config["USER"]["manifest_file"])
     project_path = realpath(config["USER"]["project_path"])
     fasta_file = realpath(config["USER"]["fasta_file"])

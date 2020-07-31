@@ -1,12 +1,10 @@
 import configparser
 from os import mkdir
 from os.path import realpath
+from .common import conf_env, get_target_genes, randstr
 
-from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
-
-logger = logging.getLogger(__name__)
-
-def bam2html(conf: str) -> None:
+@conf_env
+def bam2html(conf_file: str, **kwargs) -> None:
     """Run per-sample genotyping for multiple genes with SGE.
 
     This command runs the per-sample genotyping pipeline by submitting 
@@ -60,34 +58,22 @@ def bam2html(conf: str) -> None:
            * - bam_file
              - BAM file.
            * - control_gene
-             - Control gene or region.
+             - Name or region of control gene 
+               (e.g. 'vdr', 'chr12:48232319-48301814').
            * - data_type
-             - Data type (wgs, ts, chip).
+             - Data type ('wgs' or 'ts').
            * - fasta_file
              - Reference FASTA file.
            * - genome_build
-             - Genome build (hg19, hg38).
+             - Genome build ('hg19' or 'hg38').
            * - project_path
              - Output project directory.
            * - qsub_options
-             - Options for qsub command.
+             - Options for qsub command (e.g. '-l mem_requested=2G').
            * - target_genes
-             - Target genes.
+             - Names of target genes (e.g. 'cyp2d6')..
     """
-
-    gene_table = get_gene_table()
-
-    # Log the configuration data.
-    logger.info(LINE_BREAK1)
-    logger.info("Configureation:")
-    with open(conf) as f:
-        for line in f:
-            logger.info("    " + line.strip())
-    logger.info(LINE_BREAK1)
-
-    # Read the configuration file.
-    config = configparser.ConfigParser()
-    config.read(conf)
+    config = kwargs["config"]
 
     # Parse the configuration data.
     snp_caller = config["USER"]["snp_caller"]
@@ -100,7 +86,7 @@ def bam2html(conf: str) -> None:
     genome_build = config["USER"]["genome_build"]
     qsub_options = config["USER"]["qsub_options"]
 
-    t = [k for k, v in gene_table.items() if v["type"] == "target"]
+    t = get_target_genes()
     
     if target_genes == "ALL":
         select_genes = t
@@ -119,15 +105,8 @@ def bam2html(conf: str) -> None:
     for select_gene in select_genes:
         mkdir(f"{project_path}/gene/{select_gene}")
 
-    if is_chr(bam_file):
-        chr_str = "chr"
-    else:
-        chr_str = ""
-
     # Write the shell script for genotyping pipeline.
     for select_gene in select_genes:
-        target_region = gene_table[select_gene][f"{genome_build}_region"].replace("chr", "")
-
         s = (
             "pypgx bam2gt \\\n"
             f"  {snp_caller} \\\n"

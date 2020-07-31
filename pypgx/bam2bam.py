@@ -2,16 +2,15 @@ import configparser
 from os import mkdir
 from os.path import realpath
 
-from .common import logging, LINE_BREAK1
+from .common import conf_env
 
-logger = logging.getLogger(__name__)
-
-def bam2bam(conf: str) -> None:
+@conf_env
+def bam2bam(conf_file: str, **kwargs) -> None:
     """
     Remap BAM file(s) to different reference.
 
     Args:
-        conf (str): Configuration file.
+        conf_file (str): Configuration file.
 
     This is what a typical configuration file for ``remap`` looks like:
 
@@ -71,18 +70,7 @@ def bam2bam(conf: str) -> None:
            * - vcf_files
              - Reference VCF files used for base quality score recalibration.
     """
-
-    # Log the configuration data.
-    logger.info(LINE_BREAK1)
-    logger.info("Configureation:")
-    with open(conf) as f:
-        for line in f:
-            logger.info("    " + line.strip())
-    logger.info(LINE_BREAK1)
-
-    # Read the configuration file.
-    config = configparser.ConfigParser()
-    config.read(conf)
+    config = kwargs["config"]
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])

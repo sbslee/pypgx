@@ -140,8 +140,12 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
         "gatk GenomicsDBImport \\\n"
         f"  --intervals {target_region} \\\n"
         f"  --genomicsdb-workspace-path $p/temp/datastore \\\n"
+        "  --merge-input-intervals \\\n"
         "  --QUIET \\\n"
     )
+
+    if java_options != "NONE":
+        s += f"  --java-options {java_options} \\\n"
 
     for i, bam_file in enumerate(bam_files):
         s += f"  -V $p/temp/{i}.g.vcf \\\n"
@@ -172,6 +176,9 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
         "  --filter-name QUALFilter \\\n"
         "  --QUIET\n"
     )
+
+    if java_options != "NONE":
+        s += f"  --java-options {java_options} \\\n"
 
     with open(f"{project_path}/shell/post-haplotypecaller.sh", "w") as f:
         f.write(s)
