@@ -2,9 +2,7 @@ import configparser
 from os import mkdir
 from os.path import realpath
 from .bam2vcf2 import bam2vcf2
-from .common import logging, get_target_genes, sm_tag, LINE_BREAK1, randstr
-
-logger = logging.getLogger(__name__)
+from .common import conf_env, get_target_genes, sm_tag, LINE_BREAK1, randstr
 
 def _write_bam2gdf_shell(
         genome_build,
@@ -82,7 +80,7 @@ def _write_bam2vcf2_shell(
     with open(f"{project_path}/conf.txt", "w") as f:
         f.write(s)
 
-    bam2vcf2(f"{project_path}/conf.txt")
+    bam2vcf2(conf_file=f"{project_path}/conf.txt")
 
 def _write_stargazer_shell(
         snp_caller,
@@ -97,7 +95,7 @@ def _write_stargazer_shell(
     if snp_caller == "bcftools":
         vcf_file = "$p/pypgx.vcf"
     else:
-        vcf_file = "$p/bam2vcf2/bam2vcf2.vcf"
+        vcf_file = "$p/bam2vcf2/pypgx.vcf"
 
     s = (
         f"p={project_path}\n"
@@ -167,7 +165,8 @@ def _write_qsub_shell(
     with open(f"{project_path}/example-qsub.sh", "w") as f:
         f.write(s)
 
-def bam2gt2(conf: str) -> None:
+@conf_env
+def bam2gt2(conf_file: str, **kwargs) -> None:
     """Convert BAM files to genotype files [SGE].
 
     This command runs the entire genotyping pipeline for BAM files 
@@ -179,7 +178,7 @@ def bam2gt2(conf: str) -> None:
     created with ``bam2gdf``.
 
     Args:
-        conf (str): Configuration file.
+        conf_file (str): Configuration file.
 
     .. warning::
 
@@ -250,17 +249,7 @@ def bam2gt2(conf: str) -> None:
            * - target_genes
              - Names of target genes (e.g. 'cyp2d6').
     """
-    # Log the configuration data.
-    logger.info(LINE_BREAK1)
-    logger.info("Configureation:")
-    with open(conf) as f:
-        for line in f:
-            logger.info("    " + line.strip())
-    logger.info(LINE_BREAK1)
-
-    # Read the configuration file.
-    config = configparser.ConfigParser()
-    config.read(conf)
+    config = kwargs["config"]
 
     # Parse the configuration data.
     bam_list = realpath(config["USER"]["bam_list"])
@@ -309,11 +298,8 @@ def bam2gt2(conf: str) -> None:
             names = fields[1:]
             ref_samples[gene] = names
 
-# Sort the samples by name since GATK does this.
+    # Sort the samples by name since GATK does this.
     bam_files = {k: v for k, v in sorted(bam_files.items(), key=lambda x: x[0])}
-
-    # Log the number of samples.
-    logger.info(f"Number of samples: {len(bam_files)}")
 
     # Make the project directories.
     mkdir(project_path)

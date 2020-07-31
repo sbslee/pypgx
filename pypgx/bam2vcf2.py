@@ -1,11 +1,10 @@
 import configparser
 from os import mkdir
 from os.path import realpath
-from .common import logging, LINE_BREAK1, is_chr, get_gene_table, randstr
+from .common import is_chr, randstr, conf_env, get_target_region
 
-logger = logging.getLogger(__name__)
-
-def bam2vcf2(conf: str) -> None:
+@conf_env
+def bam2vcf2(conf_file: str, **kwargs) -> None:
     """Convert BAM files to a VCF file [SGE].
 
     This command outputs a single- or multi-sample VCF file from one or 
@@ -16,7 +15,7 @@ def bam2vcf2(conf: str) -> None:
     GATK run faster.
 
     Args:
-        conf (str): Configuration file.
+        conf_file (str): Configuration file.
 
     .. warning::
         GATK and SGE must be pre-installed.
@@ -32,20 +31,20 @@ def bam2vcf2(conf: str) -> None:
 
             # Do not make any changes to this section.
             [DEFAULT]
-            qsub_options = NONE
-            java_options = NONE
             dbsnp_file = NONE
+            java_options = NONE
+            qsub_options = NONE
 
             # Make any necessary changes to this section.
             [USER]
-            fasta_file = reference.fa
             bam_list = bam-list.txt
-            project_path = ./myproject
-            target_gene = cyp2d6
-            genome_build = hg19
-            qsub_options = -l mem_requested=4G
-            java_options = -Xmx4G
             dbsnp_file = dbsnp.vcf
+            fasta_file = reference.fa
+            genome_build = hg19
+            java_options = -Xmx4G
+            project_path = ./myproject
+            qsub_options = -l mem_requested=4G
+            target_gene = cyp2d6
 
     This table summarizes the configuration parameters specific to 
     ``bam2vcf2``:
@@ -63,29 +62,18 @@ def bam2vcf2(conf: str) -> None:
            * - fasta_file
              - Reference FASTA file.
            * - genome_build
-             - Genome build (hg19, hg38).
+             - Genome build ('hg19' or 'hg38').
            * - java_options
              - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
-           * - manifest_file
-             - Manifest file.
            * - project_path
              - Output project directory.
            * - qsub_options
-             - Options for qsub command.
+             - Options for qsub command (e.g. '-l mem_requested=2G').
            * - target_gene
-             - Target gene.
+             - Name of target gene (e.g. 'cyp2d6'). 
+               Also accepts a BED file.
     """
-    # Log the configuration data.
-    logger.info(LINE_BREAK1)
-    logger.info("Configureation:")
-    with open(conf) as f:
-        for line in f:
-            logger.info("    " + line.strip())
-    logger.info(LINE_BREAK1)
-
-    # Read the configuration file.
-    config = configparser.ConfigParser()
-    config.read(conf)
+    config = kwargs["config"]
 
     # Parse the configuration data.
     project_path = realpath(config["USER"]["project_path"])
@@ -117,8 +105,10 @@ def bam2vcf2(conf: str) -> None:
     else:
         raise ValueError("Mixed types of SN tags found.")
 
-    gene_table = get_gene_table()
-    target_region = chr_str + gene_table[target_gene][f"{genome_build}_region"].replace("chr", "")
+    if target_gene.endswith(".bed"):
+        target_region = realpath(target_gene)
+    else:
+        target_region = chr_str + get_target_region(target_gene, genome_build).replace("chr", "")
 
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):
@@ -176,7 +166,7 @@ def bam2vcf2(conf: str) -> None:
         "gatk VariantFiltration \\\n"
         f"  -R {fasta_file} \\\n"
         f"  -L {target_region} \\\n"
-        f"  -O $p/bam2vcf2.vcf \\\n"
+        f"  -O $p/pypgx.vcf \\\n"
         f"  --variant $p/temp/pypgx.joint.vcf \\\n"
         "  --filter-expression 'QUAL <= 50.0' \\\n"
         "  --filter-name QUALFilter \\\n"

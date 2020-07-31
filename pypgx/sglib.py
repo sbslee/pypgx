@@ -1,7 +1,7 @@
 # This script is shared between Stargazer and PyPGx.
 # Author: Seung-been "Steven" Lee
 # Email: sbstevenlee@gmail.com
-# Last updated: 2020-07-21 19:38
+# Last updated: 2020-07-31 16:03
 
 import gzip
 import statistics
@@ -470,25 +470,19 @@ def vcf2biosamples(
     return result
 
 def sort_star_names(names: List[str]) -> List[str]:
-    """
-    Sort star names.
+    """Return a sorted list of star alleles.
 
     Returns:
-        list[str]: Sorted star names.
+        list[str]: List of star alleles sorted by name.
 
     Args:
-        names (list[str]): Star names.
+        names (list[str]): List of star alleles.
 
     Examples:
 
-        >>> print(sort_star_names(["*33", "*4"]))
-        ['*4', '*33']
-        >>> print(sort_star_names(["*3x2", "*3"]))
-        ['*3', '*3x2']
-        >>> print(sort_star_names(["*3x2", "*4"]))
-        ['*3x2', '*4']
-        >>> print(sort_star_names(["*3+*5", "*4"]))
-        ['*3+*5', '*4']
+        >>> from pypgx.sglib import sort_star_names
+        >>> sort_star_names(["*1", "*4", "*3", "*33", "*3x2", "*1+*4"])
+        ['*1', '*1+*4', '*3', '*3x2', '*4', '*33']
     """
 
     def f(name):

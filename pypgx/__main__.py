@@ -5,7 +5,7 @@ import datetime
 
 from .version import __version__
 from .common import (
-    logging,
+    get_logger,
     get_file_list,
     read_file_list,
 )
@@ -138,7 +138,7 @@ def get_parser():
         help="convert BAM files to genotype files [SGE]",
     )
     bam2gt2_parser.add_argument(
-        "conf",
+        "conf_file",
         help="configuration file",
     )
 
@@ -217,7 +217,7 @@ def get_parser():
         help="convert BAM files to a VCF file [SGE]",
     )
     bam2vcf2_parser.add_argument(
-        "conf",
+        "conf_file",
         help="configuration file",
     )
 
@@ -566,35 +566,30 @@ def main():
     parser = get_parser()
     args = parser.parse_args()
 
-    logger = logging.getLogger(__name__)
+    logger = get_logger()
     logger.info(f"PyPGx v{__version__}")
-    logger.info(f"""Command: '{" ".join(sys.argv)}'""")
+    logger.info("Command:")
+    logger.info("    {}".format(" ".join(sys.argv)))
 
     result = ""
 
     if args.tool == "bam2gt":
-        d = vars(args)
-        del d["tool"]
-        bam2gt(**d)
+        bam2gt(**vars(args))
 
     elif args.tool == "bam2gt2":
-        bam2gt2(args.conf)
+        bam2gt2(**vars(args))
 
     elif args.tool == "gt2pt":
         result = gt2pt(args.gt)
 
     elif args.tool == "bam2vcf":
-        d = vars(args)
-        del d["tool"]
-        bam2vcf(**d)
+        bam2vcf(**vars(args))
 
     elif args.tool == "bam2vcf2":
-        bam2vcf2(args.conf)
+        bam2vcf2(**vars(args))
 
     elif args.tool == "bam2gdf":
-        d = vars(args)
-        del d["tool"]
-        bam2gdf(**d)
+        bam2gdf(**vars(args))
 
     elif args.tool == "gt2html":
         result = gt2html(args.gt)

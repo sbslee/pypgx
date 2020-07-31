@@ -2,6 +2,7 @@ import os
 import logging
 import random
 import string
+import configparser
 from typing import Dict, List, Optional
 from tempfile import TemporaryDirectory
 import pysam
@@ -18,9 +19,6 @@ from .sglib import (
 
 LINE_BREAK1 = "-" * 70
 LINE_BREAK2 = "*" * 70
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 def sm_tag(bam: str) -> str:
     """
@@ -233,5 +231,30 @@ def bam_getter(func):
             raise ValueError("No input BAM files found")
 
         func(*args, **kwargs, input_files=input_files)
+
+    return wrapper
+
+def get_logger():
+    logging.basicConfig(
+        level=logging.INFO,
+        format="[%(levelname)s] %(message)s"
+    )
+
+    return logging.getLogger()
+
+def conf_env(func):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        logger = get_logger()
+        logger.info("Configuration:")
+
+        with open(kwargs["conf_file"]) as f:
+            for line in f:
+                logger.info("    " + line.strip())
+
+        config = configparser.ConfigParser()
+        config.read(kwargs["conf_file"])
+
+        func(*args, **kwargs, config=config)
 
     return wrapper
