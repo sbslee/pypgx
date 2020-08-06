@@ -5,7 +5,7 @@ from typing import List
 from .common import get_stardb
 from .sglib import VCFFile, vcf2biosamples
 
-def snp(vcf: str, pair: List[str]) -> str:
+def snp(vcf: str, pair: List[str], **kwargs) -> str:
     """
     View variant data for sample/star allele pairs.
 

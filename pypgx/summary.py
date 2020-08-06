@@ -2,7 +2,7 @@ import os
 
 from .sglib import sort_star_names
 
-def summary(gt: str) -> str:
+def summary(gt: str, **kwargs) -> str:
     """
     Create summary file using Stargazer data.
 

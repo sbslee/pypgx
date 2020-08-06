@@ -158,6 +158,12 @@ pypgx.compare2 module
 .. automodule:: pypgx.compare2
     :members:
 
+pypgx.compvcf module
+--------------------
+
+.. automodule:: pypgx.compvcf
+    :members:
+
 Auxiliary modules
 =================
 

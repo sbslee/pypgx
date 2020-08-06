@@ -14,7 +14,7 @@ def read_gt(x):
             genotype.append([hap1_main, hap2_main])
     return genotype
 
-def compare(gt: List[str]) -> str:
+def compare(gt: List[str], **kwargs) -> str:
     """
     Compare genotype files.
 

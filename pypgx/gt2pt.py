@@ -148,7 +148,8 @@ ptcallers = {
 def phenotyper(
         gene: str,
         hap1: str,
-        hap2: str
+        hap2: str,
+        **kwargs,
     ) -> str:
     """Make phenotype prediction from the two haplotype calls.
 

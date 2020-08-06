@@ -6,6 +6,7 @@ def sdf2gdf(
         fn: str,
         id: List[str],
         f: Optional[TextIO] = None, 
+        **kwargs
     ) -> str:
     """
     Create GDF file from SDF file.

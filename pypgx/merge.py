@@ -4,7 +4,8 @@ from .sglib import VCFFile
 
 def merge(
         vcfs: List[str],
-        region: Optional[str] = None
+        region: Optional[str] = None,
+        **kwargs
     ) -> str:
     """
     Merge VCF files.

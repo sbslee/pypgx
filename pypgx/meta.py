@@ -18,7 +18,7 @@ def _append2(d, i):
             d[name].append(".")
             d[name].append(".")
 
-def meta(sf: List[str]) -> str:
+def meta(sf: List[str], **kwargs) -> str:
     """
     Create meta file from summary files.
 

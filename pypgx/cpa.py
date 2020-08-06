@@ -4,7 +4,7 @@ from .common import logging
 
 logger = logging.getLogger(__name__)
 
-def cpa(rdata: str) -> str:
+def cpa(rdata: str, **kwargs) -> str:
     """
     Run change point analysis for copy number.
 

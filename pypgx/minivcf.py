@@ -1,6 +1,6 @@
 from .sglib import VCFFile
 
-def minivcf(fn: str, region: str) -> str:
+def minivcf(fn: str, region: str, **kwargs) -> str:
     """
     Slice VCF file.
 

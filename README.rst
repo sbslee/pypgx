@@ -63,6 +63,7 @@ For getting help::
         peek      find all possible star alleles from VCF file
         snp       view variant data for sample/star allele pairs
         compare2  compare two genotype files
+        compvcf   compare two VCF files
 
     optional arguments:
       -h, --help  show this help message and exit

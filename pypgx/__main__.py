@@ -35,6 +35,36 @@ from .liftover import liftover
 from .peek import peek
 from .snp import snp
 from .compare2 import compare2
+from .compvcf import compvcf
+
+PYPGX_TOOLS = {
+    "bam2gt": bam2gt,
+    "bam2gt2": bam2gt2,
+    "gt2pt": gt2pt,
+    "bam2vcf": bam2vcf,
+    "bam2vcf2": bam2vcf2,
+    "bam2gdf": bam2gdf,
+    "gt2html": gt2html,
+    "bam2html": bam2html,
+    "fq2bam": fq2bam,
+    "bam2bam": bam2bam,
+    "bam2sdf": bam2sdf,
+    "sdf2gdf": sdf2gdf,
+    "pgkb": pgkb,
+    "minivcf": minivcf,
+    "merge": merge,
+    "summary": summary,
+    "meta": meta,
+    "compare": compare,
+    "cpa": cpa,
+    "plotcov": plotcov,
+    "check": check,
+    "liftover": liftover,
+    "peek": peek,
+    "snp": snp,
+    "compare2": compare2,
+    "compvcf": compvcf,
+}
 
 def _get_bam_list(bc, bd, bl):
     """Get the list of BAM files.
@@ -355,9 +385,9 @@ def get_parser():
         help="output to FILE [stdout]",
     )
     pgkb_parser.add_argument(
-        "-t",
+        "--test_mode",
         action="store_true",
-        help="extract first three guidelines for testing",
+        help="only extract first three guidelines for testing",
     )
 
     minivcf_parser = subparsers.add_parser(
@@ -559,6 +589,23 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
+    compvcf_parser = subparsers.add_parser(
+        "compvcf",
+        help="compare two VCF files",
+    )
+    compvcf_parser.add_argument(
+        "truth_file",
+        help="truth VCF file",
+    )
+    compvcf_parser.add_argument(
+        "test_file",
+        help="test VCF file",
+    )
+    compvcf_parser.add_argument(
+        "sample_map",
+        help="tab-delimited text file for sample name mapping",
+    )
+
     return parser
 
 def main():
@@ -571,85 +618,7 @@ def main():
     logger.info("Command:")
     logger.info("    {}".format(" ".join(sys.argv)))
 
-    result = ""
-
-    if args.tool == "bam2gt":
-        bam2gt(**vars(args))
-
-    elif args.tool == "bam2gt2":
-        bam2gt2(**vars(args))
-
-    elif args.tool == "gt2pt":
-        result = gt2pt(args.gt)
-
-    elif args.tool == "bam2vcf":
-        bam2vcf(**vars(args))
-
-    elif args.tool == "bam2vcf2":
-        bam2vcf2(**vars(args))
-
-    elif args.tool == "bam2gdf":
-        bam2gdf(**vars(args))
-
-    elif args.tool == "gt2html":
-        result = gt2html(args.gt)
-
-    elif args.tool == "bam2html":
-        bam2html(**vars(args))
-
-    elif args.tool == "fq2bam":
-        fq2bam(**vars(args))
-
-    elif args.tool == "bam2bam":
-        bam2bam(**vars(args))
-
-    elif args.tool == "bam2sdf":
-        result = bam2sdf(args.gb, args.tg, args.cg, args.bam)
-
-    elif args.tool == "sdf2gdf":
-        result = sdf2gdf(args.sdf, args.id)
-
-    elif args.tool == "pgkb":
-        result = pgkb(args.t)
-
-    elif args.tool == "minivcf":
-        result = minivcf(args.vcf, args.region)
-
-    elif args.tool == "merge":
-        result = merge(args.vcf, args.r)
-    
-    elif args.tool == "summary":
-        result = summary(args.gt)
-
-    elif args.tool == "meta":
-        result = meta(args.sf)
-
-    elif args.tool == "compare":
-        result = compare(args.gt)
-
-    elif args.tool == "cpa":
-        result = cpa(args.rdata)
-
-    elif args.tool == "plotcov":
-        plotcov(args.sdf, args.out)
-
-    elif args.tool == "check":
-        check(args.star, args.snp)
-
-    elif args.tool == "liftover":
-        result = liftover(args.star, args.snp, args.tg)
-
-    elif args.tool == "peek":
-        result = peek(args.vcf)
-
-    elif args.tool == "snp":
-        result = snp(args.vcf, args.pair)
-
-    elif args.tool == "compare2":
-        result = compare2(**vars(args))
-
-    else:
-        pass
+    result = PYPGX_TOOLS[args.tool](**vars(args))
 
     stop_time = timeit.default_timer()
     elapsed_time = str(
@@ -659,8 +628,8 @@ def main():
     logger.info(f"Elapsed time: {elapsed_time}")
     logger.info("PyPGx finished")
 
-    if hasattr(args, "o") and result:
-        if args.o:
+    if result:
+        if hasattr(args, "o") and args.o:
             with open(args.o, "w") as f:
                 f.write(result)
         else:

@@ -9,7 +9,7 @@ from .sglib import (
     build_stardb,
 )
 
-def liftover(star: str, snp: str, tg: str) -> str:
+def liftover(star: str, snp: str, tg: str, **kwargs) -> str:
     """
     Convert variants in SNP table from hg19 to hg38.
 

@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.15
+-------
+
+* Added ``compvcf`` tool.
+
 v0.1.14
 -------
 

@@ -3,7 +3,7 @@ import os
 from .common import get_stardb
 from .sglib import VCFFile, parse_vcf_fields, vcf2biosamples
 
-def peek(vcf) -> str:
+def peek(vcf, **kwargs) -> str:
     """
     Find all possible star alleles from VCF file.
 

@@ -47,6 +47,7 @@ will be written to *proj_dir*. *bam_file* are the input BAM files.
 Options
 -------
 
+-h, --help          show command-specific help message and exit
 --bam_dir DIR       use all BAM files in this directory as input
 --bam_list FILE     list of input BAM files, one file per line
 --control_gene STR  name or region of control gene (e.g. ‘vdr’,
@@ -84,7 +85,7 @@ created with ``bam2gdf``.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 gt2pt command
 =============
@@ -104,6 +105,7 @@ Call phenotypes from star alleles.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 bam2vcf command
@@ -154,6 +156,7 @@ reference FASTA file. *target_gene* is the name or region of target gene
 Options
 -------
 
+-h, --help         show command-specific help message and exit
 --bam_dir DIR      use all BAM files in this directory as input
 --bam_list FILE    list of input BAM files, one file per line
 --dbsnp_file FILE  dbSNP VCF file, used by GATK to add rs numbers
@@ -188,7 +191,7 @@ GATK run faster.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 bam2gdf command
 ===============
@@ -230,6 +233,7 @@ be written to *output_file*. *bam_file* are the input BAM files.
 Options
 -------
 
+-h, --help       show command-specific help message and exit
 --bam_dir DIR    use all BAM files in this directory as input
 --bam_list FILE  list of input BAM files, one file per line
 
@@ -251,6 +255,7 @@ Create HTML report using Stargazer data.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 bam2html command
@@ -281,7 +286,7 @@ generate a HTML report using the ``gt2html`` command.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 fq2bam command
 ==============
@@ -301,7 +306,7 @@ Create BAM file(s) from FASTQ file(s).
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 bam2bam command
 ===============
@@ -321,7 +326,7 @@ Remap BAM file(s) to different reference.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 bam2sdf command
 ===============
@@ -343,6 +348,7 @@ region (e.g. 'chr12:48232319-48301814'). *bam* is the BAM file.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 sdf2gdf command
@@ -363,6 +369,7 @@ Create GDF file from SDF file.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 pgkb command
@@ -383,8 +390,9 @@ There are no required arguments.
 Options
 -------
 
--o FILE     output to FILE [stdout]
--t          extract first three guidelines for testing
+-h, --help   show command-specific help message and exit
+-o FILE      output to FILE [stdout]
+--test_mode  only extract first three guidelines for testing
 
 minivcf command
 ===============
@@ -404,6 +412,7 @@ Slice VCF file.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 merge command
@@ -424,6 +433,7 @@ Merge VCF files.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -r STR      target region
 -o FILE     output to FILE [stdout]
 
@@ -445,6 +455,7 @@ Create summary file using Stargazer data.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 meta command
@@ -465,6 +476,7 @@ Create meta file from summary files.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 compare command
@@ -485,6 +497,7 @@ Compare genotype files.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 cpa command
@@ -503,6 +516,7 @@ Run change point analysis for copy number. *rdata* is Rdata file.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 plotcov command
@@ -523,7 +537,7 @@ Plot coverage data to PDF file.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 check command
 =============
@@ -543,7 +557,7 @@ Check table files for Stargazer.
 Options
 -------
 
-There are no options.
+-h, --help  show command-specific help message and exit
 
 liftover command
 ================
@@ -564,6 +578,7 @@ Convert variants in SNP table from hg19 to hg38.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 peek command
@@ -584,6 +599,7 @@ Find all possible star alleles from VCF file.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 snp command
@@ -604,6 +620,7 @@ View variant data for sample/star allele pairs.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
 compare2 command
@@ -625,4 +642,26 @@ file. *sample_map* is the tab-delimited text file for sample name mapping.
 Options
 -------
 
+-h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
+
+compvcf command
+===============
+
+Synopsis
+--------
+
+pypgx compvcf *[options] truth_file test_file sample_map*
+
+Description
+-----------
+
+Compare two VCF files.
+
+*truth_file* is the truth VCF file. *test_file* is the test VCF 
+file. *sample_map* is the tab-delimited text file for sample name mapping.
+
+Options
+-------
+
+-h, --help  show command-specific help message and exit

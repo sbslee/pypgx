@@ -2,7 +2,7 @@ from .common import logging
 
 logger = logging.getLogger(__name__)
 
-def check(star: str, snp: str) -> None:
+def check(star: str, snp: str, **kwargs) -> None:
     """
     Check table files for Stargazer.
 

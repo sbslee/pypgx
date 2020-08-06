@@ -1,9 +1,10 @@
 # This script is shared between Stargazer and PyPGx.
 # Author: Seung-been "Steven" Lee
 # Email: sbstevenlee@gmail.com
-# Last updated: 2020-07-31 16:03
+# Last updated: 2020-08-06 14:04
 
 import gzip
+import pandas as pd
 import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
@@ -217,6 +218,25 @@ class VCFFile:
 
         return result
 
+    def multiallelic_filter(self):
+        """
+        Filter out multiallelic sites.
+        """
+        for i in reversed(range(len(self.data))):
+            fields = self.data[i]
+            x = fields[4].split(",")
+            if len(x) > 1:
+                del self.data[i]
+
+    def missing_filter(self):
+        """
+        Filter out sites with missing genotype (./.).
+        """
+        for i in reversed(range(len(self.data))):
+            v = self.data[i]
+            if any(["." in x.split(":")[0] for x in v[9:]]):
+                del self.data[i]
+
 class SNPAllele:
     """SNP allele object.
 
@@ -401,6 +421,8 @@ class BioSample:
         self.ssr = -100.0 # sum of squared residuals
         self.dip_cand = [] # candidate stars
         self.hap = [BioHaplotype(), BioHaplotype()]
+        self.ssr_df = pd.DataFrame()
+        self.af_df = pd.DataFrame()
 
 def vcf2biosamples(
         vcf: VCFFile,
@@ -470,19 +492,25 @@ def vcf2biosamples(
     return result
 
 def sort_star_names(names: List[str]) -> List[str]:
-    """Return a sorted list of star alleles.
+    """
+    Sort star names.
 
     Returns:
-        list[str]: List of star alleles sorted by name.
+        list[str]: Sorted star names.
 
     Args:
-        names (list[str]): List of star alleles.
+        names (list[str]): Star names.
 
     Examples:
 
-        >>> from pypgx.sglib import sort_star_names
-        >>> sort_star_names(["*1", "*4", "*3", "*33", "*3x2", "*1+*4"])
-        ['*1', '*1+*4', '*3', '*3x2', '*4', '*33']
+        >>> print(sort_star_names(["*33", "*4"]))
+        ['*4', '*33']
+        >>> print(sort_star_names(["*3x2", "*3"]))
+        ['*3', '*3x2']
+        >>> print(sort_star_names(["*3x2", "*4"]))
+        ['*3x2', '*4']
+        >>> print(sort_star_names(["*3+*5", "*4"]))
+        ['*3+*5', '*4']
     """
 
     def f(name):
@@ -502,7 +530,10 @@ def sort_star_names(names: List[str]) -> List[str]:
 
     return sorted(names, key = f)
 
-def parse_region(region: str) -> List[str]:
+def parse_region(
+        region: str,
+        omit: bool = False
+    ) -> List[str]:
     """
     Parse region.
 
@@ -510,11 +541,16 @@ def parse_region(region: str) -> List[str]:
         list[str]: Parsed region [chr, start, end].
 
     Args:
-        region (str): Region.
+        region (str): Region to be parsed.
+        omit (bool): Remove the 'chr' string.
     """
+    if omit:
+        chr = region.split(":")[0].replace("chr", "")
+    else:
+        chr = region.split(":")[0]
 
     return (
-        region.split(":")[0],
+        chr,
         int(region.split(":")[1].split("-")[0]),
         int(region.split(":")[1].split("-")[1]),
     )
@@ -553,6 +589,23 @@ def parse_vcf_fields(fields):
         "info": fields[7].split(";"),
         "format": fields[8].split(":")
     }
+
+def read_sv_table(fn):
+    result = {}
+
+    with open(fn) as f:
+        header = next(f).strip().split()
+        for line in f:
+            fields = line.strip().split()
+            gene = fields[0]
+            name = fields[2]
+
+            if gene not in result:
+                result[gene] = {}
+
+            result[gene][name] = dict(zip(header, fields))
+
+    return result
 
 def read_gene_table(
         fn: str

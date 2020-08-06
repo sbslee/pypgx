@@ -4,7 +4,7 @@ from .common import logging
 
 logger = logging.getLogger(__name__)
 
-def plotcov(sdf: str, out: str) -> None:
+def plotcov(sdf: str, out: str, **kwargs) -> None:
     """
     Plot coverage data to PDF file.
 

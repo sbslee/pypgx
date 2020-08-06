@@ -12,7 +12,8 @@ def bam2sdf(
         gb:str,
         tg: str,
         cg: str,
-        bam: List[str]
+        bam: List[str],
+        **kwargs
     ) -> str:
     """
     Create SDF file from BAM file(s).

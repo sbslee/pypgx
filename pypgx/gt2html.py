@@ -232,7 +232,8 @@ def _read_genotype_file(f, fn, target_genes):
 
 def gt2html(
         fn: str,
-        f: Optional[TextIO] = None
+        f: Optional[TextIO] = None,
+        **kwargs
     ) -> str:
     """
     Create HTML report using Stargazer data.
