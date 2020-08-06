@@ -19,7 +19,7 @@ def bam2gt(
         control_gene: Optional[str] = None,
         dbsnp_file: Optional[str] = None,
         temp_dir: Optional[str] = None,
-        plot: bool = False
+        plot: bool = False,
         **kwargs
    ) -> None:
     """Convert BAM files to a genotype file.
