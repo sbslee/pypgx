@@ -65,8 +65,11 @@ def compvcf(
     dat = []
 
     for i in range(len(mapping)):
-        x1 = vcf1.header.index(mapping[i][0])
-        x2 = vcf2.header.index(mapping[i][1])
+        name1 = mapping[i][0]
+        name2 = mapping[i][1]
+
+        x1 = vcf1.header.index(name1)
+        x2 = vcf2.header.index(name2)
 
         # tn, tp, fn, fp
         counts = {
@@ -99,14 +102,14 @@ def compvcf(
         indel = counts["indel"]
         all = [x + y for x, y in zip(counts["snv"], counts["indel"])]
 
-        row = snv + summary(snv) + indel + summary(indel) + all + summary(all)
+        row = [name1, name2] + snv + summary(snv) + indel + summary(indel) + all + summary(all)
 
         dat.append(row)
 
     result = ""
 
     headers = [
-        "snv_tn", "snv_tp", "snv_fn", "snv_fp", "snv_trp", "snv_tnr", "snv_con",
+        "name1", "name2", "snv_tn", "snv_tp", "snv_fn", "snv_fp", "snv_trp", "snv_tnr", "snv_con",
         "indel_tn", "indel_tp", "indel_fn", "indel_fp", "indel_trp", "indel_tnr", "indel_con",
         "all_tn", "all_tp", "all_fn", "all_fp", "all_trp", "all_tnr", "all_con",
     ]

@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.16
+-------
+
+* Updated compvcf.py to also output sample names.
+
 v0.1.15
 -------
 
