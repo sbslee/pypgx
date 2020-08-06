@@ -54,6 +54,7 @@ Options
                     ‘chr12:48232319-48301814’)
 --dbsnp_file FILE   dbSNP VCF file, used by GATK to add rs numbers
 --temp_dir DIR      temporary files will be written to this directory
+--plot              output copy number plots.
 
 bam2gt2 command
 ===============
@@ -61,7 +62,7 @@ bam2gt2 command
 Synopsis
 --------
 
-pypgx bam2gt2 *[options] conf*
+pypgx bam2gt2 *[options] conf_file*
 
 Description
 -----------
@@ -76,7 +77,7 @@ select genes too). For each gene, the command runs under the hood
 (i.e. GATK) to create the input VCF file. The input GDF file is 
 created with ``bam2gdf``.
 
-*conf* is the configuration file. See the API section for details.
+*conf_file* is the configuration file. See the API section for details.
 
 .. warning::
 
@@ -86,6 +87,73 @@ Options
 -------
 
 -h, --help  show command-specific help message and exit
+
+This is what a typical configuration file for ``bam2gt2`` looks like:
+
+    .. code-block:: python
+
+        # File: example_conf.txt
+        # To execute:
+        #   $ pypgx bam2gt2 example_conf.txt
+        #   $ sh ./myproject/example-qsub.sh
+
+        # Do not make any changes to this section.
+        [DEFAULT]
+        control_gene = NONE
+        dbsnp_file = NONE
+        java_options = NONE
+        plot = FALSE
+        qsub_options = NONE
+        sample_list = NONE
+        target_genes = ALL
+
+        # Make any necessary changes to this section.
+        [USER]
+        bam_list = bam-list.txt
+        control_gene = vdr
+        data_type = wgs
+        fasta_file = hs37d5.fa
+        genome_build = hg19
+        project_path = ./myproject
+        qsub_options = -l mem_requested=2G
+        snp_caller = gatk
+        target_genes = cyp2b6, cyp2d6
+
+This table summarizes the configuration parameters specific to ``bam2gt2``:
+
+    .. list-table::
+        :widths: 25 75
+        :header-rows: 1
+
+        * - Parameter
+          - Summary
+        * - bam_list
+          - List of input BAM files, one file per line.
+        * - control_gene
+          - Control gene or region.
+        * - data_type
+          - Data type ('wgs' or 'ts').
+        * - dbsnp_file
+          - dbSNP VCF file.
+        * - fasta_file
+          - Reference FASTA file.
+        * - genome_build
+          - Genome build ('hg19' or 'hg38').
+        * - java_options
+          - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
+        * - plot
+          - Output copy number plots.
+        * - project_path
+          - Output project directory.
+        * - qsub_options
+          - Options for qsub command (e.g. '-l mem_requested=2G').
+        * - sample_list
+          - List of samples used for inter-sample normalization 
+            (e.g. 'gstt1, sample1, sample2 | ugt2b17, sample3'). 
+        * - snp_caller
+          - SNP caller (‘gatk’ or ‘bcftools’).
+        * - target_genes
+          - Names of target genes (e.g. 'cyp2d6').
 
 gt2pt command
 =============
@@ -169,7 +237,7 @@ bam2vcf2 command
 Synopsis
 --------
 
-pypgx bam2vcf2 *[options] conf*
+pypgx bam2vcf2 *[options] conf_file*
 
 Description
 -----------
@@ -183,7 +251,7 @@ wrapper with pre-specified parameters for the Genome Analysis Toolkit
 (GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
 GATK run faster.
 
-*conf* is the configuration file. See the API section for details.
+*conf_file* is the configuration file. See the API section for details.
 
 .. warning::
     GATK and SGE must be pre-installed.
@@ -192,6 +260,58 @@ Options
 -------
 
 -h, --help  show command-specific help message and exit
+
+This is what a typical configuration file for ``bam2vcf2`` looks like:
+
+    .. code-block:: python
+
+        # File: example_conf.txt
+        # To execute:
+        #   $ pypgx bam2vcf2 example_conf.txt
+        #   $ sh ./myproject/example-qsub.sh
+
+        # Do not make any changes to this section.
+        [DEFAULT]
+        dbsnp_file = NONE
+        java_options = NONE
+        qsub_options = NONE
+
+        # Make any necessary changes to this section.
+        [USER]
+        bam_list = bam-list.txt
+        dbsnp_file = dbsnp.vcf
+        fasta_file = reference.fa
+        genome_build = hg19
+        java_options = -Xmx4G
+        project_path = ./myproject
+        qsub_options = -l mem_requested=4G
+        target_gene = cyp2d6
+
+This table summarizes the configuration parameters specific to ``bam2vcf2``:
+
+    .. list-table::
+       :widths: 25 75
+       :header-rows: 1
+
+       * - Parameter
+         - Summary
+       * - bam_list
+         - List of input BAM files, one file per line.
+       * - dbsnp_file
+         - dbSNP VCF file.
+       * - fasta_file
+         - Reference FASTA file.
+       * - genome_build
+         - Genome build ('hg19' or 'hg38').
+       * - java_options
+         - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
+       * - project_path
+         - Output project directory.
+       * - qsub_options
+         - Options for qsub command (e.g. '-l mem_requested=2G').
+       * - target_gene
+         - Name of target gene (e.g. 'cyp2d6'). 
+           Also accepts a BED file.
 
 bam2gdf command
 ===============
@@ -264,7 +384,7 @@ bam2html command
 Synopsis
 --------
 
-pypgx bam2html *[options] conf*
+pypgx bam2html *[options] conf_file*
 
 Description
 -----------
@@ -277,7 +397,7 @@ the ``genotype`` command to multiple genes in parallel. After genotype
 analysis is complete, it will merge the genotype results and then 
 generate a HTML report using the ``gt2html`` command.
 
-*conf* is the configuration file. See the API section for details.
+*conf_file* is the configuration file. See the API section for details.
 
 .. note::
 
@@ -288,25 +408,137 @@ Options
 
 -h, --help  show command-specific help message and exit
 
+This is what a typical configuration file for ``sges`` looks like:
+
+    .. code-block:: python
+
+        # File: example_conf.txt
+        # To execute:
+        #   $ pypgx sges example_conf.txt
+        #   $ sh ./myproject/example-qsub.sh
+
+        # Do not make any changes to this section.
+        [DEFAULT]
+        target_genes = ALL
+        control_gene = NONE
+        plot = FALSE
+        qsub_options = NONE
+
+        # Make any necessary changes to this section.
+        [USER]
+        snp_caller = gatk
+        fasta_file = reference.fa
+        project_path = ./myproject
+        genome_build = hg19
+        data_type = wgs
+        bam_file = in.bam
+        qsub_options = -l mem_requested=2G
+        target_genes = cyp2b6, cyp2d6
+        control_gene = vdr
+
+This table summarizes the configuration parameters specific to ``sges``:
+
+    .. list-table::
+       :widths: 25 75
+       :header-rows: 1
+
+       * - Parameter
+         - Summary
+       * - bam_file
+         - BAM file.
+       * - control_gene
+         - Name or region of control gene 
+           (e.g. 'vdr', 'chr12:48232319-48301814').
+       * - data_type
+         - Data type ('wgs' or 'ts').
+       * - fasta_file
+         - Reference FASTA file.
+       * - genome_build
+         - Genome build ('hg19' or 'hg38').
+       * - plot
+         - Output copy number plots.
+       * - project_path
+         - Output project directory.
+       * - qsub_options
+         - Options for qsub command (e.g. '-l mem_requested=2G').
+       * - target_genes
+         - Names of target genes (e.g. 'cyp2d6').
+
 fq2bam command
 ==============
 
 Synopsis
 --------
 
-pypgx fq2bam *[options] conf*
+pypgx fq2bam *[options] conf_file*
 
 Description
 -----------
 
 Create BAM file(s) from FASTQ file(s).
 
-*conf* is the configuration file. See the API section for details.
+*conf_file* is the configuration file. See the API section for details.
 
 Options
 -------
 
 -h, --help  show command-specific help message and exit
+
+This is what a typical configuration file for ``fq2bam`` looks like:
+
+    .. code-block:: python
+
+        # File: example_conf.txt
+        # Do not make any changes to this section.
+        [DEFAULT]
+        platform = illumina
+        qsub_options1 = NONE
+        qsub_options2 = NONE
+        read_length = 150
+        threads = 1
+
+        # Make any necessary changes to this section.
+        [USER]
+        bed_file = in.bed
+        fasta_file = reference.fa
+        library = awesome_experiment
+        manifest_file = manifest.txt
+        project_path = /path/to/project/
+        qsub_options1 = -V -q biall.q -S /bin/bash -pe pePAC 15
+        qsub_options2 = -V -q biall.q -S /bin/bash
+        threads = 15
+        vcf_files = in1.vcf, in2.vcf, in3.vcf
+
+This table summarizes the configuration parameters specific to ``fq2bam``:
+
+    .. list-table::
+        :widths: 25 75
+        :header-rows: 1
+
+        * - Parameter
+          - Summary
+        * - bed_file
+          - BED file.
+        * - fasta_file
+          - Reference FASTA file.
+        * - library
+          - Sequencing library name.
+        * - manifest_file
+          - Manifest file.
+        * - platform
+          - Sequencing platform.
+        * - project_path
+          - Output project directory.
+        * - qsub_options1
+          - Options for the first qsub command. Recommended to set a parallel environment.
+        * - qsub_options2
+          - Options for the second qsub command.
+        * - read_length
+          - Sequence read length.
+        * - threads
+          - Number of threads.
+        * - vcf_files
+          - Reference VCF files used for base quality score recalibration.
 
 bam2bam command
 ===============
@@ -314,19 +546,77 @@ bam2bam command
 Synopsis
 --------
 
-pypgx bam2bam *[options] conf*
+pypgx bam2bam *[options] conf_file*
 
 Description
 -----------
 
-Remap BAM file(s) to different reference.
+Realign BAM files to another reference genome [SGE].
 
-*conf* is the configuration file. See the API section for details.
+*conf_file* is the configuration file. See the API section for details.
 
 Options
 -------
 
 -h, --help  show command-specific help message and exit
+
+This is what a typical configuration file for ``bam2bam`` looks like:
+
+    .. code-block:: python
+
+        # File: example_conf.txt
+        # Do not make any changes to this section.
+        [DEFAULT]
+        java_heap = -Xmx2g
+        platform = illumina
+        qsub_options1 = NONE
+        qsub_options2 = NONE
+        threads = 1
+
+        # Make any necessary changes to this section.
+        [USER]
+        fasta_file = reference.fa
+        gatk_tool = GenomeAnalysisTK.jar
+        library = awesome_experiment
+        manifest_file = manifest.txt
+        picard_tool = picard.jar
+        project_path = /path/to/project/
+        qsub_options1 = -q nick-grad.q -l mem_requested=2G -pe serial 1
+        qsub_options2 = -q nick-grad.q -l mem_requested=2G
+        vcf_files = in1.vcf, in2.vcf, in3.vcf
+
+This table summarizes the configuration parameters specific to ``bam2bam``:
+
+    .. list-table::
+        :widths: 25 75
+        :header-rows: 1
+
+        * - Parameter
+          - Summary
+        * - fasta_file
+          - Reference FASTA file.
+        * - gatk_tool
+          - GATK program.
+        * - java_heap
+          - Java heap size.
+        * - library
+          - Sequencing library name.
+        * - manifest_file
+          - Manifest file.
+        * - picard_tool
+          - Picard program.
+        * - platform
+          - Sequencing platform.
+        * - project_path
+          - Output project directory.
+        * - qsub_options1
+          - Options for the first qsub command. Recommended to set a parallel environment.
+        * - qsub_options2
+          - Options for the second qsub command.
+        * - threads
+          - Number of threads.
+        * - vcf_files
+          - Reference VCF files used for base quality score recalibration.
 
 bam2sdf command
 ===============

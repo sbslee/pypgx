@@ -7,37 +7,37 @@ from .common import conf_env
 @conf_env
 def bam2bam(conf_file: str, **kwargs) -> None:
     """
-    Remap BAM file(s) to different reference.
+    Realign BAM files to another reference genome [SGE].
 
     Args:
         conf_file (str): Configuration file.
 
-    This is what a typical configuration file for ``remap`` looks like:
+    This is what a typical configuration file for ``bam2bam`` looks like:
 
         .. code-block:: python
 
             # File: example_conf.txt
             # Do not make any changes to this section.
             [DEFAULT]
-            platform = illumina
-            threads = 1
             java_heap = -Xmx2g
+            platform = illumina
             qsub_options1 = NONE
             qsub_options2 = NONE
+            threads = 1
 
             # Make any necessary changes to this section.
             [USER]
             fasta_file = reference.fa
-            manifest_file = manifest.txt
-            project_path = /path/to/project/
-            vcf_files = in1.vcf, in2.vcf, in3.vcf
-            library = awesome_experiment
             gatk_tool = GenomeAnalysisTK.jar
+            library = awesome_experiment
+            manifest_file = manifest.txt
             picard_tool = picard.jar
+            project_path = /path/to/project/
             qsub_options1 = -q nick-grad.q -l mem_requested=2G -pe serial 1
             qsub_options2 = -q nick-grad.q -l mem_requested=2G
+            vcf_files = in1.vcf, in2.vcf, in3.vcf
 
-    This table summarizes the configuration parameters specific to ``remap``:
+    This table summarizes the configuration parameters specific to ``bam2bam``:
 
         .. list-table::
            :widths: 25 75

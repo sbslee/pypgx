@@ -18,22 +18,22 @@ def fq2bam(conf_file: str, **kwargs) -> None:
             # Do not make any changes to this section.
             [DEFAULT]
             platform = illumina
-            threads = 1
-            read_length = 150
             qsub_options1 = NONE
             qsub_options2 = NONE
+            read_length = 150
+            threads = 1
 
             # Make any necessary changes to this section.
             [USER]
+            bed_file = in.bed
             fasta_file = reference.fa
+            library = awesome_experiment
             manifest_file = manifest.txt
             project_path = /path/to/project/
-            vcf_files = in1.vcf, in2.vcf, in3.vcf
-            library = awesome_experiment
-            bed_file = in.bed
-            threads = 15
             qsub_options1 = -V -q biall.q -S /bin/bash -pe pePAC 15
             qsub_options2 = -V -q biall.q -S /bin/bash
+            threads = 15
+            vcf_files = in1.vcf, in2.vcf, in3.vcf
 
     This table summarizes the configuration parameters specific to ``fq2bam``:
 

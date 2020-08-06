@@ -109,9 +109,9 @@ def compvcf(
     result = ""
 
     headers = [
-        "name1", "name2", "snv_tn", "snv_tp", "snv_fn", "snv_fp", "snv_trp", "snv_tnr", "snv_con",
-        "indel_tn", "indel_tp", "indel_fn", "indel_fp", "indel_trp", "indel_tnr", "indel_con",
-        "all_tn", "all_tp", "all_fn", "all_fp", "all_trp", "all_tnr", "all_con",
+        "name1", "name2", "snv_tn", "snv_tp", "snv_fn", "snv_fp", "snv_tpr", "snv_tnr", "snv_con",
+        "indel_tn", "indel_tp", "indel_fn", "indel_fp", "indel_tpr", "indel_tnr", "indel_con",
+        "all_tn", "all_tp", "all_fn", "all_fp", "all_tpr", "all_tnr", "all_con",
     ]
 
     result += "\t".join(headers) + "\n"

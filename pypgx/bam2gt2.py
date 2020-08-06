@@ -89,7 +89,8 @@ def _write_stargazer_shell(
         target_gene,
         project_path,
         control_gene,
-        ref_samples
+        ref_samples,
+        plot
     ):
 
     if snp_caller == "bcftools":
@@ -113,6 +114,9 @@ def _write_stargazer_shell(
             f"  --cg {control_gene} \\\n"
             f"  --gdf $p/pypgx.gdf \\\n"
         )
+
+        if plot:
+            s += "  --plot \\\n"
 
     if target_gene in ref_samples:
         _ = " ".join(ref_samples[target_gene])
@@ -198,6 +202,7 @@ def bam2gt2(conf_file: str, **kwargs) -> None:
             control_gene = NONE
             dbsnp_file = NONE
             java_options = NONE
+            plot = FALSE
             qsub_options = NONE
             sample_list = NONE
             target_genes = ALL
@@ -237,6 +242,8 @@ def bam2gt2(conf_file: str, **kwargs) -> None:
              - Genome build ('hg19' or 'hg38').
            * - java_options
              - Java-specific arguments for GATK (e.g. ‘-Xmx4G’).
+           * - plot
+             - Output copy number plots.
            * - project_path
              - Output project directory.
            * - qsub_options
@@ -259,6 +266,7 @@ def bam2gt2(conf_file: str, **kwargs) -> None:
     fasta_file = realpath(config["USER"]["fasta_file"])
     genome_build = config["USER"]["genome_build"]
     java_options = config["USER"]["java_options"]
+    plot = config["USER"].getboolean("plot")
     project_path = realpath(config["USER"]["project_path"])
     qsub_options = config["USER"]["qsub_options"]
     sample_list = config["USER"]["sample_list"]
@@ -364,7 +372,8 @@ def bam2gt2(conf_file: str, **kwargs) -> None:
             select_gene,
             gene_path,
             control_gene,
-            ref_samples
+            ref_samples,
+            plot
         )
 
         _write_qsub_shell(

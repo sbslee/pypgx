@@ -7,18 +7,6 @@ use PyPGx as a command-line program, please see the Commands section.
 Major modules
 =============
 
-pypgx.bam2gt module
--------------------
-
-.. automodule:: pypgx.bam2gt
-    :members:
-
-pypgx.bam2gt2 module
---------------------
-
-.. automodule:: pypgx.bam2gt2
-    :members:
-
 pypgx.gt2pt module
 ------------------
 
@@ -32,12 +20,6 @@ pypgx.bam2vcf module
 .. automodule:: pypgx.bam2vcf
     :members:
 
-pypgx.bam2vcf2 module
----------------------
-
-.. automodule:: pypgx.bam2vcf2
-    :members:
-
 pypgx.bam2gdf module
 --------------------
 
@@ -48,24 +30,6 @@ pypgx.gt2html module
 --------------------
 
 .. automodule:: pypgx.gt2html
-    :members:
-
-pypgx.bam2html module
----------------------
-
-.. automodule:: pypgx.bam2html
-    :members:
-
-pypgx.fq2bam module
--------------------
-
-.. automodule:: pypgx.fq2bam
-    :members:
-
-pypgx.bam2bam module
---------------------
-
-.. automodule:: pypgx.bam2bam
     :members:
 
 pypgx.bam2sdf module

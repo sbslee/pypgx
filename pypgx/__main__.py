@@ -162,6 +162,11 @@ def get_parser():
         metavar="DIR",
         help="temporary files will be written to this directory"
     )
+    bam2gt_parser.add_argument(
+        "--plot",
+        action="store_true",
+        help="output copy number plots",
+    )
 
     bam2gt2_parser = subparsers.add_parser(
         "bam2gt2",

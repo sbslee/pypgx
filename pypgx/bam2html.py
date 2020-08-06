@@ -4,7 +4,10 @@ from os.path import realpath
 from .common import conf_env, get_target_genes, randstr
 
 @conf_env
-def bam2html(conf_file: str, **kwargs) -> None:
+def bam2html(
+        conf_file: str,
+        **kwargs
+    ) -> None:
     """Run per-sample genotyping for multiple genes with SGE.
 
     This command runs the per-sample genotyping pipeline by submitting 
@@ -33,6 +36,7 @@ def bam2html(conf_file: str, **kwargs) -> None:
             [DEFAULT]
             target_genes = ALL
             control_gene = NONE
+            plot = FALSE
             qsub_options = NONE
 
             # Make any necessary changes to this section.
@@ -66,25 +70,28 @@ def bam2html(conf_file: str, **kwargs) -> None:
              - Reference FASTA file.
            * - genome_build
              - Genome build ('hg19' or 'hg38').
+           * - plot
+             - Output copy number plots.
            * - project_path
              - Output project directory.
            * - qsub_options
              - Options for qsub command (e.g. '-l mem_requested=2G').
            * - target_genes
-             - Names of target genes (e.g. 'cyp2d6')..
+             - Names of target genes (e.g. 'cyp2d6').
     """
     config = kwargs["config"]
 
     # Parse the configuration data.
-    snp_caller = config["USER"]["snp_caller"]
-    project_path = realpath(config["USER"]["project_path"])
     bam_file = realpath(config["USER"]["bam_file"])
-    fasta_file = realpath(config["USER"]["fasta_file"])
-    target_genes = config["USER"]["target_genes"]
     control_gene = config["USER"]["control_gene"]
     data_type = config["USER"]["data_type"]
+    fasta_file = realpath(config["USER"]["fasta_file"])
     genome_build = config["USER"]["genome_build"]
+    plot = config["USER"].getboolean("plot")
+    project_path = realpath(config["USER"]["project_path"])
     qsub_options = config["USER"]["qsub_options"]
+    snp_caller = config["USER"]["snp_caller"]
+    target_genes = config["USER"]["target_genes"]
 
     t = get_target_genes()
     
@@ -119,7 +126,10 @@ def bam2html(conf_file: str, **kwargs) -> None:
         )
 
         if control_gene != "NONE":
-            s += f"  --control_gene {control_gene}\n"
+            s += f"  --control_gene {control_gene} \\\n"
+
+            if plot:
+                s += "  --plot \\\n"
 
         with open(
             f"{project_path}/gene/{select_gene}/run.sh", "w"

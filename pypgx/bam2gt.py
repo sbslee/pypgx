@@ -19,6 +19,7 @@ def bam2gt(
         control_gene: Optional[str] = None,
         dbsnp_file: Optional[str] = None,
         temp_dir: Optional[str] = None,
+        plot: bool = False
         **kwargs
    ) -> None:
     """Convert BAM files to a genotype file.
@@ -63,7 +64,9 @@ def bam2gt(
             dbSNP VCF file used by GATK to add rs numbers.
         temp_dir (str, optional):
             Temporary files will be written to this directory.
-  """
+        plot (bool):
+            Output copy number plots.
+    """
     # Parse keyward arguments from the decorators.
     temp_path = kwargs["temp_path"]
     input_files = kwargs["input_files"]
@@ -103,5 +106,8 @@ def bam2gt(
             "--cg", control_gene,
             "--gdf", f"{temp_path}/pypgx.gdf",
         ]
+
+        if plot:
+            command += ["--plot"]
 
     subprocess.run(command, check=True)
