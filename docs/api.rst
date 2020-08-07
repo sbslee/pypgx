@@ -7,12 +7,11 @@ use PyPGx as a command-line program, please see the Commands section.
 Major modules
 =============
 
-pypgx.gt2pt module
-------------------
+pypgx.phenotyper module
+-----------------------
 
-.. automodule:: pypgx.gt2pt
+.. automodule:: pypgx.phenotyper
     :members:
-    :undoc-members:
 
 pypgx.bam2vcf module
 --------------------

@@ -54,6 +54,8 @@ master_doc = "index"
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# Enable HTML5 writer support
+html_experimental_html5_writer = True
 
 # -- Options for HTML output -------------------------------------------------
 

@@ -77,7 +77,7 @@ select genes too). For each gene, the command runs under the hood
 (i.e. GATK) to create the input VCF file. The input GDF file is 
 created with ``bam2gdf``.
 
-*conf_file* is the configuration file. See the API section for details.
+*conf_file* is the configuration file.
 
 .. warning::
 
@@ -168,7 +168,10 @@ Description
 
 Call phenotypes from star alleles.
 
-*gt* is the genotype file from Stargazer. See the API section for details.
+This command is just a wrapper for the ``phenotyper`` module. See the API 
+section for details.
+
+*gt* is the genotype file. 
 
 Options
 -------
@@ -251,7 +254,7 @@ wrapper with pre-specified parameters for the Genome Analysis Toolkit
 (GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
 GATK run faster.
 
-*conf_file* is the configuration file. See the API section for details.
+*conf_file* is the configuration file.
 
 .. warning::
     GATK and SGE must be pre-installed.
@@ -397,7 +400,7 @@ the ``genotype`` command to multiple genes in parallel. After genotype
 analysis is complete, it will merge the genotype results and then 
 generate a HTML report using the ``gt2html`` command.
 
-*conf_file* is the configuration file. See the API section for details.
+*conf_file* is the configuration file.
 
 .. note::
 
@@ -477,7 +480,7 @@ Description
 
 Create BAM file(s) from FASTQ file(s).
 
-*conf_file* is the configuration file. See the API section for details.
+*conf_file* is the configuration file.
 
 Options
 -------
@@ -553,7 +556,7 @@ Description
 
 Realign BAM files to another reference genome [SGE].
 
-*conf_file* is the configuration file. See the API section for details.
+*conf_file* is the configuration file.
 
 Options
 -------
