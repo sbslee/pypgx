@@ -62,8 +62,8 @@ For getting help::
         liftover  convert variants in SNP table from hg19 to hg38
         peek      find all possible star alleles from VCF file
         snp       view variant data for sample/star allele pairs
-        compare2  compare two genotype files
-        compvcf   compare two VCF files
+        compgt    compute the concordance between two genotype files
+        compvcf   calculate the concordance between two VCF files
 
     optional arguments:
       -h, --help  show this help message and exit

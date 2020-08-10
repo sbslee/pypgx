@@ -34,7 +34,7 @@ from .check import check
 from .liftover import liftover
 from .peek import peek
 from .snp import snp
-from .compare2 import compare2
+from .compgt import compgt
 from .compvcf import compvcf
 
 PYPGX_TOOLS = {
@@ -62,7 +62,7 @@ PYPGX_TOOLS = {
     "liftover": liftover,
     "peek": peek,
     "snp": snp,
-    "compare2": compare2,
+    "compgt": compgt,
     "compvcf": compvcf,
 }
 
@@ -551,31 +551,27 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    compare2_parser = subparsers.add_parser(
-        "compare2",
-        help="compare two genotype files",
+    compgt_parser = subparsers.add_parser(
+        "compgt",
+        help="compute the concordance between two genotype files",
     )
-    compare2_parser.add_argument(
+    compgt_parser.add_argument(
         "truth_file",
         help="truth genotype file",
     )
-    compare2_parser.add_argument(
+    compgt_parser.add_argument(
         "test_file",
         help="test genotype file",
     )
-    compare2_parser.add_argument(
+    compgt_parser.add_argument(
         "sample_map",
-        help="tab-delimited text file for sample name mapping",
-    )
-    compare2_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        help="tab-delimited text file with two columns representing "
+            + "the truth and test sample names",
     )
 
     compvcf_parser = subparsers.add_parser(
         "compvcf",
-        help="compare two VCF files",
+        help="calculate the concordance between two VCF files",
     )
     compvcf_parser.add_argument(
         "truth_file",
@@ -587,7 +583,8 @@ def get_parser():
     )
     compvcf_parser.add_argument(
         "sample_map",
-        help="tab-delimited text file for sample name mapping",
+        help="tab-delimited text file with two columns representing "
+            + "the truth and test sample names",
     )
 
     return parser

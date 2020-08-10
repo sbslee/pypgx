@@ -83,11 +83,6 @@ created with ``bam2gdf``.
 
     SGE, Stargazer and BCFtools/GATK must be pre-installed.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 This is what a typical configuration file for ``bam2gt2`` looks like:
 
     .. code-block:: python
@@ -154,6 +149,11 @@ This table summarizes the configuration parameters specific to ``bam2gt2``:
           - SNP caller (‘gatk’ or ‘bcftools’).
         * - target_genes
           - Names of target genes (e.g. 'cyp2d6').
+
+Options
+-------
+
+-h, --help  show command-specific help message and exit
 
 gt2pt command
 =============
@@ -259,11 +259,6 @@ GATK run faster.
 .. warning::
     GATK and SGE must be pre-installed.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 This is what a typical configuration file for ``bam2vcf2`` looks like:
 
     .. code-block:: python
@@ -315,6 +310,11 @@ This table summarizes the configuration parameters specific to ``bam2vcf2``:
        * - target_gene
          - Name of target gene (e.g. 'cyp2d6'). 
            Also accepts a BED file.
+
+Options
+-------
+
+-h, --help  show command-specific help message and exit
 
 bam2gdf command
 ===============
@@ -406,11 +406,6 @@ generate a HTML report using the ``gt2html`` command.
 
     BCFtools, SGE and Stargazer must be pre-installed.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 This is what a typical configuration file for ``sges`` looks like:
 
     .. code-block:: python
@@ -467,6 +462,11 @@ This table summarizes the configuration parameters specific to ``sges``:
        * - target_genes
          - Names of target genes (e.g. 'cyp2d6').
 
+Options
+-------
+
+-h, --help  show command-specific help message and exit
+
 fq2bam command
 ==============
 
@@ -481,11 +481,6 @@ Description
 Create BAM file(s) from FASTQ file(s).
 
 *conf_file* is the configuration file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
 
 This is what a typical configuration file for ``fq2bam`` looks like:
 
@@ -543,6 +538,11 @@ This table summarizes the configuration parameters specific to ``fq2bam``:
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
 
+Options
+-------
+
+-h, --help  show command-specific help message and exit
+
 bam2bam command
 ===============
 
@@ -557,11 +557,6 @@ Description
 Realign BAM files to another reference genome [SGE].
 
 *conf_file* is the configuration file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
 
 This is what a typical configuration file for ``bam2bam`` looks like:
 
@@ -620,6 +615,11 @@ This table summarizes the configuration parameters specific to ``bam2bam``:
           - Number of threads.
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
+
+Options
+-------
+
+-h, --help  show command-specific help message and exit
 
 bam2sdf command
 ===============
@@ -916,45 +916,159 @@ Options
 -h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
-compare2 command
-================
+compgt command
+==============
+
+Compute the concordance between two genotype files.
 
 Synopsis
 --------
 
-pypgx compare2 *[options] truth_file test_file sample_map*
+| pypgx compgt *[options]* \\
+|   *truth_file* \\
+|   *test_file* \\
+|   *sample_map*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - truth_file
+     - Truth genotype file.
+   * - test_file
+     - Test genotype file.
+   * - sample_map
+     - Tab-delimited text file with two columns representing 
+       the truth and test sample names.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, --help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-Compare two genotype files.
-
-*truth_file* is the truth genotype file. *test_file* is the test genotype 
-file. *sample_map* is the tab-delimited text file for sample name mapping.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command computes the concordance between genotype data (e.g. 
+``*1/*4``) of one samples in each of the genotype files, one being 
+considered the truth and the other being the test.
 
 compvcf command
 ===============
 
+Calculate the concordance between two VCF files.
+
 Synopsis
 --------
 
-pypgx compvcf *[options] truth_file test_file sample_map*
+| pypgx compvcf *[options]* \\
+|   *truth_file* \\
+|   *test_file* \\
+|   *sample_map*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - truth_file
+     - Truth VCF file.
+   * - test_file
+     - Test VCF file.
+   * - sample_map
+     - Tab-delimited text file with two columns representing 
+       the truth and test sample names.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, --help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-Compare two VCF files.
+This command calculates the concordance between genotype data (e.g. ``0/1``) 
+of one samples in each of the VCF files, one being considered the truth and 
+the other being the test. The concordance is broken into separate results 
+sections for SNP and Indel. Summary and detailed statistics are reported.
 
-*truth_file* is the truth VCF file. *test_file* is the test VCF 
-file. *sample_map* is the tab-delimited text file for sample name mapping.
+Please note that the comparison is restricted to sites that are biallelic and 
+have no missing genotypes (e.g. ``./.``).
 
-Options
--------
+This table summarizes the column headers of the output.
 
--h, --help  show command-specific help message and exit
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Header
+     - Summary
+   * - name1
+     - Truth sample name.
+   * - name2
+     - Test sample name.
+   * - snv_tn
+     - Number of true negatives for SNV.
+   * - snv_tp
+     - Number of true positives for SNV.
+   * - snv_fn
+     - Number of false negatives for SNV.
+   * - snv_fp
+     - Number of false positives for SNV.
+   * - snv_tpr
+     - True positive rate for SNV.
+   * - snv_tnr
+     - True negative rate for SNV.
+   * - snv_con
+     - Accuracy for SNV.
+   * - indel_tn
+     - Number of true negatives for Indel.
+   * - indel_tp
+     - Number of true positives for Indel.
+   * - indel_fn
+     - Number of false negatives for Indel.
+   * - indel_fp
+     - Number of false positives for Indel.
+   * - indel_tpr
+     - True positive rate for Indel.
+   * - indel_tnr
+     - True negative rate for Indel.
+   * - indel_con
+     - Accuracy for Indel.
+   * - all_tn
+     - Number of true negatives for SNV+Indel.
+   * - all_tp
+     - Number of true positives for SNV+Indel.
+   * - all_fn
+     - Number of false negatives for SNV+Indel.
+   * - all_fp
+     - Number of false positives for SNV+Indel.
+   * - all_tpr
+     - True positive rate for SNV+Indel.
+   * - all_tnr
+     - True negative rate for SNV+Indel.
+   * - all_con
+     - Accuracy for SNV+Indel.

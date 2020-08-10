@@ -1,6 +1,6 @@
 from typing import Optional
 
-def compare2(
+def compgt(
         truth_file: str,
         test_file: str,
         sample_map: Optional[str] = None,
