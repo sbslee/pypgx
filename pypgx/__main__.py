@@ -66,27 +66,6 @@ PYPGX_TOOLS = {
     "compvcf": compvcf,
 }
 
-def _get_bam_list(bc, bd, bl):
-    """Get the list of BAM files.
-
-    Returns:
-        list[str]: List of BAM files.
-
-    Args:
-        bc (list[str]): List of BAM files from the console.
-        bd (str): Path to directory containing BAM files.
-        bl (str): Path to file containing BAM filenames.
-    """
-    if bc:
-        result = bc
-    elif bd:
-        result = get_file_list(bd, ".bam")
-    elif bl:
-        result = read_file_list(bl)
-    else:
-        raise ValueError("BAM files not provided")
-    return result
-
 def get_parser():
     parser = argparse.ArgumentParser()
 
@@ -400,7 +379,7 @@ def get_parser():
         help="slice VCF file",
     )
     minivcf_parser.add_argument(
-        "vcf",
+        "vcf_file",
         help="VCF file",
     )
     minivcf_parser.add_argument(
