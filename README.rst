@@ -61,9 +61,9 @@ For getting help::
         check     check table files for Stargazer
         liftover  convert variants in SNP table from hg19 to hg38
         peek      find all possible star alleles from VCF file
-        snp       view variant data for sample/star allele pairs
+        viewsnp   view SNP data for pairs of sample/star allele
         compgt    compute the concordance between two genotype files
-        compvcf   calculate the concordance between two VCF files
+        compvcf   compute the concordance between two VCF files
 
     optional arguments:
       -h, --help  show this help message and exit
@@ -104,14 +104,17 @@ The output GDF file will look like::
 
 Running within Python
 =====================
+
 For running within Python:
 
->>> from pypgx.gt2pt import phenotyper
->>> phenotyper("cyp2d6", "*1", "*1")
-'normal_metabolizer'
->>> phenotyper("cyp2d6", "*1", "*4")
-'intermediate_metabolizer'
->>> phenotyper("cyp2d6", "*1", "*2x2")
-'ultrarapid_metabolizer'
->>> phenotyper("cyp2d6", "*5", "*2x2")
-'normal_metabolizer'
+.. code-block:: python
+
+   >>> from pypgx.phenotyper import phenotyper
+   >>> phenotyper("cyp2d6", "*1", "*1")
+   'normal_metabolizer'
+   >>> phenotyper("cyp2d6", "*1", "*4")
+   'intermediate_metabolizer'
+   >>> phenotyper("cyp2d6", "*1", "*2x2")
+   'ultrarapid_metabolizer'
+   >>> phenotyper("cyp2d6", "*5", "*2x2")
+   'normal_metabolizer'

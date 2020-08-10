@@ -895,26 +895,94 @@ Options
 -h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
-snp command
-===========
+viewsnp command
+===============
+
+View SNP data for pairs of sample/star allele.
 
 Synopsis
 --------
 
-pypgx snp *[options] vcf pair [pair ...]*
+| pypgx viewsnp *[options]* \\
+|   *vcf_file* \\
+|   *query [query ...]*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - vcf_file
+     - Stargazer VCF file (``finalized.vcf``).
+   * - query [query ...]
+     - Pair of sample and star allele separated by ``/`` 
+       (e.g. ``SAMPLE1/*4``).
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, --help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-View variant data for sample/star allele pairs.
+This command shows the SNP data for given pairs of a sample and a star 
+allele. It's designed to be used after running Stargazer.
 
-*vcf* is VCF file. *pair* is sample/star allele pair.
+Here's a complete example with real NGS data.
 
-Options
--------
+.. code-block:: python
 
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+   # Install Stargazer.
+   python -m pip install git+https://github.com/sbslee/stargazer
+
+   # Download example data.
+   git clone https://github.com/sbslee/stargazer
+   cd stargazer/example
+
+   # Run Stargazer as in:
+   # https://stargazer.readthedocs.io/en/latest/tutorial.html#example-1.
+   stargazer \
+     wgs \
+     hg19 \
+     cyp2d6 \
+     getrm-cyp2d6-vdr.joint.filtered.vcf \
+     ./ex1-getrm-cyp2d6-vdr \
+     --gdf getrm-cyp2d6-vdr.gdf \
+     --cg vdr
+
+   # Run viewsnp.
+   pypgx viewsnp \
+     ex1-getrm-cyp2d6-vdr/finalized.vcf \
+     316ab006177d41b484982d7fa4d851ad/*21 \
+     2c9f234af49b4f6a970d8ddef07358e5/*4
+
+The output will look like this::
+
+    <sample=316ab006177d41b484982d7fa4d851ad,star=*21>
+    hg19_pos	wt_allele	var_allele	hg19_allele	type	so	impact	effect	hap1_allele	hap2_allele	gt	hap1_ad	hap2_ad	hap1_af	hap2_af
+    42522613	C	G	G	tag	missense_variant	low_impact	S486T	C	G	0|1	19	10	0.66	0.34
+    42523409	T	G	G	tag	intron_variant	low_impact	no_effect	T	G	0|1	19	23	0.45	0.55
+    42523943	G	A	A	tag	missense_variant	low_impact	R296C	G	A	0|1	21	15	0.58	0.42
+    42524213	C	CG	C	core	frameshift_variant	high_impact	frameshift	C	CG	0|1	14	12	0.54	0.46
+    42525132	C	G	G	tag	synonymous_variant	low_impact	V136#	C	G	0|1	18	28	0.39	0.61
+    42526580	C	G	G	tag	intron_variant	low_impact	no_effect	C	G	0|1	22	23	0.49	0.51
+    42528382	G	C	C	tag	upstream_gene_variant	low_impact	no_effect	G	C	0|1	14	14	0.50	0.50
+    <sample=2c9f234af49b4f6a970d8ddef07358e5,star=*4>
+    hg19_pos	wt_allele	var_allele	hg19_allele	type	so	impact	effect	hap1_allele	hap2_allele	gt	hap1_ad	hap2_ad	hap1_af	hap2_af
+    42524947	C	T	C	core	splice_acceptor_variant	high_impact	splicing_defect	T	C	1|0	14	23	0.38	0.62
+    42526694	G	A	G	tag	missense_variant	high_impact	P34S	A	G	1|0	26	16	0.62	0.38
 
 compgt command
 ==============

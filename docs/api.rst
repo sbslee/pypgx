@@ -109,12 +109,6 @@ pypgx.peek module
 .. automodule:: pypgx.peek
     :members:
 
-pypgx.snp module
-----------------
-
-.. automodule:: pypgx.snp
-    :members:
-
 Auxiliary modules
 =================
 

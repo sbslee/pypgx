@@ -1,25 +1,23 @@
-from typing import Optional
-
 def compgt(
         truth_file: str,
         test_file: str,
-        sample_map: Optional[str] = None,
+        sample_map: str,
         **kwargs
     ) -> str:
-    """Compare two genotype files.
+    """Compute the concordance between two genotype files.
 
     Returns:
-        str: Genotype comparison.
+        str: Genotype concordance.
 
     Args:
         truth_file (str):
             Truth genotype file.
         test_file (str):
             Test genotype file.
-        sample_map (str, optional):
-            Tab-delimited text file for sample name mapping.
+        sample_map (str):
+            Tab-delimited text file with two columns representing the truth 
+            and test sample names.
     """
-
     mapping = {}
 
     with open(sample_map) as f:

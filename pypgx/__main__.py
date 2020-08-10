@@ -33,7 +33,7 @@ from .plotcov import plotcov
 from .check import check
 from .liftover import liftover
 from .peek import peek
-from .snp import snp
+from .viewsnp import viewsnp
 from .compgt import compgt
 from .compvcf import compvcf
 
@@ -61,7 +61,7 @@ PYPGX_TOOLS = {
     "check": check,
     "liftover": liftover,
     "peek": peek,
-    "snp": snp,
+    "viewsnp": viewsnp,
     "compgt": compgt,
     "compvcf": compvcf,
 }
@@ -532,23 +532,19 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    snp_parser = subparsers.add_parser(
-        "snp",
-        help="view variant data for sample/star allele pairs",
+    viewsnp_parser = subparsers.add_parser(
+        "viewsnp",
+        help="view SNP data for pairs of sample/star allele",
     )
-    snp_parser.add_argument(
-        "vcf",
-        help="VCF file",
+    viewsnp_parser.add_argument(
+        "vcf_file",
+        help="Stargazer VCF file ('finalized.vcf')",
     )
-    snp_parser.add_argument(
-        "pair",
+    viewsnp_parser.add_argument(
+        "query",
         nargs="+",
-        help="sample/star allele pair",
-    )
-    snp_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        help="pair of sample and star allele separated by '/' "
+            + "(e.g. 'SAMPLE1/*4')",
     )
 
     compgt_parser = subparsers.add_parser(
@@ -571,7 +567,7 @@ def get_parser():
 
     compvcf_parser = subparsers.add_parser(
         "compvcf",
-        help="calculate the concordance between two VCF files",
+        help="compute the concordance between two VCF files",
     )
     compvcf_parser.add_argument(
         "truth_file",

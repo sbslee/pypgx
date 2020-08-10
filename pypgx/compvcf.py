@@ -9,7 +9,7 @@ def read_sample_map(fn):
             result.append((fields[0], fields[1]))
     return result
 
-def summary(x):
+def _get_summary(x):
     tn, tp, fn, fp = x
     con = (tn + tp) / (tn + tp + fn + fp)
     tpr = tp / (tp + fn) # sensitivity, recall, hit rate, or true positive rate (TPR)
@@ -17,12 +17,25 @@ def summary(x):
     return ["{:.4f}".format(x) for x in [tpr, tnr, con]]
 
 def compvcf(
-        truth_file,
-        test_file,
-        sample_map,
+        truth_file: str,
+        test_file: str,
+        sample_map: str,
         **kwargs
     ):
+    """Compute the concordance between two VCF files.
 
+    Returns:
+        str: Genotype concordance.
+
+    Args:
+        truth_file (str):
+            Truth VCF file.
+        test_file (str):
+            Test VCF file.
+        sample_map (str, optional):
+            Tab-delimited text file with two columns representing the truth 
+            and test sample names.
+    """
     logger = get_logger()
 
     mapping = read_sample_map(sample_map)
@@ -102,7 +115,7 @@ def compvcf(
         indel = counts["indel"]
         all = [x + y for x, y in zip(counts["snv"], counts["indel"])]
 
-        row = [name1, name2] + snv + summary(snv) + indel + summary(indel) + all + summary(all)
+        row = [name1, name2] + snv + _get_summary(snv) + indel + _get_summary(indel) + all + _get_summary(all)
 
         dat.append(row)
 

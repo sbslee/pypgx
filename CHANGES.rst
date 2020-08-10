@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.22
+-------
+
+* No significant changes.
+
 v0.1.21
 -------
 
