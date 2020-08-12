@@ -3,7 +3,8 @@ import copy
 from typing import List
 
 from .common import get_stardb
-from .sglib import VCFFile, vcf2biosamples
+from .sglib import vcf2biosamples
+from vcfgo.VCFFile import VCFFile
 
 def viewsnp(
         vcf_file: str,
@@ -13,21 +14,21 @@ def viewsnp(
     """View SNP data for pairs of sample/star allele.
 
     Returns:
-        str: Summary of SNP data for given pairs of samples and star alleles.
+        Summary of SNP data for given pairs of samples and star alleles.
 
     Args:
-        vcf_file (str):
-            Stargazer VCF file ('finalized.vcf').
-        query (list[str]):
-            List of pairs of sample and star allele separated by '/' 
+        vcf_file: Stargazer VCF file ('finalized.vcf').
+        query: List of pairs of sample and star allele separated by '/' 
             (e.g. 'SAMPLE1/*4').
     """
     finalized_vcf = VCFFile(vcf_file)
     finalized_vcf.read()
-    finalized_vcf.close()
+
+    target_gene = finalized_vcf.search_meta("target_gene")
+    genome_build = finalized_vcf.search_meta("genome_build")
 
     biosamples = vcf2biosamples(finalized_vcf, False)
-    stardb = get_stardb(finalized_vcf.tg, finalized_vcf.gb)
+    stardb = get_stardb(target_gene, genome_build)
     temp = []
 
     for x in query:
@@ -38,9 +39,9 @@ def viewsnp(
         temp.append(["<sample={},star={}>".format(biosample.name, star.name)])
 
         header = [
-            f"{finalized_vcf.gb}_pos",
+            f"{genome_build}_pos",
             "wt_allele", "var_allele",
-            f"{finalized_vcf.gb}_allele",
+            f"{genome_build}_allele",
             "type",
             "so",
             "impact",

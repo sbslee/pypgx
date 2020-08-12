@@ -8,234 +8,7 @@ import pandas as pd
 import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
-
-class VCFFile:
-    """
-    VCF file ojbect.
-
-    Attributes:
-       f (TextIO): VCF file.
-       meta (list[str]): Meta data.
-       header (list[str]): Header.
-       data (list[str]): Genotype data.
-
-    Examples:
-
-        >>> vcf = VCFFile("in.vcf") # also works with "in.vcf.gz"
-        >>> vcf.read("chr10:96519437-96615962") # read CYP2C19 region only
-        >>> vcf.unphase()
-        >>> result = vcf.to_str()
-        >>> vcf.to_file("out.vcf")
-        >>> vcf.close()
-    """
-
-    def __init__(
-        self,
-        fn: Optional[str] = None,
-        f: Optional[TextIO] = None
-    ) -> None:
-        """
-        Initialize VCF file object.
-
-        Args:
-            fn (str, optional): VCF file.
-            f (TextIO, optional): VCF file.
-        """
-
-        if fn:
-            if ".gz" in fn:
-                self.f = gzip.open(fn, "rt")
-            else:
-                self.f = open(fn)
-        elif f:
-            self.f = f
-        else:
-            self.f = None
-        self.meta = []
-        self.header = []
-        self.data = []
-
-    def read(
-        self,
-        region: Optional[str] = None,
-        tidy = False,
-    ) -> None:
-        """
-        Read VCF file.
-
-        Args:
-            region (str, optional): Target region.
-            tidy (bool): Remove "chr" string.
-        """
-
-        if region:
-            r = parse_region(region)
-            for line in self.f:
-                if "##" in line:
-                    self.meta.append(line)
-                    continue
-
-                fields = line.strip().split("\t")
-
-                if fields[0] == "#CHROM":
-                    self.header = fields
-                    continue
-
-                chr = fields[0]
-                pos = int(fields[1])
-
-                if chr.replace("chr", "") != r[0].replace("chr", ""):
-                    continue
-
-                if pos < r[1]:
-                    continue
-
-                if pos > r[2]:
-                    break
-
-                if tidy:
-                    fields[0] = fields[0].replace("chr", "")
-
-                self.data.append(fields)
-
-        else:
-            for line in self.f:
-                if "##" in line:
-                    self.meta.append(line)
-                    continue
-
-                fields = line.strip().split("\t")
-
-                if fields[0] == "#CHROM":
-                    self.header = fields
-                    continue
-
-                if tidy:
-                    fields[0] = fields[0].replace("chr", "")
-
-                self.data.append(fields)
-
-    def to_str(self) -> str:
-        """
-        Return VCF file.
-
-        Returns:
-            str: VCF file.
-        """
-
-        string = ""
-        for line in self.meta:
-            string += line
-        string += "\t".join(self.header) + "\n"
-        for fields in self.data:
-            string += "\t".join(fields) + "\n"
-        return string
-
-    def to_file(self, fn: str) -> None:
-        """
-        Write VCF file.
-
-        Args:
-            fn (str): VCF file.
-        """
-
-        string = self.to_str()
-        with open(fn, "w") as f:
-            f.write(string)
-
-    def unphase(self) -> None:
-        """
-        Change genotype separator from '|' to '/'.
-        """
-
-        for i in range(len(self.data)):
-            self.data[i][9:] = [x.replace("|", "/") for x in self.data[i][9:]]
-
-    def phase(self) -> None:
-        """
-        Change genotype separator from '/' to '|'.
-
-        .. warning::
-            This is not statistcal phasing.
-        """
-
-        for i in range(len(self.data)):
-            self.data[i][9:] = [x.replace("/", "|") for x in self.data[i][9:]]
-
-    def close(self):
-        """
-        Close VCF file.
-        """
-
-        self.f.close()
-        self.f = None
-
-    def copy(self, l):
-        """
-        Copy VCF file.
-        """
-
-        new = VCFFile()
-
-        if "meta" in l:
-            new.meta = deepcopy(self.meta)
-
-        if "header" in l:
-            new.header = deepcopy(self.header)
-
-        if "data" in l:
-            new.data = deepcopy(self.data)
-
-        return new
-
-    @property
-    def tg(self) -> str:
-        """
-        Extract target gene from meta data.
-        """
-
-        result = ""
-
-        for line in self.meta:
-            if "##target_gene" in line:
-                result = line.strip().replace("##target_gene=", "")
-                break
-
-        return result
-
-    @property
-    def gb(self) -> str:
-        """
-        Extract genome build from meta data.
-        """
-
-        result = ""
-
-        for line in self.meta:
-            if "##genome_build" in line:
-                result = line.strip().replace("##genome_build=", "")
-                break
-
-        return result
-
-    def multiallelic_filter(self):
-        """
-        Filter out multiallelic sites.
-        """
-        for i in reversed(range(len(self.data))):
-            fields = self.data[i]
-            x = fields[4].split(",")
-            if len(x) > 1:
-                del self.data[i]
-
-    def missing_filter(self):
-        """
-        Filter out sites with missing genotype (./.).
-        """
-        for i in reversed(range(len(self.data))):
-            v = self.data[i]
-            if any(["." in x.split(":")[0] for x in v[9:]]):
-                del self.data[i]
+from vcfgo.VCFFile import VCFFile
 
 class SNPAllele:
     """SNP allele object.
@@ -424,19 +197,16 @@ class BioSample:
         self.ssr_df = pd.DataFrame()
         self.af_df = pd.DataFrame()
 
-def vcf2biosamples(
-        vcf: VCFFile,
-        filter: bool = False
-    ) -> List[BioSample]:
-    """
-    Convert a VCFFile object to a list of BioSample objects.
+def vcf2biosamples(vcf: VCFFile,
+                   filter: bool = False) -> List[BioSample]:
+    """Convert a VCFFile to a list of BioSample.
 
     Returns:
-        list[BioSample]: A list of BioSample objects.
+        A list of BioSample.
 
     Args:
-        vcf (VCFFile): A VCFFile object.
-        filter (bool): Exclude any unphased markers.
+        vcf: A VCFFile object.
+        filter: If true, exclude any unphased markers.
     """
 
     result = []
@@ -445,43 +215,33 @@ def vcf2biosamples(
         biosample = BioSample(name)
         i = vcf.header.index(name)
 
-        for fields in vcf.data:
-            v = parse_vcf_fields(fields)
-
-            if filter and not any(["PS=D" in x for x in v["info"]]):
+        for v in vcf.data:
+            if filter and "D" not in v.info["PS"]:
                 continue
 
-            gt = [int(x) for x in fields[i].split(":")[0].split("|")]
-            alleles = [v["ref"]] + v["alt"]
-
-            vi = ["NA"] + [x for x in v["info"]
-                if "VI=" in x][0].replace("VI=", "").split(",")
-
-            so = ["NA"] + [x for x in v["info"]
-                if "SO=" in x][0].replace("SO=", "").split(",")
-
-            fe = ["NA"] + [x for x in v["info"]
-                if "FE=" in x][0].replace("FE=", "").split(",")
-
-            rv = ["NA"] + [x for x in v["info"]
-                if "RV=" in x][0].replace("RV=", "").split(",")
+            gt = [int(x) for x in v.fields[i].split(":")[0].split("|")]
+            alleles = [v.ref] + v.alt
+            vi = ["NA"] + v.info["VI"].split(",")
+            so = ["NA"] + v.info["SO"].split(",")
+            fe = ["NA"] + v.info["FE"].split(",")
+            rv = ["NA"] + v.info["RV"].split(",")
 
             for j in [0, 1]:
                 k = gt[j]
                 snpallele = SNPAllele()
-                snpallele.pos = v["pos"]
-                snpallele.wt = v["ref"]
+                snpallele.pos = str(v.pos)
+                snpallele.wt = v.ref
                 snpallele.var = alleles[k]
-                snpallele.rs = v["id"]
+                snpallele.rs = v.id
                 snpallele.het = gt[0] != gt[1]
                 snpallele.so = so[k]
                 snpallele.vi = vi[k]
                 snpallele.fe = fe[k]
                 snpallele.rv = rv[k]
-                snpallele.gb = vcf.gb
+                snpallele.gb = vcf.search_meta("genome_build")
 
-                if "AD" in v["format"]:
-                    ad = [int(x) for x in fields[i].split(":")[1].split(",")]
+                if "AD" in v.format:
+                    ad = [int(x) for x in v.fields[i].split(":")[1].split(",")]
                     snpallele.ad = ad[k]
                     snpallele.td = sum(ad)
 

@@ -930,23 +930,42 @@ Options
 peek command
 ============
 
+Find all possible star alleles from VCF file.
+
 Synopsis
 --------
 
-pypgx peek *[options] vcf*
+pypgx peek *[options] vcf_file*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - vcf_file
+     - Stargazer VCF file (``finalized.vcf``).
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, \--help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-Find all possible star alleles from VCF file.
-
-*vcf* is VCF file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command returns summary of the status of all possibile star alleles 
+that can be called from the VCF file.
 
 viewsnp command
 ===============

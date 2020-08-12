@@ -67,36 +67,6 @@ pypgx.compare module
 .. automodule:: pypgx.compare
     :members:
 
-pypgx.cpa module
-----------------
-
-.. automodule:: pypgx.cpa
-    :members:
-
-pypgx.plotcov module
---------------------
-
-.. automodule:: pypgx.plotcov
-    :members:
-
-pypgx.check module
-------------------
-
-.. automodule:: pypgx.check
-    :members:
-
-pypgx.liftover module
----------------------
-
-.. automodule:: pypgx.liftover
-    :members:
-
-pypgx.peek module
------------------
-
-.. automodule:: pypgx.peek
-    :members:
-
 Auxiliary modules
 =================
 

@@ -508,13 +508,8 @@ def get_parser():
         help="find all possible star alleles from VCF file",
     )
     peek_parser.add_argument(
-        "vcf",
-        help="VCF file",
-    )
-    peek_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        "vcf_file",
+        help="Stargazer VCF file (finalized.vcf)",
     )
 
     viewsnp_parser = subparsers.add_parser(

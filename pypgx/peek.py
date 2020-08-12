@@ -1,56 +1,55 @@
 import os
 
 from .common import get_stardb
-from .sglib import VCFFile, parse_vcf_fields, vcf2biosamples
+from .sglib import vcf2biosamples
+from vcfgo.VCFFile import VCFFile
 
-def peek(vcf, **kwargs) -> str:
-    """
-    Find all possible star alleles from VCF file.
+def peek(vcf_file: str,
+         **kwargs) -> str:
+    """Find all possible star alleles from VCF file.
 
     Returns:
-        str: Result file.
+        Summary of star allele status.
 
     Args:
-        vcf (str): VCF file.
+        vcf_file: Stargazer VCF file (finalized.vcf).
     """
 
     # Remove sample data from the VCF file.
-    finalized_vcf = VCFFile(vcf)
+    finalized_vcf = VCFFile(vcf_file)
     finalized_vcf.read()
-    finalized_vcf.close()
     finalized_vcf.header = finalized_vcf.header[:9]
 
-    stardb = get_stardb(finalized_vcf.tg, finalized_vcf.gb)
+    stardb = get_stardb(finalized_vcf.search_meta("target_gene"),
+                        finalized_vcf.search_meta("genome_build"))
 
     for i in range(len(finalized_vcf.data)):
-        fields = finalized_vcf.data[i]
-        finalized_vcf.data[i] = fields[:9]
-        finalized_vcf.data[i][8] = "GT"
+        record = finalized_vcf.data[i]
+        record.fields = record.fields[:9]
+        record.fields[8] = "GT"
 
     # Find the largest number of ATL alleles observed from a given locus.
     n = 0
-    for fields in finalized_vcf.data:
-        alt = fields[4].split(",")
-        if len(alt) > n:
-            n = len(alt)
+    for record in finalized_vcf.data:
+        if len(record.alt) > n:
+            n = len(record.alt)
 
     # Create fake samples in the VCF data.
     for i in range(n):
         finalized_vcf.header.append(f"TEST_SAMPLE{i + 1}")
 
     for i in range(len(finalized_vcf.data)):
-        fields = finalized_vcf.data[i]
-        v = parse_vcf_fields(fields)
+        record = finalized_vcf.data[i]
         sep = "|"
-        if len(v["alt"]) > 1:
+        if len(record.alt) > 1:
             for j in range(n):
-                if j + 1 > len(v["alt"]):
-                    finalized_vcf.data[i].append(f"0{sep}1")
+                if j + 1 > len(record.alt):
+                    record.fields.append(f"0{sep}1")
                 else:
-                    finalized_vcf.data[i].append(f"0{sep}{j + 1}")
+                    record.fields.append(f"0{sep}{j + 1}")
         else:
             for j in range(n):
-                finalized_vcf.data[i].append(f"0{sep}1")
+                record.fields.append(f"0{sep}1")
 
     biosamples = vcf2biosamples(finalized_vcf, filter=False)
     snp_list = []

@@ -1,6 +1,12 @@
 Changelog
 *********
 
+v0.1.26
+-------
+
+* Integrated Python module ``vcfgo`` to ``peek`` command.
+* Integrated Python module ``vcfgo`` to ``viewsnp`` command.
+
 v0.1.25
 -------
 
