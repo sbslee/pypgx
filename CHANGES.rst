@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.24
+-------
+
+* Integrated Python module ``vcfgo`` to ``compvcf`` command.
+
 v0.1.23
 -------
 

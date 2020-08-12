@@ -105,16 +105,17 @@ The output GDF file will look like::
 Running within Python
 =====================
 
-For running within Python:
+For running within Python::
 
-.. code-block:: python
+    from pypgx.phenotyper import phenotyper
+    phenotyper("cyp2d6", "*1", "*1")
+    phenotyper("cyp2d6", "*1", "*4")
+    phenotyper("cyp2d6", "*1", "*2x2")  # *2x2 is gene duplication.
+    phenotyper("cyp2d6", "*4", "*5")    # *5 is gene deletion.
 
-   >>> from pypgx.phenotyper import phenotyper
-   >>> phenotyper("cyp2d6", "*1", "*1")
-   'normal_metabolizer'
-   >>> phenotyper("cyp2d6", "*1", "*4")
-   'intermediate_metabolizer'
-   >>> phenotyper("cyp2d6", "*1", "*2x2")
-   'ultrarapid_metabolizer'
-   >>> phenotyper("cyp2d6", "*5", "*2x2")
-   'normal_metabolizer'
+To give::
+
+    'normal_metabolizer'
+    'intermediate_metabolizer'
+    'ultrarapid_metabolizer'
+    'poor_metabolizer'
