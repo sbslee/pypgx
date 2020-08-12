@@ -47,17 +47,15 @@ def _update(result, gene, chemical, table, url, summary, type):
             recommandation.append(f"{title}: {content}")
         result[chemical][gene]["pt"][phenotypes[i]] = " ".join(recommandation)
 
-def pgkb(
-        test_mode: bool = False,
-        **kwargs
-    ) -> str:
+def pgkb(test_mode: bool = False,
+         **kwargs) -> str:
     """Extract CPIC guidelines using PharmGKB API.
 
     Returns:
-        str: Guideline table.
+        Guideline table.
 
     Args:
-        test_mode (bool): Extract first three guidelines for testing.
+        test_mode: If true, only extract first three guidelines for testing.
     """
 
     # Get PharmGKB ID for the CPIC guidelines.

@@ -49,18 +49,6 @@ pypgx.pgkb module
 .. automodule:: pypgx.pgkb
     :members:
 
-pypgx.minivcf module
---------------------
-
-.. automodule:: pypgx.minivcf
-    :members:
-
-pypgx.merge module
-------------------
-
-.. automodule:: pypgx.merge
-    :members:
-
 pypgx.summary module
 --------------------
 

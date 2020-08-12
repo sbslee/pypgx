@@ -1,6 +1,13 @@
 Changelog
 *********
 
+v0.1.25
+-------
+
+* Integrated Python module ``vcfgo`` to ``minivcf`` command.
+* Integrated Python module ``vcfgo`` to ``merge`` command.
+* Renamed merge.py to mergevcf.py.
+
 v0.1.24
 -------
 

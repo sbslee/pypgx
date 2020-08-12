@@ -24,7 +24,7 @@ from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
 from .pgkb import pgkb
 from .minivcf import minivcf
-from .merge import merge
+from .mergevcf import mergevcf
 from .summary import summary
 from .meta import meta
 from .compare import compare
@@ -52,7 +52,7 @@ PYPGX_TOOLS = {
     "sdf2gdf": sdf2gdf,
     "pgkb": pgkb,
     "minivcf": minivcf,
-    "merge": merge,
+    "mergevcf": mergevcf,
     "summary": summary,
     "meta": meta,
     "compare": compare,
@@ -364,11 +364,6 @@ def get_parser():
         help="extract CPIC guidelines using PharmGKB API",
     )
     pgkb_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-    pgkb_parser.add_argument(
         "--test_mode",
         action="store_true",
         help="only extract first three guidelines for testing",
@@ -386,30 +381,20 @@ def get_parser():
         "region",
         help="target region",
     )
-    minivcf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
 
-    merge_parser = subparsers.add_parser(
-        "merge",
+    mergevcf_parser = subparsers.add_parser(
+        "mergevcf",
         help="merge VCF files",
     )
-    merge_parser.add_argument(
-        "vcf",
+    mergevcf_parser.add_argument(
+        "vcf_file",
         nargs="+",
-        help="VCF file",
+        help="VCF files to be merged",
     )
-    merge_parser.add_argument(
-        "-r",
+    mergevcf_parser.add_argument(
+        "--region",
         metavar="STR",
         help="target region",
-    )
-    merge_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
     )
 
     summary_parser = subparsers.add_parser(

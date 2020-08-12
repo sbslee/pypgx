@@ -668,67 +668,120 @@ Options
 pgkb command
 ============
 
+Extract CPIC guidelines using PharmGKB API.
+
 Synopsis
 --------
 
 pypgx pgkb *[options]*
 
+Positional arguments
+--------------------
+
+There are no positional arguments for this command.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - \--test_mode
+     - Only extract first three guidelines for testing.
+
 Description
 -----------
 
-Extract CPIC guidelines using PharmGKB API.
-
-There are no required arguments.
-
-Options
--------
-
--h, --help   show command-specific help message and exit
--o FILE      output to FILE [stdout]
---test_mode  only extract first three guidelines for testing
+This command extracts CPIC recommendations for prescription drugs using 
+PharmGKB API.
 
 minivcf command
 ===============
 
-Synopsis
---------
-
-pypgx minivcf *[options] vcf region*
-
-Description
------------
-
 Slice VCF file.
 
-*vcf* is VCF file. *region* is target region.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
-
-merge command
-=============
-
 Synopsis
 --------
 
-pypgx merge *[options] vcf [vcf ...]*
+pypgx minivcf *[options] vcf_file region*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - vcf_file
+     - VCF file.
+   * - region
+     - Target region.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, \--help
+     - Show command-specific help message and exit.
 
 Description
 -----------
+
+This command slices a VCF file for the given region.
+
+mergevcf command
+================
 
 Merge VCF files.
 
-*vcf* is VCF file.
+Synopsis
+--------
 
-Options
--------
+pypgx mergevcf *[options] vcf_file [vcf_file ...]*
 
--h, --help  show command-specific help message and exit
--r STR      target region
--o FILE     output to FILE [stdout]
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - vcf_file
+     - VCF files to be merged.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, \--help
+     - Show command-specific help message and exit.
+   * - \--region
+     - Target region.
+
+Description
+-----------
+
+This command merges VCF files with single sample. It's assumed that the VCF 
+files share the same variant sites. In the upcoming version, these 
+restrictions will be lifted and the command will be able to merge VCF files 
+with any number of samples and with different sets of variants.
 
 summary command
 ===============
@@ -931,7 +984,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, --help
+   * - -h, -\-help
      - Show command-specific help message and exit.
 
 Description
@@ -1023,7 +1076,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, --help
+   * - -h, \--help
      - Show command-specific help message and exit.
 
 Description
@@ -1072,7 +1125,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, --help
+   * - -h, \--help
      - Show command-specific help message and exit.
 
 Description
