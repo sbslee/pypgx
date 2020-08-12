@@ -569,12 +569,19 @@ def sort_regions(regions: List[str]) -> List[str]:
     def f(x):
         r = parse_region(x)
         if "X" in r[0]:
-            chr = 23
+            contig = 23
         elif "Y" in r[0]:
-            chr = 24
+            contig = 24
         else:
-            chr = int(r[0].replace("chr", ""))
+            _ = r[0].replace("chr", "")
+ 
+            if _.isdigit():
+                contig = int(_)
+            else:
+                contig = 25
+
         return (chr, r[1], r[2])
+
     return sorted(regions, key = f)
 
 def parse_vcf_fields(fields):

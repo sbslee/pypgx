@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.23
+-------
+
+* [#4] Fixed bug when using ``bam2gdf`` for the GSTT1 gene with hg38 data.
+
 v0.1.22
 -------
 
