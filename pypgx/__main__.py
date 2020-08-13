@@ -29,7 +29,6 @@ from .summary import summary
 from .meta import meta
 from .compare import compare
 from .cpa import cpa
-from .plotcov import plotcov
 from .check import check
 from .liftover import liftover
 from .peek import peek
@@ -57,7 +56,6 @@ PYPGX_TOOLS = {
     "meta": meta,
     "compare": compare,
     "cpa": cpa,
-    "plotcov": plotcov,
     "check": check,
     "liftover": liftover,
     "peek": peek,
@@ -455,29 +453,16 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    plotcov_parser = subparsers.add_parser(
-        "plotcov",
-        help="plot coverage data to PDF file",
-    )
-    plotcov_parser.add_argument(
-        "sdf",
-        help="SDF file",
-    )
-    plotcov_parser.add_argument(
-        "out",
-        help="PDF file",
-    )
-
     check_parser = subparsers.add_parser(
         "check",
         help="check table files for Stargazer",
     )
     check_parser.add_argument(
-        "star",
+        "star_table",
         help="star allele table file",
     )
     check_parser.add_argument(
-        "snp",
+        "snp_table",
         help="SNP table file",
     )
 
@@ -486,21 +471,16 @@ def get_parser():
         help="convert variants in SNP table from hg19 to hg38",
     )
     liftover_parser.add_argument(
-        "star",
+        "star_table",
         help="star allele table file",
     )
     liftover_parser.add_argument(
-        "snp",
+        "snp_table",
         help="SNP table file",
     )
     liftover_parser.add_argument(
-        "tg",
+        "target_gene",
         help="target gene",
-    )
-    liftover_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
     )
 
     peek_parser = subparsers.add_parser(

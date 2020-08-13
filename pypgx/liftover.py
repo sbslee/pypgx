@@ -14,12 +14,12 @@ def liftover(star: str, snp: str, tg: str, **kwargs) -> str:
     Convert variants in SNP table from hg19 to hg38.
 
     Returns:
-        str: Result file.
+        Result.
 
     Args:
-        star (str): Star allele table file.
-        snp (str): SNP table file.
-        tg (str): Target gene.
+        star_table: Star allele table file.
+        snp_table: SNP table file.
+        target_gene: Target gene.
     """
 
     gene_table = get_gene_table()

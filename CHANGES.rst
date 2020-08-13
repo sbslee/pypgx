@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.28
+-------
+
+* ``plotcov`` command has been deprecated.
+
 v0.1.27
 -------
 

@@ -2,19 +2,19 @@ from .common import logging
 
 logger = logging.getLogger(__name__)
 
-def check(star: str, snp: str, **kwargs) -> None:
-    """
-    Check table files for Stargazer.
+def check(star_table: str, snp_table: str, **kwargs) -> None:
+    """Checks table files for Stargazer.
 
     Args:
-        star (str): Star allele table file.
-        snp (str): SNP table file.
+        star_table: Star allele table file.
+        snp_table: SNP table file.
     """
+
     star_data = []
     snp_data = []
     gene_list = []
 
-    with open(star) as f:
+    with open(star_table) as f:
         star_header = next(f).strip().split("\t")
         for line in f:
             fields = line.strip().split("\t")
@@ -23,7 +23,7 @@ def check(star: str, snp: str, **kwargs) -> None:
                 gene_list.append(gene)
             star_data.append(fields)
 
-    with open(snp) as f:
+    with open(snp_table) as f:
         snp_header = next(f).strip().split("\t")
         for line in f:
             fields = line.strip().split("\t")

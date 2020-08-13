@@ -145,36 +145,35 @@ ptcallers = {
     "xpc": _phenotype_default,
 }
 
-def phenotyper(
-        gene: str,
-        hap1: str,
-        hap2: str,
-    ) -> str:
-    """Make phenotype prediction from the two haplotype calls.
+def phenotyper(gene: str, hap1: str, hap2: str) -> str:
+    """Maps haplotype calls to a phenotype.
 
     Different genes have different phenotypes. Many use a unit of enzyme 
     activity known as an activity score (AS). Note that star alleles with 
     unknown/uncertain function have AS < 0 (e.g. -100).
 
     Returns:
-        str: Phenotype call.
+        Phenotype.
 
     Args:
-        gene (str): Target gene.
-        hap1 (str): 1st haplotype call.
-        hap2 (str): 2nd haplotype call.
+        gene: Target gene.
+        hap1: 1st haplotype call.
+        hap2: 2nd haplotype call.
 
-    Examples:
+    Making phenotype prediction for CYP2D6 genotypes::
 
-        >>> from pypgx.gt2pt import phenotyper
-        >>> phenotyper("cyp2d6", "*1", "*1")
+        from pypgx.phenotyper import phenotyper
+        phenotyper("cyp2d6", "*1", "*1")
+        phenotyper("cyp2d6", "*1", "*4")
+        phenotyper("cyp2d6", "*1", "*2x2")  # *2x2 is gene duplication.
+        phenotyper("cyp2d6", "*4", "*5")    # *5 is gene deletion.
+
+    To give::
+
         'normal_metabolizer'
-        >>> phenotyper("cyp2d6", "*1", "*4")
         'intermediate_metabolizer'
-        >>> phenotyper("cyp2d6", "*1", "*2x2")
         'ultrarapid_metabolizer'
-        >>> phenotyper("cyp2d6", "*5", "*2x2")
-        'normal_metabolizer'
+        'poor_metabolizer'
 
     This method currently uses four different phenotyping algorithms:
 

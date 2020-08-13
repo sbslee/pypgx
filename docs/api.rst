@@ -49,12 +49,6 @@ pypgx.pgkb module
 .. automodule:: pypgx.pgkb
     :members:
 
-pypgx.compare module
---------------------
-
-.. automodule:: pypgx.compare
-    :members:
-
 Auxiliary modules
 =================
 

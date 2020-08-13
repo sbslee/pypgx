@@ -865,67 +865,94 @@ Options
 -h, --help  show command-specific help message and exit
 -o FILE     output to FILE [stdout]
 
-plotcov command
-===============
-
-Synopsis
---------
-
-pypgx plotcov *[options] sdf out*
-
-Description
------------
-
-Plot coverage data to PDF file.
-
-*sdf* is SDF file. *out* is PDF file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 check command
 =============
 
+Checks table files for Stargazer.
+
 Synopsis
 --------
 
-pypgx check *[options] star snp*
+| pypgx check *[options]* \\
+|   *star_table* \\
+|   *snp_table* \\
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - star_table
+     - Star allele table file (``star_table.txt``).
+   * - snp_table
+     - SNP table file (``snp_table.txt``).
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, \--help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-Check table files for Stargazer.
-
-*star* is star allele table file. *snp* is SNP table file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
+This command is meant to be used for Stargazer development.
 
 liftover command
 ================
 
+Convert variants in SNP table from hg19 to hg38.
+
 Synopsis
 --------
 
-pypgx liftover *[options] star snp tg*
+| pypgx liftover *[options]* \\
+|   *star_table* \\
+|   *snp_table* \\
+|   *target_gene*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - star_table
+     - Star allele table file (``star_table.txt``).
+   * - snp_table
+     - SNP table file (``snp_table.txt``).
+   * - target_gene
+     - Target gene.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - -h, \--help
+     - Show command-specific help message and exit.
 
 Description
 -----------
 
-Convert variants in SNP table from hg19 to hg38.
-
-*star* is star allele table file. *snp* is SNP table file. 
-*tg* is target gene.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command is meant to be used for Stargazer development.
 
 peek command
 ============

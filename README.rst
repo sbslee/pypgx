@@ -59,7 +59,6 @@ For getting help::
         meta      create meta file from summary files
         compare   compare genotype files
         cpa       run change point analysis for copy number
-        plotcov   plot coverage data to PDF file
         check     check table files for Stargazer
         liftover  convert variants in SNP table from hg19 to hg38
         peek      find all possible star alleles from VCF file

@@ -23,7 +23,7 @@ setup(
             "star_table.txt",
         ],
         "pypgx.resources.pgkb": ["action_table.txt"],
-        "pypgx.resources.r": ["cpa.R", "plotcov.R"],
+        "pypgx.resources.r": ["cpa.R"],
     },
     install_requires=requirements,
     classifiers=[
