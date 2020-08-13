@@ -6,6 +6,8 @@ PyPGx
 .. image:: https://readthedocs.org/projects/pypgx/badge/?version=latest
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
+.. image:: https://travis-ci.com/sbslee/pypgx.svg?branch=master
+    :target: https://travis-ci.com/sbslee/pypgx
 
 PyPGx is a Python package for pharmacogenomics (PGx) research, which can be 
 used as a standalone program and as a Python module. Documentation is 
