@@ -49,18 +49,6 @@ pypgx.pgkb module
 .. automodule:: pypgx.pgkb
     :members:
 
-pypgx.summary module
---------------------
-
-.. automodule:: pypgx.summary
-    :members:
-
-pypgx.meta module
------------------
-
-.. automodule:: pypgx.meta
-    :members:
-
 pypgx.compare module
 --------------------
 

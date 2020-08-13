@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.27
+-------
+
+* Bumped up the minimally required version of ``vcfgo`` (v0.0.3 to v0.0.4).
+
 v0.1.26
 -------
 

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 exec(open("pypgx/version.py").read())
 
 requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",
-                "pysam>=0.16.0", "vcfgo>=0.0.3",]
+                "pysam>=0.16.0", "vcfgo>=0.0.4",]
 
 setup(
     name="pypgx",
@@ -14,7 +14,7 @@ setup(
     long_description=open("README.rst").read(),
     long_description_content_type="text/x-rst",
     url="https://github.com/sbslee/pypgx",
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests"]),
     package_data={
         "pypgx.resources.cpic": ["cpicPairs.csv"],
         "pypgx.resources.sg": [
