@@ -65,6 +65,7 @@ For getting help::
         viewsnp   view SNP data for pairs of sample/star allele
         compgt    compute the concordance between two genotype files
         compvcf   compute the concordance between two VCF files
+        unicov    compute uniformity of sequencing coverage
 
     optional arguments:
       -h, --help  show this help message and exit

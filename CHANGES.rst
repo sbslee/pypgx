@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.29
+-------
+
+* Added ``unicov`` tool.
+
 v0.1.28
 -------
 

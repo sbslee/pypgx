@@ -230,7 +230,9 @@ def bam_getter(func):
         if not input_files:
             raise ValueError("No input BAM files found")
 
-        func(*args, **kwargs, input_files=input_files)
+        result = func(*args, **kwargs, input_files=input_files)
+
+        return result
 
     return wrapper
 

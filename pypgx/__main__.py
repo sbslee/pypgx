@@ -35,6 +35,7 @@ from .peek import peek
 from .viewsnp import viewsnp
 from .compgt import compgt
 from .compvcf import compvcf
+from .unicov import unicov
 
 PYPGX_TOOLS = {
     "bam2gt": bam2gt,
@@ -62,6 +63,7 @@ PYPGX_TOOLS = {
     "viewsnp": viewsnp,
     "compgt": compgt,
     "compvcf": compvcf,
+    "unicov": unicov,
 }
 
 def get_parser():
@@ -541,6 +543,30 @@ def get_parser():
         "sample_map",
         help="tab-delimited text file with two columns representing "
             + "the truth and test sample names",
+    )
+
+    unicov_parser = subparsers.add_parser(
+        "unicov",
+        help="compute uniformity of sequencing coverage",
+    )
+    unicov_parser.add_argument(
+        "bed_file",
+        help="BED file",
+    )
+    unicov_parser.add_argument(
+        "bam_file",
+        nargs="*",
+        help="input BAM files"
+    )
+    unicov_parser.add_argument(
+        "--bam_dir",
+        metavar="DIR",
+        help="use all BAM files in this directory as input"
+    )
+    unicov_parser.add_argument(
+        "--bam_list",
+        metavar="FILE",
+        help="list of input BAM files, one file per line"
     )
 
     return parser
