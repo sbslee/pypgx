@@ -58,14 +58,13 @@ For getting help::
         summary   create summary file using Stargazer data
         meta      create meta file from summary files
         compare   compare genotype files
-        cpa       run change point analysis for copy number
         check     check table files for Stargazer
         liftover  convert variants in SNP table from hg19 to hg38
         peek      find all possible star alleles from VCF file
         viewsnp   view SNP data for pairs of sample/star allele
         compgt    compute the concordance between two genotype files
         compvcf   compute the concordance between two VCF files
-        unicov    compute uniformity of sequencing coverage
+        unicov    compute the uniformity of sequencing coverage
 
     optional arguments:
       -h, --help  show this help message and exit

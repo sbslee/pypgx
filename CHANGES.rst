@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.30
+-------
+
+* ``cpa`` command has been deprecated.
+
 v0.1.29
 -------
 

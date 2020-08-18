@@ -28,7 +28,6 @@ from .mergevcf import mergevcf
 from .summary import summary
 from .meta import meta
 from .compare import compare
-from .cpa import cpa
 from .check import check
 from .liftover import liftover
 from .peek import peek
@@ -56,7 +55,6 @@ PYPGX_TOOLS = {
     "summary": summary,
     "meta": meta,
     "compare": compare,
-    "cpa": cpa,
     "check": check,
     "liftover": liftover,
     "peek": peek,
@@ -441,20 +439,6 @@ def get_parser():
         help="output to FILE [stdout]",
     )
 
-    cpa_parser = subparsers.add_parser(
-        "cpa",
-        help="run change point analysis for copy number",
-    )
-    cpa_parser.add_argument(
-        "rdata",
-        help="RData file",
-    )
-    cpa_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
-
     check_parser = subparsers.add_parser(
         "check",
         help="check table files for Stargazer",
@@ -547,7 +531,7 @@ def get_parser():
 
     unicov_parser = subparsers.add_parser(
         "unicov",
-        help="compute uniformity of sequencing coverage",
+        help="compute the uniformity of sequencing coverage",
     )
     unicov_parser.add_argument(
         "bed_file",

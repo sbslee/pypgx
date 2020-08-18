@@ -7,6 +7,8 @@ For the public API of Python module ``pypgx``, please see the API section.
 bam2gt command
 ==============
 
+Convert BAM files to a genotype file.
+
 Synopsis
 --------
 
@@ -19,10 +21,56 @@ Synopsis
 |   *proj_dir* \\
 |   *[bam_file [bam_file ...]]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *snp_caller*
+     - SNP caller ('gatk' or 'bcftools').
+   * - *fasta_file*
+     - Reference FASTA file.
+   * - *target_gene*
+     - Name of target gene (e.g. 'cyp2d6').
+   * - *genome_build*
+     - Genome build ('hg19' or 'hg38').
+   * - *data_type*
+     - Type of sequencing data ('wgs' or 'ts').
+   * - *proj_dir*
+     - Output files will be written to *proj_dir*.
+   * - *bam_file*
+     - Input BAM files.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *\--bam_dir DIR*
+     - Use all BAM files in this directory as input.
+   * - *\--bam_list FILE*
+     - List of input BAM files, one file per line.
+   * - *\--control_gene STR*
+     - Name or region of control gene (e.g. ‘vdr’, ‘chr12:48232319-48301814’).
+   * - *\--dbsnp_file FILE*
+     - dbSNP VCF file, used by GATK to add rs numbers.
+   * - *\--temp_dir DIR*
+     - Temporary files will be written to this directory.
+   * - *\--plot*
+     - Output copy number plots.
+
 Description
 -----------
-
-Convert BAM files to a genotype file.
 
 This command runs the entire genotyping pipeline for BAM files, 
 without the need for Sun Grid Engine (SGE). Under the hood, it 
@@ -35,39 +83,45 @@ depth data (i.e. a GDF file) for copy number analysis. Providing
 the optional argument ``--control_gene`` will generate a GDF file. 
 If this argument is not provided, Stargazer will run as VCF-only mode.
 
-*snp_caller* is the SNP caller ('gatk' or 'bcftools'). *fasta_file* is the 
-reference FASTA file. *target_gene* is the name of target gene (e.g. 
-'cyp2d6'). *genome_build* is the genome build ('hg19' or 'hg38'). 
-*data_type* is the type of sequencing data ('wgs' or 'ts'). Output files 
-will be written to *proj_dir*. *bam_file* are the input BAM files.
-
 .. warning::
     Stargazer and GATK/BCFtools must be pre-installed.
 
-Options
--------
-
--h, --help          show command-specific help message and exit
---bam_dir DIR       use all BAM files in this directory as input
---bam_list FILE     list of input BAM files, one file per line
---control_gene STR  name or region of control gene (e.g. ‘vdr’,
-                    ‘chr12:48232319-48301814’)
---dbsnp_file FILE   dbSNP VCF file, used by GATK to add rs numbers
---temp_dir DIR      temporary files will be written to this directory
---plot              output copy number plots.
-
 bam2gt2 command
 ===============
+
+Convert BAM files to a genotype file [SGE].
 
 Synopsis
 --------
 
 pypgx bam2gt2 *[options] conf_file*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *conf_file*
+     - Configuration file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+
 Description
 -----------
-
-Convert BAM files to a genotype file [SGE].
 
 This command runs the entire genotyping pipeline for BAM files 
 with the Sun Grid Engine (SGE) cluster. By default, it will genotype 
@@ -150,37 +204,52 @@ This table summarizes the configuration parameters specific to ``bam2gt2``:
         * - target_genes
           - Names of target genes (e.g. 'cyp2d6').
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 gt2pt command
 =============
+
+Call phenotypes from star alleles.
 
 Synopsis
 --------
 
-pypgx snp *[options] gt*
+pypgx gt2pt *[options] gt*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *gt*
+     - Genotype file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *\-o*
+     - Output to FILE [stdout].
 
 Description
 -----------
 
-Call phenotypes from star alleles.
-
 This command is just a wrapper for the ``phenotyper`` module. See the API 
 section for details.
 
-*gt* is the genotype file. 
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
-
 bam2vcf command
 ===============
+
+Convert BAM files to a VCF file.
 
 Synopsis
 --------
@@ -193,10 +262,52 @@ Synopsis
 |   *genome_build* \\
 |   *[bam_file [bam_file ...]]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *snp_caller*
+     - SNP caller ('gatk' or 'bcftools').
+   * - *fasta_file*
+     - Reference FASTA file.
+   * - *target_gene*
+     - Name or region of target gene (e.g. 'cyp2d6', 'chr22:42512500-42551883').
+   * - *output_file*
+     - Output will be written to *output_file*.
+   * - *genome_build*
+     - Genome build ('hg19' or 'hg38').
+   * - *bam_file*
+     - Input BAM files.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *\--bam_dir DIR*
+     - Use all BAM files in this directory as input.
+   * - *\--bam_list FILE*
+     - List of input BAM files, one file per line.
+   * - *\--dbsnp_file FILE*
+     - dbSNP VCF file, used by GATK to add rs numbers.
+   * - *\--java_options STR*
+     - Java-specific arguments for GATK (e.g. '-Xmx4G').
+   * - *\--temp_dir DIR*
+     - Temporary files will be written to this directory.
+
 Description
 -----------
-
-Convert BAM files to a VCF file.
 
 This command creates a single- or multi-sample VCF file from one or 
 more input BAM files. The output VCF file will only contain variants 
@@ -206,11 +317,6 @@ pre-specified parameters. This means the called variants will be
 already normalized and filtered, ready for the downstream genotype 
 analysis by the Stargazer program.
 
-*snp_caller* is the SNP caller ('gatk' or 'bcftools'). *fasta_file* is the 
-reference FASTA file. *target_gene* is the name or region of target gene 
-(e.g. 'cyp2d6', 'chr22:42512500-42551883'). Output will be written to 
-*output_file*. *genome_build* is the genome build ('hg19' or 'hg38'). 
-*bam_file* are the input BAM files.
 
 .. warning::
     GATK and/or BCFtools must be pre-installed.
@@ -224,28 +330,42 @@ reference FASTA file. *target_gene* is the name or region of target gene
     recommend that you use ``bcftools``. If you have SGE and want to 
     use GATK, please check ``bam2vcf2``.
 
-Options
--------
-
--h, --help         show command-specific help message and exit
---bam_dir DIR      use all BAM files in this directory as input
---bam_list FILE    list of input BAM files, one file per line
---dbsnp_file FILE  dbSNP VCF file, used by GATK to add rs numbers
---java_options STR  Java-specific arguments for GATK (e.g. '-Xmx4G')
---temp_dir DIR     temporary files will be written to this directory
-
 bam2vcf2 command
 ================
+
+Convert BAM files to a VCF file [SGE]
 
 Synopsis
 --------
 
 pypgx bam2vcf2 *[options] conf_file*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *conf_file*
+     - Configuration file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+
 Description
 -----------
-
-Convert BAM files to a VCF file [SGE].
 
 This command outputs a single- or multi-sample VCF file from one or 
 more input BAM files. The output VCF file will only contain variants 
@@ -311,13 +431,10 @@ This table summarizes the configuration parameters specific to ``bam2vcf2``:
          - Name of target gene (e.g. 'cyp2d6'). 
            Also accepts a BED file.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 bam2gdf command
 ===============
+
+Convert BAM files to a GDF file.
 
 Synopsis
 --------
@@ -329,10 +446,46 @@ Synopsis
 |   *output_file* \\
 |   *[bam_file [bam_file ...]]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *genome_build*
+     - Genome build ('hg19' or 'hg38').
+   * - *target_gene*
+     - Name of target gene (e.g. 'cyp2d6').
+   * - *control_gene*
+     - Name or region of control gene (e.g. 'vdr', 'chr12:48232319-48301814').
+   * - *output_file*
+     - Output will be written to *output_file*.
+   * - *bam_file*
+     - Input BAM files.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *\--bam_dir DIR*
+     - Use all BAM files in this directory as input.
+   * - *\--bam_list FILE*
+     - List of input BAM files, one file per line.
+
 Description
 -----------
 
-Convert BAM files to a GDF file.
+This command converts BAM files to a GDF file.
 
 This command calculates read depth from BAM files and then outputs a
 GDF (GATK-DepthOfCoverage Format) file, which is one of the input 
@@ -345,62 +498,95 @@ way less memory. Another nice about using ``bam2gdf`` instead of
 ``samtools depth`` is that everything is already parametrized for 
 compatibility with Stargazer. 
 
-*genome_build* is the genome build ('hg19' or 'hg38'). *target_gene* is 
-the name of target gene (e.g. 'cyp2d6'). *control_gene* is the name or 
-region of control gene (e.g. 'vdr', 'chr12:48232319-48301814'). Output will 
-be written to *output_file*. *bam_file* are the input BAM files.
-
 .. note::
     You do NOT need to install ``samtools`` to run this command.
 
-Options
--------
-
--h, --help       show command-specific help message and exit
---bam_dir DIR    use all BAM files in this directory as input
---bam_list FILE  list of input BAM files, one file per line
-
 gt2html command
 ===============
+
+Create HTML report using Stargazer data.
 
 Synopsis
 --------
 
 pypgx gt2html *[options] gt*
 
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *gb*
+     - Genotype file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Create HTML report using Stargazer data.
-
-*gt* is the genotype file from Stargazer.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command creates HTML report using Stargazer data.
 
 bam2html command
 ================
+
+Run per-sample genotyping for multiple genes with SGE.
 
 Synopsis
 --------
 
 pypgx bam2html *[options] conf_file*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *conf_file*
+     - Configuration file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+
 Description
 -----------
 
-Run per-sample genotyping for multiple genes with SGE.
+This command runs per-sample genotyping for multiple genes with SGE.
 
 This command runs the per-sample genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys 
 the ``genotype`` command to multiple genes in parallel. After genotype 
 analysis is complete, it will merge the genotype results and then 
 generate a HTML report using the ``gt2html`` command.
-
-*conf_file* is the configuration file.
 
 .. note::
 
@@ -462,25 +648,44 @@ This table summarizes the configuration parameters specific to ``sges``:
        * - target_genes
          - Names of target genes (e.g. 'cyp2d6').
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 fq2bam command
 ==============
+
+Create BAM file(s) from FASTQ file(s).
 
 Synopsis
 --------
 
 pypgx fq2bam *[options] conf_file*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *conf_file*
+     - Configuration file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+
 Description
 -----------
 
-Create BAM file(s) from FASTQ file(s).
-
-*conf_file* is the configuration file.
+This command creates BAM file(s) from FASTQ file(s).
 
 This is what a typical configuration file for ``fq2bam`` looks like:
 
@@ -538,25 +743,44 @@ This table summarizes the configuration parameters specific to ``fq2bam``:
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 bam2bam command
 ===============
+
+Realign BAM files to another reference genome [SGE].
 
 Synopsis
 --------
 
 pypgx bam2bam *[options] conf_file*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *conf_file*
+     - Configuration file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+
 Description
 -----------
 
-Realign BAM files to another reference genome [SGE].
-
-*conf_file* is the configuration file.
+This command realign BAM files to another reference genome using SGE.
 
 This is what a typical configuration file for ``bam2bam`` looks like:
 
@@ -616,54 +840,95 @@ This table summarizes the configuration parameters specific to ``bam2bam``:
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
 
-Options
--------
-
--h, --help  show command-specific help message and exit
-
 bam2sdf command
 ===============
+
+Create SDF file from BAM file(s).
 
 Synopsis
 --------
 
 pypgx bam2sdf *[options] gb tg cg bam [bam ...]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *gb*
+     - Genome build ('hg19' or 'hg38').
+   * - *tg*
+     - Target gene (e.g. 'cyp2d6').
+   * - *cg*
+     - Control gene (e.g. 'vdr') or region (e.g. 'chr12:48232319-48301814').
+   * - *bam*
+     - BAM file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Create SDF file from BAM file(s).
-
-*gb* is the genome build ('hg19' or 'hg38'). *tg* is the target 
-gene (e.g. 'cyp2d6'). *cg* is the control gene (e.g. 'vdr') or 
-region (e.g. 'chr12:48232319-48301814'). *bam* is the BAM file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command creates SDF file from BAM files.
 
 sdf2gdf command
 ===============
+
+Create GDF file from SDF file.
 
 Synopsis
 --------
 
 pypgx sdf2gdf *[options] sdf id [id ...]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *sdf*
+     - SDF file.
+   * - *id*
+     - Sample ID.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Create GDF file from SDF file.
-
-*sdf* is SDF file. *id* is sample ID.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command creates GDF file from SDF file.
 
 pgkb command
 ============
@@ -689,7 +954,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - \--test_mode
+   * - *\--test_mode*
      - Only extract first three guidelines for testing.
 
 Description
@@ -717,9 +982,9 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - vcf_file
+   * - *vcf_file*
      - VCF file.
-   * - region
+   * - *region*
      - Target region.
 
 Optional arguments
@@ -731,7 +996,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -758,7 +1023,7 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - vcf_file
+   * - *vcf_file*
      - VCF files to be merged.
 
 Optional arguments
@@ -770,9 +1035,9 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
-   * - \--region
+   * - *\--region*
      - Target region.
 
 Description
@@ -786,84 +1051,127 @@ with any number of samples and with different sets of variants.
 summary command
 ===============
 
+Create summary file using Stargazer data.
+
 Synopsis
 --------
 
 pypgx summary *[options] gt*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *gt*
+     - Genotype file.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Create summary file using Stargazer data.
-
-*gt* is the genotype file from Stargazer.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command creates summary file using Stargazer data.
 
 meta command
 ============
+
+Create meta file from summary files.
 
 Synopsis
 --------
 
 pypgx meta *[options] sf [sf ...]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *sf*
+     - Summary file from the ``summary`` command.
+
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Create meta file from summary files.
-
-*sf* is the summary file from the ``summary`` command.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command creates meta comparison file from summary files.
 
 compare command
 ===============
+
+Compare genotype files.
 
 Synopsis
 --------
 
 pypgx compare *[options] gt [gt ...]*
 
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *gt*
+     - Genotype file.
+
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *-o*
+     - Output to FILE [stdout].
+
 Description
 -----------
 
-Compare genotype files.
-
-*gt* is the genotype file from Stargazer.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
-
-cpa command
-===========
-
-Synopsis
---------
-
-pypgx cpa *[options] rdata*
-
-Description
------------
-
-Run change point analysis for copy number. *rdata* is Rdata file.
-
-Options
--------
-
--h, --help  show command-specific help message and exit
--o FILE     output to FILE [stdout]
+This command can compare multiple genotype files at once.
 
 check command
 =============
@@ -886,9 +1194,9 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - star_table
+   * - *star_table*
      - Star allele table file (``star_table.txt``).
-   * - snp_table
+   * - *snp_table*
      - SNP table file (``snp_table.txt``).
 
 Optional arguments
@@ -900,7 +1208,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -930,11 +1238,11 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - star_table
+   * - *star_table*
      - Star allele table file (``star_table.txt``).
-   * - snp_table
+   * - *snp_table*
      - SNP table file (``snp_table.txt``).
-   * - target_gene
+   * - *target_gene*
      - Target gene.
 
 Optional arguments
@@ -946,7 +1254,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -973,7 +1281,7 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - vcf_file
+   * - *vcf_file*
      - Stargazer VCF file (``finalized.vcf``).
 
 Optional arguments
@@ -985,7 +1293,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -1015,9 +1323,9 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - vcf_file
+   * - *vcf_file*
      - Stargazer VCF file (``finalized.vcf``).
-   * - query [query ...]
+   * - *query [query ...]*
      - Pair of sample and star allele separated by ``/`` 
        (e.g. ``SAMPLE1/*4``).
 
@@ -1030,7 +1338,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, -\-help
+   * - *-h, -\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1105,11 +1413,11 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - truth_file
+   * - *truth_file*
      - Truth genotype file.
-   * - test_file
+   * - *test_file*
      - Test genotype file.
-   * - sample_map
+   * - *sample_map*
      - Tab-delimited text file with two columns representing 
        the truth and test sample names.
 
@@ -1122,7 +1430,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -1154,11 +1462,11 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - truth_file
+   * - *truth_file*
      - Truth VCF file.
-   * - test_file
+   * - *test_file*
      - Test VCF file.
-   * - sample_map
+   * - *sample_map*
      - Tab-delimited text file with two columns representing 
        the truth and test sample names.
 
@@ -1171,7 +1479,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - -h, \--help
+   * - *-h, \--help*
      - Show command-specific help message and exit.
 
 Description
@@ -1239,3 +1547,52 @@ This table summarizes the column headers of the output.
      - True negative rate for SNV+Indel.
    * - all_con
      - Accuracy for SNV+Indel.
+
+unicov command
+==============
+
+Compute the uniformity of sequencing coverage.
+
+Synopsis
+--------
+
+| pypgx unicov *[options]* \\
+|   *bed_file* \\
+|   *[bam_file [bam_file ...]]*
+
+Positional arguments
+--------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *bed_file*
+     - BED file.
+   * - *bam_file*
+     - Input BAM files.
+
+Optional arguments
+------------------
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \--help*
+     - Show command-specific help message and exit.
+   * - *\--bam_dir DIR*
+     - Use all BAM files in this directory as input.
+   * - *\--bam_list FILE*
+     - List of input BAM files, one file per line.
+
+Description
+-----------
+
+This command evaluates the uniformity of sequencing coverage by computing 
+% of base pairs that were sequenced at various coverages. Only regions 
+specified in the BED file are computed.
