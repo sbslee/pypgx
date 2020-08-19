@@ -1,10 +1,8 @@
 from .phenotyper import phenotyper
 
-def gt2pt(
-        gt: str,
-        **kwargs,
-    ) -> str:
-    """Call phenotypes from star alleles.
+def gt2pt(gt_file: str,
+          **kwargs) -> str:
+    """Convert a genotype file to phenotypes.
 
     This command is just a wrapper for the ``phenotyper`` module.
 
@@ -12,11 +10,12 @@ def gt2pt(
         str: Phenotype calls.
 
     Args:
-        gt (str): Genotype file from Stargazer.
+        gt_file (str): Genotype file from Stargazer (``genotype.txt``).
     """
+
     result = []
 
-    with open(gt) as f:
+    with open(gt_file) as f:
         header = next(f).strip().split("\t")
 
         i1 = header.index("gene")

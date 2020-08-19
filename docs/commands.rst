@@ -4,6 +4,22 @@ Commands
 This section describes how to use PyPGx as a command-line program.
 For the public API of Python module ``pypgx``, please see the API section.
 
+Common optional arguments
+=========================
+
+The following options are common to all of the PyPGx commands.
+
+.. list-table::
+   :widths: 30 70
+   :header-rows: 1
+
+   * - Argument
+     - Summary
+   * - *-h, \\-\\-help*
+     - Show command-specific help message and exit.
+   * - *\\-\\-out_file*
+     - Write output to FILE [stdout].
+
 bam2gt command
 ==============
 
@@ -54,8 +70,6 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
    * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
    * - *\\-\\-bam_list FILE*
@@ -111,14 +125,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -207,12 +214,12 @@ This table summarizes the configuration parameters specific to ``bam2gt2``:
 gt2pt command
 =============
 
-Call phenotypes from star alleles.
+Convert a genotype file to phenotypes.
 
 Synopsis
 --------
 
-pypgx gt2pt *[options] gt*
+pypgx gt2pt *[options] gt_file*
 
 Positional arguments
 --------------------
@@ -223,22 +230,13 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - *gt*
-     - Genotype file.
+   * - *gt_file*
+     - Genotype file from Stargazer (``genotype.txt``).
 
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *\-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -293,8 +291,6 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
    * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
    * - *\\-\\-bam_list FILE*
@@ -355,14 +351,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -475,8 +464,6 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
    * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
    * - *\\-\\-bam_list FILE*
@@ -521,22 +508,13 @@ Positional arguments
 
    * - Argument
      - Summary
-   * - *gb*
+   * - *gt*
      - Genotype file.
 
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -568,14 +546,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -673,14 +644,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -768,14 +732,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -871,16 +828,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -914,16 +862,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -943,7 +882,7 @@ pypgx pgkb *[options]*
 Positional arguments
 --------------------
 
-There are no positional arguments for this command.
+None.
 
 Optional arguments
 ------------------
@@ -990,14 +929,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1035,8 +967,6 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
    * - *\\-\\-region*
      - Target region.
 
@@ -1068,21 +998,12 @@ Positional arguments
    * - Argument
      - Summary
    * - *gt*
-     - Genotype file.
+     - Genotype file from Stargazer (``genotype.txt``).
 
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -1115,16 +1036,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -1151,22 +1063,13 @@ Positional arguments
    * - Argument
      - Summary
    * - *gt*
-     - Genotype file.
+     - Genotype file from Stargazer (``genotype.txt``).
 
 
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *-o*
-     - Output to FILE [stdout].
+None.
 
 Description
 -----------
@@ -1202,14 +1105,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1248,14 +1144,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1287,14 +1176,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1332,14 +1214,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, -\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1414,9 +1289,9 @@ Positional arguments
    * - Argument
      - Summary
    * - *truth_file*
-     - Truth genotype file.
+     - Truth genotype file from Stargazer (``genotype.txt``).
    * - *test_file*
-     - Test genotype file.
+     - Test genotype file from Stargazer (``genotype.txt``).
    * - *sample_map*
      - Tab-delimited text file with two columns representing 
        the truth and test sample names.
@@ -1424,14 +1299,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1473,14 +1341,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
+None.
 
 Description
 -----------
@@ -1583,8 +1444,6 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
    * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
    * - *\\-\\-bam_list FILE*

@@ -230,11 +230,9 @@ def _read_genotype_file(f, fn, target_genes):
 
     return result1, result2
 
-def gt2html(
-        fn: str,
-        f: Optional[TextIO] = None,
-        **kwargs
-    ) -> str:
+def gt2html(gt_file: str,
+            f: Optional[TextIO] = None,
+            **kwargs) -> str:
     """
     Create HTML report using Stargazer data.
 
@@ -242,14 +240,14 @@ def gt2html(
         str: HTML report.
 
     Args:
-        fn (str): Genotype file.
+        gt_file (str): Genotype file.
         f (TextIO, optional): Genotype file.
     """
 
     target_genes = get_target_genes()
     action_table = _read_action_table()
     pair_table, cpic_date = _read_pair_table()
-    genotype_table, sample_id = _read_genotype_file(f, fn, target_genes)
+    genotype_table, sample_id = _read_genotype_file(f, gt_file, target_genes)
 
     for k, v in genotype_table.items():
         if v["hap1_main"] == "-":

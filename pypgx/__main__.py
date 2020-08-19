@@ -74,6 +74,13 @@ def get_parser():
         help="print the PyPGx version number and exit"
     )
 
+    parent_parser = argparse.ArgumentParser(add_help=False)
+    parent_parser.add_argument(
+        "--out_file",
+        metavar="FILE",
+        help="write output to FILE [stdout]"
+    )
+
     subparsers = parser.add_subparsers(
         dest="tool",
         metavar="tool",
@@ -83,6 +90,7 @@ def get_parser():
     bam2gt_parser = subparsers.add_parser(
         "bam2gt",
         help="convert BAM files to a genotype file",
+        parents=[parent_parser]
     )
     bam2gt_parser.add_argument(
         "snp_caller",
@@ -148,6 +156,7 @@ def get_parser():
     bam2gt2_parser = subparsers.add_parser(
         "bam2gt2",
         help="convert BAM files to genotype files [SGE]",
+        parents=[parent_parser]
     )
     bam2gt2_parser.add_argument(
         "conf_file",
@@ -157,20 +166,17 @@ def get_parser():
     gt2pt_parser = subparsers.add_parser(
         "gt2pt",
         help="convert a genotype file to phenotypes",
+        parents=[parent_parser]
     )
     gt2pt_parser.add_argument(
-        "gt",
-        help="genotype file",
-    )
-    gt2pt_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        "gt_file",
+        help="genotype file from Stargazer ('genotype.txt')",
     )
 
     bam2vcf_parser = subparsers.add_parser(
         "bam2vcf",
-        help="convert BAM files to a VCF file"
+        help="convert BAM files to a VCF file",
+        parents=[parent_parser]
     )
     bam2vcf_parser.add_argument(
         "snp_caller",
@@ -227,6 +233,7 @@ def get_parser():
     bam2vcf2_parser = subparsers.add_parser(
         "bam2vcf2",
         help="convert BAM files to a VCF file [SGE]",
+        parents=[parent_parser]
     )
     bam2vcf2_parser.add_argument(
         "conf_file",
@@ -236,6 +243,7 @@ def get_parser():
     bam2gdf_parser = subparsers.add_parser(
         "bam2gdf",
         help="convert BAM files to a GDF file",
+        parents=[parent_parser]
     )
     bam2gdf_parser.add_argument(
         "genome_build",
@@ -273,20 +281,17 @@ def get_parser():
     gt2html_parser = subparsers.add_parser(
         "gt2html",
         help="convert a genotype file to an HTML report",
+        parents=[parent_parser]
     )
     gt2html_parser.add_argument(
-        "gt",
-        help="genotype file",
-    )
-    gt2html_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
+        "gt_file",
+        help="genotype file from Stargazer ('genotype.txt')",
     )
 
     bam2html_parser = subparsers.add_parser(
         "bam2html",
         help="convert a BAM file to an HTML report [SGE]",
+        parents=[parent_parser]
     )
     bam2html_parser.add_argument(
         "conf_file",
@@ -296,6 +301,7 @@ def get_parser():
     fq2bam_parser = subparsers.add_parser(
         "fq2bam",
         help="convert FASTQ files to BAM files [SGE]",
+        parents=[parent_parser]
     )
     fq2bam_parser.add_argument(
         "conf_file",
@@ -305,6 +311,7 @@ def get_parser():
     bam2bam_parser = subparsers.add_parser(
         "bam2bam",
         help="realign BAM files to another reference genome [SGE]",
+        parents=[parent_parser]
     )
     bam2bam_parser.add_argument(
         "conf_file",
@@ -314,6 +321,7 @@ def get_parser():
     bam2sdf_parser = subparsers.add_parser(
         "bam2sdf",
         help="convert BAM files to a SDF file",
+        parents=[parent_parser]
     )
     bam2sdf_parser.add_argument(
         "gb",
@@ -332,24 +340,15 @@ def get_parser():
         nargs="+",
         help="BAM file",
     )
-    bam2sdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
 
     sdf2gdf_parser = subparsers.add_parser(
         "sdf2gdf",
         help="convert a SDF file to a GDF file",
+        parents=[parent_parser]
     )
     sdf2gdf_parser.add_argument(
         "sdf",
         help="SDF file",
-    )
-    sdf2gdf_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
     )
     sdf2gdf_parser.add_argument(
         "id",
@@ -360,6 +359,7 @@ def get_parser():
     pgkb_parser = subparsers.add_parser(
         "pgkb",
         help="extract CPIC guidelines using PharmGKB API",
+        parents=[parent_parser]
     )
     pgkb_parser.add_argument(
         "--test_mode",
@@ -370,6 +370,7 @@ def get_parser():
     minivcf_parser = subparsers.add_parser(
         "minivcf",
         help="slice VCF file",
+        parents=[parent_parser]
     )
     minivcf_parser.add_argument(
         "vcf_file",
@@ -383,6 +384,7 @@ def get_parser():
     mergevcf_parser = subparsers.add_parser(
         "mergevcf",
         help="merge VCF files",
+        parents=[parent_parser]
     )
     mergevcf_parser.add_argument(
         "vcf_file",
@@ -398,50 +400,39 @@ def get_parser():
     summary_parser = subparsers.add_parser(
         "summary",
         help="create summary file using Stargazer data",
+        parents=[parent_parser]
     )
     summary_parser.add_argument(
         "gt",
         help="genotype file",
     )
-    summary_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
 
     meta_parser = subparsers.add_parser(
         "meta",
         help="create meta file from summary files",
+        parents=[parent_parser]
     )
     meta_parser.add_argument(
         "sf",
         nargs="+",
         help="summary file",
     )
-    meta_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
 
     compare_parser = subparsers.add_parser(
         "compare",
         help="compare genotype files",
+        parents=[parent_parser]
     )
     compare_parser.add_argument(
         "gt",
         nargs="+",
         help="genotype file",
     )
-    compare_parser.add_argument(
-        "-o",
-        metavar="FILE",
-        help="output to FILE [stdout]",
-    )
 
     check_parser = subparsers.add_parser(
         "check",
         help="check table files for Stargazer",
+        parents=[parent_parser]
     )
     check_parser.add_argument(
         "star_table",
@@ -455,6 +446,7 @@ def get_parser():
     liftover_parser = subparsers.add_parser(
         "liftover",
         help="convert variants in SNP table from hg19 to hg38",
+        parents=[parent_parser]
     )
     liftover_parser.add_argument(
         "star_table",
@@ -472,6 +464,7 @@ def get_parser():
     peek_parser = subparsers.add_parser(
         "peek",
         help="find all possible star alleles from VCF file",
+        parents=[parent_parser]
     )
     peek_parser.add_argument(
         "vcf_file",
@@ -481,6 +474,7 @@ def get_parser():
     viewsnp_parser = subparsers.add_parser(
         "viewsnp",
         help="view SNP data for pairs of sample/star allele",
+        parents=[parent_parser]
     )
     viewsnp_parser.add_argument(
         "vcf_file",
@@ -496,6 +490,7 @@ def get_parser():
     compgt_parser = subparsers.add_parser(
         "compgt",
         help="compute the concordance between two genotype files",
+        parents=[parent_parser]
     )
     compgt_parser.add_argument(
         "truth_file",
@@ -514,6 +509,7 @@ def get_parser():
     compvcf_parser = subparsers.add_parser(
         "compvcf",
         help="compute the concordance between two VCF files",
+        parents=[parent_parser]
     )
     compvcf_parser.add_argument(
         "truth_file",
@@ -532,6 +528,7 @@ def get_parser():
     unicov_parser = subparsers.add_parser(
         "unicov",
         help="compute the uniformity of sequencing coverage",
+        parents=[parent_parser]
     )
     unicov_parser.add_argument(
         "bed_file",
@@ -576,8 +573,8 @@ def main():
     logger.info("PyPGx finished")
 
     if result:
-        if hasattr(args, "o") and args.o:
-            with open(args.o, "w") as f:
+        if args.out_file:
+            with open(args.out_file, "w") as f:
                 f.write(result)
         else:
             sys.stdout.write(result)
