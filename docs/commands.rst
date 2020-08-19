@@ -54,19 +54,19 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
-   * - *\--bam_list FILE*
+   * - *\\-\\-bam_list FILE*
      - List of input BAM files, one file per line.
-   * - *\--control_gene STR*
+   * - *\\-\\-control_gene STR*
      - Name or region of control gene (e.g. ‘vdr’, ‘chr12:48232319-48301814’).
-   * - *\--dbsnp_file FILE*
+   * - *\\-\\-dbsnp_file FILE*
      - dbSNP VCF file, used by GATK to add rs numbers.
-   * - *\--temp_dir DIR*
+   * - *\\-\\-temp_dir DIR*
      - Temporary files will be written to this directory.
-   * - *\--plot*
+   * - *\\-\\-plot*
      - Output copy number plots.
 
 Description
@@ -117,7 +117,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -235,7 +235,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *\-o*
      - Output to FILE [stdout].
@@ -293,17 +293,17 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
-   * - *\--bam_dir DIR*
+   * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
-   * - *\--bam_list FILE*
+   * - *\\-\\-bam_list FILE*
      - List of input BAM files, one file per line.
-   * - *\--dbsnp_file FILE*
+   * - *\\-\\-dbsnp_file FILE*
      - dbSNP VCF file, used by GATK to add rs numbers.
-   * - *\--java_options STR*
+   * - *\\-\\-java_options STR*
      - Java-specific arguments for GATK (e.g. '-Xmx4G').
-   * - *\--temp_dir DIR*
+   * - *\\-\\-temp_dir DIR*
      - Temporary files will be written to this directory.
 
 Description
@@ -361,7 +361,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -475,11 +475,11 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
-   * - *\--bam_dir DIR*
+   * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
-   * - *\--bam_list FILE*
+   * - *\\-\\-bam_list FILE*
      - List of input BAM files, one file per line.
 
 Description
@@ -533,7 +533,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -574,7 +574,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -679,7 +679,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -774,7 +774,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -877,7 +877,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -920,7 +920,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -954,7 +954,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *\--test_mode*
+   * - *\\-\\-test_mode*
      - Only extract first three guidelines for testing.
 
 Description
@@ -996,7 +996,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1035,9 +1035,9 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
-   * - *\--region*
+   * - *\\-\\-region*
      - Target region.
 
 Description
@@ -1079,7 +1079,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -1121,7 +1121,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -1163,7 +1163,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
    * - *-o*
      - Output to FILE [stdout].
@@ -1208,7 +1208,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1254,7 +1254,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1293,7 +1293,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1430,7 +1430,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1479,7 +1479,7 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
 
 Description
@@ -1583,11 +1583,11 @@ Optional arguments
 
    * - Argument
      - Summary
-   * - *-h, \--help*
+   * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
-   * - *\--bam_dir DIR*
+   * - *\\-\\-bam_dir DIR*
      - Use all BAM files in this directory as input.
-   * - *\--bam_list FILE*
+   * - *\\-\\-bam_list FILE*
      - List of input BAM files, one file per line.
 
 Description
