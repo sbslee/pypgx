@@ -14,7 +14,7 @@ def read_gt(x):
             genotype.append([hap1_main, hap2_main])
     return genotype
 
-def compare(gt: List[str], **kwargs) -> str:
+def compare(gt_file: List[str], **kwargs) -> str:
     """
     Compare genotype files.
 
@@ -22,15 +22,15 @@ def compare(gt: List[str], **kwargs) -> str:
         str: Result file.
 
     Args:
-        gt (list[str]): Genotype file.
+        gt_file (list[str]): Genotype file.
     """
 
-    truth_file = gt[0]
+    truth_file = gt_file[0]
     truth_genotype = read_gt(truth_file)
 
     n_total = len(truth_genotype)
 
-    test_files = gt[1:]
+    test_files = gt_file[1:]
     test_genotypes = []
 
     for test_file in test_files:

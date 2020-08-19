@@ -18,7 +18,7 @@ def _append2(d, i):
             d[name].append(".")
             d[name].append(".")
 
-def meta(sf: List[str], **kwargs) -> str:
+def meta(summary_file: List[str], **kwargs) -> str:
     """
     Create meta file from summary files.
 
@@ -26,13 +26,13 @@ def meta(sf: List[str], **kwargs) -> str:
         str: Meta file.
 
     Args:
-        sf (list[str]): Summary file.
+        summary_file (list[str]): Summary file.
     """
     dicts = {}
     header1 = ["type", "name", "sv", "hap_score"]
 
-    for i in range(len(sf)):
-        summary = sf[i]
+    for i in range(len(summary_file)):
+        summary = summary_file[i]
         prefix = os.path.basename(summary)
         header1.append("n_" + prefix)
         header1.append("p_" + prefix)

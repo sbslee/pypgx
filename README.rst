@@ -36,39 +36,39 @@ Running in Command Line
 For getting help::
 
     $ pypgx -h
-    usage: pypgx [-h] [--version] tool ...
+    usage: pypgx [-h] [-v] tool ...
 
     positional arguments:
-      tool        name of the tool
-        bam2gt    convert BAM files to a genotype file
-        bam2gt2   convert BAM files to genotype files [SGE]
-        gt2pt     convert a genotype file to phenotypes
-        bam2vcf   convert BAM files to a VCF file
-        bam2vcf2  convert BAM files to a VCF file [SGE]
-        bam2gdf   convert BAM files to a GDF file
-        gt2html   convert a genotype file to an HTML report
-        bam2html  convert a BAM file to an HTML report [SGE]
-        fq2bam    convert FASTQ files to BAM files [SGE]
-        bam2bam   realign BAM files to another reference genome [SGE]
-        bam2sdf   convert BAM files to a SDF file
-        sdf2gdf   convert a SDF file to a GDF file
-        pgkb      extract CPIC guidelines using PharmGKB API
-        minivcf   slice VCF file
-        mergevcf  merge VCF files
-        summary   create summary file using Stargazer data
-        meta      create meta file from summary files
-        compare   compare genotype files
-        check     check table files for Stargazer
-        liftover  convert variants in SNP table from hg19 to hg38
-        peek      find all possible star alleles from VCF file
-        viewsnp   view SNP data for pairs of sample/star allele
-        compgt    compute the concordance between two genotype files
-        compvcf   compute the concordance between two VCF files
-        unicov    compute the uniformity of sequencing coverage
+      tool           name of the tool
+        bam2gt       convert BAM files to a genotype file
+        bam2gt2      convert BAM files to genotype files [SGE]
+        gt2pt        convert a genotype file to phenotypes
+        bam2vcf      convert BAM files to a VCF file
+        bam2vcf2     convert BAM files to a VCF file [SGE]
+        bam2gdf      convert BAM files to a GDF file
+        gt2html      convert a genotype file to an HTML report
+        bam2html     convert a BAM file to an HTML report [SGE]
+        fq2bam       convert FASTQ files to BAM files [SGE]
+        bam2bam      realign BAM files to another reference genome [SGE]
+        bam2sdf      convert BAM files to a SDF file
+        sdf2gdf      convert a SDF file to a GDF file
+        pgkb         extract CPIC guidelines using PharmGKB API
+        minivcf      slice VCF file
+        mergevcf     merge VCF files
+        summary      create summary file using Stargazer data
+        meta         create meta file from summary files
+        compare      compare genotype files
+        check        check table files for Stargazer
+        liftover     convert variants in SNP table from hg19 to hg38
+        peek         find all possible star alleles from VCF file
+        viewsnp      view SNP data for pairs of sample/star allele
+        compgt       compute the concordance between two genotype files
+        compvcf      compute the concordance between two VCF files
+        unicov       compute the uniformity of sequencing coverage
 
     optional arguments:
-      -h, --help  show this help message and exit
-      --version   print the PyPGx version number and exit
+      -h, --help     show this help message and exit
+      -v, --version  print the PyPGx version number and exit
 
 For getting tool-specific help::
 
@@ -87,8 +87,8 @@ For getting tool-specific help::
 
     optional arguments:
       -h, --help       show this help message and exit
-      --bam_dir DIR    use all BAM files in this directory as input
-      --bam_list FILE  list of input BAM files, one file per line
+      --bam_dir DIR    treat any BAM files in DIR as input
+      --bam_list FILE  read BAM files from FILE, one file path per line
 
 For running in command line::
 

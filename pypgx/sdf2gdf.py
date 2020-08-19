@@ -3,7 +3,7 @@ import statistics
 from typing import Optional, List, TextIO
 
 def sdf2gdf(
-        fn: str,
+        sdf_file: str,
         id: List[str],
         f: Optional[TextIO] = None, 
         **kwargs
@@ -15,13 +15,13 @@ def sdf2gdf(
         str: GDF file.
 
     Args:
-        fn (str): SDF file.
+        sdf_file (str): SDF file.
         id (list[str]): Sample ID(s).
         f (TextIO, optional): SDF file.
     """
 
-    if fn:
-        f = open(fn)
+    if sdf_file:
+        f = open(sdf_file)
 
     # Get the header.
     result = "Locus\tTotal_Depth\tAverage_Depth_sample"
@@ -48,7 +48,7 @@ def sdf2gdf(
         fields2 = [locus, sum(depth), avg] + depth
         result += "\t".join([str(x) for x in fields2]) + "\n"
 
-    if fn:
+    if sdf_file:
         f.close()
 
     return result

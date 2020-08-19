@@ -2,7 +2,7 @@ import os
 
 from .sglib import sort_star_names
 
-def summary(gt: str, **kwargs) -> str:
+def summary(gt_file: str, **kwargs) -> str:
     """
     Create summary file using Stargazer data.
 
@@ -10,7 +10,7 @@ def summary(gt: str, **kwargs) -> str:
         str: Summary file.
 
     Args:
-        gt (str): Genotype file.
+        gt_file (str): Genotype file.
     """
     star_dict = {}   # list all observed star alleles (haplotypes)
     asc_dict = {}    # how many observed alleles had AS=0, 0.5, ...
@@ -23,7 +23,7 @@ def summary(gt: str, **kwargs) -> str:
     a_total = 0
     s_total = 0
 
-    with open(gt) as f:
+    with open(gt_file) as f:
         next(f)
         for line in f:
             fields = line.strip().split("\t")

@@ -100,6 +100,7 @@ def get_parser():
         metavar="tool",
         help="name of the tool",
     )
+    subparsers.required = True
 
     bam2gt_parser = subparsers.add_parser(
         "bam2gt",
@@ -160,7 +161,7 @@ def get_parser():
     bam2gt2_parser = subparsers.add_parser(
         "bam2gt2",
         help="convert BAM files to genotype files [SGE]",
-        parents=[output_parser]
+        parents=[]
     )
     bam2gt2_parser.add_argument(
         "conf_file",
@@ -180,7 +181,7 @@ def get_parser():
     bam2vcf_parser = subparsers.add_parser(
         "bam2vcf",
         help="convert BAM files to a VCF file",
-        parents=[output_parser]
+        parents=[bam_getter_parser]
     )
     bam2vcf_parser.add_argument(
         "snp_caller",
@@ -209,16 +210,6 @@ def get_parser():
         help="input BAM files"
     )
     bam2vcf_parser.add_argument(
-        "--bam_dir",
-        metavar="DIR",
-        help="use all BAM files in this directory as input"
-    )
-    bam2vcf_parser.add_argument(
-        "--bam_list",
-        metavar="FILE",
-        help="list of input BAM files, one file per line"
-    )
-    bam2vcf_parser.add_argument(
         "--dbsnp_file",
         metavar="FILE",
         help="dbSNP VCF file, used by GATK to add rs numbers"
@@ -237,7 +228,7 @@ def get_parser():
     bam2vcf2_parser = subparsers.add_parser(
         "bam2vcf2",
         help="convert BAM files to a VCF file [SGE]",
-        parents=[output_parser]
+        parents=[]
     )
     bam2vcf2_parser.add_argument(
         "conf_file",
@@ -247,7 +238,7 @@ def get_parser():
     bam2gdf_parser = subparsers.add_parser(
         "bam2gdf",
         help="convert BAM files to a GDF file",
-        parents=[output_parser]
+        parents=[bam_getter_parser]
     )
     bam2gdf_parser.add_argument(
         "genome_build",
@@ -271,16 +262,6 @@ def get_parser():
         nargs="*",
         help="input BAM files"
     )
-    bam2gdf_parser.add_argument(
-        "--bam_dir",
-        metavar="DIR",
-        help="use all BAM files in this directory as input"
-    )
-    bam2gdf_parser.add_argument(
-        "--bam_list",
-        metavar="FILE",
-        help="list of input BAM files, one file per line"
-    )
 
     gt2html_parser = subparsers.add_parser(
         "gt2html",
@@ -295,7 +276,7 @@ def get_parser():
     bam2html_parser = subparsers.add_parser(
         "bam2html",
         help="convert a BAM file to an HTML report [SGE]",
-        parents=[output_parser]
+        parents=[]
     )
     bam2html_parser.add_argument(
         "conf_file",
@@ -315,7 +296,7 @@ def get_parser():
     bam2bam_parser = subparsers.add_parser(
         "bam2bam",
         help="realign BAM files to another reference genome [SGE]",
-        parents=[output_parser]
+        parents=[]
     )
     bam2bam_parser.add_argument(
         "conf_file",
@@ -328,19 +309,19 @@ def get_parser():
         parents=[output_parser]
     )
     bam2sdf_parser.add_argument(
-        "gb",
+        "genome_build",
         help="genome build",
     )
     bam2sdf_parser.add_argument(
-        "tg",
+        "target_gene",
         help="target gene",
     )
     bam2sdf_parser.add_argument(
-        "cg",
+        "control_gene",
         help="control gene or region",
     )
     bam2sdf_parser.add_argument(
-        "bam",
+        "bam_file",
         nargs="+",
         help="BAM file",
     )
@@ -351,7 +332,7 @@ def get_parser():
         parents=[output_parser]
     )
     sdf2gdf_parser.add_argument(
-        "sdf",
+        "sdf_file",
         help="SDF file",
     )
     sdf2gdf_parser.add_argument(
@@ -407,7 +388,7 @@ def get_parser():
         parents=[output_parser]
     )
     summary_parser.add_argument(
-        "gt",
+        "gt_file",
         help="genotype file",
     )
 
@@ -417,7 +398,7 @@ def get_parser():
         parents=[output_parser]
     )
     meta_parser.add_argument(
-        "sf",
+        "summary_file",
         nargs="+",
         help="summary file",
     )
@@ -428,7 +409,7 @@ def get_parser():
         parents=[output_parser]
     )
     compare_parser.add_argument(
-        "gt",
+        "gt_file",
         nargs="+",
         help="genotype file",
     )
@@ -532,7 +513,7 @@ def get_parser():
     unicov_parser = subparsers.add_parser(
         "unicov",
         help="compute the uniformity of sequencing coverage",
-        parents=[output_parser]
+        parents=[output_parser, bam_getter_parser]
     )
     unicov_parser.add_argument(
         "bed_file",
@@ -542,16 +523,6 @@ def get_parser():
         "bam_file",
         nargs="*",
         help="input BAM files"
-    )
-    unicov_parser.add_argument(
-        "--bam_dir",
-        metavar="DIR",
-        help="use all BAM files in this directory as input"
-    )
-    unicov_parser.add_argument(
-        "--bam_list",
-        metavar="FILE",
-        help="list of input BAM files, one file per line"
     )
 
     return parser
@@ -577,7 +548,7 @@ def main():
     logger.info("PyPGx finished")
 
     if result:
-        if args.output:
+        if hasattr(args, "output") and args.output:
             with open(args.output, "w") as f:
                 f.write(result)
         else:
