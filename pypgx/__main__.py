@@ -68,17 +68,31 @@ def get_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
+        "-v",
         "--version",
         action="version",
         version=f"PyPGx v{__version__}",
         help="print the PyPGx version number and exit"
     )
 
-    parent_parser = argparse.ArgumentParser(add_help=False)
-    parent_parser.add_argument(
-        "--out_file",
+    output_parser = argparse.ArgumentParser(add_help=False)
+    output_parser.add_argument(
+        "-o",
+        "--output",
         metavar="FILE",
         help="write output to FILE [stdout]"
+    )
+
+    bam_getter_parser = argparse.ArgumentParser(add_help=False)
+    bam_getter_parser.add_argument(
+        "--bam_dir",
+        metavar="DIR",
+        help="treat any BAM files in DIR as input"
+    )
+    bam_getter_parser.add_argument(
+        "--bam_list",
+        metavar="FILE",
+        help="read BAM files from FILE, one file path per line"
     )
 
     subparsers = parser.add_subparsers(
@@ -90,7 +104,7 @@ def get_parser():
     bam2gt_parser = subparsers.add_parser(
         "bam2gt",
         help="convert BAM files to a genotype file",
-        parents=[parent_parser]
+        parents=[bam_getter_parser]
     )
     bam2gt_parser.add_argument(
         "snp_caller",
@@ -122,16 +136,6 @@ def get_parser():
         help="input BAM files"
     )
     bam2gt_parser.add_argument(
-        "--bam_dir",
-        metavar="DIR",
-        help="use all BAM files in this directory as input"
-    )
-    bam2gt_parser.add_argument(
-        "--bam_list",
-        metavar="FILE",
-        help="list of input BAM files, one file per line"
-    )
-    bam2gt_parser.add_argument(
         "--control_gene",
         metavar="STR",
         help="name or region of control gene (e.g. ‘vdr’, "
@@ -156,7 +160,7 @@ def get_parser():
     bam2gt2_parser = subparsers.add_parser(
         "bam2gt2",
         help="convert BAM files to genotype files [SGE]",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2gt2_parser.add_argument(
         "conf_file",
@@ -166,7 +170,7 @@ def get_parser():
     gt2pt_parser = subparsers.add_parser(
         "gt2pt",
         help="convert a genotype file to phenotypes",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     gt2pt_parser.add_argument(
         "gt_file",
@@ -176,7 +180,7 @@ def get_parser():
     bam2vcf_parser = subparsers.add_parser(
         "bam2vcf",
         help="convert BAM files to a VCF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2vcf_parser.add_argument(
         "snp_caller",
@@ -233,7 +237,7 @@ def get_parser():
     bam2vcf2_parser = subparsers.add_parser(
         "bam2vcf2",
         help="convert BAM files to a VCF file [SGE]",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2vcf2_parser.add_argument(
         "conf_file",
@@ -243,7 +247,7 @@ def get_parser():
     bam2gdf_parser = subparsers.add_parser(
         "bam2gdf",
         help="convert BAM files to a GDF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2gdf_parser.add_argument(
         "genome_build",
@@ -281,7 +285,7 @@ def get_parser():
     gt2html_parser = subparsers.add_parser(
         "gt2html",
         help="convert a genotype file to an HTML report",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     gt2html_parser.add_argument(
         "gt_file",
@@ -291,7 +295,7 @@ def get_parser():
     bam2html_parser = subparsers.add_parser(
         "bam2html",
         help="convert a BAM file to an HTML report [SGE]",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2html_parser.add_argument(
         "conf_file",
@@ -301,7 +305,7 @@ def get_parser():
     fq2bam_parser = subparsers.add_parser(
         "fq2bam",
         help="convert FASTQ files to BAM files [SGE]",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     fq2bam_parser.add_argument(
         "conf_file",
@@ -311,7 +315,7 @@ def get_parser():
     bam2bam_parser = subparsers.add_parser(
         "bam2bam",
         help="realign BAM files to another reference genome [SGE]",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2bam_parser.add_argument(
         "conf_file",
@@ -321,7 +325,7 @@ def get_parser():
     bam2sdf_parser = subparsers.add_parser(
         "bam2sdf",
         help="convert BAM files to a SDF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     bam2sdf_parser.add_argument(
         "gb",
@@ -344,7 +348,7 @@ def get_parser():
     sdf2gdf_parser = subparsers.add_parser(
         "sdf2gdf",
         help="convert a SDF file to a GDF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     sdf2gdf_parser.add_argument(
         "sdf",
@@ -359,7 +363,7 @@ def get_parser():
     pgkb_parser = subparsers.add_parser(
         "pgkb",
         help="extract CPIC guidelines using PharmGKB API",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     pgkb_parser.add_argument(
         "--test_mode",
@@ -370,7 +374,7 @@ def get_parser():
     minivcf_parser = subparsers.add_parser(
         "minivcf",
         help="slice VCF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     minivcf_parser.add_argument(
         "vcf_file",
@@ -384,7 +388,7 @@ def get_parser():
     mergevcf_parser = subparsers.add_parser(
         "mergevcf",
         help="merge VCF files",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     mergevcf_parser.add_argument(
         "vcf_file",
@@ -400,7 +404,7 @@ def get_parser():
     summary_parser = subparsers.add_parser(
         "summary",
         help="create summary file using Stargazer data",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     summary_parser.add_argument(
         "gt",
@@ -410,7 +414,7 @@ def get_parser():
     meta_parser = subparsers.add_parser(
         "meta",
         help="create meta file from summary files",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     meta_parser.add_argument(
         "sf",
@@ -421,7 +425,7 @@ def get_parser():
     compare_parser = subparsers.add_parser(
         "compare",
         help="compare genotype files",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     compare_parser.add_argument(
         "gt",
@@ -432,7 +436,7 @@ def get_parser():
     check_parser = subparsers.add_parser(
         "check",
         help="check table files for Stargazer",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     check_parser.add_argument(
         "star_table",
@@ -446,7 +450,7 @@ def get_parser():
     liftover_parser = subparsers.add_parser(
         "liftover",
         help="convert variants in SNP table from hg19 to hg38",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     liftover_parser.add_argument(
         "star_table",
@@ -464,7 +468,7 @@ def get_parser():
     peek_parser = subparsers.add_parser(
         "peek",
         help="find all possible star alleles from VCF file",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     peek_parser.add_argument(
         "vcf_file",
@@ -474,7 +478,7 @@ def get_parser():
     viewsnp_parser = subparsers.add_parser(
         "viewsnp",
         help="view SNP data for pairs of sample/star allele",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     viewsnp_parser.add_argument(
         "vcf_file",
@@ -490,7 +494,7 @@ def get_parser():
     compgt_parser = subparsers.add_parser(
         "compgt",
         help="compute the concordance between two genotype files",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     compgt_parser.add_argument(
         "truth_file",
@@ -509,7 +513,7 @@ def get_parser():
     compvcf_parser = subparsers.add_parser(
         "compvcf",
         help="compute the concordance between two VCF files",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     compvcf_parser.add_argument(
         "truth_file",
@@ -528,7 +532,7 @@ def get_parser():
     unicov_parser = subparsers.add_parser(
         "unicov",
         help="compute the uniformity of sequencing coverage",
-        parents=[parent_parser]
+        parents=[output_parser]
     )
     unicov_parser.add_argument(
         "bed_file",
@@ -573,8 +577,8 @@ def main():
     logger.info("PyPGx finished")
 
     if result:
-        if args.out_file:
-            with open(args.out_file, "w") as f:
+        if args.output:
+            with open(args.output, "w") as f:
                 f.write(result)
         else:
             sys.stdout.write(result)

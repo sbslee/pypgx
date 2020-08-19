@@ -4,21 +4,15 @@ Commands
 This section describes how to use PyPGx as a command-line program.
 For the public API of Python module ``pypgx``, please see the API section.
 
-Common optional arguments
-=========================
+Common Options
+==============
 
-The following options are common to all of the PyPGx commands.
+The following options are common to many PyPGx commands.
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *-h, \\-\\-help*
-     - Show command-specific help message and exit.
-   * - *\\-\\-out_file FILE*
-     - Write output to FILE [stdout].
+-h, --help              show command-specific help message and exit
+-o FILE, --output FILE  write output to FILE [stdout]
+--bam_dir DIR           use any BAM files in DIR as input
+--bam_list FILE         read BAM files from FILE, one file path per line
 
 bam2gt command
 ==============
@@ -40,48 +34,32 @@ Synopsis
 Positional arguments
 --------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *snp_caller*
-     - SNP caller ('gatk' or 'bcftools').
-   * - *fasta_file*
-     - Reference FASTA file.
-   * - *target_gene*
-     - Name of target gene (e.g. 'cyp2d6').
-   * - *genome_build*
-     - Genome build ('hg19' or 'hg38').
-   * - *data_type*
-     - Type of sequencing data ('wgs' or 'ts').
-   * - *proj_dir*
-     - Output files will be written to *proj_dir*.
-   * - *bam_file*
-     - Input BAM files.
+*snp_caller*
+  Desired SNP caller ('gatk' or 'bcftools').
+*fasta_file*
+  Reference FASTA file.
+*target_gene*
+  Target gene (e.g. 'cyp2d6').
+*genome_build*
+  Genome build ('hg19' or 'hg38').
+*data_type*
+  Type of sequencing data ('wgs' or 'ts').
+*proj_dir*
+  Output files will be written to *proj_dir*
+*bam_file*
+  Input BAM files.
 
 Optional arguments
 ------------------
 
-.. list-table::
-   :widths: 30 70
-   :header-rows: 1
-
-   * - Argument
-     - Summary
-   * - *\\-\\-bam_dir DIR*
-     - Use all BAM files in this directory as input.
-   * - *\\-\\-bam_list FILE*
-     - List of input BAM files, one file per line.
-   * - *\\-\\-control_gene STR*
-     - Name or region of control gene (e.g. ‘vdr’, ‘chr12:48232319-48301814’).
-   * - *\\-\\-dbsnp_file FILE*
-     - dbSNP VCF file, used by GATK to add rs numbers.
-   * - *\\-\\-temp_dir DIR*
-     - Temporary files will be written to this directory.
-   * - *\\-\\-plot*
-     - Output copy number plots.
+-h, --help          see `Common Options`_
+-o, --output FILE   see `Common Options`_
+--bam_dir DIR       see `Common Options`_
+--bam_list FILE     see `Common Options`_
+--control_gene STR  Name or region of control gene (e.g. ‘vdr’, ‘chr12:48232319-48301814’).
+--dbsnp_file FILE   dbSNP VCF file, used by GATK to add rs numbers.
+--temp_dir DIR      Temporary files will be written to DIR.
+--plot              Output copy number plots.
 
 Description
 -----------
@@ -125,7 +103,7 @@ Positional arguments
 Optional arguments
 ------------------
 
-None.
+-h, --help          See `Common options`_.
 
 Description
 -----------
@@ -236,7 +214,8 @@ Positional arguments
 Optional arguments
 ------------------
 
-None.
+-h, --help          See `Common options`_.
+-o, --output FILE   See `Common options`_.
 
 Description
 -----------
