@@ -17,7 +17,7 @@ The following options are common to all of the PyPGx commands.
      - Summary
    * - *-h, \\-\\-help*
      - Show command-specific help message and exit.
-   * - *\\-\\-out_file*
+   * - *\\-\\-out_file FILE*
      - Write output to FILE [stdout].
 
 bam2gt command
