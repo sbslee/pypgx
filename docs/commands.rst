@@ -56,7 +56,7 @@ Optional arguments
      - Summary
    * - *-h, \--help*
      - Show command-specific help message and exit.
-   * - *\--bam_dir DIR*
+   * - *\-\-bam_dir DIR*
      - Use all BAM files in this directory as input.
    * - *\--bam_list FILE*
      - List of input BAM files, one file per line.
