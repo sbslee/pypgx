@@ -22,7 +22,7 @@ Convert BAM files to a genotype file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2gt [options] \
      snp_caller \
