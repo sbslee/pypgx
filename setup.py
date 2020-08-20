@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 exec(open("pypgx/version.py").read())
 
 requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",
-                "pysam>=0.16.0", "vcfgo>=0.0.4",]
+                "pysam>=0.16.0", "vcfgo>=0.0.10",]
 
 setup(
     name="pypgx",
