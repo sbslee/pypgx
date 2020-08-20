@@ -77,9 +77,6 @@ depth data (i.e. a GDF file) for copy number analysis. Providing
 the optional argument ``--control_gene`` will generate a GDF file. 
 If this argument is not provided, Stargazer will run as VCF-only mode.
 
-.. warning::
-    Stargazer and GATK/BCFtools must be pre-installed.
-
 bam2gt2 command [SGE]
 =====================
 
@@ -113,10 +110,6 @@ select genes too). For each gene, the command runs under the hood
 ``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2`` 
 (i.e. GATK) to create the input VCF file. The input GDF file is 
 created with ``bam2gdf``.
-
-.. warning::
-
-    SGE, Stargazer and BCFtools/GATK must be pre-installed.
 
 This is what a typical configuration file for ``bam2gt2`` looks like:
 
@@ -270,19 +263,6 @@ pre-specified parameters. This means the called variants will be
 already normalized and filtered, ready for the downstream genotype 
 analysis by the Stargazer program.
 
-
-.. warning::
-    GATK and/or BCFtools must be pre-installed.
-
-.. note::
-    Generally, GATK is more accurate but much slower than BCFtools. 
-    For instance, SNP calling for 70 WGS samples for the CYP2D6 gene 
-    takes 19 min with the ``gatk`` caller but only 2 min with the 
-    ``bcftools`` caller. Therefore, if you have many samples and you do 
-    not have access to Sun Grid Engine (SGE) for parallelism, we 
-    recommend that you use ``bcftools``. If you have SGE and want to 
-    use GATK, please check ``bam2vcf2``.
-
 bam2vcf2 command [SGE]
 ======================
 
@@ -315,9 +295,6 @@ within the target gene or region. This command is essentially a
 wrapper with pre-specified parameters for the Genome Analysis Toolkit 
 (GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
 GATK run faster.
-
-.. warning::
-    GATK and SGE must be pre-installed.
 
 This is what a typical configuration file for ``bam2vcf2`` looks like:
 
@@ -425,9 +402,6 @@ way less memory. Another nice about using ``bam2gdf`` instead of
 ``samtools depth`` is that everything is already parametrized for 
 compatibility with Stargazer. 
 
-.. note::
-    You do NOT need to install ``samtools`` to run this command.
-
 gt2html command
 ===============
 
@@ -488,10 +462,6 @@ jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys
 the ``genotype`` command to multiple genes in parallel. After genotype 
 analysis is complete, it will merge the genotype results and then 
 generate a HTML report using the ``gt2html`` command.
-
-.. note::
-
-    BCFtools, SGE and Stargazer must be pre-installed.
 
 This is what a typical configuration file for ``sges`` looks like:
 
