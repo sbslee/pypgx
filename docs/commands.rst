@@ -22,31 +22,33 @@ Convert BAM files to a genotype file.
 Synopsis
 --------
 
-| pypgx bam2gt *[options]* \\
-|   *snp_caller* \\
-|   *fasta_file* \\
-|   *target_gene* \\
-|   *genome_build* \\
-|   *data_type* \\
-|   *proj_dir* \\
-|   *[bam_file [bam_file ...]]*
+.. code-block::
+
+   pypgx bam2gt [options] \
+     snp_caller \
+     fasta_file \
+     target_gene \
+     genome_build \
+     data_type \
+     proj_dir \
+     [bam_file [bam_file ...]]
 
 Positional arguments
 --------------------
 
-*snp_caller*
+snp_caller
   Desired SNP caller (``gatk`` or ``bcftools``).
-*fasta_file*
+fasta_file
   Reference FASTA file.
-*target_gene*
+target_gene
   Target gene (e.g. ``cyp2d6``).
-*genome_build*
+genome_build
   Genome build (``hg19`` or ``hg38``).
-*data_type*
+data_type
   Type of sequencing data (``wgs`` or ``ts``).
-*proj_dir*
+proj_dir
   Output files will be written to *proj_dir*.
-*bam_file*
+bam_file
   Input BAM files.
 
 Optional arguments
@@ -86,12 +88,14 @@ Convert BAM files to a genotype file [SGE].
 Synopsis
 --------
 
-pypgx bam2gt2 *[options] conf_file*
+.. code-block::
+
+   pypgx bam2gt2 [options] conf_file
 
 Positional arguments
 --------------------
 
-*conf_file*
+conf_file
   Configuration file.
 
 Optional arguments
@@ -189,12 +193,14 @@ Convert a genotype file to phenotypes.
 Synopsis
 --------
 
-pypgx gt2pt *[options] gt_file*
+.. code-block::
+
+   pypgx gt2pt [options] gt_file
 
 Positional arguments
 --------------------
 
-*gt_file*
+gt_file
   Genotype file from Stargazer (i.e. ``genotype.txt``).
 
 Optional arguments
@@ -217,28 +223,30 @@ Convert BAM files to a VCF file.
 Synopsis
 --------
 
-| pypgx bam2vcf *[options]* \\
-|   *snp_caller* \\
-|   *fasta_file* \\
-|   *target_gene* \\
-|   *output_file* \\
-|   *genome_build* \\
-|   *[bam_file [bam_file ...]]*
+.. code-block::
+
+   pypgx bam2vcf [options] \
+     snp_caller \
+     fasta_file \
+     target_gene \
+     output_file \
+     genome_build \
+     [bam_file [bam_file ...]]
 
 Positional arguments
 --------------------
 
-*snp_caller*
+snp_caller
   Desired SNP caller (``gatk`` or ``bcftools``).
-*fasta_file*
+fasta_file
   Reference FASTA file.
-*target_gene*
+target_gene
   Name or region of target gene (e.g. ``cyp2d6``, ``chr22:42512500-42551883``).
-*output_file*
+output_file
   VCF data will be written to *output_file*.
-*genome_build*
+genome_build
   Genome build (``hg19`` or ``hg38``).
-*bam_file*
+bam_file
   Input BAM files.
 
 Optional arguments
@@ -283,12 +291,14 @@ Convert BAM files to a VCF file [SGE]
 Synopsis
 --------
 
-pypgx bam2vcf2 *[options] conf_file*
+.. code-block::
+
+   pypgx bam2vcf2 [options] conf_file
 
 Positional arguments
 --------------------
 
-*conf_file*
+conf_file
   Configuration file.
 
 Optional arguments
@@ -369,25 +379,27 @@ Convert BAM files to a GDF file.
 Synopsis
 --------
 
-| pypgx bam2gdf *[options]* \\
-|   *genome_build* \\
-|   *target_gene* \\
-|   *control_gene* \\
-|   *output_file* \\
-|   *[bam_file [bam_file ...]]*
+.. code-block::
+
+   pypgx bam2gdf [options] \
+     genome_build \
+     target_gene \
+     control_gene \
+     output_file \
+     [bam_file [bam_file ...]]
 
 Positional arguments
 --------------------
 
-*genome_build*
+genome_build
   Genome build (``hg19`` or ``hg38``).
-*target_gene*
+target_gene
   Name of target gene (e.g. ``cyp2d6``).
-*control_gene*
+control_gene
   Name or region of control gene (e.g. ``vdr``, ``chr12:48232319-48301814``).
-*output_file*
+output_file
   Output will be written to *output_file*.
-*bam_file*
+bam_file
   Input BAM files.
 
 Optional arguments
@@ -424,13 +436,14 @@ Convert a genotype file to an HTML report.
 Synopsis
 --------
 
-pypgx gt2html *[options] gt_file*
+.. code-block::
 
+   pypgx gt2html [options] gt_file
 
 Positional arguments
 --------------------
 
-*gt_file*
+gt_file
   Genotype file from Stargazer (i.e. ``genotype.txt``).
 
 Optional arguments
@@ -452,12 +465,14 @@ Convert a BAM file to an HTML report [SGE].
 Synopsis
 --------
 
-pypgx bam2html *[options] conf_file*
+.. code-block::
+
+   pypgx bam2html [options] conf_file
 
 Positional arguments
 --------------------
 
-*conf_file*
+conf_file
   Configuration file.
 
 Optional arguments
@@ -467,8 +482,6 @@ Optional arguments
 
 Description
 -----------
-
-This command runs per-sample genotyping for multiple genes with SGE.
 
 This command runs the per-sample genotyping pipeline by submitting 
 jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys 
@@ -544,12 +557,14 @@ Convert FASTQ files to BAM files [SGE].
 Synopsis
 --------
 
-pypgx fq2bam *[options] conf_file*
+.. code-block::
+
+   pypgx fq2bam [options] conf_file
 
 Positional arguments
 --------------------
 
-*conf_file*
+conf_file
   Configuration file.
 
 Optional arguments
@@ -626,12 +641,14 @@ Realign BAM files to another reference genome [SGE].
 Synopsis
 --------
 
-pypgx bam2bam *[options] conf_file*
+.. code-block::
+
+   pypgx bam2bam [options] conf_file
 
 Positional arguments
 --------------------
 
-*conf_file*
+conf_file
   Configuration file.
 
 Optional arguments
@@ -710,22 +727,24 @@ Convert BAM files to a SDF file.
 Synopsis
 --------
 
-| pypgx bam2sdf *[options]* \\
-|   *genome_build* \\
-|   *target_gene* \\
-|   *control_gene* \\
-|   *bam_file [bam_file ...]*
+.. code-block::
+
+   pypgx bam2sdf [options] \
+     genome_build \
+     target_gene \
+     control_gene \
+     bam_file [bam_file ...]
 
 Positional arguments
 --------------------
 
-*genome_build*
+genome_build
   Genome build (``hg19`` or ``hg38``).
-*target_gene*
+target_gene
   Target gene (e.g. ``cyp2d6``).
-*control_gene*
+control_gene
   Name or region of control gene (e.g. ``vdr``, ``chr12:48232319-48301814``).
-*bam_file*
+bam_file
   Input BAM files.
 
 Optional arguments
@@ -747,14 +766,16 @@ Convert a SDF file to a GDF file.
 Synopsis
 --------
 
-pypgx sdf2gdf *[options] sdf_file id [id ...]*
+.. code-block::
+
+   pypgx sdf2gdf [options] sdf_file id [id ...]
 
 Positional arguments
 --------------------
 
-*sdf_file*
+sdf_file
   SDF file.
-*id*
+id
   Sample ID.
 
 Optional arguments
@@ -776,7 +797,9 @@ Extract CPIC guidelines using PharmGKB API.
 Synopsis
 --------
 
-pypgx pgkb *[options]*
+.. code-block::
+
+   pypgx pgkb [options]
 
 Positional arguments
 --------------------
@@ -804,14 +827,16 @@ Slice VCF file.
 Synopsis
 --------
 
-pypgx minivcf *[options] vcf_file region*
+.. code-block::
+
+   pypgx minivcf [options] vcf_file region
 
 Positional arguments
 --------------------
 
-*vcf_file*
+vcf_file
   VCF file.
-*region*
+region
   Target region.
 
 Optional arguments
@@ -833,12 +858,14 @@ Merge VCF files.
 Synopsis
 --------
 
-pypgx mergevcf *[options] vcf_file [vcf_file ...]*
+.. code-block::
+
+   pypgx mergevcf [options] vcf_file [vcf_file ...]
 
 Positional arguments
 --------------------
 
-*vcf_file*
+vcf_file
   VCF files to be merged.
 
 Optional arguments
@@ -864,12 +891,14 @@ Create summary file using Stargazer data.
 Synopsis
 --------
 
-pypgx summary *[options] gt*
+.. code-block::
+
+   pypgx summary [options] gt_file
 
 Positional arguments
 --------------------
 
-*gt*
+gt_file
   Genotype file from Stargazer (``genotype.txt``).
 
 Optional arguments
@@ -891,12 +920,14 @@ Create meta file from summary files.
 Synopsis
 --------
 
-pypgx meta *[options] summary_file [summary_file ...]*
+.. code-block::
+
+   pypgx meta [options] summary_file [summary_file ...]
 
 Positional arguments
 --------------------
 
-*summary_file*
+summary_file
   Summary file from the ``summary`` command.
 
 Optional arguments
@@ -918,12 +949,14 @@ Compare genotype files.
 Synopsis
 --------
 
-pypgx compare *[options] gt [gt ...]*
+.. code-block::
+
+   pypgx compare [options] gt_file [gt_file ...]
 
 Positional arguments
 --------------------
 
-*gt*
+gt_file
   Genotype file from Stargazer (``genotype.txt``).
 
 Optional arguments
@@ -945,14 +978,16 @@ Checks table files for Stargazer.
 Synopsis
 --------
 
-pypgx check *[options] star_table snp_table*
+.. code-block::
+
+   pypgx check [options] star_table snp_table
 
 Positional arguments
 --------------------
 
-*star_table*
+star_table
   Star allele table file (``star_table.txt``).
-*snp_table*
+snp_table
   SNP table file (``snp_table.txt``).
 
 Optional arguments
@@ -974,16 +1009,21 @@ Convert variants in SNP table from hg19 to hg38.
 Synopsis
 --------
 
-pypgx liftover *[options] star_table snp_table target_gene*
+.. code-block::
+
+   pypgx liftover [options] \
+     star_table \
+     snp_table \
+     target_gene
 
 Positional arguments
 --------------------
 
-*star_table*
+star_table
   Star allele table file (``star_table.txt``).
-*snp_table*
+snp_table
   SNP table file (``snp_table.txt``).
-*target_gene*
+target_gene
   Target gene.
 
 Optional arguments
@@ -1005,12 +1045,14 @@ Find all possible star alleles from VCF file.
 Synopsis
 --------
 
-pypgx peek *[options] vcf_file*
+.. code-block::
+
+   pypgx peek [options] vcf_file
 
 Positional arguments
 --------------------
 
-*vcf_file*
+vcf_file
   Stargazer VCF file (``finalized.vcf``).
 
 Optional arguments
@@ -1033,14 +1075,16 @@ View SNP data for pairs of sample/star allele.
 Synopsis
 --------
 
-pypgx viewsnp *[options] vcf_file query [query ...]*
+.. code-block::
+
+   pypgx viewsnp [options] vcf_file query [query ...]
 
 Positional arguments
 --------------------
 
-*vcf_file*
+vcf_file
   Stargazer VCF file (``finalized.vcf``).
-*query [query ...]*
+query [query ...]
   Pair of sample and star allele separated by ``/`` (e.g. ``SAMPLE1/*4``).
 
 Optional arguments
@@ -1107,16 +1151,21 @@ Compute the concordance between two genotype files.
 Synopsis
 --------
 
-pypgx compgt *[options] truth_file test_file sample_map*
+.. code-block::
+
+   pypgx compgt [options] \
+     truth_file \
+     test_file \
+     sample_map
 
 Positional arguments
 --------------------
 
-*truth_file*
+truth_file
   Truth genotype file from Stargazer (``genotype.txt``).
-*test_file*
+test_file
   Test genotype file from Stargazer (``genotype.txt``).
-*sample_map*
+sample_map
   Tab-delimited text file with two columns representing the truth and test sample names.
 
 Optional arguments
@@ -1140,16 +1189,21 @@ Calculate the concordance between two VCF files.
 Synopsis
 --------
 
-pypgx compvcf *[options] truth_file test_file sample_map*
+.. code-block::
+
+   pypgx compvcf [options] \
+     truth_file \
+     test_file \
+     sample_map
 
 Positional arguments
 --------------------
 
-*truth_file*
+truth_file
   Truth VCF file.
-*test_file*
+test_file
   Test VCF file.
-*sample_map*
+sample_map
   Tab-delimited text file with two columns representing the truth and test sample names.
 
 Optional arguments
@@ -1232,14 +1286,16 @@ Compute the uniformity of sequencing coverage.
 Synopsis
 --------
 
-pypgx unicov *[options]* *bed_file [bam_file [bam_file ...]]*
+.. code-block::
+
+   pypgx unicov [options] bed_file [bam_file [bam_file ...]]
 
 Positional arguments
 --------------------
 
-*bed_file*
+bed_file
   BED file.
-*bam_file*
+bam_file
   Input BAM files.
 
 Optional arguments
