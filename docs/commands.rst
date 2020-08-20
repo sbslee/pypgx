@@ -88,7 +88,7 @@ Convert BAM files to a genotype file [SGE].
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2gt2 [options] conf_file
 
@@ -193,7 +193,7 @@ Convert a genotype file to phenotypes.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx gt2pt [options] gt_file
 
@@ -223,7 +223,7 @@ Convert BAM files to a VCF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2vcf [options] \
      snp_caller \
@@ -291,7 +291,7 @@ Convert BAM files to a VCF file [SGE]
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2vcf2 [options] conf_file
 
@@ -379,7 +379,7 @@ Convert BAM files to a GDF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2gdf [options] \
      genome_build \
@@ -436,7 +436,7 @@ Convert a genotype file to an HTML report.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx gt2html [options] gt_file
 
@@ -465,7 +465,7 @@ Convert a BAM file to an HTML report [SGE].
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2html [options] conf_file
 
@@ -557,7 +557,7 @@ Convert FASTQ files to BAM files [SGE].
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx fq2bam [options] conf_file
 
@@ -641,7 +641,7 @@ Realign BAM files to another reference genome [SGE].
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2bam [options] conf_file
 
@@ -727,7 +727,7 @@ Convert BAM files to a SDF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx bam2sdf [options] \
      genome_build \
@@ -766,7 +766,7 @@ Convert a SDF file to a GDF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx sdf2gdf [options] sdf_file id [id ...]
 
@@ -797,7 +797,7 @@ Extract CPIC guidelines using PharmGKB API.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx pgkb [options]
 
@@ -827,7 +827,7 @@ Slice VCF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx minivcf [options] vcf_file region
 
@@ -858,7 +858,7 @@ Merge VCF files.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx mergevcf [options] vcf_file [vcf_file ...]
 
@@ -891,7 +891,7 @@ Create summary file using Stargazer data.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx summary [options] gt_file
 
@@ -920,7 +920,7 @@ Create meta file from summary files.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx meta [options] summary_file [summary_file ...]
 
@@ -949,7 +949,7 @@ Compare genotype files.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx compare [options] gt_file [gt_file ...]
 
@@ -978,7 +978,7 @@ Checks table files for Stargazer.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx check [options] star_table snp_table
 
@@ -1009,7 +1009,7 @@ Convert variants in SNP table from hg19 to hg38.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx liftover [options] \
      star_table \
@@ -1045,7 +1045,7 @@ Find all possible star alleles from VCF file.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx peek [options] vcf_file
 
@@ -1075,7 +1075,7 @@ View SNP data for pairs of sample/star allele.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx viewsnp [options] vcf_file query [query ...]
 
@@ -1151,7 +1151,7 @@ Compute the concordance between two genotype files.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx compgt [options] \
      truth_file \
@@ -1189,7 +1189,7 @@ Calculate the concordance between two VCF files.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx compvcf [options] \
      truth_file \
@@ -1286,7 +1286,7 @@ Compute the uniformity of sequencing coverage.
 Synopsis
 --------
 
-.. code-block::
+.. code-block:: none
 
    pypgx unicov [options] bed_file [bam_file [bam_file ...]]
 
