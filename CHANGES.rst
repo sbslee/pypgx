@@ -1,6 +1,12 @@
 Changelog
 *********
 
+v0.1.34
+-------
+
+* Added a new configuration parameter called `conda_env`.
+* Added a conda recipe (conda/stargazer-conda.yml) for Stargazer environment.
+
 v0.1.33
 -------
 
@@ -143,20 +149,20 @@ v0.1.7
 v0.1.6
 ------
 
-* Updated sgep.py to support multiple target genes. Consequently, xgep.py 
+* Updated sgep.py to support multiple target genes. Consequently, xgep.py
   was removed.
 * Renamed sgep.py to bam2gt2.py.
 
 v0.1.5
 ------
 
-* Updated sgep.py to support both GATK (bam2vcf2.py) and BCFtools 
+* Updated sgep.py to support both GATK (bam2vcf2.py) and BCFtools
   (bam2vcf.py).
 
 v0.1.4
 ------
 
-* Added bam2vcf2.py (a SGE-based version of bam2vcf.py specifically for 
+* Added bam2vcf2.py (a SGE-based version of bam2vcf.py specifically for
   ``gatk`` caller).
 
 v0.1.3
@@ -181,7 +187,7 @@ v0.1.0
 
 * Renamed genotype.py to bam2gt.py.
 * The new bam2vcf.py can support both GATK and BCFtools for SNP calling.
-* The new sgep.py and xgep.py can support both GATK and BCFtools for SNP 
+* The new sgep.py and xgep.py can support both GATK and BCFtools for SNP
   calling. Consequently, sgea.py and xgea.py were removed.
 
 v0.0.80

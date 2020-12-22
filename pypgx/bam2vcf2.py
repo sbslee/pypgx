@@ -31,6 +31,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
 
             # Do not make any changes to this section.
             [DEFAULT]
+            conda_env = NONE
             dbsnp_file = NONE
             java_options = NONE
             qsub_options = NONE
@@ -38,6 +39,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             # Make any necessary changes to this section.
             [USER]
             bam_list = bam-list.txt
+            conda_env = env_name
             dbsnp_file = dbsnp.vcf
             fasta_file = reference.fa
             genome_build = hg19
@@ -57,6 +59,8 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
              - Summary
            * - bam_list
              - List of input BAM files, one file per line.
+           * - conda_env
+             - Name of conda environment to be activated.
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
@@ -84,6 +88,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
     qsub_options = config["USER"]["qsub_options"]
     java_options = config["USER"]["java_options"]
     dbsnp_file = config["USER"]["dbsnp_file"]
+    conda_env = config["USER"]["conda_env"]
 
     bam_files = []
 
@@ -112,7 +117,16 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
 
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):
-        s = (
+        s = "#!/bin/bash\n"
+
+        if conda_env != "NONE":
+            s += (
+                "\n"
+                f"conda activate {conda_env}\n"
+            )
+
+        s += (
+            "\n"
             "gatk HaplotypeCaller \\\n"
             f"  -R {fasta_file} \\\n"
             f"  --emit-ref-confidence GVCF \\\n"
@@ -129,14 +143,18 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             f.write(s)
 
     # Write the shell script for post-HaplotypeCaller.
-    s = (
-        "#!/bin/bash\n"
+    s = "#!/bin/bash\n"
+
+    if conda_env != "NONE":
+        s += (
+            "\n"
+            f"conda activate {conda_env}\n"
+        )
+
+    s += (
         "\n"
         f"p={project_path}\n"
         "\n"
-    )
-
-    s += (
         "gatk GenomicsDBImport \\\n"
         f"  --intervals {target_region} \\\n"
         f"  --genomicsdb-workspace-path $p/temp/datastore \\\n"
