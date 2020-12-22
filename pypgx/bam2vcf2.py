@@ -45,6 +45,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             project_path = ./myproject
             qsub_options = -l mem_requested=4G
             target_gene = cyp2d6
+            conda_env = env_name
 
     This table summarizes the configuration parameters specific to 
     ``bam2vcf2``:
@@ -72,6 +73,8 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
            * - target_gene
              - Name of target gene (e.g. 'cyp2d6'). 
                Also accepts a BED file.
+           * - conda_env
+             - Name of conda environment.
     """
     config = kwargs["config"]
 
@@ -84,6 +87,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
     qsub_options = config["USER"]["qsub_options"]
     java_options = config["USER"]["java_options"]
     dbsnp_file = config["USER"]["dbsnp_file"]
+    conda_env = config["USER"]["conda_env"]
 
     bam_files = []
 
@@ -113,6 +117,10 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):
         s = (
+            "#!/bin/bash\n"
+            "\n"
+            f"conda activate {conda_env}\n"
+            "\n"
             "gatk HaplotypeCaller \\\n"
             f"  -R {fasta_file} \\\n"
             f"  --emit-ref-confidence GVCF \\\n"
@@ -131,6 +139,8 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
     # Write the shell script for post-HaplotypeCaller.
     s = (
         "#!/bin/bash\n"
+        "\n"
+        f"conda activate {conda_env}\n"
         "\n"
         f"p={project_path}\n"
         "\n"
