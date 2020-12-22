@@ -31,6 +31,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
 
             # Do not make any changes to this section.
             [DEFAULT]
+            conda_env = NONE
             dbsnp_file = NONE
             java_options = NONE
             qsub_options = NONE
@@ -38,6 +39,7 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             # Make any necessary changes to this section.
             [USER]
             bam_list = bam-list.txt
+            conda_env = env_name
             dbsnp_file = dbsnp.vcf
             fasta_file = reference.fa
             genome_build = hg19
@@ -45,7 +47,6 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             project_path = ./myproject
             qsub_options = -l mem_requested=4G
             target_gene = cyp2d6
-            conda_env = env_name
 
     This table summarizes the configuration parameters specific to 
     ``bam2vcf2``:
@@ -58,6 +59,8 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
              - Summary
            * - bam_list
              - List of input BAM files, one file per line.
+           * - conda_env
+             - Name of conda environment to be activated.
            * - dbsnp_file
              - dbSNP VCF file.
            * - fasta_file
@@ -73,8 +76,6 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
            * - target_gene
              - Name of target gene (e.g. 'cyp2d6'). 
                Also accepts a BED file.
-           * - conda_env
-             - Name of conda environment.
     """
     config = kwargs["config"]
 
@@ -116,10 +117,15 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
 
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):
-        s = (
-            "#!/bin/bash\n"
-            "\n"
-            f"conda activate {conda_env}\n"
+        s = "#!/bin/bash\n"
+
+        if conda_env != "NONE":
+            s += (
+                "\n"
+                f"conda activate {conda_env}\n"
+            )
+
+        s += (
             "\n"
             "gatk HaplotypeCaller \\\n"
             f"  -R {fasta_file} \\\n"
@@ -137,16 +143,18 @@ def bam2vcf2(conf_file: str, **kwargs) -> None:
             f.write(s)
 
     # Write the shell script for post-HaplotypeCaller.
-    s = (
-        "#!/bin/bash\n"
-        "\n"
-        f"conda activate {conda_env}\n"
+    s = "#!/bin/bash\n"
+
+    if conda_env != "NONE":
+        s += (
+            "\n"
+            f"conda activate {conda_env}\n"
+        )
+
+    s += (
         "\n"
         f"p={project_path}\n"
         "\n"
-    )
-
-    s += (
         "gatk GenomicsDBImport \\\n"
         f"  --intervals {target_region} \\\n"
         f"  --genomicsdb-workspace-path $p/temp/datastore \\\n"
