@@ -66,15 +66,15 @@ Optional arguments
 Description
 -----------
 
-This command runs the entire genotyping pipeline for BAM files, 
-without the need for Sun Grid Engine (SGE). Under the hood, it 
-uses the ``bam2vcf`` command to create the input VCF file and 
-the ``bam2gdf`` command to create the input GDF file. It then 
+This command runs the entire genotyping pipeline for BAM files,
+without the need for Sun Grid Engine (SGE). Under the hood, it
+uses the ``bam2vcf`` command to create the input VCF file and
+the ``bam2gdf`` command to create the input GDF file. It then
 performs genotype analysis using the Stargazer program.
 
-In order to detect strctural variation, Stargazer requires read 
-depth data (i.e. a GDF file) for copy number analysis. Providing 
-the optional argument ``--control_gene`` will generate a GDF file. 
+In order to detect strctural variation, Stargazer requires read
+depth data (i.e. a GDF file) for copy number analysis. Providing
+the optional argument ``--control_gene`` will generate a GDF file.
 If this argument is not provided, Stargazer will run as VCF-only mode.
 
 bam2gt2 command [SGE]
@@ -103,12 +103,12 @@ Optional arguments
 Description
 -----------
 
-This command runs the entire genotyping pipeline for BAM files 
-with the Sun Grid Engine (SGE) cluster. By default, it will genotype 
-all genes currently targeted by the Stargazer program (you can specify 
-select genes too). For each gene, the command runs under the hood 
-``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2`` 
-(i.e. GATK) to create the input VCF file. The input GDF file is 
+This command runs the entire genotyping pipeline for BAM files
+with the Sun Grid Engine (SGE) cluster. By default, it will genotype
+all genes currently targeted by the Stargazer program (you can specify
+select genes too). For each gene, the command runs under the hood
+``bam2vcf`` with ``bcftools`` caller (i.e. BCFtools) or ``bam2vcf2``
+(i.e. GATK) to create the input VCF file. The input GDF file is
 created with ``bam2gdf``.
 
 This is what a typical configuration file for ``bam2gt2`` looks like:
@@ -171,8 +171,8 @@ This table summarizes the configuration parameters specific to ``bam2gt2``:
         * - qsub_options
           - Options for qsub command (e.g. '-l mem_requested=2G').
         * - sample_list
-          - List of samples used for inter-sample normalization 
-            (e.g. 'gstt1, sample1, sample2 | ugt2b17, sample3'). 
+          - List of samples used for inter-sample normalization
+            (e.g. 'gstt1, sample1, sample2 | ugt2b17, sample3').
         * - snp_caller
           - SNP caller (‘gatk’ or ‘bcftools’).
         * - target_genes
@@ -205,7 +205,7 @@ Optional arguments
 Description
 -----------
 
-This command is just a wrapper for the ``phenotyper`` module. See the API 
+This command is just a wrapper for the ``phenotyper`` module. See the API
 section for details.
 
 bam2vcf command
@@ -255,12 +255,12 @@ Optional arguments
 Description
 -----------
 
-This command creates a single- or multi-sample VCF file from one or 
-more input BAM files. The output VCF file will only contain variants 
-within the target gene or region. The command is essentially a wrapper 
-for the Genome Analysis Toolkit (GATK) and the BCFtools program with 
-pre-specified parameters. This means the called variants will be 
-already normalized and filtered, ready for the downstream genotype 
+This command creates a single- or multi-sample VCF file from one or
+more input BAM files. The output VCF file will only contain variants
+within the target gene or region. The command is essentially a wrapper
+for the Genome Analysis Toolkit (GATK) and the BCFtools program with
+pre-specified parameters. This means the called variants will be
+already normalized and filtered, ready for the downstream genotype
 analysis by the Stargazer program.
 
 bam2vcf2 command [SGE]
@@ -289,11 +289,11 @@ Optional arguments
 Description
 -----------
 
-This command outputs a single- or multi-sample VCF file from one or 
-more input BAM files. The output VCF file will only contain variants 
-within the target gene or region. This command is essentially a 
-wrapper with pre-specified parameters for the Genome Analysis Toolkit 
-(GATK). It also uses Sun Grid Engine (SGE) for parallelism to make 
+This command outputs a single- or multi-sample VCF file from one or
+more input BAM files. The output VCF file will only contain variants
+within the target gene or region. This command is essentially a
+wrapper with pre-specified parameters for the Genome Analysis Toolkit
+(GATK). It also uses Sun Grid Engine (SGE) for parallelism to make
 GATK run faster.
 
 This is what a typical configuration file for ``bam2vcf2`` looks like:
@@ -307,6 +307,7 @@ This is what a typical configuration file for ``bam2vcf2`` looks like:
 
         # Do not make any changes to this section.
         [DEFAULT]
+        conda_env = NONE
         dbsnp_file = NONE
         java_options = NONE
         qsub_options = NONE
@@ -314,6 +315,7 @@ This is what a typical configuration file for ``bam2vcf2`` looks like:
         # Make any necessary changes to this section.
         [USER]
         bam_list = bam-list.txt
+        conda_env = env_name
         dbsnp_file = dbsnp.vcf
         fasta_file = reference.fa
         genome_build = hg19
@@ -332,6 +334,8 @@ This table summarizes the configuration parameters specific to ``bam2vcf2``:
          - Summary
        * - bam_list
          - List of input BAM files, one file per line.
+       * - conda_env
+         - Name of conda environment to be activated.
        * - dbsnp_file
          - dbSNP VCF file.
        * - fasta_file
@@ -345,7 +349,7 @@ This table summarizes the configuration parameters specific to ``bam2vcf2``:
        * - qsub_options
          - Options for qsub command (e.g. '-l mem_requested=2G').
        * - target_gene
-         - Name of target gene (e.g. 'cyp2d6'). 
+         - Name of target gene (e.g. 'cyp2d6').
            Also accepts a BED file.
 
 bam2gdf command
@@ -392,15 +396,15 @@ Description
 This command converts BAM files to a GDF file.
 
 This command calculates read depth from BAM files and then outputs a
-GDF (GATK-DepthOfCoverage Format) file, which is one of the input 
-files for the Stargazer program. Even though ``gatk DepthOfCoverage`` 
-could still be used to make GDF files, we recommend that you use this 
-command because the former is too heavy (i.e. requires too much memory) 
-for such a simple task (i.e. counting reads). The latter uses 
-``samtools depth`` under the hood, which is way faster and requires 
-way less memory. Another nice about using ``bam2gdf`` instead of 
-``samtools depth`` is that everything is already parametrized for 
-compatibility with Stargazer. 
+GDF (GATK-DepthOfCoverage Format) file, which is one of the input
+files for the Stargazer program. Even though ``gatk DepthOfCoverage``
+could still be used to make GDF files, we recommend that you use this
+command because the former is too heavy (i.e. requires too much memory)
+for such a simple task (i.e. counting reads). The latter uses
+``samtools depth`` under the hood, which is way faster and requires
+way less memory. Another nice about using ``bam2gdf`` instead of
+``samtools depth`` is that everything is already parametrized for
+compatibility with Stargazer.
 
 gt2html command
 ===============
@@ -457,10 +461,10 @@ Optional arguments
 Description
 -----------
 
-This command runs the per-sample genotyping pipeline by submitting 
-jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys 
-the ``genotype`` command to multiple genes in parallel. After genotype 
-analysis is complete, it will merge the genotype results and then 
+This command runs the per-sample genotyping pipeline by submitting
+jobs to the Sun Grid Engine (SGE) cluster. This essentially deploys
+the ``genotype`` command to multiple genes in parallel. After genotype
+analysis is complete, it will merge the genotype results and then
 generate a HTML report using the ``gt2html`` command.
 
 This is what a typical configuration file for ``sges`` looks like:
@@ -502,7 +506,7 @@ This table summarizes the configuration parameters specific to ``sges``:
        * - bam_file
          - BAM file.
        * - control_gene
-         - Name or region of control gene 
+         - Name or region of control gene
            (e.g. 'vdr', 'chr12:48232319-48301814').
        * - data_type
          - Data type ('wgs' or 'ts').
@@ -786,7 +790,7 @@ Optional arguments
 Description
 -----------
 
-This command extracts CPIC recommendations for prescription drugs using 
+This command extracts CPIC recommendations for prescription drugs using
 PharmGKB API.
 
 minivcf command
@@ -848,9 +852,9 @@ Optional arguments
 Description
 -----------
 
-This command merges VCF files with single sample. It's assumed that the VCF 
-files share the same variant sites. In the upcoming version, these 
-restrictions will be lifted and the command will be able to merge VCF files 
+This command merges VCF files with single sample. It's assumed that the VCF
+files share the same variant sites. In the upcoming version, these
+restrictions will be lifted and the command will be able to merge VCF files
 with any number of samples and with different sets of variants.
 
 summary command
@@ -1034,7 +1038,7 @@ Optional arguments
 Description
 -----------
 
-This command returns summary of the status of all possibile star alleles 
+This command returns summary of the status of all possibile star alleles
 that can be called from the VCF file.
 
 viewsnp command
@@ -1066,7 +1070,7 @@ Optional arguments
 Description
 -----------
 
-This command shows the SNP data for given pairs of a sample and a star 
+This command shows the SNP data for given pairs of a sample and a star
 allele. It's designed to be used after running Stargazer.
 
 Here's a complete example with real NGS data.
@@ -1147,8 +1151,8 @@ Optional arguments
 Description
 -----------
 
-This command computes the concordance between genotype data (e.g. 
-``*1/*4``) of one samples in each of the genotype files, one being 
+This command computes the concordance between genotype data (e.g.
+``*1/*4``) of one samples in each of the genotype files, one being
 considered the truth and the other being the test.
 
 compvcf command
@@ -1185,12 +1189,12 @@ Optional arguments
 Description
 -----------
 
-This command calculates the concordance between genotype data (e.g. ``0/1``) 
-of one samples in each of the VCF files, one being considered the truth and 
-the other being the test. The concordance is broken into separate results 
+This command calculates the concordance between genotype data (e.g. ``0/1``)
+of one samples in each of the VCF files, one being considered the truth and
+the other being the test. The concordance is broken into separate results
 sections for SNP and Indel. Summary and detailed statistics are reported.
 
-Please note that the comparison is restricted to sites that are biallelic and 
+Please note that the comparison is restricted to sites that are biallelic and
 have no missing genotypes (e.g. ``./.``).
 
 This table summarizes the column headers of the output.
@@ -1279,6 +1283,6 @@ Optional arguments
 Description
 -----------
 
-This command evaluates the uniformity of sequencing coverage by computing 
-% of base pairs that were sequenced at various coverages. Only regions 
+This command evaluates the uniformity of sequencing coverage by computing
+% of base pairs that were sequenced at various coverages. Only regions
 specified in the BED file are computed.
