@@ -1,6 +1,11 @@
 Changelog
 *********
 
+v0.1.35
+-------
+
+* Updated phenotypes for TPMT, UGT1A1, and DPYD (#2).
+
 v0.1.34
 -------
 
