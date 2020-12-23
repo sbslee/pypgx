@@ -56,6 +56,24 @@ def _metabolizer_cyp2d6(stardb, hap1, hap2):
         result = "undetermined_metabolizer"
     return result
 
+def _metabolizer_dpyd(stardb, hap1, hap2):
+    as1 = _hap2as(stardb, hap1)
+    as2 = _hap2as(stardb, hap2)
+    total = as1 + as2
+    if total < 0:
+        result = "unknown_metabolizer"
+    elif 0 <= total <= 0.5:
+        result = "poor_metabolizer"
+    elif 0.5 < total < 2:
+        result = "intermediate_metabolizer"
+    elif total == 2:
+        result = "normal_metabolizer"
+    elif total > 2:
+        result = "ultrarapid_metabolizer"
+    else:
+        result = "undetermined_metabolizer"
+    return result
+
 def _transporter_default(stardb, hap1, hap2):
     as1 = _hap2as(stardb, hap1)
     as2 = _hap2as(stardb, hap2)
@@ -116,7 +134,7 @@ ptcallers = {
     "cyp17a1": _metabolizer_default,
     "cyp19a1": _metabolizer_default,
     "cyp26a1": _metabolizer_default,
-    "dpyd": _metabolizer_default,
+    "dpyd": _metabolizer_dpyd,
     "g6pd": _phenotype_default,
     "gstm1": _phenotype_default,
     "gstp1": _phenotype_default,
@@ -148,8 +166,8 @@ ptcallers = {
 def phenotyper(gene: str, hap1: str, hap2: str) -> str:
     """Maps haplotype calls to a phenotype.
 
-    Different genes have different phenotypes. Many use a unit of enzyme 
-    activity known as an activity score (AS). Note that star alleles with 
+    Different genes have different phenotypes. Many use a unit of enzyme
+    activity known as an activity score (AS). Note that star alleles with
     unknown/uncertain function have AS < 0 (e.g. -100).
 
     Returns:
@@ -175,7 +193,7 @@ def phenotyper(gene: str, hap1: str, hap2: str) -> str:
         'ultrarapid_metabolizer'
         'poor_metabolizer'
 
-    This method currently uses four different phenotyping algorithms:
+    This method currently uses 5 different phenotyping algorithms:
 
     1. Default
 
@@ -242,7 +260,28 @@ def phenotyper(gene: str, hap1: str, hap2: str) -> str:
         * - undetermined_metabolizer
           - All other cases
 
-    4. Drug transporters (default)
+    4. Drug metabolizers - DPYD
+
+    .. list-table::
+        :widths: 50 50
+        :header-rows: 1
+
+        * - Phenotype
+          - Summary
+        * - unknown_metabolizer
+          - AS < 0
+        * - poor_metabolizer
+          - 0 <= AS <= 0.5
+        * - intermediate_metabolizer
+          - 0.5 < AS < 2
+        * - normal_metabolizer
+          - AS == 2
+        * - ultrarapid_metabolizer
+          - AS > 2
+        * - undetermined_metabolizer
+          - All other cases
+
+    5. Drug transporters (default)
 
     .. list-table::
         :widths: 50 50
