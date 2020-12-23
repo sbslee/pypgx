@@ -62,7 +62,7 @@ def _metabolizer_dpyd(stardb, hap1, hap2):
     total = as1 + as2
     if total < 0:
         result = "unknown_metabolizer"
-    elif 0 <= total =< 0.5:
+    elif 0 <= total <= 0.5:
         result = "poor_metabolizer"
     elif 0.5 < total < 2:
         result = "intermediate_metabolizer"
