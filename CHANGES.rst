@@ -1,10 +1,15 @@
 Changelog
 *********
 
+v0.1.36
+-------
+
+* Updated NUDT15 phenotype ([#9](https://github.com/sbslee/pypgx/pull/9))
+
 v0.1.35
 -------
 
-* Updated phenotypes for TPMT, UGT1A1, and DPYD (#2).
+* Updated phenotypes for TPMT, UGT1A1, and DPYD ([[#5](https://github.com/sbslee/pypgx/issues/5)).
 
 v0.1.34
 -------
