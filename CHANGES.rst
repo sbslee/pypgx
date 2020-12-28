@@ -9,7 +9,7 @@ v0.1.36
 v0.1.35
 -------
 
-* Updated phenotypes for TPMT, UGT1A1, and DPYD ([[#5](https://github.com/sbslee/pypgx/issues/5)).
+* Updated phenotypes for TPMT, UGT1A1, and DPYD (`#5 <https://github.com/sbslee/pypgx/issues/5>`_.).
 
 v0.1.34
 -------
