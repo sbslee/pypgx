@@ -124,7 +124,7 @@ ptcallers = {
     "ifnl3": _phenotype_default,
     "nat1": _phenotype_default,
     "nat2": _phenotype_default,
-    "nudt15": _phenotype_default,
+    "nudt15": _metabolizer_default,
     "por": _phenotype_default,
     "ptgis": _phenotype_default,
     "ryr1": _phenotype_default,
