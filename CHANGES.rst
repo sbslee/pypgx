@@ -4,7 +4,7 @@ Changelog
 v0.1.36
 -------
 
-* Updated NUDT15 phenotype (`#9 <https://github.com/sbslee/pypgx/pull/9>`_)
+* Updated NUDT15 phenotype (`#9 <https://github.com/sbslee/pypgx/pull/9>`_).
 
 v0.1.35
 -------
