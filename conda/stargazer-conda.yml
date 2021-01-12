@@ -7,3 +7,6 @@ dependencies:
   - r-base=4.0.3
   - java-jdk=8.0.112
   - gatk4=4.1.9.0
+  - numpy=1.19.5
+  - pandas=1.2.0
+  - matplotlib=3.3.3
