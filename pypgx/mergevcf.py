@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from vcfgo.VCFFile import VCFFile
+from .common import VCFFile
 
 def mergevcf(vcf_file: List[str],
              region: Optional[str] = None,

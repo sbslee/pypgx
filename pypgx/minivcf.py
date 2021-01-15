@@ -1,4 +1,4 @@
-from vcfgo.VCFFile import VCFFile
+from .common import VCFFile
 
 def minivcf(vcf_file: str,
             region: str,
