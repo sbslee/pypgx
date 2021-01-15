@@ -1,6 +1,12 @@
 Changelog
 *********
 
+v0.1.37
+-------
+
+* Removed dependency to the `vcfgo` package.
+* Removed the `mergevcf` command.
+
 v0.1.36
 -------
 
