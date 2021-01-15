@@ -114,7 +114,6 @@ For getting help::
         sdf2gdf      convert a SDF file to a GDF file
         pgkb         extract CPIC guidelines using PharmGKB API
         minivcf      slice VCF file
-        mergevcf     merge VCF files
         summary      create summary file using Stargazer data
         meta         create meta file from summary files
         compare      compare genotype files
