@@ -824,39 +824,6 @@ Description
 
 This command slices a VCF file for the given region.
 
-mergevcf command
-================
-
-Merge VCF files.
-
-Synopsis
---------
-
-.. code-block:: none
-
-   pypgx mergevcf [options] vcf_file [vcf_file ...]
-
-Positional arguments
---------------------
-
-vcf_file
-  VCF files to be merged.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
---region STR       Target region.
-
-Description
------------
-
-This command merges VCF files with single sample. It's assumed that the VCF
-files share the same variant sites. In the upcoming version, these
-restrictions will be lifted and the command will be able to merge VCF files
-with any number of samples and with different sets of variants.
-
 summary command
 ===============
 

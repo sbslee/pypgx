@@ -8,7 +8,6 @@ import pandas as pd
 import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
-from vcfgo.VCFFile import VCFFile
 
 class SNPAllele:
     """SNP allele object.
@@ -53,7 +52,7 @@ class SNPAllele:
     @property
     def af(self):
         return 0 if self.td == 0 else self.ad / self.td
-    
+
     def __eq__(self, other):
         return self.key == other.key
 
@@ -85,8 +84,8 @@ class StarAllele:
     @property
     def ranked_as(self):
         """
-        Unknown function alleles should be broken ties with normal function 
-        alleles using attributes other than activity score. Increased 
+        Unknown function alleles should be broken ties with normal function
+        alleles using attributes other than activity score. Increased
         function alleles should come before normal function alleles.
         """
 
@@ -175,7 +174,7 @@ class BioHaplotype:
         sY.score = sX.score * cn
         sY.core = deepcopy(sX.core)
         sY.sv = "cnv{}".format(cn)
-        
+
         self.cand.insert(0, sY)
         self.remove_star(sX)
 
@@ -197,7 +196,7 @@ class BioSample:
         self.ssr_df = pd.DataFrame()
         self.af_df = pd.DataFrame()
 
-def vcf2biosamples(vcf: VCFFile,
+def vcf2biosamples(vcf,
                    filter: bool = False) -> List[BioSample]:
     """Convert a VCFFile to a list of BioSample.
 
@@ -334,7 +333,7 @@ def sort_regions(regions: List[str]) -> List[str]:
             contig = 24
         else:
             _ = r[0].replace("chr", "")
- 
+
             if _.isdigit():
                 contig = int(_)
             else:

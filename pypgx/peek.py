@@ -1,8 +1,8 @@
 import os
 
-from .common import get_stardb
+from .common import get_stardb, VCFFile
 from .sglib import vcf2biosamples
-from vcfgo.VCFFile import VCFFile
+
 
 def peek(vcf_file: str,
          **kwargs) -> str:
@@ -53,14 +53,14 @@ def peek(vcf_file: str,
 
     biosamples = vcf2biosamples(finalized_vcf, filter=False)
     snp_list = []
-    
+
     for biosample in biosamples:
         snp_list += biosample.hap[0].obs
         snp_list += biosample.hap[1].obs
-    
+
     # remove duplicates
     snp_list = list(set(snp_list))
-    
+
     # remove non-variants
     snp_list = [x for x in snp_list if x.wt != x.var]
 

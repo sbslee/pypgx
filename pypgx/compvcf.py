@@ -1,5 +1,4 @@
-from .common import get_logger
-from vcfgo.VCFFile import VCFFile
+from .common import get_logger, VCFFile
 
 def compvcf(truth_file: str,
             test_file: str,
@@ -13,7 +12,7 @@ def compvcf(truth_file: str,
     Args:
         truth_file: Truth VCF file.
         test_file: Test VCF file.
-        sample_map: Tab-delimited text file with two columns representing 
+        sample_map: Tab-delimited text file with two columns representing
             the truth and test sample names.
     """
 
@@ -120,7 +119,7 @@ def compvcf(truth_file: str,
 
     result = ""
 
-    headers = ["name1", "name2", 
+    headers = ["name1", "name2",
                "snv_tn", "snv_tp", "snv_fn", "snv_fp",
                "snv_tpr", "snv_tnr", "snv_con",
                "indel_tn", "indel_tp", "indel_fn", "indel_fp",

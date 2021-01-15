@@ -8,6 +8,10 @@ from tempfile import TemporaryDirectory
 import pysam
 from functools import wraps
 
+import copy
+import gzip
+import statistics
+
 from .sglib import (
     read_gene_table,
     read_snp_table,
@@ -19,6 +23,443 @@ from .sglib import (
 
 LINE_BREAK1 = "-" * 70
 LINE_BREAK2 = "*" * 70
+
+
+
+
+
+
+class Record:
+    """Stores data for single SNP record.
+
+    Args:
+        fields: SNP data in columns.
+
+    Attributes:
+        fields (list of str): SNP data in columns.
+    """
+
+    def __init__(self, fields: List[str]):
+        """Inits a Record."""
+        self.fields = fields
+
+    @property
+    def chrom(self):
+        """str: Chromosome."""
+        return self.fields[0]
+
+    @chrom.setter
+    def chrom(self, x: str):
+        self.fields[0] = x
+
+    @property
+    def pos(self):
+        """int: Position."""
+        return int(self.fields[1])
+
+    @pos.setter
+    def pos(self, x: int):
+        self.fields[1] = str(x)
+
+    @property
+    def id(self):
+        """str: Identifier."""
+        return self.fields[2]
+
+    @id.setter
+    def id(self, x: str):
+        self.fields[2] = x
+
+    @property
+    def ref(self):
+        """str: Reference allele."""
+        return self.fields[3]
+
+    @ref.setter
+    def ref(self, x: str):
+        self.fields[3] = x
+
+    @property
+    def alt(self):
+        """list of str: Alternate allele(s)."""
+        return self.fields[4].split(",")
+
+    @alt.setter
+    def alt(self, x: List[str]):
+        self.fields[4] = ",".join(x)
+
+    @property
+    def qual(self):
+        """int: Quality. 0 is equivalent to the missing value."""
+        s = self.fields[5]
+        if s == ".":
+            return 0
+        else:
+            return int(s)
+
+    @qual.setter
+    def qual(self, x: int):
+        self.fields[5] = str(x) if x else "."
+
+    @property
+    def filter(self):
+        """list of str: Filter status. An empty list is equivalent to the
+        missing value.
+        """
+        s = self.fields[6]
+        if s == ".":
+            return []
+        else:
+            return s.split(";")
+
+    @filter.setter
+    def filter(self, x: List[str]):
+        self.fields[6] = ";".join(x) if x else "."
+
+    @property
+    def info(self):
+        """dict of str to str: Additional information. An empty dictionary is
+        equivalent to the missing value.
+        """
+        s = self.fields[7]
+        if s == ".":
+            return {}
+        d = {}
+        for x in s.split(";"):
+            k = x.split("=")[0]
+            v = x.split("=")[1]
+            d[k] = v
+        return d
+
+    @info.setter
+    def info(self, x: Dict[str, str]):
+        if x:
+            l = []
+            for k, v in x.items():
+                l.append(f"{k}={v}")
+            self.fields[7] = ";".join(l)
+        else:
+            self.fields[7] = "."
+
+    @property
+    def format(self):
+        """list of str: Types of genotype data."""
+        return self.fields[8].split(":")
+
+    @format.setter
+    def format(self, x: List[str]):
+        self.fields[8] = ":".join(x)
+
+    @property
+    def data(self):
+        """list of str: Genotype data."""
+        return self.fields[9:]
+
+    @data.setter
+    def data(self, x: List[str]):
+        self.fields[9:] = x
+
+    def has_indel(self) -> bool:
+        """Returns true if the REF or ALT allele is an indel."""
+        return len(self.ref) > 1 or any([len(x) > 1 for x in self.alt])
+
+
+
+
+
+class VCFFile:
+    """Versatile object for reading, writing and manipulating a VCF file.
+
+    Attributes:
+        meta (list of str): Meta information lines.
+        header (list of str): Column names.
+        data (list of Record): SNP records.
+    """
+
+    def __init__(self, *args, **kwargs):
+        """Inits a VCFFile."""
+        self.args   = args
+        self.kwargs = kwargs
+        self.meta   = []
+        self.header = []
+        self.data   = []
+
+    @property
+    def filepath(self):
+        """str: VCF file path."""
+        if "filepath" in self.kwargs:
+            return self.kwargs["filepath"]
+        elif self.args:
+            return self.args[0]
+        else:
+            return ""
+
+    def clear(self) -> None:
+        """Clears any loaded VCF data."""
+        self.meta.clear()
+        self.header.clear()
+        self.data.clear()
+
+    def read(self,
+             region: Optional[str] = None,
+             tidy: bool = False) -> None:
+        """Reads the provided VCF file.
+
+        Args:
+            region: If provided, only read VCF data in the region.
+            tidy: If true, remove ``chr`` string from ``CHROM`` column.
+        """
+
+        self.clear()
+
+        if region:
+            chr = region.split(":")[0].replace("chr", "")
+            start = int(region.split(":")[1].split("-")[0])
+            end = int(region.split(":")[1].split("-")[1])
+
+        if self.filepath.endswith(".gz"):
+            f = gzip.open(self.filepath, "rt")
+        else:
+            f = open(self.filepath)
+
+        for line in f:
+            if "##" in line:
+                self.meta.append(line)
+                continue
+
+            fields = line.strip().split("\t")
+
+            if fields[0] == "#CHROM":
+                self.header = fields
+                continue
+
+            record = Record(fields)
+
+            if region:
+                if (chr == record.chrom.replace("chr", "") and
+                    start <= record.pos <= end):
+                    pass
+                elif (chr == record.chrom.replace("chr", "") and
+                      end < record.pos):
+                      break
+                else:
+                    continue
+
+            if tidy:
+                record.fields[0] = record.fields[0].replace("chr", "")
+
+            self.data.append(record)
+
+        f.close()
+
+    def missing_filter(self,
+                       threshold: float = 0.0) -> List[Record]:
+        """Filters out records with missing genotype ``./.``.
+
+        Returns:
+            list of Record: Filtered records.
+
+        Args:
+            threshold: A record will be removed if the fraction of samples
+                with missing genotype is greater than this threshold.
+        """
+
+        filtered = []
+
+        for i in reversed(range(len(self.data))):
+            record = self.data[i]
+            missing = ["." in x.split(":")[0] for x in record.data]
+            missing = missing.count(True) / len(missing)
+
+            if missing > threshold:
+                if not record.filter or "PASS" in record.filter:
+                    record.filter = ["MissingFilter"]
+                else:
+                    record.filter += ["MissingFilter"]
+
+                filtered.append(self.data.pop(i))
+
+        return filtered
+
+    def multiallelic_filter(self) -> List[Record]:
+        """Filters out records with more than two ALT alleles.
+
+        Returns:
+            list of Record: Filtered records.
+        """
+
+        filtered = []
+
+        for i in reversed(range(len(self.data))):
+            record = self.data[i]
+
+            if len(record.alt) > 1:
+                if not record.filter or "PASS" in record.filter:
+                    record.filter = ["MultiallelicFilter"]
+                else:
+                    record.filter += ["MultiallelicFilter"]
+
+                filtered.append(self.data.pop(i))
+
+        return filtered
+
+    def invalid_allele_filter(self) -> List[Record]:
+        """Filters out records with invalid alleles (e.g. ``I``, ``D``).
+
+        Returns:
+            list of Record: Filtered records.
+        """
+
+        filtered = []
+
+        for i in reversed(range(len(self.data))):
+            record = self.data[i]
+
+            if (record.ref in ["I", "D"] or
+                "." in record.alt or "D" in record.alt):
+
+                if not record.filter or "PASS" in record.filter:
+                    record.filter = ["InvalidAlleleFilter"]
+                else:
+                    record.filter += ["InvalidAlleleFilter"]
+
+                filtered.append(self.data.pop(i))
+
+        return filtered
+
+    def allelic_imbalance_filter(self,
+                                 threshold: float = 0.8,
+                                 count: int = 3) -> List[Record]:
+        """Filters out records with high allelic imbalance.
+
+        Returns:
+            list of Record: Filtered records.
+
+        Args:
+            threshold: A record is said to have high allelic imbalance if the
+                median of allele fractions is greather than this threshold.
+            count: Records will not be filtered out if they are indel and
+                have the number of supporting samples less than this count.
+        """
+
+        def get_af(x: str, record: Record) -> float:
+            i = record.format.index("GT")
+            gt = x.split(":")[i]
+
+            if "|" in gt:
+                gt = gt.split("|")
+            else:
+                gt = gt.split("/")
+
+            i = record.format.index("AD")
+            ad = x.split(":")[i]
+            ad = [int(x) for x in ad.split(",")]
+
+            if "." in gt or gt[0] == gt[1] or sum(ad) == 0:
+                af = 0.0
+            else:
+                af = max(ad) / sum(ad)
+
+            return af
+
+        filtered = []
+
+        for i in reversed(range(len(self.data))):
+            record = self.data[i]
+
+            if "AD" not in record.format:
+                continue
+
+            afs = [get_af(x, record) for x in record.data]
+            afs = [x for x in afs if x]
+
+            if not afs:
+                continue
+
+            median = statistics.median(afs)
+
+            if median <= threshold:
+                continue
+
+            if record.has_indel() and len(afs) < count:
+                continue
+
+            if not record.filter or "PASS" in record.filter:
+                record.filter = ["AllelicImbalanceFilter"]
+            else:
+                record.filter += ["AllelicImbalanceFilter"]
+
+            filtered.append(self.data.pop(i))
+
+        return filtered
+
+    def search_meta(self, key: str) -> str:
+        """Returns the value of the meta-information key, if present."""
+        for line in self.meta:
+            if key in line:
+                return line.strip().replace(f"##{key}=", "")
+        return ""
+
+    def copy(self,
+             meta: Optional[List[str]] = None,
+             header: Optional[List[str]] = None,
+             data: Optional[List[Record]] = None) -> "VCFFile":
+        """Returns a copy of the VCFFile."""
+        new = VCFFile()
+        new.meta = copy.deepcopy(self.meta) if meta is None else meta
+        new.header = copy.deepcopy(self.header) if header is None else header
+        new.data = copy.deepcopy(self.data) if data is None else data
+        return new
+
+    def to_str(self) -> str:
+        """Returns a string representation of the VCFFile."""
+        s = ""
+        for line in self.meta:
+            s += line
+        s += "\t".join(self.header) + "\n"
+        for record in self.data:
+            s += "\t".join(record.fields) + "\n"
+        return s
+
+    def to_file(self, filepath: str) -> None:
+        """Writes the VCFFile to a file."""
+        with open(filepath, "w") as f:
+            f.write(self.to_str())
+
+    def phase(self) -> None:
+        """Changes genotype separator from ``/`` to ``|``."""
+        for record in self.data:
+            record.fields[9:] = [x.replace("/", "|") for x
+                                 in record.fields[9:]]
+
+    def unphase(self) -> None:
+        """Changes genotype separator from ``|`` to ``/``."""
+        for record in self.data:
+            record.fields[9:] = [x.replace("|", "/") for x
+                                 in record.fields[9:]]
+
+    def sort(self) -> None:
+        """Sorts SNP records by chromosome and then by position."""
+        self.data.sort(key = lambda x: (x.chrom, x.pos))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def sm_tag(bam: str) -> str:
     """

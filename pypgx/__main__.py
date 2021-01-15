@@ -24,7 +24,6 @@ from .bam2sdf import bam2sdf
 from .sdf2gdf import sdf2gdf
 from .pgkb import pgkb
 from .minivcf import minivcf
-from .mergevcf import mergevcf
 from .summary import summary
 from .meta import meta
 from .compare import compare
@@ -51,7 +50,6 @@ PYPGX_TOOLS = {
     "sdf2gdf": sdf2gdf,
     "pgkb": pgkb,
     "minivcf": minivcf,
-    "mergevcf": mergevcf,
     "summary": summary,
     "meta": meta,
     "compare": compare,
@@ -363,22 +361,6 @@ def get_parser():
     )
     minivcf_parser.add_argument(
         "region",
-        help="target region",
-    )
-
-    mergevcf_parser = subparsers.add_parser(
-        "mergevcf",
-        help="merge VCF files",
-        parents=[output_parser]
-    )
-    mergevcf_parser.add_argument(
-        "vcf_file",
-        nargs="+",
-        help="VCF files to be merged",
-    )
-    mergevcf_parser.add_argument(
-        "--region",
-        metavar="STR",
         help="target region",
     )
 

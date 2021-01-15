@@ -2,9 +2,8 @@ import os
 import copy
 from typing import List
 
-from .common import get_stardb
+from .common import get_stardb, VCFFile
 from .sglib import vcf2biosamples
-from vcfgo.VCFFile import VCFFile
 
 def viewsnp(
         vcf_file: str,
@@ -18,7 +17,7 @@ def viewsnp(
 
     Args:
         vcf_file: Stargazer VCF file ('finalized.vcf').
-        query: List of pairs of sample and star allele separated by '/' 
+        query: List of pairs of sample and star allele separated by '/'
             (e.g. 'SAMPLE1/*4').
     """
     finalized_vcf = VCFFile(vcf_file)
