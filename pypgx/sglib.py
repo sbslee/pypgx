@@ -8,7 +8,6 @@ import pandas as pd
 import statistics
 from typing import List, Dict, TextIO, Optional
 from copy import deepcopy
-from .common import VCFFile
 
 class SNPAllele:
     """SNP allele object.
@@ -197,7 +196,7 @@ class BioSample:
         self.ssr_df = pd.DataFrame()
         self.af_df = pd.DataFrame()
 
-def vcf2biosamples(vcf: VCFFile,
+def vcf2biosamples(vcf,
                    filter: bool = False) -> List[BioSample]:
     """Convert a VCFFile to a list of BioSample.
 
