@@ -18,6 +18,10 @@ requirements:
     - pandas
     - pysam
     - requests
+    - scipy
+    - matplotlib
+    - gatk4=4.1.9.0
+    - java-jdk=8.0.112
 
 test:
   imports:
