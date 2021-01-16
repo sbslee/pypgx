@@ -6,22 +6,26 @@ source:
   git_url: https://github.com/sbslee/pypgx.git
   git_depth: 1
 
+build:
+      noarch: generic
+
 requirements:
   build:
     - python
     - setuptools
 
   run:
-    - python
-    - bs4
-    - lxml
-    - pandas
-    - pysam
-    - requests
-    - scipy
-    - matplotlib
+    - bs4=4.9.3
     - gatk4=4.1.9.0
     - java-jdk=8.0.112
+    - lxml=4.6.2
+    - matplotlib=3.3.3
+    - numpy=1.19.5
+    - pandas=1.2.0
+    - pysam=0.16.0.1
+    - python=3.8.6
+    - requests=2.25.1
+    - scipy=1.6.0
 
 test:
   imports:
