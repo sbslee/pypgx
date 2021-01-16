@@ -33,3 +33,5 @@ test:
 
 about:
   home: https://pypgx.readthedocs.io/en/latest/?badge=latest
+  license: GPL-3.0
+  license_file: LICENSE
