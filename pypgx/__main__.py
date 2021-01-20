@@ -28,7 +28,6 @@ from .summary import summary
 from .meta import meta
 from .compare import compare
 from .check import check
-from .liftover import liftover
 from .peek import peek
 from .viewsnp import viewsnp
 from .compgt import compgt
@@ -408,24 +407,6 @@ def get_parser():
     check_parser.add_argument(
         "snp_table",
         help="SNP table file",
-    )
-
-    liftover_parser = subparsers.add_parser(
-        "liftover",
-        help="convert variants in SNP table from hg19 to hg38",
-        parents=[output_parser]
-    )
-    liftover_parser.add_argument(
-        "star_table",
-        help="star allele table file",
-    )
-    liftover_parser.add_argument(
-        "snp_table",
-        help="SNP table file",
-    )
-    liftover_parser.add_argument(
-        "target_gene",
-        help="target gene",
     )
 
     peek_parser = subparsers.add_parser(

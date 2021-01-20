@@ -942,42 +942,6 @@ Description
 
 This command is meant to be used for Stargazer development.
 
-liftover command
-================
-
-Convert variants in SNP table from hg19 to hg38.
-
-Synopsis
---------
-
-.. code-block:: none
-
-   pypgx liftover [options] \
-     star_table \
-     snp_table \
-     target_gene
-
-Positional arguments
---------------------
-
-star_table
-  Star allele table file (``star_table.txt``).
-snp_table
-  SNP table file (``snp_table.txt``).
-target_gene
-  Target gene.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command is meant to be used for Stargazer development.
-
 peek command
 ============
 
