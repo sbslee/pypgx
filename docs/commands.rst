@@ -911,37 +911,6 @@ Description
 
 This command can compare multiple genotype files at once.
 
-check command
-=============
-
-Checks table files for Stargazer.
-
-Synopsis
---------
-
-.. code-block:: none
-
-   pypgx check [options] star_table snp_table
-
-Positional arguments
---------------------
-
-star_table
-  Star allele table file (``star_table.txt``).
-snp_table
-  SNP table file (``snp_table.txt``).
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command is meant to be used for Stargazer development.
-
 peek command
 ============
 

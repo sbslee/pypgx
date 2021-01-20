@@ -27,7 +27,6 @@ from .minivcf import minivcf
 from .summary import summary
 from .meta import meta
 from .compare import compare
-from .check import check
 from .peek import peek
 from .viewsnp import viewsnp
 from .compgt import compgt
@@ -52,7 +51,6 @@ PYPGX_TOOLS = {
     "summary": summary,
     "meta": meta,
     "compare": compare,
-    "check": check,
     "liftover": liftover,
     "peek": peek,
     "viewsnp": viewsnp,
@@ -393,20 +391,6 @@ def get_parser():
         "gt_file",
         nargs="+",
         help="genotype file",
-    )
-
-    check_parser = subparsers.add_parser(
-        "check",
-        help="check table files for Stargazer",
-        parents=[output_parser]
-    )
-    check_parser.add_argument(
-        "star_table",
-        help="star allele table file",
-    )
-    check_parser.add_argument(
-        "snp_table",
-        help="SNP table file",
     )
 
     peek_parser = subparsers.add_parser(
