@@ -117,7 +117,6 @@ For getting help::
         summary      create summary file using Stargazer data
         meta         create meta file from summary files
         compare      compare genotype files
-        liftover     convert variants in SNP table from hg19 to hg38
         peek         find all possible star alleles from VCF file
         viewsnp      view SNP data for pairs of sample/star allele
         compgt       compute the concordance between two genotype files
