@@ -1,4 +1,4 @@
-PyPGx
+pypgx
 *****
 
 .. image:: https://badge.fury.io/py/pypgx.svg
@@ -11,7 +11,6 @@ Table of Contents
 =================
 
 * `Introduction`_
-* `Dependencies`_
 * `Installation`_
 * `Stargazer`_
 * `Sun Grid Engine (SGE)`_
@@ -22,36 +21,25 @@ Table of Contents
 Introduction
 ============
 
-PyPGx is a Python package for pharmacogenomics (PGx) research, which can be
-used as a standalone program and as a Python module. Documentation is
-available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
-
-Dependencies
-============
-
-PyPGx requires Python 3 and the following Python packages::
-
-    requests>=2
-    pandas>=1.0.0
-    bs4>=0.0.1
-    lxml>=4.5.0
-    pysam>=0.16.0
+pypgx is a Python package for pharmacogenomics research, which can be used as a standalone program and as a Python module. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Installation
 ============
 
-The easiest way to install PyPGx and all of its dependencies is to use
-``pip``::
+You can easily install pypgx and all of its dependencies with the Anaconda distribution.
 
-    $ pip install pypgx
+.. code-block::
+
+   conda create -n pypgx -c sbslee pypgx
+   conda activate pypgx
 
 Stargazer
 =========
 
-For genotype analyses PyPGx relies on Stargazer, a bioinformatics tool for
+For genotype analyses pypgx relies on Stargazer, a bioinformatics tool for
 calling star alleles (haplotypes) in PGx genes using data from
 next-generation sequencing (NGS) or single nucleotide polymorphism (SNP)
-array. Therefore, Stargazer must be pre-installed in order to run PyPGx
+array. Therefore, Stargazer must be pre-installed in order to run pypgx
 commands such as ``bam2gt``. For more information on Stargazer, please visit
 their `official webpage <https://stargazer.gs.washington.edu/stargazerweb>`_
 and `Github repository <https://github.com/sbslee/stargazer>`_.
@@ -59,7 +47,7 @@ and `Github repository <https://github.com/sbslee/stargazer>`_.
 Sun Grid Engine (SGE)
 =====================
 
-Many PyPGx commands such as ``bam2gt2`` rely on the Sun Grid Engine (SGE)
+Many pypgx commands such as ``bam2gt2`` rely on the Sun Grid Engine (SGE)
 cluster to distribute their tasks across multiple machines for speed. These
 commands are indicated by ``[SGE]`` and will generate a shell script, which
 can be run like this::
@@ -70,9 +58,9 @@ SNP Callers
 ===========
 
 One major input for the Stargzer program is a Variant Call Format (VCF) file,
-which is a standard file format for storing SNP calls. Currently, PyPGx
+which is a standard file format for storing SNP calls. Currently, pypgx
 relies on two SNP callers to make VCF files: Genome Analysis Toolkit (GATK)
-and BCFtools. When running PyPGx commands like ``bam2vcf``, you can pick
+and BCFtools. When running pypgx commands like ``bam2vcf``, you can pick
 which SNP calling algorithm to use; it is assumed that you already installed
 the corresponding SNP caller.
 
@@ -123,7 +111,7 @@ For getting help::
 
     optional arguments:
       -h, --help     show this help message and exit
-      -v, --version  print the PyPGx version number and exit
+      -v, --version  print the pypgx version number and exit
 
 For getting tool-specific help::
 

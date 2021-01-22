@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath("../"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'PyPGx'
+project = 'pypgx'
 copyright = '2020, Seung-been "Steven" Lee'
 author = 'Seung-been "Steven" Lee'
 
