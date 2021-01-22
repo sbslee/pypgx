@@ -1,0 +1,14 @@
+bs4=4.9.3
+gatk4=4.1.9.0
+java-jdk=8.0.112
+lxml=4.6.2
+matplotlib=3.3.3
+notebook=6.2.0
+numpy=1.19.5
+pandas=1.2.0
+pysam=0.16.0.1
+pytest=6.2.1
+python=3.8.6
+requests=2.25.1
+scipy=1.6.0
+samtools=1.11

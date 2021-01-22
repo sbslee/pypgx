@@ -2,9 +2,6 @@ from setuptools import setup, find_packages
 
 exec(open("pypgx/version.py").read())
 
-requirements = ["requests>=2", "pandas>=1.0.0", "bs4>=0.0.1", "lxml>=4.5.0",
-                "pysam>=0.16.0",]
-
 setup(
     name="pypgx",
     version=__version__,
@@ -24,7 +21,6 @@ setup(
         ],
         "pypgx.resources.pgkb": ["action_table.txt"],
     },
-    install_requires=requirements,
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
