@@ -1,13 +1,13 @@
 Commands
 ********
 
-This section describes how to use PyPGx as a command-line program.
+This section describes how to use pypgx as a command-line program.
 For the public API of Python module ``pypgx``, please see the API section.
 
 Common options
 ==============
 
-The following options are common to many PyPGx commands.
+The following options are common to many pypgx commands.
 
 -h, --help         Show command-specific help message and exit.
 -o, --output FILE  Write output to FILE [stdout].
@@ -22,7 +22,7 @@ Convert BAM files to a genotype file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2gt [options] \
      snp_caller \
@@ -85,7 +85,7 @@ Convert BAM files to a genotype file [SGE].
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2gt2 [options] conf_file
 
@@ -186,7 +186,7 @@ Convert a genotype file to phenotypes.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx gt2pt [options] gt_file
 
@@ -216,7 +216,7 @@ Convert BAM files to a VCF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2vcf [options] \
      snp_caller \
@@ -271,7 +271,7 @@ Convert BAM files to a VCF file [SGE]
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2vcf2 [options] conf_file
 
@@ -360,7 +360,7 @@ Convert BAM files to a GDF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2gdf [options] \
      genome_build \
@@ -414,7 +414,7 @@ Convert a genotype file to an HTML report.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx gt2html [options] gt_file
 
@@ -443,7 +443,7 @@ Convert a BAM file to an HTML report [SGE].
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2html [options] conf_file
 
@@ -531,7 +531,7 @@ Convert FASTQ files to BAM files [SGE].
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx fq2bam [options] conf_file
 
@@ -615,7 +615,7 @@ Realign BAM files to another reference genome [SGE].
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2bam [options] conf_file
 
@@ -701,7 +701,7 @@ Convert BAM files to a SDF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx bam2sdf [options] \
      genome_build \
@@ -740,7 +740,7 @@ Convert a SDF file to a GDF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx sdf2gdf [options] sdf_file id [id ...]
 
@@ -771,7 +771,7 @@ Extract CPIC guidelines using PharmGKB API.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx pgkb [options]
 
@@ -801,7 +801,7 @@ Slice VCF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx minivcf [options] vcf_file region
 
@@ -832,7 +832,7 @@ Create summary file using Stargazer data.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx summary [options] gt_file
 
@@ -861,7 +861,7 @@ Create meta file from summary files.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx meta [options] summary_file [summary_file ...]
 
@@ -890,7 +890,7 @@ Compare genotype files.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx compare [options] gt_file [gt_file ...]
 
@@ -919,7 +919,7 @@ Find all possible star alleles from VCF file.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx peek [options] vcf_file
 
@@ -949,7 +949,7 @@ View SNP data for pairs of sample/star allele.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx viewsnp [options] vcf_file query [query ...]
 
@@ -1025,7 +1025,7 @@ Compute the concordance between two genotype files.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx compgt [options] \
      truth_file \
@@ -1063,7 +1063,7 @@ Calculate the concordance between two VCF files.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx compvcf [options] \
      truth_file \
@@ -1160,7 +1160,7 @@ Compute the uniformity of sequencing coverage.
 Synopsis
 --------
 
-.. code-block:: none
+.. code-block:: console
 
    pypgx unicov [options] bed_file [bam_file [bam_file ...]]
 

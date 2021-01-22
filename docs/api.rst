@@ -1,8 +1,8 @@
 API
 ***
 
-This section describes the public API of Python module ``pypgx``. For using 
-PyPGx as a command-line program, please see the Commands section.
+This section describes the public API of Python module ``pypgx``. For using
+pypgx as a command-line program, please see the Commands section.
 
 Major modules
 =============

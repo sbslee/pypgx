@@ -21,9 +21,5 @@ setup(
         ],
         "pypgx.resources.pgkb": ["action_table.txt"],
     },
-    classifiers=[
-        "Programming Language :: Python :: 3.6",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
-    ],
     entry_points={"console_scripts": ["pypgx=pypgx.__main__:main"]}
 )

@@ -65,8 +65,8 @@ def get_parser():
         "-v",
         "--version",
         action="version",
-        version=f"PyPGx v{__version__}",
-        help="print the PyPGx version number and exit"
+        version=f"pypgx {__version__}",
+        help="print the pypgx version number and exit"
     )
 
     output_parser = argparse.ArgumentParser(add_help=False)
@@ -479,7 +479,7 @@ def main():
     args = parser.parse_args()
 
     logger = get_logger()
-    logger.info(f"PyPGx v{__version__}")
+    logger.info(f"pypgx {__version__}")
     logger.info("Command:")
     logger.info("    {}".format(" ".join(sys.argv)))
 
@@ -491,7 +491,7 @@ def main():
     ).split(".")[0]
 
     logger.info(f"Elapsed time: {elapsed_time}")
-    logger.info("PyPGx finished")
+    logger.info("pypgx finished")
 
     if result:
         if hasattr(args, "output") and args.output:

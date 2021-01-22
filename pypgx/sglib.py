@@ -1,4 +1,4 @@
-# This script is shared between Stargazer and PyPGx.
+# This script is shared between Stargazer and pypgx.
 # Author: Seung-been "Steven" Lee
 # Email: sbstevenlee@gmail.com
 # Last updated: 2020-08-06 14:04
