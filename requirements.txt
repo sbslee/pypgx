@@ -10,5 +10,6 @@ pysam=0.16.0.1
 pytest=6.2.1
 python=3.8.6
 requests=2.25.1
-scipy=1.6.0
 samtools=1.11
+scipy=1.6.0
+sphinx_rtd_theme=0.5.1
