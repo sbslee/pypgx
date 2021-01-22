@@ -6,8 +6,6 @@ PyPGx
 .. image:: https://readthedocs.org/projects/pypgx/badge/?version=latest
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-.. image:: https://travis-ci.com/sbslee/pypgx.svg?branch=master
-    :target: https://travis-ci.com/sbslee/pypgx
 
 Table of Contents
 =================

@@ -2,13 +2,13 @@
 
 package:
   name: pypgx
-  version: version: {{ data['version'] }}
+  version: {{ data['version'] }}
 
 source:
   path: ..
 
 build:
-      noarch: generic
+  noarch: generic
 
 requirements:
   build:
@@ -37,4 +37,4 @@ test:
 about:
   home: https://pypgx.readthedocs.io/en/latest/?badge=latest
   license: GPL-3.0
-  license_file: LICENSE
+  license_file: ../LICENSE
