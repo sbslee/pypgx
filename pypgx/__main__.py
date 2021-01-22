@@ -51,7 +51,6 @@ PYPGX_TOOLS = {
     "summary": summary,
     "meta": meta,
     "compare": compare,
-    "liftover": liftover,
     "peek": peek,
     "viewsnp": viewsnp,
     "compgt": compgt,
