@@ -105,7 +105,6 @@ For getting help::
         compare      compare genotype files
         peek         find all possible star alleles from VCF file
         viewsnp      view SNP data for pairs of sample/star allele
-        compgt       compute the concordance between two genotype files
         compvcf      compute the concordance between two VCF files
         unicov       compute the uniformity of sequencing coverage
 

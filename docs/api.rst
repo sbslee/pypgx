@@ -1,11 +1,10 @@
 API
 ***
 
-This section describes the public API of Python module ``pypgx``. For using
-pypgx as a command-line program, please see the Commands section.
+This section describes the application programming interface (API) of the pypgx package.
 
-Major modules
-=============
+.. automodule:: pypgx
+    :members:
 
 pypgx.phenotyper module
 -----------------------

@@ -1,8 +1,35 @@
-Commands
-********
+CLI
+***
 
 This section describes how to use pypgx as a command-line program.
 For the public API of Python module ``pypgx``, please see the API section.
+
+compare-stargazer-calls
+=======================
+
+.. code-block:: console
+
+    usage: pypgx compare-stargazer-calls [-h] -r PATH -t PATH -o PATH
+
+    Compute the concordance between two 'genotype-calls.tsv' files created by
+    Stargazer.
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -r PATH, --ref-file PATH
+                            Path to the reference or truth 'genotype-calls.tsv'
+                            file created by Stargazer. [required]
+      -t PATH, --test-file PATH
+                            Path to the test 'genotype-calls.tsv' file created by
+                            Stargazer. [required]
+      -o PATH, --output-file PATH
+                            Path to the output file. [required]
+
+
+
+
+
+
 
 Common options
 ==============
@@ -1016,44 +1043,6 @@ The output will look like this::
     hg19_pos	wt_allele	var_allele	hg19_allele	type	so	impact	effect	hap1_allele	hap2_allele	gt	hap1_ad	hap2_ad	hap1_af	hap2_af
     42524947	C	T	C	core	splice_acceptor_variant	high_impact	splicing_defect	T	C	1|0	14	23	0.38	0.62
     42526694	G	A	G	tag	missense_variant	high_impact	P34S	A	G	1|0	26	16	0.62	0.38
-
-compgt command
-==============
-
-Compute the concordance between two genotype files.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx compgt [options] \
-     truth_file \
-     test_file \
-     sample_map
-
-Positional arguments
---------------------
-
-truth_file
-  Truth genotype file from Stargazer (``genotype.txt``).
-test_file
-  Test genotype file from Stargazer (``genotype.txt``).
-sample_map
-  Tab-delimited text file with two columns representing the truth and test sample names.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command computes the concordance between genotype data (e.g.
-``*1/*4``) of one samples in each of the genotype files, one being
-considered the truth and the other being the test.
 
 compvcf command
 ===============
