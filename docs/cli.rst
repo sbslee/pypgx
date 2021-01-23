@@ -1,8 +1,7 @@
 CLI
 ***
 
-This section describes how to use pypgx as a command-line program.
-For the public API of Python module ``pypgx``, please see the API section.
+This section describes command-line interface (CLI) for the pypgx package.
 
 compare-stargazer-calls
 =======================
@@ -204,36 +203,6 @@ This table summarizes the configuration parameters specific to ``bam2gt2``:
           - SNP caller (‘gatk’ or ‘bcftools’).
         * - target_genes
           - Names of target genes (e.g. 'cyp2d6').
-
-gt2pt command
-=============
-
-Convert a genotype file to phenotypes.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx gt2pt [options] gt_file
-
-Positional arguments
---------------------
-
-gt_file
-  Genotype file from Stargazer (i.e. ``genotype.txt``).
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command is just a wrapper for the ``phenotyper`` module. See the API
-section for details.
 
 bam2vcf command
 ===============
@@ -719,45 +688,6 @@ This table summarizes the configuration parameters specific to ``bam2bam``:
           - Number of threads.
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
-
-bam2sdf command
-===============
-
-Convert BAM files to a SDF file.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx bam2sdf [options] \
-     genome_build \
-     target_gene \
-     control_gene \
-     bam_file [bam_file ...]
-
-Positional arguments
---------------------
-
-genome_build
-  Genome build (``hg19`` or ``hg38``).
-target_gene
-  Target gene (e.g. ``cyp2d6``).
-control_gene
-  Name or region of control gene (e.g. ``vdr``, ``chr12:48232319-48301814``).
-bam_file
-  Input BAM files.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command creates SDF file from BAM files.
 
 sdf2gdf command
 ===============

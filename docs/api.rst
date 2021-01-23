@@ -1,7 +1,7 @@
 API
 ***
 
-This section describes the application programming interface (API) of the pypgx package.
+This section describes application programming interface (API) for the pypgx package.
 
 .. automodule:: pypgx
     :members:
@@ -28,12 +28,6 @@ pypgx.gt2html module
 --------------------
 
 .. automodule:: pypgx.gt2html
-    :members:
-
-pypgx.bam2sdf module
---------------------
-
-.. automodule:: pypgx.bam2sdf
     :members:
 
 pypgx.sdf2gdf module

@@ -88,7 +88,6 @@ For getting help::
       tool           name of the tool
         bam2gt       convert BAM files to a genotype file
         bam2gt2      convert BAM files to genotype files [SGE]
-        gt2pt        convert a genotype file to phenotypes
         bam2vcf      convert BAM files to a VCF file
         bam2vcf2     convert BAM files to a VCF file [SGE]
         bam2gdf      convert BAM files to a GDF file
@@ -96,7 +95,6 @@ For getting help::
         bam2html     convert a BAM file to an HTML report [SGE]
         fq2bam       convert FASTQ files to BAM files [SGE]
         bam2bam      realign BAM files to another reference genome [SGE]
-        bam2sdf      convert BAM files to a SDF file
         sdf2gdf      convert a SDF file to a GDF file
         pgkb         extract CPIC guidelines using PharmGKB API
         minivcf      slice VCF file
