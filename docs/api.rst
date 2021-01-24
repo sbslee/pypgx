@@ -6,12 +6,6 @@ This section describes application programming interface (API) for the pypgx pac
 .. automodule:: pypgx
     :members:
 
-pypgx.phenotyper module
------------------------
-
-.. automodule:: pypgx.phenotyper
-    :members:
-
 pypgx.bam2vcf module
 --------------------
 

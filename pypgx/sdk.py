@@ -188,3 +188,32 @@ def get_sn_tags(bam_file):
                 if "SN:" in field:
                     sn_tags.append(field.replace("SN:", ""))
     return set(sn_tags)
+
+def get_activity_score(target_gene, haplotype_call):
+    """Convert haplotype call to activity score.
+
+    Parameters
+    ----------
+    target_gene : str
+        Name of the target gene (e.g. cyp2d6).
+    haplotype_call : str
+        Haplotype call (e.g. \*2).
+
+    Returns
+    -------
+    float
+        Activity_score.
+
+    """
+    df = pypgx.star_df[pypgx.star_df["gene"] == target_gene]
+    activity_score = 0
+    for star_allele in haplotype_call.split('+'):
+        if 'x' in star_allele:
+            copies = int(star_allele.split('x')[1])
+            name = star_allele.split('x')[0]
+            activity_score += df[df["name"] == name][
+                "score"].values[0] * copies
+        else:
+            activity_score += df[df["name"] == star_allele][
+                "score"].values[0]
+    return activity_score
