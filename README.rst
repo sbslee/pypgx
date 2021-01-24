@@ -27,7 +27,7 @@ You can easily install pypgx and all of its dependencies with the Anaconda distr
 
 .. code-block:: console
 
-   conda create -n pypgx -c sbslee pypgx
+   $ conda create -n pypgx -c sbslee pypgx
 
 Before using pypgx, make sure to activate the conda environment where pypgx is installed.
 
