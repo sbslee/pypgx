@@ -55,10 +55,14 @@ You can display help message for pypgx CLI by entering:
         calculate-read-depth
                             Create a GDF (GATK DepthOfCoverage Format) file for
                             Stargazer from BAM files by computing read depth.
+        call-variants-gatk-sge
+                            Create a VCF (Variant Call Format) file for Stargazer
+                            from BAM files by calling SNVs and indels.
 
     optional arguments:
       -v, --version         Show the version and exit.
       -h, --help            Show this help message and exit.
+
 
 You can display command-specific help message by entering (e.g. ``calculate-read-depth``):
 
