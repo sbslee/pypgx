@@ -171,126 +171,126 @@ pypgx API
 
     results.df
 
-    .. raw:: html
+.. raw:: html
 
-        <div>
-        <style scoped>
-            .dataframe tbody tr th:only-of-type {
-                vertical-align: middle;
-            }
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
 
-            .dataframe tbody tr th {
-                vertical-align: top;
-            }
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
 
-            .dataframe thead th {
-                text-align: right;
-            }
-        </style>
-        <table border="1" class="dataframe">
-          <thead>
-            <tr style="text-align: right;">
-              <th></th>
-              <th>Locus</th>
-              <th>Total_Depth</th>
-              <th>Average_Depth_sample</th>
-              <th>Depth_for_74608</th>
-              <th>Depth_for_74608</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>0</th>
-              <td>12:48232319</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>1</th>
-              <td>12:48232320</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>2</th>
-              <td>12:48232321</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>12:48232322</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>4</th>
-              <td>12:48232323</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>...</th>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-            <tr>
-              <th>108875</th>
-              <td>22:42551879</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>108876</th>
-              <td>22:42551880</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>108877</th>
-              <td>22:42551881</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>108878</th>
-              <td>22:42551882</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-            <tr>
-              <th>108879</th>
-              <td>22:42551883</td>
-              <td>0</td>
-              <td>0.0</td>
-              <td>0</td>
-              <td>0</td>
-            </tr>
-          </tbody>
-        </table>
-        <p>108880 rows × 5 columns</p>
-        </div>
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>Locus</th>
+          <th>Total_Depth</th>
+          <th>Average_Depth_sample</th>
+          <th>Depth_for_74608</th>
+          <th>Depth_for_74608</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>12:48232319</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>12:48232320</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>12:48232321</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>12:48232322</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>12:48232323</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>108875</th>
+          <td>22:42551879</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>108876</th>
+          <td>22:42551880</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>108877</th>
+          <td>22:42551881</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>108878</th>
+          <td>22:42551882</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>108879</th>
+          <td>22:42551883</td>
+          <td>0</td>
+          <td>0.0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>108880 rows × 5 columns</p>
+    </div>
 
 For running within Python::
 
