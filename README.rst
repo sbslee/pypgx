@@ -33,7 +33,7 @@ Before using pypgx, make sure to activate the conda environment where pypgx is i
 
 .. code-block:: console
 
-  conda activate pypgx
+  $ conda activate pypgx
 
 pypgx CLI
 =========
@@ -44,12 +44,7 @@ You can display help message for pypgx CLI by entering:
 
 .. code-block:: console
 
-    pypgx -h
-
-To give:
-
-.. code-block:: console
-
+    $ pypgx -h
     usage: pypgx [-v] [-h] COMMAND ...
 
     positional arguments:
