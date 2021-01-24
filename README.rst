@@ -64,12 +64,7 @@ You can display command-specific help message by entering (e.g. ``calculate-read
 
 .. code-block:: console
 
-    pypgx calculate-read-depth -h
-
-To give:
-
-.. code-block:: console
-
+    $ pypgx calculate-read-depth -h
     usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
                                       [-h]
 
@@ -111,7 +106,7 @@ For running in command line:
 
 .. code-block:: console
 
-    pypgx calculate-read-depth \
+    $ pypgx calculate-read-depth \
     -t cyp2d6 \
     -c vdr \
     -i bam-list.txt \
@@ -119,7 +114,7 @@ For running in command line:
 
 The output GDF file will look something like:
 
-.. code-block:: console
+.. parsed-literal::
 
     Locus	Total_Depth	Average_Depth_sample	Depth_for_Steven	Depth_for_John
     ...
