@@ -18,22 +18,10 @@ pypgx.bam2vcf module
 .. automodule:: pypgx.bam2vcf
     :members:
 
-pypgx.bam2gdf module
---------------------
-
-.. automodule:: pypgx.bam2gdf
-    :members:
-
 pypgx.gt2html module
 --------------------
 
 .. automodule:: pypgx.gt2html
-    :members:
-
-pypgx.sdf2gdf module
---------------------
-
-.. automodule:: pypgx.sdf2gdf
     :members:
 
 pypgx.pgkb module

@@ -24,6 +24,49 @@ compare-stargazer-calls
       -o PATH, --output-file PATH
                             Path to the output file. [required]
 
+calculate-read-depth
+====================
+
+.. code-block:: console
+
+    usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
+                                      [-h]
+
+    Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM files
+    by computing read depth.
+
+    optional arguments:
+      -t TEXT, --target-gene TEXT
+                            Name of the target gene. Choices: {'abcb1', 'cacna1s',
+                            'cftr', 'cyp1a1', 'cyp1a2', 'cyp1b1', 'cyp2a6',
+                            'cyp2a13', 'cyp2b6', 'cyp2c8', 'cyp2c9', 'cyp2c19',
+                            'cyp2d6', 'cyp2e1', 'cyp2f1', 'cyp2j2', 'cyp2r1',
+                            'cyp2s1', 'cyp2w1', 'cyp3a4', 'cyp3a5', 'cyp3a7',
+                            'cyp3a43', 'cyp4a11', 'cyp4a22', 'cyp4b1', 'cyp4f2',
+                            'cyp17a1', 'cyp19a1', 'cyp26a1', 'dpyd', 'g6pd',
+                            'gstm1', 'gstp1', 'gstt1', 'ifnl3', 'nat1', 'nat2',
+                            'nudt15', 'por', 'ptgis', 'ryr1', 'slc15a2',
+                            'slc22a2', 'slco1b1', 'slco1b3', 'slco2b1', 'sult1a1',
+                            'tbxas1', 'tpmt', 'ugt1a1', 'ugt1a4', 'ugt2b7',
+                            'ugt2b15', 'ugt2b17', 'vkorc1', 'xpc'}. [required]
+      -c TEXT, --control-gene TEXT
+                            Name of a preselected control gene. Used for
+                            intrasample normalization during copy number analysis
+                            by Stargazer. Choices: {'egfr', 'ryr1', 'vdr'}.
+                            Alternatively, you can provide a custom genomic region
+                            with the 'chr:start-end' format (e.g.
+                            chr12:48232319-48301814). [required]
+      -i PATH, --bam-path PATH
+                            Read BAM files from PATH, one file path per line.
+                            [required]
+      -o PATH, --output-file PATH
+                            Path to the output file. [required]
+      -a TEXT, --genome-build TEXT
+                            Build of the reference genome assembly. Choices:
+                            {'hg19', 'hg38'}. [default: 'hg19']
+      -h, --help                Show this help message and exit.
+
+
 
 
 
@@ -348,60 +391,6 @@ This table summarizes the configuration parameters specific to ``bam2vcf2``:
          - Name of target gene (e.g. 'cyp2d6').
            Also accepts a BED file.
 
-bam2gdf command
-===============
-
-Convert BAM files to a GDF file.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx bam2gdf [options] \
-     genome_build \
-     target_gene \
-     control_gene \
-     output_file \
-     [bam_file [bam_file ...]]
-
-Positional arguments
---------------------
-
-genome_build
-  Genome build (``hg19`` or ``hg38``).
-target_gene
-  Name of target gene (e.g. ``cyp2d6``).
-control_gene
-  Name or region of control gene (e.g. ``vdr``, ``chr12:48232319-48301814``).
-output_file
-  Output will be written to *output_file*.
-bam_file
-  Input BAM files.
-
-Optional arguments
-------------------
-
--h, --help       See `Common options`_.
---bam_dir DIR    See `Common options`_.
---bam_list FILE  See `Common options`_.
-
-Description
------------
-
-This command converts BAM files to a GDF file.
-
-This command calculates read depth from BAM files and then outputs a
-GDF (GATK-DepthOfCoverage Format) file, which is one of the input
-files for the Stargazer program. Even though ``gatk DepthOfCoverage``
-could still be used to make GDF files, we recommend that you use this
-command because the former is too heavy (i.e. requires too much memory)
-for such a simple task (i.e. counting reads). The latter uses
-``samtools depth`` under the hood, which is way faster and requires
-way less memory. Another nice about using ``bam2gdf`` instead of
-``samtools depth`` is that everything is already parametrized for
-compatibility with Stargazer.
-
 gt2html command
 ===============
 
@@ -689,37 +678,6 @@ This table summarizes the configuration parameters specific to ``bam2bam``:
         * - vcf_files
           - Reference VCF files used for base quality score recalibration.
 
-sdf2gdf command
-===============
-
-Convert a SDF file to a GDF file.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx sdf2gdf [options] sdf_file id [id ...]
-
-Positional arguments
---------------------
-
-sdf_file
-  SDF file.
-id
-  Sample ID.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command creates GDF file from SDF file.
-
 pgkb command
 ============
 
@@ -749,37 +707,6 @@ Description
 
 This command extracts CPIC recommendations for prescription drugs using
 PharmGKB API.
-
-minivcf command
-===============
-
-Slice VCF file.
-
-Synopsis
---------
-
-.. code-block:: console
-
-   pypgx minivcf [options] vcf_file region
-
-Positional arguments
---------------------
-
-vcf_file
-  VCF file.
-region
-  Target region.
-
-Optional arguments
-------------------
-
--h, --help         See `Common options`_.
--o, --output FILE  See `Common options`_.
-
-Description
------------
-
-This command slices a VCF file for the given region.
 
 summary command
 ===============

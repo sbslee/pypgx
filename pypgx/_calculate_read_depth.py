@@ -2,6 +2,7 @@ import pysam
 from pypgx.sdk import get_sn_tags, get_sm_tags, Locus
 from io import StringIO
 import pandas as pd
+from pypgx.sdk import Results
 
 def calculate_read_depth(target_gene,
                          control_gene,
@@ -27,6 +28,11 @@ def calculate_read_depth(target_gene,
         Build of the reference genome assembly. Choices: {'hg19', 'hg38'}.
     output_file : str, optional
         Path to the output file.
+
+    Returns
+    -------
+    Results
+        Results instance which has the following attributes: ``df``.
 
     """
     bam_files = []
@@ -63,3 +69,19 @@ def calculate_read_depth(target_gene,
                                   f"{chr}{locus.region}", *bam_files)
 
     df = pd.read_csv(StringIO(depth_data), sep="\t", header=None)
+
+    df.columns = ["chrom", "pos"] + ["Depth_for_" + x for x in sm_tags]
+
+    df.insert(0, "Locus", df["chrom"].astype(str) + ":" + df["pos"].astype(str))
+
+    df.drop(columns=["chrom", "pos"], inplace=True)
+
+    df.insert(1, "Total_Depth", df.iloc[:, 1:].sum(axis=1))
+    df.insert(2, "Average_Depth_sample", df.iloc[:, 2:].mean(axis=1))
+
+    results = Results(df=df)
+
+    if output_file:
+        df.to_csv(output_file, sep='\t', index=False)
+
+    return results
