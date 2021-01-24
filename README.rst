@@ -140,7 +140,7 @@ The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describe
 
 For running within Python (e.g. ``phenotyper``):
 
-.. code-block:: python
+.. code:: ipython3
 
     from pypgx import phenotyper
     print(phenotyper("cyp2d6", "*1", "*1"))
@@ -148,7 +148,9 @@ For running within Python (e.g. ``phenotyper``):
     print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.
     print(phenotyper("cyp2d6", "*4", "*5"))    # *5 is gene deletion.
 
-To give::
+To give:
+
+.. parsed-literal::
 
     normal_metabolizer
     intermediate_metabolizer
