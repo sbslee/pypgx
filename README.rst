@@ -1,5 +1,5 @@
-pypgx
-*****
+README
+******
 
 .. image:: https://badge.fury.io/py/pypgx.svg
     :target: https://badge.fury.io/py/pypgx
@@ -106,11 +106,7 @@ For running in command line:
 
 .. code-block:: console
 
-    $ pypgx calculate-read-depth \
-    -t cyp2d6 \
-    -c vdr \
-    -i bam-list.txt \
-    -o read-depth.gdf
+    $ pypgx calculate-read-depth -t cyp2d6 -c vdr -i bam-list.txt -o read-depth.gdf
 
 The output GDF file will look something like:
 
