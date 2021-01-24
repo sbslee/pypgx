@@ -1,11 +1,9 @@
 import pkgutil
 import pandas as pd
 from io import BytesIO
-from pypgx.sdk import Locus
 
 from ._compare_stargazer_calls import compare_stargazer_calls
 from ._calculate_read_depth import calculate_read_depth
-
 from._phenotyper import phenotyper
 
 gene_df = pd.read_table(BytesIO(

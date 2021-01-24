@@ -12,9 +12,6 @@ Table of Contents
 
 * `Introduction`_
 * `Installation`_
-* `Stargazer`_
-* `Sun Grid Engine (SGE)`_
-* `SNP Callers`_
 * `pypgx CLI`_
 * `pypgx API`_
 
@@ -31,59 +28,27 @@ You can easily install pypgx and all of its dependencies with the Anaconda distr
 .. code-block:: console
 
    conda create -n pypgx -c sbslee pypgx
-   conda activate pypgx
 
-Stargazer
-=========
+Before using pypgx, make sure to activate the conda environment where pypgx is installed.
 
-For genotype analyses pypgx relies on Stargazer, a bioinformatics tool for
-calling star alleles (haplotypes) in PGx genes using data from
-next-generation sequencing (NGS) or single nucleotide polymorphism (SNP)
-array. Therefore, Stargazer must be pre-installed in order to run pypgx
-commands such as ``bam2gt``. For more information on Stargazer, please visit
-their `official webpage <https://stargazer.gs.washington.edu/stargazerweb>`_
-and `Github repository <https://github.com/sbslee/stargazer>`_.
+.. code-block:: console
 
-Sun Grid Engine (SGE)
-=====================
-
-Many pypgx commands such as ``bam2gt2`` rely on the Sun Grid Engine (SGE)
-cluster to distribute their tasks across multiple machines for speed. These
-commands are indicated by ``[SGE]`` and will generate a shell script, which
-can be run like this::
-
-    $ sh example-qsub.sh
-
-SNP Callers
-===========
-
-One major input for the Stargzer program is a Variant Call Format (VCF) file,
-which is a standard file format for storing SNP calls. Currently, pypgx
-relies on two SNP callers to make VCF files: Genome Analysis Toolkit (GATK)
-and BCFtools. When running pypgx commands like ``bam2vcf``, you can pick
-which SNP calling algorithm to use; it is assumed that you already installed
-the corresponding SNP caller.
-
-Generally speaking, GATK is considered more accurate but much slower
-than BCFtools. For instance, without the use of the SGE cluster, SNP calling
-for 70 WGS samples for the CYP2D6 gene takes 19 min to complete with GATK,
-but only 2 min with BCFtools. Therefore, if you have many samples and you do
-not have access to SGE for running parallel jobs, BCFtools may be a better
-choice. Of course, if you have SGE in your sever, then GATK is strongly
-recommended.
-
-For more information on the SNP callers, please visit the
-`GATK website <https://gatk.broadinstitute.org/hc/en-us>`_ and
-the `BCFtools website <http://samtools.github.io/bcftools/bcftools.html>`_.
+  conda activate pypgx
 
 pypgx CLI
 =========
 
-You can display help message for pypgx CLI by entering::
+The `pypgx CLI page <https://pypgx.readthedocs.io/en/latest/cli.html>`_ describes command-line interface (CLI) for the pypgx package.
+
+You can display help message for pypgx CLI by entering:
+
+.. code-block:: console
 
     pypgx -h
 
-To give::
+To give:
+
+.. code-block:: console
 
     usage: pypgx [-v] [-h] COMMAND ...
 
@@ -100,11 +65,15 @@ To give::
       -v, --version         Show the version and exit.
       -h, --help            Show this help message and exit.
 
-For getting command-specific help (e.g. ``calculate-read-depth``), enter::
+You can display command-specific help message by entering (e.g. ``calculate-read-depth``):
 
-    pypgx compare-stargazer-calls -h
+.. code-block:: console
 
-To give::
+    pypgx calculate-read-depth -h
+
+To give:
+
+.. code-block:: console
 
     usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
                                       [-h]
@@ -143,7 +112,9 @@ To give::
                             {'hg19', 'hg38'}. [default: 'hg19']
       -h, --help            Show this help message and exit.
 
-For running in command line::
+For running in command line:
+
+.. code-block:: console
 
     pypgx calculate-read-depth \
     -t cyp2d6 \
@@ -151,7 +122,9 @@ For running in command line::
     -i bam-list.txt \
     -o read-depth.gdf
 
-The output GDF file will look like::
+The output GDF file will look something like:
+
+.. code-block:: console
 
     Locus	Total_Depth	Average_Depth_sample	Depth_for_Steven	Depth_for_John
     ...
@@ -163,132 +136,21 @@ The output GDF file will look like::
 pypgx API
 =========
 
-.. code:: ipython3
+The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describes application programming interface (API) for the pypgx package.
 
-    results = pypgx.calculate_read_depth("cyp2d6", "vdr", "bam-list.txt")
+For running within Python (e.g. ``phenotyper``):
 
-.. code:: ipython3
+.. code-block:: python
 
-    results.df
-
-.. raw:: html
-
-    <div>
-    <table border="1" class="dataframe">
-      <thead>
-        <tr style="text-align: right;">
-          <th></th>
-          <th>Locus</th>
-          <th>Total_Depth</th>
-          <th>Average_Depth_sample</th>
-          <th>Depth_for_74608</th>
-          <th>Depth_for_74608</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th>0</th>
-          <td>12:48232319</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>1</th>
-          <td>12:48232320</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>2</th>
-          <td>12:48232321</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>3</th>
-          <td>12:48232322</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>4</th>
-          <td>12:48232323</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>...</th>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-          <td>...</td>
-        </tr>
-        <tr>
-          <th>108875</th>
-          <td>22:42551879</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>108876</th>
-          <td>22:42551880</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>108877</th>
-          <td>22:42551881</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>108878</th>
-          <td>22:42551882</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <th>108879</th>
-          <td>22:42551883</td>
-          <td>0</td>
-          <td>0.0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-For running within Python::
-
-    from pypgx.phenotyper import phenotyper
-    phenotyper("cyp2d6", "*1", "*1")
-    phenotyper("cyp2d6", "*1", "*4")
-    phenotyper("cyp2d6", "*1", "*2x2")  # *2x2 is gene duplication.
-    phenotyper("cyp2d6", "*4", "*5")    # *5 is gene deletion.
+    from pypgx import phenotyper
+    print(phenotyper("cyp2d6", "*1", "*1"))
+    print(phenotyper("cyp2d6", "*1", "*4"))
+    print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.
+    print(phenotyper("cyp2d6", "*4", "*5"))    # *5 is gene deletion.
 
 To give::
 
-    'normal_metabolizer'
-    'intermediate_metabolizer'
-    'ultrarapid_metabolizer'
-    'poor_metabolizer'
+    normal_metabolizer
+    intermediate_metabolizer
+    ultrarapid_metabolizer
+    poor_metabolizer

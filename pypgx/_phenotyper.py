@@ -27,10 +27,10 @@ def phenotyper(target_gene, first_hap, second_hap):
     Making phenotype prediction for CYP2D6 genotypes::
 
         from pypgx import phenotyper
-        print(phenotyper("cyp2d6", "\*1", "\*1"))
-        print(phenotyper("cyp2d6", "\*1", "\*4"))
-        print(phenotyper("cyp2d6", "\*1", "\*2x2"))  # \*2x2 is gene duplication.
-        print(phenotyper("cyp2d6", "\*4", "\*5"))    # \*5 is gene deletion.
+        print(phenotyper("cyp2d6", "*1", "*1"))
+        print(phenotyper("cyp2d6", "*1", "*4"))
+        print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.
+        print(phenotyper("cyp2d6", "*4", "*5"))    # *5 is gene deletion.
 
     To give::
 

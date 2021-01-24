@@ -197,7 +197,7 @@ def get_activity_score(target_gene, haplotype_call):
     target_gene : str
         Name of the target gene (e.g. cyp2d6).
     haplotype_call : str
-        Haplotype call (e.g. \*2).
+        Haplotype call.
 
     Returns
     -------
