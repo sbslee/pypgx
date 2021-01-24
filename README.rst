@@ -79,9 +79,11 @@ the `BCFtools website <http://samtools.github.io/bcftools/bcftools.html>`_.
 Running in Command Line
 =======================
 
-For getting help, enter ``pypgx -h``:
+You can display help message for pypgx CLI by entering::
 
-.. code-block:: console
+    pypgx -h
+
+To give::
 
     usage: pypgx [-v] [-h] COMMAND ...
 
@@ -98,7 +100,27 @@ For getting help, enter ``pypgx -h``:
       -v, --version         Show the version and exit.
       -h, --help            Show this help message and exit.
 
+For getting command-specific help (e.g. ``compare-stargazer-calls``), enter::
 
+    pypgx compare-stargazer-calls -h
+
+To give::
+
+    usage: pypgx compare-stargazer-calls -r PATH -t PATH -o PATH [-h]
+
+    Compute the concordance between two 'genotype-calls.tsv' files created by
+    Stargazer.
+
+    optional arguments:
+      -r PATH, --ref-file PATH
+                            Path to the reference or truth 'genotype-calls.tsv'
+                            file created by Stargazer. [required]
+      -t PATH, --test-file PATH
+                            Path to the test 'genotype-calls.tsv' file created by
+                            Stargazer. [required]
+      -o PATH, --output-file PATH
+                            Path to the output file. [required]
+      -h, --help            Show this help message and exit.
 
 For running in command line::
 
