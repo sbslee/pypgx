@@ -1,6 +1,8 @@
 import pypgx
 import pysam
 import pandas as pd
+import string
+import random
 
 class Locus:
     """Store various information for the given gene.
@@ -136,11 +138,6 @@ class Locus:
                    upstream, downstream, masked_starts, masked_ends,
                    exon_starts, exon_ends)
 
-class Results:
-    """Namespace for storing various results from pypgx."""
-    def __init__(self, **kwargs):
-        self.__dict__.update(kwargs)
-
 def get_sm_tags(bam_file):
     """Extract the SM tags (sample names) from a BAM file.
 
@@ -217,3 +214,11 @@ def get_activity_score(target_gene, haplotype_call):
             activity_score += df[df["name"] == star_allele][
                 "score"].values[0]
     return activity_score
+
+
+def randstr():
+    """Generate a random string of length n."""
+    chars = string.ascii_uppercase + string.digits
+    n = 5
+    first = random.choice(string.ascii_lowercase)
+    return first + "".join(random.choice(chars) for _ in range(n))
