@@ -111,6 +111,7 @@ def _get_parser():
         "-i",
         "--bam-path",
         metavar="PATH",
+        required=True,
         help=("Read BAM files from PATH, one file path per line. [required]")
     )
 
