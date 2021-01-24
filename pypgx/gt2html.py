@@ -6,7 +6,6 @@ import pkgutil
 from typing import TextIO, Optional
 
 from .common import get_target_genes
-from .gt2pt import phenotyper
 
 def _add_overview_section(genotype_table, pair_table, target_genes):
     table = (

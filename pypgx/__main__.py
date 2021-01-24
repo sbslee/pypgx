@@ -1,504 +1,154 @@
-import sys
 import argparse
-import timeit
-import datetime
-
+import pypgx
 from .version import __version__
-from .common import (
-    get_logger,
-    get_file_list,
-    read_file_list,
-)
 
-from .bam2gt import bam2gt
-from .bam2gt2 import bam2gt2
-from .gt2pt import gt2pt
-from .bam2vcf import bam2vcf
-from .bam2vcf2 import bam2vcf2
-from .bam2gdf import bam2gdf
-from .gt2html import gt2html
-from .bam2html import bam2html
-from .fq2bam import fq2bam
-from .bam2bam import bam2bam
-from .bam2sdf import bam2sdf
-from .sdf2gdf import sdf2gdf
-from .pgkb import pgkb
-from .minivcf import minivcf
-from .summary import summary
-from .meta import meta
-from .compare import compare
-from .peek import peek
-from .viewsnp import viewsnp
-from .compgt import compgt
-from .compvcf import compvcf
-from .unicov import unicov
+def _func(l):
+    """Convert a list to a pretty text."""
+    return '{' + ", ".join([f"'{x}'" for x in l]) + '}'
 
-PYPGX_TOOLS = {
-    "bam2gt": bam2gt,
-    "bam2gt2": bam2gt2,
-    "gt2pt": gt2pt,
-    "bam2vcf": bam2vcf,
-    "bam2vcf2": bam2vcf2,
-    "bam2gdf": bam2gdf,
-    "gt2html": gt2html,
-    "bam2html": bam2html,
-    "fq2bam": fq2bam,
-    "bam2bam": bam2bam,
-    "bam2sdf": bam2sdf,
-    "sdf2gdf": sdf2gdf,
-    "pgkb": pgkb,
-    "minivcf": minivcf,
-    "summary": summary,
-    "meta": meta,
-    "compare": compare,
-    "peek": peek,
-    "viewsnp": viewsnp,
-    "compgt": compgt,
-    "compvcf": compvcf,
-    "unicov": unicov,
-}
-
-def get_parser():
-    parser = argparse.ArgumentParser()
+def _get_parser():
+    parser = argparse.ArgumentParser(add_help=False)
 
     parser.add_argument(
         "-v",
         "--version",
         action="version",
-        version=f"pypgx {__version__}",
-        help="print the pypgx version number and exit"
+        version=f"%(prog)s {__version__}",
+        help="Show the version and exit."
     )
 
-    output_parser = argparse.ArgumentParser(add_help=False)
-    output_parser.add_argument(
-        "-o",
-        "--output",
-        metavar="FILE",
-        help="write output to FILE [stdout]"
-    )
-
-    bam_getter_parser = argparse.ArgumentParser(add_help=False)
-    bam_getter_parser.add_argument(
-        "--bam_dir",
-        metavar="DIR",
-        help="treat any BAM files in DIR as input"
-    )
-    bam_getter_parser.add_argument(
-        "--bam_list",
-        metavar="FILE",
-        help="read BAM files from FILE, one file path per line"
+    parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit."
     )
 
     subparsers = parser.add_subparsers(
-        dest="tool",
-        metavar="tool",
-        help="name of the tool",
+        dest="command",
+        metavar="COMMAND",
+        help="Name of the command."
     )
+
     subparsers.required = True
 
-    bam2gt_parser = subparsers.add_parser(
-        "bam2gt",
-        help="convert BAM files to a genotype file",
-        parents=[bam_getter_parser]
-    )
-    bam2gt_parser.add_argument(
-        "snp_caller",
-        help="SNP caller ('gatk' or 'bcftools')"
-    )
-    bam2gt_parser.add_argument(
-        "fasta_file",
-        help="reference FASTA file"
-    )
-    bam2gt_parser.add_argument(
-        "target_gene",
-        help="name of target gene (e.g. 'cyp2d6')"
-    )
-    bam2gt_parser.add_argument(
-        "genome_build",
-        help="genome build ('hg19' or 'hg38')"
-    )
-    bam2gt_parser.add_argument(
-        "data_type",
-        help="type of sequencing data ('wgs' or 'ts')",
-    )
-    bam2gt_parser.add_argument(
-        "proj_dir",
-        help="output files will be written to this directory",
-    )
-    bam2gt_parser.add_argument(
-        "bam_file",
-        nargs="*",
-        help="input BAM files"
-    )
-    bam2gt_parser.add_argument(
-        "--control_gene",
-        metavar="STR",
-        help="name or region of control gene (e.g. ‘vdr’, "
-            + "‘chr12:48232319-48301814’)"
-    )
-    bam2gt_parser.add_argument(
-        "--dbsnp_file",
-        metavar="FILE",
-        help="dbSNP VCF file, used by GATK to add rs numbers"
-    )
-    bam2gt_parser.add_argument(
-        "--temp_dir",
-        metavar="DIR",
-        help="temporary files will be written to this directory"
-    )
-    bam2gt_parser.add_argument(
-        "--plot",
-        action="store_true",
-        help="output copy number plots",
+    compare_stargazer_calls_parser = subparsers.add_parser(
+        "compare-stargazer-calls",
+        add_help=False,
+        help=("Compute the concordance between two 'genotype-calls.tsv' "
+              "files created by Stargazer."),
+        description=("Compute the concordance between two "
+                     "'genotype-calls.tsv' files created by Stargazer.")
     )
 
-    bam2gt2_parser = subparsers.add_parser(
-        "bam2gt2",
-        help="convert BAM files to genotype files [SGE]",
-        parents=[]
-    )
-    bam2gt2_parser.add_argument(
-        "conf_file",
-        help="configuration file",
-    )
-
-    gt2pt_parser = subparsers.add_parser(
-        "gt2pt",
-        help="convert a genotype file to phenotypes",
-        parents=[output_parser]
-    )
-    gt2pt_parser.add_argument(
-        "gt_file",
-        help="genotype file from Stargazer ('genotype.txt')",
+    compare_stargazer_calls_parser.add_argument(
+        "-r",
+        "--ref-file",
+        metavar="PATH",
+        required=True,
+        help=("Path to the reference or truth 'genotype-calls.tsv' file "
+              "created by Stargazer. [required]")
     )
 
-    bam2vcf_parser = subparsers.add_parser(
-        "bam2vcf",
-        help="convert BAM files to a VCF file",
-        parents=[bam_getter_parser]
-    )
-    bam2vcf_parser.add_argument(
-        "snp_caller",
-        help="SNP caller ('gatk' or 'bcftools')"
-    )
-    bam2vcf_parser.add_argument(
-        "fasta_file",
-        help="reference FASTA file"
-    )
-    bam2vcf_parser.add_argument(
-        "target_gene",
-        help="name or region of target gene (e.g. ‘cyp2d6’, "
-            + "‘chr22:42512500-42551883’)"
-    )
-    bam2vcf_parser.add_argument(
-        "output_file",
-        help="write output to this file"
-    )
-    bam2vcf_parser.add_argument(
-        "genome_build",
-        help="genome build ('hg19' or 'hg38')"
-    )
-    bam2vcf_parser.add_argument(
-        "bam_file",
-        nargs="*",
-        help="input BAM files"
-    )
-    bam2vcf_parser.add_argument(
-        "--dbsnp_file",
-        metavar="FILE",
-        help="dbSNP VCF file, used by GATK to add rs numbers"
-    )
-    bam2vcf_parser.add_argument(
-        "--java_options",
-        metavar="STR",
-        help="Java-specific arguments for GATK (e.g. '-Xmx4G')"
-    )
-    bam2vcf_parser.add_argument(
-        "--temp_dir",
-        metavar="DIR",
-        help="temporary files will be written to this directory"
+    compare_stargazer_calls_parser.add_argument(
+        "-t",
+        "--test-file",
+        metavar="PATH",
+        required=True,
+        help=("Path to the test 'genotype-calls.tsv' file "
+              "created by Stargazer. [required]")
     )
 
-    bam2vcf2_parser = subparsers.add_parser(
-        "bam2vcf2",
-        help="convert BAM files to a VCF file [SGE]",
-        parents=[]
-    )
-    bam2vcf2_parser.add_argument(
-        "conf_file",
-        help="configuration file",
+    compare_stargazer_calls_parser.add_argument(
+        "-o",
+        "--output-file",
+        metavar="PATH",
+        required=True,
+        help=("Path to the output file. [required]")
     )
 
-    bam2gdf_parser = subparsers.add_parser(
-        "bam2gdf",
-        help="convert BAM files to a GDF file",
-        parents=[bam_getter_parser]
-    )
-    bam2gdf_parser.add_argument(
-        "genome_build",
-        help="genome build ('hg19' or 'hg38')",
-    )
-    bam2gdf_parser.add_argument(
-        "target_gene",
-        help="name of target gene (e.g. 'cyp2d6')",
-    )
-    bam2gdf_parser.add_argument(
-        "control_gene",
-        help="name or region of control gene (e.g. ‘vdr’, "
-            + "‘chr12:48232319-48301814’)"
-    )
-    bam2gdf_parser.add_argument(
-        "output_file",
-        help="write output to this file"
-    )
-    bam2gdf_parser.add_argument(
-        "bam_file",
-        nargs="*",
-        help="input BAM files"
+    compare_stargazer_calls_parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit."
     )
 
-    gt2html_parser = subparsers.add_parser(
-        "gt2html",
-        help="convert a genotype file to an HTML report",
-        parents=[output_parser]
-    )
-    gt2html_parser.add_argument(
-        "gt_file",
-        help="genotype file from Stargazer ('genotype.txt')",
-    )
-
-    bam2html_parser = subparsers.add_parser(
-        "bam2html",
-        help="convert a BAM file to an HTML report [SGE]",
-        parents=[]
-    )
-    bam2html_parser.add_argument(
-        "conf_file",
-        help="configuration file",
+    calculate_read_depth_parser = subparsers.add_parser(
+        "calculate-read-depth",
+        add_help=False,
+        help=("Create a GDF (GATK DepthOfCoverage Format) file for "
+              "Stargazer from BAM files by computing read depth."),
+        description=("Create a GDF (GATK DepthOfCoverage Format) file for "
+                     "Stargazer from BAM files by computing read depth.")
     )
 
-    fq2bam_parser = subparsers.add_parser(
-        "fq2bam",
-        help="convert FASTQ files to BAM files [SGE]",
-        parents=[output_parser]
-    )
-    fq2bam_parser.add_argument(
-        "conf_file",
-        help="configuration file",
-    )
-
-    bam2bam_parser = subparsers.add_parser(
-        "bam2bam",
-        help="realign BAM files to another reference genome [SGE]",
-        parents=[]
-    )
-    bam2bam_parser.add_argument(
-        "conf_file",
-        help="configuration file",
+    calculate_read_depth_parser.add_argument(
+        "-t",
+        "--target-gene",
+        metavar="TEXT",
+        required=True,
+        help=("Name of the target gene. Choices: "
+              f"{_func(pypgx.target_genes)}. [required]")
     )
 
-    bam2sdf_parser = subparsers.add_parser(
-        "bam2sdf",
-        help="convert BAM files to a SDF file",
-        parents=[output_parser]
-    )
-    bam2sdf_parser.add_argument(
-        "genome_build",
-        help="genome build",
-    )
-    bam2sdf_parser.add_argument(
-        "target_gene",
-        help="target gene",
-    )
-    bam2sdf_parser.add_argument(
-        "control_gene",
-        help="control gene or region",
-    )
-    bam2sdf_parser.add_argument(
-        "bam_file",
-        nargs="+",
-        help="BAM file",
+    calculate_read_depth_parser.add_argument(
+        "-c",
+        "--control-gene",
+        metavar="TEXT",
+        required=True,
+        help=("Name of a preselected control gene. Used for intrasample "
+              "normalization during copy number analysis by Stargazer. "
+              f"Choices: {_func(pypgx.control_genes)}. Alternatively, "
+              "you can provide a custom genomic region with the "
+              "'chr:start-end' format (e.g. chr12:48232319-48301814). "
+              "[required]")
     )
 
-    sdf2gdf_parser = subparsers.add_parser(
-        "sdf2gdf",
-        help="convert a SDF file to a GDF file",
-        parents=[output_parser]
-    )
-    sdf2gdf_parser.add_argument(
-        "sdf_file",
-        help="SDF file",
-    )
-    sdf2gdf_parser.add_argument(
-        "id",
-        nargs="+",
-        help="sample ID",
+    calculate_read_depth_parser.add_argument(
+        "-i",
+        "--bam-path",
+        metavar="PATH",
+        required=True,
+        help=("Read BAM files from PATH, one file path per line. [required]")
     )
 
-    pgkb_parser = subparsers.add_parser(
-        "pgkb",
-        help="extract CPIC guidelines using PharmGKB API",
-        parents=[output_parser]
-    )
-    pgkb_parser.add_argument(
-        "--test_mode",
-        action="store_true",
-        help="only extract first three guidelines for testing",
+    calculate_read_depth_parser.add_argument(
+        "-o",
+        "--output-file",
+        metavar="PATH",
+        required=True,
+        help=("Path to the output file. [required]")
     )
 
-    minivcf_parser = subparsers.add_parser(
-        "minivcf",
-        help="slice VCF file",
-        parents=[output_parser]
-    )
-    minivcf_parser.add_argument(
-        "vcf_file",
-        help="VCF file",
-    )
-    minivcf_parser.add_argument(
-        "region",
-        help="target region",
+    calculate_read_depth_parser.add_argument(
+        "-a",
+        "--genome-build",
+        metavar="TEXT",
+        default="hg19",
+        help=("Build of the reference genome assembly. "
+              "Choices: {'hg19', 'hg38'}. [default: 'hg19']")
     )
 
-    summary_parser = subparsers.add_parser(
-        "summary",
-        help="create summary file using Stargazer data",
-        parents=[output_parser]
-    )
-    summary_parser.add_argument(
-        "gt_file",
-        help="genotype file",
-    )
-
-    meta_parser = subparsers.add_parser(
-        "meta",
-        help="create meta file from summary files",
-        parents=[output_parser]
-    )
-    meta_parser.add_argument(
-        "summary_file",
-        nargs="+",
-        help="summary file",
-    )
-
-    compare_parser = subparsers.add_parser(
-        "compare",
-        help="compare genotype files",
-        parents=[output_parser]
-    )
-    compare_parser.add_argument(
-        "gt_file",
-        nargs="+",
-        help="genotype file",
-    )
-
-    peek_parser = subparsers.add_parser(
-        "peek",
-        help="find all possible star alleles from VCF file",
-        parents=[output_parser]
-    )
-    peek_parser.add_argument(
-        "vcf_file",
-        help="Stargazer VCF file (finalized.vcf)",
-    )
-
-    viewsnp_parser = subparsers.add_parser(
-        "viewsnp",
-        help="view SNP data for pairs of sample/star allele",
-        parents=[output_parser]
-    )
-    viewsnp_parser.add_argument(
-        "vcf_file",
-        help="Stargazer VCF file ('finalized.vcf')",
-    )
-    viewsnp_parser.add_argument(
-        "query",
-        nargs="+",
-        help="pair of sample and star allele separated by '/' "
-            + "(e.g. 'SAMPLE1/*4')",
-    )
-
-    compgt_parser = subparsers.add_parser(
-        "compgt",
-        help="compute the concordance between two genotype files",
-        parents=[output_parser]
-    )
-    compgt_parser.add_argument(
-        "truth_file",
-        help="truth genotype file",
-    )
-    compgt_parser.add_argument(
-        "test_file",
-        help="test genotype file",
-    )
-    compgt_parser.add_argument(
-        "sample_map",
-        help="tab-delimited text file with two columns representing "
-            + "the truth and test sample names",
-    )
-
-    compvcf_parser = subparsers.add_parser(
-        "compvcf",
-        help="compute the concordance between two VCF files",
-        parents=[output_parser]
-    )
-    compvcf_parser.add_argument(
-        "truth_file",
-        help="truth VCF file",
-    )
-    compvcf_parser.add_argument(
-        "test_file",
-        help="test VCF file",
-    )
-    compvcf_parser.add_argument(
-        "sample_map",
-        help="tab-delimited text file with two columns representing "
-            + "the truth and test sample names",
-    )
-
-    unicov_parser = subparsers.add_parser(
-        "unicov",
-        help="compute the uniformity of sequencing coverage",
-        parents=[output_parser, bam_getter_parser]
-    )
-    unicov_parser.add_argument(
-        "bed_file",
-        help="BED file",
-    )
-    unicov_parser.add_argument(
-        "bam_file",
-        nargs="*",
-        help="input BAM files"
+    calculate_read_depth_parser.add_argument(
+        "-h",
+        "--help",
+        action="help",
+        default=argparse.SUPPRESS,
+        help="Show this help message and exit."
     )
 
     return parser
 
 def main():
-    start_time = timeit.default_timer()
-    parser = get_parser()
+    parser = _get_parser()
     args = parser.parse_args()
+    command = args.command
+    delattr(args, "command")
+    pypgx.commands[command](**vars(args))
 
-    logger = get_logger()
-    logger.info(f"pypgx {__version__}")
-    logger.info("Command:")
-    logger.info("    {}".format(" ".join(sys.argv)))
-
-    result = PYPGX_TOOLS[args.tool](**vars(args))
-
-    stop_time = timeit.default_timer()
-    elapsed_time = str(
-        datetime.timedelta(seconds=(stop_time - start_time))
-    ).split(".")[0]
-
-    logger.info(f"Elapsed time: {elapsed_time}")
-    logger.info("pypgx finished")
-
-    if result:
-        if hasattr(args, "output") and args.output:
-            with open(args.output, "w") as f:
-                f.write(result)
-        else:
-            sys.stdout.write(result)
 
 if __name__ == "__main__":
     main()

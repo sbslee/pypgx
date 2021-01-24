@@ -12,11 +12,8 @@ Table of Contents
 
 * `Introduction`_
 * `Installation`_
-* `Stargazer`_
-* `Sun Grid Engine (SGE)`_
-* `SNP Callers`_
-* `Running in Command Line`_
-* `Running within Python`_
+* `pypgx CLI`_
+* `pypgx API`_
 
 Introduction
 ============
@@ -31,135 +28,131 @@ You can easily install pypgx and all of its dependencies with the Anaconda distr
 .. code-block:: console
 
    conda create -n pypgx -c sbslee pypgx
-   conda activate pypgx
 
-Stargazer
+Before using pypgx, make sure to activate the conda environment where pypgx is installed.
+
+.. code-block:: console
+
+  conda activate pypgx
+
+pypgx CLI
 =========
 
-For genotype analyses pypgx relies on Stargazer, a bioinformatics tool for
-calling star alleles (haplotypes) in PGx genes using data from
-next-generation sequencing (NGS) or single nucleotide polymorphism (SNP)
-array. Therefore, Stargazer must be pre-installed in order to run pypgx
-commands such as ``bam2gt``. For more information on Stargazer, please visit
-their `official webpage <https://stargazer.gs.washington.edu/stargazerweb>`_
-and `Github repository <https://github.com/sbslee/stargazer>`_.
+The `pypgx CLI page <https://pypgx.readthedocs.io/en/latest/cli.html>`_ describes command-line interface (CLI) for the pypgx package.
 
-Sun Grid Engine (SGE)
-=====================
+You can display help message for pypgx CLI by entering:
 
-Many pypgx commands such as ``bam2gt2`` rely on the Sun Grid Engine (SGE)
-cluster to distribute their tasks across multiple machines for speed. These
-commands are indicated by ``[SGE]`` and will generate a shell script, which
-can be run like this::
+.. code-block:: console
 
-    $ sh example-qsub.sh
+    pypgx -h
 
-SNP Callers
-===========
+To give:
 
-One major input for the Stargzer program is a Variant Call Format (VCF) file,
-which is a standard file format for storing SNP calls. Currently, pypgx
-relies on two SNP callers to make VCF files: Genome Analysis Toolkit (GATK)
-and BCFtools. When running pypgx commands like ``bam2vcf``, you can pick
-which SNP calling algorithm to use; it is assumed that you already installed
-the corresponding SNP caller.
+.. code-block:: console
 
-Generally speaking, GATK is considered more accurate but much slower
-than BCFtools. For instance, without the use of the SGE cluster, SNP calling
-for 70 WGS samples for the CYP2D6 gene takes 19 min to complete with GATK,
-but only 2 min with BCFtools. Therefore, if you have many samples and you do
-not have access to SGE for running parallel jobs, BCFtools may be a better
-choice. Of course, if you have SGE in your sever, then GATK is strongly
-recommended.
-
-For more information on the SNP callers, please visit the
-`GATK website <https://gatk.broadinstitute.org/hc/en-us>`_ and
-the `BCFtools website <http://samtools.github.io/bcftools/bcftools.html>`_.
-
-Running in Command Line
-=======================
-
-For getting help::
-
-    $ pypgx -h
-    usage: pypgx [-h] [-v] tool ...
+    usage: pypgx [-v] [-h] COMMAND ...
 
     positional arguments:
-      tool           name of the tool
-        bam2gt       convert BAM files to a genotype file
-        bam2gt2      convert BAM files to genotype files [SGE]
-        gt2pt        convert a genotype file to phenotypes
-        bam2vcf      convert BAM files to a VCF file
-        bam2vcf2     convert BAM files to a VCF file [SGE]
-        bam2gdf      convert BAM files to a GDF file
-        gt2html      convert a genotype file to an HTML report
-        bam2html     convert a BAM file to an HTML report [SGE]
-        fq2bam       convert FASTQ files to BAM files [SGE]
-        bam2bam      realign BAM files to another reference genome [SGE]
-        bam2sdf      convert BAM files to a SDF file
-        sdf2gdf      convert a SDF file to a GDF file
-        pgkb         extract CPIC guidelines using PharmGKB API
-        minivcf      slice VCF file
-        summary      create summary file using Stargazer data
-        meta         create meta file from summary files
-        compare      compare genotype files
-        peek         find all possible star alleles from VCF file
-        viewsnp      view SNP data for pairs of sample/star allele
-        compgt       compute the concordance between two genotype files
-        compvcf      compute the concordance between two VCF files
-        unicov       compute the uniformity of sequencing coverage
+      COMMAND               Name of the command.
+        compare-stargazer-calls
+                            Compute the concordance between two 'genotype-
+                            calls.tsv' files created by Stargazer.
+        calculate-read-depth
+                            Create a GDF (GATK DepthOfCoverage Format) file for
+                            Stargazer from BAM files by computing read depth.
 
     optional arguments:
-      -h, --help     show this help message and exit
-      -v, --version  print the pypgx version number and exit
+      -v, --version         Show the version and exit.
+      -h, --help            Show this help message and exit.
 
-For getting tool-specific help::
+You can display command-specific help message by entering (e.g. ``calculate-read-depth``):
 
-    $ pypgx bam2gdf -h
-    usage: pypgx bam2gdf [-h] [--bam_dir DIR] [--bam_list FILE]
-                         genome_build target_gene control_gene output_file
-                         [bam_file [bam_file ...]]
+.. code-block:: console
 
-    positional arguments:
-      genome_build     genome build ('hg19' or 'hg38')
-      target_gene      name of target gene (e.g. 'cyp2d6')
-      control_gene     name or region of control gene (e.g. ‘vdr’,
-                       ‘chr12:48232319-48301814’)
-      output_file      write output to this file
-      bam_file         input BAM files
+    pypgx calculate-read-depth -h
+
+To give:
+
+.. code-block:: console
+
+    usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
+                                      [-h]
+
+    Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM files
+    by computing read depth.
 
     optional arguments:
-      -h, --help       show this help message and exit
-      --bam_dir DIR    treat any BAM files in DIR as input
-      --bam_list FILE  read BAM files from FILE, one file path per line
+      -t TEXT, --target-gene TEXT
+                            Name of the target gene. Choices: {'abcb1', 'cacna1s',
+                            'cftr', 'cyp1a1', 'cyp1a2', 'cyp1b1', 'cyp2a6',
+                            'cyp2a13', 'cyp2b6', 'cyp2c8', 'cyp2c9', 'cyp2c19',
+                            'cyp2d6', 'cyp2e1', 'cyp2f1', 'cyp2j2', 'cyp2r1',
+                            'cyp2s1', 'cyp2w1', 'cyp3a4', 'cyp3a5', 'cyp3a7',
+                            'cyp3a43', 'cyp4a11', 'cyp4a22', 'cyp4b1', 'cyp4f2',
+                            'cyp17a1', 'cyp19a1', 'cyp26a1', 'dpyd', 'g6pd',
+                            'gstm1', 'gstp1', 'gstt1', 'ifnl3', 'nat1', 'nat2',
+                            'nudt15', 'por', 'ptgis', 'ryr1', 'slc15a2',
+                            'slc22a2', 'slco1b1', 'slco1b3', 'slco2b1', 'sult1a1',
+                            'tbxas1', 'tpmt', 'ugt1a1', 'ugt1a4', 'ugt2b7',
+                            'ugt2b15', 'ugt2b17', 'vkorc1', 'xpc'}. [required]
+      -c TEXT, --control-gene TEXT
+                            Name of a preselected control gene. Used for
+                            intrasample normalization during copy number analysis
+                            by Stargazer. Choices: {'egfr', 'ryr1', 'vdr'}.
+                            Alternatively, you can provide a custom genomic region
+                            with the 'chr:start-end' format (e.g.
+                            chr12:48232319-48301814). [required]
+      -i PATH, --bam-path PATH
+                            Read BAM files from PATH, one file path per line.
+                            [required]
+      -o PATH, --output-file PATH
+                            Path to the output file. [required]
+      -a TEXT, --genome-build TEXT
+                            Build of the reference genome assembly. Choices:
+                            {'hg19', 'hg38'}. [default: 'hg19']
+      -h, --help            Show this help message and exit.
 
-For running in command line::
+For running in command line:
 
-    $ pypgx bam2gdf hg19 cyp2d6 vdr out.gdf in1.bam in2.bam
+.. code-block:: console
 
-The output GDF file will look like::
+    pypgx calculate-read-depth \
+    -t cyp2d6 \
+    -c vdr \
+    -i bam-list.txt \
+    -o read-depth.gdf
 
-    Locus	Total_Depth	Average_Depth_sample	Depth_for_S1	Depth_for_S2
+The output GDF file will look something like:
+
+.. code-block:: console
+
+    Locus	Total_Depth	Average_Depth_sample	Depth_for_Steven	Depth_for_John
     ...
     chr22:42539471	190	95	53	137
     chr22:42539472	192	96	54	138
     chr22:42539473	190	95	53	137
     ...
 
-Running within Python
-=====================
+pypgx API
+=========
 
-For running within Python::
+The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describes application programming interface (API) for the pypgx package.
 
-    from pypgx.phenotyper import phenotyper
-    phenotyper("cyp2d6", "*1", "*1")
-    phenotyper("cyp2d6", "*1", "*4")
-    phenotyper("cyp2d6", "*1", "*2x2")  # *2x2 is gene duplication.
-    phenotyper("cyp2d6", "*4", "*5")    # *5 is gene deletion.
+For running within Python (e.g. ``phenotyper``):
 
-To give::
+.. code:: ipython3
 
-    'normal_metabolizer'
-    'intermediate_metabolizer'
-    'ultrarapid_metabolizer'
-    'poor_metabolizer'
+    from pypgx import phenotyper
+    print(phenotyper("cyp2d6", "*1", "*1"))
+    print(phenotyper("cyp2d6", "*1", "*4"))
+    print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.
+    print(phenotyper("cyp2d6", "*4", "*5"))    # *5 is gene deletion.
+
+To give:
+
+.. parsed-literal::
+
+    normal_metabolizer
+    intermediate_metabolizer
+    ultrarapid_metabolizer
+    poor_metabolizer

@@ -6,8 +6,9 @@ Welcome to pypgx's documentation!
    :caption: Contents:
 
    readme
-   commands
+   cli
    api
+   sdk
    development
    changelog
 

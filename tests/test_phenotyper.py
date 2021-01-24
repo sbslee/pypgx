@@ -1,4 +1,4 @@
-from pypgx.phenotyper import phenotyper
+from pypgx import phenotyper
 
 def test_phenotyper():
     assert phenotyper("cyp2d6", "*1", "*1") == "normal_metabolizer"
