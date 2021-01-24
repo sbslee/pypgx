@@ -153,15 +153,23 @@ For running in command line::
 
 The output GDF file will look like::
 
-    Locus	Total_Depth	Average_Depth_sample	Depth_for_S1	Depth_for_S2
+    Locus	Total_Depth	Average_Depth_sample	Depth_for_Steven	Depth_for_John
     ...
     chr22:42539471	190	95	53	137
     chr22:42539472	192	96	54	138
     chr22:42539473	190	95	53	137
     ...
 
-Running within Python
-=====================
+pypgx API
+=========
+
+.. code:: ipython3
+
+    results = pypgx.calculate_read_depth("cyp2d6", "vdr", "bam-list.txt")
+
+.. code:: ipython3
+
+    results.df
 
 For running within Python::
 
