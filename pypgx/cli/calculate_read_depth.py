@@ -39,7 +39,6 @@ def calculate_read_depth(target_gene,
     genome_build : str, default: 'hg19'
         Build of the reference genome assembly. Choices:
         {'hg19', 'hg38'}.
-
     """
 
     bam_files = []
@@ -71,8 +70,8 @@ def calculate_read_depth(target_gene,
 
     depth_data = ""
 
-    for locus in sorted(loci, key=lambda x: x.region):
-        depth_data += pysam.depth("-a", "-Q", "1", "-r",
+    for locus in sorted(loci, key=lambda x: (int(x.chrom), x.region_start)):
+        depth_data += pysam.depth("-a", "-Q", '1', "-r",
                                   f"{chr}{locus.region}", *bam_files)
 
     df = pd.read_csv(StringIO(depth_data), sep="\t", header=None)
