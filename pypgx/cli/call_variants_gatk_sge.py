@@ -149,26 +149,13 @@ def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
                  "arguments=(\n"
                  f"-R {_fasta_file}\n"
                  f"-V gendb://$p/temp/datastore\n"
-                 f"-O $p/temp/pypgx.joint.vcf\n"
+                 f"-O $p/pypgx.vcf\n"
                  "--QUIET\n"
                  f"{java_options_line}"
                  f"{dbsnp_file_line}"
                  ")\n"
                  '\n'
-                 "gatk GenotypeGVCFs ${arguments[@]}\n"
-                 '\n'
-                 "arguments=(\n"
-                 f"-R {_fasta_file}\n"
-                 f"-L {chr}{target_locus.region}\n"
-                 f"-O $p/pypgx.vcf \\\n"
-                 f"--variant $p/temp/pypgx.joint.vcf\n"
-                 "--filter-expression 'QUAL <= 50.0'\n"
-                 "--filter-name QUALFilter\n"
-                 "--QUIET\n"
-                 f"{java_options_line}"
-                 ")\n"
-                 '\n'
-                 "gatk VariantFiltration ${arguments[@]}\n"))
+                 "gatk GenotypeGVCFs ${arguments[@]}\n"))
 
     # Write the shell script for qsub.
     q = "qsub -e $p/log -o $p/log"
