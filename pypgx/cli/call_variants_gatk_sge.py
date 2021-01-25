@@ -125,7 +125,7 @@ def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
                      f"{java_options_line}"
                      ")\n"
                      '\n'
-                     "gatk HaplotypeCaller ${arguments[@]}\n"))
+                     'gatk HaplotypeCaller "${arguments[@]}"\n'))
 
     # Write the shell script for post-HaplotypeCaller.
     with open(f"{_output_dir}/shell/post-hc.sh", "w") as f:
@@ -144,18 +144,31 @@ def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
                  f"{gvcf_file_lines}"
                  ")\n"
                  '\n'
-                 "gatk GenomicsDBImport ${arguments[@]}\n"
+                 'gatk GenomicsDBImport "${arguments[@]}"\n'
                  '\n'
                  "arguments=(\n"
                  f"-R {_fasta_file}\n"
                  f"-V gendb://$p/temp/datastore\n"
-                 f"-O $p/pypgx.vcf\n"
+                 f"-O $p/temp/pypgx.joint.vcf\n"
                  "--QUIET\n"
                  f"{java_options_line}"
                  f"{dbsnp_file_line}"
                  ")\n"
                  '\n'
-                 "gatk GenotypeGVCFs ${arguments[@]}\n"))
+                 'gatk GenotypeGVCFs "${arguments[@]}"\n'
+                 '\n'
+                 "arguments=(\n"
+                 f"-R {_fasta_file}\n"
+                 f"-L {chr}{target_locus.region}\n"
+                 f"-O $p/pypgx.vcf \\\n"
+                 f"--variant $p/temp/pypgx.joint.vcf\n"
+                 "--filter-expression 'QUAL <= 50.0'\n"
+                 "--filter-name QUALFilter\n"
+                 "--QUIET\n"
+                 f"{java_options_line}"
+                 ")\n"
+                 '\n'
+                 'gatk VariantFiltration "${arguments[@]}"\n'))
 
     # Write the shell script for qsub.
     q = "qsub -e $p/log -o $p/log"
