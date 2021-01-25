@@ -130,7 +130,7 @@ The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describe
 
 For running within Python (e.g. ``phenotyper``):
 
-.. code:: ipython3
+.. code:: python
 
     from pypgx.phenotyper import phenotyper
     print(phenotyper("cyp2d6", "*1", "*1"))

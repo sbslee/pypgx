@@ -29,7 +29,7 @@ def phenotyper(target_gene, first_hap, second_hap):
     Examples
     --------
 
-    .. code:: ipython3
+    .. code:: python
 
         from pypgx.phenotyper import phenotyper
         print(phenotyper("cyp2d6", "*1", "*1"))
