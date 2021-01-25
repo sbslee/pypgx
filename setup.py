@@ -13,13 +13,11 @@ setup(
     url="https://github.com/sbslee/pypgx",
     packages=find_packages(exclude=["tests"]),
     package_data={
-        "pypgx.resources.cpic": ["cpicPairs.csv"],
-        "pypgx.resources.sg": [
-            "gene_table.txt",
-            "snp_table.txt",
-            "star_table.txt",
+        "pypgx.resources": [
+            "gene_table.tsv",
+            "snp_table.tsv",
+            "star_table.tsv",
         ],
-        "pypgx.resources.pgkb": ["action_table.txt"],
     },
     entry_points={"console_scripts": ["pypgx=pypgx.__main__:main"]}
 )

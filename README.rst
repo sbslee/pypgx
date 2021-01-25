@@ -23,11 +23,11 @@ pypgx is a Python package for pharmacogenomics research, which can be used as a 
 Installation
 ============
 
-You can easily install pypgx and all of its dependencies with the Anaconda distribution.
+You can easily install pypgx and all of its dependencies with the Anaconda distribution. It is strongly recommended to create a new environment specifically for pypgx, as there are many required dependencies that you may not want added to an existing environment. 
 
 .. code-block:: console
 
-   $ conda create -n pypgx -c sbslee pypgx
+   $ conda create -n pypgx -c conda-forge -c bioconda -c defaults -c sbslee pypgx
 
 Before using pypgx, make sure to activate the conda environment where pypgx is installed.
 
