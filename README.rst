@@ -1,5 +1,5 @@
-pypgx
-*****
+README
+******
 
 .. image:: https://badge.fury.io/py/pypgx.svg
     :target: https://badge.fury.io/py/pypgx
@@ -27,13 +27,13 @@ You can easily install pypgx and all of its dependencies with the Anaconda distr
 
 .. code-block:: console
 
-   conda create -n pypgx -c sbslee pypgx
+   $ conda create -n pypgx -c sbslee pypgx
 
 Before using pypgx, make sure to activate the conda environment where pypgx is installed.
 
 .. code-block:: console
 
-  conda activate pypgx
+  $ conda activate pypgx
 
 pypgx CLI
 =========
@@ -44,12 +44,7 @@ You can display help message for pypgx CLI by entering:
 
 .. code-block:: console
 
-    pypgx -h
-
-To give:
-
-.. code-block:: console
-
+    $ pypgx -h
     usage: pypgx [-v] [-h] COMMAND ...
 
     positional arguments:
@@ -60,28 +55,27 @@ To give:
         calculate-read-depth
                             Create a GDF (GATK DepthOfCoverage Format) file for
                             Stargazer from BAM files by computing read depth.
+        call-variants-gatk-sge
+                            Create a VCF (Variant Call Format) file for Stargazer
+                            from BAM files by calling SNVs and indels.
 
     optional arguments:
       -v, --version         Show the version and exit.
       -h, --help            Show this help message and exit.
 
+
 You can display command-specific help message by entering (e.g. ``calculate-read-depth``):
 
 .. code-block:: console
 
-    pypgx calculate-read-depth -h
-
-To give:
-
-.. code-block:: console
-
+    $ pypgx calculate-read-depth -h
     usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
                                       [-h]
 
     Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM files
     by computing read depth.
 
-    optional arguments:
+    Arguments:
       -t TEXT, --target-gene TEXT
                             Name of the target gene. Choices: {'abcb1', 'cacna1s',
                             'cftr', 'cyp1a1', 'cyp1a2', 'cyp1b1', 'cyp2a6',
@@ -116,15 +110,11 @@ For running in command line:
 
 .. code-block:: console
 
-    pypgx calculate-read-depth \
-    -t cyp2d6 \
-    -c vdr \
-    -i bam-list.txt \
-    -o read-depth.gdf
+    $ pypgx calculate-read-depth -t cyp2d6 -c vdr -i bam-list.txt -o read-depth.gdf
 
 The output GDF file will look something like:
 
-.. code-block:: console
+.. parsed-literal::
 
     Locus	Total_Depth	Average_Depth_sample	Depth_for_Steven	Depth_for_John
     ...
@@ -142,7 +132,7 @@ For running within Python (e.g. ``phenotyper``):
 
 .. code:: ipython3
 
-    from pypgx import phenotyper
+    from pypgx.phenotyper import phenotyper
     print(phenotyper("cyp2d6", "*1", "*1"))
     print(phenotyper("cyp2d6", "*1", "*4"))
     print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.

@@ -1,14 +1,13 @@
 import pysam
-from pypgx.sdk import get_sn_tags, get_sm_tags, Locus
+from pypgx import get_sn_tags, get_sm_tags, Locus
 from io import StringIO
 import pandas as pd
-from pypgx.sdk import Results
 
 def calculate_read_depth(target_gene,
                          control_gene,
                          bam_path,
-                         genome_build="hg19",
-                         output_file=None):
+                         output_file,
+                         genome_build="hg19"):
     """Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from
     BAM files by computing read depth.
 
@@ -35,16 +34,11 @@ def calculate_read_depth(target_gene,
         with the 'chr:start-end' format (e.g. chr12:48232319-48301814).
     bam_path : str
         Read BAM files from ``bam_path``, one file path per line.
+    output_file : str
+        Path to the output file.
     genome_build : str, default: 'hg19'
         Build of the reference genome assembly. Choices:
         {'hg19', 'hg38'}.
-    output_file : str, optional
-        Path to the output file.
-
-    Returns
-    -------
-    Results
-        Results instance which has the following attributes: ``df``.
 
     """
 
@@ -85,16 +79,12 @@ def calculate_read_depth(target_gene,
 
     df.columns = ["chrom", "pos"] + ["Depth_for_" + x for x in sm_tags]
 
-    df.insert(0, "Locus", df["chrom"].astype(str) + ":" + df["pos"].astype(str))
+    df.insert(0, "Locus",
+        df["chrom"].astype(str) + ":" + df["pos"].astype(str))
 
     df.drop(columns=["chrom", "pos"], inplace=True)
 
     df.insert(1, "Total_Depth", df.iloc[:, 1:].sum(axis=1))
     df.insert(2, "Average_Depth_sample", df.iloc[:, 2:].mean(axis=1))
 
-    results = Results(df=df)
-
-    if output_file:
-        df.to_csv(output_file, sep='\t', index=False)
-
-    return results
+    df.to_csv(output_file, sep='\t', index=False)
