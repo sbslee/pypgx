@@ -13,7 +13,6 @@ def compare_stargazer_calls(ref_file, test_file, output_file):
         Path to the test 'genotype-calls.tsv' file created by Stargazer.
     output_file : str
         Path to the output file.
-
     """
     rf = pd.read_table(ref_file, index_col=0)
     tf = pd.read_table(test_file, index_col=0)

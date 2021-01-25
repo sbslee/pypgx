@@ -1,6 +1,7 @@
 import os
 import shutil
 import sys
+from pathlib import Path
 
 from pypgx import get_sn_tags, Locus, randstr
 
@@ -47,122 +48,127 @@ def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
         are submitted to SGE.
 
     """
+    # Get absolute path for the input files.
+    _fasta_file = Path(fasta_file).resolve()
+    _output_dir = Path(output_dir).resolve()
+    if dbsnp_file is None:
+        _dbsnp_file = None
+    else:
+        _dbsnp_file = Path(dbsnp_file).resolve()
+
+    # Get the input BAM files.
     bam_files = []
     with open(bam_path) as f:
         for line in f:
             bam_files.append(line.strip())
 
+    # Make the output directoires.
     try:
-        shutil.rmtree(output_dir)
+        shutil.rmtree(_output_dir)
     except OSError:
         pass
+    os.mkdir(_output_dir)
+    os.mkdir(f"{_output_dir}/shell")
+    os.mkdir(f"{_output_dir}/log")
+    os.mkdir(f"{_output_dir}/temp")
 
-    os.mkdir(output_dir)
-    os.mkdir(f"{output_dir}/shell")
-    os.mkdir(f"{output_dir}/log")
-    os.mkdir(f"{output_dir}/temp")
+    # Record the command line.
+    with open(f"{_output_dir}/command-line.txt", 'w') as f:
+        f.write(' '.join(sys.argv))
 
-    with open(f"{output_dir}/command-line.txt", 'w') as f:
-        f.write(" ".join(sys.argv))
-
+    # Determine whether to include the 'chr' string in chromosome name.
     sn_tags = []
-
     for bam_file in bam_files:
         sn_tags += get_sn_tags(bam_file)
-
     if any(["chr" in x for x in list(set(sn_tags))]):
         chr = "chr"
     else:
         chr = ""
 
+    # Parse the target locus.
     target_locus = Locus.from_input(target_gene, genome_build)
+
+    # Define the conda environment line.
+    conda_env_line = f"conda activate {conda_env}\n"
+    if conda_env is None:
+        conda_env_line = f"# {conda_env_line}"
+
+    # Define the Java options line.
+    java_options_line = f"--java-options {java_options}\n"
+    if java_options is None:
+        java_options_line = f"# {java_options_line}"
+
+    # Define the dbSNP files line.
+    dbsnp_file_line = f"-D {_dbsnp_file}\n"
+    if _dbsnp_file is None:
+        dbsnp_file_line = f"# {dbsnp_file_line}"
+
+    # Define the gVCF file lines.
+    gvcf_file_lines = ''
+    for i, bam_file in enumerate(bam_files):
+        gvcf_file_lines += f"-V $p/temp/{i}.g.vcf\n"
 
     # Write the shell script for HaplotypeCaller.
     for i, bam_file in enumerate(bam_files):
-        s = "#!/bin/bash\n"
-
-        if conda_env is not None:
-            s += (
-                "\n"
-                f"conda activate {conda_env}\n"
-            )
-
-        s += (
-            "\n"
-            "gatk HaplotypeCaller \\\n"
-            f"  -R {fasta_file} \\\n"
-            f"  --emit-ref-confidence GVCF \\\n"
-            f"  -I {bam_file} \\\n"
-            f"  -O {output_dir}/temp/{i}.g.vcf \\\n"
-            f"  -L {target_locus.region} \\\n"
-            "  --QUIET \\\n"
-        )
-
-        if java_options is not None:
-            s += f"  --java-options {java_options} \\\n"
-
-        with open(f"{output_dir}/shell/haplotypecaller-{i}.sh", "w") as f:
-            f.write(s)
-
+        with open(f"{_output_dir}/shell/hc-{i}.sh", 'w') as f:
+            f.write(("#!/bin/bash\n"
+                     '\n'
+                     f"{conda_env_line}"
+                     '\n'
+                     "arguments=(\n"
+                     f"-R {_fasta_file}\n"
+                     f"--emit-ref-confidence GVCF\n"
+                     f"-I {bam_file}\n"
+                     f"-O {_output_dir}/temp/{i}.g.vcf\n"
+                     f"-L {chr}{target_locus.region}\n"
+                     "--QUIET\n"
+                     f"{java_options_line}"
+                     ")\n"
+                     '\n'
+                     'gatk HaplotypeCaller "${arguments[@]}"\n'))
 
     # Write the shell script for post-HaplotypeCaller.
-    s = "#!/bin/bash\n"
-
-    if conda_env is not None:
-        s += (
-            "\n"
-            f"conda activate {conda_env}\n"
-        )
-
-    s += (
-        "\n"
-        f"p={output_dir}\n"
-        "\n"
-        "gatk GenomicsDBImport \\\n"
-        f"  --intervals {target_locus.region} \\\n"
-        f"  --genomicsdb-workspace-path $p/temp/datastore \\\n"
-        "  --merge-input-intervals \\\n"
-        "  --QUIET \\\n"
-    )
-
-    if java_options is not None:
-        s += f"  --java-options {java_options} \\\n"
-
-    for i, bam_file in enumerate(bam_files):
-        s += f"  -V $p/temp/{i}.g.vcf \\\n"
-
-    s += (
-        "\n"
-        "gatk GenotypeGVCFs \\\n"
-        f"  -R {fasta_file} \\\n"
-        f"  -V gendb://$p/temp/datastore \\\n"
-        f"  -O $p/temp/pypgx.joint.vcf \\\n"
-        "  --QUIET \\\n"
-    )
-
-    if java_options is not None:
-        s += f"  --java-options {java_options} \\\n"
-
-    if dbsnp_file is not None:
-        s += f"  -D {dbsnp_file} \\\n"
-
-    s += (
-        "\n"
-        "gatk VariantFiltration \\\n"
-        f"  -R {fasta_file} \\\n"
-        f"  -L {target_locus.region} \\\n"
-        f"  -O $p/pypgx.vcf \\\n"
-        f"  --variant $p/temp/pypgx.joint.vcf \\\n"
-        "  --filter-expression 'QUAL <= 50.0' \\\n"
-        "  --filter-name QUALFilter \\\n"
-        "  --QUIET\n"
-    )
-
-    if java_options is not None:
-        s += f"  --java-options {java_options} \\\n"
-
-    with open(f"{output_dir}/shell/post-haplotypecaller.sh", "w") as f:
-        f.write(s)
+    with open(f"{_output_dir}/shell/post-hc.sh", "w") as f:
+        f.write(("#!/bin/bash\n"
+                 '\n'
+                 f"{conda_env_line}"
+                 '\n'
+                 f"p={_output_dir}\n"
+                 '\n'
+                 "arguments=(\n"
+                 f"--intervals {chr}{target_locus.region}\n"
+                 f"--genomicsdb-workspace-path $p/temp/datastore\n"
+                 "--merge-input-intervals\n"
+                 "--QUIET\n"
+                 f"{java_options_line}"
+                 f"{gvcf_file_lines}"
+                 ")\n"
+                 '\n'
+                 'gatk GenomicsDBImport "${arguments[@]}"\n'
+                 '\n'
+                 "arguments=(\n"
+                 f"-R {_fasta_file}\n"
+                 f"-V gendb://$p/temp/datastore\n"
+                 f"-O $p/temp/pypgx.joint.vcf\n"
+                 "--QUIET\n"
+                 f"{java_options_line}"
+                 f"{dbsnp_file_line}"
+                 ")\n"
+                 '\n'
+                 'gatk GenotypeGVCFs "${arguments[@]}"\n'
+                 '\n'
+                 "arguments=(\n"
+                 f"-R {_fasta_file}\n"
+                 f"-L {chr}{target_locus.region}\n"
+                 f"-O $p/pypgx.vcf \\\n"
+                 f"--variant $p/temp/pypgx.joint.vcf\n"
+                 "--filter-expression 'QUAL <= 50.0'\n"
+                 "--filter-name QUALFilter\n"
+                 "--QUIET\n"
+                 f"{java_options_line}"
+                 ")\n"
+                 '\n'
+                 'gatk VariantFiltration "${arguments[@]}"\n'))
 
     # Write the shell script for qsub.
     q = "qsub -e $p/log -o $p/log"
@@ -172,16 +178,16 @@ def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
 
     s = (
         "#!/bin/bash\n"
-        "\n"
-        f"p={output_dir}\n"
+        '\n'
+        f"p={_output_dir}\n"
         f"j={randstr()}\n"
-        "\n"
+        '\n'
     )
 
     for i, bam_file in enumerate(bam_files):
-        s += f"{q} -N $j-hc $p/shell/haplotypecaller-{i}.sh\n"
+        s += f"{q} -N $j-hc $p/shell/hc-{i}.sh\n"
 
-    s += f"{q} -hold_jid $j-hc -N $j-post-hc $p/shell/post-haplotypecaller.sh\n"
+    s += f"{q} -hold_jid $j-hc -N $j-post-hc $p/shell/post-hc.sh\n"
 
-    with open(f"{output_dir}/example-qsub.sh", "w") as f:
+    with open(f"{_output_dir}/example-qsub.sh", "w") as f:
         f.write(s)
