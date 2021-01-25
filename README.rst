@@ -75,7 +75,7 @@ You can display command-specific help message by entering (e.g. ``calculate-read
     Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM files
     by computing read depth.
 
-    optional arguments:
+    Arguments:
       -t TEXT, --target-gene TEXT
                             Name of the target gene. Choices: {'abcb1', 'cacna1s',
                             'cftr', 'cyp1a1', 'cyp1a2', 'cyp1b1', 'cyp2a6',
@@ -132,7 +132,7 @@ For running within Python (e.g. ``phenotyper``):
 
 .. code:: ipython3
 
-    from pypgx import phenotyper
+    from pypgx.phenotyper import phenotyper
     print(phenotyper("cyp2d6", "*1", "*1"))
     print(phenotyper("cyp2d6", "*1", "*4"))
     print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.

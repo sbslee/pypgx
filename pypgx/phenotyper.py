@@ -1,11 +1,16 @@
-from pypgx.sdk import get_activity_score
+from pypgx import get_activity_score
 
 def phenotyper(target_gene, first_hap, second_hap):
-    """Maps haplotype calls to a phenotype.
+    """Convert haplotype calls to a predicted phenotype.
 
     Different genes have different phenotypes. Many use a unit of enzyme
-    activity known as an activity score (AS). Note that star alleles with
-    unknown/uncertain function have AS < 0 (e.g. -100).
+    activity known as an activity score (AS). For example, in the CYP2D6
+    gene, the reference CYP2D6*1 allele has AS of 1 while a non-functional
+    allele such as CYP2D6*4 has AS of 0. Note that in pypgx, star alleles
+    with unknown function will have AS of -100; therefore, if one of the two
+    haplotype calls contains an unknown function allele, the combined score
+    will still be a negative number (e.g. AS=1 plus AS=-100 is still AS=-99)
+    which translates to an unknown phenotype (e.g. unknown_metabolizer).
 
     Parameters
     ----------
@@ -24,20 +29,23 @@ def phenotyper(target_gene, first_hap, second_hap):
     Examples
     --------
 
-    Making phenotype prediction for CYP2D6 genotypes::
+    .. code:: ipython3
 
-        from pypgx import phenotyper
+        from pypgx.phenotyper import phenotyper
         print(phenotyper("cyp2d6", "*1", "*1"))
         print(phenotyper("cyp2d6", "*1", "*4"))
         print(phenotyper("cyp2d6", "*1", "*2x2"))  # *2x2 is gene duplication.
         print(phenotyper("cyp2d6", "*4", "*5"))    # *5 is gene deletion.
 
-    To give::
+    .. parsed-literal::
 
-        'normal_metabolizer'
-        'intermediate_metabolizer'
-        'ultrarapid_metabolizer'
-        'poor_metabolizer'
+        normal_metabolizer
+        intermediate_metabolizer
+        ultrarapid_metabolizer
+        poor_metabolizer
+
+    Notes
+    -----
 
     This method currently uses 5 different phenotyping algorithms:
 

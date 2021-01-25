@@ -1,5 +1,5 @@
 import pysam
-from pypgx.sdk import get_sn_tags, get_sm_tags, Locus
+from pypgx import get_sn_tags, get_sm_tags, Locus
 from io import StringIO
 import pandas as pd
 
@@ -79,7 +79,8 @@ def calculate_read_depth(target_gene,
 
     df.columns = ["chrom", "pos"] + ["Depth_for_" + x for x in sm_tags]
 
-    df.insert(0, "Locus", df["chrom"].astype(str) + ":" + df["pos"].astype(str))
+    df.insert(0, "Locus",
+        df["chrom"].astype(str) + ":" + df["pos"].astype(str))
 
     df.drop(columns=["chrom", "pos"], inplace=True)
 

@@ -43,6 +43,8 @@ def _get_parser():
                      "'genotype-calls.tsv' files created by Stargazer.")
     )
 
+    compare_stargazer_calls_parser._optionals.title = "Arguments"
+
     compare_stargazer_calls_parser.add_argument(
         "-r",
         "--ref-file",
@@ -85,6 +87,8 @@ def _get_parser():
         description=("Create a GDF (GATK DepthOfCoverage Format) file for "
                      "Stargazer from BAM files by computing read depth.")
     )
+
+    calculate_read_depth_parser._optionals.title = "Arguments"
 
     calculate_read_depth_parser.add_argument(
         "-t",
@@ -149,6 +153,8 @@ def _get_parser():
         description=("Create a VCF (Variant Call Format) file for Stargazer "
                      "from BAM files by calling SNVs and indels.")
     )
+
+    call_variants_gatk_sge_parser._optionals.title = "Arguments"
 
     call_variants_gatk_sge_parser.add_argument(
         "-t",

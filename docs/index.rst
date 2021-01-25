@@ -8,7 +8,6 @@ Welcome to pypgx's documentation!
    readme
    cli
    api
-   sdk
    development
    changelog
 

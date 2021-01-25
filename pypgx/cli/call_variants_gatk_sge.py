@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 
-from pypgx.sdk import get_sn_tags, Locus, randstr
+from pypgx import get_sn_tags, Locus, randstr
 
 def call_variants_gatk_sge(target_gene, bam_path, fasta_file, output_dir,
                            genome_build="hg19", dbsnp_file=None,
