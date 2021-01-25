@@ -4,9 +4,12 @@ Changelog
 0.2.0
 -----
 
-* THIS VERSION IS STILL IN DEVELOPMENT!
-* pypgx was used to be hosted in PyPI. From now on, pypgx will be available on Anaconda instead of PyPI. This is because pypgx needs access to many non-Python programs and these are not available via PyPI.
-* Change the license from GPL-3.0 License to MIT License.
+* From now on, pypgx will be hosted on Anaconda instead of PyPI. This is because pypgx needs access to many non-Python programs and these are not available via PyPI.
+* Updated the license from GPL-3.0 License to MIT License.
+* Temporarily removed all the of commands except ``bam2vcf2``, ``bam2gdf``, and ``compgt``. Some of the removed commands will be brought back in the later versions.
+* The ``bam2vcf2`` command has been renamed as ``call-variants-gatk-sge``.
+* The ``bam2gdf`` command has been renamed as ``calculate-read-depth``.
+* The ``compgt`` command has been renamed as ``compare-stargazer-calls``.
 
 0.1.37
 ------
