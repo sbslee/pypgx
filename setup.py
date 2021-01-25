@@ -8,8 +8,6 @@ setup(
     author='Seung-been "Steven" Lee',
     author_email="sbstevenlee@gmail.com",
     description="A Python package for pharmacogenomics research",
-    long_description=open("README.rst").read(),
-    long_description_content_type="text/x-rst",
     url="https://github.com/sbslee/pypgx",
     packages=find_packages(exclude=["tests"]),
     package_data={
