@@ -61,7 +61,6 @@ You can display help message for pypgx CLI by entering:
       -v, --version         Show the version and exit.
       -h, --help            Show this help message and exit.
 
-
 You can display command-specific help message by entering (e.g. ``calculate-read-depth``):
 
 .. code-block:: console
