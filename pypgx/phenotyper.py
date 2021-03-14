@@ -47,7 +47,7 @@ def phenotyper(target_gene, first_hap, second_hap):
     Notes
     -----
 
-    This method currently uses 5 different phenotyping algorithms:
+    This method currently uses 6 different phenotyping algorithms:
 
     1. Default
 
@@ -93,7 +93,28 @@ def phenotyper(target_gene, first_hap, second_hap):
         * - undetermined_metabolizer
           - All other cases
 
-    3. Drug metabolizers - CYP2D6
+    3. Drug metabolizers - CYP2C9
+
+    .. list-table::
+        :widths: 50 50
+        :header-rows: 1
+
+        * - Phenotype
+          - Summary
+        * - unknown_metabolizer
+          - AS < 0
+        * - poor_metabolizer
+          - AS <= 0.5
+        * - intermediate_metabolizer
+          - 0.5 < AS < 2
+        * - normal_metabolizer
+          - AS == 2
+        * - ultrarapid_metabolizer
+          - AS > 2
+        * - undetermined_metabolizer
+          - All other cases
+
+    4. Drug metabolizers - CYP2D6
 
     .. list-table::
         :widths: 50 50
@@ -114,7 +135,7 @@ def phenotyper(target_gene, first_hap, second_hap):
         * - undetermined_metabolizer
           - All other cases
 
-    4. Drug metabolizers - DPYD
+    5. Drug metabolizers - DPYD
 
     .. list-table::
         :widths: 50 50
@@ -135,7 +156,7 @@ def phenotyper(target_gene, first_hap, second_hap):
         * - undetermined_metabolizer
           - All other cases
 
-    5. Drug transporters (default)
+    6. Drug transporters (default)
 
     .. list-table::
         :widths: 50 50
@@ -212,6 +233,21 @@ def _metabolizer_cyp2d6(total):
         result = "undetermined_metabolizer"
     return result
 
+def _metabolizer_cyp2c9(total):
+    if total < 0:
+        result = "unknown_metabolizer"
+    elif total <= 0.5:
+        result = "poor_metabolizer"
+    elif 0.5 < total < 2:
+        result = "intermediate_metabolizer"
+    elif total == 2:
+        result = "normal_metabolizer"
+    elif total > 2:
+        result = "ultrarapid_metabolizer"
+    else:
+        result = "undetermined_metabolizer"
+    return result
+
 def _metabolizer_dpyd(total):
     if total < 0:
         result = "unknown_metabolizer"
@@ -253,7 +289,7 @@ ptcallers = {
     "cyp2a13": _metabolizer_default,
     "cyp2b6": _metabolizer_default,
     "cyp2c8": _metabolizer_default,
-    "cyp2c9": _metabolizer_default,
+    "cyp2c9": _metabolizer_cyp2c9,
     "cyp2c19": _metabolizer_default,
     "cyp2d6": _metabolizer_cyp2d6,
     "cyp2e1": _metabolizer_default,
