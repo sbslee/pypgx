@@ -95,7 +95,7 @@ You can display command-specific help message by entering (e.g. ``calculate-read
                             chr12:48232319-48301814). [required]
       -i PATH, --bam-path PATH
                             Read BAM files from PATH, one file path per line. Also
-                            accepts single BAM file [required]
+                            accepts single BAM file. [required]
       -o PATH, --output-file PATH
                             Path to the output file. [required]
       -a TEXT, --genome-build TEXT

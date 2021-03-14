@@ -118,7 +118,7 @@ def _get_parser():
         metavar="PATH",
         required=True,
         help=("Read BAM files from PATH, one file path per line. "
-              "Also accepts single BAM file [required]")
+              "Also accepts single BAM file. [required]")
     )
 
     calculate_read_depth_parser.add_argument(
