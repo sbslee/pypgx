@@ -33,7 +33,8 @@ def calculate_read_depth(target_gene,
         Alternatively, you can provide a custom genomic region
         with the 'chr:start-end' format (e.g. chr12:48232319-48301814).
     bam_path : str
-        Read BAM files from ``bam_path``, one file path per line.
+        Read BAM files from ``bam_path``, one file path per line. Also
+        accepts single BAM file.
     output_file : str
         Path to the output file.
     genome_build : str, default: 'hg19'
@@ -42,9 +43,13 @@ def calculate_read_depth(target_gene,
     """
 
     bam_files = []
-    with open(bam_path) as f:
-        for line in f:
-            bam_files.append(line.strip())
+
+    if bam_path.endswith('.bam'):
+        bam_files.append(bam_path)
+    else:
+        with open(bam_path) as f:
+            for line in f:
+                bam_files.append(line.strip())
 
     sn_tags = []
     sm_tags = []
