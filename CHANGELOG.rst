@@ -1,6 +1,13 @@
 Changelog
 *********
 
+0.3.0
+-----
+
+* Updated the `phenotyper()` method for the CYP2C9 gene (#18).
+* Changed the function of CYP2C9*3 in `star_table.tsv` from decreased function to no function.
+* Updated the `calculate-read-depth` command to accept single BAM file as input (#19).
+
 0.2.0
 -----
 
