@@ -4,9 +4,9 @@ Changelog
 0.3.0
 -----
 
-* Updated the `phenotyper()` method for the CYP2C9 gene (`#18 <https://github.com/sbslee/pypgx/issues/18>`_).
-* Changed the function of CYP2C9*3 in `star_table.tsv` from decreased function to no function.
-* Updated the `calculate-read-depth` command to accept single BAM file as input (`#19 <https://github.com/sbslee/pypgx/issues/19>`_).
+* Updated the ``phenotyper()`` method for the CYP2C9 gene (`#18 <https://github.com/sbslee/pypgx/issues/18>`_).
+* Changed the function of CYP2C9*3 in ``star_table.tsv`` from decreased function to no function.
+* Updated the ``calculate-read-depth`` command to accept single BAM file as input (`#19 <https://github.com/sbslee/pypgx/issues/19>`_).
 
 0.2.0
 -----
