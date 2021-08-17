@@ -1,9 +1,9 @@
 CLI
 ***
 
-This section describes command-line interface (CLI) for the pypgx package.
+This section describes command-line interface (CLI) for the PyPGx package.
 
-You can display help message for pypgx CLI by entering:
+You can display help message for PyPGx CLI by entering:
 
 .. code-block:: console
 

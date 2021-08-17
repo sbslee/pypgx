@@ -1,4 +1,4 @@
-Welcome to pypgx's documentation!
+Welcome to PyPGx's documentation!
 =================================
 
 .. toctree::

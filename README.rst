@@ -10,18 +10,18 @@ Table of Contents
 
 * `Introduction`_
 * `Installation`_
-* `pypgx CLI`_
-* `pypgx API`_
+* `PyPGx CLI`_
+* `PyPGx API`_
 
 Introduction
 ============
 
-pypgx is a Python package for pharmacogenomics research, which can be used as a standalone program and as a Python module. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+PyPGx is a Python package for pharmacogenomics research, which can be used as a standalone program and as a Python module. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Installation
 ============
 
-You can easily install pypgx and all of its dependencies with the Anaconda distribution. It is strongly recommended to create a new environment specifically for pypgx, as there are many required dependencies that you may not want added to an existing environment.
+You can easily install PyPGx and all of its dependencies with the Anaconda distribution. It is strongly recommended to create a new environment specifically for pypgx, as there are many required dependencies that you may not want added to an existing environment.
 
 .. code-block:: console
 
@@ -33,7 +33,7 @@ Before using pypgx, make sure to activate the conda environment where pypgx is i
 
   $ conda activate pypgx
 
-pypgx CLI
+PyPGx CLI
 =========
 
 The `pypgx CLI page <https://pypgx.readthedocs.io/en/latest/cli.html>`_ describes command-line interface (CLI) for the pypgx package.
@@ -120,7 +120,7 @@ The output GDF file will look something like:
     chr22:42539473	190	95	53	137
     ...
 
-pypgx API
+PyPGx API
 =========
 
 The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describes application programming interface (API) for the pypgx package.

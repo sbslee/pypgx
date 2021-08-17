@@ -1,9 +1,9 @@
 Development
 ***********
 
-If you are interested in contributing to the pypgx package, please follow the instructions listed below.
+If you are interested in contributing to the PyPGx package, please follow the instructions listed below.
 
-First, you need to clone the GitHub repository for pypgx.
+First, you need to clone the GitHub repository for PyPGx.
 
 .. code-block:: console
 
@@ -24,7 +24,7 @@ Create a fresh conda environment called ``my_env``. Make sure to activate the en
    conda create -n my_env --file requirements.txt
    conda activate my_env
 
-Next, install pypgx in the development mode.
+Next, install PyPGx in the development mode.
 
 .. code-block:: console
 
