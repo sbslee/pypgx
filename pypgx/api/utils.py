@@ -158,7 +158,7 @@ def load_equation_table():
     --------
 
     >>> import pypgx
-    >>> df = pypgx.load_activity_table()
+    >>> df = pypgx.load_equation_table()
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/equation-table.csv'))
     return pd.read_csv(b)
@@ -176,7 +176,7 @@ def load_gene_table():
     --------
 
     >>> import pypgx
-    >>> df = pypgx.load_activity_table()
+    >>> df = pypgx.load_gene_table()
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/gene-table.csv'))
     return pd.read_csv(b)
