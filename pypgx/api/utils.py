@@ -1,16 +1,11 @@
 import pkgutil
 from io import BytesIO
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 class UnsupportedGeneError(Exception):
     """Raise if specified gene is not present in the gene table."""
-
-def _check_gene(gene):
-    df = load_gene_table()
-    if gene not in df.Gene.unique():
-        raise UnsupportedGeneError(gene)
 
 def get_activity_score(gene, allele):
     """
@@ -39,32 +34,36 @@ def get_activity_score(gene, allele):
     --------
 
     >>> import pypgx
-    >>> pypgx.get_activity_score('CYP2D6', '*1')      # Allele with normal function
+    >>> pypgx.get_activity_score('CYP2D6', '*1')            # Allele with normal function
     1.0
-    >>> pypgx.get_activity_score('CYP2D6', '*1x2')    # Gene duplication of *1
+    >>> pypgx.get_activity_score('CYP2D6', '*1x2')          # Gene duplication of *1
     2.0
-    >>> pypgx.get_activity_score('CYP2D6', '*1x4')    # Gene multiplication of *1
+    >>> pypgx.get_activity_score('CYP2D6', '*1x4')          # Gene multiplication of *1
     4.0
-    >>> pypgx.get_activity_score('CYP2D6', '*4')      # Allele with no function
+    >>> pypgx.get_activity_score('CYP2D6', '*4')            # Allele with no function
     0.0
-    >>> pypgx.get_activity_score('CYP2D6', '*4x2')    # Gene duplication of *4
+    >>> pypgx.get_activity_score('CYP2D6', '*4x2')          # Gene duplication of *4
     0.0
-    >>> pypgx.get_activity_score('CYP2D6', '*22')     # Allele with uncertain function
+    >>> pypgx.get_activity_score('CYP2D6', '*22')           # Allele with uncertain function
     nan
-    >>> pypgx.get_activity_score('CYP2D6', '*22x2')   # Gene duplication of *22
+    >>> pypgx.get_activity_score('CYP2D6', '*22x2')         # Gene duplication of *22
     nan
-    >>> pypgx.get_activity_score('CYP2D6', '*36+*10') # Tandem arrangement
+    >>> pypgx.get_activity_score('CYP2D6', '*36+*10')       # Tandem arrangement
     0.25
-    >>> pypgx.get_activity_score('CYP2B6', '*1')      # CYP2B6 does not have activity score
+    >>> pypgx.get_activity_score('CYP2D6', '*1x2+*4x2+*10') # Complex event
+    2.25
+    >>> pypgx.get_activity_score('CYP2B6', '*1')            # CYP2B6 does not have activity score
     nan
     """
-    _check_gene(gene)
-
-    df = load_activity_table()
+    df = load_gene_table()
 
     if gene not in df.Gene.unique():
+        raise UnsupportedGeneError(gene)
+
+    if gene not in df[df.PhenotypeMethod == 'AS'].Gene.unique():
         return np.nan
 
+    df = load_activity_table()
     df = df[df.Gene == gene]
 
     def lookup(x):
@@ -72,7 +71,7 @@ def get_activity_score(gene, allele):
 
     def parsecnv(x):
         if 'x' in x:
-            l = allele.split('x')
+            l = x.split('x')
             base = l[0]
             times = int(l[1])
             return lookup(base) * times
@@ -101,31 +100,38 @@ def get_phenotype(gene, a, b):
     --------
 
     >>> import pypgx
-    >>> pypgx.get_phenotype('CYP2C19', '*1', '*2')
-    'Intermediate Metabolizer'
-    >>> pypgx.get_phenotype('CYP2C19', '*2', '*1')
-    'Intermediate Metabolizer'
+    >>> pypgx.get_phenotype('CYP2D6', '*5', '*4')  # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.get_phenotype('CYP2D6', '*5', '*4')  # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.get_phenotype('CYP2D6', '*1', '*22') # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.get_phenotype('CYP2B6', '*1', '*4')  # *4 has increased function
+    'Rapid Metabolizer'
     """
-    _check_gene(gene)
+    df = load_gene_table()
 
-    df = load_phenotype_table()
+    if gene not in df.Gene.unique():
+        raise UnsupportedGeneError(gene)
 
-    if gene in df.Gene.unique():
+    method = df[df.Gene == gene].PhenotypeMethod.values[0]
+
+    if method == 'AS':
+        df = load_equation_table()
+        df = df[df.Gene == gene]
+        def one_row(r, score):
+            return eval(r.Equation)
+        score = get_activity_score(gene, a) + get_activity_score(gene, b)
+        if np.isnan(score):
+            return 'Indeterminate'
+        i = df.apply(one_row, args=(score,), axis=1)
+        return df[i].Phenotype.values[0]
+    else:
+        df = load_phenotype_table()
         df = df[df.Gene == gene]
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         return df[i].Phenotype.values[0]
-
-    df = load_equation_table()
-
-    if gene in df.Gene.unique():
-        def one_row(r, score):
-            return eval(r.Equation)
-        score = get_activity_score(gene, a) + get_activity_score(gene, b)
-        i = df.apply(one_row, args=(score,), axis=1)
-        return df[i].Phenotype.values[0]
-
-    raise ValueError('Something went wrong')
 
 def load_activity_table():
     """
