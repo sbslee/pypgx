@@ -1,0 +1,5 @@
+Gene,Phenotype,Equation
+CYP2D6,Ultrarapid Metabolizer,2.5 <= score
+CYP2D6,Normal Metabolizer,1.25 <= score < 2.5
+CYP2D6,Intermediate Metabolizer,0.25 <= score < 1.25
+CYP2D6,Poor Metabolizer,0 <= score < 0.25
