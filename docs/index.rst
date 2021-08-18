@@ -8,7 +8,6 @@ Welcome to PyPGx's documentation!
    readme
    cli
    api
-   development
    changelog
 
 Indices and tables

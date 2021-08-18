@@ -10,8 +10,8 @@ Table of Contents
 
 * `Introduction`_
 * `Installation`_
-* `PyPGx CLI`_
-* `PyPGx API`_
+* `CLI`_
+* `API`_
 
 Introduction
 ============
@@ -33,8 +33,8 @@ Before using pypgx, make sure to activate the conda environment where pypgx is i
 
   $ conda activate pypgx
 
-PyPGx CLI
-=========
+CLI
+===
 
 The `pypgx CLI page <https://pypgx.readthedocs.io/en/latest/cli.html>`_ describes command-line interface (CLI) for the pypgx package.
 
@@ -120,8 +120,8 @@ The output GDF file will look something like:
     chr22:42539473	190	95	53	137
     ...
 
-PyPGx API
-=========
+API
+===
 
 The `pypgx API page <https://pypgx.readthedocs.io/en/latest/api.html>`_ describes application programming interface (API) for the pypgx package.
 
