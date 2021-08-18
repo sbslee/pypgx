@@ -20,8 +20,10 @@ setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License'
     ],
-    package_data={
-        'pypgx.data': ['phenotype-table.csv'],
-    },
+    package_data={'pypgx.data': [
+            'activity-table.csv',
+            'gene-table',
+            'phenotype-table.csv',
+    ]},
     entry_points={'console_scripts': ['pypgx=pypgx.__main__:main']}
 )

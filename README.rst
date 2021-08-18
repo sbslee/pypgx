@@ -5,18 +5,16 @@ README
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-Table of Contents
-=================
-
-* `Introduction`_
-* `Installation`_
-* `CLI`_
-* `API`_
-
 Introduction
 ============
 
 PyPGx is a Python package for pharmacogenomics research, which can be used as a standalone program and as a Python module. Documentation is available at `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+Your contributions (e.g. feature ideas, pull requests) are most welcome.
+
+| Author: Seung-been "Steven" Lee
+| Email: sbstevenlee@gmail.com
+| License: MIT License
 
 Installation
 ============

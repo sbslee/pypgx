@@ -3223,3 +3223,48 @@ CYP2C19,*9/*31,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-f
 CYP2C19,*9/*32,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,8/17/21,N/A
 CYP2C19,*9/*33,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,8/17/21,N/A
 CYP2C19,*9/*34,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,8/17/21,N/A
+CYP3A5,*1/*1,N/A,Normal Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*2,N/A,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*3,N/A,Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*4,N/A,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*5,N/A,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*6,N/A,Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*7,N/A,Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*8,N/A,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*1/*9,N/A,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*2,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*3,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*4,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*5,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*6,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*7,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*2/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*3,N/A,Poor Metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*4,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*5,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*6,N/A,Poor Metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*7,N/A,Poor Metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*3/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*4,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*5,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*6,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*7,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*4/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*5/*5,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*5/*6,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*5/*7,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*5/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*5/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*6/*6,N/A,Poor Metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*6/*7,N/A,Poor Metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*6/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*6/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*7/*7,N/A,Poor metabolizer,Normal/Routine/Low Risk,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*7/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*7/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*8/*8,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*8/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A
+CYP3A5,*9/*9,N/A,Indeterminate,None,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21,N/A

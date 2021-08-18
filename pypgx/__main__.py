@@ -1,12 +1,7 @@
 import argparse
 
-import pypgx
-from .cli import commands
 from .version import __version__
-
-def _func(l):
-    """Convert a list to a pretty text."""
-    return '{' + ", ".join([f"'{x}'" for x in l]) + '}'
+from .cli import commands
 
 def _get_parser():
     parser = argparse.ArgumentParser(add_help=False)
@@ -79,7 +74,7 @@ def _get_parser():
         default=argparse.SUPPRESS,
         help="Show this help message and exit."
     )
-    
+
     return parser
 
 def main():
