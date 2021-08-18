@@ -1,6 +1,6 @@
-Gene,PhenotypeMethod
-CYP2B6,Diplotype
-CYP2C9,AS
-CYP2C19,Diplotype
-CYP2D6,AS
-CYP3A5,Diplotype
+Gene,PhenotypeMethod,PhenotypeURL,PhenotypeDate
+CYP2B6,Diplotype,https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/,8/18/21
+CYP2C9,AS,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,8/18/21
+CYP2C19,Diplotype,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,8/18/21
+CYP2D6,AS,https://cpicpgx.org/guidelines/cpic-guideline-for-atomoxetine-based-on-cyp2d6-genotype/,8/18/21
+CYP3A5,Diplotype,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,8/18/21
