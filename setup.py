@@ -23,7 +23,7 @@ setup(
     package_data={'pypgx.data': [
             'activity-table.csv',
             'gene-table',
-            'phenotype-table.csv',
+            'diplotype-table.csv',
     ]},
     entry_points={'console_scripts': ['pypgx=pypgx.__main__:main']}
 )
