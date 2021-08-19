@@ -1,0 +1,24 @@
+Gene,Phenotype,Priority
+CYP2B6,Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP2B6,Normal Metabolizer,Normal/Routine/Low Risk
+CYP2B6,Poor Metabolizer,Abnormal/Priority/High Risk
+CYP2B6,Rapid Metabolizer,Normal/Routine/Low Risk
+CYP2B6,Ultrarapid Metabolizer,Normal/Routine/Low Risk
+CYP2C9,Normal Metabolizer,Normal/Routine/Low Risk
+CYP2C9,Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP2C9,Poor Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Likely Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Likely Poor Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Normal Metabolizer,Normal/Routine/Low Risk
+CYP2C19,Poor Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Rapid Metabolizer,Abnormal/Priority/High Risk
+CYP2C19,Ultrarapid Metabolizer,Abnormal/Priority/High Risk
+CYP2D6,Ultrarapid Metabolizer,Abnormal/Priority/High Risk
+CYP2D6,Normal Metabolizer,Normal/Routine/Low Risk
+CYP2D6,Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP2D6,Poor Metabolizer,Abnormal/Priority/High Risk
+CYP3A5,Normal Metabolizer,Abnormal/Priority/High Risk
+CYP3A5,Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP3A5,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk
+CYP3A5,Poor Metabolizer,Normal/Routine/Low Risk

@@ -11,12 +11,12 @@ def get_activity_score(gene, allele):
     """
     Return predicted activity score.
 
-    The method can handle alleles with structural variation including gene
-    deletion, duplication, and tandem arrangement.
+    The method can handle star alleles with structural variation including
+    gene deletion, duplication, and tandem arrangement.
 
-    The method will return ``NaN`` for alleles with uncertain function as
-    well as for alleles from a gene that does not use the activity score
-    system.
+    Note that the method will return ``NaN`` for alleles with uncertain
+    function as well as for alleles from a gene that does not use the
+    activity score system.
 
     Parameters
     ----------
@@ -80,6 +80,27 @@ def get_activity_score(gene, allele):
 
     return sum([parsecnv(x) for x in allele.split('+')])
 
+def list_genes():
+    """
+    Return all genes that are currently supported by the package.
+
+    The method will simply return all genes in the gene table.
+
+    Returns
+    -------
+    list
+        Supported genes.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_genes()
+    ['CYP2B6', 'CYP2C9', 'CYP2C19', 'CYP2D6', 'CYP3A5']
+    """
+    df = load_gene_table()
+    return df.Gene.to_list()
+
 def get_phenotype(gene, a, b):
     """
     Return predicted phenotype.
@@ -109,11 +130,10 @@ def get_phenotype(gene, a, b):
     >>> pypgx.get_phenotype('CYP2B6', '*1', '*4')  # *4 has increased function
     'Rapid Metabolizer'
     """
-    df = load_gene_table()
-
-    if gene not in df.Gene.unique():
+    if gene not in list_genes():
         raise UnsupportedGeneError(gene)
 
+    df = load_gene_table()
     method = df[df.Gene == gene].PhenotypeMethod.values[0]
 
     if method == 'AS':
@@ -132,6 +152,46 @@ def get_phenotype(gene, a, b):
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         return df[i].Phenotype.values[0]
+
+def get_priority(gene, phenotype):
+    """
+    Return predicted EHR priority.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    phenotype : str
+        Phenotype name.
+
+    Returns
+    -------
+    str
+        EHR priority prediction.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_phenotype('CYP2D6', '*5', '*4')  # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.get_phenotype('CYP2D6', '*5', '*4')  # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.get_phenotype('CYP2D6', '*1', '*22') # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.get_phenotype('CYP2B6', '*1', '*4')  # *4 has increased function
+    'Rapid Metabolizer'
+    """
+    df = load_gene_table()
+
+    if gene not in df.Gene.unique():
+        raise UnsupportedGeneError(gene)
+
+    df = load_priority_table()
+    df = df[df.Gene.str.lower() == gene.lower()]
+    i = df.Phenotype.str.lower() == phenotype.lower()
+
+    return df[i].Priority.values[0]
 
 def load_activity_table():
     """
@@ -203,4 +263,22 @@ def load_phenotype_table():
     >>> df = pypgx.load_phenotype_table()
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/phenotype-table.csv'))
+    return pd.read_csv(b)
+
+def load_priority_table():
+    """
+    Return the EHR priority table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        EHR priority table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_priority_table()
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/priority-table.csv'))
     return pd.read_csv(b)
