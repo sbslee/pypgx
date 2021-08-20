@@ -20,7 +20,9 @@ class TestPypgx(unittest.TestCase):
         self.assertEqual(len(df3.Gene.unique()), df4.PhenotypeMethod.value_counts()['Score'])
 
     def test_priority_table(self):
-        self.assertEqual(pypgx.list_genes(), list(df5.Gene.unique()))
+        a = [x for x in pypgx.list_genes() if pypgx.has_phenotype(x)]
+        b = list(df5.Gene.unique())
+        self.assertEqual(a, b)
 
 if __name__ == '__main__':
     unittest.main()

@@ -49,7 +49,7 @@ def get_function(gene, allele):
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene + allele)
+        raise AlleleNotFoundError(gene, allele)
 
     return df.Function.values[0]
 
@@ -140,6 +140,36 @@ def get_score(gene, allele):
         raise AlleleNotFoundError(gene + allele)
 
     return df.ActivityScore.values[0]
+
+def has_phenotype(gene):
+    """
+    Return True if specified gene has phenotype annotation.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+
+    Returns
+    -------
+    bool
+        Whether phenotype is supported.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.has_phenotype('CYP2D6')
+    True
+    >>> pypgx.has_phenotype('CYP4F2')
+    False
+    """
+    if gene not in list_genes():
+        raise GeneNotFoundError(gene)
+
+    df = load_gene_table()
+
+    return gene in df[~df.PhenotypeMethod.isna()].Gene.to_list()
 
 def has_score(gene):
     """

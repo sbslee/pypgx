@@ -1,7 +1,7 @@
 CLI
 ***
 
-This section describes command-line interface (CLI) for the PyPGx package.
+This section describes command-line interface (CLI) for PyPGx.
 
 You can display help message for PyPGx CLI by entering:
 

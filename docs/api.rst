@@ -1,7 +1,7 @@
 API
 ***
 
-This section describes application programming interface (API) for the PyPGx package.
+This section describes application programming interface (API) for PyPGx.
 
 pypgx.api.utils
 ===============
