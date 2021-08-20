@@ -272,6 +272,89 @@ CYP3A5,*6,N/A,No Function
 CYP3A5,*7,N/A,No Function
 CYP3A5,*8,N/A,Unknown Function
 CYP3A5,*9,N/A,Unknown Function
+DPYD,Reference,1,Normal Function 
+DPYD,c.1905+1G>A (*2A),0,No Function
+DPYD,c.1898delC (*3),0,No Function
+DPYD,c.1601G>A (*4),1,Normal Function 
+DPYD,c.1627A>G (*5),1,Normal Function 
+DPYD,c.2194G>A (*6),1,Normal Function 
+DPYD,c.295_298delTCAT (*7),0,No Function
+DPYD,c.703C>T (*8),0,No Function
+DPYD,c.85T>C (*9A),1,Normal Function 
+DPYD,c.2657G>A (*9B),1,Normal Function 
+DPYD,c.2983G>T (*10),0,No Function
+DPYD,c.1003G>T (*11),1,Normal Function 
+DPYD,c.1156G>T (*12),0,No Function
+DPYD,c.1679T>G (*13),0,No Function
+DPYD,"c.1129-5923C>G,  c.1236G>A (HapB3)",0.5,Decreased Function
+DPYD,c.2846A>T,0.5,Decreased Function
+DPYD,c.557A>G,0.5,Decreased Function
+DPYD,c.62G>A,1,Normal Function 
+DPYD,c.496A>G,1,Normal Function 
+DPYD,c.1218G>A,1,Normal Function 
+DPYD,c.1896T>C,1,Normal Function 
+DPYD,c.46C>G,1,Normal Function
+DPYD,c.61C>T,0,No Function
+DPYD,c.313G>A,1,Normal Function
+DPYD,c.343A>G,1,Normal Function
+DPYD,c.451A>G,1,Normal Function
+DPYD,c.498G>A,1,Normal Function
+DPYD,c.601A>C,0,No Function
+DPYD,c.632A>G,0,No Function
+DPYD,c.775A>G,1,Normal Function
+DPYD,c.868A>G,0.5,Decreased Function
+DPYD,c.929T>C,1,Normal Function
+DPYD,c.934C>T,1,Normal Function
+DPYD,c.967G>A,1,Normal Function
+DPYD,c.1024G>A,0,No Function
+DPYD,c.1057C>T,0,No Function
+DPYD,c.1108A>G,1,Normal Function
+DPYD,c.1181G>T,1,Normal Function
+DPYD,c.1180C>T,1,Normal Function
+DPYD,c.1260T>A,1,Normal Function
+DPYD,c.1278G>T,1,Normal Function
+DPYD,c.1294G>A,1,Normal Function
+DPYD,c.1314T>G,0.5,Decreased Function
+DPYD,c.1349C>T,1,Normal Function
+DPYD,c.1358C>G,1,Normal Function
+DPYD,c.1403C>A,1,Normal Function
+DPYD,c.1475C>T,0,No Function
+DPYD,c.1484A>G,0,No Function
+DPYD,c.1519G>A,1,Normal Function
+DPYD,c.1543G>A,1,Normal Function
+DPYD,c.1577C>G,1,Normal Function
+DPYD,c.1615G>A,1,Normal Function
+DPYD,c.1682G>T,1,Normal Function
+DPYD,c.1775G>A,0,No Function
+DPYD,c.1774C>T,0,No Function
+DPYD,c.1777G>A,0,No Function
+DPYD,c.1796T>C,1,Normal Function
+DPYD,c.1905C>G,1,Normal Function
+DPYD,c.1906A>C,1,Normal Function
+DPYD,c.1990G>T,1,Normal Function
+DPYD,c.2021G>A,0,No Function
+DPYD,c.2161G>A,1,Normal Function
+DPYD,c.2186C>T,1,Normal Function
+DPYD,c.2195T>G,1,Normal Function
+DPYD,c.2279C>T,0.5,Decreased Function 
+DPYD,c.2303C>A,1,Normal Function
+DPYD,c.2336C>A,1,Normal Function
+DPYD,c.2482G>A,1,Normal Function
+DPYD,c.2582A>G,1,Normal Function
+DPYD,c.2623A>C,1,Normal Function
+DPYD,c.2639G>T,0,No Function
+DPYD,c.2656C>T,1,Normal Function
+DPYD,c.2872A>G,0,No Function
+DPYD,c.2915A>G,1,Normal Function
+DPYD,c.2921A>T,1,Normal Function
+DPYD,c.2933A>G,0,No Function
+DPYD,c.2978T>G,1,Normal Function
+DPYD,c.2977C>T,1,Normal Function
+DPYD,c.3049G>A,1,Normal Function
+DPYD,c.3061G>C,1,Normal Function
+DPYD,c.3067C>A,1,Normal Function
+DPYD,c.525G>A,1,Normal Function
+DPYD,c.1371C>T,1,Normal Function
 NUDT15,*1,N/A,Normal Function
 NUDT15,*2,N/A,No Function
 NUDT15,*3,N/A,No Function

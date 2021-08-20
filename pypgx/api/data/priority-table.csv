@@ -27,6 +27,10 @@ CYP3A5,Intermediate Metabolizer,Abnormal/Priority/High Risk
 CYP3A5,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk
 CYP3A5,Poor Metabolizer,Normal/Routine/Low Risk
 CYP3A5,Indeterminate,None
+DPYD,Normal Metabolizer,Normal/Routine/Low Risk
+DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
+DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
+DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Poor Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Normal Metabolizer,Normal/Routine/Low risk

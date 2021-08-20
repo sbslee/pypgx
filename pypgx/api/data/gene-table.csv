@@ -1,9 +1,10 @@
 Gene,PhenotypeMethod
 CYP2B6,Diplotype
-CYP2C9,AS
+CYP2C9,Score
 CYP2C19,Diplotype
-CYP2D6,AS
+CYP2D6,Score
 CYP3A5,Diplotype
+DPYD,Score
 NUDT15,Diplotype
 SLCO1B1,Diplotype
 TPMT,Diplotype

@@ -4,6 +4,9 @@ from io import BytesIO
 import numpy as np
 import pandas as pd
 
+class AlleleNotFoundError(Exception):
+    """Raise if specified allele is not present in the activity score table."""
+
 class GeneNotFoundError(Exception):
     """Raise if specified gene is not present in the gene table."""
 
@@ -43,9 +46,12 @@ def get_function(gene, allele):
         raise GeneNotFoundError(gene)
 
     df = load_activity_table()
-    i = (df.Gene == gene) & (df.StarAllele == allele)
+    df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
-    return df[i].Function.values[0]
+    if df.empty:
+        raise AlleleNotFoundError(gene + allele)
+
+    return df.Function.values[0]
 
 def get_priority(gene, phenotype):
     """
@@ -128,9 +134,12 @@ def get_score(gene, allele):
         return np.nan
 
     df = load_activity_table()
-    i = (df.Gene == gene) & (df.StarAllele == allele)
+    df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
-    return df[i].ActivityScore.values[0]
+    if df.empty:
+        raise AlleleNotFoundError(gene + allele)
+
+    return df.ActivityScore.values[0]
 
 def has_score(gene):
     """
@@ -160,7 +169,7 @@ def has_score(gene):
 
     df = load_gene_table()
 
-    return gene in df[df.PhenotypeMethod == 'AS'].Gene.unique()
+    return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
 def list_genes():
     """
@@ -307,6 +316,9 @@ def predict_phenotype(gene, a, b):
     """
     Predict phenotype based on two haplotype calls.
 
+    The method can handle star alleles with structural variation including
+    gene deletion, duplication, and tandem arrangement.
+
     Parameters
     ----------
     gene : str
@@ -323,22 +335,21 @@ def predict_phenotype(gene, a, b):
     --------
 
     >>> import pypgx
-    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')  # Both alleles have no function
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # Both alleles have no function
     'Poor Metabolizer'
-    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')  # The order of alleles does not matter
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
     'Poor Metabolizer'
-    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22') # *22 has uncertain function
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22')  # *22 has uncertain function
     'Indeterminate'
-    >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')  # *4 has increased function
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
+    'Ultrarapid Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')   # *4 has increased function
     'Rapid Metabolizer'
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
-    df = load_gene_table()
-    method = df[df.Gene == gene].PhenotypeMethod.values[0]
-
-    if method == 'AS':
+    if has_score(gene):
         df = load_equation_table()
         df = df[df.Gene == gene]
         def one_row(r, score):

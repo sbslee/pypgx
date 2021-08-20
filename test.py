@@ -17,7 +17,7 @@ class TestPypgx(unittest.TestCase):
         self.assertEqual(len(df2.Gene.unique()), df4.PhenotypeMethod.value_counts()['Diplotype'])
 
     def test_equation_table(self):
-        self.assertEqual(len(df3.Gene.unique()), df4.PhenotypeMethod.value_counts()['AS'])
+        self.assertEqual(len(df3.Gene.unique()), df4.PhenotypeMethod.value_counts()['Score'])
 
     def test_priority_table(self):
         self.assertEqual(pypgx.list_genes(), list(df5.Gene.unique()))
