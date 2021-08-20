@@ -2,11 +2,11 @@ import unittest
 
 import pypgx
 
-df1 = pypgx.load_activity_table()
+df1 = pypgx.load_allele_table()
 df2 = pypgx.load_diplotype_table()
 df3 = pypgx.load_equation_table()
 df4 = pypgx.load_gene_table()
-df5 = pypgx.load_priority_table()
+df5 = pypgx.load_phenotype_table()
 
 class TestPypgx(unittest.TestCase):
 

@@ -3,19 +3,83 @@ from io import BytesIO
 
 import numpy as np
 import pandas as pd
+from fuc import pyvcf
 
 class AlleleNotFoundError(Exception):
-    """Raise if specified allele is not present in the activity score table."""
+    """Raise if specified allele is not present in the allele table."""
 
 class GeneNotFoundError(Exception):
     """Raise if specified gene is not present in the gene table."""
 
 class PhenotypeNotFoundError(Exception):
-    """Raise if specified phenotype is not present in the EHR priority table."""
+    """Raise if specified phenotype is not present in the phenotype table."""
+
+def build_definition_table(gene, assembly='GRCh37'):
+    """
+    Build the definition table for specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    pyvcf.VcfFrame
+        Definition table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> vf = pypgx.build_definition_table('CYP4F2')
+    >>> vf.df
+      CHROM       POS         ID REF ALT QUAL FILTER INFO FORMAT *1 *2 *3
+    0    19  15989040     rs1272   G   C    .      .    .     GT  1  1  1
+    1    19  16008388  rs3093105   A   C    .      .    .     GT  0  1  0
+    2    19  15990431  rs2108622   C   T    .      .    .     GT  0  0  1
+    >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
+    >>> vf.df
+      CHROM       POS         ID REF ALT QUAL FILTER INFO FORMAT *1 *2 *3
+    0    19  15897578  rs3093105   A   C    .      .    .     GT  0  1  0
+    1    19  15879621  rs2108622   C   T    .      .    .     GT  0  0  1
+    """
+    df1 = load_allele_table()
+    df1 = df1[df1.Gene == gene]
+    variants = []
+    for i, r in df1.iterrows():
+        if pd.isna(r[assembly]):
+            continue
+        for variant in r[assembly].split(','):
+            if variant not in variants:
+                variants.append(variant)
+    data = {x: [] for x in pyvcf.HEADERS}
+    for i, r in df1.iterrows():
+        data[r.StarAllele] = ['0' if pd.isna(r[assembly]) else '1' if x in r[assembly].split(',') else '0' for x in variants]
+    df2 = load_variant_table()
+    df2 = df2[df2.Gene == gene]
+    for variant in variants:
+        pos = int(variant.split('-')[1])
+        ref = variant.split('-')[2]
+        alt = variant.split('-')[3]
+        s = df2[(df2.Gene == gene) & (df2[f'{assembly}Position'] == pos) & (df2[f'{assembly}Allele'] == ref) & (df2.Variant == alt)]
+        data['CHROM'].append(s.Chromosome.values[0])
+        data['POS'].append(pos)
+        data['ID'].append(s.rsID.values[0])
+        data['REF'].append(ref)
+        data['ALT'].append(alt)
+        data['QUAL'].append('.')
+        data['FILTER'].append('.')
+        data['INFO'].append('.')
+        data['FORMAT'].append('GT')
+    vf = pyvcf.VcfFrame.from_dict([], data)
+    return vf
 
 def get_function(gene, allele):
     """
-    Get matched function from the activity score table.
+    Get matched function from the allele table.
 
     Parameters
     ----------
@@ -45,7 +109,7 @@ def get_function(gene, allele):
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
-    df = load_activity_table()
+    df = load_allele_table()
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
@@ -55,7 +119,7 @@ def get_function(gene, allele):
 
 def get_priority(gene, phenotype):
     """
-    Get matched priority from the EHR priority table.
+    Get matched priority from the phenotype table.
 
     Parameters
     ----------
@@ -88,14 +152,14 @@ def get_priority(gene, phenotype):
     if phenotype not in list_phenotypes():
         raise PhenotypeNotFoundError(phenotype)
 
-    df = load_priority_table()
+    df = load_phenotype_table()
     i = (df.Gene == gene) & (df.Phenotype == phenotype)
 
     return df[i].Priority.values[0]
 
 def get_score(gene, allele):
     """
-    Get matched score from the activity score table.
+    Get matched score from the allele table.
 
     Parameters
     ----------
@@ -133,7 +197,7 @@ def get_score(gene, allele):
     if not has_score(gene):
         return np.nan
 
-    df = load_activity_table()
+    df = load_allele_table()
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
@@ -143,7 +207,7 @@ def get_score(gene, allele):
 
 def has_phenotype(gene):
     """
-    Return True if specified gene has phenotype annotation.
+    Return True if specified gene has phenotype data.
 
     Parameters
     ----------
@@ -173,7 +237,7 @@ def has_phenotype(gene):
 
 def has_score(gene):
     """
-    Return True if specified gene has the activity score system.
+    Return True if specified gene has activity score.
 
     Parameters
     ----------
@@ -222,7 +286,7 @@ def list_genes():
 
 def list_phenotypes(gene=None):
     """
-    List all phenotypes present in the EHR priority table.
+    List all phenotypes present in the phenotype table.
 
     Parameters
     ----------
@@ -243,7 +307,7 @@ def list_phenotypes(gene=None):
     >>> pypgx.list_phenotypes(gene='CYP2D6')
     ['Ultrarapid Metabolizer', 'Normal Metabolizer', 'Intermediate Metabolizer', 'Poor Metabolizer']
     """
-    df = load_priority_table()
+    df = load_phenotype_table()
 
     if gene is not None:
         if gene not in list_genes():
@@ -252,9 +316,9 @@ def list_phenotypes(gene=None):
 
     return sorted(list(df.Phenotype.unique()))
 
-def load_activity_table():
+def load_allele_table():
     """
-    Load the activity score table.
+    Load the allele table.
 
     Returns
     -------
@@ -265,9 +329,9 @@ def load_activity_table():
     --------
 
     >>> import pypgx
-    >>> df = pypgx.load_activity_table()
+    >>> df = pypgx.load_allele_table()
     """
-    b = BytesIO(pkgutil.get_data(__name__, 'data/activity-table.csv'))
+    b = BytesIO(pkgutil.get_data(__name__, 'data/allele-table.csv'))
     return pd.read_csv(b)
 
 def load_diplotype_table():
@@ -324,9 +388,9 @@ def load_gene_table():
     b = BytesIO(pkgutil.get_data(__name__, 'data/gene-table.csv'))
     return pd.read_csv(b)
 
-def load_priority_table():
+def load_phenotype_table():
     """
-    Load the EHR priority table.
+    Load the phenotype table.
 
     Returns
     -------
@@ -337,9 +401,27 @@ def load_priority_table():
     --------
 
     >>> import pypgx
-    >>> df = pypgx.load_priority_table()
+    >>> df = pypgx.load_phenotype_table()
     """
-    b = BytesIO(pkgutil.get_data(__name__, 'data/priority-table.csv'))
+    b = BytesIO(pkgutil.get_data(__name__, 'data/phenotype-table.csv'))
+    return pd.read_csv(b)
+
+def load_variant_table():
+    """
+    Load the variant table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requested table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_phenotype_table()
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/variant-table.csv'))
     return pd.read_csv(b)
 
 def predict_phenotype(gene, a, b):
@@ -422,7 +504,7 @@ def predict_score(gene, allele):
     See Also
     --------
     get_score
-        Get matched data from the activity score table.
+        Get matched data from the allele table.
 
     Examples
     --------
@@ -455,7 +537,7 @@ def predict_score(gene, allele):
     if not has_score(gene):
         return np.nan
 
-    df = load_activity_table()
+    df = load_allele_table()
     df = df[df.Gene == gene]
 
     def parsecnv(x):

@@ -186,7 +186,7 @@ CYP2D6,*52,N/A,Uncertain Function,N/A,N/A
 CYP2D6,*53,1,Normal Function,N/A,N/A
 CYP2D6,*54,0.5,Decreased Function,N/A,N/A
 CYP2D6,*55,0.5,Decreased Function,N/A,N/A
-CYP2D6,*56,0,No Function ,N/A,N/A
+CYP2D6,*56,0,No Function,N/A,N/A
 CYP2D6,*57,0,No Function,N/A,N/A
 CYP2D6,*58,N/A,Unknown Function,N/A,N/A
 CYP2D6,*59,0.5,Decreased Function,N/A,N/A
@@ -272,30 +272,30 @@ CYP3A5,*6,N/A,No Function,N/A,N/A
 CYP3A5,*7,N/A,No Function,N/A,N/A
 CYP3A5,*8,N/A,Unknown Function,N/A,N/A
 CYP3A5,*9,N/A,Unknown Function,N/A,N/A
-CYP4F2,*1,N/A,N/A,19-15989040-G-C,N/A
+CYP4F2,*1,N/A,Normal Function,19-15989040-G-C,N/A
 CYP4F2,*2,N/A,N/A,"19-15989040-G-C,19-16008388-A-C",19-15897578-A-C
 CYP4F2,*3,N/A,N/A,"19-15989040-G-C,19-15990431-C-T",19-15879621-C-T
-DPYD,Reference,1,Normal Function ,N/A,N/A
+DPYD,Reference,1,Normal Function,N/A,N/A
 DPYD,c.1905+1G>A (*2A),0,No Function,N/A,N/A
 DPYD,c.1898delC (*3),0,No Function,N/A,N/A
-DPYD,c.1601G>A (*4),1,Normal Function ,N/A,N/A
-DPYD,c.1627A>G (*5),1,Normal Function ,N/A,N/A
-DPYD,c.2194G>A (*6),1,Normal Function ,N/A,N/A
+DPYD,c.1601G>A (*4),1,Normal Function,N/A,N/A
+DPYD,c.1627A>G (*5),1,Normal Function,N/A,N/A
+DPYD,c.2194G>A (*6),1,Normal Function,N/A,N/A
 DPYD,c.295_298delTCAT (*7),0,No Function,N/A,N/A
 DPYD,c.703C>T (*8),0,No Function,N/A,N/A
-DPYD,c.85T>C (*9A),1,Normal Function ,N/A,N/A
-DPYD,c.2657G>A (*9B),1,Normal Function ,N/A,N/A
+DPYD,c.85T>C (*9A),1,Normal Function,N/A,N/A
+DPYD,c.2657G>A (*9B),1,Normal Function,N/A,N/A
 DPYD,c.2983G>T (*10),0,No Function,N/A,N/A
-DPYD,c.1003G>T (*11),1,Normal Function ,N/A,N/A
+DPYD,c.1003G>T (*11),1,Normal Function,N/A,N/A
 DPYD,c.1156G>T (*12),0,No Function,N/A,N/A
 DPYD,c.1679T>G (*13),0,No Function,N/A,N/A
 DPYD,"c.1129-5923C>G,  c.1236G>A (HapB3)",0.5,Decreased Function,N/A,N/A
 DPYD,c.2846A>T,0.5,Decreased Function,N/A,N/A
 DPYD,c.557A>G,0.5,Decreased Function,N/A,N/A
-DPYD,c.62G>A,1,Normal Function ,N/A,N/A
-DPYD,c.496A>G,1,Normal Function ,N/A,N/A
-DPYD,c.1218G>A,1,Normal Function ,N/A,N/A
-DPYD,c.1896T>C,1,Normal Function ,N/A,N/A
+DPYD,c.62G>A,1,Normal Function,N/A,N/A
+DPYD,c.496A>G,1,Normal Function,N/A,N/A
+DPYD,c.1218G>A,1,Normal Function,N/A,N/A
+DPYD,c.1896T>C,1,Normal Function,N/A,N/A
 DPYD,c.46C>G,1,Normal Function,N/A,N/A
 DPYD,c.61C>T,0,No Function,N/A,N/A
 DPYD,c.313G>A,1,Normal Function,N/A,N/A
@@ -339,7 +339,7 @@ DPYD,c.2021G>A,0,No Function,N/A,N/A
 DPYD,c.2161G>A,1,Normal Function,N/A,N/A
 DPYD,c.2186C>T,1,Normal Function,N/A,N/A
 DPYD,c.2195T>G,1,Normal Function,N/A,N/A
-DPYD,c.2279C>T,0.5,Decreased Function ,N/A,N/A
+DPYD,c.2279C>T,0.5,Decreased Function,N/A,N/A
 DPYD,c.2303C>A,1,Normal Function,N/A,N/A
 DPYD,c.2336C>A,1,Normal Function,N/A,N/A
 DPYD,c.2482G>A,1,Normal Function,N/A,N/A
@@ -426,7 +426,7 @@ TPMT,*17,N/A,Uncertain Function,N/A,N/A
 TPMT,*18,N/A,Uncertain Function,N/A,N/A
 TPMT,*19,N/A,Uncertain Function,N/A,N/A
 TPMT,*20,N/A,Uncertain Function,N/A,N/A
-TPMT,*21,N/A,Uncertain Function ,N/A,N/A
+TPMT,*21,N/A,Uncertain Function,N/A,N/A
 TPMT,*22,N/A,Uncertain Function,N/A,N/A
 TPMT,*23,N/A,No Function,N/A,N/A
 TPMT,*24,N/A,Uncertain Function,N/A,N/A
