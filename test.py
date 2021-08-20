@@ -1,0 +1,26 @@
+import unittest
+
+import pypgx
+
+df1 = pypgx.load_activity_table()
+df2 = pypgx.load_diplotype_table()
+df3 = pypgx.load_equation_table()
+df4 = pypgx.load_gene_table()
+df5 = pypgx.load_priority_table()
+
+class TestPypgx(unittest.TestCase):
+
+    def test_activity_table(self):
+        self.assertEqual(pypgx.list_genes(), list(df1.Gene.unique()))
+
+    def test_diplotype_table(self):
+        self.assertEqual(len(df2.Gene.unique()), df4.PhenotypeMethod.value_counts()['Diplotype'])
+
+    def test_equation_table(self):
+        self.assertEqual(len(df3.Gene.unique()), df4.PhenotypeMethod.value_counts()['AS'])
+
+    def test_priority_table(self):
+        self.assertEqual(pypgx.list_genes(), list(df5.Gene.unique()))
+
+if __name__ == '__main__':
+    unittest.main()

@@ -1,7 +1,8 @@
 from .api.utils import (
-    predict_score,
-    predict_phenotype,
+    get_function,
     get_priority,
+    get_score,
+    has_score,
     list_genes,
     list_phenotypes,
     load_activity_table,
@@ -9,6 +10,8 @@ from .api.utils import (
     load_equation_table,
     load_gene_table,
     load_priority_table,
+    predict_phenotype,
+    predict_score,
 )
 
 del api
