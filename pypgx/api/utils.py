@@ -48,7 +48,9 @@ def build_definition_table(gene, assembly='GRCh37'):
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
-        
+
+    other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
+
     df1 = load_allele_table()
     df1 = df1[df1.Gene == gene]
     variants = []
@@ -74,7 +76,7 @@ def build_definition_table(gene, assembly='GRCh37'):
         s = df2[
             (df2.Gene == gene) & (df2[f'{assembly}Position'] == pos) &
             (df2[f'{assembly}Allele'] == ref) &
-            (df2.Variant == alt)
+            ((df2.Variant == alt) | (df2[f'{other}Allele'] == alt))
         ]
         data['CHROM'].append(s.Chromosome.values[0])
         data['POS'].append(pos)
