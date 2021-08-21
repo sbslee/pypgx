@@ -31,4 +31,3 @@ def parse_pharmvar(fn):
     df.columns = ['GRCh37', 'GRCh38']
     df = df.replace('', 'N/A')
     df.to_csv(f'{gene}-allele-table.csv')
-    
