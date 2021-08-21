@@ -15,7 +15,6 @@ def parse_pharmvar(fn):
                 if file.endswith('.vcf') and vf is None:
                     vf = pyvcf.VcfFrame.from_file(f'{r}/{file}')
         chrom = vf.contigs[0]
-        df = df[~df['Haplotype Name'].str.contains('.', regex=False)]
         for j, r in df.iterrows():
             name = r['Haplotype Name'].replace(gene, '')
             if name not in alleles:
