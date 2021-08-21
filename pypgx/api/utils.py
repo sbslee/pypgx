@@ -27,7 +27,7 @@ def build_definition_table(gene, assembly='GRCh37'):
 
     Returns
     -------
-    pyvcf.VcfFrame
+    fuc.pyvcf.VcfFrame
         Definition table.
 
     Examples
@@ -36,15 +36,15 @@ def build_definition_table(gene, assembly='GRCh37'):
     >>> import pypgx
     >>> vf = pypgx.build_definition_table('CYP4F2')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER INFO FORMAT *1 *2 *3
-    0    19  15989040     rs1272   G   C    .      .    .     GT  1  1  1
-    1    19  16008388  rs3093105   A   C    .      .    .     GT  0  1  0
-    2    19  15990431  rs2108622   C   T    .      .    .     GT  0  0  1
+      CHROM       POS         ID REF ALT QUAL FILTER                           INFO FORMAT *1 *2 *3
+    0    19  15989040     rs1272   G   C    .      .  VI=nan;SO=3 Prime UTR Variant     GT  1  1  1
+    1    19  16008388  rs3093105   A   C    .      .    VI=W12G;SO=Missense Variant     GT  0  1  0
+    2    19  15990431  rs2108622   C   T    .      .   VI=V433M;SO=Missense Variant     GT  0  0  1
     >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER INFO FORMAT *1 *2 *3
-    0    19  15897578  rs3093105   A   C    .      .    .     GT  0  1  0
-    1    19  15879621  rs2108622   C   T    .      .    .     GT  0  0  1
+      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *1 *2 *3
+    0    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
+    1    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
     """
     df1 = load_allele_table()
     df1 = df1[df1.Gene == gene]
@@ -57,14 +57,22 @@ def build_definition_table(gene, assembly='GRCh37'):
                 variants.append(variant)
     data = {x: [] for x in pyvcf.HEADERS}
     for i, r in df1.iterrows():
-        data[r.StarAllele] = ['0' if pd.isna(r[assembly]) else '1' if x in r[assembly].split(',') else '0' for x in variants]
+        data[r.StarAllele] = [
+            '0' if pd.isna(r[assembly]) else
+            '1' if x in r[assembly].split(',') else
+            '0' for x in variants
+        ]
     df2 = load_variant_table()
     df2 = df2[df2.Gene == gene]
     for variant in variants:
         pos = int(variant.split('-')[1])
         ref = variant.split('-')[2]
         alt = variant.split('-')[3]
-        s = df2[(df2.Gene == gene) & (df2[f'{assembly}Position'] == pos) & (df2[f'{assembly}Allele'] == ref) & (df2.Variant == alt)]
+        s = df2[
+            (df2.Gene == gene) & (df2[f'{assembly}Position'] == pos) &
+            (df2[f'{assembly}Allele'] == ref) &
+            (df2.Variant == alt)
+        ]
         data['CHROM'].append(s.Chromosome.values[0])
         data['POS'].append(pos)
         data['ID'].append(s.rsID.values[0])
@@ -72,9 +80,15 @@ def build_definition_table(gene, assembly='GRCh37'):
         data['ALT'].append(alt)
         data['QUAL'].append('.')
         data['FILTER'].append('.')
-        data['INFO'].append('.')
+        data['INFO'].append(f'VI={s.Impact.values[0]};SO={s.SO.values[0]}')
         data['FORMAT'].append('GT')
-    vf = pyvcf.VcfFrame.from_dict([], data)
+    meta = [
+        '##fileformat=VCFv4.1',
+        '##INFO=<ID=VI,Number=1,Type=String,Description="Variant impact">',
+        '##INFO=<ID=SO,Number=1,Type=String,Description="Sequence ontology">',
+        '##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">',
+    ]
+    vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
 
 def get_function(gene, allele):
