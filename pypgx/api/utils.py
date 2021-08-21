@@ -46,6 +46,9 @@ def build_definition_table(gene, assembly='GRCh37'):
     0    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
     1    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
     """
+    if gene not in list_genes():
+        raise GeneNotFoundError(gene)
+        
     df1 = load_allele_table()
     df1 = df1[df1.Gene == gene]
     variants = []
