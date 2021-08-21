@@ -264,14 +264,14 @@ CYP2D6,*137,N/A,Unknown Function,N/A,N/A
 CYP2D6,*138,N/A,Unknown Function,N/A,N/A
 CYP2D6,*139,N/A,Unknown Function,N/A,N/A
 CYP3A5,*1,N/A,Normal Function,N/A,N/A
-CYP3A5,*2,N/A,Unknown Function,N/A,N/A
-CYP3A5,*3,N/A,No Function,N/A,N/A
-CYP3A5,*4,N/A,Unknown Function,N/A,N/A
-CYP3A5,*5,N/A,Unknown Function,N/A,N/A
-CYP3A5,*6,N/A,No Function,N/A,N/A
-CYP3A5,*7,N/A,No Function,N/A,N/A
-CYP3A5,*8,N/A,Unknown Function,N/A,N/A
-CYP3A5,*9,N/A,Unknown Function,N/A,N/A
+CYP3A5,*2,N/A,Unknown Function,7-99250236-G-T,7-99652613-G-T
+CYP3A5,*3,N/A,No Function,N/A,7-99672916-T-C
+CYP3A5,*4,N/A,Unknown Function,7-99262860-T-C,7-99665237-T-C
+CYP3A5,*5,N/A,Unknown Function,7-99264573-A-G,7-99666950-A-G
+CYP3A5,*6,N/A,No Function,7-99262835-C-T,7-99665212-C-T
+CYP3A5,*7,N/A,No Function,7-99250393-T-TA,7-99652770-T-TA
+CYP3A5,*8,N/A,Unknown Function,7-99273821-G-A,7-99676198-G-A
+CYP3A5,*9,N/A,Unknown Function,7-99258139-C-T,7-99660516-C-T
 CYP4F2,*1,N/A,Normal Function,19-15989040-G-C,N/A
 CYP4F2,*2,N/A,N/A,"19-15989040-G-C,19-16008388-A-C",19-15897578-A-C
 CYP4F2,*3,N/A,N/A,"19-15989040-G-C,19-15990431-C-T",19-15879621-C-T
