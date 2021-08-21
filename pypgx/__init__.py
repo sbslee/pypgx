@@ -3,6 +3,7 @@ from .api.utils import (
     get_function,
     get_priority,
     get_score,
+    has_definition,
     has_phenotype,
     has_score,
     list_genes,
