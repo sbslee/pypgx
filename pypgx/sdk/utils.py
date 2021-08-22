@@ -44,8 +44,8 @@ def parse_pharmvar(fn):
             for variant in alleles[name][i]:
                 if variant not in variants[assembly]:
                     variants[assembly][variant] = []
-                    if name not in variants[assembly][variant]:
-                        variants[assembly][variant].append(name)
+                if name not in variants[assembly][variant]:
+                    variants[assembly][variant].append(name)
 
     for name in alleles:
         alleles[name] = [','.join(alleles[name][0]), ','.join(alleles[name][1])]
