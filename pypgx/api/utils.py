@@ -314,6 +314,35 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
+def list_alleles(gene):
+    """
+    List all alleles present in the allele table.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+
+    Returns
+    -------
+    list
+        Available alleles.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_alleles('CYP4F2')
+    ['*1', '*2', '*3']
+    """
+    if gene not in list_genes():
+        raise GeneNotFoundError(gene)
+
+    df = load_allele_table()
+    df = df[df.Gene == gene]
+
+    return df.StarAllele.to_list()
+
 def list_genes():
     """
     List all genes present in the gene table.
@@ -364,6 +393,44 @@ def list_phenotypes(gene=None):
         df = df[df.Gene == gene]
 
     return sorted(list(df.Phenotype.unique()))
+
+def list_variants(gene, allele, assembly='GRCh37'):
+    """
+    List all variants present in the allele table.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    allele : str
+        Star allele.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        Available alleles.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_variants('CYP4F2', '*2')
+    ['19-15989040-G-C', '19-16008388-A-C']
+    >>> pypgx.list_variants('CYP4F2', '*2', assembly='GRCh38')
+    ['19-15897578-A-C']
+    """
+    if gene not in list_genes():
+        raise GeneNotFoundError(gene)
+
+    df = load_allele_table()
+    df = df[(df.Gene == gene) & (df.StarAllele == allele)]
+
+    if df.empty:
+        raise AlleleNotFoundError(gene, allele)
+
+    return df[assembly].values[0].split(',')
 
 def load_allele_table():
     """
@@ -599,3 +666,68 @@ def predict_score(gene, allele):
             return get_score(gene, x)
 
     return sum([parsecnv(x) for x in allele.split('+')])
+
+def predict_alleles(vcf, gene):
+    """
+    Predict alleles based on observed variants.
+
+    Parameters
+    ----------
+    vcf : str
+        Gene name.
+    gene : str
+        Star allele for each haplotype. The order of alleles does not matter.
+
+    Returns
+    -------
+    str
+        Phenotype prediction.
+
+    Examples
+    --------
+
+    >>> from fuc import pyvcf
+    >>> import pypgx
+    >>> data = {
+    ...     'CHROM': ['19', '19'],
+    ...     'POS': [15989040, 16008388],
+    ...     'ID': ['.', '.'],
+    ...     'REF': ['G', 'A'],
+    ...     'ALT': ['C', 'C'],
+    ...     'QUAL': ['.', '.'],
+    ...     'FILTER': ['.', '.'],
+    ...     'INFO': ['.', '.'],
+    ...     'FORMAT': ['GT', 'GT'],
+    ...     'A': ['1|1', '0|1']
+    ... }
+    >>> vf1 = pyvcf.VcfFrame.from_dict([], data)
+    >>> vf1.df
+      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A
+    0    19  15989040  .   G   C    .      .    .     GT  1|1
+    1    19  16008388  .   A   C    .      .    .     GT  0|1
+    >>> samples = pypgx.predict_alleles(vf1, 'CYP4F2')
+    >>> samples
+    {'A': (['*1'], ['*1', '*2'])}
+    """
+    table = build_definition_table(gene)
+
+    stars = {}
+
+    for star in table.samples:
+        df = table.df[table.df[star] == '1']
+        s = df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)
+        stars[star] = set(s)
+
+    samples = {}
+
+    for sample in vcf.samples:
+        samples[sample] = ([], [])
+        df = vcf.df[sample].str.split('|', expand=True)
+        df.index = vcf.df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)
+        for i in [0, 1]:
+            s = set(df[i][df[i] == '1'].index)
+            for star, variants in stars.items():
+                if variants.issubset(s):
+                    samples[sample][i].append(star)
+
+    return samples
