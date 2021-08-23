@@ -57,31 +57,17 @@ def parse_pharmvar(fn):
 
     def func(r):
         if len(r.REF) == len(r.ALT) == 1:
-            return ','.join(variants[assembly][r.Name])
+            return f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
         elif len(r.REF) == 1 and len(r.ALT) > 1:
-            name = f'{r.CHROM}-{r.POS}---{r.ALT[1:]}'
-            return ','.join(variants[assembly][name])
+            return f'{r.CHROM}-{r.POS}---{r.ALT[1:]}'
         elif len(r.REF) > 1 and len(r.ALT) == 1:
-            name = f'{r.CHROM}-{r.POS}-{r.REF[1:]}--'
-            return ','.join(variants[assembly][name])
-        else:
-            raise ValueError('Something went wrong')
-
-    def func2(r):
-        if len(r.REF) == len(r.ALT) == 1:
-            return rs_dict[r.Name]
-        elif len(r.REF) == 1 and len(r.ALT) > 1:
-            name = f'{r.CHROM}-{r.POS}---{r.ALT[1:]}'
-            return rs_dict[name]
-        elif len(r.REF) > 1 and len(r.ALT) == 1:
-            name = f'{r.CHROM}-{r.POS}-{r.REF[1:]}--'
-            return rs_dict[name]
+            return f'{r.CHROM}-{r.POS+1}-{r.REF[1:]}--'
         else:
             raise ValueError('Something went wrong')
 
     for assembly in ['GRCh37', 'GRCh38']:
         df2 = pyvcf.merge(vfs[assembly]).chr_prefix().df
-        df2['Name'] = df2.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)
-        df2['Alleles'] = df2.apply(func, axis=1)
-        df2['rsID'] = df2.apply(func2, axis=1)
+        df2['Name'] = df2.apply(func, axis=1)
+        df2['Alleles'] = df2.apply(lambda r: ','.join(variants[assembly][r.Name]), axis=1)
+        df2['rsID'] = df2.apply(lambda r: rs_dict[r.Name], axis=1)
         df2.to_csv(f'{gene}-{assembly}.csv')
