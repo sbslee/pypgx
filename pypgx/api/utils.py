@@ -51,7 +51,7 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
         for b in alleles:
             if a == b:
                 continue
-            if is_subset(gene, a, b):
+            if is_subset(gene, a, b, assembly=assembly):
                 result = True
                 break
         results.append(result)
@@ -139,6 +139,39 @@ def build_definition_table(gene, assembly='GRCh37'):
     ]
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
+
+def get_default_allele(gene, assembly='GRCh37'):
+    """
+    Get the default allele of specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    str
+        Default allele.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_default_allele('CYP3A5')
+    '*3'
+    >>> pypgx.get_default_allele('CYP3A5', assembly='GRCh38')
+    '*1'
+    >>> pypgx.get_default_allele('CYP4F2')
+    ''
+    """
+    df = load_gene_table()
+    allele = df[df.Gene == gene][f'{assembly}Default'].values[0]
+    if pd.isna(allele):
+        allele = ''
+    return allele
 
 def get_function(gene, allele):
     """

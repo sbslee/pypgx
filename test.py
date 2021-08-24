@@ -7,7 +7,7 @@ from fuc import pyvcf
 
 class TestPypgx(unittest.TestCase):
 
-    def test_activity_table(self):
+    def test_allele_table(self):
         df = pypgx.load_allele_table()
         self.assertEqual(pypgx.list_genes(), list(df.Gene.unique()))
 

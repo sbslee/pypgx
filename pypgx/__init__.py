@@ -1,6 +1,7 @@
 from .api.utils import (
     collapse_alleles,
     build_definition_table,
+    get_default_allele,
     get_function,
     get_priority,
     get_score,
