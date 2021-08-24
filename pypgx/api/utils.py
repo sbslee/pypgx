@@ -661,12 +661,14 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
+    table = build_definition_table(gene, assembly=assembly)
+
     if isinstance(vcf, str):
         vf = pyvcf.VcfFrame.from_file(vcf)
     else:
         vf = vcf
 
-    table = build_definition_table(gene, assembly=assembly)
+    vf = vf.filter_vcf(table)
 
     stars = {}
 
