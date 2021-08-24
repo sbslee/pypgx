@@ -16,7 +16,7 @@ class PhenotypeNotFoundError(Exception):
 
 def collapse_alleles(gene, alleles, assembly='GRCh37'):
     """
-    Remove alleles that are a subset of the other alleles.
+    Collapse redundant candidate alleles.
 
     Parameters
     ----------
@@ -381,10 +381,18 @@ def is_subset(gene, a, b):
     --------
 
     >>> import pypgx
+    >>> pypgx.list_variants('CYP4F2', '*1')
+    ['19-15989040-G-C']
+    >>> pypgx.list_variants('CYP4F2', '*2')
+    ['19-15989040-G-C', '19-16008388-A-C']
     >>> pypgx.is_subset('CYP4F2', '*1', '*2')
     True
     >>> pypgx.is_subset('CYP4F2', '*2', '*1')
     False
+    >>> pypgx.is_subset('CYP4F2', '*1', '*1')
+    True
+    >>> pypgx.is_subset('CYP4F2', '*2', '*2')
+    True
     """
     a = set(list_variants(gene, a))
     b = set(list_variants(gene, b))
