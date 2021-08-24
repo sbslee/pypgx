@@ -750,8 +750,11 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
             for star, variants in stars.items():
                 if variants.issubset(s):
                     samples[sample][i].append(star)
-        samples[sample][0] = collapse_alleles(gene, samples[sample][0])
-        samples[sample][1] = collapse_alleles(gene, samples[sample][1])
+            samples[sample][i] = collapse_alleles(gene, samples[sample][i])
+            if not samples[sample][i]:
+                default = get_default_allele(gene, assembly)
+                if default:
+                    samples[sample][i].append(default)
 
     return samples
 
