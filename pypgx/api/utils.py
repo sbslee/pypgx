@@ -51,7 +51,7 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
         for b in alleles:
             if a == b:
                 continue
-            if is_subset('CYP4F2', a, b):
+            if is_subset(gene, a, b):
                 result = True
                 break
         results.append(result)
@@ -470,7 +470,10 @@ def list_phenotypes(gene=None):
 
 def list_variants(gene, allele, assembly='GRCh37'):
     """
-    List all variants present in the allele table.
+    List all variants that define specified allele.
+
+    Some alleles will return an empty list because they do not contain any
+    variants (e.g. reference allele).
 
     Parameters
     ----------
@@ -484,7 +487,7 @@ def list_variants(gene, allele, assembly='GRCh37'):
     Returns
     -------
     list
-        Available alleles.
+        Defining variants.
 
     Examples
     --------
@@ -494,6 +497,8 @@ def list_variants(gene, allele, assembly='GRCh37'):
     ['19-15989040-G-C', '19-16008388-A-C']
     >>> pypgx.list_variants('CYP4F2', '*2', assembly='GRCh38')
     ['19-15897578-A-C']
+    >>> pypgx.list_variants('CYP4F2', '*1', assembly='GRCh38')
+    []
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -504,7 +509,12 @@ def list_variants(gene, allele, assembly='GRCh37'):
     if df.empty:
         raise AlleleNotFoundError(gene, allele)
 
-    return df[assembly].values[0].split(',')
+    variants = df[assembly].values[0]
+
+    if pd.isna(variants):
+        return []
+
+    return variants.split(',')
 
 def load_allele_table():
     """
@@ -686,11 +696,12 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
     for sample in vf.samples:
         samples[sample] = [[], []]
         df = vf.df[sample].str.split('|', expand=True)
-        if df.empty:
-            continue
         df.index = vf.df.apply(func, axis=1)
         for i in [0, 1]:
-            s = set(df[i][df[i] == '1'].index)
+            try:
+                s = set(df[i][df[i] == '1'].index)
+            except KeyError:
+                s = set()
             for star, variants in stars.items():
                 if variants.issubset(s):
                     samples[sample][i].append(star)
