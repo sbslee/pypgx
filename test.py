@@ -3,6 +3,7 @@ import unittest
 import pypgx
 import pandas as pd
 import numpy as np
+from fuc import pyvcf
 
 class TestPypgx(unittest.TestCase):
 
@@ -46,6 +47,13 @@ class TestPypgx(unittest.TestCase):
                 diff = set(variants) ^ set(s[~pd.isna(s)])
                 if diff:
                     raise ValueError(gene, assembly, diff)
+
+    def test_predict_alleles(self):
+        vf1 = pyvcf.VcfFrame.from_file('data/GRCh37.vcf')
+        vf2 = pyvcf.VcfFrame.from_file('data/GRCh38.vcf')
+        a = pypgx.predict_alleles(vf1, 'CYP4F2')
+        b = pypgx.predict_alleles(vf2, 'CYP4F2', assembly='GRCh38')
+        self.assertEqual([['*1'], ['*2']], a['A'], b['A'])
 
 if __name__ == '__main__':
     unittest.main()
