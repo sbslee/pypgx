@@ -676,8 +676,10 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
 
     for star in table.samples:
         df = table.df[table.df[star] == '1']
-        s = df.apply(func, axis=1)
-        stars[star] = set(s)
+        if df.empty:
+            stars[star] = set()
+        else:
+            stars[star] = set(df.apply(func, axis=1))
 
     samples = {}
 
