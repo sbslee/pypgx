@@ -358,7 +358,7 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
-def is_subset(gene, a, b):
+def is_subset(gene, a, b, assembly='GRCh37'):
     """
     Return True if one allele is a subset of the other allele.
 
@@ -371,6 +371,8 @@ def is_subset(gene, a, b):
         Gene name.
     a, b : str
         Allele name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
 
     Returns
     -------
@@ -394,8 +396,8 @@ def is_subset(gene, a, b):
     >>> pypgx.is_subset('CYP4F2', '*2', '*2')
     True
     """
-    a = set(list_variants(gene, a))
-    b = set(list_variants(gene, b))
+    a = set(list_variants(gene, a, assembly=assembly))
+    b = set(list_variants(gene, b, assembly=assembly))
     return a.issubset(b)
 
 def list_alleles(gene):
