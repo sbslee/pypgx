@@ -362,13 +362,15 @@ def is_subset(gene, a, b):
     """
     Return True if one allele is a subset of the other allele.
 
+    The method will test whether ``a`` is a subset of ``b``; therefore,
+    the order of alleles matters.
+
     Parameters
     ----------
     gene : str
         Gene name.
     a, b : str
-        Allele name. The method will test whether ``a`` is a subset of ``b``;
-        therefore, the order of alleles matters.
+        Allele name.
 
     Returns
     -------
