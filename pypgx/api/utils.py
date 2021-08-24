@@ -672,6 +672,8 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
     """
     Predict candidate star alleles based on observed variants.
 
+    The input VCF must be fully phased.
+
     Parameters
     ----------
     vcf : pyvcf.VcfFrame or str
