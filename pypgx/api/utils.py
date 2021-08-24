@@ -60,7 +60,7 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
 
 def build_definition_table(gene, assembly='GRCh37'):
     """
-    Build the definition table for specified gene.
+    Build the allele definition table for specified gene.
 
     Parameters
     ----------
@@ -80,15 +80,14 @@ def build_definition_table(gene, assembly='GRCh37'):
     >>> import pypgx
     >>> vf = pypgx.build_definition_table('CYP4F2')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                           INFO FORMAT *1 *2 *3
-    0    19  15989040     rs1272   G   C    .      .  VI=nan;SO=3 Prime UTR Variant     GT  1  1  1
-    1    19  16008388  rs3093105   A   C    .      .    VI=W12G;SO=Missense Variant     GT  0  1  0
-    2    19  15990431  rs2108622   C   T    .      .   VI=V433M;SO=Missense Variant     GT  0  0  1
+      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *1 *2 *3
+    0    19  15990431  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
+    1    19  16008388  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
     >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
     >>> vf.df
       CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *1 *2 *3
-    0    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
-    1    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
+    0    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
+    1    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -539,10 +538,10 @@ def list_variants(gene, allele, assembly='GRCh37'):
 
     >>> import pypgx
     >>> pypgx.list_variants('CYP4F2', '*2')
-    ['19-15989040-G-C', '19-16008388-A-C']
+    ['19-16008388-A-C']
     >>> pypgx.list_variants('CYP4F2', '*2', assembly='GRCh38')
     ['19-15897578-A-C']
-    >>> pypgx.list_variants('CYP4F2', '*1', assembly='GRCh38')
+    >>> pypgx.list_variants('CYP4F2', '*1')
     []
     """
     if gene not in list_genes():
@@ -694,24 +693,24 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
     >>> import pypgx
     >>> data = {
     ...     'CHROM': ['19', '19'],
-    ...     'POS': [15989040, 16008388],
+    ...     'POS': [15990431, 16008388],
     ...     'ID': ['.', '.'],
-    ...     'REF': ['G', 'A'],
-    ...     'ALT': ['C', 'C'],
+    ...     'REF': ['C', 'A'],
+    ...     'ALT': ['T', 'C'],
     ...     'QUAL': ['.', '.'],
     ...     'FILTER': ['.', '.'],
     ...     'INFO': ['.', '.'],
     ...     'FORMAT': ['GT', 'GT'],
-    ...     'A': ['1|1', '0|1']
+    ...     'A': ['0|0', '0|1'],
+    ...     'B': ['1|0', '0|1'],
     ... }
     >>> vf = pyvcf.VcfFrame.from_dict([], data)
     >>> vf.df
-      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A
-    0    19  15989040  .   G   C    .      .    .     GT  1|1
-    1    19  16008388  .   A   C    .      .    .     GT  0|1
-    >>> samples = pypgx.predict_alleles(vf, 'CYP4F2')
-    >>> samples
-    {'A': [['*1'], ['*2']]}
+      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A    B
+    0    19  15990431  .   C   T    .      .    .     GT  0|0  1|0
+    1    19  16008388  .   A   C    .      .    .     GT  0|1  0|1
+    >>> pypgx.predict_alleles(vf, 'CYP4F2')
+    {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
