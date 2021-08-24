@@ -1,4 +1,5 @@
 from .api.utils import (
+    collapse_alleles,
     build_definition_table,
     get_function,
     get_priority,
@@ -6,6 +7,7 @@ from .api.utils import (
     has_definition,
     has_phenotype,
     has_score,
+    is_subset,
     list_alleles,
     list_genes,
     list_phenotypes,

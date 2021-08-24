@@ -14,6 +14,50 @@ class GeneNotFoundError(Exception):
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
+def collapse_alleles(gene, alleles, assembly='GRCh37'):
+    """
+    Remove alleles that are a subset of the other alleles.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    alleles : list
+        List of allele names.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        Collapsed list.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.build_definition_table('CYP4F2').df
+      CHROM       POS         ID REF ALT QUAL FILTER                           INFO FORMAT *1 *2 *3
+    0    19  15989040     rs1272   G   C    .      .  VI=nan;SO=3 Prime UTR Variant     GT  1  1  1
+    1    19  15990431  rs2108622   C   T    .      .   VI=V433M;SO=Missense Variant     GT  0  0  1
+    2    19  16008388  rs3093105   A   C    .      .    VI=W12G;SO=Missense Variant     GT  0  1  0
+    >>> pypgx.collapse_alleles('CYP4F2', ['*1', '*2', '*3'])
+    ['*2', '*3']
+    """
+    results = []
+
+    for a in alleles:
+        result = False
+        for b in alleles:
+            if a == b:
+                continue
+            if is_subset('CYP4F2', a, b):
+                result = True
+                break
+        results.append(result)
+
+    return [x for i, x in enumerate(alleles) if not results[i]]
+
 def build_definition_table(gene, assembly='GRCh37'):
     """
     Build the definition table for specified gene.
@@ -314,6 +358,36 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
+def is_subset(gene, a, b):
+    """
+    Return True if one allele is a subset of the other allele.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    a, b : str
+        Allele name. The method will test whether ``a`` is a subset of ``b``;
+        therefore, the order of alleles matters.
+
+    Returns
+    -------
+    bool
+        Test result.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.is_subset('CYP4F2', '*1', '*2')
+    True
+    >>> pypgx.is_subset('CYP4F2', '*2', '*1')
+    False
+    """
+    a = set(list_variants(gene, a))
+    b = set(list_variants(gene, b))
+    return a.issubset(b)
+
 def list_alleles(gene):
     """
     List all alleles present in the allele table.
@@ -540,6 +614,85 @@ def load_variant_table():
     b = BytesIO(pkgutil.get_data(__name__, 'data/variant-table.csv'))
     return pd.read_csv(b)
 
+def predict_alleles(vcf, gene, assembly='GRCh37'):
+    """
+    Predict candidate star alleles based on observed variants.
+
+    Parameters
+    ----------
+    vcf : pyvcf.VcfFrame or str
+        VcfFrame object or VCF file.
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    dict
+        Dictionary where sample names are keys and candidate lists are values.
+
+    Examples
+    --------
+
+    >>> from fuc import pyvcf
+    >>> import pypgx
+    >>> data = {
+    ...     'CHROM': ['19', '19'],
+    ...     'POS': [15989040, 16008388],
+    ...     'ID': ['.', '.'],
+    ...     'REF': ['G', 'A'],
+    ...     'ALT': ['C', 'C'],
+    ...     'QUAL': ['.', '.'],
+    ...     'FILTER': ['.', '.'],
+    ...     'INFO': ['.', '.'],
+    ...     'FORMAT': ['GT', 'GT'],
+    ...     'A': ['1|1', '0|1']
+    ... }
+    >>> vf = pyvcf.VcfFrame.from_dict([], data)
+    >>> vf.df
+      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A
+    0    19  15989040  .   G   C    .      .    .     GT  1|1
+    1    19  16008388  .   A   C    .      .    .     GT  0|1
+    >>> samples = pypgx.predict_alleles(vf, 'CYP4F2')
+    >>> samples
+    {'A': [['*1'], ['*2']]}
+    """
+    if gene not in list_genes():
+        raise GeneNotFoundError(gene)
+
+    if isinstance(vcf, str):
+        vf = pyvcf.VcfFrame.from_file(vcf)
+    else:
+        vf = vcf
+
+    table = build_definition_table(gene, assembly=assembly)
+
+    stars = {}
+
+    func = lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
+
+    for star in table.samples:
+        df = table.df[table.df[star] == '1']
+        s = df.apply(func, axis=1)
+        stars[star] = set(s)
+
+    samples = {}
+
+    for sample in vf.samples:
+        samples[sample] = [[], []]
+        df = vf.df[sample].str.split('|', expand=True)
+        df.index = vf.df.apply(func, axis=1)
+        for i in [0, 1]:
+            s = set(df[i][df[i] == '1'].index)
+            for star, variants in stars.items():
+                if variants.issubset(s):
+                    samples[sample][i].append(star)
+        samples[sample][0] = collapse_alleles(gene, samples[sample][0])
+        samples[sample][1] = collapse_alleles(gene, samples[sample][1])
+
+    return samples
+
 def predict_phenotype(gene, a, b):
     """
     Predict phenotype based on two haplotype calls.
@@ -666,68 +819,3 @@ def predict_score(gene, allele):
             return get_score(gene, x)
 
     return sum([parsecnv(x) for x in allele.split('+')])
-
-def predict_alleles(vcf, gene):
-    """
-    Predict alleles based on observed variants.
-
-    Parameters
-    ----------
-    vcf : str
-        Gene name.
-    gene : str
-        Star allele for each haplotype. The order of alleles does not matter.
-
-    Returns
-    -------
-    str
-        Phenotype prediction.
-
-    Examples
-    --------
-
-    >>> from fuc import pyvcf
-    >>> import pypgx
-    >>> data = {
-    ...     'CHROM': ['19', '19'],
-    ...     'POS': [15989040, 16008388],
-    ...     'ID': ['.', '.'],
-    ...     'REF': ['G', 'A'],
-    ...     'ALT': ['C', 'C'],
-    ...     'QUAL': ['.', '.'],
-    ...     'FILTER': ['.', '.'],
-    ...     'INFO': ['.', '.'],
-    ...     'FORMAT': ['GT', 'GT'],
-    ...     'A': ['1|1', '0|1']
-    ... }
-    >>> vf1 = pyvcf.VcfFrame.from_dict([], data)
-    >>> vf1.df
-      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A
-    0    19  15989040  .   G   C    .      .    .     GT  1|1
-    1    19  16008388  .   A   C    .      .    .     GT  0|1
-    >>> samples = pypgx.predict_alleles(vf1, 'CYP4F2')
-    >>> samples
-    {'A': (['*1'], ['*1', '*2'])}
-    """
-    table = build_definition_table(gene)
-
-    stars = {}
-
-    for star in table.samples:
-        df = table.df[table.df[star] == '1']
-        s = df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)
-        stars[star] = set(s)
-
-    samples = {}
-
-    for sample in vcf.samples:
-        samples[sample] = ([], [])
-        df = vcf.df[sample].str.split('|', expand=True)
-        df.index = vcf.df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)
-        for i in [0, 1]:
-            s = set(df[i][df[i] == '1'].index)
-            for star, variants in stars.items():
-                if variants.issubset(s):
-                    samples[sample][i].append(star)
-
-    return samples
