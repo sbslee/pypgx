@@ -666,7 +666,9 @@ def load_variant_table():
     >>> df = pypgx.load_phenotype_table()
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/variant-table.csv'))
-    return pd.read_csv(b)
+    df = pd.read_csv(b)
+    df.Chromosome = df.Chromosome.astype(str)
+    return df
 
 def predict_alleles(vcf, gene, assembly='GRCh37'):
     """

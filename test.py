@@ -3,7 +3,7 @@ import unittest
 import pypgx
 import pandas as pd
 import numpy as np
-from fuc import pyvcf
+from fuc import pyvcf, common
 
 class TestPypgx(unittest.TestCase):
 
@@ -28,22 +28,35 @@ class TestPypgx(unittest.TestCase):
         self.assertEqual(a, b)
 
     def test_definition_table(self):
+        df1 = pypgx.load_allele_table()
+        df2 = pypgx.load_variant_table()
+        def one_row(r):
+            for assembly in ['GRCh37', 'GRCh38']:
+                other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
+                variant = r[f'{assembly}Name']
+                if pd.isna(variant):
+                    return
+                chrom, pos, ref, alt = common.parse_variant(variant)
+                if not (chrom == r.Chromosome and
+                        pos == r[f'{assembly}Position'] and
+                        ref == r[f'{assembly}Allele'] and
+                        (alt == r.Variant or alt == r[f'{other}Allele'])):
+                        raise ValueError(f'Incorrect variant data: {variant}')
+        df2.apply(one_row, axis=1)
         for gene in pypgx.list_genes():
             if not pypgx.has_definition(gene):
                 continue
-            df1 = pypgx.load_allele_table()
-            df2 = pypgx.load_variant_table()
-            df1 = df1[df1.Gene == gene]
-            df2 = df2[df2.Gene == gene]
+            temp1 = df1[df1.Gene == gene]
+            temp2 = df2[df2.Gene == gene]
             for assembly in ['GRCh37', 'GRCh38']:
                 variants = []
-                for i, r in df1.iterrows():
+                for i, r in temp1.iterrows():
                     if pd.isna(r[assembly]):
                         continue
                     for variant in r[assembly].split(','):
                         if variant not in variants:
                             variants.append(variant)
-                s = df2[f'{assembly}Name'].unique()
+                s = temp2[f'{assembly}Name'].unique()
                 diff = set(variants) ^ set(s[~pd.isna(s)])
                 if diff:
                     raise ValueError(gene, assembly, diff)
