@@ -116,11 +116,7 @@ def build_definition_table(gene, assembly='GRCh37'):
         pos = int(variant.split('-')[1])
         ref = variant.split('-')[2]
         alt = variant.split('-')[3]
-        s = df2[
-            (df2.Gene == gene) & (df2[f'{assembly}Position'] == pos) &
-            (df2[f'{assembly}Allele'] == ref) &
-            ((df2.Variant == alt) | (df2[f'{other}Allele'] == alt))
-        ]
+        s = df2[variant == df2[f'{assembly}Name']]
         data['CHROM'].append(s.Chromosome.values[0])
         data['POS'].append(pos)
         data['ID'].append(s.rsID.values[0])
