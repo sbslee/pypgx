@@ -5,6 +5,17 @@ import numpy as np
 import pandas as pd
 from fuc import pyvcf
 
+FUNCTION_ORDER = [
+    'No Function',
+    'Decreased Function',
+    'Possible Decreased Function',
+    'Increased Function',
+    'Possible Increased Function'
+    'Normal Function',
+    'Uncertain Function',
+    'Unknown Function',
+]
+
 class AlleleNotFoundError(Exception):
     """Raise if specified allele is not present in the allele table."""
 
@@ -196,6 +207,8 @@ def get_function(gene, allele):
     'Uncertain Function'
     >>> pypgx.get_function('UGT1A1', '*80+*37')
     'Decreased Function'
+    >>> pypgx.get_function('CYP2D6', '*140')
+    nan
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -456,6 +469,39 @@ def list_alleles(gene):
     df = df[df.Gene == gene]
 
     return df.StarAllele.to_list()
+
+def list_functions(gene=None):
+    """
+    List all functions present in the allele table.
+
+    Parameters
+    ----------
+    gene : str, optional
+        Return only functions belonging to this gene.
+
+    Returns
+    -------
+    list
+        Available functions.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_functions()
+    [nan, 'Normal Function', 'Uncertain Function', 'Increased Function', 'Decreased Function', 'No Function', 'Unknown Function', 'Possible Decreased Function', 'Possible Increased Function']
+    >>> pypgx.list_functions(gene='CYP2D6')
+    ['Normal Function', 'No Function', 'Decreased Function', 'Uncertain Function', 'Unknown Function', nan]
+    """
+    df = load_allele_table()
+
+    if gene is not None:
+        if gene not in list_genes():
+            raise GeneNotFoundError(gene)
+
+        df = df[df.Gene == gene]
+
+    return list(df.Function.unique())
 
 def list_genes():
     """
