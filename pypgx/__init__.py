@@ -23,6 +23,7 @@ from .api.utils import (
     predict_alleles,
     predict_phenotype,
     predict_score,
+    sort_alleles,
 )
 
 del api

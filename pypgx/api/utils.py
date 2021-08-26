@@ -10,7 +10,7 @@ FUNCTION_ORDER = [
     'Decreased Function',
     'Possible Decreased Function',
     'Increased Function',
-    'Possible Increased Function'
+    'Possible Increased Function',
     'Normal Function',
     'Uncertain Function',
     'Unknown Function',
@@ -929,3 +929,28 @@ def predict_score(gene, allele):
             return get_score(gene, x)
 
     return sum([parsecnv(x) for x in allele.split('+')])
+
+def sort_alleles(gene, alleles):
+    """
+    Sort candidate alleles.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    allele : str
+        Star allele.
+
+    Returns
+    -------
+    list
+        Sorted list.
+    """
+    def func(x):
+        x = get_function(gene, x)
+        if pd.isna(x):
+            i = 99
+        else:
+            i = FUNCTION_ORDER.index(x)
+        return i
+    return sorted(alleles, key=func)
