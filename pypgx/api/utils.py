@@ -800,6 +800,7 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
                 default = get_default_allele(gene, assembly)
                 if default:
                     samples[sample][i].append(default)
+            samples[sample][i] = sort_alleles(gene, samples[sample][i])
 
     return samples
 
@@ -938,18 +939,25 @@ def sort_alleles(gene, alleles):
     ----------
     gene : str
         Gene name.
-    allele : str
-        Star allele.
+    alleles : str
+        List of star allele.
 
     Returns
     -------
     list
         Sorted list.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.sort_alleles('CYP2D6', ['*1', '*4'])
+    ['*4', '*1']
     """
     def func(x):
         x = get_function(gene, x)
         if pd.isna(x):
-            i = 99
+            i = len(FUNCTION_ORDER)
         else:
             i = FUNCTION_ORDER.index(x)
         return i

@@ -19,9 +19,7 @@ For Beagle, you can download a specific version from the website (e.g. 28Jun21.2
 
     $ wget https://faculty.washington.edu/browning/beagle/beagle.28Jun21.220.jar
 
-Each tool estimates haplotype phase either within a genotyped cohort or using a phased reference panel.
-
-If your input data is GRCh37, I recommend using the 1000 Genomes Project phase 3 reference panel. You can easily download it from the link provided by the authors of Beagle:
+Each tool can estimate haplotype phase either within a genotyped cohort or using a phased reference panel. For the latter, if your input data is GRCh37, I recommend using the 1000 Genomes Project phase 3 reference panel. You can easily download it thanks to the authors of Beagle:
 
 .. code-block:: text
 
@@ -31,4 +29,6 @@ For running Beagle:
 
 .. code-block:: text
 
-    $ java -Xmx2g -jar beagle.28Jun21.220.jar gt=in.vcf chrom=chr22:42512500-42551883 ref=chr22.1kg.phase3.v5a.vcf.gz out=out.vcf impute=false
+    $ java -Xmx2g -jar beagle.28Jun21.220.jar gt=in.vcf chrom=22:42512500-42551883 ref=chr22.1kg.phase3.v5a.vcf.gz out=out impute=false
+
+Do not use ``impute=true`` (default setting) unless your input data is from low density SNP microarray. 
