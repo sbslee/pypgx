@@ -20,6 +20,7 @@ CYP4F2,FALSE,N/A,N/A,5.0.1,*1,*1,-
 CYP26A1,FALSE,N/A,N/A,5.0.1,*1,*1,+
 DPYD,FALSE,Score,8/18/21,5.0.1,Reference,Reference,-
 NUDT15,FALSE,Diplotype,8/18/21,5.0.1,*1,*1,+
+RYR1,FALSE,N/A,8/28/21,N/A,Reference,Reference,+
 SLCO1B1,FALSE,Diplotype,8/18/21,N/A,*1,*1,+
 TPMT,FALSE,Diplotype,8/18/21,N/A,*1,*1,-
 UGT1A1,FALSE,Diplotype,8/18/21,N/A,*1,*1,+
