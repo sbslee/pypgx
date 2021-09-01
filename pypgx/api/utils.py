@@ -962,3 +962,33 @@ def sort_alleles(gene, alleles):
             i = FUNCTION_ORDER.index(x)
         return i
     return sorted(alleles, key=func)
+
+def create_consolidated_vcf(raw, phased):
+    """
+    Create consolidated VCF.
+    """
+    vf1 = pyvcf.VcfFrame.from_file(raw)
+    vf2 = pyvcf.VcfFrame.from_file(phased)
+
+    vf1 = vf1.strip('GT:AD:DP')
+    vf2 = vf2.strip('GT')
+
+    def one_row(r):
+        variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
+        s = vf1.fetch(variant)
+
+        def one_gt(g):
+            return ':'.join(g.split(':')[1:])
+
+        s[9:] = s[9:].apply(one_gt)
+        r[9:] = r[9:].str.cat(s[9:], sep=':')
+
+        return r
+
+    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
+    vf3.df.FORMAT = 'GT:AD:DP'
+
+    vf4 = vf1.filter_vcf(vf2, opposite=True)
+    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
+
+    return vf5

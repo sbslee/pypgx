@@ -1,6 +1,7 @@
 from .api.utils import (
     build_definition_table,
     collapse_alleles,
+    create_consolidated_vcf,
     get_default_allele,
     get_function,
     get_priority,
