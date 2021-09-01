@@ -815,7 +815,7 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
 
     for sample in vf.samples:
         samples[sample] = [[], []]
-        df = vf.df[sample].str.split('|', expand=True)
+        df = vf.df[sample].str.split(':').str[0].str.split('|', expand=True)
         df.index = vf.df.apply(func, axis=1)
         for i in [0, 1]:
             try:
