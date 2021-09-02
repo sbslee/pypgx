@@ -1,6 +1,5 @@
 from .api.utils import (
     build_definition_table,
-    collapse_alleles,
     create_consolidated_vcf,
     get_default_allele,
     get_function,
@@ -9,7 +8,6 @@ from .api.utils import (
     has_definition,
     has_phenotype,
     has_score,
-    is_subset,
     list_alleles,
     list_functions,
     list_genes,

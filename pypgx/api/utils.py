@@ -25,50 +25,6 @@ class GeneNotFoundError(Exception):
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
-def collapse_alleles(gene, alleles, assembly='GRCh37'):
-    """
-    Collapse redundant candidate alleles.
-
-    Parameters
-    ----------
-    gene : str
-        Gene name.
-    alleles : list
-        List of allele names.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-
-    Returns
-    -------
-    list
-        Collapsed list.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> pypgx.build_definition_table('CYP4F2').df
-      CHROM       POS         ID REF ALT QUAL FILTER                           INFO FORMAT *1 *2 *3
-    0    19  15989040     rs1272   G   C    .      .  VI=nan;SO=3 Prime UTR Variant     GT  1  1  1
-    1    19  15990431  rs2108622   C   T    .      .   VI=V433M;SO=Missense Variant     GT  0  0  1
-    2    19  16008388  rs3093105   A   C    .      .    VI=W12G;SO=Missense Variant     GT  0  1  0
-    >>> pypgx.collapse_alleles('CYP4F2', ['*1', '*2', '*3'])
-    ['*2', '*3']
-    """
-    results = []
-
-    for a in alleles:
-        result = False
-        for b in alleles:
-            if a == b:
-                continue
-            if is_subset(gene, a, b, assembly=assembly):
-                result = True
-                break
-        results.append(result)
-
-    return [x for i, x in enumerate(alleles) if not results[i]]
-
 def create_consolidated_vcf(raw, phased):
     """
     Create consolidated VCF.
@@ -101,7 +57,11 @@ def create_consolidated_vcf(raw, phased):
 
 def build_definition_table(gene, assembly='GRCh37'):
     """
-    Build the allele definition table for specified gene.
+    Build the definition table of star alleles for specified gene.
+
+    The table will only contain star alleles that are defined by SNVs and/or
+    INDELs. It will not include alleles with SV (e.g. CYP2D6*5) or alleles
+    with no variants (e.g. CYP2D6*2 for GRCh37 and CYP2D6*1 for GRCh38).
 
     Parameters
     ----------
@@ -121,14 +81,14 @@ def build_definition_table(gene, assembly='GRCh37'):
     >>> import pypgx
     >>> vf = pypgx.build_definition_table('CYP4F2')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *1 *2 *3
-    0    19  15990431  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
-    1    19  16008388  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
+    0    19  15990431  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
+    1    19  16008388  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
     >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *1 *2 *3
-    0    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  0  1
-    1    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  0  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
+    0    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
+    1    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -145,12 +105,17 @@ def build_definition_table(gene, assembly='GRCh37'):
             if variant not in variants:
                 variants.append(variant)
     data = {x: [] for x in pyvcf.HEADERS}
+
     for i, r in df1.iterrows():
+        if r.SV or pd.isna(r[assembly]):
+            continue
+
         data[r.StarAllele] = [
             '0' if pd.isna(r[assembly]) else
             '1' if x in r[assembly].split(',') else
             '0' for x in variants
         ]
+
     df2 = load_variant_table()
     df2 = df2[df2.Gene == gene]
     for variant in variants:
@@ -428,48 +393,6 @@ def has_score(gene):
     df = load_gene_table()
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
-
-def is_subset(gene, a, b, assembly='GRCh37'):
-    """
-    Return True if one allele is a subset of the other allele.
-
-    The method will test whether ``a`` is a subset of ``b``; therefore,
-    the order of alleles matters.
-
-    Parameters
-    ----------
-    gene : str
-        Gene name.
-    a, b : str
-        Allele name.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-
-    Returns
-    -------
-    bool
-        Test result.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> pypgx.list_variants('CYP4F2', '*1')
-    ['19-15989040-G-C']
-    >>> pypgx.list_variants('CYP4F2', '*2')
-    ['19-15989040-G-C', '19-16008388-A-C']
-    >>> pypgx.is_subset('CYP4F2', '*1', '*2')
-    True
-    >>> pypgx.is_subset('CYP4F2', '*2', '*1')
-    False
-    >>> pypgx.is_subset('CYP4F2', '*1', '*1')
-    True
-    >>> pypgx.is_subset('CYP4F2', '*2', '*2')
-    True
-    """
-    a = set(list_variants(gene, a, assembly=assembly))
-    b = set(list_variants(gene, b, assembly=assembly))
-    return a.issubset(b)
 
 def list_alleles(gene):
     """
@@ -806,10 +729,7 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
 
     for star in table.samples:
         df = table.df[table.df[star] == '1']
-        if df.empty:
-            stars[star] = set()
-        else:
-            stars[star] = set(df.apply(func, axis=1))
+        stars[star] = set(df.apply(func, axis=1))
 
     samples = {}
 
@@ -825,7 +745,6 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
             for star, variants in stars.items():
                 if variants.issubset(s):
                     samples[sample][i].append(star)
-            samples[sample][i] = collapse_alleles(gene, samples[sample][i])
             if not samples[sample][i]:
                 default = get_default_allele(gene, assembly)
                 if default:
@@ -961,9 +880,9 @@ def predict_score(gene, allele):
 
     return sum([parsecnv(x) for x in allele.split('+')])
 
-def sort_alleles(gene, alleles):
+def sort_alleles(gene, alleles, assembly='GRCh37'):
     """
-    Sort candidate alleles.
+    Sort star alleles by various creteria.
 
     Parameters
     ----------
@@ -971,6 +890,8 @@ def sort_alleles(gene, alleles):
         Gene name.
     alleles : str
         List of star allele.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
 
     Returns
     -------
@@ -984,11 +905,18 @@ def sort_alleles(gene, alleles):
     >>> pypgx.sort_alleles('CYP2D6', ['*1', '*4'])
     ['*4', '*1']
     """
-    def func(x):
-        x = get_function(gene, x)
-        if pd.isna(x):
-            i = len(FUNCTION_ORDER)
+    def f(allele):
+        function = get_function(gene, allele)
+
+        if pd.isna(function):
+            a = len(FUNCTION_ORDER)
         else:
-            i = FUNCTION_ORDER.index(x)
-        return i
-    return sorted(alleles, key=func)
+            a = FUNCTION_ORDER.index(function)
+
+        variants = list_variants(gene, allele, assembly=assembly)
+
+        b = len(variants)
+
+        return (a, b)
+
+    return sorted(alleles, key=f)
