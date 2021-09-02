@@ -571,6 +571,24 @@ def load_allele_table():
     b = BytesIO(pkgutil.get_data(__name__, 'data/allele-table.csv'))
     return pd.read_csv(b)
 
+def load_control_table():
+    """
+    Load the control gene table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requested table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_control_table()
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/control-table.csv'))
+    return pd.read_csv(b)
+
 def load_diplotype_table():
     """
     Load the diplotype table.

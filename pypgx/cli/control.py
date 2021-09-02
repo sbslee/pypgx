@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute read depth for target gene from input SAM/BAM/CRAM files.
+This command will compute various statistics for control gene from input SAM/BAM/CRAM files.
 
 Usage examples:
   $ fuc {fuc.api.common._script_name()} in.bam
@@ -16,12 +16,8 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute read depth for target gene from SAM/BAM/CRAM files.',
+        help='Compute various statistics for control gene from SAM/BAM/CRAM files.',
         description=description,
-    )
-    parser.add_argument(
-        'gene',
-        help='Target gene.'
     )
     parser.add_argument(
         '--bam',
@@ -33,6 +29,16 @@ def create_parser(subparsers):
         '--fn',
         metavar='PATH',
         help='File containing one input filename per line.'
+    )
+    parser.add_argument(
+        '--gene',
+        metavar='TEXT',
+        help="Control gene (choices: 'EGFR', 'RYR1', 'VDR')."
+    )
+    parser.add_argument(
+        '--region',
+        metavar='TEXT',
+        help='Control region.'
     )
     parser.add_argument(
         '--assembly',
@@ -58,14 +64,18 @@ def main(args):
     else:
         bam_files += fuc.api.common.convert_file2list(args.fn)
 
-    df = utils.load_gene_table()
-    region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]
+    df = utils.load_control_table()
+
+    if args.gene is not None:
+        region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]
 
     if all([fuc.api.pybam.has_chr(x) for x in bam_files]):
         region = 'chr' + region
 
     cf = fuc.api.pycov.CovFrame.from_bam(
-        bam=bam_files, region=region, zero=True
+        bam=bam_files, region=region, zero=False
     )
 
-    sys.stdout.write(cf.to_string())
+    df = cf.df.iloc[:, 2:].describe()
+
+    sys.stdout.write(df.to_string())

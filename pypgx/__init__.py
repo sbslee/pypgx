@@ -14,6 +14,7 @@ from .api.utils import (
     list_phenotypes,
     list_variants,
     load_allele_table,
+    load_control_table,
     load_diplotype_table,
     load_equation_table,
     load_gene_table,
