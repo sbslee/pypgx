@@ -161,12 +161,10 @@ def get_default_allele(gene, assembly='GRCh37'):
     --------
 
     >>> import pypgx
-    >>> pypgx.get_default_allele('CYP3A5')
-    '*3'
-    >>> pypgx.get_default_allele('CYP3A5', assembly='GRCh38')
+    >>> pypgx.get_default_allele('CYP2D6')
+    '*2'
+    >>> pypgx.get_default_allele('CYP2D6', assembly='GRCh38')
     '*1'
-    >>> pypgx.get_default_allele('CYP4F2')
-    ''
     """
     df = load_gene_table()
     allele = df[df.Gene == gene][f'{assembly}Default'].values[0]
