@@ -3,7 +3,7 @@ from io import BytesIO
 
 import numpy as np
 import pandas as pd
-from fuc import pyvcf, pycov
+from fuc import pyvcf, pycov, common
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -215,6 +215,36 @@ def get_function(gene, allele):
         raise AlleleNotFoundError(gene, allele)
 
     return df.Function.values[0]
+
+def get_paralog(gene):
+    """
+    Get the paralog of specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+
+    Returns
+    -------
+    str
+        Paralog gene. Empty string if none exists.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_paralog('CYP2D6')
+    'CYP2D7'
+    >>> pypgx.get_paralog('CYP2B6')
+    ''
+    """
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+    paralog = df.Paralog.values[0]
+    if pd.isna(paralog):
+        paralog = ''
+    return paralog
 
 def get_priority(gene, phenotype):
     """
@@ -724,39 +754,206 @@ def load_variant_table():
     df.Chromosome = df.Chromosome.astype(str)
     return df
 
-def plot_copy_number(gene, depth, control, path=None):
+def plot_allele_fraction(
+    vcf, gene, assembly='GRCh37', path=None, samples=None
+):
     """
-    Plot copy number profile for each sample.
+    Plot allele fraction profile.
 
     Parameters
     ----------
+    vcf : str
+        VCF file.
     gene : str
         Target gene.
-    depth : str
-        VcfFrame object or VCF file.
-    control : str
-        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
     path : str, optional
-        Output directory.
+        Create plots in this directory.
+    samples : list, optional
+        Create plots only for these samples.
     """
-    cf = pycov.CovFrame.from_file(depth)
-    df = pd.read_table(control, index_col=0).T
-    medians = df['50%']
-    cf.df.iloc[:, 2:] = cf.df.iloc[:, 2:] / medians * 2
+    vf = pyvcf.VcfFrame.from_file(vcf)
 
-    for sample in cf.samples:
-        with sns.axes_style('darkgrid'):
-            fig, ax = plt.subplots()
-            ax.set_ylim([-1.5, 5])
-            cf.plot_region('22', samples=sample, ax=ax, legend=False)
+    region = get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
+    # Get exon data.
+    df = load_gene_table()
+    starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+    ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+
+    paralog = get_paralog(gene)
+    if paralog:
+        starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+        ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+
+    if samples is None:
+        samples = cf.samples
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+
+            fig, ax = plt.subplots(figsize=(18, 12))
+
+            vf.plot_region(sample, region=region, ax=ax, k='#AD_FRAC_REF', label='REF')
+            vf.plot_region(sample, region=region, ax=ax, k='#AD_FRAC_ALT', label='ALT')
+
+            ax.set_ylim([-0.1, 1])
+
+            common.plot_exons(
+                starts1, ends1, ax=ax, name=gene, y=-0.04, height=0.03,
+                offset=0.045, fontsize=20
+            )
+
+            if paralog:
+                common.plot_exons(
+                    starts2, ends2, ax=ax, name=paralog, y=-0.04, height=0.03,
+                    offset=0.045, fontsize=20
+            )
 
             if path is None:
                 output = f'{sample}.png'
             else:
                 output = f'{path}/{sample}.png'
 
-            fig.savefig(output)
+            ax.set_xlabel(f'Chromosome {chrom}', fontsize=25)
+            ax.set_ylabel('Allele fraction', fontsize=25)
+            ax.tick_params(axis='both', which='major', labelsize=20)
 
+            plt.tight_layout()
+            fig.savefig(output)
+            plt.close()
+
+def plot_copy_number(
+    gene, depth, control, assembly='GRCh37', path=None, samples=None,
+):
+    """
+    Plot copy number profile.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    depth : str
+        Read depth file for the target gene.
+    control : str
+        Summary statistics file for the control gene.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    path : str, optional
+        Create plots in this directory.
+    samples : list, optional
+        Create plots only for these samples.
+    """
+    cf = pycov.CovFrame.from_file(depth)
+    df = pd.read_table(control, index_col=0).T
+    medians = df['50%']
+    cf.df.iloc[:, 2:] = cf.df.iloc[:, 2:] / medians * 2
+
+    if samples is None:
+        samples = cf.samples
+
+    region = get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
+    # Get exon data.
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+    starts = [int(x) for x in df[f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+    ends = [int(x) for x in df[f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+            fig, ax = plt.subplots(figsize=(18, 12))
+            ax.set_ylim([-1, 6])
+            cf.plot_region(region, samples=sample, ax=ax, legend=False)
+
+            common.plot_exons(
+                starts, ends, ax=ax, name=gene, y=-0.5, height=0.3,
+                offset=0.3, fontsize=20
+            )
+
+            ax.set_xlabel(f'Chromosome {chrom}', fontsize=25)
+            ax.set_ylabel('Copy number', fontsize=25)
+            ax.tick_params(axis='both', which='major', labelsize=20)
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            plt.tight_layout()
+            fig.savefig(output)
+            plt.close()
+
+def plot_read_depth(
+    vcf, gene, assembly='GRCh37', path=None, samples=None
+):
+    """
+    Plot allele fraction profile.
+
+    Parameters
+    ----------
+    vcf : str
+        VCF file.
+    gene : str
+        Target gene.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    path : str, optional
+        Create plots in this directory.
+    samples : list, optional
+        Create plots only for these samples.
+    """
+    vf = pyvcf.VcfFrame.from_file(vcf)
+
+    region = get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
+    # Get exon data.
+    df = load_gene_table()
+    starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+    ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+
+    paralog = get_paralog(gene)
+    if paralog:
+        starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+        ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+
+    if samples is None:
+        samples = cf.samples
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+
+            fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
+
+            common.plot_exons(
+                starts1, ends1, ax=ax1, name=gene, fontsize=20
+            )
+
+            if paralog:
+                common.plot_exons(
+                    starts2, ends2, ax=ax1, name=paralog, fontsize=20
+            )
+
+            ax1.set_xlim([start, end])
+            ax1.axis('off')
+
+            vf.plot_region(sample, region=region, ax=ax2, label='ALT')
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            ax2.set_xlabel(f'Chromosome {chrom}', fontsize=25)
+            ax2.set_ylabel('Read depth', fontsize=25)
+            ax2.tick_params(axis='both', which='major', labelsize=20)
+
+            plt.tight_layout()
+            fig.savefig(output)
             plt.close()
 
 def predict_alleles(vcf, gene, assembly='GRCh37'):
