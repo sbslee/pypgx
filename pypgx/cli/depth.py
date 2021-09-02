@@ -56,7 +56,7 @@ def main(args):
         else:
             bam_files += args.bam
     else:
-        bam_files += common.convert_file2list(fn)
+        bam_files += fuc.api.common.convert_file2list(fn)
 
     df = utils.load_gene_table()
     region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]
@@ -67,5 +67,5 @@ def main(args):
     cf = fuc.api.pycov.CovFrame.from_bam(
         bam=bam_files, region=region, zero=True
     )
-    
+
     sys.stdout.write(cf.to_string())
