@@ -915,7 +915,7 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
 
         variants = list_variants(gene, allele, assembly=assembly)
 
-        b = len(variants)
+        b = len(variants) * -1
 
         return (a, b)
 
