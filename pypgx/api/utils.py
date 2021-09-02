@@ -3,7 +3,9 @@ from io import BytesIO
 
 import numpy as np
 import pandas as pd
-from fuc import pyvcf
+from fuc import pyvcf, pycov
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 FUNCTION_ORDER = [
     'No Function',
@@ -254,6 +256,30 @@ def get_priority(gene, phenotype):
 
     return df[i].Priority.values[0]
 
+def get_region(gene, assembly='GRCh37'):
+    """
+    Get matched region from the gene table.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    str
+        Requested region.
+    """
+    if gene not in list_genes(mode='all'):
+        raise GeneNotFoundError(gene)
+
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+
+    return df[f'{assembly}Region'].values[0]
+
 def get_score(gene, allele):
     """
     Get matched score from the allele table.
@@ -454,23 +480,40 @@ def list_functions(gene=None):
 
     return list(df.Function.unique())
 
-def list_genes():
+def list_genes(mode='target'):
     """
-    List all genes present in the gene table.
+    List genes in the gene table.
+
+    Parameters
+    ----------
+    mode : {'target', 'control', 'all'}, default: 'target'
+        Specify which gene set to return.
 
     Returns
     -------
     list
-        Available genes.
+        Gene set.
 
     Examples
     --------
 
     >>> import pypgx
-    >>> pypgx.list_genes()
-    ['CYP2B6', 'CYP2C9', 'CYP2C19', 'CYP2D6', 'CYP3A5']
+    >>> pypgx.list_genes()[:5] # First five target genes
+    ['CACNA1S', 'CFTR', 'CYP2A13', 'CYP2B6', 'CYP2C8']
+    >>> pypgx.list_genes(mode='control')
+    ['EGFR', 'RYR1', 'VDR']
+    >>> pypgx.list_genes(mode='all')[:5] # First five genes in the table
+    ['CACNA1S', 'CFTR', 'CYP2A13', 'CYP2B6', 'CYP2C8']
     """
     df = load_gene_table()
+
+    if mode == 'target':
+        df = df[df.Target]
+    elif mode == 'control':
+        df = df[df.Control]
+    else:
+        pass
+
     return df.Gene.to_list()
 
 def list_phenotypes(gene=None):
@@ -680,6 +723,41 @@ def load_variant_table():
     df = pd.read_csv(b)
     df.Chromosome = df.Chromosome.astype(str)
     return df
+
+def plot_copy_number(gene, depth, control, path=None):
+    """
+    Plot copy number profile for each sample.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    depth : str
+        VcfFrame object or VCF file.
+    control : str
+        Gene name.
+    path : str, optional
+        Output directory.
+    """
+    cf = pycov.CovFrame.from_file(depth)
+    df = pd.read_table(control, index_col=0).T
+    medians = df['50%']
+    cf.df.iloc[:, 2:] = cf.df.iloc[:, 2:] / medians * 2
+
+    for sample in cf.samples:
+        with sns.axes_style('darkgrid'):
+            fig, ax = plt.subplots()
+            ax.set_ylim([-1.5, 5])
+            cf.plot_region('22', samples=sample, ax=ax, legend=False)
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            fig.savefig(output)
+
+            plt.close()
 
 def predict_alleles(vcf, gene, assembly='GRCh37'):
     """
