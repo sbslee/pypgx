@@ -78,4 +78,4 @@ def main(args):
 
     df = cf.df.iloc[:, 2:].describe()
 
-    sys.stdout.write(df.to_csv(index=False, sep='\t'))
+    sys.stdout.write(df.to_csv(sep='\t'))
