@@ -22,6 +22,7 @@ from .api.utils import (
     load_gene_table,
     load_phenotype_table,
     load_variant_table,
+    phase_beagle,
     predict_alleles,
     predict_phenotype,
     predict_score,

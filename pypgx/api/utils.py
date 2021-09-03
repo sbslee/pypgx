@@ -1,5 +1,7 @@
 import pkgutil
 from io import BytesIO
+import subprocess
+import os
 
 import numpy as np
 import pandas as pd
@@ -32,6 +34,38 @@ class PhenotypeNotFoundError(Exception):
 ##################
 # Public methods #
 ##################
+
+def phase_beagle(gene, vcf, panel, output, assembly='GRCh37', impute=False):
+    """
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    vcf : str
+        Input VCF file.
+    panel : str
+        Reference haplotype panel.
+    output : str
+        Phased VCF file.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    impute : bool, default: False
+        Whether to perform imputation of missing genotypes.
+    """
+    region = get_region(gene, assembly=assembly)
+    path = os.path.dirname(os.path.abspath(__file__))
+    program = f'{path}/beagle.28Jun21.220.jar'
+
+    command = [
+        'java', '-Xmx2g', '-jar', program,
+        f'gt={vcf}',
+        f'chrom={region}',
+        f'ref={panel}',
+        f'out={output}',
+        f'impute={str(impute).lower()}'
+    ]
+
+    subprocess.run(command)
 
 def create_consolidated_vcf(raw, phased):
     """
