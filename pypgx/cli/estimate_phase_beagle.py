@@ -1,6 +1,6 @@
 import sys
 
-from ..api import plot
+from ..api import utils
 
 import fuc
 import pysam
@@ -9,7 +9,7 @@ description = f"""
 This command will estimate haplotype phase of observed variants with the Beagle program.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 target.tsv control.tsv
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf ref.vcf out
 """
 
 def create_parser(subparsers):
@@ -24,39 +24,31 @@ def create_parser(subparsers):
         help='Target gene.'
     )
     parser.add_argument(
-        'depth',
-        help='Read depth file for the target gene.'
+        'vcf',
+        help='Input VCF file.'
     )
     parser.add_argument(
-        'control',
-        help='Summary statistics file for the control gene.'
+        'panel',
+        help='Reference haplotype panel.'
     )
     parser.add_argument(
-        '--path',
-        metavar='PATH',
-        help='Create plots in this directory.'
+        'output',
+        help="Output prefix for phased VCF file. For example, '/path/to/output' will generate '/path/to/output.vcf'."
     )
     parser.add_argument(
-        '--samples',
+        '--assembly',
         metavar='TEXT',
-        nargs='+',
-        help='Create plots only for these samples.'
+        default='GRCh37',
+        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
-        '--ymin',
-        metavar='FLOAT',
-        type=float,
-        help='Y-axis bottom.'
-    )
-    parser.add_argument(
-        '--ymax',
-        metavar='FLOAT',
-        type=float,
-        help='Y-axis top.'
+        '--impute',
+        action='store_true',
+        help='Whether to perform imputation of missing genotypes.'
     )
 
 def main(args):
-    plot.plot_bam_copy_number(
-        args.gene, args.depth, args.control, path=args.path,
-        samples=args.samples, ymin=args.ymin, ymax=args.ymax
+    utils.estimate_phase_beagle(
+        args.gene, args.vcf, args.panel, args.output, assembly=args.assembly,
+        impute=args.impute
     )

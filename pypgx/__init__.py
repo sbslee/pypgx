@@ -1,6 +1,7 @@
 from .api.utils import (
     build_definition_table,
     create_consolidated_vcf,
+    estimate_phase_beagle,
     get_default_allele,
     get_function,
     get_paralog,
@@ -22,7 +23,6 @@ from .api.utils import (
     load_gene_table,
     load_phenotype_table,
     load_variant_table,
-    phase_beagle,
     predict_alleles,
     predict_phenotype,
     predict_score,

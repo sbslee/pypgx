@@ -1,5 +1,6 @@
 import pkgutil
 from io import BytesIO
+import tempfile
 import subprocess
 import os
 
@@ -34,38 +35,6 @@ class PhenotypeNotFoundError(Exception):
 ##################
 # Public methods #
 ##################
-
-def phase_beagle(gene, vcf, panel, output, assembly='GRCh37', impute=False):
-    """
-    Parameters
-    ----------
-    gene : str
-        Gene name.
-    vcf : str
-        Input VCF file.
-    panel : str
-        Reference haplotype panel.
-    output : str
-        Phased VCF file.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-    impute : bool, default: False
-        Whether to perform imputation of missing genotypes.
-    """
-    region = get_region(gene, assembly=assembly)
-    path = os.path.dirname(os.path.abspath(__file__))
-    program = f'{path}/beagle.28Jun21.220.jar'
-
-    command = [
-        'java', '-Xmx2g', '-jar', program,
-        f'gt={vcf}',
-        f'chrom={region}',
-        f'ref={panel}',
-        f'out={output}',
-        f'impute={str(impute).lower()}'
-    ]
-
-    subprocess.run(command)
 
 def create_consolidated_vcf(raw, phased):
     """
@@ -182,6 +151,45 @@ def build_definition_table(gene, assembly='GRCh37'):
     ]
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
+
+def estimate_phase_beagle(
+    gene, vcf, panel, output, assembly='GRCh37', impute=False
+):
+    """
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    vcf : str
+        Input VCF file.
+    panel : str
+        Reference haplotype panel.
+    output : str
+        Output prefix for phased VCF file. For example, '/path/to/output'
+        will generate '/path/to/output.vcf'.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    impute : bool, default: False
+        Whether to perform imputation of missing genotypes.
+    """
+    region = get_region(gene, assembly=assembly)
+    path = os.path.dirname(os.path.abspath(__file__))
+    program = f'{path}/beagle.28Jun21.220.jar'
+
+    with tempfile.TemporaryDirectory() as t:
+        command = [
+            'java', '-Xmx2g', '-jar', program,
+            f'gt={vcf}',
+            f'chrom={region}',
+            f'ref={panel}',
+            f'out={t}/temp',
+            f'impute={str(impute).lower()}'
+        ]
+
+        subprocess.run(command)
+
+        vf = pyvcf.VcfFrame.from_file(f'{t}/temp.vcf.gz')
+        vf.to_file(f'{output}.vcf')
 
 def get_default_allele(gene, assembly='GRCh37'):
     """
