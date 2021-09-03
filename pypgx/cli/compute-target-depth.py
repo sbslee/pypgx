@@ -1,4 +1,3 @@
-import sys
 import tempfile
 
 from ..api import utils
@@ -23,14 +22,12 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        '--genes',
-        metavar='TEXT',
-        nargs='+',
-        help='Target genes to include.'
+        'gene',
+        help='Target gene.'
     )
     parser.add_argument(
-        '--exclude',
-        help='Exclude specified genes.'
+        'output',
+        help='Output prefix for zipped TSV file.'
     )
     parser.add_argument(
         '--bam',
@@ -72,22 +69,10 @@ def main(args):
     else:
         prefix = ''
 
-    if args.genes is None:
-        genes = utils.list_genes()
-    elif args.exclude:
-        genes = [x for x in utils.list_genes() if x not in args.genes]
-    else:
-        genes = args.genes
+    region = utils.get_region(args.gene, assembly=args.assembly)
 
-    with tempfile.TemporaryDirectory() as t:
-        with open(f'{t}/temp.bed', 'w') as f:
-            for gene in genes:
-                region = utils.get_region(gene, assembly=args.assembly)
-                chrom, start, end = fuc.common.parse_region(region)
-                f.write(f'{prefix}{chrom}\t{start}\t{end}\n')
+    cf = fuc.api.pycov.CovFrame.from_bam(
+        bam=bam_files, region=f'{prefix}{region}', zero=True
+    )
 
-        cf = fuc.api.pycov.CovFrame.from_bam(
-            bam=bam_files, bed=f'{t}/temp.bed', zero=True
-        )
-
-    sys.stdout.write(cf.to_string())
+    cf.to_file(f'{args.output}.tsv.gz')
