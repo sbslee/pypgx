@@ -29,8 +29,9 @@ from .api.utils import (
 )
 
 from .api.plot import (
-    plot_vcf_allele_fraction,
     plot_bam_copy_number,
+    plot_bam_read_depth,
+    plot_vcf_allele_fraction,
     plot_vcf_read_depth,
 )
 
