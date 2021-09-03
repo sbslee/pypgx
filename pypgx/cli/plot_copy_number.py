@@ -1,6 +1,6 @@
 import sys
 
-from ..api import utils
+from ..api import plot
 
 import fuc
 import pysam
@@ -42,8 +42,21 @@ def create_parser(subparsers):
         nargs='+',
         help='Create plots only for these samples.'
     )
+    parser.add_argument(
+        '--ymin',
+        metavar='FLOAT',
+        type=float,
+        help='Y-axis bottom.'
+    )
+    parser.add_argument(
+        '--ymax',
+        metavar='FLOAT',
+        type=float,
+        help='Y-axis top.'
+    )
 
 def main(args):
-    utils.plot_copy_number(
-        args.gene, args.depth, args.control, path=args.path, samples=args.samples
+    plot.plot_copy_number(
+        args.gene, args.depth, args.control, path=args.path,
+        samples=args.samples, ymin=args.ymin, ymax=args.ymax
     )

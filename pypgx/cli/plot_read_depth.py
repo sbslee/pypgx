@@ -58,7 +58,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    plot.plot_allele_fraction(
+    plot.plot_read_depth(
         args.gene, args.vcf, assembly=args.assembly, path=args.path,
         samples=args.samples, ymin=args.ymin, ymax=args.ymax
     )

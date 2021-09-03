@@ -22,13 +22,16 @@ from .api.utils import (
     load_gene_table,
     load_phenotype_table,
     load_variant_table,
-    plot_allele_fraction,
-    plot_copy_number,
-    plot_read_depth,
     predict_alleles,
     predict_phenotype,
     predict_score,
     sort_alleles,
+)
+
+from .api.plot import (
+    plot_allele_fraction,
+    plot_copy_number,
+    plot_read_depth,
 )
 
 del api
