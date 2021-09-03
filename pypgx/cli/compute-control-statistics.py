@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute various statistics for control gene from BAM data.
+This command will compute various statistics for control gene with BAM data.
 
 Input files must be specified with either '--bam' or '--fn'.
 
@@ -20,7 +20,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute various statistics for control gene from BAM data.',
+        help='Compute various statistics for control gene with BAM data.',
         description=description,
     )
     parser.add_argument(

@@ -16,7 +16,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot copy number profile with BAM data.',
+        help='Plot read depth profile with BAM data.',
         description=description,
     )
     parser.add_argument(

@@ -6,17 +6,19 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute read depth for target gene from BAM data.
+This command will compute read depth for target gene with BAM data.
+
+Input files must be specified with either '--bam' or '--fn'.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} in.bam
+  $ fuc {fuc.api.common._script_name()} CYP2D6 --fn bam.list
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute read depth for target gene from BAM data.',
+        help='Compute read depth for target gene with BAM data.',
         description=description,
     )
     parser.add_argument(
