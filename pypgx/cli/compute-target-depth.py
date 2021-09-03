@@ -1,4 +1,5 @@
 import sys
+import tempfile
 
 from ..api import utils
 
@@ -22,8 +23,14 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'gene',
-        help='Target gene.'
+        '--genes',
+        metavar='TEXT',
+        nargs='+',
+        help='Target genes to include.'
+    )
+    parser.add_argument(
+        '--exclude',
+        help='Exclude specified genes.'
     )
     parser.add_argument(
         '--bam',
@@ -60,14 +67,27 @@ def main(args):
     else:
         bam_files += fuc.api.common.convert_file2list(args.fn)
 
-    df = utils.load_gene_table()
-    region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]
-
     if all([fuc.api.pybam.has_chr(x) for x in bam_files]):
-        region = 'chr' + region
+        prefix = 'chr'
+    else:
+        prefix = ''
 
-    cf = fuc.api.pycov.CovFrame.from_bam(
-        bam=bam_files, region=region, zero=True
-    )
+    if args.genes is None:
+        genes = utils.list_genes()
+    elif args.exclude:
+        genes = [x for x in utils.list_genes() if x not in args.genes]
+    else:
+        genes = args.genes
+
+    with tempfile.TemporaryDirectory() as t:
+        with open(f'{t}/temp.bed', 'w') as f:
+            for gene in genes:
+                region = utils.get_region(gene, assembly=args.assembly)
+                chrom, start, end = fuc.common.parse_region(region)
+                f.write(f'{prefix}{chrom}\t{start}\t{end}\n')
+
+        cf = fuc.api.pycov.CovFrame.from_bam(
+            bam=bam_files, bed=f'{t}/temp.bed', zero=True
+        )
 
     sys.stdout.write(cf.to_string())
