@@ -6,17 +6,17 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute various statistics for control gene from input SAM/BAM/CRAM files.
+This command will plot read depth profile with VCF data.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} in.bam
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute various statistics for control gene from SAM/BAM/CRAM files.',
+        help='Plot read depth profile with VCF data.',
         description=description,
     )
     parser.add_argument(
@@ -58,7 +58,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    plot.plot_read_depth(
+    plot.plot_vcf_read_depth(
         args.gene, args.vcf, assembly=args.assembly, path=args.path,
         samples=args.samples, ymin=args.ymin, ymax=args.ymax
     )

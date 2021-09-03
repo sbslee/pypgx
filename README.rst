@@ -50,10 +50,10 @@ You can display help message for pypgx CLI by entering:
                             calls.tsv' files created by Stargazer.
         calculate-read-depth
                             Create a GDF (GATK DepthOfCoverage Format) file for
-                            Stargazer from BAM files by computing read depth.
+                            Stargazer from BAM data by computing read depth.
         call-variants-gatk-sge
                             Create a VCF (Variant Call Format) file for Stargazer
-                            from BAM files by calling SNVs and indels.
+                            from BAM data by calling SNVs and indels.
 
     optional arguments:
       -v, --version         Show the version and exit.
@@ -67,7 +67,7 @@ You can display command-specific help message by entering (e.g. ``calculate-read
     usage: pypgx calculate-read-depth -t TEXT -c TEXT [-i PATH] -o PATH [-a TEXT]
                                       [-h]
 
-    Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM files
+    Create a GDF (GATK DepthOfCoverage Format) file for Stargazer from BAM data
     by computing read depth.
 
     Arguments:
@@ -92,7 +92,7 @@ You can display command-specific help message by entering (e.g. ``calculate-read
                             with the 'chr:start-end' format (e.g.
                             chr12:48232319-48301814). [required]
       -i PATH, --bam-path PATH
-                            Read BAM files from PATH, one file path per line. Also
+                            Read BAM data from PATH, one file path per line. Also
                             accepts single BAM file. [required]
       -o PATH, --output-file PATH
                             Path to the output file. [required]

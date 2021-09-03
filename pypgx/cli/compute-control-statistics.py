@@ -6,17 +6,21 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute various statistics for control gene from input SAM/BAM/CRAM files.
+This command will compute various statistics for control gene from BAM data.
+
+Input files must be specified with either '--bam' or '--fn'.
+
+Control gene must be specified with either '--gene' or '--region'.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} in.bam
+  $ pypgx {fuc.api.common._script_name()} --fn bam.list --gene VDR
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute various statistics for control gene from SAM/BAM/CRAM files.',
+        help='Compute various statistics for control gene from BAM data.',
         description=description,
     )
     parser.add_argument(
@@ -38,7 +42,7 @@ def create_parser(subparsers):
     parser.add_argument(
         '--region',
         metavar='TEXT',
-        help='Control region.'
+        help='Custom control region.'
     )
     parser.add_argument(
         '--assembly',
@@ -64,7 +68,7 @@ def main(args):
     else:
         bam_files += fuc.api.common.convert_file2list(args.fn)
 
-    df = utils.load_control_table()
+    df = utils.load_gene_table()
 
     if args.gene is not None:
         region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]

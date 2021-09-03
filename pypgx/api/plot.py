@@ -33,12 +33,12 @@ def _plot_exons(gene, assembly, ax):
 # Public methods #
 ##################
 
-def plot_allele_fraction(
+def plot_vcf_allele_fraction(
     gene, vcf, assembly='GRCh37', path=None, samples=None, ymin=None,
     ymax=None
 ):
     """
-    Plot allele fraction profile.
+    Plot allele fraction profile with VCF data.
 
     Parameters
     ----------
@@ -89,12 +89,12 @@ def plot_allele_fraction(
             fig.savefig(output)
             plt.close()
 
-def plot_copy_number(
+def plot_bam_copy_number(
     gene, depth, control, assembly='GRCh37', path=None, samples=None,
     ymin=None, ymax=None
 ):
     """
-    Plot copy number profile.
+    Plot copy number profile with BAM data.
 
     Parameters
     ----------
@@ -149,12 +149,12 @@ def plot_copy_number(
             fig.savefig(output)
             plt.close()
 
-def plot_read_depth(
+def plot_vcf_read_depth(
     gene, vcf, assembly='GRCh37', path=None, samples=None, ymin=None,
     ymax=None
 ):
     """
-    Plot allele fraction profile.
+    Plot read depth profile with VCF data.
 
     Parameters
     ----------

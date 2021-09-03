@@ -6,17 +6,17 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute various statistics for control gene from input SAM/BAM/CRAM files.
+This command will plot allele fraction profile with VCF data.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} in.bam
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute various statistics for control gene from SAM/BAM/CRAM files.',
+        help='Plot allele fraction profile with VCF data.',
         description=description,
     )
     parser.add_argument(
@@ -24,12 +24,14 @@ def create_parser(subparsers):
         help='Target gene.'
     )
     parser.add_argument(
-        'depth',
-        help='Read depth file for the target gene.'
+        'vcf',
+        help='VCF file.'
     )
     parser.add_argument(
-        'control',
-        help='Summary statistics file for the control gene.'
+        '--assembly',
+        metavar='TEXT',
+        default='GRCh37',
+        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--path',
@@ -56,7 +58,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    plot.plot_copy_number(
-        args.gene, args.depth, args.control, path=args.path,
+    plot.plot_vcf_allele_fraction(
+        args.gene, args.vcf, assembly=args.assembly, path=args.path,
         samples=args.samples, ymin=args.ymin, ymax=args.ymax
     )
