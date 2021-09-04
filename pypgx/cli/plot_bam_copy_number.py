@@ -25,11 +25,11 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'depth',
-        help='Read depth file for the target gene.'
+        help='TSV file containing read depth for target gene.'
     )
     parser.add_argument(
         'control',
-        help='Summary statistics file for the control gene.'
+        help='TSV file containing summary statistics for control gene.'
     )
     parser.add_argument(
         '--path',

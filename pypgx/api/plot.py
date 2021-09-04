@@ -45,9 +45,9 @@ def plot_bam_copy_number(
     gene : str
         Target gene.
     depth : str
-        Read depth file for the target gene.
+        TSV file containing read depth for target gene.
     control : str
-        Summary statistics file for the control gene.
+        TSV file containing summary statistics for control gene.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     path : str, optional
