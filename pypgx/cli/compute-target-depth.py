@@ -11,6 +11,7 @@ This command will compute read depth for target gene with BAM data.
 Input files must be specified with either '--bam' or '--fn'.
 
 Usage examples:
+  $ fuc {fuc.api.common._script_name()} CYP2D6 --bam A.bam B.bam
   $ fuc {fuc.api.common._script_name()} CYP2D6 --fn bam.list
 """
 
@@ -27,7 +28,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Output prefix for zipped TSV file.'
+        help='Result file with the semantic type CovFrame[ReadDepth].'
     )
     parser.add_argument(
         '--bam',
@@ -48,31 +49,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    bam_files = []
-
-    if args.bam is None and args.fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif args.bam is not None and args.fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif args.bam is not None and args.fn is None:
-        if isinstance(args.bam, str):
-            bam_files.append(args.bam)
-        else:
-            bam_files += args.bam
-    else:
-        bam_files += fuc.api.common.convert_file2list(args.fn)
-
-    if all([fuc.api.pybam.has_chr(x) for x in bam_files]):
-        prefix = 'chr'
-    else:
-        prefix = ''
-
-    region = utils.get_region(args.gene, assembly=args.assembly)
-
-    cf = fuc.api.pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{prefix}{region}', zero=True
+    result = utils.compute_target_depth(
+        args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly
     )
-
-    cf.to_file(f'{args.output}.tsv.gz')
+    result.to_file(args.output)
