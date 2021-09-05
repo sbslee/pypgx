@@ -627,7 +627,7 @@ def import_vcf(gene, vcf, assembly='GRCh37'):
     """
     vf = pyvcf.VcfFrame.from_file(vcf)
     region = get_region(gene, assembly=assembly)
-    data = vf.slice(region).strip('GT:AD:DP', metadata=True)
+    data = vf.slice(region).strip('GT:AD:DP')
     metadata = {
         'Gene': gene,
         'Assembly': assembly,
