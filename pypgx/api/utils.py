@@ -7,7 +7,7 @@ import pickle
 
 import numpy as np
 import pandas as pd
-from fuc import pyvcf, pycov
+from fuc import pybam, pyvcf, pycov, common
 from .. import sdk
 
 FUNCTION_ORDER = [
@@ -37,62 +37,6 @@ class PhenotypeNotFoundError(Exception):
 ##################
 # Public methods #
 ##################
-
-def compute_copy_number(target, control):
-    """
-    Compute copy number from read depth for target gene.
-
-    Parameters
-    ----------
-    target : Result
-        Result file with the semantic type CovFrame[ReadDepth].
-    control : Result
-        Result file with the semandtic type ControlStatistics.
-    """
-    result1 = sdk.Result.from_file(target)
-    result2 = sdk.Result.from_file(control)
-    df = result1.data.copy_df()
-    medians = result2.data.T['50%']
-    df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
-    cf = pycov.CovFrame(df)
-    metadata = {
-        'Gene': result1.metadata['Gene'],
-        'Assembly': result1.metadata['Assembly'],
-        'SemanticType': 'CovFrame[CopyNumber]',
-        'Control': result2.metadata['Gene'],
-    }
-    result = sdk.Result(metadata, cf)
-    return result
-
-def create_consolidated_vcf(raw, phased):
-    """
-    Create consolidated VCF.
-    """
-    vf1 = pyvcf.VcfFrame.from_file(raw)
-    vf2 = pyvcf.VcfFrame.from_file(phased)
-
-    vf1 = vf1.strip('GT:AD:DP')
-    vf2 = vf2.strip('GT')
-
-    def one_row(r):
-        variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = vf1.fetch(variant)
-
-        def one_gt(g):
-            return ':'.join(g.split(':')[1:])
-
-        s[9:] = s[9:].apply(one_gt)
-        r[9:] = r[9:].str.cat(s[9:], sep=':')
-
-        return r
-
-    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
-    vf3.df.FORMAT = 'GT:AD:DP'
-
-    vf4 = vf1.filter_vcf(vf2, opposite=True)
-    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
-
-    return vf5.pseudophase()
 
 def build_definition_table(gene, assembly='GRCh37'):
     """
@@ -179,6 +123,99 @@ def build_definition_table(gene, assembly='GRCh37'):
     ]
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
+
+def compute_control_statistics(
+    bam=None, fn=None, gene=None, region=None, assembly='GRCh37'
+):
+    bam_files = []
+
+    if bam is None and fn is None:
+        raise ValueError(
+            "Either the 'bam' or 'fn' parameter must be provided.")
+    elif bam is not None and fn is not None:
+        raise ValueError(
+            "The 'bam' and 'fn' parameters cannot be used together.")
+    elif bam is not None and fn is None:
+        if isinstance(bam, str):
+            bam_files.append(bam)
+        else:
+            bam_files += bam
+    else:
+        bam_files += common.convert_file2list(fn)
+
+    df = load_gene_table()
+
+    if gene is not None:
+        region = df[df.Gene == gene][f'{assembly}Region'].values[0]
+
+    if all([pybam.has_chr(x) for x in bam_files]):
+        region = 'chr' + region
+
+    cf = pycov.CovFrame.from_bam(
+        bam=bam_files, region=region, zero=False
+    )
+
+    metadata = {
+        'Control': gene,
+        'Assembly': assembly,
+        'SemanticType': 'TSV[Statistics]',
+    }
+    data = cf.df.iloc[:, 2:].describe()
+    result = sdk.Result(metadata, data)
+    return result
+
+def compute_copy_number(target, control):
+    """
+    Compute copy number from read depth for target gene.
+
+    Parameters
+    ----------
+    target : Result
+        Result file with the semantic type CovFrame[ReadDepth].
+    control : Result
+        Result file with the semandtic type ControlStatistics.
+    """
+    result1 = sdk.Result.from_file(target)
+    result2 = sdk.Result.from_file(control)
+    df = result1.data.copy_df()
+    medians = result2.data.T['50%']
+    df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
+    cf = pycov.CovFrame(df)
+    metadata = result1.copy_metadata()
+    metadata['SemanticType'] = 'CovFrame[CopyNumber]'
+    metadata['Control'] = result2.metadata['Control']
+    result = sdk.Result(metadata, cf)
+    return result
+
+def create_consolidated_vcf(raw, phased):
+    """
+    Create consolidated VCF.
+    """
+    vf1 = pyvcf.VcfFrame.from_file(raw)
+    vf2 = pyvcf.VcfFrame.from_file(phased)
+
+    vf1 = vf1.strip('GT:AD:DP')
+    vf2 = vf2.strip('GT')
+
+    def one_row(r):
+        variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
+        s = vf1.fetch(variant)
+
+        def one_gt(g):
+            return ':'.join(g.split(':')[1:])
+
+        s[9:] = s[9:].apply(one_gt)
+        r[9:] = r[9:].str.cat(s[9:], sep=':')
+
+        return r
+
+    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
+    vf3.df.FORMAT = 'GT:AD:DP'
+
+    vf4 = vf1.filter_vcf(vf2, opposite=True)
+    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
+
+    return vf5.pseudophase()
 
 def estimate_phase_beagle(
     gene, vcf, panel, output, assembly='GRCh37', impute=False

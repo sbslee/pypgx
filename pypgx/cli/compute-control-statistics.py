@@ -24,6 +24,10 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
+        'output',
+        help='Result file with the semantic type TSV[Statistics].'
+    )
+    parser.add_argument(
         '--bam',
         metavar='PATH',
         nargs='+',
@@ -52,34 +56,8 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    bam_files = []
-
-    if args.bam is None and args.fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif args.bam is not None and args.fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif args.bam is not None and args.fn is None:
-        if isinstance(args.bam, str):
-            bam_files.append(args.bam)
-        else:
-            bam_files += args.bam
-    else:
-        bam_files += fuc.api.common.convert_file2list(args.fn)
-
-    df = utils.load_gene_table()
-
-    if args.gene is not None:
-        region = df[df.Gene == args.gene][f'{args.assembly}Region'].values[0]
-
-    if all([fuc.api.pybam.has_chr(x) for x in bam_files]):
-        region = 'chr' + region
-
-    cf = fuc.api.pycov.CovFrame.from_bam(
-        bam=bam_files, region=region, zero=False
+    result = utils.compute_control_statistics(
+        bam=args.bam, fn=args.fn, gene=args.gene, region=args.region,
+        assembly=args.assembly
     )
-
-    df = cf.df.iloc[:, 2:].describe()
-
-    sys.stdout.write(df.to_csv(sep='\t'))
+    result.to_file(args.output)

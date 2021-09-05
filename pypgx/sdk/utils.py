@@ -32,7 +32,7 @@ class Result:
             if 'CovFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.tsv')
             elif 'TSV' in self.metadata['SemanticType']:
-                self.data.to_csv(f'{t}/data.tsv', sep='\t', index=False)
+                self.data.to_csv(f'{t}/data.tsv', sep='\t')
             else:
                 raise ValueError('Incorrect semantic type')
             zipdir(t, fn)

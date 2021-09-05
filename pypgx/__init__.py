@@ -1,5 +1,6 @@
 from .api.utils import (
     build_definition_table,
+    compute_control_statistics,
     compute_copy_number,
     create_consolidated_vcf,
     estimate_phase_beagle,

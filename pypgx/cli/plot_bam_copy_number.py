@@ -9,7 +9,9 @@ description = f"""
 This command will plot copy number profile with BAM data.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 target.tsv control.tsv
+  $ pypgx {fuc.api.common._script_name()} target.zip
+  $ pypgx {fuc.api.common._script_name()} target.zip --path dir
+  $ pypgx {fuc.api.common._script_name()} target.zip --samples A B
 """
 
 def create_parser(subparsers):

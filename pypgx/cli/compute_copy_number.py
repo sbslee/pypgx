@@ -25,7 +25,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'control',
-        help='Result file with the semantic type ControlStatistics.'
+        help='Result file with the semantic type TSV[Statistics].'
     )
     parser.add_argument(
         'output',

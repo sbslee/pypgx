@@ -9,7 +9,7 @@ description = f"""
 This command will predict CNV based on copy number data.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} cov output.tsv
+  $ pypgx {fuc.api.common._script_name()} input.zip output.zip
 """
 
 def create_parser(subparsers):
@@ -20,8 +20,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'result',
-        help='COV file with semantic type CovFrame[CopyNumber].'
+        'input',
+        help='Result file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
         'output',
@@ -29,5 +29,5 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    result = utils.predict_cnv(args.result)
+    result = utils.predict_cnv(args.input)
     result.to_file(args.output)
