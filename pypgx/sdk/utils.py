@@ -33,6 +33,8 @@ class Result:
                 self.data.to_file(f'{t}/data.tsv')
             elif 'TSV' in self.metadata['SemanticType']:
                 self.data.to_csv(f'{t}/data.tsv', sep='\t')
+            elif 'VCF' in self.metadata['SemanticType']:
+                self.data.to_file(f'{t}/data.vcf')
             else:
                 raise ValueError('Incorrect semantic type')
             zipdir(t, fn)
@@ -55,11 +57,14 @@ class Result:
                 fields = line.decode('utf-8').strip().split('=')
                 metadata[fields[0]] = fields[1]
         if 'CovFrame' in metadata['SemanticType']:
-            with zf.open(f'{parent}/data.tsv') as f:
-                data = pycov.CovFrame.from_file(f)
+            with zf.open(f'{parent}/data.tsv') as fh:
+                data = pycov.CovFrame.from_file(fh)
         elif 'TSV' in metadata['SemanticType']:
-            with zf.open(f'{parent}/data.tsv') as f:
-                data = pd.read_table(f, index_col=0)
+            with zf.open(f'{parent}/data.tsv') as fh:
+                data = pd.read_table(fh, index_col=0)
+        elif 'VCF' in metadata['SemanticType']:
+            with zf.open(f'{parent}/data.vcf') as fh:
+                data = pyvcf.VcfFrame.from_file(fh)
         else:
             raise ValueError('Incorrect semantic type')
         return cls(metadata, data)

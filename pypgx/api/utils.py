@@ -621,6 +621,21 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
+def import_vcf(gene, vcf, assembly='GRCh37'):
+    """
+    Import VCF data.
+    """
+    vf = pyvcf.VcfFrame.from_file(vcf)
+    region = get_region(gene, assembly=assembly)
+    data = vf.slice(region).strip('GT:AD:DP', metadata=True)
+    metadata = {
+        'Gene': gene,
+        'Assembly': assembly,
+        'SemanticType': 'VCF[Imported]',
+    }
+    result = sdk.Result(metadata, data)
+    return result
+
 def list_alleles(gene):
     """
     List all alleles present in the allele table.
