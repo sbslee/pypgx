@@ -127,6 +127,16 @@ def build_definition_table(gene, assembly='GRCh37'):
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37'
 ):
+    """
+    Compute copy number from read depth for target gene.
+
+    Parameters
+    ----------
+    target : Result
+        Result file with the semantic type CovFrame[ReadDepth].
+    control : Result
+        Result file with the semandtic type ControlStatistics.
+    """
     bam_files = []
 
     if bam is None and fn is None:
@@ -185,6 +195,54 @@ def compute_copy_number(target, control):
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
     metadata['Control'] = result2.metadata['Control']
     result = sdk.Result(metadata, cf)
+    return result
+
+def compute_target_depth(
+    gene, bam=None, fn=None, assembly='GRCh37'
+):
+    """
+    Compute read depth for target gene with BAM data.
+
+    Parameters
+    ----------
+    target : Result
+        Result file with the semantic type CovFrame[ReadDepth].
+    control : Result
+        Result file with the semandtic type ControlStatistics.
+    """
+    bam_files = []
+
+    if bam is None and fn is None:
+        raise ValueError(
+            "Either the 'bam' or 'fn' parameter must be provided.")
+    elif bam is not None and fn is not None:
+        raise ValueError(
+            "The 'bam' and 'fn' parameters cannot be used together.")
+    elif bam is not None and fn is None:
+        if isinstance(bam, str):
+            bam_files.append(bam)
+        else:
+            bam_files += bam
+    else:
+        bam_files += common.convert_file2list(fn)
+
+    if all([pybam.has_chr(x) for x in bam_files]):
+        prefix = 'chr'
+    else:
+        prefix = ''
+
+    region = get_region(gene, assembly=assembly)
+
+    data = pycov.CovFrame.from_bam(
+        bam=bam_files, region=f'{prefix}{region}', zero=True
+    )
+
+    metadata = {
+        'Gene': gene,
+        'Assembly': assembly,
+        'SemanticType': 'CovFrame[ReadDepth]',
+    }
+    result = sdk.Result(metadata, data)
     return result
 
 def create_consolidated_vcf(raw, phased):

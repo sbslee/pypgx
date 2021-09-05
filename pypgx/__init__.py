@@ -2,6 +2,7 @@ from .api.utils import (
     build_definition_table,
     compute_control_statistics,
     compute_copy_number,
+    compute_target_depth,
     create_consolidated_vcf,
     estimate_phase_beagle,
     get_default_allele,
