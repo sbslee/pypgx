@@ -1,4 +1,5 @@
 from . import utils
+from .. import sdk
 
 from fuc import pyvcf, pycov, common
 import matplotlib.pyplot as plt
@@ -34,22 +35,15 @@ def _plot_exons(gene, assembly, ax):
 ##################
 
 def plot_bam_copy_number(
-    gene, depth, control, assembly='GRCh37', path=None, samples=None,
-    ymin=None, ymax=None
+    result, path=None, samples=None, ymin=None, ymax=None
 ):
     """
     Plot copy number profile with BAM data.
 
     Parameters
     ----------
-    gene : str
-        Target gene.
-    depth : str
-        TSV file containing read depth for target gene.
-    control : str
-        TSV file containing summary statistics for control gene.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
+    result : pypgx.sdk.Result or str
+        Result file with the semantic type CovFrame[CopyNumber].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -59,28 +53,25 @@ def plot_bam_copy_number(
     ymax : float, optional
         Y-axis top.
     """
-    cf = pycov.CovFrame.from_file(depth)
-    df = pd.read_table(control, index_col=0).T
-    medians = df['50%']
-    cf.df.iloc[:, 2:] = cf.df.iloc[:, 2:] / medians * 2
+    if isinstance(result, str):
+        result = sdk.Result.from_file(result)
+
+    if result.metadata['SemanticType'] != 'CovFrame[CopyNumber]':
+        raise ValueError('Incorrect semantic type')
 
     if samples is None:
-        samples = cf.samples
-
-    region = utils.get_region(gene, assembly=assembly)
-    chrom, start, end = common.parse_region(region)
+        samples = result.data.samples
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(gene, assembly, ax1)
-
-            cf.plot_region(sample, region=region, ax=ax2, legend=False)
+            _plot_exons(result.metadata['Gene'], result.metadata['Assembly'], ax1)
+            result.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel(f'Chromosome {chrom}', fontsize=25)
+            ax2.set_xlabel('Coordinate', fontsize=25)
             ax2.set_ylabel('Copy number', fontsize=25)
             ax2.tick_params(axis='both', which='major', labelsize=20)
 
@@ -94,20 +85,15 @@ def plot_bam_copy_number(
             plt.close()
 
 def plot_bam_read_depth(
-    gene, depth, assembly='GRCh37', path=None, samples=None,
-    ymin=None, ymax=None
+    result, path=None, samples=None, ymin=None, ymax=None
 ):
     """
     Plot copy number profile with BAM data.
 
     Parameters
     ----------
-    gene : str
-        Target gene.
-    depth : str
-        Read depth file for the target gene.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
+    result : pypgx.sdk.Result or str
+        Result file with the semantic type CovFrame[ReadDepth].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -117,25 +103,27 @@ def plot_bam_read_depth(
     ymax : float, optional
         Y-axis top.
     """
-    cf = pycov.CovFrame.from_file(depth)
+
+    if isinstance(result, str):
+        result = sdk.Result.from_file(result)
+
+    if result.metadata['SemanticType'] != 'CovFrame[ReadDepth]':
+        raise ValueError('Incorrect semantic type')
 
     if samples is None:
-        samples = cf.samples
-
-    region = utils.get_region(gene, assembly=assembly)
-    chrom, start, end = common.parse_region(region)
+        samples = result.data.samples
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(gene, assembly, ax1)
+            _plot_exons(result.metadata['Gene'], result.metadata['Assembly'], ax1)
 
-            cf.plot_region(sample, region=region, ax=ax2, legend=False)
+            result.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel(f'Chromosome {chrom}', fontsize=25)
+            ax2.set_xlabel('Coordinate', fontsize=25)
             ax2.set_ylabel('Read depth', fontsize=25)
             ax2.tick_params(axis='both', which='major', labelsize=20)
 

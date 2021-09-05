@@ -1,7 +1,89 @@
 import os
+import io
+import zipfile
+import tempfile
+import copy
 
 import pandas as pd
-from fuc import pyvcf
+from fuc import pyvcf, pycov
+
+class Result:
+    def __init__(self, metadata, data):
+        self.metadata = metadata
+        self.data = data
+
+    def copy_metadata(self):
+        """dict : Copy of the metadata."""
+        return copy.deepcopy(self.metadata)
+
+    def to_file(self, fn):
+        """
+        Create a ZIP file for the Result.
+
+        Parameters
+        ----------
+        fn : str
+            ZIP file.
+        """
+        with tempfile.TemporaryDirectory() as t:
+            with open(f'{t}/metadata.txt', 'w') as f:
+                for k, v in self.metadata.items():
+                    f.write(f'{k}={v}\n')
+            if 'CovFrame' in self.metadata['SemanticType']:
+                self.data.to_file(f'{t}/data.tsv')
+            elif 'TSV' in self.metadata['SemanticType']:
+                self.data.to_csv(f'{t}/data.tsv', sep='\t', index=False)
+            else:
+                raise ValueError('Incorrect semantic type')
+            zipdir(t, fn)
+
+    @classmethod
+    def from_file(cls, fn):
+        """
+        Construct Result from a ZIP file.
+
+        Parameters
+        ----------
+        fn : str
+            ZIP file.
+        """
+        metadata = {}
+        zf = zipfile.ZipFile(fn)
+        parent = zf.filelist[0].filename.split('/')[0]
+        with zf.open(f'{parent}/metadata.txt') as f:
+            for line in f:
+                fields = line.decode('utf-8').strip().split('=')
+                metadata[fields[0]] = fields[1]
+        if 'CovFrame' in metadata['SemanticType']:
+            with zf.open(f'{parent}/data.tsv') as f:
+                data = pycov.CovFrame.from_file(f)
+        elif 'TSV' in metadata['SemanticType']:
+            with zf.open(f'{parent}/data.tsv') as f:
+                data = pd.read_table(f, index_col=0)
+        else:
+            raise ValueError('Incorrect semantic type')
+        return cls(metadata, data)
+
+def zipdir(dir, output):
+    """
+    Create a ZIP archive of a directory.
+
+    Parameters
+    ----------
+    dir : str
+        Input directory.
+    output : str
+        Output file.
+    """
+    zipf = zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED)
+    for root, dirs, files in os.walk(dir):
+        for file in files:
+            if file == '.DS_Store':
+                continue
+            zipf.write(os.path.join(root, file),
+                       os.path.relpath(os.path.join(root, file),
+                                       os.path.join(dir, '..')))
+    zipf.close()
 
 def parse_pharmvar(fn):
     """

@@ -20,12 +20,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'gene',
-        help='Target gene.'
-    )
-    parser.add_argument(
-        'depth',
-        help='Read depth file for the target gene.'
+        'result',
+        help='Result file with the semantic type CovFrame[CopyNumber]'
     )
     parser.add_argument(
         '--path',
@@ -53,6 +49,6 @@ def create_parser(subparsers):
 
 def main(args):
     plot.plot_bam_read_depth(
-        args.gene, args.depth, path=args.path,
-        samples=args.samples, ymin=args.ymin, ymax=args.ymax
+        args.result, path=args.path, samples=args.samples, ymin=args.ymin,
+        ymax=args.ymax
     )

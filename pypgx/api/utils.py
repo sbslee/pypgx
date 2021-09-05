@@ -3,10 +3,12 @@ from io import BytesIO
 import tempfile
 import subprocess
 import os
+import pickle
 
 import numpy as np
 import pandas as pd
 from fuc import pyvcf, pycov
+from .. import sdk
 
 FUNCTION_ORDER = [
     'No Function',
@@ -35,6 +37,32 @@ class PhenotypeNotFoundError(Exception):
 ##################
 # Public methods #
 ##################
+
+def compute_copy_number(target, control):
+    """
+    Compute copy number from read depth for target gene.
+
+    Parameters
+    ----------
+    target : Result
+        Result file with the semantic type CovFrame[ReadDepth].
+    control : Result
+        Result file with the semandtic type ControlStatistics.
+    """
+    result1 = sdk.Result.from_file(target)
+    result2 = sdk.Result.from_file(control)
+    df = result1.data.copy_df()
+    medians = result2.data.T['50%']
+    df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
+    cf = pycov.CovFrame(df)
+    metadata = {
+        'Gene': result1.metadata['Gene'],
+        'Assembly': result1.metadata['Assembly'],
+        'SemanticType': 'CovFrame[CopyNumber]',
+        'Control': result2.metadata['Gene'],
+    }
+    result = sdk.Result(metadata, cf)
+    return result
 
 def create_consolidated_vcf(raw, phased):
     """
@@ -156,6 +184,8 @@ def estimate_phase_beagle(
     gene, vcf, panel, output, assembly='GRCh37', impute=False
 ):
     """
+    Estimate haplotype phase of observed variants with the Beagle program.
+
     Parameters
     ----------
     gene : str
@@ -710,6 +740,24 @@ def load_control_table():
     b = BytesIO(pkgutil.get_data(__name__, 'data/control-table.csv'))
     return pd.read_csv(b)
 
+def load_cnv_table():
+    """
+    Load the CNV table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requested table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_cnv_table()
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/cnv-table.csv'))
+    return pd.read_csv(b)
+
 def load_diplotype_table():
     """
     Load the diplotype table.
@@ -889,6 +937,33 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
             samples[sample][i] = sort_alleles(gene, samples[sample][i])
 
     return samples
+
+def predict_cnv(result):
+    """
+    Predict CNV based on copy number data.
+
+    Parameters
+    ----------
+    result : pypgx.sdk.Result or str
+        Result file with the semantic type CovFrame[CopyNumber].
+
+    Returns
+    -------
+    pypgx.sdk.Result
+        Result file with the semantic type TSV[CNVCalls].
+    """
+    result = sdk.Result.from_file(result)
+    path = os.path.dirname(os.path.abspath(__file__))
+    model = pickle.load(open(f"{path}/cnv/{result.metadata['Gene']}.sav", 'rb'))
+    X = result.data.df.iloc[:, 2:].T.to_numpy()
+    predictions = model.predict(X)
+    df = load_cnv_table()
+    cnvs = dict(zip(df.Code, df.Name))
+    predictions = [cnvs[x] for x in predictions]
+    metadata = result.copy_metadata()
+    metadata['SemanticType'] = 'TSV[CNVCalls]'
+    data = pd.DataFrame({'Sample': result.data.samples, 'CNV': predictions})
+    return sdk.Result(metadata, data)
 
 def predict_phenotype(gene, a, b):
     """

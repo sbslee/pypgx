@@ -20,16 +20,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'gene',
-        help='Target gene.'
-    )
-    parser.add_argument(
-        'depth',
-        help='TSV file containing read depth for target gene.'
-    )
-    parser.add_argument(
-        'control',
-        help='TSV file containing summary statistics for control gene.'
+        'result',
+        help='Result file with the semantic type CovFrame[CopyNumber]'
     )
     parser.add_argument(
         '--path',
@@ -57,6 +49,6 @@ def create_parser(subparsers):
 
 def main(args):
     plot.plot_bam_copy_number(
-        args.gene, args.depth, args.control, path=args.path,
-        samples=args.samples, ymin=args.ymin, ymax=args.ymax
+        args.result, path=args.path, samples=args.samples, ymin=args.ymin,
+        ymax=args.ymax
     )
