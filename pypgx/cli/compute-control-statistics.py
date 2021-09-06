@@ -13,8 +13,9 @@ Input files must be specified with either '--bam' or '--fn'.
 Control gene must be specified with either '--gene' or '--region'.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} out.zip --fn bam.list --gene VDR
-  $ pypgx {fuc.api.common._script_name()} out.zip --bam A.bam B.bam --region chr:start-end
+  $ pypgx {fuc.api.common._script_name()} out.zip --bam A.bam B.bam --gene VDR
+  $ pypgx {fuc.api.common._script_name()} out.zip --fn bam.list --region chr:start-end
+  $ pypgx {fuc.api.common._script_name()} out.zip --fn bam.list --region chr:start-end --assembly GRCh38
 """
 
 def create_parser(subparsers):

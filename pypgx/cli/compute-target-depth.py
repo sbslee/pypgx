@@ -11,8 +11,9 @@ This command will compute read depth for target gene with BAM data.
 Input files must be specified with either '--bam' or '--fn'.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} CYP2D6 --bam A.bam B.bam
-  $ fuc {fuc.api.common._script_name()} CYP2D6 --fn bam.list
+  $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
+  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list
+  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list --assembly GRCh38
 """
 
 def create_parser(subparsers):
