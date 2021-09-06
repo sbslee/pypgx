@@ -245,19 +245,31 @@ def compute_target_depth(
     result = sdk.Result(metadata, data)
     return result
 
-def create_consolidated_vcf(raw, phased):
+def create_consolidated_vcf(imported, phased):
     """
     Create consolidated VCF.
-    """
-    vf1 = pyvcf.VcfFrame.from_file(raw)
-    vf2 = pyvcf.VcfFrame.from_file(phased)
 
-    vf1 = vf1.strip('GT:AD:DP')
-    vf2 = vf2.strip('GT')
+    Parameters
+    ----------
+    imported : pypgx.sdk.Result
+        Result file with the semantic type VcfFrame[Imported].
+    phased : pypgx.sdk.Result
+        Result file with the semandtic type VcfFrame[Phased].
+
+    Returns
+    -------
+    pypgx.sdk.Result
+        Result file with the semantic type VcfFrame[Consolidated].
+    """
+    vcf1 = sdk.Result.from_file(imported)
+    vcf2 = sdk.Result.from_file(phased)
+
+    vcf1.data = vcf1.data.strip('GT:AD:DP')
+    vcf2.data = vcf2.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = vf1.fetch(variant)
+        s = vcf1.data.fetch(variant)
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -267,13 +279,19 @@ def create_consolidated_vcf(raw, phased):
 
         return r
 
-    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
-    vf3.df.FORMAT = 'GT:AD:DP'
+    vf1 = pyvcf.VcfFrame([], vcf2.data.df.apply(one_row, axis=1))
+    vf1.df.FORMAT = 'GT:AD:DP'
 
-    vf4 = vf1.filter_vcf(vf2, opposite=True)
-    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
+    vf2 = vcf1.data.filter_vcf(vcf2.data, opposite=True)
+    vf3 = pyvcf.VcfFrame([], pd.concat([vf1.df, vf2.df])).sort()
+    vf3 = vf3.pseudophase()
 
-    return vf5.pseudophase()
+    metadata = vcf2.copy_metadata()
+    metadata['SemanticType'] = 'VcfFrame[Consolidated]'
+
+    result = sdk.Result(metadata, vf3)
+
+    return result
 
 def estimate_phase_beagle(
     target, panel, impute=False
@@ -284,7 +302,7 @@ def estimate_phase_beagle(
     Parameters
     ----------
     target : str
-        Result file with the semantic type VCF[Imported].
+        Result file with the semantic type VcfFrame[Imported].
     panel : str
         Reference haplotype panel.
     impute : bool, default: False
@@ -293,14 +311,14 @@ def estimate_phase_beagle(
     Returns
     -------
     pypgx.sdk.Result
-        Result file with the semantic type VCF[Phased].
+        Result file with the semantic type VcfFrame[Phased].
     """
     vcf = sdk.Result.from_file(target)
     region = get_region(vcf.metadata['Gene'], assembly=vcf.metadata['Assembly'])
     path = os.path.dirname(os.path.abspath(__file__))
     program = f'{path}/beagle.28Jun21.220.jar'
     metadata = vcf.copy_metadata()
-    metadata['SemanticType'] = 'VCF[Phased]'
+    metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
     with tempfile.TemporaryDirectory() as t:
         vcf.data.to_file(f'{t}/input.vcf')
@@ -632,7 +650,7 @@ def import_vcf(gene, vcf, assembly='GRCh37'):
     metadata = {
         'Gene': gene,
         'Assembly': assembly,
-        'SemanticType': 'VCF[Imported]',
+        'SemanticType': 'VcfFrame[Imported]',
     }
     result = sdk.Result(metadata, data)
     return result
@@ -961,7 +979,7 @@ def load_variant_table():
     df.Chromosome = df.Chromosome.astype(str)
     return df
 
-def predict_alleles(vcf, gene, assembly='GRCh37'):
+def predict_alleles(input):
     """
     Predict candidate star alleles based on observed variants.
 
@@ -969,12 +987,8 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
 
     Parameters
     ----------
-    vcf : pyvcf.VcfFrame or str
-        VcfFrame object or VCF file.
-    gene : str
-        Gene name.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
+    input : pypgx.sdk.Result
+        Result file with the semantic type VcfFrame[Consolidated].
 
     Returns
     -------
@@ -1007,17 +1021,15 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
     >>> pypgx.predict_alleles(vf, 'CYP4F2')
     {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    vcf = sdk.Result.from_file(input)
 
-    table = build_definition_table(gene, assembly=assembly)
+    if vcf.metadata['Gene'] not in list_genes():
+        raise GeneNotFoundError(vcf.metadata['Gene'])
 
-    if isinstance(vcf, str):
-        vf = pyvcf.VcfFrame.from_file(vcf)
-    else:
-        vf = vcf
+    table = build_definition_table(vcf.metadata['Gene'],
+        assembly=vcf.metadata['Assembly'])
 
-    vf = vf.filter_vcf(table)
+    vf = vcf.data.filter_vcf(table)
 
     stars = {}
 
@@ -1042,12 +1054,19 @@ def predict_alleles(vcf, gene, assembly='GRCh37'):
                 if variants.issubset(s):
                     samples[sample][i].append(star)
             if not samples[sample][i]:
-                default = get_default_allele(gene, assembly)
+                default = get_default_allele(vcf.metadata['Gene'],
+                    vcf.metadata['Assembly'])
                 if default:
                     samples[sample][i].append(default)
-            samples[sample][i] = sort_alleles(gene, samples[sample][i])
+            samples[sample][i] = sort_alleles(vcf.metadata['Gene'], samples[sample][i])
 
-    return samples
+    data = pd.DataFrame(samples).T
+    data.columns = ['Haplotype1', 'Haplotype2']
+
+    metadata = vcf.copy_metadata()
+    metadata['SemanticType'] = 'TSV[Alleles]'
+    result = sdk.Result(metadata, data)
+    return result
 
 def predict_cnv(result):
     """

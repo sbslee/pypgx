@@ -33,7 +33,7 @@ class Result:
                 self.data.to_file(f'{t}/data.tsv')
             elif 'TSV' in self.metadata['SemanticType']:
                 self.data.to_csv(f'{t}/data.tsv', sep='\t')
-            elif 'VCF' in self.metadata['SemanticType']:
+            elif 'VcfFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.vcf')
             else:
                 raise ValueError('Incorrect semantic type')
@@ -62,7 +62,7 @@ class Result:
         elif 'TSV' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.tsv') as fh:
                 data = pd.read_table(fh, index_col=0)
-        elif 'VCF' in metadata['SemanticType']:
+        elif 'VcfFrame' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.vcf') as fh:
                 data = pyvcf.VcfFrame.from_file(fh)
         else:

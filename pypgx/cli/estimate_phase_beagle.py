@@ -22,7 +22,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'target',
-        help='Result file with the semantic type VCF[Imported].'
+        help='Result file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
         'panel',
@@ -30,7 +30,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type VCF[Phased].'
+        help='Result file with the semantic type VcfFrame[Phased].'
     )
     parser.add_argument(
         '--impute',
