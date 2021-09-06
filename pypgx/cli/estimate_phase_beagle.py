@@ -9,7 +9,8 @@ description = f"""
 This command will estimate haplotype phase of observed variants with the Beagle program.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf ref.vcf out
+  $ pypgx {fuc.api.common._script_name()} in.zip ref.vcf out.zip
+  $ pypgx {fuc.api.common._script_name()} in.zip ref.vcf out.zip --impute
 """
 
 def create_parser(subparsers):
@@ -20,12 +21,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'gene',
-        help='Target gene.'
-    )
-    parser.add_argument(
-        'vcf',
-        help='Input VCF file.'
+        'target',
+        help='Result file with the semantic type VCF[Imported].'
     )
     parser.add_argument(
         'panel',
@@ -33,13 +30,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help="Output prefix for phased VCF file. For example, '/path/to/output' will generate '/path/to/output.vcf'."
-    )
-    parser.add_argument(
-        '--assembly',
-        metavar='TEXT',
-        default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help='Result file with the semantic type VCF[Phased].'
     )
     parser.add_argument(
         '--impute',
@@ -48,7 +39,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    utils.estimate_phase_beagle(
-        args.gene, args.vcf, args.panel, args.output, assembly=args.assembly,
-        impute=args.impute
+    result = utils.estimate_phase_beagle(
+        args.target, args.panel, impute=args.impute
     )
+    result.to_file(args.output)

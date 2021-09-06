@@ -276,45 +276,46 @@ def create_consolidated_vcf(raw, phased):
     return vf5.pseudophase()
 
 def estimate_phase_beagle(
-    gene, vcf, panel, output, assembly='GRCh37', impute=False
+    target, panel, impute=False
 ):
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
     Parameters
     ----------
-    gene : str
-        Gene name.
-    vcf : str
-        Input VCF file.
+    target : str
+        Result file with the semantic type VCF[Imported].
     panel : str
         Reference haplotype panel.
-    output : str
-        Output prefix for phased VCF file. For example, '/path/to/output'
-        will generate '/path/to/output.vcf'.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
     impute : bool, default: False
         Whether to perform imputation of missing genotypes.
+
+    Returns
+    -------
+    pypgx.sdk.Result
+        Result file with the semantic type VCF[Phased].
     """
-    region = get_region(gene, assembly=assembly)
+    vcf = sdk.Result.from_file(target)
+    region = get_region(vcf.metadata['Gene'], assembly=vcf.metadata['Assembly'])
     path = os.path.dirname(os.path.abspath(__file__))
     program = f'{path}/beagle.28Jun21.220.jar'
-
+    metadata = vcf.copy_metadata()
+    metadata['SemanticType'] = 'VCF[Phased]'
+    metadata['Program'] = 'Beagle'
     with tempfile.TemporaryDirectory() as t:
+        vcf.data.to_file(f'{t}/input.vcf')
         command = [
             'java', '-Xmx2g', '-jar', program,
-            f'gt={vcf}',
+            f'gt={t}/input.vcf',
             f'chrom={region}',
             f'ref={panel}',
-            f'out={t}/temp',
+            f'out={t}/output',
             f'impute={str(impute).lower()}'
         ]
-
         subprocess.run(command)
-
-        vf = pyvcf.VcfFrame.from_file(f'{t}/temp.vcf.gz')
-        vf.to_file(f'{output}.vcf')
+        data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+    result = sdk.Result(metadata, data)
+    return result
 
 def get_default_allele(gene, assembly='GRCh37'):
     """
