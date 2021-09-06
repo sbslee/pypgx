@@ -14,6 +14,7 @@ Control gene must be specified with either '--gene' or '--region'.
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} --fn bam.list --gene VDR
+  $ pypgx {fuc.api.common._script_name()} --bam A.bam B.bam --region chr:start-end
 """
 
 def create_parser(subparsers):
@@ -46,7 +47,7 @@ def create_parser(subparsers):
     parser.add_argument(
         '--region',
         metavar='TEXT',
-        help='Custom control region.'
+        help="Custom region to use as control gene ('chrom:start-end')."
     )
     parser.add_argument(
         '--assembly',
