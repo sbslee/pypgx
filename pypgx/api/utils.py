@@ -5,10 +5,14 @@ import subprocess
 import os
 import pickle
 
+from .. import sdk
+
 import numpy as np
 import pandas as pd
 from fuc import pybam, pyvcf, pycov, common
-from .. import sdk
+from sklearn import model_selection
+from sklearn.multiclass import OneVsRestClassifier
+from sklearn.svm import SVC
 
 FUNCTION_ORDER = [
     'No Function',
@@ -1084,7 +1088,7 @@ def predict_cnv(result):
     """
     result = sdk.Result.from_file(result)
     path = os.path.dirname(os.path.abspath(__file__))
-    model = pickle.load(open(f"{path}/cnv/{result.metadata['Gene']}.sav", 'rb'))
+    model = sdk.Result.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
     X = result.data.df.iloc[:, 2:].T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
@@ -1262,3 +1266,21 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
         return (a, b)
 
     return sorted(alleles, key=f)
+
+def train_cnv_caller(target, calls):
+    """
+    Train CNV caller for target gene.
+    """
+    result = sdk.Result.from_file(target)
+    df = pd.read_csv(calls)
+    columns = ['Chromosome', 'Position'] + df.Sample.to_list()
+    result.data.df = result.data.df[columns]
+    X = result.data.df.iloc[:, 2:].T.to_numpy()
+    Y = df[result.metadata['Gene']].to_numpy()
+    X_train, X_test, Y_train, Y_test = model_selection.train_test_split(X, Y, test_size=0.3, random_state=1)
+    model = OneVsRestClassifier(SVC(random_state=1)).fit(X_train, Y_train)
+    predictions = model.predict(X_test)
+    print(sum(predictions == Y_test) / len(Y_test))
+    metadata = result.copy_metadata()
+    metadata['SemanticType'] = 'Model[CNV]'
+    return sdk.Result(metadata, model)

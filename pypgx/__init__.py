@@ -33,6 +33,7 @@ from .api.utils import (
     predict_phenotype,
     predict_score,
     sort_alleles,
+    train_cnv_caller,
 )
 
 from .api.plot import (

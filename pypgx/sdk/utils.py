@@ -3,6 +3,7 @@ import io
 import zipfile
 import tempfile
 import copy
+import pickle
 
 import pandas as pd
 from fuc import pyvcf, pycov
@@ -35,9 +36,19 @@ class Result:
                 self.data.to_csv(f'{t}/data.tsv', sep='\t')
             elif 'VcfFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.vcf')
+            elif 'Model' in self.metadata['SemanticType']:
+                pickle.dump(self.data, open(f'{t}/data.sav', 'wb'))
             else:
                 raise ValueError('Incorrect semantic type')
-            zipdir(t, fn)
+            zipf = zipfile.ZipFile(fn, 'w', zipfile.ZIP_DEFLATED)
+            for root, dirs, files in os.walk(t):
+                for file in files:
+                    if file == '.DS_Store':
+                        continue
+                    zipf.write(os.path.join(root, file),
+                               os.path.relpath(os.path.join(root, file),
+                                               os.path.join(t, '..')))
+            zipf.close()
 
     @classmethod
     def from_file(cls, fn):
@@ -65,6 +76,9 @@ class Result:
         elif 'VcfFrame' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.vcf') as fh:
                 data = pyvcf.VcfFrame.from_file(fh)
+        elif 'Model' in metadata['SemanticType']:
+            with zf.open(f'{parent}/data.sav') as fh:
+                data = pickle.load(fh)
         else:
             raise ValueError('Incorrect semantic type')
         return cls(metadata, data)
