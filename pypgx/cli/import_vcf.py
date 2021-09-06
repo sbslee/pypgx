@@ -16,7 +16,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Import VCF data',
+        help='Import VCF data.',
         description=description,
     )
     parser.add_argument(
