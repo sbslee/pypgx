@@ -251,14 +251,14 @@ def create_consolidated_vcf(imported, phased):
 
     Parameters
     ----------
-    imported : pypgx.sdk.Result
+    imported : pypgx.Result
         Result file with the semantic type VcfFrame[Imported].
-    phased : pypgx.sdk.Result
+    phased : pypgx.Result
         Result file with the semandtic type VcfFrame[Phased].
 
     Returns
     -------
-    pypgx.sdk.Result
+    pypgx.Result
         Result file with the semantic type VcfFrame[Consolidated].
     """
     vcf1 = sdk.Result.from_file(imported)
@@ -310,7 +310,7 @@ def estimate_phase_beagle(
 
     Returns
     -------
-    pypgx.sdk.Result
+    pypgx.Result
         Result file with the semantic type VcfFrame[Phased].
     """
     vcf = sdk.Result.from_file(target)
@@ -987,7 +987,7 @@ def predict_alleles(input):
 
     Parameters
     ----------
-    input : pypgx.sdk.Result
+    input : pypgx.Result
         Result file with the semantic type VcfFrame[Consolidated].
 
     Returns
@@ -1074,12 +1074,12 @@ def predict_cnv(result):
 
     Parameters
     ----------
-    result : pypgx.sdk.Result or str
+    result : pypgx.Result or str
         Result file with the semantic type CovFrame[CopyNumber].
 
     Returns
     -------
-    pypgx.sdk.Result
+    pypgx.Result
         Result file with the semantic type TSV[CNVCalls].
     """
     result = sdk.Result.from_file(result)

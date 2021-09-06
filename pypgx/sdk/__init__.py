@@ -1,3 +1,3 @@
-from .utils import zipdir, Result
+from .utils import Result
 
-__all__ = ['zipdir', 'Result']
+__all__ = ['Result']

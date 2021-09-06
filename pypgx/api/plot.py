@@ -42,7 +42,7 @@ def plot_bam_copy_number(
 
     Parameters
     ----------
-    result : pypgx.sdk.Result or str
+    result : pypgx.Result or str
         Result file with the semantic type CovFrame[CopyNumber].
     path : str, optional
         Create plots in this directory.
@@ -92,7 +92,7 @@ def plot_bam_read_depth(
 
     Parameters
     ----------
-    result : pypgx.sdk.Result or str
+    result : pypgx.Result or str
         Result file with the semantic type CovFrame[ReadDepth].
     path : str, optional
         Create plots in this directory.

@@ -42,4 +42,9 @@ from .api.plot import (
     plot_vcf_read_depth,
 )
 
+from .sdk import (
+    Result,
+)
+
 del api
+del sdk
