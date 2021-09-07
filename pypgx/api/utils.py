@@ -1270,18 +1270,33 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
 
 def train_cnv_caller(target, calls):
     """
-    Train CNV caller for target gene.
+    Train a CNV caller for target gene.
+
+    Parameters
+    ----------
+    target : pypgx.Archive
+        Archive file with the semantic type CovFrame[CopyNumber].
+    calls : pypgx.Archive
+        Archive file with the semantic type TSV[CNVCalls].
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type Model[CNV].
     """
-    result = sdk.Archive.from_file(target)
-    df = pd.read_csv(calls)
-    columns = ['Chromosome', 'Position'] + df.Sample.to_list()
-    result.data.df = result.data.df[columns]
-    X = result.data.df.iloc[:, 2:].T.to_numpy()
-    Y = df[result.metadata['Gene']].to_numpy()
+    copy_number = sdk.Archive.from_file(target)
+    cnv_calls = sdk.Archive.from_file(calls)
+    df = load_cnv_table()
+    cnv_dict = dict(zip(df.Name, df.Code))
+    cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: cnv_dict[r.CNV], axis=1)
+    columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
+    copy_number.data.df = copy_number.data.df[columns]
+    X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
+    Y = cnv_calls.data['Code'].to_numpy()
     X_train, X_test, Y_train, Y_test = model_selection.train_test_split(X, Y, test_size=0.3, random_state=1)
     model = OneVsRestClassifier(SVC(random_state=1)).fit(X_train, Y_train)
     predictions = model.predict(X_test)
     print(sum(predictions == Y_test) / len(Y_test))
-    metadata = result.copy_metadata()
+    metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'Model[CNV]'
     return sdk.Archive(metadata, model)
