@@ -8,6 +8,8 @@ import pysam
 description = f"""
 This command will predict CNV based on copy number data.
 
+If there are missing values because, for example, the input data was generated with targeted sequencing, they will be filled in with the sample's median copy number.
+
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} input.zip output.zip
 """

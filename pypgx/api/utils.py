@@ -18,7 +18,6 @@ from sklearn.impute import SimpleImputer
 FUNCTION_ORDER = [
     'No Function',
     'Decreased Function',
-
     'Possible Decreased Function',
     'Increased Function',
     'Possible Increased Function',
@@ -1105,6 +1104,10 @@ def predict_cnv(result):
     """
     Predict CNV based on copy number data.
 
+    If there are missing values because, for example, the input data was
+    generated with targeted sequencing, they will be filled in with the
+    sample's median copy number.
+
     Parameters
     ----------
     result : pypgx.Archive or str
@@ -1118,12 +1121,9 @@ def predict_cnv(result):
     result = sdk.Archive.from_file(result)
     path = os.path.dirname(os.path.abspath(__file__))
     model = sdk.Archive.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
-    X = result.data.df.iloc[:, 2:].T.to_numpy()
-    if np.isnan(X).any():
-        print(X.shape)
-        imp = SimpleImputer(strategy='median').fit(X)
-        X = imp.transform(X)
-        print(X.shape)
+    df = result.data.df.iloc[:, 2:]
+    df = df.fillna(df.median())
+    X = df.T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
     cnvs = dict(zip(df.Code, df.Name))
