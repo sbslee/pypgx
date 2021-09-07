@@ -17,6 +17,7 @@ from sklearn.svm import SVC
 FUNCTION_ORDER = [
     'No Function',
     'Decreased Function',
+
     'Possible Decreased Function',
     'Increased Function',
     'Possible Increased Function',
@@ -136,9 +137,9 @@ def compute_control_statistics(
 
     Parameters
     ----------
-    target : Archive
+    target : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
-    control : Archive
+    control : pypgx.Archive
         Archive file with the semandtic type ControlStatistics.
     """
     bam_files = []
@@ -178,28 +179,54 @@ def compute_control_statistics(
     result = sdk.Archive(metadata, data)
     return result
 
-def compute_copy_number(target, control):
+def compute_copy_number(target, control, samples):
     """
     Compute copy number from read depth for target gene.
 
+    The method will convert read depth to copy number by performing
+    intra-sample normalization with control statistics.
+
+    If the input data was generated with targeted sequencing, as opposed to
+    WGS, the method will also apply inter-sample normalization using the
+    population statistics. However, for best results it's recommended to
+    manually specify a list of known samples without SV.
+
     Parameters
     ----------
-    target : Archive
+    target : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
-    control : Archive
-        Archive file with the semandtic type ControlStatistics.
+    control : pypgx.Archive
+        Archive file with the semandtic type TSV[Statistcs].
+    samples : list, optional
+        List of known samples without SV.
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semandtic type CovFrame[CopyNumber].
     """
-    result1 = sdk.Archive.from_file(target)
-    result2 = sdk.Archive.from_file(control)
-    df = result1.data.copy_df()
-    medians = result2.data.T['50%']
+    depth = sdk.Archive.from_file(target)
+    statistics = sdk.Archive.from_file(control)
+
+    # Apply intra-sample normalization.
+    df = depth.data.copy_df()
+    medians = statistics.data.T['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
+
+    # Apply inter-sample normalization.
+    if depth.metadata['Platform'] == 'Targeted':
+        if samples is None:
+            medians = df.iloc[:, 2:].median(axis=1).replace(0, np.nan)
+        else:
+            medians = df[samples].median(axis=1).replace(0, np.nan)
+        df.iloc[:, 2:] = df.iloc[:, 2:].div(medians, axis=0) * 2
+
     cf = pycov.CovFrame(df)
-    metadata = result1.copy_metadata()
+    metadata = depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
-    metadata['Control'] = result2.metadata['Control']
-    result = sdk.Archive(metadata, cf)
-    return result
+    metadata['Control'] = statistics.metadata['Control']
+
+    return sdk.Archive(metadata, cf)
 
 def compute_target_depth(
     gene, bam=None, fn=None, assembly='GRCh37'
@@ -209,9 +236,9 @@ def compute_target_depth(
 
     Parameters
     ----------
-    target : Archive
+    target : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
-    control : Archive
+    control : pypgx.Archive
         Archive file with the semandtic type ControlStatistics.
     """
     bam_files = []

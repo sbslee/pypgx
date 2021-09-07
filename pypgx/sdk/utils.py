@@ -9,6 +9,17 @@ import pandas as pd
 from fuc import pyvcf, pycov
 
 class Archive:
+    """
+    Class for storing various data.
+
+    Parameters
+    ----------
+    metadata : dict
+        List of metadata lines.
+    data : data, results, or model
+        Data, results, or model.
+    """
+
     def __init__(self, metadata, data):
         self.metadata = metadata
         self.data = data

@@ -24,6 +24,9 @@ Each archive file has a metadata file (``metadata.txt``) and a data file (e.g. `
     * - ``Gene``
       - Target gene.
       - ``CYP2D6``, ``GSTT1``
+    * - ``Platform``
+      - NGS platform.
+      - ``WGS``, ``Targeted``
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``
