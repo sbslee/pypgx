@@ -1,4 +1,8 @@
 Gene,Name,Code
+GSTM1,Normal,0
+GSTM1,DeletionHet,1
+GSTM1,DeletionHom,2
+GSTM1,Duplication,3
 GSTT1,Normal,0
 GSTT1,DeletionHet,1
 GSTT1,DeletionHom,2
