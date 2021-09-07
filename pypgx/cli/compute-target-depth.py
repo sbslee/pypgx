@@ -10,6 +10,8 @@ This command will compute read depth for target gene with BAM data.
 
 Input BAM files must be specified with either '--bam' or '--fn', but not both.
 
+By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate which regions were sequenced.
+
 Usage examples:
   $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
   $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list
@@ -48,9 +50,15 @@ def create_parser(subparsers):
         default='GRCh37',
         help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
+    parser.add_argument(
+        '--bed',
+        metavar='PATH',
+        help='BED file.'
+    )
 
 def main(args):
     result = utils.compute_target_depth(
-        args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly
+        args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly,
+        bed=args.bed
     )
     result.to_file(args.output)

@@ -9,7 +9,7 @@ from .. import sdk
 
 import numpy as np
 import pandas as pd
-from fuc import pybam, pyvcf, pycov, common
+from fuc import pybam, pyvcf, pycov, common, pybed
 from sklearn import model_selection
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
@@ -229,13 +229,17 @@ def compute_copy_number(target, control, samples):
     return sdk.Archive(metadata, cf)
 
 def compute_target_depth(
-    gene, bam=None, fn=None, assembly='GRCh37'
+    gene, bam=None, fn=None, assembly='GRCh37', bed=None
 ):
     """
     Compute read depth for target gene with BAM data.
 
     Input BAM files must be specified with either ``bam`` or ``fn``, but not
     both.
+
+    By default, the input data is assumed to be WGS. If it's targeted
+    sequencing, you must provide a BED file with ``bed`` to indicate which
+    regions were sequenced.
 
     Parameters
     ----------
@@ -247,12 +251,20 @@ def compute_target_depth(
         File containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    bed : str, optional
+        BED file.
 
     Returns
     -------
     pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
     """
+    metadata = {
+        'Gene': gene,
+        'Assembly': assembly,
+        'SemanticType': 'CovFrame[ReadDepth]',
+    }
+
     bam_files = []
 
     if bam is None and fn is None:
@@ -270,22 +282,37 @@ def compute_target_depth(
         bam_files += common.convert_file2list(fn)
 
     if all([pybam.has_chr(x) for x in bam_files]):
-        prefix = 'chr'
+        bam_prefix = 'chr'
     else:
-        prefix = ''
+        bam_prefix = ''
 
     region = get_region(gene, assembly=assembly)
 
     data = pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{prefix}{region}', zero=True
+        bam=bam_files, region=f'{bam_prefix}{region}', zero=True
     )
 
-    metadata = {
-        'Gene': gene,
-        'Assembly': assembly,
-        'SemanticType': 'CovFrame[ReadDepth]',
-    }
+    if bed:
+        metadata['Platform'] = 'Targeted'
+        bf = pybed.BedFrame.from_file(bed)
+        if any(['chr' in x for x in bf.contigs]):
+            bed_prefix = 'chr'
+        else:
+            bed_prefix = ''
+        if bam_prefix and bed_prefix:
+            pass
+        elif not bam_prefix and not bed_prefix:
+            pass
+        elif bam_prefix and not bed_prefix:
+            bf = bf.chr_prefix(mode='add')
+        else:
+            bf = bf.chr_prefix(mode='remove')
+        data = data.mask_bed(bf, opposite=True)
+    else:
+        metadata['Platform'] = 'WGS'
+
     result = sdk.Archive(metadata, data)
+
     return result
 
 def create_consolidated_vcf(imported, phased):
