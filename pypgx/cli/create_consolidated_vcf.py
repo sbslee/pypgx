@@ -21,15 +21,15 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'imported',
-        help='Result file with the semantic type VcfFrame[Imported].'
+        help='Archive file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
         'phased',
-        help='Result file with the semantic type VcfFrame[Phased]'
+        help='Archive file with the semantic type VcfFrame[Phased]'
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type VcfFrame[Consolidated].'
+        help='Archive file with the semantic type VcfFrame[Consolidated].'
     )
 
 def main(args):

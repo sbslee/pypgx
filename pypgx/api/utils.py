@@ -136,10 +136,10 @@ def compute_control_statistics(
 
     Parameters
     ----------
-    target : Result
-        Result file with the semantic type CovFrame[ReadDepth].
-    control : Result
-        Result file with the semandtic type ControlStatistics.
+    target : Archive
+        Archive file with the semantic type CovFrame[ReadDepth].
+    control : Archive
+        Archive file with the semandtic type ControlStatistics.
     """
     bam_files = []
 
@@ -175,7 +175,7 @@ def compute_control_statistics(
         'SemanticType': 'TSV[Statistics]',
     }
     data = cf.df.iloc[:, 2:].describe()
-    result = sdk.Result(metadata, data)
+    result = sdk.Archive(metadata, data)
     return result
 
 def compute_copy_number(target, control):
@@ -184,13 +184,13 @@ def compute_copy_number(target, control):
 
     Parameters
     ----------
-    target : Result
-        Result file with the semantic type CovFrame[ReadDepth].
-    control : Result
-        Result file with the semandtic type ControlStatistics.
+    target : Archive
+        Archive file with the semantic type CovFrame[ReadDepth].
+    control : Archive
+        Archive file with the semandtic type ControlStatistics.
     """
-    result1 = sdk.Result.from_file(target)
-    result2 = sdk.Result.from_file(control)
+    result1 = sdk.Archive.from_file(target)
+    result2 = sdk.Archive.from_file(control)
     df = result1.data.copy_df()
     medians = result2.data.T['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
@@ -198,7 +198,7 @@ def compute_copy_number(target, control):
     metadata = result1.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
     metadata['Control'] = result2.metadata['Control']
-    result = sdk.Result(metadata, cf)
+    result = sdk.Archive(metadata, cf)
     return result
 
 def compute_target_depth(
@@ -209,10 +209,10 @@ def compute_target_depth(
 
     Parameters
     ----------
-    target : Result
-        Result file with the semantic type CovFrame[ReadDepth].
-    control : Result
-        Result file with the semandtic type ControlStatistics.
+    target : Archive
+        Archive file with the semantic type CovFrame[ReadDepth].
+    control : Archive
+        Archive file with the semandtic type ControlStatistics.
     """
     bam_files = []
 
@@ -246,7 +246,7 @@ def compute_target_depth(
         'Assembly': assembly,
         'SemanticType': 'CovFrame[ReadDepth]',
     }
-    result = sdk.Result(metadata, data)
+    result = sdk.Archive(metadata, data)
     return result
 
 def create_consolidated_vcf(imported, phased):
@@ -255,18 +255,18 @@ def create_consolidated_vcf(imported, phased):
 
     Parameters
     ----------
-    imported : pypgx.Result
-        Result file with the semantic type VcfFrame[Imported].
-    phased : pypgx.Result
-        Result file with the semandtic type VcfFrame[Phased].
+    imported : pypgx.Archive
+        Archive file with the semantic type VcfFrame[Imported].
+    phased : pypgx.Archive
+        Archive file with the semandtic type VcfFrame[Phased].
 
     Returns
     -------
-    pypgx.Result
-        Result file with the semantic type VcfFrame[Consolidated].
+    pypgx.Archive
+        Archive file with the semantic type VcfFrame[Consolidated].
     """
-    vcf1 = sdk.Result.from_file(imported)
-    vcf2 = sdk.Result.from_file(phased)
+    vcf1 = sdk.Archive.from_file(imported)
+    vcf2 = sdk.Archive.from_file(phased)
 
     vcf1.data = vcf1.data.strip('GT:AD:DP')
     vcf2.data = vcf2.data.strip('GT')
@@ -293,7 +293,7 @@ def create_consolidated_vcf(imported, phased):
     metadata = vcf2.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
-    result = sdk.Result(metadata, vf3)
+    result = sdk.Archive(metadata, vf3)
 
     return result
 
@@ -306,7 +306,7 @@ def estimate_phase_beagle(
     Parameters
     ----------
     target : str
-        Result file with the semantic type VcfFrame[Imported].
+        Archive file with the semantic type VcfFrame[Imported].
     panel : str
         Reference haplotype panel.
     impute : bool, default: False
@@ -314,10 +314,10 @@ def estimate_phase_beagle(
 
     Returns
     -------
-    pypgx.Result
-        Result file with the semantic type VcfFrame[Phased].
+    pypgx.Archive
+        Archive file with the semantic type VcfFrame[Phased].
     """
-    vcf = sdk.Result.from_file(target)
+    vcf = sdk.Archive.from_file(target)
     region = get_region(vcf.metadata['Gene'], assembly=vcf.metadata['Assembly'])
     path = os.path.dirname(os.path.abspath(__file__))
     program = f'{path}/beagle.28Jun21.220.jar'
@@ -336,7 +336,7 @@ def estimate_phase_beagle(
         ]
         subprocess.run(command)
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-    result = sdk.Result(metadata, data)
+    result = sdk.Archive(metadata, data)
     return result
 
 def get_default_allele(gene, assembly='GRCh37'):
@@ -656,7 +656,7 @@ def import_vcf(gene, vcf, assembly='GRCh37'):
         'Assembly': assembly,
         'SemanticType': 'VcfFrame[Imported]',
     }
-    result = sdk.Result(metadata, data)
+    result = sdk.Archive(metadata, data)
     return result
 
 def list_alleles(gene):
@@ -991,8 +991,8 @@ def predict_alleles(input):
 
     Parameters
     ----------
-    input : pypgx.Result
-        Result file with the semantic type VcfFrame[Consolidated].
+    input : pypgx.Archive
+        Archive file with the semantic type VcfFrame[Consolidated].
 
     Returns
     -------
@@ -1025,7 +1025,7 @@ def predict_alleles(input):
     >>> pypgx.predict_alleles(vf, 'CYP4F2')
     {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
-    vcf = sdk.Result.from_file(input)
+    vcf = sdk.Archive.from_file(input)
 
     if vcf.metadata['Gene'] not in list_genes():
         raise GeneNotFoundError(vcf.metadata['Gene'])
@@ -1063,13 +1063,14 @@ def predict_alleles(input):
                 if default:
                     samples[sample][i].append(default)
             samples[sample][i] = sort_alleles(vcf.metadata['Gene'], samples[sample][i])
+            samples[sample][i] = ';'.join(samples[sample][i]) + ';'
 
     data = pd.DataFrame(samples).T
     data.columns = ['Haplotype1', 'Haplotype2']
 
     metadata = vcf.copy_metadata()
     metadata['SemanticType'] = 'TSV[Alleles]'
-    result = sdk.Result(metadata, data)
+    result = sdk.Archive(metadata, data)
     return result
 
 def predict_cnv(result):
@@ -1078,17 +1079,17 @@ def predict_cnv(result):
 
     Parameters
     ----------
-    result : pypgx.Result or str
-        Result file with the semantic type CovFrame[CopyNumber].
+    result : pypgx.Archive or str
+        Archive file with the semantic type CovFrame[CopyNumber].
 
     Returns
     -------
-    pypgx.Result
-        Result file with the semantic type TSV[CNVCalls].
+    pypgx.Archive
+        Archive file with the semantic type TSV[CNVCalls].
     """
-    result = sdk.Result.from_file(result)
+    result = sdk.Archive.from_file(result)
     path = os.path.dirname(os.path.abspath(__file__))
-    model = sdk.Result.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
+    model = sdk.Archive.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
     X = result.data.df.iloc[:, 2:].T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
@@ -1097,7 +1098,7 @@ def predict_cnv(result):
     metadata = result.copy_metadata()
     metadata['SemanticType'] = 'TSV[CNVCalls]'
     data = pd.DataFrame({'Sample': result.data.samples, 'CNV': predictions})
-    return sdk.Result(metadata, data)
+    return sdk.Archive(metadata, data)
 
 def predict_phenotype(gene, a, b):
     """
@@ -1271,7 +1272,7 @@ def train_cnv_caller(target, calls):
     """
     Train CNV caller for target gene.
     """
-    result = sdk.Result.from_file(target)
+    result = sdk.Archive.from_file(target)
     df = pd.read_csv(calls)
     columns = ['Chromosome', 'Position'] + df.Sample.to_list()
     result.data.df = result.data.df[columns]
@@ -1283,4 +1284,4 @@ def train_cnv_caller(target, calls):
     print(sum(predictions == Y_test) / len(Y_test))
     metadata = result.copy_metadata()
     metadata['SemanticType'] = 'Model[CNV]'
-    return sdk.Result(metadata, model)
+    return sdk.Archive(metadata, model)

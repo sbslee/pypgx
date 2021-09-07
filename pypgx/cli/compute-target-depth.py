@@ -29,7 +29,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type CovFrame[ReadDepth].'
+        help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
     parser.add_argument(
         '--bam',

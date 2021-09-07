@@ -1,3 +1,3 @@
-from .utils import Result
+from .utils import Archive
 
-__all__ = ['Result']
+__all__ = ['Archive']

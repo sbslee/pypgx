@@ -21,11 +21,11 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'input',
-        help='Result file with the semantic type CovFrame[CopyNumber].'
+        help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type TSV[CNVCalls].'
+        help='Archive file with the semantic type TSV[CNVCalls].'
     )
 
 def main(args):

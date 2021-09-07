@@ -29,7 +29,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type VcfFrame[Imported].'
+        help='Archive file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
         '--assembly',

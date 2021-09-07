@@ -3,7 +3,7 @@ API
 
 This section describes application programming interface (API) for PyPGx.
 
-Result and semantic type
+Archive and semantic type
 ========================
 
 +-----+----------------------------+--------------------------------------------------------------------------------------------------------------------+

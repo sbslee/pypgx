@@ -42,8 +42,8 @@ def plot_bam_copy_number(
 
     Parameters
     ----------
-    result : pypgx.Result or str
-        Result file with the semantic type CovFrame[CopyNumber].
+    result : pypgx.Archive or str
+        Archive file with the semantic type CovFrame[CopyNumber].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -54,7 +54,7 @@ def plot_bam_copy_number(
         Y-axis top.
     """
     if isinstance(result, str):
-        result = sdk.Result.from_file(result)
+        result = sdk.Archive.from_file(result)
 
     if result.metadata['SemanticType'] != 'CovFrame[CopyNumber]':
         raise ValueError('Incorrect semantic type')
@@ -92,8 +92,8 @@ def plot_bam_read_depth(
 
     Parameters
     ----------
-    result : pypgx.Result or str
-        Result file with the semantic type CovFrame[ReadDepth].
+    result : pypgx.Archive or str
+        Archive file with the semantic type CovFrame[ReadDepth].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -105,7 +105,7 @@ def plot_bam_read_depth(
     """
 
     if isinstance(result, str):
-        result = sdk.Result.from_file(result)
+        result = sdk.Archive.from_file(result)
 
     if result.metadata['SemanticType'] != 'CovFrame[ReadDepth]':
         raise ValueError('Incorrect semantic type')

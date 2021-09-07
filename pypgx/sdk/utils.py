@@ -8,7 +8,7 @@ import pickle
 import pandas as pd
 from fuc import pyvcf, pycov
 
-class Result:
+class Archive:
     def __init__(self, metadata, data):
         self.metadata = metadata
         self.data = data
@@ -19,7 +19,7 @@ class Result:
 
     def to_file(self, fn):
         """
-        Create a ZIP file for the Result.
+        Create a ZIP file for the Archive.
 
         Parameters
         ----------
@@ -53,7 +53,7 @@ class Result:
     @classmethod
     def from_file(cls, fn):
         """
-        Construct Result from a ZIP file.
+        Construct Archive from a ZIP file.
 
         Parameters
         ----------

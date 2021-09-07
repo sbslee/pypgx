@@ -27,7 +27,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type TSV[Statistics].'
+        help='Archive file with the semantic type TSV[Statistics].'
     )
     parser.add_argument(
         '--bam',

@@ -21,11 +21,11 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'input',
-        help='Result file with the semantic type VcfFrame[Consolidated].'
+        help='Archive file with the semantic type VcfFrame[Consolidated].'
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type TSV[Alleles].'
+        help='Archive file with the semantic type TSV[Alleles].'
     )
 
 def main(args):

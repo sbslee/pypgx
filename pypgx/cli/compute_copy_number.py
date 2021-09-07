@@ -21,15 +21,15 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'target',
-        help='Result file with the semantic type CovFrame[ReadDepth].'
+        help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
     parser.add_argument(
         'control',
-        help='Result file with the semantic type TSV[Statistics].'
+        help='Archive file with the semantic type TSV[Statistics].'
     )
     parser.add_argument(
         'output',
-        help='Result file with the semantic type CovFrame[CopyNumber].'
+        help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
 
 def main(args):

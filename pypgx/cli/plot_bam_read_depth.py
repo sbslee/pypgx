@@ -21,7 +21,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'result',
-        help='Result file with the semantic type CovFrame[CopyNumber]'
+        help='Archive file with the semantic type CovFrame[CopyNumber]'
     )
     parser.add_argument(
         '--path',

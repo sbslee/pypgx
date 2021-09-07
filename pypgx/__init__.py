@@ -44,7 +44,7 @@ from .api.plot import (
 )
 
 from .sdk import (
-    Result,
+    Archive,
 )
 
 del api
