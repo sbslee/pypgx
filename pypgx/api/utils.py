@@ -13,6 +13,7 @@ from fuc import pybam, pyvcf, pycov, common
 from sklearn import model_selection
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
+from sklearn.impute import SimpleImputer
 
 FUNCTION_ORDER = [
     'No Function',
@@ -1118,6 +1119,11 @@ def predict_cnv(result):
     path = os.path.dirname(os.path.abspath(__file__))
     model = sdk.Archive.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
     X = result.data.df.iloc[:, 2:].T.to_numpy()
+    if np.isnan(X).any():
+        print(X.shape)
+        imp = SimpleImputer(strategy='median').fit(X)
+        X = imp.transform(X)
+        print(X.shape)
     predictions = model.predict(X)
     df = load_cnv_table()
     cnvs = dict(zip(df.Code, df.Name))
