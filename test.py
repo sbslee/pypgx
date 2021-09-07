@@ -62,11 +62,9 @@ class TestPypgx(unittest.TestCase):
                     raise ValueError(gene, assembly, diff)
 
     def test_predict_alleles(self):
-        vf1 = pyvcf.VcfFrame.from_file('data/GRCh37.vcf')
-        vf2 = pyvcf.VcfFrame.from_file('data/GRCh38.vcf')
-        a = pypgx.predict_alleles(vf1, 'CYP4F2')
-        b = pypgx.predict_alleles(vf2, 'CYP4F2', assembly='GRCh38')
-        self.assertEqual([['*1'], ['*2']], a['A'], b['A'])
+        a = pypgx.predict_alleles('data/CYP4F2-GRCh37.zip')
+        b = pypgx.predict_alleles('data/CYP4F2-GRCh38.zip')
+        self.assertEqual([['*1'], ['*2']], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
 
 if __name__ == '__main__':
     unittest.main()
