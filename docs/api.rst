@@ -6,7 +6,7 @@ This section describes application programming interface (API) for PyPGx.
 Archive file, semantic type, and metadata
 =========================================
 
-Each archive file has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains information about data contained within the archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+Each archive file (``.zip``) has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains information about the data being contained within the archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40

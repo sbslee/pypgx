@@ -234,12 +234,12 @@ def compute_target_depth(
     """
     Compute read depth for target gene with BAM data.
 
-    Input BAM files must be specified with either ``bam`` or ``fn``, but not
-    both.
+    Input BAM files must be specified with either ``bam`` or ``fn``, but
+    it's an error to use both.
 
     By default, the input data is assumed to be WGS. If it's targeted
-    sequencing, you must provide a BED file with ``bed`` to indicate which
-    regions were sequenced.
+    sequencing, you must provide a BED file with ``bed`` to indicate
+    sequenced regions.
 
     Parameters
     ----------
