@@ -8,7 +8,7 @@ import pysam
 description = f"""
 This command will compute read depth for target gene with BAM data.
 
-Input files must be specified with either '--bam' or '--fn'.
+Input BAM files must be specified with either '--bam' or '--fn', but not both.
 
 Usage examples:
   $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
@@ -35,12 +35,12 @@ def create_parser(subparsers):
         '--bam',
         metavar='PATH',
         nargs='+',
-        help='One or more input files.'
+        help='One or more BAM files.'
     )
     parser.add_argument(
         '--fn',
         metavar='PATH',
-        help='File containing one input filename per line.'
+        help='File containing one BAM file per line.'
     )
     parser.add_argument(
         '--assembly',

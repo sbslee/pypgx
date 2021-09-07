@@ -234,12 +234,24 @@ def compute_target_depth(
     """
     Compute read depth for target gene with BAM data.
 
+    Input BAM files must be specified with either ``bam`` or ``fn``, but not
+    both.
+
     Parameters
     ----------
-    target : pypgx.Archive
+    gene : str
+        Target gene.
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
-    control : pypgx.Archive
-        Archive file with the semandtic type ControlStatistics.
     """
     bam_files = []
 
