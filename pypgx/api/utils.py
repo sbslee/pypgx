@@ -1298,6 +1298,9 @@ def train_cnv_caller(target, calls):
     """
     Train a CNV caller for target gene.
 
+    This method will return a SVM-based multiclass classifier that implements
+    the one-vs-rest stategy.
+
     Parameters
     ----------
     target : pypgx.Archive

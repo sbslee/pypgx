@@ -62,8 +62,8 @@ class TestPypgx(unittest.TestCase):
                     raise ValueError(gene, assembly, diff)
 
     def test_predict_alleles(self):
-        a = pypgx.predict_alleles('data/CYP4F2-GRCh37.zip')
-        b = pypgx.predict_alleles('data/CYP4F2-GRCh38.zip')
+        a = pypgx.predict_alleles('test-data/CYP4F2-GRCh37.zip')
+        b = pypgx.predict_alleles('test-data/CYP4F2-GRCh38.zip')
         self.assertEqual(['*1;', '*2;'], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
 
 if __name__ == '__main__':
