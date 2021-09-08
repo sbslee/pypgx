@@ -10,7 +10,7 @@ This command will compute read depth for target gene with BAM data.
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate sequenced regions.
+By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
 
 Usage examples:
   $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam

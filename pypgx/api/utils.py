@@ -130,17 +130,40 @@ def build_definition_table(gene, assembly='GRCh37'):
     return vf
 
 def compute_control_statistics(
-    bam=None, fn=None, gene=None, region=None, assembly='GRCh37'
+    bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
 ):
     """
     Compute copy number from read depth for target gene.
 
+    Input BAM files must be specified with either ``bam`` or ``fn``, but
+    it's an error to use both.
+
+    Control gene must be specified with either ``gene`` or ``region``, but
+    it's an error to use both.
+
+    By default, the input data is assumed to be WGS. If it's targeted
+    sequencing, you must provide a BED file with ``bed`` to indicate
+    probed regions.
+
     Parameters
     ----------
-    target : pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
-    control : pypgx.Archive
-        Archive file with the semandtic type ControlStatistics.
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+    gene : str, optional
+        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
+    region : str, optional
+        Custom region to use as control gene ('chrom:start-end').
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    bed : str, optional
+        BED file.
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type TSV[Statistcs].
     """
     bam_files = []
 
@@ -164,10 +187,12 @@ def compute_control_statistics(
         region = df[df.Gene == gene][f'{assembly}Region'].values[0]
 
     if all([pybam.has_chr(x) for x in bam_files]):
-        region = 'chr' + region
+        bam_prefix = 'chr'
+    else:
+        bam_prefix = ''
 
     cf = pycov.CovFrame.from_bam(
-        bam=bam_files, region=region, zero=False
+        bam=bam_files, region=f'{bam_prefix}{region}', zero=False
     )
 
     metadata = {
@@ -175,8 +200,29 @@ def compute_control_statistics(
         'Assembly': assembly,
         'SemanticType': 'TSV[Statistics]',
     }
+
+    if bed:
+        metadata['Platform'] = 'Targeted'
+        bf = pybed.BedFrame.from_file(bed)
+        if any(['chr' in x for x in bf.contigs]):
+            bed_prefix = 'chr'
+        else:
+            bed_prefix = ''
+        if bam_prefix and bed_prefix:
+            pass
+        elif not bam_prefix and not bed_prefix:
+            pass
+        elif bam_prefix and not bed_prefix:
+            bf = bf.chr_prefix(mode='add')
+        else:
+            bf = bf.chr_prefix(mode='remove')
+        cf = cf.mask_bed(bf, opposite=True)
+    else:
+        metadata['Platform'] = 'WGS'
+
     data = cf.df.iloc[:, 2:].describe()
     result = sdk.Archive(metadata, data)
+
     return result
 
 def compute_copy_number(target, control, samples):
@@ -239,7 +285,7 @@ def compute_target_depth(
 
     By default, the input data is assumed to be WGS. If it's targeted
     sequencing, you must provide a BED file with ``bed`` to indicate
-    sequenced regions.
+    probed regions.
 
     Parameters
     ----------
