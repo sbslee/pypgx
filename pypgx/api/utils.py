@@ -14,6 +14,7 @@ from sklearn import model_selection
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
 from sklearn.impute import SimpleImputer
+from scipy.ndimage import median_filter
 
 FUNCTION_ORDER = [
     'No Function',
@@ -38,6 +39,12 @@ class PhenotypeNotFoundError(Exception):
 ###################
 # Private methods #
 ###################
+
+def _process_copy_number(copy_number):
+    df = copy_number.data.copy_df()
+    df = df.fillna(df.median())
+    df.iloc[:, 2:] = df.iloc[:, 2:].apply(lambda c: median_filter(c, size=1000), axis=0)
+    return sdk.Archive(copy_number.copy_metadata(), pycov.CovFrame(df))
 
 ##################
 # Public methods #
@@ -1185,7 +1192,7 @@ def predict_alleles(input):
     result = sdk.Archive(metadata, data)
     return result
 
-def predict_cnv(result):
+def predict_cnv(target):
     """
     Predict CNV based on copy number data.
 
@@ -1195,7 +1202,7 @@ def predict_cnv(result):
 
     Parameters
     ----------
-    result : pypgx.Archive or str
+    target : pypgx.Archive or str
         Archive file with the semantic type CovFrame[CopyNumber].
 
     Returns
@@ -1203,20 +1210,21 @@ def predict_cnv(result):
     pypgx.Archive
         Archive file with the semantic type TSV[CNVCalls].
     """
-    result = sdk.Archive.from_file(result)
+    copy_number = sdk.Archive.from_file(target)
+    copy_number = _process_copy_number(copy_number)
     path = os.path.dirname(os.path.abspath(__file__))
-    model = sdk.Archive.from_file(f"{path}/cnv/{result.metadata['Gene']}.zip").data
-    df = result.data.df.iloc[:, 2:]
+    model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
+    df = copy_number.data.df.iloc[:, 2:]
     df = df.fillna(df.median())
     X = df.T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
-    df = df[df.Gene == result.metadata['Gene']]
+    df = df[df.Gene == copy_number.metadata['Gene']]
     cnvs = dict(zip(df.Code, df.Name))
     predictions = [cnvs[x] for x in predictions]
-    metadata = result.copy_metadata()
+    metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'TSV[CNVCalls]'
-    data = pd.DataFrame({'Sample': result.data.samples, 'CNV': predictions})
+    data = pd.DataFrame({'Sample': copy_number.data.samples, 'CNV': predictions})
     return sdk.Archive(metadata, data)
 
 def predict_phenotype(gene, a, b):
@@ -1402,6 +1410,7 @@ def test_cnv_caller(caller, target, calls):
     """
     model = sdk.Archive.from_file(caller)
     copy_number = sdk.Archive.from_file(target)
+    copy_number = _process_copy_number(copy_number)
     cnv_calls = sdk.Archive.from_file(calls)
     df = load_cnv_table()
     cnv_dict = dict(zip(df.Name, df.Code))
@@ -1433,6 +1442,7 @@ def train_cnv_caller(target, calls):
         Archive file with the semantic type Model[CNV].
     """
     copy_number = sdk.Archive.from_file(target)
+    copy_number = _process_copy_number(copy_number)
     cnv_calls = sdk.Archive.from_file(calls)
     df = load_cnv_table()
     cnv_dict = dict(zip(df.Name, df.Code))

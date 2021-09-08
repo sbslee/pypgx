@@ -2,11 +2,8 @@ Gene,Name,Code
 CYP2B6,Normal,0
 CYP2B6,Hybrid,1
 CYP2D6,Normal,0
-CYP2D6,DeletionHet,1
-CYP2D6,Duplication,2
-CYP2D6,TandemHybrid1,3
-CYP2D6,TandemHybrid2,4
-CYP2D6,Complex,5
+CYP2D6,Decreased,1
+CYP2D6,Increased,2
 GSTM1,Normal,0
 GSTM1,DeletionHet,1
 GSTM1,DeletionHom,2
