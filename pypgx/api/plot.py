@@ -35,14 +35,14 @@ def _plot_exons(gene, assembly, ax):
 ##################
 
 def plot_bam_copy_number(
-    result, path=None, samples=None, ymin=None, ymax=None
+    target, path=None, samples=None, ymin=None, ymax=None
 ):
     """
     Plot copy number profile with BAM data.
 
     Parameters
     ----------
-    result : pypgx.Archive or str
+    target : pypgx.Archive or str
         Archive file with the semantic type CovFrame[CopyNumber].
     path : str, optional
         Create plots in this directory.
@@ -53,22 +53,22 @@ def plot_bam_copy_number(
     ymax : float, optional
         Y-axis top.
     """
-    if isinstance(result, str):
-        result = sdk.Archive.from_file(result)
+    if isinstance(target, str):
+        target = sdk.Archive.from_file(target)
 
-    if result.metadata['SemanticType'] != 'CovFrame[CopyNumber]':
+    if target.metadata['SemanticType'] != 'CovFrame[CopyNumber]':
         raise ValueError('Incorrect semantic type')
 
     if samples is None:
-        samples = result.data.samples
+        samples = target.data.samples
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(result.metadata['Gene'], result.metadata['Assembly'], ax1)
-            result.data.plot_region(sample, ax=ax2, legend=False)
+            _plot_exons(target.metadata['Gene'], target.metadata['Assembly'], ax1)
+            target.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
             ax2.set_xlabel('Coordinate', fontsize=25)
