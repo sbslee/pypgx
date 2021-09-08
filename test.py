@@ -44,8 +44,6 @@ class TestPypgx(unittest.TestCase):
                         raise ValueError(f'Incorrect variant data: {variant}')
         df2.apply(one_row, axis=1)
         for gene in pypgx.list_genes():
-            if not pypgx.has_definition(gene):
-                continue
             temp1 = df1[df1.Gene == gene]
             temp2 = df2[df2.Gene == gene]
             for assembly in ['GRCh37', 'GRCh38']:

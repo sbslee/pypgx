@@ -712,36 +712,6 @@ def get_score(gene, allele):
 
     return df.ActivityScore.values[0]
 
-def has_definition(gene):
-    """
-    Return True if specified gene has allele definition.
-
-    Parameters
-    ----------
-    gene : str
-        Gene name.
-
-    Returns
-    -------
-    bool
-        Whether allele definition is supported.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> pypgx.has_definition('NUDT15')
-    True
-    >>> pypgx.has_definition('CYP2D6')
-    False
-    """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
-
-    df = load_gene_table()
-
-    return gene in df[~df.PharmVar.isna()].Gene.to_list()
-
 def has_phenotype(gene):
     """
     Return True if specified gene has phenotype data.

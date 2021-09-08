@@ -12,7 +12,6 @@ from .api.utils import (
     get_priority,
     get_region,
     get_score,
-    has_definition,
     has_phenotype,
     has_score,
     import_vcf,
