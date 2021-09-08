@@ -6,7 +6,7 @@ This section describes application programming interface (API) for PyPGx.
 Archive file, semantic type, and metadata
 =========================================
 
-Each archive file (``.zip``) has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains information about the data being contained within the archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer various datasets, results, and models, PyPGx uses the ZIP archive file format (``.zip``) that supports lossless data compression. Each archive file has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains information about the data being contained within the archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -38,10 +38,10 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
+    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``.
 - ``CovFrame[ReadDepth]``
     * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
+    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
@@ -53,7 +53,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
 - ``TSV[Statistcs]``
     * TSV table for storing control gene's various statistics on read depth. Used for converting target gene's read depth to copy number.
-    * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``.
+    * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
     * VcfFrame for storing target gene's consolidated variant data.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.

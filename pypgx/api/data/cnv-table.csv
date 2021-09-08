@@ -1,4 +1,6 @@
 Gene,Name,Code
+CYP2B6,Normal,0
+CYP2B6,Hybrid,1
 GSTM1,Normal,0
 GSTM1,DeletionHet,1
 GSTM1,DeletionHom,2

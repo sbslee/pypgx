@@ -11,7 +11,7 @@ This command will train a CNV caller for target gene.
 This command will return a SVM-based multiclass classifier that implements the one-vs-rest stategy.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} input.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} target.zip calls.zip output.zip
 """
 
 def create_parser(subparsers):

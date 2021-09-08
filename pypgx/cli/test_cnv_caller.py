@@ -9,7 +9,7 @@ description = f"""
 This command will test a CNV caller for target gene.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} input.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} caller.zip target.zip calls.zip
 """
 
 def create_parser(subparsers):

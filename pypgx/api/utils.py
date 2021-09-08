@@ -1211,6 +1211,7 @@ def predict_cnv(result):
     X = df.T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
+    df = df[df.Gene == result.metadata['Gene']]
     cnvs = dict(zip(df.Code, df.Name))
     predictions = [cnvs[x] for x in predictions]
     metadata = result.copy_metadata()
