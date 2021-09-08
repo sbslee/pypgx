@@ -4,6 +4,7 @@ from .api.utils import (
     compute_copy_number,
     compute_target_depth,
     create_consolidated_vcf,
+    create_regions_bed,
     estimate_phase_beagle,
     get_default_allele,
     get_function,

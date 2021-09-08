@@ -416,6 +416,37 @@ def create_consolidated_vcf(imported, phased):
 
     return result
 
+def create_regions_bed(assembly='GRCh37', chr_prefix=False):
+    """
+    Create a BED file which contains all regions used by PyPGx.
+
+    Parameters
+    ----------
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    chr_prefix : bool, default: False
+        Whether to add the 'chr' string in contig names.
+
+    Returns
+    -------
+    fuc.pybed.BedFrame
+        BED file.
+    """
+    df = load_gene_table()
+    data = []
+    for i, r in df.iterrows():
+        region = r[f'{assembly}Region']
+        fields = list(common.parse_region(region))
+        fields.append(r.Gene)
+        data.append(fields)
+    df = pd.DataFrame(data)
+    df.columns = ['Chromosome', 'Start', 'End', 'Name']
+    bf = pybed.BedFrame.from_frame([], df)
+    bf = bf.sort()
+    if chr_prefix:
+        bf = bf.chr_prefix(mode='add')
+    return bf.sort()
+
 def estimate_phase_beagle(
     target, panel, impute=False
 ):
