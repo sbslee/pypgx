@@ -1444,4 +1444,6 @@ def train_cnv_caller(target, calls):
     model = OneVsRestClassifier(SVC(random_state=1)).fit(X, Y)
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'Model[CNV]'
+    predictions = model.predict(X)
+    print(f'Accuracy: {sum(predictions == Y) / len(Y)} ({sum(predictions == Y)}/{len(Y)})')
     return sdk.Archive(metadata, model)
