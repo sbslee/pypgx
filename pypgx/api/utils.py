@@ -416,7 +416,9 @@ def create_consolidated_vcf(imported, phased):
 
     return result
 
-def create_regions_bed(assembly='GRCh37', chr_prefix=False):
+def create_regions_bed(
+    assembly='GRCh37', chr_prefix=False, merge=False
+):
     """
     Create a BED file which contains all regions used by PyPGx.
 
@@ -426,6 +428,9 @@ def create_regions_bed(assembly='GRCh37', chr_prefix=False):
         Reference genome assembly.
     chr_prefix : bool, default: False
         Whether to add the 'chr' string in contig names.
+    merge : bool, default: False
+        Whether to merge overlapping intervals (gene names will be removed
+        too).
 
     Returns
     -------
@@ -445,7 +450,10 @@ def create_regions_bed(assembly='GRCh37', chr_prefix=False):
     bf = bf.sort()
     if chr_prefix:
         bf = bf.chr_prefix(mode='add')
-    return bf.sort()
+    bf = bf.sort()
+    if merge:
+        bf = bf.merge()
+    return bf
 
 def estimate_phase_beagle(
     target, panel, impute=False

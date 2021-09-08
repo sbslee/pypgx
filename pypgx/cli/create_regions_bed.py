@@ -30,9 +30,14 @@ def create_parser(subparsers):
         action='store_true',
         help="Whether to add the 'chr' string in contig names."
     )
+    parser.add_argument(
+        '--merge',
+        action='store_true',
+        help='Whether to merge overlapping intervals (gene names will be removed too).'
+    )
 
 def main(args):
     bf = utils.create_regions_bed(
-        assembly=args.assembly, chr_prefix=args.chr_prefix
+        assembly=args.assembly, chr_prefix=args.chr_prefix, merge=args.merge
     )
     sys.stdout.write(bf.to_string())
