@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute various statistics for control gene with BAM data.
+##############################################################
+# Compute various statistics for control gene with BAM data. #
+##############################################################
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 
@@ -63,7 +65,7 @@ def create_parser(subparsers):
         metavar='PATH',
         help='BED file.'
     )
-    
+
 def main(args):
     result = utils.compute_control_statistics(
         bam=args.bam, fn=args.fn, gene=args.gene, region=args.region,

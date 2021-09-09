@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will estimate haplotype phase of observed variants with the Beagle program.
+##########################################################################
+# Estimate haplotype phase of observed variants with the Beagle program. #
+##########################################################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} in.zip ref.vcf out.zip

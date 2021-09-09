@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will predict candidate star alleles based on observed variants.
+##############################################################
+# Predict candidate star alleles based on observed variants. #
+##############################################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} input.zip output.zip

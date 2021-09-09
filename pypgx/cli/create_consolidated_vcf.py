@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will create consolidated VCF.
+############################
+# Create consolidated VCF. #
+############################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} imported.zip phased.zip out.zip

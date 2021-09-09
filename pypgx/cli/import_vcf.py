@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will import VCF data.
+####################
+# Import VCF data. #
+####################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} gene in.vcf out.zip

@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute copy number from read depth for target gene.
+########################################################
+# Compute copy number from read depth for target gene. #
+########################################################
 
 The command will convert read depth to copy number by performing intra-sample normalization with control statistics.
 

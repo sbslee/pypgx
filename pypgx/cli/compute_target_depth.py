@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will compute read depth for target gene with BAM data.
+#####################################################
+# Compute read depth for target gene with BAM data. #
+#####################################################
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 

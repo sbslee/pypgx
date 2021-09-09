@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will plot copy number profile with BAM data.
+###########################################
+# Plot copy number profile with BAM data. #
+###########################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} target.zip

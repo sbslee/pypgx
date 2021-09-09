@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will train a CNV caller for target gene.
+#######################################
+# Train a CNV caller for target gene. #
+#######################################
 
 This command will return a SVM-based multiclass classifier that implements the one-vs-rest stategy.
 

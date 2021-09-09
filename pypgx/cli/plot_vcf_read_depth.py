@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will plot read depth profile with VCF data.
+##########################################
+# Plot read depth profile with VCF data. #
+##########################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf

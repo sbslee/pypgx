@@ -6,7 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-This command will create a BED file which contains all regions used by PyPGx.
+###############################################################
+# Create a BED file which contains all regions used by PyPGx. #
+###############################################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} > regions.bed
