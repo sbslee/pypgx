@@ -43,7 +43,7 @@ class Archive:
                     f.write(f'{k}={v}\n')
             if 'CovFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.tsv')
-            elif 'TSV' in self.metadata['SemanticType']:
+            elif 'SampleTable' in self.metadata['SemanticType']:
                 self.data.to_csv(f'{t}/data.tsv', sep='\t')
             elif 'VcfFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.vcf')
@@ -81,7 +81,7 @@ class Archive:
         if 'CovFrame' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.tsv') as fh:
                 data = pycov.CovFrame.from_file(fh)
-        elif 'TSV' in metadata['SemanticType']:
+        elif 'SampleTable' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.tsv') as fh:
                 data = pd.read_table(fh, index_col=0)
         elif 'VcfFrame' in metadata['SemanticType']:

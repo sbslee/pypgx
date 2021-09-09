@@ -27,7 +27,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Archive file with the semantic type TSV[Alleles].'
+        help='Archive file with the semantic type SampleTable[Alleles].'
     )
 
 def main(args):

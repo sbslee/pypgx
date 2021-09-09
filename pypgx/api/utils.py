@@ -143,10 +143,8 @@ def compute_control_statistics(
     Compute copy number from read depth for target gene.
 
     Input BAM files must be specified with either ``bam`` or ``fn``, but
-    it's an error to use both.
-
-    Control gene must be specified with either ``gene`` or ``region``, but
-    it's an error to use both.
+    it's an error to use both. Similarly, control gene must be specified with
+    either ``gene`` or ``region``, but it's an error to use both.
 
     By default, the input data is assumed to be WGS. If it's targeted
     sequencing, you must provide a BED file with ``bed`` to indicate
@@ -170,7 +168,7 @@ def compute_control_statistics(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type TSV[Statistcs].
+        Archive file with the semantic type SampleTable[Statistcs].
     """
     bam_files = []
 
@@ -205,7 +203,7 @@ def compute_control_statistics(
     metadata = {
         'Control': gene,
         'Assembly': assembly,
-        'SemanticType': 'TSV[Statistics]',
+        'SemanticType': 'SampleTable[Statistics]',
     }
 
     if bed:
@@ -227,7 +225,7 @@ def compute_control_statistics(
     else:
         metadata['Platform'] = 'WGS'
 
-    data = cf.df.iloc[:, 2:].describe()
+    data = cf.df.iloc[:, 2:].describe().T
     result = sdk.Archive(metadata, data)
 
     return result
@@ -249,7 +247,7 @@ def compute_copy_number(target, control, samples):
     target : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
     control : pypgx.Archive
-        Archive file with the semandtic type TSV[Statistcs].
+        Archive file with the semandtic type SampleTable[Statistcs].
     samples : list, optional
         List of known samples without SV.
 
@@ -263,7 +261,7 @@ def compute_copy_number(target, control, samples):
 
     # Apply intra-sample normalization.
     df = depth.data.copy_df()
-    medians = statistics.data.T['50%']
+    medians = statistics.data['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
 
     # Apply inter-sample normalization.
@@ -774,7 +772,7 @@ def has_score(gene):
 
 def import_vcf(gene, vcf, assembly='GRCh37'):
     """
-    Import VCF data.
+    Import VCF data for target gene.
     """
     vf = pyvcf.VcfFrame.from_file(vcf)
     region = get_region(gene, assembly=assembly)
@@ -1197,7 +1195,7 @@ def predict_alleles(input):
     data.columns = ['Haplotype1', 'Haplotype2']
 
     metadata = vcf.copy_metadata()
-    metadata['SemanticType'] = 'TSV[Alleles]'
+    metadata['SemanticType'] = 'SampleTable[Alleles]'
     result = sdk.Archive(metadata, data)
     return result
 
@@ -1217,7 +1215,7 @@ def predict_cnv(target):
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type TSV[CNVCalls].
+        Archive file with the semantic type SampleTable[CNVCalls].
     """
     copy_number = sdk.Archive.from_file(target)
     copy_number = _process_copy_number(copy_number)
@@ -1232,7 +1230,7 @@ def predict_cnv(target):
     cnvs = dict(zip(df.Code, df.Name))
     predictions = [cnvs[x] for x in predictions]
     metadata = copy_number.copy_metadata()
-    metadata['SemanticType'] = 'TSV[CNVCalls]'
+    metadata['SemanticType'] = 'SampleTable[CNVCalls]'
     data = pd.DataFrame({'Sample': copy_number.data.samples, 'CNV': predictions})
     return sdk.Archive(metadata, data)
 
@@ -1415,7 +1413,7 @@ def test_cnv_caller(caller, target, calls):
     target : pypgx.Archive
         Archive file with the semantic type CovFrame[CopyNumber].
     calls : pypgx.Archive
-        Archive file with the semantic type TSV[CNVCalls].
+        Archive file with the semantic type SampleTable[CNVCalls].
     """
     model = sdk.Archive.from_file(caller)
     copy_number = sdk.Archive.from_file(target)
@@ -1443,7 +1441,7 @@ def train_cnv_caller(target, calls):
     target : pypgx.Archive
         Archive file with the semantic type CovFrame[CopyNumber].
     calls : pypgx.Archive
-        Archive file with the semantic type TSV[CNVCalls].
+        Archive file with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------

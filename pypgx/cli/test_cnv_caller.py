@@ -31,7 +31,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'calls',
-        help='Archive file with the semantic type TSV[CNVCalls].'
+        help='Archive file with the semantic type SampleTable[CNVCalls].'
     )
 
 def main(args):

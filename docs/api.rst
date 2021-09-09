@@ -45,14 +45,14 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
-- ``TSV[Alleles]``
-    * TSV table for storing target gene's candidate star alleles for each sample.
+- ``SampleTable[Alleles]``
+    * TSV file for storing target gene's candidate star alleles for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
-- ``TSV[CNVCalls]``
-    * TSV table for storing target gene's CNV call for each sample.
+- ``SampleTable[CNVCalls]``
+    * TSV file for storing target gene's CNV call for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
-- ``TSV[Statistcs]``
-    * TSV table for storing control gene's various statistics on read depth. Used for converting target gene's read depth to copy number.
+- ``SampleTable[Statistcs]``
+    * TSV file for storing control gene's various statistics on read depth for each sample. Used for converting target gene's read depth to copy number.
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
     * VcfFrame for storing target gene's consolidated variant data.

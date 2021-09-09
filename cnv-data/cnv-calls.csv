@@ -67,5 +67,5 @@ e246a44270e34d2aa228844732995abe,NA21781,Normal,Test,Increased,Train,DeletionHom
 e92d97eb8a3f4c4cb7db5faf9882b167,NA07348,Normal,Test,Normal,Train,DeletionHet,Test,DeletionHet,Test,DeletionHet,Train
 e968235bb8e14f02af53e2f17cee324f,NA19003,Normal,Test,Normal,Train,DeletionHom,Test,DeletionHet,Test,DeletionHet,Train
 ecf7d003ffef4d429351037cb97bac09,NA18544,Normal,Test,Normal,Train,DeletionHet,Test,DeletionHet,Test,DeletionHom,Train
-f00e1071f840476c9872de73f0ea8a02,NA18540,Normal,Test,Increased,Train,Normal,Test,DeletionHom,Test,Duplication,Train
+f00e1071f840476c9872de73f0ea8a02,NA18540,Normal,Test,Increased,Train,Normal,Test,DeletionHom,Test,DeletionHom,Train
 f52c133442ca4f93a47b689fc385b1f5,NA18966,Normal,Test,Normal,Train,DeletionHom,Test,Normal,Test,DeletionHom,Train

@@ -31,7 +31,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'control',
-        help='Archive file with the semantic type TSV[Statistics].'
+        help='Archive file with the semantic type SampleTable[Statistics].'
     )
     parser.add_argument(
         'output',
