@@ -45,6 +45,10 @@ from .api.plot import (
     plot_vcf_read_depth,
 )
 
+from .api.genotype import (
+    call_genotypes,
+)
+
 from .sdk import (
     Archive,
 )
