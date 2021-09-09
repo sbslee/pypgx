@@ -1,6 +1,7 @@
 import pkgutil
 from io import BytesIO
 import tempfile
+import zipfile
 import subprocess
 import os
 import pickle
@@ -1361,6 +1362,20 @@ def predict_score(gene, allele):
             return get_score(gene, x)
 
     return sum([parsecnv(x) for x in allele.split('+')])
+
+def print_metadata(archive):
+    """
+    Print the metadata of specified archive.
+
+    Parameters
+    ----------
+    archive : pypgx.Archive
+        Archive file.
+    """
+    zf = zipfile.ZipFile('UGT2B17-alleles.zip')
+    parent = zf.filelist[0].filename.split('/')[0]
+    with zf.open(f'{parent}/metadata.txt') as f:
+        print(f.read().decode('utf-8').strip())
 
 def sort_alleles(gene, alleles, assembly='GRCh37'):
     """

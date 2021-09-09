@@ -32,6 +32,7 @@ from .api.utils import (
     predict_cnv,
     predict_phenotype,
     predict_score,
+    print_metadata,
     sort_alleles,
     test_cnv_caller,
     train_cnv_caller,
