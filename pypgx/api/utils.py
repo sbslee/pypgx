@@ -1450,8 +1450,10 @@ def train_cnv_caller(target, calls):
         Archive file with the semantic type Model[CNV].
     """
     copy_number = sdk.Archive.from_file(target)
+    copy_number.check('CovFrame[CopyNumber]')
     copy_number = _process_copy_number(copy_number)
     cnv_calls = sdk.Archive.from_file(calls)
+    cnv_calls.check('SampleTable[CNVCalls]')
     df = load_cnv_table()
     cnv_dict = dict(zip(df.Name, df.Code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: cnv_dict[r.CNV], axis=1)

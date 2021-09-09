@@ -8,6 +8,12 @@ import pickle
 import pandas as pd
 from fuc import pyvcf, pycov
 
+class SemanticTypeNotFoundError(Exception):
+    """Raise when specified semantic type is not supported."""
+
+class IncorrectSemanticTypeError(Exception):
+    """Raise when specified semantic type is incorrect."""
+
 class Archive:
     """
     Class for storing various data.
@@ -50,7 +56,7 @@ class Archive:
             elif 'Model' in self.metadata['SemanticType']:
                 pickle.dump(self.data, open(f'{t}/data.sav', 'wb'))
             else:
-                raise ValueError('Incorrect semantic type')
+                raise SemanticTypeNotFoundError(self.metadata['SemanticType'])
             zipf = zipfile.ZipFile(fn, 'w', zipfile.ZIP_DEFLATED)
             for root, dirs, files in os.walk(t):
                 for file in files:
@@ -91,8 +97,12 @@ class Archive:
             with zf.open(f'{parent}/data.sav') as fh:
                 data = pickle.load(fh)
         else:
-            raise ValueError('Incorrect semantic type')
+            raise SemanticTypeNotFoundError(metadata['SemanticType'])
         return cls(metadata, data)
+
+    def check(self, semantic):
+        if self.metadata['SemanticType'] != semantic:
+            raise IncorrectSemanticTypeError(f"Expected {semantic} but found {self.metadata['SemanticType']}")
 
 def zipdir(dir, output):
     """
