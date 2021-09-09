@@ -1372,7 +1372,7 @@ def print_metadata(archive):
     archive : pypgx.Archive
         Archive file.
     """
-    zf = zipfile.ZipFile('UGT2B17-alleles.zip')
+    zf = zipfile.ZipFile(archive)
     parent = zf.filelist[0].filename.split('/')[0]
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
