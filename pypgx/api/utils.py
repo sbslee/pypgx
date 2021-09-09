@@ -1231,7 +1231,8 @@ def predict_cnv(target):
     predictions = [cnvs[x] for x in predictions]
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[CNVCalls]'
-    data = pd.DataFrame({'Sample': copy_number.data.samples, 'CNV': predictions})
+    data = pd.DataFrame({'CNV': predictions})
+    data.index = copy_number.data.samples
     return sdk.Archive(metadata, data)
 
 def predict_phenotype(gene, a, b):
