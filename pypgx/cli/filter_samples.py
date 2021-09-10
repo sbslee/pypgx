@@ -41,13 +41,17 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         '--exclude',
+        action='store_true',
         help='Exclude specified samples.'
     )
     parser.add_argument(
         '--fn',
+        metavar='PATH',
         help='File containing one sample name per line.'
     )
 
 def main(args):
-    archive = utils.predict_cnv(args.input)
+    archive = utils.filter_samples(
+        args.input, samples=args.samples, exclude=args.exclude, fn=args.fn
+    )
     archive.to_file(args.output)

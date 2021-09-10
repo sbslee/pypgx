@@ -41,5 +41,5 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    result = utils.import_vcf(args.gene, args.vcf, assembly=args.assembly)
-    result.to_file(args.output)
+    archive = utils.import_vcf(args.gene, args.vcf, assembly=args.assembly)
+    archive.to_file(args.output)    

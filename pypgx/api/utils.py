@@ -520,7 +520,7 @@ def filter_samples(archive, samples=None, exclude=False, fn=None):
         Fitlered Archive object.
     """
     if isinstance(archive, str):
-        archive = pypgx.Archive.from_file(archive)
+        archive = sdk.Archive.from_file(archive)
 
     if isinstance(samples, str):
         samples = [samples]
@@ -536,6 +536,8 @@ def filter_samples(archive, samples=None, exclude=False, fn=None):
 
     if 'CovFrame' in archive.metadata['SemanticType']:
         data = archive.data.subset(samples, exclude=exclude)
+    elif 'SampleTable' in archive.metadata['SemanticType']:
+        data = archive.data.loc[samples]
     else:
         pass
 

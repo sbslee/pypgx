@@ -6,7 +6,7 @@ import copy
 import pickle
 
 import pandas as pd
-from fuc import pyvcf, pycov
+from fuc import pyvcf, pycov, common
 
 class SemanticTypeNotFoundError(Exception):
     """Raise when specified semantic type is not supported."""
@@ -46,6 +46,8 @@ class Archive:
         with tempfile.TemporaryDirectory() as t:
             with open(f'{t}/metadata.txt', 'w') as f:
                 for k, v in self.metadata.items():
+                    if k == 'SemanticType':
+                        semantic_type = v
                     f.write(f'{k}={v}\n')
             if 'CovFrame' in self.metadata['SemanticType']:
                 self.data.to_file(f'{t}/data.tsv')
@@ -66,6 +68,8 @@ class Archive:
                                os.path.relpath(os.path.join(root, file),
                                                os.path.join(t, '..')))
             zipf.close()
+
+            common.color_print(f'Saved {semantic_type} to: {fn}')
 
     @classmethod
     def from_file(cls, fn):

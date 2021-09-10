@@ -24,27 +24,45 @@ class UGT2B17Genotyper:
     def __init__(self, df):
         self.results = self.genotype(df)
 
-def call_genotypes(alleles, cnv):
+def call_genotypes(alleles=None, cnv=None):
     """
     Call genotypes for specified gene.
+
+    Parameters
+    ----------
+    alleles : pypgx.Archive, optional
+        Archive file with the semantic type SampleTable[Alleles].
+    cnv : pypgx.Archive, optional
+        Archive file with the semantic type SampleTable[CNVCalls].
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type SampleTable[Genotypes].
     """
     genotypers = {
         'UGT2B17': UGT2B17Genotyper,
     }
 
     # Check the inputs.
-    if isinstance(alleles, str):
+    if alleles is not None and isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
+
+    if alleles is not None and isinstance(cnv, str):
+        cnv = sdk.Archive.from_file(cnv)
+
     alleles.check('SampleTable[Alleles]')
+
+    cnv.check('SampleTable[CNVCalls]')
+
+    if set(alleles.data.index) != set(cnv.data.index):
+        raise ValueError('SampleTable[Alleles] and SampleTable[CNVCalls] have different samples')
+
     def one_row(r):
         r.Haplotype1 = r.Haplotype1.strip(';').split(';')
         r.Haplotype2 = r.Haplotype2.strip(';').split(';')
         return r
     alleles.data = alleles.data.apply(one_row, axis=1)
-
-    if isinstance(cnv, str):
-        cnv = sdk.Archive.from_file(cnv)
-    cnv.check('SampleTable[CNVCalls]')
 
     if alleles.metadata['Gene'] != cnv.metadata['Gene']:
         raise ValueError('Found two different target genes')
