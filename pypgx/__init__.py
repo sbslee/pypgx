@@ -6,6 +6,7 @@ from .api.utils import (
     create_consolidated_vcf,
     create_regions_bed,
     estimate_phase_beagle,
+    filter_samples,
     get_default_allele,
     get_function,
     get_paralog,

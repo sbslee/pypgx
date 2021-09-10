@@ -5,6 +5,10 @@ from .. import sdk
 import pandas as pd
 
 class UGT2B17Genotyper:
+    """
+    Genotyper for UGT2B17.
+    """
+
     def one_row(self, r):
         if r.CNV == 'DeletionHet':
             r['Genotype'] = '*1/*2'
@@ -21,6 +25,9 @@ class UGT2B17Genotyper:
         self.results = self.genotype(df)
 
 def call_genotypes(alleles, cnv):
+    """
+    Call genotypes for specified gene.
+    """
     genotypers = {
         'UGT2B17': UGT2B17Genotyper,
     }

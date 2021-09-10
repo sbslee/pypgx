@@ -6,7 +6,7 @@ This section describes application programming interface (API) for PyPGx.
 Archive file, semantic type, and metadata
 =========================================
 
-In order to efficiently store and transfer various datasets, results, and models, PyPGx uses the ZIP archive file format (``.zip``) that supports lossless data compression. Each archive file has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains information about the data being contained within the archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains key information about the data file contained within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -72,3 +72,15 @@ pypgx.api.utils
 
 .. automodule:: pypgx.api.utils
    :members:
+
+pypgx.api.plot
+==============
+
+.. automodule:: pypgx.api.plot
+  :members:
+
+pypgx.api.genotype
+==================
+
+.. automodule:: pypgx.api.genotype
+  :members:

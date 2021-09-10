@@ -496,6 +496,51 @@ def estimate_phase_beagle(
     result = sdk.Archive(metadata, data)
     return result
 
+def filter_samples(archive, samples=None, exclude=False, fn=None):
+    """
+    Filter Archive for specified samples.
+
+    Samples can be specified with either ``samples`` or ``fn``, but it's an
+    error to use both.
+
+    Parameters
+    ----------
+    archive : pypgx.archive or str
+        Archive object or file.
+    samples : str or list
+        Sample name or list of names (the order matters).
+    exclude : bool, default: False
+        If True, exclude specified samples.
+    fn : str
+        File containing one filename per line.
+
+    Returns
+    -------
+    pypgx.Archive
+        Fitlered Archive object.
+    """
+    if isinstance(archive, str):
+        archive = pypgx.Archive.from_file(archive)
+
+    if isinstance(samples, str):
+        samples = [samples]
+
+    if samples is not None and fn is None:
+        pass
+    elif samples is None and fn is not None:
+        samples = common.convert_file2list(fn)
+    elif samples is not None and fn is not None:
+        raise ValueError('Found two sets of samples')
+    else:
+        raise ValueError('Samples not found')
+
+    if 'CovFrame' in archive.metadata['SemanticType']:
+        data = archive.data.subset(samples, exclude=exclude)
+    else:
+        pass
+
+    return sdk.Archive(archive.copy_metadata(), data)
+
 def get_default_allele(gene, assembly='GRCh37'):
     """
     Get the default allele of specified gene.
