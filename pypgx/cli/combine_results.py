@@ -41,7 +41,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    archive = genotype.call_genotypes(
+    archive = utils.combine_results(
         genotypes=args.genotypes, alleles=args.alleles,
         cnv_calls=args.cnv_calls
     )
