@@ -822,20 +822,80 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
+def import_read_depth(
+    gene, read_depth, assembly='GRCh37', platform='WGS'
+):
+    """
+    Import read depth data for specified target gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    read_depth : fuc.pycov.CovFrame or str
+        TSV file containing read depth (zipped or unzipped).
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    platform : {'WGS', 'Targeted'}, default: 'WGS'
+        NGS platform.
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type CovFrame[ReadDepth].
+    """
+    if isinstance(read_depth, str):
+        cf = pycov.CovFrame.from_file(read_depth)
+    else:
+        cf = read_depth
+
+    region = get_region(gene, assembly=assembly)
+
+    data = cf.chr_prefix().slice(region)
+
+    metadata = {
+        'Gene': gene,
+        'Assembly': assembly,
+        'SemanticType': 'CovFrame[ReadDepth]',
+        'Platform': platform,
+    }
+
+    return sdk.Archive(metadata, data)
+
 def import_vcf(gene, vcf, assembly='GRCh37'):
     """
-    Import VCF data for target gene.
+    Import VCF data for specified target gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    vcf : fuc.pyvcf.VcfFrame or str
+        VCF file (zipped or unzipped).
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type VcfFrame[Imported].
     """
-    vf = pyvcf.VcfFrame.from_file(vcf)
+    if isinstance(vcf, str):
+        vf = pyvcf.VcfFrame.from_file(vcf)
+    else:
+        vf = vcf
+
     region = get_region(gene, assembly=assembly)
+
     data = vf.slice(region).strip('GT:AD:DP')
+
     metadata = {
         'Gene': gene,
         'Assembly': assembly,
         'SemanticType': 'VcfFrame[Imported]',
     }
-    result = sdk.Archive(metadata, data)
-    return result
+
+    return sdk.Archive(metadata, data)
 
 def list_alleles(gene):
     """
