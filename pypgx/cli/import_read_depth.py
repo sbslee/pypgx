@@ -11,7 +11,7 @@ description = f"""
 #####################################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 read-depth.zip CYP2D6-read-depth.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 read-depth.tsv CYP2D6-read-depth.zip
 """
 
 def create_parser(subparsers):
