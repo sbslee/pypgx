@@ -1,5 +1,6 @@
 from .api.utils import (
     build_definition_table,
+    combine_results,
     compute_control_statistics,
     compute_copy_number,
     compute_target_depth,

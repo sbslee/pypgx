@@ -57,6 +57,9 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``SampleTable[Genotypes]``
     * TSV file for storing target gene's genotype call for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
+- ``SampleTable[Results]``
+    * TSV file for storing various results for each sample.
+    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
 - ``SampleTable[Statistcs]``
     * TSV file for storing control gene's various statistics on read depth for each sample. Used for converting target gene's read depth to copy number.
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.

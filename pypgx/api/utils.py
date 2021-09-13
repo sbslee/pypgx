@@ -143,6 +143,58 @@ def build_definition_table(gene, assembly='GRCh37'):
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
 
+def combine_results(genotypes=None, alleles=None, cnv_calls=None):
+    """
+    Combine various results for target gene.
+
+    Parameters
+    ----------
+    genotypes : pypgx.Archive or str
+        Archive file with the semantic type SampleTable[Statistcs].
+    alleles : pypgx.Archive or str
+        Archive file with the semantic type SampleTable[Statistcs].
+    genotypes : pypgx.Archive or str
+        Archive file with the semantic type SampleTable[Statistcs].
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive file with the semantic type SampleTable[Statistcs].
+    """
+    if isinstance(genotypes, str):
+        genotypes = sdk.Archive.from_file(genotypes)
+
+    if isinstance(alleles, str):
+        alleles = sdk.Archive.from_file(alleles)
+
+    if isinstance(cnv_calls, str):
+        cnv_calls = sdk.Archive.from_file(cnv_calls)
+
+    tables = [x for x in [genotypes, alleles, cnv_calls] if x is not None]
+
+    if not tables:
+        raise ValueError('No input data detected')
+
+    metadata = {}
+
+    for k in ['Gene', 'Assembly']:
+        l = [x.metadata[k] for x in tables]
+        if len(set(l)) > 1:
+            raise ValueError(f'Found incompatible inputs: {l}')
+        metadata[k] = l[0]
+
+    data = [x.data for x in tables]
+
+    df = pd.concat(data, axis=1)
+
+    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'CNV']
+
+    for col in cols:
+        if col not in df.columns:
+            df[col] = np.nan
+
+    return sdk.Archive(metadata, df[cols])
+
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
 ):
