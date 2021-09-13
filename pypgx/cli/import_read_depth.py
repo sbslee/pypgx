@@ -6,9 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-#####################################################
-# Import read depth data for specified target gene. #
-#####################################################
+###########################################
+# Import read depth data for target gene. #
+###########################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} CYP2D6 read-depth.tsv CYP2D6-read-depth.zip
@@ -18,7 +18,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Import VCF data for target gene.',
+        help='Import read depth data for target gene.',
         description=description,
     )
     parser.add_argument(

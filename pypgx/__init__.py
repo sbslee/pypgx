@@ -52,6 +52,10 @@ from .api.genotype import (
     call_genotypes,
 )
 
+from .api.pipeline import (
+    run_ngs_pipeline,
+)
+
 from .sdk import (
     Archive,
 )

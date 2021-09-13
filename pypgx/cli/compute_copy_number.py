@@ -15,7 +15,7 @@ The method will convert read depth from target gene to copy number by performing
 If the input data was generated with targeted sequencing as opposed to WGS, the method will also apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} target.zip control.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-read-depth.zip VDR-control-statistcs.zip CYP2D6-copy-number.zip
 """
 
 def create_parser(subparsers):
@@ -26,11 +26,11 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'target',
+        'read-depth',
         help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
     parser.add_argument(
-        'control',
+        'control-statistcs',
         help='Archive file with the semantic type SampleTable[Statistics].'
     )
     parser.add_argument(
@@ -46,6 +46,6 @@ def create_parser(subparsers):
 
 def main(args):
     result = utils.compute_copy_number(
-        args.target, args.control, samples=args.samples
+        args.read_depth, args.control_statistcs, samples=args.samples
     )
     result.to_file(args.output)

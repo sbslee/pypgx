@@ -4,6 +4,26 @@ from .. import sdk
 
 import pandas as pd
 
+class GSTT1Genotyper:
+    """
+    Genotyper for GSTT1.
+    """
+
+    def one_row(self, r):
+        if r.CNV == 'DeletionHet':
+            result = '*A/*0'
+        elif r.CNV == 'DeletionHom':
+            result = '*0/*0'
+        else:
+            result = '*A/*A'
+        return result
+
+    def genotype(self, df):
+        return df.apply(self.one_row, axis=1)
+
+    def __init__(self, df):
+        self.results = self.genotype(df)
+
 class UGT2B17Genotyper:
     """
     Genotyper for UGT2B17.
@@ -41,6 +61,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         Archive file with the semantic type SampleTable[Genotypes].
     """
     genotypers = {
+        'GSTT1': GSTT1Genotyper,
         'UGT2B17': UGT2B17Genotyper,
     }
 

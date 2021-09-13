@@ -291,7 +291,7 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(target, control, samples=None):
+def compute_copy_number(read_depth, control_statistcs, samples=None):
     """
     Compute copy number from read depth for target gene.
 
@@ -306,9 +306,9 @@ def compute_copy_number(target, control, samples=None):
 
     Parameters
     ----------
-    target : pypgx.Archive
+    read_depth : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
-    control : pypgx.Archive
+    control_statistcs : pypgx.Archive
         Archive file with the semandtic type SampleTable[Statistcs].
     samples : list, optional
         List of known samples without SV.
@@ -318,16 +318,19 @@ def compute_copy_number(target, control, samples=None):
     pypgx.Archive
         Archive file with the semandtic type CovFrame[CopyNumber].
     """
-    depth = sdk.Archive.from_file(target)
-    statistics = sdk.Archive.from_file(control)
+    if isinstance(read_depth, str):
+        read_depth = sdk.Archive.from_file(read_depth)
+
+    if isinstance(control_statistcs, str):
+        control_statistcs = sdk.Archive.from_file(control_statistcs)
 
     # Apply intra-sample normalization.
-    df = depth.data.copy_df()
-    medians = statistics.data['50%']
+    df = read_depth.data.copy_df()
+    medians = control_statistcs.data['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
 
     # Apply inter-sample normalization.
-    if depth.metadata['Platform'] == 'Targeted':
+    if read_depth.metadata['Platform'] == 'Targeted':
         if samples is None:
             medians = df.iloc[:, 2:].median(axis=1).replace(0, np.nan)
         else:
@@ -335,9 +338,9 @@ def compute_copy_number(target, control, samples=None):
         df.iloc[:, 2:] = df.iloc[:, 2:].div(medians, axis=0) * 2
 
     cf = pycov.CovFrame(df)
-    metadata = depth.copy_metadata()
+    metadata = read_depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
-    metadata['Control'] = statistics.metadata['Control']
+    metadata['Control'] = control_statistcs.metadata['Control']
     if samples is None:
         metadata['Samples'] = 'None'
     else:
@@ -448,15 +451,18 @@ def create_consolidated_vcf(imported, phased):
     pypgx.Archive
         Archive file with the semantic type VcfFrame[Consolidated].
     """
-    vcf1 = sdk.Archive.from_file(imported)
-    vcf2 = sdk.Archive.from_file(phased)
+    if isinstance(imported, str):
+        imported = sdk.Archive.from_file(imported)
 
-    vcf1.data = vcf1.data.strip('GT:AD:DP')
-    vcf2.data = vcf2.data.strip('GT')
+    if isinstance(phased, str):
+        phased = sdk.Archive.from_file(phased)
+
+    imported.data = imported.data.strip('GT:AD:DP')
+    phased.data = phased.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = vcf1.data.fetch(variant)
+        s = imported.data.fetch(variant)
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -466,14 +472,14 @@ def create_consolidated_vcf(imported, phased):
 
         return r
 
-    vf1 = pyvcf.VcfFrame([], vcf2.data.df.apply(one_row, axis=1))
+    vf1 = pyvcf.VcfFrame([], phased.data.df.apply(one_row, axis=1))
     vf1.df.FORMAT = 'GT:AD:DP'
 
-    vf2 = vcf1.data.filter_vcf(vcf2.data, opposite=True)
+    vf2 = imported.data.filter_vcf(phased.data, opposite=True)
     vf3 = pyvcf.VcfFrame([], pd.concat([vf1.df, vf2.df])).sort()
     vf3 = vf3.pseudophase()
 
-    metadata = vcf2.copy_metadata()
+    metadata = phased.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
     result = sdk.Archive(metadata, vf3)
@@ -524,14 +530,14 @@ def create_regions_bed(
     return bf
 
 def estimate_phase_beagle(
-    target, panel, impute=False
+    imported_variants, panel, impute=False
 ):
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
     Parameters
     ----------
-    target : str
+    imported_variants : str
         Archive file with the semantic type VcfFrame[Imported].
     panel : str
         Reference haplotype panel.
@@ -543,15 +549,18 @@ def estimate_phase_beagle(
     pypgx.Archive
         Archive file with the semantic type VcfFrame[Phased].
     """
-    vcf = sdk.Archive.from_file(target)
-    region = get_region(vcf.metadata['Gene'], assembly=vcf.metadata['Assembly'])
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
+    region = get_region(imported_variants.metadata['Gene'], assembly=imported_variants.metadata['Assembly'])
     path = os.path.dirname(os.path.abspath(__file__))
     program = f'{path}/beagle.28Jun21.220.jar'
-    metadata = vcf.copy_metadata()
+    metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
+    if imported_variants.data.empty:
+        return sdk.Archive(metadata, imported_variants.data.copy())
     with tempfile.TemporaryDirectory() as t:
-        vcf.data.to_file(f'{t}/input.vcf')
+        imported_variants.data.to_file(f'{t}/input.vcf')
         command = [
             'java', '-Xmx2g', '-jar', program,
             f'gt={t}/input.vcf',
@@ -562,8 +571,7 @@ def estimate_phase_beagle(
         ]
         subprocess.run(command)
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-    result = sdk.Archive(metadata, data)
-    return result
+    return sdk.Archive(metadata, data)
 
 def filter_samples(archive, samples=None, exclude=False, fn=None):
     """
@@ -891,7 +899,7 @@ def import_read_depth(
     gene, read_depth, assembly='GRCh37', platform='WGS'
 ):
     """
-    Import read depth data for specified target gene.
+    Import read depth data for target gene.
 
     Parameters
     ----------
@@ -1328,15 +1336,16 @@ def predict_alleles(input):
     >>> pypgx.predict_alleles(vf, 'CYP4F2')
     {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
-    vcf = sdk.Archive.from_file(input)
+    if isinstance(input, str):
+        input = sdk.Archive.from_file(input)
 
-    if vcf.metadata['Gene'] not in list_genes():
-        raise GeneNotFoundError(vcf.metadata['Gene'])
+    if input.metadata['Gene'] not in list_genes():
+        raise GeneNotFoundError(input.metadata['Gene'])
 
-    table = build_definition_table(vcf.metadata['Gene'],
-        assembly=vcf.metadata['Assembly'])
+    table = build_definition_table(input.metadata['Gene'],
+        assembly=input.metadata['Assembly'])
 
-    vf = vcf.data.filter_vcf(table)
+    vf = input.data.filter_vcf(table)
 
     stars = {}
 
@@ -1361,17 +1370,17 @@ def predict_alleles(input):
                 if variants.issubset(s):
                     samples[sample][i].append(star)
             if not samples[sample][i]:
-                default = get_default_allele(vcf.metadata['Gene'],
-                    vcf.metadata['Assembly'])
+                default = get_default_allele(input.metadata['Gene'],
+                    input.metadata['Assembly'])
                 if default:
                     samples[sample][i].append(default)
-            samples[sample][i] = sort_alleles(vcf.metadata['Gene'], samples[sample][i])
+            samples[sample][i] = sort_alleles(input.metadata['Gene'], samples[sample][i])
             samples[sample][i] = ';'.join(samples[sample][i]) + ';'
 
     data = pd.DataFrame(samples).T
     data.columns = ['Haplotype1', 'Haplotype2']
 
-    metadata = vcf.copy_metadata()
+    metadata = input.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[Alleles]'
     result = sdk.Archive(metadata, data)
     return result
