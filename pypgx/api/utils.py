@@ -150,16 +150,16 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     Parameters
     ----------
     genotypes : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Statistcs].
+        Archive file with the semantic type SampleTable[Genotypes].
     alleles : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Statistcs].
-    genotypes : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Statistcs].
+        Archive file with the semantic type SampleTable[Alleles].
+    cnv_calls : pypgx.Archive or str
+        Archive file with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Statistcs].
+        Archive file with the semantic type SampleTable[Results].
     """
     if isinstance(genotypes, str):
         genotypes = sdk.Archive.from_file(genotypes)
@@ -192,6 +192,8 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     for col in cols:
         if col not in df.columns:
             df[col] = np.nan
+
+    metadata['SemanticType'] = 'SampleTable[Results]'
 
     return sdk.Archive(metadata, df[cols])
 

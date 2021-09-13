@@ -28,7 +28,7 @@ def create_parser(subparsers):
         help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
-        '--chr_prefix',
+        '--chr-prefix',
         action='store_true',
         help="Whether to add the 'chr' string in contig names."
     )
@@ -38,7 +38,7 @@ def create_parser(subparsers):
         help='Whether to merge overlapping intervals (gene names will be removed too).'
     )
     parser.add_argument(
-        '--sv_genes',
+        '--sv-genes',
         action='store_true',
         help='Whether to only return genes with SV.'
     )

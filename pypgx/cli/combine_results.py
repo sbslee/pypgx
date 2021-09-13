@@ -1,28 +1,32 @@
 import sys
 
-from ..api import genotype
+from ..api import utils
 
 import fuc
-import pysam
 
 description = f"""
-###################################
-# Call genotypes for target gene. #
-###################################
+############################################
+# Combine various results for target gene. #
+############################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Call genotypes for target gene.',
+        help='Combine various results for target gene.',
         description=description,
     )
     parser.add_argument(
-        'genotypes',
+        'results',
+        help='Archive file with the semantic type SampleTable[Results].'
+    )
+    parser.add_argument(
+        '--genotypes',
+        metavar='PATH',
         help='Archive file with the semantic type SampleTable[Genotypes].'
     )
     parser.add_argument(
@@ -38,6 +42,7 @@ def create_parser(subparsers):
 
 def main(args):
     archive = genotype.call_genotypes(
-        alleles=args.alleles, cnv_calls=args.cnv_calls
+        genotypes=args.genotypes, alleles=args.alleles,
+        cnv_calls=args.cnv_calls
     )
-    archive.to_file(args.genotypes)
+    archive.to_file(args.results)
