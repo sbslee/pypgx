@@ -927,9 +927,9 @@ def import_read_depth(
 
     return sdk.Archive(metadata, data)
 
-def import_vcf(gene, vcf, assembly='GRCh37'):
+def import_variants(gene, vcf, assembly='GRCh37'):
     """
-    Import VCF data for specified target gene.
+    Import variant data for target gene.
 
     Parameters
     ----------

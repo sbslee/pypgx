@@ -6,19 +6,19 @@ import fuc
 import pysam
 
 description = f"""
-##############################################
-# Import VCF data for specified target gene. #
-##############################################
+########################################
+# Import variant data for target gene. #
+########################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} gene in.vcf out.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 variants.vcf CYP2D6-variants-imported.zip
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Import VCF data for specified target gene.',
+        help='Import variant data for target gene.',
         description=description,
     )
     parser.add_argument(
@@ -41,5 +41,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    archive = utils.import_vcf(args.gene, args.vcf, assembly=args.assembly)
+    archive = utils.import_variants(
+        args.gene, args.vcf, assembly=args.assembly
+    )
     archive.to_file(args.output)

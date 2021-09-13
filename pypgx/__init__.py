@@ -17,7 +17,7 @@ from .api.utils import (
     has_phenotype,
     has_score,
     import_read_depth,
-    import_vcf,
+    import_variants,
     list_alleles,
     list_functions,
     list_genes,
