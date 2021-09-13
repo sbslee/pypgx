@@ -6,7 +6,7 @@ This section describes application programming interface (API) for PyPGx.
 Archive file, semantic type, and metadata
 =========================================
 
-In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important information about the data file contained within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important information about the data file within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -30,6 +30,9 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``
+    * - ``Samples``
+      - Samples used for inter-sample normalization.
+      - ``NA07000,NA10854,NA11993``
     * - ``SemanticType``
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
@@ -38,7 +41,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``.
+    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
 - ``CovFrame[ReadDepth]``
     * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.

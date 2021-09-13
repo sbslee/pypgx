@@ -12,7 +12,7 @@ description = f"""
 
 The method will convert read depth from target gene to copy number by performing intra-sample normalization using summary statistics from control gene.
 
-If the input data was generated with targeted sequencing, as opposed to WGS, the command will also apply inter-sample normalization using the population statistics. However, for best results it's recommended to manually specify a list of known samples without SV.
+If the input data was generated with targeted sequencing as opposed to WGS, the method will also apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV.
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} target.zip control.zip output.zip

@@ -237,7 +237,7 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(target, control, samples):
+def compute_copy_number(target, control, samples=None):
     """
     Compute copy number from read depth for target gene.
 
@@ -245,10 +245,10 @@ def compute_copy_number(target, control, samples):
     performing intra-sample normalization using summary statistics from
     control gene.
 
-    If the input data was generated with targeted sequencing, as opposed to
-    WGS, the method will also apply inter-sample normalization using the
-    population statistics. However, for best results it's recommended to
-    manually specify a list of known samples without SV.
+    If the input data was generated with targeted sequencing as opposed to
+    WGS, the method will also apply inter-sample normalization using summary
+    statistics across all samples. For best results, it is recommended to
+    manually specify a list of known reference samples that do not have SV.
 
     Parameters
     ----------
@@ -284,6 +284,10 @@ def compute_copy_number(target, control, samples):
     metadata = depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
     metadata['Control'] = statistics.metadata['Control']
+    if samples is None:
+        metadata['Samples'] = 'None'
+    else:
+        metadata['Samples'] = ','.join(samples)
 
     return sdk.Archive(metadata, cf)
 
