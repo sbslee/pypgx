@@ -416,7 +416,7 @@ def create_consolidated_vcf(imported, phased):
     return result
 
 def create_regions_bed(
-    assembly='GRCh37', chr_prefix=False, merge=False
+    assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -430,6 +430,8 @@ def create_regions_bed(
     merge : bool, default: False
         Whether to merge overlapping intervals (gene names will be removed
         too).
+    sv_genes : bool, default: False
+        Whether to only return genes with SV.
 
     Returns
     -------
@@ -437,6 +439,8 @@ def create_regions_bed(
         BED file.
     """
     df = load_gene_table()
+    if sv_genes:
+        df = df[df.SV]
     data = []
     for i, r in df.iterrows():
         region = r[f'{assembly}Region']

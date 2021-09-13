@@ -6,7 +6,7 @@ This section describes application programming interface (API) for PyPGx.
 Archive file, semantic type, and metadata
 =========================================
 
-In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains key information about the data file contained within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important information about the data file contained within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -34,7 +34,7 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
 
-Notably, all archive files have defined semantic types, which allows us to ensure that the data that is passed to a method/command is meaningful for the operation that will be performed. Below is a list of currently defined semantic types:
+Notably, all archive files have defined semantic types, which allows us to ensure that the data that is passed to a PyPGx command (CLI) or method (API) is meaningful for the operation that will be performed. Below is a list of currently defined semantic types:
 
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.

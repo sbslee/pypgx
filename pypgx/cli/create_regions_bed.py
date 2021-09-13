@@ -37,9 +37,15 @@ def create_parser(subparsers):
         action='store_true',
         help='Whether to merge overlapping intervals (gene names will be removed too).'
     )
+    parser.add_argument(
+        '--sv_genes',
+        action='store_true',
+        help='Whether to only return genes with SV.'
+    )
 
 def main(args):
     bf = utils.create_regions_bed(
-        assembly=args.assembly, chr_prefix=args.chr_prefix, merge=args.merge
+        assembly=args.assembly, chr_prefix=args.chr_prefix,
+        merge=args.merge, sv_genes=args.sv_genes
     )
     sys.stdout.write(bf.to_string())
