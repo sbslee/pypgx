@@ -11,12 +11,12 @@ class UGT2B17Genotyper:
 
     def one_row(self, r):
         if r.CNV == 'DeletionHet':
-            r['Genotype'] = '*1/*2'
+            result = '*1/*2'
         elif r.CNV == 'DeletionHom':
-            r['Genotype'] = '*2/*2'
+            result = '*2/*2'
         else:
-            r['Genotype'] = '*1/*1'
-        return r
+            result = '*1/*1'
+        return result
 
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
@@ -24,15 +24,15 @@ class UGT2B17Genotyper:
     def __init__(self, df):
         self.results = self.genotype(df)
 
-def call_genotypes(alleles=None, cnv=None):
+def call_genotypes(alleles=None, cnv_calls=None):
     """
-    Call genotypes for specified gene.
+    Call genotypes for target gene.
 
     Parameters
     ----------
     alleles : pypgx.Archive, optional
         Archive file with the semantic type SampleTable[Alleles].
-    cnv : pypgx.Archive, optional
+    cnv_calls : pypgx.Archive, optional
         Archive file with the semantic type SampleTable[CNVCalls].
 
     Returns
@@ -44,47 +44,51 @@ def call_genotypes(alleles=None, cnv=None):
         'UGT2B17': UGT2B17Genotyper,
     }
 
-    # Check the inputs.
-    if alleles is not None and isinstance(alleles, str):
+    # Check the input files.
+    if isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
 
-    if alleles is not None and isinstance(cnv, str):
-        cnv = sdk.Archive.from_file(cnv)
+    if alleles is not None:
+        alleles.check('SampleTable[Alleles]')
+        def one_row(r):
+            r.Haplotype1 = r.Haplotype1.strip(';').split(';')
+            r.Haplotype2 = r.Haplotype2.strip(';').split(';')
+            return r
+        alleles.data = alleles.data.apply(one_row, axis=1)
 
-    alleles.check('SampleTable[Alleles]')
+    if isinstance(cnv_calls, str):
+        cnv_calls = sdk.Archive.from_file(cnv_calls)
 
-    cnv.check('SampleTable[CNVCalls]')
+    if cnv_calls is not None:
+        cnv_calls.check('SampleTable[CNVCalls]')
 
-    if set(alleles.data.index) != set(cnv.data.index):
-        raise ValueError('SampleTable[Alleles] and SampleTable[CNVCalls] have different samples')
+    if alleles is not None and cnv_calls is not None:
+        if set(alleles.data.index) != set(cnv_calls.data.index):
+            raise ValueError('SampleTable[Alleles] and '
+                'SampleTable[CNVCalls] have different samples')
+        if alleles.metadata['Gene'] != cnv_calls.metadata['Gene']:
+            raise ValueError('Found two different target genes')
+        df = pd.concat([alleles.data, cnv_calls.data], axis=1)
+        gene = alleles.metadata['Gene']
+        assembly = alleles.metadata['Assembly']
+    elif alleles is not None and cnv_calls is None:
+        df = alleles.data.copy()
+        gene = alleles.metadata['Gene']
+        assembly = alleles.metadata['Assembly']
+    elif alleles is None and cnv_calls is not None:
+        df = cnv_calls.data.copy()
+        gene = cnv_calls.metadata['Gene']
+        assembly = cnv_calls.metadata['Assembly']
+    else:
+        raise ValueError('Either SampleTable[Alleles] or '
+            'SampleTable[CNVCalls] must be provided')
 
-    def one_row(r):
-        r.Haplotype1 = r.Haplotype1.strip(';').split(';')
-        r.Haplotype2 = r.Haplotype2.strip(';').split(';')
-        return r
-    alleles.data = alleles.data.apply(one_row, axis=1)
-
-    if alleles.metadata['Gene'] != cnv.metadata['Gene']:
-        raise ValueError('Found two different target genes')
-
-    df = pd.concat([alleles.data, cnv.data], axis=1)
-
-    if df.isna().any().any():
-        m = (f'Will drop {df.isna().any(axis=1).sum()} samples because of '
-            'missing data')
-        df = df.dropna()
-        warnings.warn(m)
-
-    df = genotypers[alleles.metadata['Gene']](df).results
-    def one_row(r):
-        r.Haplotype1 = ';'.join(r.Haplotype1) + ';'
-        r.Haplotype2 = ';'.join(r.Haplotype2) + ';'
-        return r
-    df = df.apply(one_row, axis=1)
+    df = genotypers[gene](df).results.to_frame()
+    df.columns = ['Genotype']
 
     metadata = {}
-    metadata['Gene'] = alleles.metadata['Gene']
-    metadata['Assembly'] = alleles.metadata['Assembly']
+    metadata['Gene'] = gene
+    metadata['Assembly'] = assembly
     metadata['SemanticType'] = 'SampleTable[Genotypes]'
 
     return sdk.Archive(metadata, df)

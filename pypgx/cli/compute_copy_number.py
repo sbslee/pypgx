@@ -10,7 +10,7 @@ description = f"""
 # Compute copy number from read depth for target gene. #
 ########################################################
 
-The command will convert read depth to copy number by performing intra-sample normalization with control statistics.
+The method will convert read depth from target gene to copy number by performing intra-sample normalization using summary statistics from control gene.
 
 If the input data was generated with targeted sequencing, as opposed to WGS, the command will also apply inter-sample normalization using the population statistics. However, for best results it's recommended to manually specify a list of known samples without SV.
 

@@ -6,9 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-##########################################
-# Predict CNV based on copy number data. #
-##########################################
+##########################################################
+# Predict CNV for target gene based on copy number data. #
+##########################################################
 
 If there are missing values because, for example, the input data was generated with targeted sequencing, they will be filled in with the sample's median copy number.
 
@@ -20,7 +20,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Predict CNV based on copy number data.',
+        help='Predict CNV for target gene based on copy number data.',
         description=description,
     )
     parser.add_argument(

@@ -43,6 +43,12 @@ class PhenotypeNotFoundError(Exception):
 
 def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
+    region = get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
+    chrom, start, end = common.parse_region(region)
+    if (end - start + 1) > copy_number.data.shape[0]:
+        temp = pd.DataFrame.from_dict({'Temp': range(int(df.Position.iat[0]-1), int(df.Position.iat[-1])+1)})
+        temp = temp.merge(df, left_on='Temp', right_on='Position', how='outer')
+        df = temp.drop(columns='Temp')
     df = df.fillna(df.median())
     df.iloc[:, 2:] = df.iloc[:, 2:].apply(lambda c: median_filter(c, size=1000), axis=0)
     return sdk.Archive(copy_number.copy_metadata(), pycov.CovFrame(df))
@@ -235,8 +241,9 @@ def compute_copy_number(target, control, samples):
     """
     Compute copy number from read depth for target gene.
 
-    The method will convert read depth to copy number by performing
-    intra-sample normalization with control statistics.
+    The method will convert read depth from target gene to copy number by
+    performing intra-sample normalization using summary statistics from
+    control gene.
 
     If the input data was generated with targeted sequencing, as opposed to
     WGS, the method will also apply inter-sample normalization using the
@@ -1311,9 +1318,9 @@ def predict_alleles(input):
     result = sdk.Archive(metadata, data)
     return result
 
-def predict_cnv(target):
+def predict_cnv(copy_number):
     """
-    Predict CNV based on copy number data.
+    Predict CNV for target gene based on copy number data.
 
     If there are missing values because, for example, the input data was
     generated with targeted sequencing, they will be filled in with the
@@ -1329,7 +1336,8 @@ def predict_cnv(target):
     pypgx.Archive
         Archive file with the semantic type SampleTable[CNVCalls].
     """
-    copy_number = sdk.Archive.from_file(target)
+    if isinstance(copy_number, str):
+        copy_number = sdk.Archive.from_file(copy_number)
     copy_number = _process_copy_number(copy_number)
     path = os.path.dirname(os.path.abspath(__file__))
     model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
