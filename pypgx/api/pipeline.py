@@ -39,6 +39,11 @@ def run_ngs_pipeline(
         copy_number.to_file(f'{output}/copy-number.zip')
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
+        if plot_copy_number:
+            os.mkdir(f'{output}/plots')
+            plot.plot_bam_copy_number(
+                copy_number, path=f'{output}/plots', ymin=0, ymax=6
+            )
 
     genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)
 
@@ -47,9 +52,3 @@ def run_ngs_pipeline(
     results = utils.combine_results(genotypes=genotypes, alleles=alleles, cnv_calls=cnv_calls)
 
     results.to_file(f'{output}/results.zip')
-
-    if plot_copy_number:
-        os.mkdir(f'{output}/plots')
-        plot.plot_bam_copy_number(
-            copy_number, path=f'{output}/plots', ymin=0, ymax=6
-        )

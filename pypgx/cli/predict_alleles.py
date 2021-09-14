@@ -11,7 +11,7 @@ description = f"""
 ##############################################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} input.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-consolidated-variants.zip CYP2D6-alleles.zip
 """
 
 def create_parser(subparsers):
@@ -22,14 +22,15 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'input',
+        'consolidated_variants',
+        metavar='consolidated-variants',
         help='Archive file with the semantic type VcfFrame[Consolidated].'
     )
     parser.add_argument(
-        'output',
+        'alleles',
         help='Archive file with the semantic type SampleTable[Alleles].'
     )
 
 def main(args):
-    result = utils.predict_alleles(args.input)
-    result.to_file(args.output)
+    alleles = utils.predict_alleles(args.consolidated_variants)
+    alleles.to_file(args.alleles)

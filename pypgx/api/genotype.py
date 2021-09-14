@@ -20,8 +20,8 @@ class SimpleGenotyper:
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df, assembly):
-        self.gene = 'UGT2B17'
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
         self.assembly = assembly
         self.results = self.genotype(df)
 
@@ -47,8 +47,8 @@ class GSTM1Genotyper:
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df, assembly):
-        self.gene = 'GSTM1'
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
         self.assembly = assembly
         self.results = self.genotype(df)
 
@@ -71,8 +71,8 @@ class GSTT1Genotyper:
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df, assembly):
-        self.gene = 'GSTT1'
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
         self.assembly = assembly
         self.results = self.genotype(df)
 
@@ -95,8 +95,8 @@ class UGT2B17Genotyper:
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df, assembly):
-        self.gene = 'UGT2B17'
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
         self.assembly = assembly
         self.results = self.genotype(df)
 
@@ -165,9 +165,9 @@ def call_genotypes(alleles=None, cnv_calls=None):
     df = df.apply(one_row, axis=1)
 
     if gene in sv_genotypers:
-        df = sv_genotypers[gene](df, assembly).results.to_frame()
+        df = sv_genotypers[gene](df, gene, assembly).results.to_frame()
     else:
-        df = SimpleGenotyper(df, assembly).results.to_frame()
+        df = SimpleGenotyper(df, gene, assembly).results.to_frame()
     df.columns = ['Genotype']
 
     metadata = {}

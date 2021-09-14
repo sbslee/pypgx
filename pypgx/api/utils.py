@@ -1294,7 +1294,7 @@ def load_variant_table():
     df.Chromosome = df.Chromosome.astype(str)
     return df
 
-def predict_alleles(input):
+def predict_alleles(consolidated_variants):
     """
     Predict candidate star alleles based on observed variants.
 
@@ -1302,7 +1302,7 @@ def predict_alleles(input):
 
     Parameters
     ----------
-    input : pypgx.Archive
+    consolidated_variants : pypgx.Archive
         Archive file with the semantic type VcfFrame[Consolidated].
 
     Returns
@@ -1336,23 +1336,33 @@ def predict_alleles(input):
     >>> pypgx.predict_alleles(vf, 'CYP4F2')
     {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
-    if isinstance(input, str):
-        input = sdk.Archive.from_file(input)
+    if isinstance(consolidated_variants, str):
+        consolidated_variants = sdk.Archive.from_file(consolidated_variants)
 
-    if input.metadata['Gene'] not in list_genes():
-        raise GeneNotFoundError(input.metadata['Gene'])
+    if consolidated_variants.metadata['Gene'] not in list_genes():
+        raise GeneNotFoundError(consolidated_variants.metadata['Gene'])
 
-    table = build_definition_table(input.metadata['Gene'],
-        assembly=input.metadata['Assembly'])
+    definition_table = build_definition_table(
+        consolidated_variants.metadata['Gene'],
+        assembly=consolidated_variants.metadata['Assembly']
+    )
 
-    vf = input.data.filter_vcf(table)
+    vf = consolidated_variants.data.filter_vcf(definition_table)
+
+    gene = consolidated_variants.metadata['Gene']
+    assembly = consolidated_variants.metadata['Assembly']
+
+    gene_table = load_gene_table()
+    s = gene_table[gene_table.Gene == gene]
+    ref = s.RefAllele.values[0]
+    default = s[f'{assembly}Default'].values[0]
 
     stars = {}
 
     func = lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
 
-    for star in table.samples:
-        df = table.df[table.df[star] == '1']
+    for star in definition_table.samples:
+        df = definition_table.df[definition_table.df[star] == '1']
         stars[star] = set(df.apply(func, axis=1))
 
     samples = {}
@@ -1369,18 +1379,20 @@ def predict_alleles(input):
             for star, variants in stars.items():
                 if variants.issubset(s):
                     samples[sample][i].append(star)
+            if ref != default:
+                if ref not in samples[sample][i] and default not in samples[sample][i]:
+                    samples[sample][i].append(default)
             if not samples[sample][i]:
-                default = get_default_allele(input.metadata['Gene'],
-                    input.metadata['Assembly'])
+                default = get_default_allele(gene, assembly)
                 if default:
                     samples[sample][i].append(default)
-            samples[sample][i] = sort_alleles(input.metadata['Gene'], samples[sample][i])
+            samples[sample][i] = sort_alleles(gene, samples[sample][i])
             samples[sample][i] = ';'.join(samples[sample][i]) + ';'
 
     data = pd.DataFrame(samples).T
     data.columns = ['Haplotype1', 'Haplotype2']
 
-    metadata = input.copy_metadata()
+    metadata = consolidated_variants.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[Alleles]'
     result = sdk.Archive(metadata, data)
     return result

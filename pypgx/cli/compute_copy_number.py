@@ -26,11 +26,13 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'read-depth',
+        'read_depth',
+        metavar='read-depth',
         help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
     parser.add_argument(
-        'control-statistcs',
+        'control_statistcs',
+        metavar='control-statistcs',
         help='Archive file with the semantic type SampleTable[Statistics].'
     )
     parser.add_argument(
