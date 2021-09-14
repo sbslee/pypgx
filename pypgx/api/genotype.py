@@ -1,8 +1,36 @@
 import warnings
 
 from .. import sdk
+from . import utils
 
 import pandas as pd
+
+class GSTM1Genotyper:
+    """
+    Genotyper for GSTM1.
+    """
+
+    def one_row(self, r):
+        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        alleles = utils.sort_alleles(
+            self.gene, alleles, assembly=self.assembly)
+        if r.CNV == 'DeletionHet':
+            result = '/'.join(sorted([alleles[0], '*0']))
+        elif r.CNV == 'DeletionHom':
+            result = '*0/*0'
+        elif r.CNV == 'Normal':
+            result = '/'.join(sorted(alleles))
+        else:
+            result = 'Unassigned'
+        return result
+
+    def genotype(self, df):
+        return df.apply(self.one_row, axis=1)
+
+    def __init__(self, df, assembly):
+        self.gene = 'GSTM1'
+        self.assembly = assembly
+        self.results = self.genotype(df)
 
 class GSTT1Genotyper:
     """
@@ -14,14 +42,18 @@ class GSTT1Genotyper:
             result = '*A/*0'
         elif r.CNV == 'DeletionHom':
             result = '*0/*0'
-        else:
+        elif r.CNV == 'Normal':
             result = '*A/*A'
+        else:
+            result = 'Unassigned'
         return result
 
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'GSTT1'
+        self.assembly = assembly
         self.results = self.genotype(df)
 
 class UGT2B17Genotyper:
@@ -34,14 +66,18 @@ class UGT2B17Genotyper:
             result = '*1/*2'
         elif r.CNV == 'DeletionHom':
             result = '*2/*2'
-        else:
+        elif r.CNV == 'Normal':
             result = '*1/*1'
+        else:
+            result = 'Unassigned'
         return result
 
     def genotype(self, df):
         return df.apply(self.one_row, axis=1)
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'UGT2B17'
+        self.assembly = assembly
         self.results = self.genotype(df)
 
 def call_genotypes(alleles=None, cnv_calls=None):
@@ -61,6 +97,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         Archive file with the semantic type SampleTable[Genotypes].
     """
     genotypers = {
+        'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'UGT2B17': UGT2B17Genotyper,
     }
@@ -71,11 +108,6 @@ def call_genotypes(alleles=None, cnv_calls=None):
 
     if alleles is not None:
         alleles.check('SampleTable[Alleles]')
-        def one_row(r):
-            r.Haplotype1 = r.Haplotype1.strip(';').split(';')
-            r.Haplotype2 = r.Haplotype2.strip(';').split(';')
-            return r
-        alleles.data = alleles.data.apply(one_row, axis=1)
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
@@ -104,7 +136,14 @@ def call_genotypes(alleles=None, cnv_calls=None):
         raise ValueError('Either SampleTable[Alleles] or '
             'SampleTable[CNVCalls] must be provided')
 
-    df = genotypers[gene](df).results.to_frame()
+    def one_row(r):
+        if 'Haplotype1' in r.index:
+            r.Haplotype1 = r.Haplotype1.strip(';').split(';')
+            r.Haplotype2 = r.Haplotype2.strip(';').split(';')
+        return r
+
+    df = df.apply(one_row, axis=1)
+    df = genotypers[gene](df, assembly).results.to_frame()
     df.columns = ['Genotype']
 
     metadata = {}

@@ -8,14 +8,19 @@ def run_ngs_pipeline(
     plot_copy_number=True
 ):
     """
-    Run NGS pipeline.
+    Run NGS pipeline for target gene.
     """
     if os.path.exists(output) and force:
         shutil.rmtree(output)
 
     os.mkdir(output)
 
-    if vcf is not None:
+    gene_table = utils.load_gene_table()
+
+    alleles = None
+    cnv_calls = None
+
+    if gene_table[gene_table.Gene == gene].Variants.values[0] and vcf is not None:
         imported_variants = utils.import_variants(gene, vcf)
         imported_variants.to_file(f'{output}/imported-variants.zip')
         phased_variants = utils.estimate_phase_beagle(imported_variants, panel)
@@ -35,9 +40,13 @@ def run_ngs_pipeline(
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
 
-    genotypes = genotype.call_genotypes(cnv_calls=cnv_calls)
+    genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)
 
     genotypes.to_file(f'{output}/genotypes.zip')
+
+    results = utils.combine_results(genotypes=genotypes, alleles=alleles, cnv_calls=cnv_calls)
+
+    results.to_file(f'{output}/results.zip')
 
     if plot_copy_number:
         os.mkdir(f'{output}/plots')

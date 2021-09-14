@@ -1,4 +1,0 @@
-Gene=UGT2B17
-Assembly=GRCh37
-SemanticType=SampleTable[CNVCalls]
-Control=None
