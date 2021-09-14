@@ -5,6 +5,26 @@ from . import utils
 
 import pandas as pd
 
+class SimpleGenotyper:
+    """
+    Genotyper for genes without SV.
+    """
+
+    def one_row(self, r):
+        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        alleles = utils.sort_alleles(
+            self.gene, alleles, assembly=self.assembly)
+        result = '/'.join(sorted(alleles))
+        return result
+
+    def genotype(self, df):
+        return df.apply(self.one_row, axis=1)
+
+    def __init__(self, df, assembly):
+        self.gene = 'UGT2B17'
+        self.assembly = assembly
+        self.results = self.genotype(df)
+
 class GSTM1Genotyper:
     """
     Genotyper for GSTM1.
@@ -96,7 +116,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
     pypgx.Archive
         Archive file with the semantic type SampleTable[Genotypes].
     """
-    genotypers = {
+    sv_genotypers = {
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'UGT2B17': UGT2B17Genotyper,
@@ -143,7 +163,11 @@ def call_genotypes(alleles=None, cnv_calls=None):
         return r
 
     df = df.apply(one_row, axis=1)
-    df = genotypers[gene](df, assembly).results.to_frame()
+
+    if gene in sv_genotypers:
+        df = sv_genotypers[gene](df, assembly).results.to_frame()
+    else:
+        df = SimpleGenotyper(df, assembly).results.to_frame()
     df.columns = ['Genotype']
 
     metadata = {}

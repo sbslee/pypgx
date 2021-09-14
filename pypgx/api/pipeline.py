@@ -30,7 +30,7 @@ def run_ngs_pipeline(
         alleles = utils.predict_alleles(consolidated_variants)
         alleles.to_file(f'{output}/alleles.zip')
 
-    if tsv is not None:
+    if gene_table[gene_table.Gene == gene].SV.values[0] and tsv is not None:
         if control is None:
             raise ValueError('CovFrame[ReadDepth] requires SampleTable[Statistcs]')
         read_depth = utils.import_read_depth(gene, tsv)
