@@ -486,6 +486,38 @@ def create_consolidated_vcf(imported, phased):
 
     return result
 
+def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
+    """
+    Create TSV file containing read depth for genes with SV.
+
+    Parameters
+    ----------
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    fuc.pycov.CovFrame
+        CovFrame object.
+    """
+    regions = create_regions_bed(
+        merge=True, sv_genes=True
+    ).gr.df.apply(
+        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
+    ).to_list()
+
+    cfs = []
+
+    for region in regions:
+        cf = pycov.CovFrame.from_bam(bam=bam, fn=fn, region=region, zero=True)
+        cfs.append(cf)
+
+    return pycov.concat(cfs)
+
 def create_regions_bed(
     assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
 ):

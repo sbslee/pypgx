@@ -5,6 +5,7 @@ from .api.utils import (
     compute_copy_number,
     compute_target_depth,
     create_consolidated_vcf,
+    create_read_depth_tsv,
     create_regions_bed,
     estimate_phase_beagle,
     filter_samples,
