@@ -5,7 +5,7 @@ from . import utils, plot, genotype
 
 def run_ngs_pipeline(
     gene, output, vcf=None, panel=None, tsv=None, control_statistics=None,
-    force=False, plot_copy_number=True
+    force=False, do_not_plot_copy_number=False
 ):
     """
     Run NGS pipeline for target gene.
@@ -13,21 +13,21 @@ def run_ngs_pipeline(
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     output : str
-        Reference genome assembly.
-    vcf : str
+        Output directory.
+    vcf : str, optional
         VCF file.
-    panel : str
-        Reference genome assembly.
-    tsv : str
+    panel : str, optional
+        Reference haplotype panel.
+    tsv : str, optional
         TSV file containing read depth (zipped or unzipped).
     control_statistics : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Statistics].
     force : bool, default : False
-        Reference genome assembly.
-    plot_copy_number : bool, default: True
-        Reference genome assembly.
+        Overwrite output directory if it already exists.
+    do_not_plot_copy_number : bool, default: False
+        Do not plot copy number.
     """
     if os.path.exists(output) and force:
         shutil.rmtree(output)
@@ -50,7 +50,7 @@ def run_ngs_pipeline(
         alleles.to_file(f'{output}/alleles.zip')
 
     if gene_table[gene_table.Gene == gene].SV.values[0] and tsv is not None:
-        if control is None:
+        if control_statistics is None:
             raise ValueError('CovFrame[ReadDepth] requires SampleTable[Statistcs]')
         read_depth = utils.import_read_depth(gene, tsv)
         read_depth.to_file(f'{output}/read-depth.zip')
@@ -58,7 +58,7 @@ def run_ngs_pipeline(
         copy_number.to_file(f'{output}/copy-number.zip')
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
-        if plot_copy_number:
+        if not do_not_plot_copy_number:
             os.mkdir(f'{output}/plots')
             plot.plot_bam_copy_number(
                 copy_number, path=f'{output}/plots', ymin=0, ymax=6

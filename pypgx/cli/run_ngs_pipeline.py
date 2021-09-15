@@ -54,14 +54,14 @@ def create_parser(subparsers):
         help='Overwrite output directory if it already exists.'
     )
     parser.add_argument(
-        '--plot-copy-number',
+        '--do-not-plot-copy-number',
         action='store_true',
-        help='Plot copy number profiles.'
+        help='Do not plot copy number.'
     )
 
 def main(args):
     pipeline.run_ngs_pipeline(
         args.gene, args.output, vcf=args.vcf, panel=args.panel, tsv=args.tsv,
         control_statistics=args.control_statistics, force=args.force,
-        plot_copy_number=args.plot_copy_number
+        do_not_plot_copy_number=args.do_not_plot_copy_number
     )
