@@ -4,6 +4,10 @@ CYP2B6,Hybrid,1
 CYP2D6,Normal,0
 CYP2D6,Decreased,1
 CYP2D6,Increased,2
+CYP2E1,Normal,0
+CYP2E1,Duplication,1
+CYP2E1,PartialDuplication,2
+CYP2E1,Multiplication,3
 GSTM1,Normal,0
 GSTM1,DeletionHet,1
 GSTM1,DeletionHom,2

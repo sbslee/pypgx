@@ -1648,34 +1648,65 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
 
     return sorted(alleles, key=f)
 
-def test_cnv_caller(caller, target, calls):
+def test_cnv_caller(cnv_caller, copy_number, cnv_calls):
     """
     Test a CNV caller for target gene.
 
     Parameters
     ----------
-    caller : pypgx.Archive
+    cnv_caller : pypgx.Archive
         Archive file with the semantic type Model[CNV].
-    target : pypgx.Archive
+    copy_number : pypgx.Archive
         Archive file with the semantic type CovFrame[CopyNumber].
-    calls : pypgx.Archive
+    cnv_calls : pypgx.Archive
         Archive file with the semantic type SampleTable[CNVCalls].
     """
-    model = sdk.Archive.from_file(caller)
-    copy_number = sdk.Archive.from_file(target)
+    if isinstance(cnv_caller, str):
+        cnv_caller = sdk.Archive.from_file(cnv_caller)
+
+    cnv_caller.check('Model[CNV]')
+
+    if isinstance(copy_number, str):
+        copy_number = sdk.Archive.from_file(copy_number)
+
+    copy_number.check('CovFrame[CopyNumber]')
+
+    if isinstance(cnv_calls, str):
+        cnv_calls = sdk.Archive.from_file(cnv_calls)
+
+    cnv_calls.check('SampleTable[CNVCalls]')
+
     copy_number = _process_copy_number(copy_number)
-    cnv_calls = sdk.Archive.from_file(calls)
-    df = load_cnv_table()
-    cnv_dict = dict(zip(df.Name, df.Code))
-    cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: cnv_dict[r.CNV], axis=1)
+
+    cnv_table = load_cnv_table()
+    cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
+    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
+    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
+
+    cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.index.to_list()
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
     Y = cnv_calls.data['Code'].to_numpy()
-    predictions = model.data.predict(X)
-    print(f'Accuracy: {sum(predictions == Y) / len(Y)} ({sum(predictions == Y)}/{len(Y)})')
+    predictions = cnv_caller.data.predict(X)
+    results = predictions == Y
 
-def train_cnv_caller(target, calls):
+    counts = {}
+
+    for i, y in enumerate(predictions):
+        if y not in counts:
+            counts[y] = [0, 0]
+        if results[i]:
+            counts[y][0] += 1
+        else:
+            counts[y][1] += 1
+
+    print(f'Overall accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
+
+    for k, v in counts.items():
+        print(f"Accuracy for '{code2name[k]}': {v[0]/sum(v):.3f} ({v[0]}/{sum(v)})")
+
+def train_cnv_caller(copy_number, cnv_calls):
     """
     Train a CNV caller for target gene.
 
@@ -1684,24 +1715,33 @@ def train_cnv_caller(target, calls):
 
     Parameters
     ----------
-    target : pypgx.Archive
-        Archive file with the semantic type CovFrame[CopyNumber].
-    calls : pypgx.Archive
-        Archive file with the semantic type SampleTable[CNVCalls].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    cnv_calls : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------
     pypgx.Archive
         Archive file with the semantic type Model[CNV].
     """
-    copy_number = sdk.Archive.from_file(target)
+    if isinstance(copy_number, str):
+        copy_number = sdk.Archive.from_file(copy_number)
+
     copy_number.check('CovFrame[CopyNumber]')
-    copy_number = _process_copy_number(copy_number)
-    cnv_calls = sdk.Archive.from_file(calls)
+
+    if isinstance(cnv_calls, str):
+        cnv_calls = sdk.Archive.from_file(cnv_calls)
+
     cnv_calls.check('SampleTable[CNVCalls]')
-    df = load_cnv_table()
-    cnv_dict = dict(zip(df.Name, df.Code))
-    cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: cnv_dict[r.CNV], axis=1)
+
+    copy_number = _process_copy_number(copy_number)
+
+    cnv_table = load_cnv_table()
+    cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
+    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
+    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
+    cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.index.to_list()
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
@@ -1710,5 +1750,22 @@ def train_cnv_caller(target, calls):
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'Model[CNV]'
     predictions = model.predict(X)
-    print(f'Accuracy: {sum(predictions == Y) / len(Y)} ({sum(predictions == Y)}/{len(Y)})')
+
+    results = predictions == Y
+
+    counts = {}
+
+    for i, y in enumerate(predictions):
+        if y not in counts:
+            counts[y] = [0, 0]
+        if results[i]:
+            counts[y][0] += 1
+        else:
+            counts[y][1] += 1
+
+    print(f'Overall accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
+
+    for k, v in counts.items():
+        print(f"Accuracy for '{code2name[k]}': {v[0]/sum(v):.3f} ({v[0]}/{sum(v)})")
+
     return sdk.Archive(metadata, model)
