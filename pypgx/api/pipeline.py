@@ -4,11 +4,30 @@ import os
 from . import utils, plot, genotype
 
 def run_ngs_pipeline(
-    gene, output, vcf=None, panel=None, tsv=None, control=None, force=False,
-    plot_copy_number=True
+    gene, output, vcf=None, panel=None, tsv=None, control_statistics=None,
+    force=False, plot_copy_number=True
 ):
     """
     Run NGS pipeline for target gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    output : str
+        Reference genome assembly.
+    vcf : str
+        VCF file.
+    panel : str
+        Reference genome assembly.
+    tsv : str
+        TSV file containing read depth (zipped or unzipped).
+    control_statistics : str or pypgx.Archive, optional
+        Archive file or object with the semantic type SampleTable[Statistics].
+    force : bool, default : False
+        Reference genome assembly.
+    plot_copy_number : bool, default: True
+        Reference genome assembly.
     """
     if os.path.exists(output) and force:
         shutil.rmtree(output)
@@ -35,7 +54,7 @@ def run_ngs_pipeline(
             raise ValueError('CovFrame[ReadDepth] requires SampleTable[Statistcs]')
         read_depth = utils.import_read_depth(gene, tsv)
         read_depth.to_file(f'{output}/read-depth.zip')
-        copy_number = utils.compute_copy_number(read_depth, control)
+        copy_number = utils.compute_copy_number(read_depth, control_statistics)
         copy_number.to_file(f'{output}/copy-number.zip')
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
