@@ -58,10 +58,16 @@ def create_parser(subparsers):
         action='store_true',
         help='Do not plot copy number.'
     )
+    parser.add_argument(
+        '--do-not-plot-allele-fraction',
+        action='store_true',
+        help='Do not plot allele fraction profile.'
+    )
 
 def main(args):
     pipeline.run_ngs_pipeline(
         args.gene, args.output, vcf=args.vcf, panel=args.panel, tsv=args.tsv,
         control_statistics=args.control_statistics, force=args.force,
-        do_not_plot_copy_number=args.do_not_plot_copy_number
+        do_not_plot_copy_number=args.do_not_plot_copy_number,
+        do_not_plot_allele_fraction=args.do_not_plot_allele_fraction
     )
