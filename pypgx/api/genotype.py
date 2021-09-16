@@ -12,8 +12,6 @@ class SimpleGenotyper:
 
     def one_row(self, r):
         alleles = [r.Haplotype1[0], r.Haplotype2[0]]
-        alleles = utils.sort_alleles(
-            self.gene, alleles, assembly=self.assembly)
         result = '/'.join(sorted(alleles))
         return result
 
@@ -32,8 +30,6 @@ class CYP2E1Genotyper:
 
     def one_row(self, r):
         alleles = [r.Haplotype1[0], r.Haplotype2[0]]
-        alleles = utils.sort_alleles(
-            self.gene, alleles, assembly=self.assembly)
         if r.CNV == 'Normal':
             result = '/'.join(sorted(alleles))
         elif r.CNV == 'PartialDuplication':
@@ -45,6 +41,17 @@ class CYP2E1Genotyper:
                 result = '/'.join(sorted([alleles[1], '*S1']))
             elif not h1 and h2:
                 result = '/'.join(sorted([alleles[0], '*S1']))
+            else:
+                result = 'Unassigned'
+        elif r.CNV == 'Duplication':
+            h1 = '*7'in r.Haplotype1
+            h2 = '*7'in r.Haplotype2
+            if h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*7x2']))
+            elif h1 and not h2:
+                result = '/'.join(sorted([alleles[1], '*7x2']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*7x2']))
             else:
                 result = 'Unassigned'
         else:
@@ -66,8 +73,6 @@ class GSTM1Genotyper:
 
     def one_row(self, r):
         alleles = [r.Haplotype1[0], r.Haplotype2[0]]
-        alleles = utils.sort_alleles(
-            self.gene, alleles, assembly=self.assembly)
         if r.CNV == 'DeletionHet':
             result = '/'.join(sorted([alleles[0], '*0']))
         elif r.CNV == 'DeletionHom':
