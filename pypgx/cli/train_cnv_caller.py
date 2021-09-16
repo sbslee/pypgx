@@ -13,7 +13,7 @@ description = f"""
 This command will return a SVM-based multiclass classifier that implements the one-vs-rest stategy.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} target.zip calls.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip CYP2D6-cnv-caller.zip
 """
 
 def create_parser(subparsers):
@@ -24,18 +24,21 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'target',
+        'copy_number',
+        metavar='copy-number',
         help='Archive file with the semantic type CovFrame[CopyNumber]'
     )
     parser.add_argument(
-        'calls',
+        'cnv_calls',
+        metavar='cnv-calls',
         help='Archive file with the semantic type SampleTable[CNVCalls].'
     )
     parser.add_argument(
-        'output',
+        'cnv_caller',
+        metavar='cnv-caller',
         help='Archive file with the semantic type Model[CNV].'
     )
 
 def main(args):
-    result = utils.train_cnv_caller(args.target, args.calls)
-    result.to_file(args.output)
+    result = utils.train_cnv_caller(args.copy_number, args.cnv_calls)
+    result.to_file(args.cnv_caller)

@@ -11,7 +11,7 @@ description = f"""
 ######################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} caller.zip target.zip calls.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-cnv-caller.zip CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
 """
 
 def create_parser(subparsers):
@@ -22,17 +22,20 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'caller',
+        'cnv_caller',
+        metavar='cnv-caller',
         help='Archive file with the semantic type Model[CNV].'
     )
     parser.add_argument(
-        'target',
+        'copy_number',
+        metavar='copy-number',
         help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
-        'calls',
+        'cnv_calls',
+        metavar='cnv-calls',
         help='Archive file with the semantic type SampleTable[CNVCalls].'
     )
 
 def main(args):
-    utils.test_cnv_caller(args.caller, args.target, args.calls)
+    utils.test_cnv_caller(args.cnv_caller, args.copy_number, args.cnv_calls)

@@ -553,10 +553,8 @@ def create_regions_bed(
     df = pd.DataFrame(data)
     df.columns = ['Chromosome', 'Start', 'End', 'Name']
     bf = pybed.BedFrame.from_frame([], df)
-    bf = bf.sort()
     if chr_prefix:
         bf = bf.chr_prefix(mode='add')
-    bf = bf.sort()
     if merge:
         bf = bf.merge()
     return bf
@@ -1715,7 +1713,7 @@ def train_cnv_caller(copy_number, cnv_calls):
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type Model[CNV].
+        Archive object with the semantic type Model[CNV].
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
