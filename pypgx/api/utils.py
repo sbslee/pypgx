@@ -23,9 +23,9 @@ FUNCTION_ORDER = [
     'Possible Decreased Function',
     'Increased Function',
     'Possible Increased Function',
-    'Normal Function',
     'Uncertain Function',
     'Unknown Function',
+    'Normal Function',
 ]
 
 class AlleleNotFoundError(Exception):

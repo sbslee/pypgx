@@ -42,9 +42,9 @@ class CYP2E1Genotyper:
             if h1 and h2:
                 result = '/'.join(sorted([alleles[0], '*S1']))
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[0], '*S1']))
-            elif not h1 and h2:
                 result = '/'.join(sorted([alleles[1], '*S1']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*S1']))
             else:
                 result = 'Unassigned'
         else:

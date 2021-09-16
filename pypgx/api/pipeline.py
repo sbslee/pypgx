@@ -59,7 +59,7 @@ def run_ngs_pipeline(
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
         if not do_not_plot_copy_number:
-            os.mkdir(f'{output}/plots')
+            os.mkdir(f'{output}/copy-number-plots')
             plot.plot_bam_copy_number(
                 copy_number, path=f'{output}/plots', ymin=0, ymax=6
             )
