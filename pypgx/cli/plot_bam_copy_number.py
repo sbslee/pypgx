@@ -24,7 +24,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'target',
+        'copy_number',
+        metavar='copy-number',
         help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
@@ -53,6 +54,6 @@ def create_parser(subparsers):
 
 def main(args):
     plot.plot_bam_copy_number(
-        args.target, path=args.path, samples=args.samples, ymin=args.ymin,
-        ymax=args.ymax
+        args.copy_number, path=args.path, samples=args.samples,
+        ymin=args.ymin, ymax=args.ymax
     )

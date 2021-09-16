@@ -25,6 +25,40 @@ class SimpleGenotyper:
         self.assembly = assembly
         self.results = self.genotype(df)
 
+class CYP2E1Genotyper:
+    """
+    Genotyper for CYP2E1.
+    """
+
+    def one_row(self, r):
+        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        alleles = utils.sort_alleles(
+            self.gene, alleles, assembly=self.assembly)
+        if r.CNV == 'Normal':
+            result = '/'.join(sorted(alleles))
+        elif r.CNV == 'PartialDuplication':
+            h1 = '*4'in r.Haplotype1 and '*7' in r.Haplotype1
+            h2 = '*4'in r.Haplotype2 and '*7' in r.Haplotype2
+            if h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*S1']))
+            elif h1 and not h2:
+                result = '/'.join(sorted([alleles[0], '*S1']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[1], '*S1']))
+            else:
+                result = 'Unassigned'
+        else:
+            result = 'Unassigned'
+        return result
+
+    def genotype(self, df):
+        return df.apply(self.one_row, axis=1)
+
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
+        self.assembly = assembly
+        self.results = self.genotype(df)
+
 class GSTM1Genotyper:
     """
     Genotyper for GSTM1.
@@ -106,17 +140,18 @@ def call_genotypes(alleles=None, cnv_calls=None):
 
     Parameters
     ----------
-    alleles : pypgx.Archive, optional
-        Archive file with the semantic type SampleTable[Alleles].
-    cnv_calls : pypgx.Archive, optional
-        Archive file with the semantic type SampleTable[CNVCalls].
+    alleles : str or pypgx.Archive, optional
+        Archive file or object with the semantic type SampleTable[Alleles].
+    cnv_calls : str or pypgx.Archive, optional
+        Archive file or object with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Genotypes].
+        Archive object with the semantic type SampleTable[Genotypes].
     """
     sv_genotypers = {
+        'CYP2E1': CYP2E1Genotyper,
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'UGT2B17': UGT2B17Genotyper,

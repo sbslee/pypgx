@@ -68,7 +68,7 @@ def build_definition_table(gene, assembly='GRCh37'):
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
 
@@ -1328,19 +1328,17 @@ def load_variant_table():
 
 def predict_alleles(consolidated_variants):
     """
-    Predict candidate star alleles based on observed variants.
-
-    The input VCF must be fully phased.
+    Predict candidate star alleles based on observed SNVs and INDELs.
 
     Parameters
     ----------
-    consolidated_variants : pypgx.Archive
-        Archive file with the semantic type VcfFrame[Consolidated].
+    consolidated_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Consolidated].
 
     Returns
     -------
-    dict
-        Dictionary where sample names are keys and candidate lists are values.
+    pypgx.Archive
+        Archive object with the semantic type VcfFrame SampleTable[Alleles].
 
     Examples
     --------
@@ -1370,19 +1368,13 @@ def predict_alleles(consolidated_variants):
     """
     if isinstance(consolidated_variants, str):
         consolidated_variants = sdk.Archive.from_file(consolidated_variants)
-
-    if consolidated_variants.metadata['Gene'] not in list_genes():
-        raise GeneNotFoundError(consolidated_variants.metadata['Gene'])
-
-    definition_table = build_definition_table(
-        consolidated_variants.metadata['Gene'],
-        assembly=consolidated_variants.metadata['Assembly']
-    )
-
-    vf = consolidated_variants.data.filter_vcf(definition_table)
-
+    consolidated_variants.check('VcfFrame[Consolidated]')
     gene = consolidated_variants.metadata['Gene']
     assembly = consolidated_variants.metadata['Assembly']
+    definition_table = build_definition_table(gene, assembly)
+    vf = consolidated_variants.data.filter_vcf(definition_table)
+
+
 
     gene_table = load_gene_table()
     s = gene_table[gene_table.Gene == gene]
