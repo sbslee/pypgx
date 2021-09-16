@@ -106,7 +106,7 @@ class Archive:
 
     def check(self, semantic):
         if self.metadata['SemanticType'] != semantic:
-            raise IncorrectSemanticTypeError(f"Expected {semantic} but found {self.metadata['SemanticType']}")
+            raise IncorrectSemanticTypeError(f"Expected {semantic}, but found {self.metadata['SemanticType']}")
 
 def zipdir(dir, output):
     """

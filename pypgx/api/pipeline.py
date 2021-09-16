@@ -5,7 +5,8 @@ from . import utils, plot, genotype
 
 def run_ngs_pipeline(
     gene, output, vcf=None, panel=None, tsv=None, control_statistics=None,
-    force=False, do_not_plot_copy_number=False
+    force=False, do_not_plot_copy_number=False,
+    do_not_plot_allele_fraction=False
 ):
     """
     Run NGS pipeline for target gene.
@@ -27,7 +28,9 @@ def run_ngs_pipeline(
     force : bool, default : False
         Overwrite output directory if it already exists.
     do_not_plot_copy_number : bool, default: False
-        Do not plot copy number.
+        Do not plot copy number profile.
+    do_not_plot_allele_fraction : bool, default: False
+        Do not plot allele fraction profile.
     """
     if os.path.exists(output) and force:
         shutil.rmtree(output)
@@ -48,6 +51,11 @@ def run_ngs_pipeline(
         consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
         alleles = utils.predict_alleles(consolidated_variants)
         alleles.to_file(f'{output}/alleles.zip')
+        if not do_not_plot_allele_fraction:
+            os.mkdir(f'{output}/allele-fraction-profile')
+            plot.plot_vcf_allele_fraction(
+                imported_variants, path=f'{output}/allele-fraction-profile'
+            )
 
     if gene_table[gene_table.Gene == gene].SV.values[0] and tsv is not None:
         if control_statistics is None:
@@ -59,9 +67,10 @@ def run_ngs_pipeline(
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
         if not do_not_plot_copy_number:
-            os.mkdir(f'{output}/copy-number-plots')
+            os.mkdir(f'{output}/copy-number-profile')
             plot.plot_bam_copy_number(
-                copy_number, path=f'{output}/plots', ymin=0, ymax=6
+                copy_number, path=f'{output}/copy-number-profile', ymin=0,
+                ymax=6
             )
 
     genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)

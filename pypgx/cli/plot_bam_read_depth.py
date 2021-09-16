@@ -22,8 +22,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'result',
-        help='Archive file with the semantic type CovFrame[CopyNumber]'
+        'read_depth',
+        help='Archive file with the semantic type CovFrame[ReadDepth]'
     )
     parser.add_argument(
         '--path',
@@ -51,6 +51,6 @@ def create_parser(subparsers):
 
 def main(args):
     plot.plot_bam_read_depth(
-        args.result, path=args.path, samples=args.samples, ymin=args.ymin,
-        ymax=args.ymax
+        args.read_depth, path=args.path, samples=args.samples,
+        ymin=args.ymin, ymax=args.ymax
     )

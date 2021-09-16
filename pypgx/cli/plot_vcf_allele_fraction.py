@@ -22,18 +22,9 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'gene',
-        help='Target gene.'
-    )
-    parser.add_argument(
-        'vcf',
+        'imported_variants',
+        metavar='imported-variants',
         help='VCF file.'
-    )
-    parser.add_argument(
-        '--assembly',
-        metavar='TEXT',
-        default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--path',
@@ -61,6 +52,6 @@ def create_parser(subparsers):
 
 def main(args):
     plot.plot_vcf_allele_fraction(
-        args.gene, args.vcf, assembly=args.assembly, path=args.path,
-        samples=args.samples, ymin=args.ymin, ymax=args.ymax
+        args.imported_variants, path=args.path, samples=args.samples,
+        ymin=args.ymin, ymax=args.ymax
     )
