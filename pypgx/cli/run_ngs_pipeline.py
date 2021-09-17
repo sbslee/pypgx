@@ -56,7 +56,7 @@ def create_parser(subparsers):
     parser.add_argument(
         '--do-not-plot-copy-number',
         action='store_true',
-        help='Do not plot copy number.'
+        help='Do not plot copy number profile.'
     )
     parser.add_argument(
         '--do-not-plot-allele-fraction',

@@ -1,0 +1,3 @@
+Gene=CYP4F2
+Assembly=GRCh37
+SemanticType=VcfFrame[Consolidated]

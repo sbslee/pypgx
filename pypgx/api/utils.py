@@ -143,6 +143,25 @@ def build_definition_table(gene, assembly='GRCh37'):
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
 
+def collapse_alleles(gene, alleles, assembly='GRCh37'):
+    """
+    Collapse redundant candidate alleles.
+    """
+    results = []
+    for a in alleles:
+        result = False
+        for b in alleles:
+            if a == b:
+                continue
+            v1 = set(list_variants(gene, a, assembly=assembly))
+            v2 = set(list_variants(gene, b, assembly=assembly))
+            if v1.issubset(v2):
+                result = True
+                break
+        results.append(result)
+
+    return [x for i, x in enumerate(alleles) if not results[i]]
+
 def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     """
     Combine various results for target gene.
@@ -677,8 +696,6 @@ def get_default_allele(gene, assembly='GRCh37'):
     """
     df = load_gene_table()
     allele = df[df.Gene == gene][f'{assembly}Default'].values[0]
-    if pd.isna(allele):
-        allele = ''
     return allele
 
 def get_function(gene, allele):
@@ -792,6 +809,35 @@ def get_priority(gene, phenotype):
     i = (df.Gene == gene) & (df.Phenotype == phenotype)
 
     return df[i].Priority.values[0]
+
+def get_ref_allele(gene, assembly='GRCh37'):
+    """
+    Get the reference allele for target gene.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    str
+        Reference allele.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_ref_allele('CYP2D6')
+    '*1'
+    >>> pypgx.get_ref_allele('NAT1')
+    '*4'
+    """
+    df = load_gene_table()
+    allele = df[df.Gene == gene]['RefAllele'].values[0]
+    return allele
 
 def get_region(gene, assembly='GRCh37'):
     """
@@ -1372,12 +1418,8 @@ def predict_alleles(consolidated_variants):
     definition_table = build_definition_table(gene, assembly)
     vf = consolidated_variants.data.filter_vcf(definition_table)
 
-
-
-    gene_table = load_gene_table()
-    s = gene_table[gene_table.Gene == gene]
-    ref = s.RefAllele.values[0]
-    default = s[f'{assembly}Default'].values[0]
+    ref_allele = get_ref_allele(gene, assembly)
+    default_allele = get_default_allele(gene, assembly)
 
     stars = {}
 
@@ -1401,13 +1443,11 @@ def predict_alleles(consolidated_variants):
             for star, variants in stars.items():
                 if variants.issubset(s):
                     samples[sample][i].append(star)
-            if ref != default:
-                if ref not in samples[sample][i] and default not in samples[sample][i]:
-                    samples[sample][i].append(default)
+            samples[sample][i] = collapse_alleles(gene, samples[sample][i], assembly=assembly)
+            if ref_allele != default_allele and ref_allele not in samples[sample][i] and default_allele not in samples[sample][i]:
+                samples[sample][i].append(default_allele)
             if not samples[sample][i]:
-                default = get_default_allele(gene, assembly)
-                if default:
-                    samples[sample][i].append(default)
+                samples[sample][i].append(default_allele)
             samples[sample][i] = sort_alleles(gene, samples[sample][i])
             samples[sample][i] = ';'.join(samples[sample][i]) + ';'
 

@@ -1,5 +1,6 @@
 from .api.utils import (
     build_definition_table,
+    collapse_alleles,
     combine_results,
     compute_control_statistics,
     compute_copy_number,
@@ -13,6 +14,7 @@ from .api.utils import (
     get_function,
     get_paralog,
     get_priority,
+    get_ref_allele,
     get_region,
     get_score,
     has_phenotype,

@@ -168,8 +168,8 @@ class SLC22A2Genotyper:
             else:
                 result = 'Unassigned'
         elif r.CNV == 'Exon11Deletion':
-            h1 = r.Haplotype1 == ['*1']
-            h2 = r.Haplotype2 == ['*1']
+            h1 = r.Haplotype1 == ['*3']
+            h2 = r.Haplotype2 == ['*3']
             if h1 and h2:
                 result = '/'.join(sorted([alleles[0], '*S2']))
             elif h1 and not h2:
