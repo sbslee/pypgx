@@ -9,9 +9,13 @@ class TestPypgx(unittest.TestCase):
 
     def test_allele_table(self):
         df = pypgx.load_allele_table()
-        l = df.GRCh37.dropna()[df.GRCh37.dropna().duplicated(keep=False)].to_list()
-        if l:
-            raise ValueError(l)
+
+        # Find duplicate alleles with the same definition.
+        for assembly in ['GRCh37', 'GRCh38']:
+            i = df[[assembly, 'SV']].dropna().duplicated(keep=False)
+            l = sorted(df[[assembly, 'SV']].dropna()[i][assembly].to_list())
+            if l:
+                raise ValueError(f'Found duplicate alleles in {assembly}: {l}')
         self.assertEqual(pypgx.list_genes(), list(df.Gene.unique()))
 
     def test_diplotype_table(self):

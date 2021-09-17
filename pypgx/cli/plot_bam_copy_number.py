@@ -11,9 +11,7 @@ description = f"""
 ###########################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} target.zip
-  $ pypgx {fuc.api.common._script_name()} target.zip --path dir
-  $ pypgx {fuc.api.common._script_name()} target.zip --samples A B
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-copy-number.zip
 """
 
 def create_parser(subparsers):

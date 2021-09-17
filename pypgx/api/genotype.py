@@ -23,6 +23,31 @@ class SimpleGenotyper:
         self.assembly = assembly
         self.results = self.genotype(df)
 
+class CYP2A6Genotyper:
+    """
+    Genotyper for CYP2A6.
+    """
+
+    def one_row(self, r):
+        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        if r.CNV == 'Normal':
+            result = '/'.join(sorted(alleles))
+        elif r.CNV == 'DeletionHom':
+            result = '*4/*4'
+        elif r.CNV == 'DeletionHet':
+            if alleles[0] == alleles[1]:
+                result = '/'.join(sorted([alleles[0], '*4']))
+            else:
+                result = 'Unassigned'
+        else:
+            result = 'Unassigned'
+        return result
+
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class CYP2B6Genotyper:
     """
     Genotyper for CYP2B6.
@@ -197,7 +222,9 @@ class UGT2B15Genotyper:
 
     def one_row(self, r):
         alleles = [r.Haplotype1[0], r.Haplotype2[0]]
-        if r.CNV == 'Deletion':
+        if r.CNV == 'Normal':
+            result = '/'.join(sorted(alleles))
+        elif r.CNV == 'Deletion':
             if alleles[0] == alleles[1]:
                 result = '/'.join(sorted([alleles[0], '*S1']))
             else:
@@ -255,6 +282,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         Archive object with the semantic type SampleTable[Genotypes].
     """
     sv_genotypers = {
+        'CYP2A6': CYP2A6Genotyper,
         'CYP2B6': CYP2B6Genotyper,
         'CYP2E1': CYP2E1Genotyper,
         'GSTM1': GSTM1Genotyper,

@@ -600,6 +600,9 @@ def estimate_phase_beagle(
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
+
+    imported_variants.check('VcfFrame[Imported]')
+
     region = get_region(imported_variants.metadata['Gene'], assembly=imported_variants.metadata['Assembly'])
     path = os.path.dirname(os.path.abspath(__file__))
     program = f'{path}/beagle.28Jun21.220.jar'
@@ -618,7 +621,7 @@ def estimate_phase_beagle(
             f'out={t}/output',
             f'impute={str(impute).lower()}'
         ]
-        subprocess.run(command)
+        subprocess.run(command, stdout=subprocess.DEVNULL)
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
@@ -1417,7 +1420,6 @@ def predict_alleles(consolidated_variants):
     assembly = consolidated_variants.metadata['Assembly']
     definition_table = build_definition_table(gene, assembly)
     vf = consolidated_variants.data.filter_vcf(definition_table)
-
     ref_allele = get_ref_allele(gene, assembly)
     default_allele = get_default_allele(gene, assembly)
 
