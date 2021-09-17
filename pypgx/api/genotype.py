@@ -190,6 +190,30 @@ class SLC22A2Genotyper:
         self.assembly = assembly
         self.results = self.genotype(df)
 
+class UGT2B15Genotyper:
+    """
+    Genotyper for UGT2B15.
+    """
+
+    def one_row(self, r):
+        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        if r.CNV == 'Deletion':
+            if alleles[0] == alleles[1]:
+                result = '/'.join(sorted([alleles[0], '*S1']))
+            else:
+                result = 'Unassigned'
+        else:
+            result = 'Unassigned'
+        return result
+
+    def genotype(self, df):
+        return df.apply(self.one_row, axis=1)
+
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
+        self.assembly = assembly
+        self.results = self.genotype(df)
+
 class UGT2B17Genotyper:
     """
     Genotyper for UGT2B17.
@@ -236,6 +260,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,
+        'UGT2B15': UGT2B15Genotyper,
         'UGT2B17': UGT2B17Genotyper,
     }
 

@@ -18,6 +18,9 @@ GSTT1,DeletionHom,2
 SLC22A2,Normal,0
 SLC22A2,Exon11Deletion,1
 SLC22A2,Intron9Deletion,2
+UGT2B15,Normal,0
+UGT2B15,Deletion,1
+UGT2B15,Duplication,2
 UGT2B17,Normal,0
 UGT2B17,DeletionHet,1
 UGT2B17,DeletionHom,2

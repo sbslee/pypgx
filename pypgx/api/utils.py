@@ -1699,6 +1699,9 @@ def test_cnv_caller(cnv_caller, copy_number, cnv_calls):
 
     cnv_calls.check('SampleTable[CNVCalls]')
 
+    if not cnv_caller.metadata['Gene'] == copy_number.metadata['Gene'] == cnv_calls.metadata['Gene']:
+        raise ValueError(f"Model[CNV] has {cnv_caller.metadata['Gene']}, CovFrame[CopyNumber] has {copy_number.metadata['Gene']}, and SampleTable[CNVCalls] has {cnv_calls.metadata['Gene']}")
+
     copy_number = _process_copy_number(copy_number)
 
     cnv_table = load_cnv_table()
@@ -1759,6 +1762,9 @@ def train_cnv_caller(copy_number, cnv_calls):
     cnv_calls.check('SampleTable[CNVCalls]')
 
     copy_number = _process_copy_number(copy_number)
+
+    if copy_number.metadata['Gene'] != cnv_calls.metadata['Gene']:
+        raise ValueError(f"CovFrame[CopyNumber] has {copy_number.metadata['Gene']}, while SampleTable[CNVCalls] has {cnv_calls.metadata['Gene']}")
 
     cnv_table = load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]

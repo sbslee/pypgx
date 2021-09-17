@@ -9,6 +9,9 @@ class TestPypgx(unittest.TestCase):
 
     def test_allele_table(self):
         df = pypgx.load_allele_table()
+        l = df.GRCh37.dropna()[df.GRCh37.dropna().duplicated(keep=False)].to_list()
+        if l:
+            raise ValueError(l)
         self.assertEqual(pypgx.list_genes(), list(df.Gene.unique()))
 
     def test_diplotype_table(self):
