@@ -1433,29 +1433,41 @@ def predict_alleles(consolidated_variants):
 
     samples = {}
 
+    def one_haplotype(observed):
+        candidates = []
+        for star, variants in stars.items():
+            if variants.issubset(observed):
+                candidates.append(star)
+        candidates = collapse_alleles(gene, candidates, assembly=assembly)
+        if ref_allele != default_allele and ref_allele not in candidates and default_allele not in candidates:
+            candidates.append(default_allele)
+        if not candidates:
+            candidates.append(default_allele)
+        candidates = sort_alleles(gene, candidates)
+        return candidates
+
     for sample in vf.samples:
-        samples[sample] = [[], []]
+        samples[sample] = []
         df = vf.df[sample].str.split(':').str[0].str.split('|', expand=True)
         df.index = vf.df.apply(func, axis=1)
-        for i in [0, 1]:
+        alt_phase = []
+        all_alleles = []
+        for i in [0, 1, 2]:
             try:
-                s = set(df[i][df[i] == '1'].index)
+                observed = set(df[i][df[i] == '1'].index)
             except KeyError:
-                s = set()
-            for star, variants in stars.items():
-                if variants.issubset(s):
-                    samples[sample][i].append(star)
-            samples[sample][i] = collapse_alleles(gene, samples[sample][i], assembly=assembly)
-            if ref_allele != default_allele and ref_allele not in samples[sample][i] and default_allele not in samples[sample][i]:
-                samples[sample][i].append(default_allele)
-            if not samples[sample][i]:
-                samples[sample][i].append(default_allele)
-            samples[sample][i] = sort_alleles(gene, samples[sample][i])
-            samples[sample][i] = ';'.join(samples[sample][i]) + ';'
+                observed = set()
+            if i != 2:
+                alt_phase += [x for x in observed if x not in alt_phase]
+                candidates = one_haplotype(observed)
+                all_alleles += [x for x in candidates if x not in all_alleles]
+            else:
+                candidates = one_haplotype(set(alt_phase))
+                candidates = [x for x in candidates if x not in all_alleles]
+            samples[sample].append(';'.join(candidates) + ';')
 
     data = pd.DataFrame(samples).T
-    data.columns = ['Haplotype1', 'Haplotype2']
-
+    data.columns = ['Haplotype1', 'Haplotype2', 'AlternativePhase']
     metadata = consolidated_variants.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[Alleles]'
     result = sdk.Archive(metadata, data)

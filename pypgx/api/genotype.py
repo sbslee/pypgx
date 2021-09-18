@@ -37,6 +37,10 @@ class CYP2A6Genotyper:
         elif r.CNV == 'DeletionHet':
             if alleles[0] == alleles[1]:
                 result = '/'.join(sorted([alleles[0], '*4']))
+            elif alleles[0] == '*1':
+                result = '/'.join(sorted([alleles[1], '*4']))
+            elif alleles[1] == '*1':
+                result = '/'.join(sorted([alleles[0], '*4']))
             else:
                 result = 'Unassigned'
         else:
@@ -72,13 +76,10 @@ class CYP2B6Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class CYP2E1Genotyper:
     """
@@ -115,13 +116,10 @@ class CYP2E1Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class GSTM1Genotyper:
     """
@@ -140,13 +138,10 @@ class GSTM1Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class GSTT1Genotyper:
     """
@@ -164,13 +159,10 @@ class GSTT1Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class SLC22A2Genotyper:
     """
@@ -207,13 +199,10 @@ class SLC22A2Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class UGT2B15Genotyper:
     """
@@ -233,13 +222,10 @@ class UGT2B15Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 class UGT2B17Genotyper:
     """
@@ -257,13 +243,10 @@ class UGT2B17Genotyper:
             result = 'Unassigned'
         return result
 
-    def genotype(self, df):
-        return df.apply(self.one_row, axis=1)
-
     def __init__(self, df, gene, assembly):
         self.gene = gene
         self.assembly = assembly
-        self.results = self.genotype(df)
+        self.results = df.apply(self.one_row, axis=1)
 
 def call_genotypes(alleles=None, cnv_calls=None):
     """
