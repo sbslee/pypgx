@@ -85,11 +85,11 @@ class CYP2D6Genotyper:
             result = '*5/*5'
         elif r.CNV == 'DeletionHet':
             if alleles[0] == alleles[1]:
-                result = '/'.join(sorted([alleles[0], '*4']))
+                result = '/'.join(sorted([alleles[0], '*5']))
             elif alleles[0] == '*1':
-                result = '/'.join(sorted([alleles[1], '*4']))
+                result = '/'.join(sorted([alleles[1], '*5']))
             elif alleles[1] == '*1':
-                result = '/'.join(sorted([alleles[0], '*4']))
+                result = '/'.join(sorted([alleles[0], '*5']))
             else:
                 result = 'Unassigned'
         else:
@@ -97,6 +97,7 @@ class CYP2D6Genotyper:
         return result
 
     def __init__(self, df):
+        self.deletion = '*5'
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2E1Genotyper:
@@ -282,7 +283,6 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'UGT2B17': UGT2B17Genotyper,
     }
 
-    # Check the input files.
     if isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
 
