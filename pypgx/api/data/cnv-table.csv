@@ -7,8 +7,13 @@ CYP2A6,Hybrid,4
 CYP2B6,Normal,0
 CYP2B6,Hybrid,1
 CYP2D6,Normal,0
-CYP2D6,Decreased,1
-CYP2D6,Increased,2
+CYP2D6,DeletionHet,1
+CYP2D6,Duplication,2
+CYP2D6,Tandem1,3
+CYP2D6,Tandem2A,4
+CYP2D6,Tandem2B,5
+CYP2D6,"DeletionHet,Tandem1",6
+CYP2D6,"Duplication,Tandem1",7
 CYP2E1,Normal,0
 CYP2E1,Duplication,1
 CYP2E1,PartialDuplication,2
@@ -24,7 +29,7 @@ SLC22A2,Normal,0
 SLC22A2,Exon11Deletion,1
 SLC22A2,Intron9Deletion,2
 UGT2B15,Normal,0
-UGT2B15,Deletion,1
+UGT2B15,PartialDeletion,1
 UGT2B15,Duplication,2
 UGT2B17,Normal,0
 UGT2B17,DeletionHet,1

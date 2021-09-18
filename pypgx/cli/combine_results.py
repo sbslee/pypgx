@@ -5,9 +5,9 @@ from ..api import utils
 import fuc
 
 description = f"""
-############################################
-# Combine various results for target gene. #
-############################################
+################################################
+# Combine various results for the target gene. #
+################################################
 
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
@@ -17,7 +17,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Combine various results for target gene.',
+        help='Combine various results for the target gene.',
         description=description,
     )
     parser.add_argument(

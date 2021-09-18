@@ -11,7 +11,7 @@ from .. import sdk
 import numpy as np
 import pandas as pd
 from fuc import pybam, pyvcf, pycov, common, pybed
-from sklearn import model_selection
+from sklearn import model_selection, metrics
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
 from sklearn.impute import SimpleImputer
@@ -164,7 +164,7 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
 
 def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     """
-    Combine various results for target gene.
+    Combine various results for the target gene.
 
     Parameters
     ----------
@@ -183,11 +183,20 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     if isinstance(genotypes, str):
         genotypes = sdk.Archive.from_file(genotypes)
 
+    if genotypes is not None:
+        genotypes.check('SampleTable[Genotypes]')
+
     if isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
 
+    if alleles is not None:
+        alleles.check('SampleTable[Alleles]')
+
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
+
+    if cnv_calls is not None:
+        cnv_calls.check('SampleTable[CNVCalls]')
 
     tables = [x for x in [genotypes, alleles, cnv_calls] if x is not None]
 
@@ -206,7 +215,7 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
 
     df = pd.concat(data, axis=1)
 
-    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'CNV']
+    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'AlternativePhase', 'CNV']
 
     for col in cols:
         if col not in df.columns:
@@ -1685,9 +1694,11 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
 
     return sorted(alleles, key=f)
 
-def test_cnv_caller(cnv_caller, copy_number, cnv_calls):
+def test_cnv_caller(
+    cnv_caller, copy_number, cnv_calls, confusion_matrix=None
+):
     """
-    Test a CNV caller for target gene.
+    Test a CNV caller for the target gene.
 
     Parameters
     ----------
@@ -1697,6 +1708,8 @@ def test_cnv_caller(cnv_caller, copy_number, cnv_calls):
         Archive file with the semantic type CovFrame[CopyNumber].
     cnv_calls : pypgx.Archive
         Archive file with the semantic type SampleTable[CNVCalls].
+    confusion_matrix : str, optional
+        Write the confusion matrix as a CSV file.
     """
     if isinstance(cnv_caller, str):
         cnv_caller = sdk.Archive.from_file(cnv_caller)
@@ -1730,28 +1743,23 @@ def test_cnv_caller(cnv_caller, copy_number, cnv_calls):
     Y = cnv_calls.data['Code'].to_numpy()
     predictions = cnv_caller.data.predict(X)
     results = predictions == Y
+    print(f'Accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
 
-    counts = {}
+    if confusion_matrix is not None:
+        Y = [code2name[x] for x in Y]
+        predictions = [code2name[x] for x in predictions]
+        labels = cnv_table.Name.to_list()
+        df = pd.DataFrame(metrics.confusion_matrix(Y, predictions, labels=labels))
+        df.columns = labels
+        df.index = labels
+        df.to_csv(confusion_matrix)
 
-    for i, y in enumerate(predictions):
-        if y not in counts:
-            counts[y] = [0, 0]
-        if results[i]:
-            counts[y][0] += 1
-        else:
-            counts[y][1] += 1
-
-    print(f'Overall accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
-
-    for k, v in counts.items():
-        print(f"Accuracy for '{code2name[k]}': {v[0]/sum(v):.3f} ({v[0]}/{sum(v)})")
-
-def train_cnv_caller(copy_number, cnv_calls):
+def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     """
-    Train a CNV caller for target gene.
+    Train a CNV caller for the target gene.
 
-    This method will return a SVM-based multiclass classifier that implements
-    the one-vs-rest stategy.
+    This method will return a SVM-based multiclass classifier that makes CNV
+    calls using the one-vs-rest stategy.
 
     Parameters
     ----------
@@ -1759,6 +1767,8 @@ def train_cnv_caller(copy_number, cnv_calls):
         Archive file or object with the semantic type CovFrame[CopyNumber].
     cnv_calls : str or pypgx.Archive
         Archive file or object with the semantic type SampleTable[CNVCalls].
+    confusion_matrix : str, optional
+        Write the confusion matrix as a CSV file.
 
     Returns
     -------
@@ -1793,22 +1803,16 @@ def train_cnv_caller(copy_number, cnv_calls):
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'Model[CNV]'
     predictions = model.predict(X)
-
     results = predictions == Y
+    print(f'Accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
 
-    counts = {}
-
-    for i, y in enumerate(predictions):
-        if y not in counts:
-            counts[y] = [0, 0]
-        if results[i]:
-            counts[y][0] += 1
-        else:
-            counts[y][1] += 1
-
-    print(f'Overall accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
-
-    for k, v in counts.items():
-        print(f"Accuracy for '{code2name[k]}': {v[0]/sum(v):.3f} ({v[0]}/{sum(v)})")
+    if confusion_matrix is not None:
+        Y = [code2name[x] for x in Y]
+        predictions = [code2name[x] for x in predictions]
+        labels = cnv_table.Name.to_list()
+        df = pd.DataFrame(metrics.confusion_matrix(Y, predictions, labels=labels))
+        df.columns = labels
+        df.index = labels
+        df.to_csv(confusion_matrix)
 
     return sdk.Archive(metadata, model)
