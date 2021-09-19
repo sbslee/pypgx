@@ -10,12 +10,23 @@ class TestPypgx(unittest.TestCase):
     def test_allele_table(self):
         df = pypgx.load_allele_table()
 
-        # Find duplicate alleles with the same definition.
         for assembly in ['GRCh37', 'GRCh38']:
+            # Find duplicate alleles with the same definition.
             i = df[[assembly, 'SV']].dropna().duplicated(keep=False)
             l = sorted(df[[assembly, 'SV']].dropna()[i][assembly].to_list())
             if l:
                 raise ValueError(f'Found duplicate alleles in {assembly}: {l}')
+
+            def one_row(r):
+                if pd.isna(r[assembly]):
+                    pass
+                else:
+                    ordered = ','.join(sorted(r[assembly].split(','), key=lambda x: common.parse_variant(x)[1]))
+                    if r[assembly] != ordered:
+                        raise ValueError(f"Variant are not sorted: '{r[assembly]}' should be changed to '{ordered}'")
+
+            df.apply(one_row, axis=1)
+
         self.assertEqual(pypgx.list_genes(), list(df.Gene.unique()))
 
     def test_diplotype_table(self):
@@ -69,7 +80,7 @@ class TestPypgx(unittest.TestCase):
     def test_predict_alleles(self):
         a = pypgx.predict_alleles('test-data/CYP4F2-GRCh37.zip')
         b = pypgx.predict_alleles('test-data/CYP4F2-GRCh38.zip')
-        self.assertEqual(['*1;', '*2;'], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
+        self.assertEqual(['*1;', '*2;', ';'], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
 
 if __name__ == '__main__':
     unittest.main()
