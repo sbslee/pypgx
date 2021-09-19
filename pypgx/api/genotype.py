@@ -74,7 +74,7 @@ class CYP2B6Genotyper:
 
 class CYP2D6Genotyper:
     """
-    Genotyper for CYPDA6.
+    Genotyper for CYP2D6.
     """
 
     def one_row(self, r):
@@ -97,7 +97,6 @@ class CYP2D6Genotyper:
         return result
 
     def __init__(self, df):
-        self.deletion = '*5'
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2E1Genotyper:

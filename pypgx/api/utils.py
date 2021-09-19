@@ -485,7 +485,7 @@ def create_consolidated_vcf(imported, phased):
     if isinstance(phased, str):
         phased = sdk.Archive.from_file(phased)
 
-    imported.data = imported.data.strip('GT:AD:DP')
+    imported.data = imported.data.strip('GT:AD:DP:AF')
     phased.data = phased.data.strip('GT')
 
     def one_row(r):
@@ -501,7 +501,7 @@ def create_consolidated_vcf(imported, phased):
         return r
 
     vf1 = pyvcf.VcfFrame([], phased.data.df.apply(one_row, axis=1))
-    vf1.df.FORMAT = 'GT:AD:DP'
+    vf1.df.FORMAT = 'GT:AD:DP:AF'
 
     vf2 = imported.data.filter_vcf(phased.data, opposite=True)
     vf3 = pyvcf.VcfFrame([], pd.concat([vf1.df, vf2.df])).sort()
@@ -1049,6 +1049,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     region = get_region(gene, assembly=assembly)
 
     data = vf.slice(region).strip('GT:AD:DP')
+    data = data.add_af()
 
     metadata = {
         'Gene': gene,
