@@ -215,7 +215,7 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
 
     df = pd.concat(data, axis=1)
 
-    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'AlternativePhase', 'CNV']
+    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'AlternativePhase', 'VariantData', 'CNV']
 
     for col in cols:
         if col not in df.columns:
@@ -1474,10 +1474,22 @@ def predict_alleles(consolidated_variants):
             else:
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
+                all_alleles = sort_alleles(gene, all_alleles)
             samples[sample].append(';'.join(candidates) + ';')
 
+        af_list = []
+
+        for allele in all_alleles:
+            if allele == default_allele:
+                af_list.append(f'{allele}:default')
+            else:
+                variants = ','.join(stars[allele])
+                fractions = ','.join([str(vf.get_af(sample, x)) for x in stars[allele]])
+                af_list.append(f'{allele}:{variants}:{fractions}')
+        samples[sample].append(';'.join(af_list) + ';')
+
     data = pd.DataFrame(samples).T
-    data.columns = ['Haplotype1', 'Haplotype2', 'AlternativePhase']
+    data.columns = ['Haplotype1', 'Haplotype2', 'AlternativePhase', 'VariantData']
     metadata = consolidated_variants.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[Alleles]'
     result = sdk.Archive(metadata, data)

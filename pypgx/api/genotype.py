@@ -92,6 +92,17 @@ class CYP2D6Genotyper:
                 result = '/'.join(sorted([alleles[0], '*5']))
             else:
                 result = 'Unassigned'
+        elif r.CNV == 'Tandem1':
+            h1 = '*4' in r.Haplotype1
+            h2 = '*4' in r.Haplotype2
+            if h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*68+*4']))
+            elif h1 and not h2:
+                result = '/'.join(sorted([alleles[1], '*68+*4']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*68+*4']))
+            else:
+                result = 'Unassigned'
         else:
             result = 'Unassigned'
         return result
