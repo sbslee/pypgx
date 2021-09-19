@@ -80,7 +80,7 @@ class TestPypgx(unittest.TestCase):
     def test_predict_alleles(self):
         a = pypgx.predict_alleles('test-data/CYP4F2-GRCh37.zip')
         b = pypgx.predict_alleles('test-data/CYP4F2-GRCh38.zip')
-        self.assertEqual(['*1;', '*2;', ';'], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
+        self.assertEqual(['*1;', '*2;', ';', '*2:19-16008388-A-C:0.5;*1:default;'], a.data.loc['A'].to_list(), b.data.loc['A'].to_list())
 
 if __name__ == '__main__':
     unittest.main()
