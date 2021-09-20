@@ -170,8 +170,25 @@ class CYP2D6Genotyper:
                 result = '/'.join(sorted([alleles[0], '*36x2+*10']))
             else:
                 result = 'Unassigned'
+        elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
+            if '*4' in r.Haplotype1 or '*4' in r.Haplotype2:
+                result = '/'.join(sorted(['*5', '*68+*4']))
+            else:
+                result = 'Unassigned'
+        elif 'Duplication' in r.CNV and 'Tandem1' in r.CNV:
+            h1 = '*4' in r.Haplotype1
+            h2 = '*4' in r.Haplotype2
+            if h1 and h2:
+                result = '/'.join(sorted(['*4x2', '*68+*4']))
+            elif h1 and not h2:
+                result = '/'.join(sorted([alleles[1]+'x2', '*68+*4']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[0]+'x2', '*68+*4']))
+            else:
+                result = 'Unassigned'
         else:
             result = 'Unassigned'
+
         return result
 
     def __init__(self, df):

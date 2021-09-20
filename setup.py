@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 exec(open('pypgx/version.py').read())
 
-requirements = ['fuc']
+requirements = ['fuc', 'scikit-learn']
 
 setup(
     name='pypgx',
