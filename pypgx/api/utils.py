@@ -1,3 +1,7 @@
+"""
+The utils submodule contains methods and classes
+"""
+
 import pkgutil
 from io import BytesIO
 import tempfile
@@ -5,6 +9,7 @@ import zipfile
 import subprocess
 import os
 import pickle
+import pathlib
 
 from .. import sdk
 
@@ -16,6 +21,8 @@ from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
 from sklearn.impute import SimpleImputer
 from scipy.ndimage import median_filter
+
+PYPGX_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 FUNCTION_ORDER = [
     'No Function',

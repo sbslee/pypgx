@@ -1,3 +1,7 @@
+"""
+The plot submodule contains methods and classes
+"""
+
 from . import utils
 from .. import sdk
 

@@ -1,3 +1,7 @@
+"""
+The pipeline submodule contains methods and classes
+"""
+
 import shutil
 import os
 

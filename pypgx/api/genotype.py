@@ -1,3 +1,7 @@
+"""
+The genotype submodule contains methods and classes
+"""
+
 import warnings
 
 from .. import sdk

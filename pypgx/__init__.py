@@ -63,5 +63,4 @@ from .sdk import (
     Archive,
 )
 
-del api
 del sdk
