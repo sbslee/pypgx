@@ -5,6 +5,49 @@ from . import utils
 
 import pandas as pd
 
+###################
+# Private methods #
+###################
+
+def _call_duplication(r):
+    """
+    Call whole gene duplication.
+    """
+    a1 = r.Haplotype1[0]
+    a2 = r.Haplotype2[0]
+
+    if r.VariantData[a1]:
+        h1 = all([x > 0.5 for x in r.VariantData[a1][1]])
+    else:
+        h1 = True
+
+    if r.VariantData[a2]:
+        h2 = all([x > 0.5 for x in r.VariantData[a2][1]])
+    else:
+        h2 = True
+
+    if h1 and h2:
+        if a1 == a2:
+            result = '/'.join(sorted([a2, a1+'x2']))
+        elif r.VariantData[a1] and not r.VariantData[a2]:
+            result = '/'.join(sorted([a2, a1+'x2']))
+        elif not r.VariantData[a1] and r.VariantData[a2]:
+            result = '/'.join(sorted([a1, a2+'x2']))
+        else:
+            result = 'Unassigned'
+    elif h1 and not h2:
+        result = '/'.join(sorted([a2, a1+'x2']))
+    elif not h1 and h2:
+        result = '/'.join(sorted([a1, a2+'x2']))
+    else:
+        result = 'Unassigned'
+
+    return result
+
+###############################
+# Public classes and methods  #
+###############################
+
 class SimpleGenotyper:
     """
     Genotyper for genes without SV.
@@ -92,6 +135,8 @@ class CYP2D6Genotyper:
                 result = '/'.join(sorted([alleles[0], '*5']))
             else:
                 result = 'Unassigned'
+        elif r.CNV == 'Duplication':
+            result = _call_duplication(r)
         elif r.CNV == 'Tandem1':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
@@ -112,6 +157,17 @@ class CYP2D6Genotyper:
                 result = '/'.join(sorted([alleles[1], '*36+*10']))
             elif not h1 and h2:
                 result = '/'.join(sorted([alleles[0], '*36+*10']))
+            else:
+                result = 'Unassigned'
+        elif r.CNV == 'Tandem2B':
+            h1 = '*10' in r.Haplotype1
+            h2 = '*10' in r.Haplotype2
+            if h1 and h2:
+                result = '/'.join(sorted(['*36+*10', '*36+*10']))
+            elif h1 and not h2:
+                result = '/'.join(sorted([alleles[1], '*36x2+*10']))
+            elif not h1 and h2:
+                result = '/'.join(sorted([alleles[0], '*36x2+*10']))
             else:
                 result = 'Unassigned'
         else:
@@ -341,6 +397,14 @@ def call_genotypes(alleles=None, cnv_calls=None):
         if 'Haplotype1' in r.index:
             r.Haplotype1 = r.Haplotype1.strip(';').split(';')
             r.Haplotype2 = r.Haplotype2.strip(';').split(';')
+            d = {}
+            for allele in r.VariantData.strip(';').split(';'):
+                fields = allele.split(':')
+                if 'default' in allele:
+                    d[fields[0]] = []
+                else:
+                    d[fields[0]] = [fields[1].split(','), [float(x) for x in fields[2].split(',')]]
+            r.VariantData = d
         return r
 
     df = df.apply(one_row, axis=1)
@@ -349,6 +413,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         df = sv_genotypers[gene](df).results.to_frame()
     else:
         df = SimpleGenotyper(df).results.to_frame()
+
     df.columns = ['Genotype']
 
     metadata = {}
