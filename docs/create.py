@@ -271,8 +271,6 @@ with open(cli_file, 'w') as f:
 
 # -- api.rst -----------------------------------------------------------------
 
-api_file = f'{utils.PROGRAM_PATH}/docs/api.rst'
-
 api = """
 {credit}
 API
@@ -297,7 +295,7 @@ For getting help on a specific submodule (e.g. utils):
 """.format(**d)
 
 for submodule in submodules:
-    s = f'pypgx.{submodule}\n'
+    s = f'{submodule}\n'
     s += '=' * (len(s)-1) + '\n'
     s += '\n'
     s += f'.. automodule:: pypgx.api.{submodule}\n'
@@ -305,5 +303,28 @@ for submodule in submodules:
     s += '\n'
     api += s
 
-with open(api_file, 'w') as f:
+with open(f'{utils.PROGRAM_PATH}/docs/api.rst', 'w') as f:
     f.write(api.lstrip())
+
+# -- sdk.rst -----------------------------------------------------------------
+
+sdk = """
+{credit}
+SDK
+***
+
+Introduction
+============
+
+This section describes software development kit (SDK) for PyPGx.
+
+utils
+=====
+
+.. automodule:: pypgx.sdk.utils
+   :members:
+
+""".format(**d)
+
+with open(f'{utils.PROGRAM_PATH}/docs/sdk.rst', 'w') as f:
+    f.write(sdk.lstrip())

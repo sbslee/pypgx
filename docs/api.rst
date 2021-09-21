@@ -24,26 +24,26 @@ For getting help on a specific submodule (e.g. utils):
    from pypgx.api import utils
    help(utils)
 
-pypgx.genotype
-==============
+genotype
+========
 
 .. automodule:: pypgx.api.genotype
    :members:
 
-pypgx.pipeline
-==============
+pipeline
+========
 
 .. automodule:: pypgx.api.pipeline
    :members:
 
-pypgx.plot
-==========
+plot
+====
 
 .. automodule:: pypgx.api.plot
    :members:
 
-pypgx.utils
-===========
+utils
+=====
 
 .. automodule:: pypgx.api.utils
    :members:
