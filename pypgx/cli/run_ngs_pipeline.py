@@ -5,19 +5,19 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-#####################################
-# Run NGS pipeline for target gene. #
-#####################################
+#########################################
+# Run NGS pipeline for the target gene. #
+#########################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs CYP2D6-control-statistics.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Run NGS pipeline for target gene.',
+        help='Run NGS pipeline for the target gene.',
         description=description,
     )
     parser.add_argument(

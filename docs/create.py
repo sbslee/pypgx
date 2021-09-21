@@ -40,7 +40,7 @@ Introduction
 
 The main purpose of the PyPGx package is to provide a unified platform for pharmacogenomics (PGx) research.
 
-The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at `the Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
@@ -69,24 +69,6 @@ Before using pypgx, make sure to activate the conda environment where pypgx is i
 .. code-block:: console
 
   $ conda activate pypgx
-
-Getting help
-============
-For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
-
-For getting help on the CLI:
-
-.. code-block:: text
-
-   $ pypgx -h
-
-{pypgx_help}
-
-For getting help on a specific command (e.g. call-genotypes):
-
-.. code-block:: text
-
-   $ pypgx call-genotypes -h
 
 Archive file, semantic type, and metadata
 =========================================
@@ -158,9 +140,71 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
+Getting help
+============
+For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+For getting help on the CLI:
+
+.. code-block:: text
+
+   $ pypgx -h
+
+{pypgx_help}
+
+For getting help on a specific command (e.g. call-genotypes):
+
+.. code-block:: text
+
+   $ pypgx call-genotypes -h
+
+Below is the list of submodules available in the API:
+
+{submodule_help}
+
+For getting help on a specific submodule (e.g. utils):
+
+.. code:: python3
+
+   >>> from pypgx.api import utils
+   >>> help(utils)
+
+CLI examples
+============
+
+Run NGS pipeline for CYP2D6:
+
+.. code-block:: text
+
+   $ pypgx run-ngs-pipeline \\
+   CYP2D6 \\
+   CYP2D6-pipeline \\
+   --vcf input.vcf \\
+   --panel ref.vcf \\
+   --tsv input.tsv \\
+   --control-statistcs control-statistics-VDR.zip
+
+API examples
+============
+
+Predict phenotype based on two haplotype calls:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.predict_phenotype('CYP2D6', '*4', '*5')   # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22')  # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
+    'Ultrarapid Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')   # *4 has increased function
+    'Rapid Metabolizer'
 """.format(**d)
 
-readme_file = f'{utils.PYPGX_PATH}/README.rst'
+readme_file = f'{utils.PROGRAM_PATH}/README.rst'
 
 with open(readme_file, 'w') as f:
     f.write(readme.lstrip())
@@ -207,14 +251,14 @@ for command in commands:
     s += '\n'
     cli += s
 
-cli_file = f'{utils.PYPGX_PATH}/docs/cli.rst'
+cli_file = f'{utils.PROGRAM_PATH}/docs/cli.rst'
 
 with open(cli_file, 'w') as f:
     f.write(cli.lstrip())
 
 # -- api.rst -----------------------------------------------------------------
 
-api_file = f'{utils.PYPGX_PATH}/docs/api.rst'
+api_file = f'{utils.PROGRAM_PATH}/docs/api.rst'
 
 api = """
 {credit}

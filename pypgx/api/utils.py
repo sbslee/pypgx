@@ -1,5 +1,5 @@
 """
-The utils submodule contains methods and classes
+The utils submodule is the main suite of tools for PGx research.
 """
 
 import pkgutil
@@ -22,7 +22,7 @@ from sklearn.svm import SVC
 from sklearn.impute import SimpleImputer
 from scipy.ndimage import median_filter
 
-PYPGX_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
+PROGRAM_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 FUNCTION_ORDER = [
     'No Function',
@@ -599,6 +599,14 @@ def estimate_phase_beagle(
 ):
     """
     Estimate haplotype phase of observed variants with the Beagle program.
+
+    If your input data is GRCh37, I recommend using the 1000 Genomes Project
+    phase 3 reference panel. You can easily download it thanks to the authors
+    of Beagle:
+
+    .. code-block:: console
+
+        $ wget -r --no-parent http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/
 
     Parameters
     ----------
@@ -1543,13 +1551,13 @@ def predict_phenotype(gene, a, b):
     """
     Predict phenotype based on two haplotype calls.
 
-    The method can handle star alleles with structural variation including
-    gene deletion, duplication, and tandem arrangement.
+    The method can handle star alleles with SV including gene deletion,
+    duplication, and tandem arrangement.
 
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     a, b : str
         Star allele for each haplotype. The order of alleles does not matter.
 
@@ -1562,7 +1570,7 @@ def predict_phenotype(gene, a, b):
     --------
 
     >>> import pypgx
-    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # Both alleles have no function
+    >>> pypgx.predict_phenotype('CYP2D6', '*4', '*5')   # Both alleles have no function
     'Poor Metabolizer'
     >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
     'Poor Metabolizer'

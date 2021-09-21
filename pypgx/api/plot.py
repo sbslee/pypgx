@@ -1,5 +1,6 @@
 """
-The plot submodule contains methods and classes
+The plot submodule is used to plot various kinds of profiles such as read
+depth, copy number, and allele fraction.
 """
 
 from . import utils

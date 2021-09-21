@@ -6,7 +6,7 @@ Welcome to PyPGx's documentation!
    :caption: Contents:
 
    readme
-   pipelines
+   tutorials
    cli
    api
    sdk

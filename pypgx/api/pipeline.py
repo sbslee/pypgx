@@ -1,5 +1,6 @@
 """
-The pipeline submodule contains methods and classes
+The pipeline submodule is used to provide convenient methods that combine
+multiple PyPGx actions and automatically handle semantic types.
 """
 
 import shutil

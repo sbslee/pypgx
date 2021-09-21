@@ -1,5 +1,6 @@
 """
-The genotype submodule contains methods and classes
+The genotype submodule is a suite of tools for accurately predicting genotype
+calls.
 """
 
 import warnings

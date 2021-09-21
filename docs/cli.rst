@@ -49,7 +49,7 @@ For getting help on the CLI:
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
        print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for target gene.
+       run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -601,12 +601,12 @@ run-ngs-pipeline
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
-   #####################################
-   # Run NGS pipeline for target gene. #
-   #####################################
+   #########################################
+   # Run NGS pipeline for the target gene. #
+   #########################################
    
    Usage examples:
-     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs CYP2D6-control-statistics.zip
+     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
    
    Positional arguments:
      gene                  Target gene.

@@ -13,7 +13,7 @@ Introduction
 
 The main purpose of the PyPGx package is to provide a unified platform for pharmacogenomics (PGx) research.
 
-The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at `the Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
@@ -42,63 +42,6 @@ Before using pypgx, make sure to activate the conda environment where pypgx is i
 .. code-block:: console
 
   $ conda activate pypgx
-
-Getting help
-============
-For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
-
-For getting help on the CLI:
-
-.. code-block:: text
-
-   $ pypgx -h
-
-   usage: pypgx [-h] [-v] COMMAND ...
-   
-   positional arguments:
-     COMMAND
-       call-genotypes      Call genotypes for target gene.
-       combine-results     Combine various results for the target gene.
-       compute-control-statistics
-                           Compute various statistics for control gene with BAM data.
-       compute-copy-number
-                           Compute copy number from read depth for target gene.
-       compute-target-depth
-                           Compute read depth for target gene with BAM data.
-       create-consolidated-vcf
-                           Create consolidated VCF.
-       create-read-depth-tsv
-                           Compute read depth for target gene with BAM data.
-       create-regions-bed  Create a BED file which contains all regions used by PyPGx.
-       estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with the Beagle program.
-       filter-samples      Filter Archive file for specified samples.
-       import-read-depth   Import read depth data for target gene.
-       import-variants     Import variant data for target gene.
-       plot-bam-copy-number
-                           Plot copy number profile with BAM data.
-       plot-bam-read-depth
-                           Plot read depth profile with BAM data.
-       plot-vcf-allele-fraction
-                           Plot allele fraction profile with VCF data.
-       plot-vcf-read-depth
-                           Plot read depth profile with VCF data.
-       predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for target gene based on copy number data.
-       print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for target gene.
-       test-cnv-caller     Test a CNV caller for the target gene.
-       train-cnv-caller    Train a CNV caller for the target gene.
-   
-   optional arguments:
-     -h, --help            Show this help message and exit.
-     -v, --version         Show the version number and exit.
-
-For getting help on a specific command (e.g. call-genotypes):
-
-.. code-block:: text
-
-   $ pypgx call-genotypes -h
 
 Archive file, semantic type, and metadata
 =========================================
@@ -170,3 +113,108 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
+Getting help
+============
+For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+For getting help on the CLI:
+
+.. code-block:: text
+
+   $ pypgx -h
+
+   usage: pypgx [-h] [-v] COMMAND ...
+   
+   positional arguments:
+     COMMAND
+       call-genotypes      Call genotypes for target gene.
+       combine-results     Combine various results for the target gene.
+       compute-control-statistics
+                           Compute various statistics for control gene with BAM data.
+       compute-copy-number
+                           Compute copy number from read depth for target gene.
+       compute-target-depth
+                           Compute read depth for target gene with BAM data.
+       create-consolidated-vcf
+                           Create consolidated VCF.
+       create-read-depth-tsv
+                           Compute read depth for target gene with BAM data.
+       create-regions-bed  Create a BED file which contains all regions used by PyPGx.
+       estimate-phase-beagle
+                           Estimate haplotype phase of observed variants with the Beagle program.
+       filter-samples      Filter Archive file for specified samples.
+       import-read-depth   Import read depth data for target gene.
+       import-variants     Import variant data for target gene.
+       plot-bam-copy-number
+                           Plot copy number profile with BAM data.
+       plot-bam-read-depth
+                           Plot read depth profile with BAM data.
+       plot-vcf-allele-fraction
+                           Plot allele fraction profile with VCF data.
+       plot-vcf-read-depth
+                           Plot read depth profile with VCF data.
+       predict-alleles     Predict candidate star alleles based on observed variants.
+       predict-cnv         Predict CNV for target gene based on copy number data.
+       print-metadata      Print the metadata of specified archive.
+       run-ngs-pipeline    Run NGS pipeline for the target gene.
+       test-cnv-caller     Test a CNV caller for the target gene.
+       train-cnv-caller    Train a CNV caller for the target gene.
+   
+   optional arguments:
+     -h, --help            Show this help message and exit.
+     -v, --version         Show the version number and exit.
+
+For getting help on a specific command (e.g. call-genotypes):
+
+.. code-block:: text
+
+   $ pypgx call-genotypes -h
+
+Below is the list of submodules available in the API:
+
+- **genotype** : The genotype submodule is a suite of tools for accurately predicting genotype calls.
+- **pipeline** : The pipeline submodule is used to provide convenient methods that combine multiple PyPGx actions and automatically handle semantic types.
+- **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
+- **utils** : The utils submodule is the main suite of tools for PGx research.
+
+
+For getting help on a specific submodule (e.g. utils):
+
+.. code:: python3
+
+   >>> from pypgx.api import utils
+   >>> help(utils)
+
+CLI examples
+============
+
+Run NGS pipeline for CYP2D6:
+
+.. code-block:: text
+
+   $ pypgx run-ngs-pipeline \
+   CYP2D6 \
+   CYP2D6-pipeline \
+   --vcf input.vcf \
+   --panel ref.vcf \
+   --tsv input.tsv \
+   --control-statistcs control-statistics-VDR.zip
+
+API examples
+============
+
+Predict phenotype based on two haplotype calls:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.predict_phenotype('CYP2D6', '*4', '*5')   # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22')  # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
+    'Ultrarapid Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')   # *4 has increased function
+    'Rapid Metabolizer'
