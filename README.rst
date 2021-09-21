@@ -211,7 +211,7 @@ Run NGS pipeline for CYP2D6:
    --vcf input.vcf \
    --panel ref.vcf \
    --tsv input.tsv \
-   --control-statistcs control-statistics-VDR.zip
+   --control-statistics control-statistics-VDR.zip
 
 API examples
 ============
