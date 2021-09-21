@@ -31,6 +31,9 @@ readme = """
 README
 ******
 
+.. image:: https://badge.fury.io/py/pypgx.svg
+    :target: https://badge.fury.io/py/pypgx
+
 .. image:: https://readthedocs.org/projects/pypgx/badge/?version=latest
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
@@ -58,17 +61,27 @@ The following packages are required to run PyPGx:
    fuc
    scikit-learn
 
-You can easily install PyPGx and all of its dependencies with the Anaconda distribution. It is strongly recommended to create a new environment specifically for pypgx, as there are many required dependencies that you may not want added to an existing environment.
+There are various ways you can install PyPGx. The recommended way is via conda (`Anaconda <https://www.anaconda.com/>`__):
 
-.. code-block:: console
+.. code-block:: text
 
-   $ conda create -n pypgx -c conda-forge -c bioconda -c defaults -c sbslee pypgx
+   $ conda install -c bioconda pypgx
 
-Before using pypgx, make sure to activate the conda environment where pypgx is installed.
+Above will automatically download and install all the dependencies as well. Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install PyPGx and all of its dependencies:
 
-.. code-block:: console
+.. code-block:: text
 
-  $ conda activate pypgx
+   $ pip install pypgx
+
+Finally, you can clone the GitHub repository and then install PyPGx locally:
+
+.. code-block:: text
+
+   $ git clone https://github.com/sbslee/pypgx
+   $ cd fuc
+   $ pip install .
+
+The nice thing about this approach is that you will have access to development versions that are not available in Anaconda or PyPI. For example, you can access a development branch with the ``git checkout`` command. When you do this, please make sure your environment already has all the dependencies installed.
 
 Archive file, semantic type, and metadata
 =========================================
@@ -182,7 +195,7 @@ Run NGS pipeline for CYP2D6:
    --vcf input.vcf \\
    --panel ref.vcf \\
    --tsv input.tsv \\
-   --control-statistcs control-statistics-VDR.zip
+   --control-statistics control-statistics-VDR.zip
 
 API examples
 ============

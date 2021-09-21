@@ -302,24 +302,28 @@ estimate-phase-beagle
 .. code-block:: text
 
    $ pypgx estimate-phase-beagle -h
-   usage: pypgx estimate-phase-beagle [-h] [--impute] target panel output
+   usage: pypgx estimate-phase-beagle [-h] [--impute]
+                                      imported-variants panel phased-variants
    
    ##########################################################################
    # Estimate haplotype phase of observed variants with the Beagle program. #
    ##########################################################################
    
+   If your input data is GRCh37, I recommend using the 1000 Genomes Project phase 3 reference panel. You can easily download it thanks to the authors of Beagle:
+   
+   $ wget -r --no-parent http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/
+   
    Usage examples:
-     $ pypgx estimate-phase-beagle in.zip ref.vcf out.zip
-     $ pypgx estimate-phase-beagle in.zip ref.vcf out.zip --impute
+     $ pypgx estimate-phase-beagle imported-variants.zip ref.vcf phased-variants.zip
    
    Positional arguments:
-     target      Archive file with the semantic type VcfFrame[Imported].
-     panel       Reference haplotype panel.
-     output      Archive file with the semantic type VcfFrame[Phased].
+     imported-variants  Archive file with the semantic type VcfFrame[Imported].
+     panel              Reference haplotype panel.
+     phased-variants    Archive file with the semantic type VcfFrame[Phased].
    
    Optional arguments:
-     -h, --help  Show this help message and exit.
-     --impute    Whether to perform imputation of missing genotypes.
+     -h, --help         Show this help message and exit.
+     --impute           Whether to perform imputation of missing genotypes.
 
 filter-samples
 ==============
