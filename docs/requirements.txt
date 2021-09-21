@@ -1,1 +1,5 @@
-sphinx_rtd_theme==0.5.1
+autodocsumm
+fuc
+scikit-learn
+sphinx==4.1.2
+sphinx_rtd_theme==0.5.2

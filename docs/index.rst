@@ -1,4 +1,4 @@
-Welcome to pypgx's documentation!
+Welcome to PyPGx's documentation!
 =================================
 
 .. toctree::
@@ -6,9 +6,10 @@ Welcome to pypgx's documentation!
    :caption: Contents:
 
    readme
+   tutorials
    cli
    api
-   development
+   sdk
    changelog
 
 Indices and tables

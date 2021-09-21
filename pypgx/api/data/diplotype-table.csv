@@ -1,0 +1,3118 @@
+Gene,Diplotype,Phenotype
+CYP2B6,*1/*1,Normal Metabolizer
+CYP2B6,*1/*2,Normal Metabolizer
+CYP2B6,*1/*3,Indeterminate
+CYP2B6,*1/*4,Rapid Metabolizer
+CYP2B6,*1/*5,Normal Metabolizer
+CYP2B6,*1/*6,Intermediate Metabolizer
+CYP2B6,*1/*7,Intermediate Metabolizer
+CYP2B6,*1/*8,Intermediate Metabolizer
+CYP2B6,*1/*9,Intermediate Metabolizer
+CYP2B6,*1/*10,Indeterminate
+CYP2B6,*1/*11,Indeterminate
+CYP2B6,*1/*12,Intermediate Metabolizer
+CYP2B6,*1/*13,Intermediate Metabolizer
+CYP2B6,*1/*14,Indeterminate
+CYP2B6,*1/*15,Indeterminate
+CYP2B6,*1/*17,Normal Metabolizer
+CYP2B6,*1/*18,Intermediate Metabolizer
+CYP2B6,*1/*19,Intermediate Metabolizer
+CYP2B6,*1/*20,Intermediate Metabolizer
+CYP2B6,*1/*21,Indeterminate
+CYP2B6,*1/*22,Rapid Metabolizer
+CYP2B6,*1/*23,Indeterminate
+CYP2B6,*1/*24,Intermediate Metabolizer
+CYP2B6,*1/*25,Indeterminate
+CYP2B6,*1/*26,Intermediate Metabolizer
+CYP2B6,*1/*27,Indeterminate
+CYP2B6,*1/*28,Intermediate Metabolizer
+CYP2B6,*1/*29,Intermediate Metabolizer
+CYP2B6,*1/*30,Intermediate Metabolizer
+CYP2B6,*1/*31,Normal Metabolizer
+CYP2B6,*1/*32,Normal Metabolizer
+CYP2B6,*1/*33,Indeterminate
+CYP2B6,*1/*34,Intermediate Metabolizer
+CYP2B6,*1/*35,Intermediate Metabolizer
+CYP2B6,*1/*36,Intermediate Metabolizer
+CYP2B6,*1/*37,Intermediate Metabolizer
+CYP2B6,*1/*38,Intermediate Metabolizer
+CYP2B6,*2/*2,Normal Metabolizer
+CYP2B6,*2/*3,Indeterminate
+CYP2B6,*2/*4,Rapid Metabolizer
+CYP2B6,*2/*5,Normal Metabolizer
+CYP2B6,*2/*6,Intermediate Metabolizer
+CYP2B6,*2/*7,Intermediate Metabolizer
+CYP2B6,*2/*8,Intermediate Metabolizer
+CYP2B6,*2/*9,Intermediate Metabolizer
+CYP2B6,*2/*10,Indeterminate
+CYP2B6,*2/*11,Indeterminate
+CYP2B6,*2/*12,Intermediate Metabolizer
+CYP2B6,*2/*13,Intermediate Metabolizer
+CYP2B6,*2/*14,Indeterminate
+CYP2B6,*2/*15,Indeterminate
+CYP2B6,*2/*17,Normal Metabolizer
+CYP2B6,*2/*18,Intermediate Metabolizer
+CYP2B6,*2/*19,Intermediate Metabolizer
+CYP2B6,*2/*20,Intermediate Metabolizer
+CYP2B6,*2/*21,Indeterminate
+CYP2B6,*2/*22,Rapid Metabolizer
+CYP2B6,*2/*23,Indeterminate
+CYP2B6,*2/*24,Intermediate Metabolizer
+CYP2B6,*2/*25,Indeterminate
+CYP2B6,*2/*26,Intermediate Metabolizer
+CYP2B6,*2/*27,Indeterminate
+CYP2B6,*2/*28,Intermediate Metabolizer
+CYP2B6,*2/*29,Intermediate Metabolizer
+CYP2B6,*2/*30,Intermediate Metabolizer
+CYP2B6,*2/*31,Normal Metabolizer
+CYP2B6,*2/*32,Normal Metabolizer
+CYP2B6,*2/*33,Indeterminate
+CYP2B6,*2/*34,Intermediate Metabolizer
+CYP2B6,*2/*35,Intermediate Metabolizer
+CYP2B6,*2/*36,Intermediate Metabolizer
+CYP2B6,*2/*37,Intermediate Metabolizer
+CYP2B6,*2/*38,Intermediate Metabolizer
+CYP2B6,*3/*3,Indeterminate
+CYP2B6,*3/*4,Indeterminate
+CYP2B6,*3/*5,Indeterminate
+CYP2B6,*3/*6,Indeterminate
+CYP2B6,*3/*7,Indeterminate
+CYP2B6,*3/*8,Indeterminate
+CYP2B6,*3/*9,Indeterminate
+CYP2B6,*3/*10,Indeterminate
+CYP2B6,*3/*11,Indeterminate
+CYP2B6,*3/*12,Indeterminate
+CYP2B6,*3/*13,Indeterminate
+CYP2B6,*3/*14,Indeterminate
+CYP2B6,*3/*15,Indeterminate
+CYP2B6,*3/*17,Indeterminate
+CYP2B6,*3/*18,Indeterminate
+CYP2B6,*3/*19,Indeterminate
+CYP2B6,*3/*20,Indeterminate
+CYP2B6,*3/*21,Indeterminate
+CYP2B6,*3/*22,Indeterminate
+CYP2B6,*3/*23,Indeterminate
+CYP2B6,*3/*24,Indeterminate
+CYP2B6,*3/*25,Indeterminate
+CYP2B6,*3/*26,Indeterminate
+CYP2B6,*3/*27,Indeterminate
+CYP2B6,*3/*28,Indeterminate
+CYP2B6,*3/*29,Indeterminate
+CYP2B6,*3/*30,Indeterminate
+CYP2B6,*3/*31,Indeterminate
+CYP2B6,*3/*32,Indeterminate
+CYP2B6,*3/*33,Indeterminate
+CYP2B6,*3/*34,Indeterminate
+CYP2B6,*3/*35,Indeterminate
+CYP2B6,*3/*36,Indeterminate
+CYP2B6,*3/*37,Indeterminate
+CYP2B6,*3/*38,Indeterminate
+CYP2B6,*4/*4,Ultrarapid Metabolizer
+CYP2B6,*4/*5,Rapid Metabolizer
+CYP2B6,*4/*6,Intermediate Metabolizer
+CYP2B6,*4/*7,Intermediate Metabolizer
+CYP2B6,*4/*8,Intermediate Metabolizer
+CYP2B6,*4/*9,Intermediate Metabolizer
+CYP2B6,*4/*10,Indeterminate
+CYP2B6,*4/*11,Indeterminate
+CYP2B6,*4/*12,Intermediate Metabolizer
+CYP2B6,*4/*13,Intermediate Metabolizer
+CYP2B6,*4/*14,Indeterminate
+CYP2B6,*4/*15,Indeterminate
+CYP2B6,*4/*17,Rapid Metabolizer
+CYP2B6,*4/*18,Intermediate Metabolizer
+CYP2B6,*4/*19,Intermediate Metabolizer
+CYP2B6,*4/*20,Intermediate Metabolizer
+CYP2B6,*4/*21,Indeterminate
+CYP2B6,*4/*22,Ultrarapid Metabolizer
+CYP2B6,*4/*23,Indeterminate
+CYP2B6,*4/*24,Intermediate Metabolizer
+CYP2B6,*4/*25,Indeterminate
+CYP2B6,*4/*26,Intermediate Metabolizer
+CYP2B6,*4/*27,Indeterminate
+CYP2B6,*4/*28,Intermediate Metabolizer
+CYP2B6,*4/*29,Intermediate Metabolizer
+CYP2B6,*4/*30,Intermediate Metabolizer
+CYP2B6,*4/*31,Rapid Metabolizer
+CYP2B6,*4/*32,Rapid Metabolizer
+CYP2B6,*4/*33,Indeterminate
+CYP2B6,*4/*34,Intermediate Metabolizer
+CYP2B6,*4/*35,Intermediate Metabolizer
+CYP2B6,*4/*36,Intermediate Metabolizer
+CYP2B6,*4/*37,Intermediate Metabolizer
+CYP2B6,*4/*38,Intermediate Metabolizer
+CYP2B6,*5/*5,Normal Metabolizer
+CYP2B6,*5/*6,Intermediate Metabolizer
+CYP2B6,*5/*7,Intermediate Metabolizer
+CYP2B6,*5/*8,Intermediate Metabolizer
+CYP2B6,*5/*9,Intermediate Metabolizer
+CYP2B6,*5/*10,Indeterminate
+CYP2B6,*5/*11,Indeterminate
+CYP2B6,*5/*12,Intermediate Metabolizer
+CYP2B6,*5/*13,Intermediate Metabolizer
+CYP2B6,*5/*14,Indeterminate
+CYP2B6,*5/*15,Indeterminate
+CYP2B6,*5/*17,Normal Metabolizer
+CYP2B6,*5/*18,Intermediate Metabolizer
+CYP2B6,*5/*19,Intermediate Metabolizer
+CYP2B6,*5/*20,Intermediate Metabolizer
+CYP2B6,*5/*21,Indeterminate
+CYP2B6,*5/*22,Rapid Metabolizer
+CYP2B6,*5/*23,Indeterminate
+CYP2B6,*5/*24,Intermediate Metabolizer
+CYP2B6,*5/*25,Indeterminate
+CYP2B6,*5/*26,Intermediate Metabolizer
+CYP2B6,*5/*27,Indeterminate
+CYP2B6,*5/*28,Intermediate Metabolizer
+CYP2B6,*5/*29,Intermediate Metabolizer
+CYP2B6,*5/*30,Intermediate Metabolizer
+CYP2B6,*5/*31,Normal Metabolizer
+CYP2B6,*5/*32,Normal Metabolizer
+CYP2B6,*5/*33,Indeterminate
+CYP2B6,*5/*34,Intermediate Metabolizer
+CYP2B6,*5/*35,Intermediate Metabolizer
+CYP2B6,*5/*36,Intermediate Metabolizer
+CYP2B6,*5/*37,Intermediate Metabolizer
+CYP2B6,*5/*38,Intermediate Metabolizer
+CYP2B6,*6/*6,Poor Metabolizer
+CYP2B6,*6/*7,Poor Metabolizer
+CYP2B6,*6/*8,Poor Metabolizer
+CYP2B6,*6/*9,Poor Metabolizer
+CYP2B6,*6/*10,Indeterminate
+CYP2B6,*6/*11,Indeterminate
+CYP2B6,*6/*12,Poor Metabolizer
+CYP2B6,*6/*13,Poor Metabolizer
+CYP2B6,*6/*14,Indeterminate
+CYP2B6,*6/*15,Indeterminate
+CYP2B6,*6/*17,Intermediate Metabolizer
+CYP2B6,*6/*18,Poor Metabolizer
+CYP2B6,*6/*19,Poor Metabolizer
+CYP2B6,*6/*20,Poor Metabolizer
+CYP2B6,*6/*21,Indeterminate
+CYP2B6,*6/*22,Intermediate Metabolizer
+CYP2B6,*6/*23,Indeterminate
+CYP2B6,*6/*24,Poor Metabolizer
+CYP2B6,*6/*25,Indeterminate
+CYP2B6,*6/*26,Poor Metabolizer
+CYP2B6,*6/*27,Indeterminate
+CYP2B6,*6/*28,Poor Metabolizer
+CYP2B6,*6/*29,Poor Metabolizer
+CYP2B6,*6/*30,Poor Metabolizer
+CYP2B6,*6/*31,Intermediate Metabolizer
+CYP2B6,*6/*32,Intermediate Metabolizer
+CYP2B6,*6/*33,Indeterminate
+CYP2B6,*6/*34,Poor Metabolizer
+CYP2B6,*6/*35,Poor Metabolizer
+CYP2B6,*6/*36,Poor Metabolizer
+CYP2B6,*6/*37,Poor Metabolizer
+CYP2B6,*6/*38,Poor Metabolizer
+CYP2B6,*7/*7,Poor Metabolizer
+CYP2B6,*7/*8,Poor Metabolizer
+CYP2B6,*7/*9,Poor Metabolizer
+CYP2B6,*7/*10,Indeterminate
+CYP2B6,*7/*11,Indeterminate
+CYP2B6,*7/*12,Poor Metabolizer
+CYP2B6,*7/*13,Poor Metabolizer
+CYP2B6,*7/*14,Indeterminate
+CYP2B6,*7/*15,Indeterminate
+CYP2B6,*7/*17,Intermediate Metabolizer
+CYP2B6,*7/*18,Poor Metabolizer
+CYP2B6,*7/*19,Poor Metabolizer
+CYP2B6,*7/*20,Poor Metabolizer
+CYP2B6,*7/*21,Indeterminate
+CYP2B6,*7/*22,Intermediate Metabolizer
+CYP2B6,*7/*23,Indeterminate
+CYP2B6,*7/*24,Poor Metabolizer
+CYP2B6,*7/*25,Indeterminate
+CYP2B6,*7/*26,Poor Metabolizer
+CYP2B6,*7/*27,Indeterminate
+CYP2B6,*7/*28,Poor Metabolizer
+CYP2B6,*7/*29,Poor Metabolizer
+CYP2B6,*7/*30,Poor Metabolizer
+CYP2B6,*7/*31,Intermediate Metabolizer
+CYP2B6,*7/*32,Intermediate Metabolizer
+CYP2B6,*7/*33,Indeterminate
+CYP2B6,*7/*34,Poor Metabolizer
+CYP2B6,*7/*35,Poor Metabolizer
+CYP2B6,*7/*36,Poor Metabolizer
+CYP2B6,*7/*37,Poor Metabolizer
+CYP2B6,*7/*38,Poor Metabolizer
+CYP2B6,*8/*8,Poor Metabolizer
+CYP2B6,*8/*9,Poor Metabolizer
+CYP2B6,*8/*10,Indeterminate
+CYP2B6,*8/*11,Indeterminate
+CYP2B6,*8/*12,Poor Metabolizer
+CYP2B6,*8/*13,Poor Metabolizer
+CYP2B6,*8/*14,Indeterminate
+CYP2B6,*8/*15,Indeterminate
+CYP2B6,*8/*17,Intermediate Metabolizer
+CYP2B6,*8/*18,Poor Metabolizer
+CYP2B6,*8/*19,Poor Metabolizer
+CYP2B6,*8/*20,Poor Metabolizer
+CYP2B6,*8/*21,Indeterminate
+CYP2B6,*8/*22,Intermediate Metabolizer
+CYP2B6,*8/*23,Indeterminate
+CYP2B6,*8/*24,Poor Metabolizer
+CYP2B6,*8/*25,Indeterminate
+CYP2B6,*8/*26,Poor Metabolizer
+CYP2B6,*8/*27,Indeterminate
+CYP2B6,*8/*28,Poor Metabolizer
+CYP2B6,*8/*29,Poor Metabolizer
+CYP2B6,*8/*30,Poor Metabolizer
+CYP2B6,*8/*31,Intermediate Metabolizer
+CYP2B6,*8/*32,Intermediate Metabolizer
+CYP2B6,*8/*33,Indeterminate
+CYP2B6,*8/*34,Poor Metabolizer
+CYP2B6,*8/*35,Poor Metabolizer
+CYP2B6,*8/*36,Poor Metabolizer
+CYP2B6,*8/*37,Poor Metabolizer
+CYP2B6,*8/*38,Poor Metabolizer
+CYP2B6,*9/*9,Poor Metabolizer
+CYP2B6,*9/*10,Indeterminate
+CYP2B6,*9/*11,Indeterminate
+CYP2B6,*9/*12,Poor Metabolizer
+CYP2B6,*9/*13,Poor Metabolizer
+CYP2B6,*9/*14,Indeterminate
+CYP2B6,*9/*15,Indeterminate
+CYP2B6,*9/*17,Intermediate Metabolizer
+CYP2B6,*9/*18,Poor Metabolizer
+CYP2B6,*9/*19,Poor Metabolizer
+CYP2B6,*9/*20,Poor Metabolizer
+CYP2B6,*9/*21,Indeterminate
+CYP2B6,*9/*22,Intermediate Metabolizer
+CYP2B6,*9/*23,Indeterminate
+CYP2B6,*9/*24,Poor Metabolizer
+CYP2B6,*9/*25,Indeterminate
+CYP2B6,*9/*26,Poor Metabolizer
+CYP2B6,*9/*27,Indeterminate
+CYP2B6,*9/*28,Poor Metabolizer
+CYP2B6,*9/*29,Poor Metabolizer
+CYP2B6,*9/*30,Poor Metabolizer
+CYP2B6,*9/*31,Intermediate Metabolizer
+CYP2B6,*9/*32,Intermediate Metabolizer
+CYP2B6,*9/*33,Indeterminate
+CYP2B6,*9/*34,Poor Metabolizer
+CYP2B6,*9/*35,Poor Metabolizer
+CYP2B6,*9/*36,Poor Metabolizer
+CYP2B6,*9/*37,Poor Metabolizer
+CYP2B6,*9/*38,Poor Metabolizer
+CYP2B6,*10/*10,Indeterminate
+CYP2B6,*10/*11,Indeterminate
+CYP2B6,*10/*12,Indeterminate
+CYP2B6,*10/*13,Indeterminate
+CYP2B6,*10/*14,Indeterminate
+CYP2B6,*10/*15,Indeterminate
+CYP2B6,*10/*17,Indeterminate
+CYP2B6,*10/*18,Indeterminate
+CYP2B6,*10/*19,Indeterminate
+CYP2B6,*10/*20,Indeterminate
+CYP2B6,*10/*21,Indeterminate
+CYP2B6,*10/*22,Indeterminate
+CYP2B6,*10/*23,Indeterminate
+CYP2B6,*10/*24,Indeterminate
+CYP2B6,*10/*25,Indeterminate
+CYP2B6,*10/*26,Indeterminate
+CYP2B6,*10/*27,Indeterminate
+CYP2B6,*10/*28,Indeterminate
+CYP2B6,*10/*29,Indeterminate
+CYP2B6,*10/*30,Indeterminate
+CYP2B6,*10/*31,Indeterminate
+CYP2B6,*10/*32,Indeterminate
+CYP2B6,*10/*33,Indeterminate
+CYP2B6,*10/*34,Indeterminate
+CYP2B6,*10/*35,Indeterminate
+CYP2B6,*10/*36,Indeterminate
+CYP2B6,*10/*37,Indeterminate
+CYP2B6,*10/*38,Indeterminate
+CYP2B6,*11/*11,Indeterminate
+CYP2B6,*11/*12,Indeterminate
+CYP2B6,*11/*13,Indeterminate
+CYP2B6,*11/*14,Indeterminate
+CYP2B6,*11/*15,Indeterminate
+CYP2B6,*11/*17,Indeterminate
+CYP2B6,*11/*18,Indeterminate
+CYP2B6,*11/*19,Indeterminate
+CYP2B6,*11/*20,Indeterminate
+CYP2B6,*11/*21,Indeterminate
+CYP2B6,*11/*22,Indeterminate
+CYP2B6,*11/*23,Indeterminate
+CYP2B6,*11/*24,Indeterminate
+CYP2B6,*11/*25,Indeterminate
+CYP2B6,*11/*26,Indeterminate
+CYP2B6,*11/*27,Indeterminate
+CYP2B6,*11/*28,Indeterminate
+CYP2B6,*11/*29,Indeterminate
+CYP2B6,*11/*30,Indeterminate
+CYP2B6,*11/*31,Indeterminate
+CYP2B6,*11/*32,Indeterminate
+CYP2B6,*11/*33,Indeterminate
+CYP2B6,*11/*34,Indeterminate
+CYP2B6,*11/*35,Indeterminate
+CYP2B6,*11/*36,Indeterminate
+CYP2B6,*11/*37,Indeterminate
+CYP2B6,*11/*38,Indeterminate
+CYP2B6,*12/*12,Poor Metabolizer
+CYP2B6,*12/*13,Poor Metabolizer
+CYP2B6,*12/*14,Indeterminate
+CYP2B6,*12/*15,Indeterminate
+CYP2B6,*12/*17,Intermediate Metabolizer
+CYP2B6,*12/*18,Poor Metabolizer
+CYP2B6,*12/*19,Poor Metabolizer
+CYP2B6,*12/*20,Poor Metabolizer
+CYP2B6,*12/*21,Indeterminate
+CYP2B6,*12/*22,Intermediate Metabolizer
+CYP2B6,*12/*23,Indeterminate
+CYP2B6,*12/*24,Poor Metabolizer
+CYP2B6,*12/*25,Indeterminate
+CYP2B6,*12/*26,Poor Metabolizer
+CYP2B6,*12/*27,Indeterminate
+CYP2B6,*12/*28,Poor Metabolizer
+CYP2B6,*12/*29,Poor Metabolizer
+CYP2B6,*12/*30,Poor Metabolizer
+CYP2B6,*12/*31,Intermediate Metabolizer
+CYP2B6,*12/*32,Intermediate Metabolizer
+CYP2B6,*12/*33,Indeterminate
+CYP2B6,*12/*34,Poor Metabolizer
+CYP2B6,*12/*35,Poor Metabolizer
+CYP2B6,*12/*36,Poor Metabolizer
+CYP2B6,*12/*37,Poor Metabolizer
+CYP2B6,*12/*38,Poor Metabolizer
+CYP2B6,*13/*13,Poor Metabolizer
+CYP2B6,*13/*14,Indeterminate
+CYP2B6,*13/*15,Indeterminate
+CYP2B6,*13/*17,Intermediate Metabolizer
+CYP2B6,*13/*18,Poor Metabolizer
+CYP2B6,*13/*19,Poor Metabolizer
+CYP2B6,*13/*20,Poor Metabolizer
+CYP2B6,*13/*21,Indeterminate
+CYP2B6,*13/*22,Intermediate Metabolizer
+CYP2B6,*13/*23,Indeterminate
+CYP2B6,*13/*24,Poor Metabolizer
+CYP2B6,*13/*25,Indeterminate
+CYP2B6,*13/*26,Poor Metabolizer
+CYP2B6,*13/*27,Indeterminate
+CYP2B6,*13/*28,Poor Metabolizer
+CYP2B6,*13/*29,Poor Metabolizer
+CYP2B6,*13/*30,Poor Metabolizer
+CYP2B6,*13/*31,Intermediate Metabolizer
+CYP2B6,*13/*32,Intermediate Metabolizer
+CYP2B6,*13/*33,Indeterminate
+CYP2B6,*13/*34,Poor Metabolizer
+CYP2B6,*13/*35,Poor Metabolizer
+CYP2B6,*13/*36,Poor Metabolizer
+CYP2B6,*13/*37,Poor Metabolizer
+CYP2B6,*13/*38,Poor Metabolizer
+CYP2B6,*14/*14,Indeterminate
+CYP2B6,*14/*15,Indeterminate
+CYP2B6,*14/*17,Indeterminate
+CYP2B6,*14/*18,Indeterminate
+CYP2B6,*14/*19,Indeterminate
+CYP2B6,*14/*20,Indeterminate
+CYP2B6,*14/*21,Indeterminate
+CYP2B6,*14/*22,Indeterminate
+CYP2B6,*14/*23,Indeterminate
+CYP2B6,*14/*24,Indeterminate
+CYP2B6,*14/*25,Indeterminate
+CYP2B6,*14/*26,Indeterminate
+CYP2B6,*14/*27,Indeterminate
+CYP2B6,*14/*28,Indeterminate
+CYP2B6,*14/*29,Indeterminate
+CYP2B6,*14/*30,Indeterminate
+CYP2B6,*14/*31,Indeterminate
+CYP2B6,*14/*32,Indeterminate
+CYP2B6,*14/*33,Indeterminate
+CYP2B6,*14/*34,Indeterminate
+CYP2B6,*14/*35,Indeterminate
+CYP2B6,*14/*36,Indeterminate
+CYP2B6,*14/*37,Indeterminate
+CYP2B6,*14/*38,Indeterminate
+CYP2B6,*15/*15c,Indeterminate
+CYP2B6,*15/*17,Indeterminate
+CYP2B6,*15/*18,Indeterminate
+CYP2B6,*15/*19,Indeterminate
+CYP2B6,*15/*20,Indeterminate
+CYP2B6,*15/*21,Indeterminate
+CYP2B6,*15/*22,Indeterminate
+CYP2B6,*15/*23,Indeterminate
+CYP2B6,*15/*24,Indeterminate
+CYP2B6,*15/*25,Indeterminate
+CYP2B6,*15/*26,Indeterminate
+CYP2B6,*15/*27,Indeterminate
+CYP2B6,*15/*28,Indeterminate
+CYP2B6,*15/*29,Indeterminate
+CYP2B6,*15/*30,Indeterminate
+CYP2B6,*15/*31,Indeterminate
+CYP2B6,*15/*32,Indeterminate
+CYP2B6,*15/*33,Indeterminate
+CYP2B6,*15/*34,Indeterminate
+CYP2B6,*15/*35,Indeterminate
+CYP2B6,*15/*36,Indeterminate
+CYP2B6,*15/*37,Indeterminate
+CYP2B6,*15/*38,Indeterminate
+CYP2B6,*17/*17,Normal Metabolizer
+CYP2B6,*17/*18,Intermediate Metabolizer
+CYP2B6,*17/*19,Intermediate Metabolizer
+CYP2B6,*17/*20,Intermediate Metabolizer
+CYP2B6,*17/*21,Indeterminate
+CYP2B6,*17/*22,Rapid Metabolizer
+CYP2B6,*17/*23,Indeterminate
+CYP2B6,*17/*24,Intermediate Metabolizer
+CYP2B6,*17/*25,Indeterminate
+CYP2B6,*17/*26,Intermediate Metabolizer
+CYP2B6,*17/*27,Indeterminate
+CYP2B6,*17/*28,Intermediate Metabolizer
+CYP2B6,*17/*29,Intermediate Metabolizer
+CYP2B6,*17/*30,Intermediate Metabolizer
+CYP2B6,*17/*31,Normal Metabolizer
+CYP2B6,*17/*32,Normal Metabolizer
+CYP2B6,*17/*33,Indeterminate
+CYP2B6,*17/*34,Intermediate Metabolizer
+CYP2B6,*17/*35,Intermediate Metabolizer
+CYP2B6,*17/*36,Intermediate Metabolizer
+CYP2B6,*17/*37,Intermediate Metabolizer
+CYP2B6,*17/*38,Intermediate Metabolizer
+CYP2B6,*18/*18,Poor Metabolizer
+CYP2B6,*18/*19,Poor Metabolizer
+CYP2B6,*18/*20,Poor Metabolizer
+CYP2B6,*18/*21,Indeterminate
+CYP2B6,*18/*22,Intermediate Metabolizer
+CYP2B6,*18/*23,Indeterminate
+CYP2B6,*18/*24,Poor Metabolizer
+CYP2B6,*18/*25,Indeterminate
+CYP2B6,*18/*26,Poor Metabolizer
+CYP2B6,*18/*27,Indeterminate
+CYP2B6,*18/*28,Poor Metabolizer
+CYP2B6,*18/*29,Poor Metabolizer
+CYP2B6,*18/*30,Poor Metabolizer
+CYP2B6,*18/*31,Intermediate Metabolizer
+CYP2B6,*18/*32,Intermediate Metabolizer
+CYP2B6,*18/*33,Indeterminate
+CYP2B6,*18/*34,Poor Metabolizer
+CYP2B6,*18/*35,Poor Metabolizer
+CYP2B6,*18/*36,Poor Metabolizer
+CYP2B6,*18/*37,Poor Metabolizer
+CYP2B6,*18/*38,Poor Metabolizer
+CYP2B6,*19/*19,Poor Metabolizer
+CYP2B6,*19/*20,Poor Metabolizer
+CYP2B6,*19/*21,Indeterminate
+CYP2B6,*19/*22,Intermediate Metabolizer
+CYP2B6,*19/*23,Indeterminate
+CYP2B6,*19/*24,Poor Metabolizer
+CYP2B6,*19/*25,Indeterminate
+CYP2B6,*19/*26,Poor Metabolizer
+CYP2B6,*19/*27,Indeterminate
+CYP2B6,*19/*28,Poor Metabolizer
+CYP2B6,*19/*29,Poor Metabolizer
+CYP2B6,*19/*30,Poor Metabolizer
+CYP2B6,*19/*31,Intermediate Metabolizer
+CYP2B6,*19/*32,Intermediate Metabolizer
+CYP2B6,*19/*33,Indeterminate
+CYP2B6,*19/*34,Poor Metabolizer
+CYP2B6,*19/*35,Poor Metabolizer
+CYP2B6,*19/*36,Poor Metabolizer
+CYP2B6,*19/*37,Poor Metabolizer
+CYP2B6,*19/*38,Poor Metabolizer
+CYP2B6,*20/*20,Poor Metabolizer
+CYP2B6,*20/*21,Indeterminate
+CYP2B6,*20/*22,Intermediate Metabolizer
+CYP2B6,*20/*23,Indeterminate
+CYP2B6,*20/*24,Poor Metabolizer
+CYP2B6,*20/*25,Indeterminate
+CYP2B6,*20/*26,Poor Metabolizer
+CYP2B6,*20/*27,Indeterminate
+CYP2B6,*20/*28,Poor Metabolizer
+CYP2B6,*20/*29,Poor Metabolizer
+CYP2B6,*20/*30,Poor Metabolizer
+CYP2B6,*20/*31,Intermediate Metabolizer
+CYP2B6,*20/*32,Intermediate Metabolizer
+CYP2B6,*20/*33,Indeterminate
+CYP2B6,*20/*34,Poor Metabolizer
+CYP2B6,*20/*35,Poor Metabolizer
+CYP2B6,*20/*36,Poor Metabolizer
+CYP2B6,*20/*37,Poor Metabolizer
+CYP2B6,*20/*38,Poor Metabolizer
+CYP2B6,*21/*21,Indeterminate
+CYP2B6,*21/*22,Indeterminate
+CYP2B6,*21/*23,Indeterminate
+CYP2B6,*21/*24,Indeterminate
+CYP2B6,*21/*25,Indeterminate
+CYP2B6,*21/*26,Indeterminate
+CYP2B6,*21/*27,Indeterminate
+CYP2B6,*21/*28,Indeterminate
+CYP2B6,*21/*29,Indeterminate
+CYP2B6,*21/*30,Indeterminate
+CYP2B6,*21/*31,Indeterminate
+CYP2B6,*21/*32,Indeterminate
+CYP2B6,*21/*33,Indeterminate
+CYP2B6,*21/*34,Indeterminate
+CYP2B6,*21/*35,Indeterminate
+CYP2B6,*21/*36,Indeterminate
+CYP2B6,*21/*37,Indeterminate
+CYP2B6,*21/*38,Indeterminate
+CYP2B6,*22/*22,Ultrarapid Metabolizer
+CYP2B6,*22/*23,Indeterminate
+CYP2B6,*22/*24,Intermediate Metabolizer
+CYP2B6,*22/*25,Indeterminate
+CYP2B6,*22/*26,Intermediate Metabolizer
+CYP2B6,*22/*27,Indeterminate
+CYP2B6,*22/*28,Intermediate Metabolizer
+CYP2B6,*22/*29,Intermediate Metabolizer
+CYP2B6,*22/*30,Intermediate Metabolizer
+CYP2B6,*22/*31,Rapid Metabolizer
+CYP2B6,*22/*32,Rapid Metabolizer
+CYP2B6,*22/*33,Indeterminate
+CYP2B6,*22/*34,Intermediate Metabolizer
+CYP2B6,*22/*35,Intermediate Metabolizer
+CYP2B6,*22/*36,Intermediate Metabolizer
+CYP2B6,*22/*37,Intermediate Metabolizer
+CYP2B6,*22/*38,Intermediate Metabolizer
+CYP2B6,*23/*23,Indeterminate
+CYP2B6,*23/*24,Indeterminate
+CYP2B6,*23/*25,Indeterminate
+CYP2B6,*23/*26,Indeterminate
+CYP2B6,*23/*27,Indeterminate
+CYP2B6,*23/*28,Indeterminate
+CYP2B6,*23/*29,Indeterminate
+CYP2B6,*23/*30,Indeterminate
+CYP2B6,*23/*31,Indeterminate
+CYP2B6,*23/*32,Indeterminate
+CYP2B6,*23/*33,Indeterminate
+CYP2B6,*23/*34,Indeterminate
+CYP2B6,*23/*35,Indeterminate
+CYP2B6,*23/*36,Indeterminate
+CYP2B6,*23/*37,Indeterminate
+CYP2B6,*23/*38,Indeterminate
+CYP2B6,*24/*24,Poor Metabolizer
+CYP2B6,*24/*25,Indeterminate
+CYP2B6,*24/*26,Poor Metabolizer
+CYP2B6,*24/*27,Indeterminate
+CYP2B6,*24/*28,Poor Metabolizer
+CYP2B6,*24/*29,Poor Metabolizer
+CYP2B6,*24/*30,Poor Metabolizer
+CYP2B6,*24/*31,Intermediate Metabolizer
+CYP2B6,*24/*32,Intermediate Metabolizer
+CYP2B6,*24/*33,Indeterminate
+CYP2B6,*24/*34,Poor Metabolizer
+CYP2B6,*24/*35,Poor Metabolizer
+CYP2B6,*24/*36,Poor Metabolizer
+CYP2B6,*24/*37,Poor Metabolizer
+CYP2B6,*24/*38,Poor Metabolizer
+CYP2B6,*25/*25,Indeterminate
+CYP2B6,*25/*26,Indeterminate
+CYP2B6,*25/*27,Indeterminate
+CYP2B6,*25/*28,Indeterminate
+CYP2B6,*25/*29,Indeterminate
+CYP2B6,*25/*30,Indeterminate
+CYP2B6,*25/*31,Indeterminate
+CYP2B6,*25/*32,Indeterminate
+CYP2B6,*25/*33,Indeterminate
+CYP2B6,*25/*34,Indeterminate
+CYP2B6,*25/*35,Indeterminate
+CYP2B6,*25/*36,Indeterminate
+CYP2B6,*25/*37,Indeterminate
+CYP2B6,*25/*38,Indeterminate
+CYP2B6,*26/*26,Poor Metabolizer
+CYP2B6,*26/*27,Indeterminate
+CYP2B6,*26/*28,Poor Metabolizer
+CYP2B6,*26/*29,Poor Metabolizer
+CYP2B6,*26/*30,Poor Metabolizer
+CYP2B6,*26/*31,Intermediate Metabolizer
+CYP2B6,*26/*32,Intermediate Metabolizer
+CYP2B6,*26/*33,Indeterminate
+CYP2B6,*26/*34,Poor Metabolizer
+CYP2B6,*26/*35,Poor Metabolizer
+CYP2B6,*26/*36,Poor Metabolizer
+CYP2B6,*26/*37,Poor Metabolizer
+CYP2B6,*26/*38,Poor Metabolizer
+CYP2B6,*27/*27,Indeterminate
+CYP2B6,*27/*28,Indeterminate
+CYP2B6,*27/*29,Indeterminate
+CYP2B6,*27/*30,Indeterminate
+CYP2B6,*27/*31,Indeterminate
+CYP2B6,*27/*32,Indeterminate
+CYP2B6,*27/*33,Indeterminate
+CYP2B6,*27/*34,Indeterminate
+CYP2B6,*27/*35,Indeterminate
+CYP2B6,*27/*36,Indeterminate
+CYP2B6,*27/*37,Indeterminate
+CYP2B6,*27/*38,Indeterminate
+CYP2B6,*28/*28,Poor Metabolizer
+CYP2B6,*28/*29,Poor Metabolizer
+CYP2B6,*28/*30,Poor Metabolizer
+CYP2B6,*28/*31,Intermediate Metabolizer
+CYP2B6,*28/*32,Intermediate Metabolizer
+CYP2B6,*28/*33,Indeterminate
+CYP2B6,*28/*34,Poor Metabolizer
+CYP2B6,*28/*35,Poor Metabolizer
+CYP2B6,*28/*36,Poor Metabolizer
+CYP2B6,*28/*37,Poor Metabolizer
+CYP2B6,*28/*38,Poor Metabolizer
+CYP2B6,*29/*29,Poor Metabolizer
+CYP2B6,*29/*30,Poor Metabolizer
+CYP2B6,*29/*31,Intermediate Metabolizer
+CYP2B6,*29/*32,Intermediate Metabolizer
+CYP2B6,*29/*33,Indeterminate
+CYP2B6,*29/*34,Poor Metabolizer
+CYP2B6,*29/*35,Poor Metabolizer
+CYP2B6,*29/*36,Poor Metabolizer
+CYP2B6,*29/*37,Poor Metabolizer
+CYP2B6,*29/*38,Poor Metabolizer
+CYP2B6,*30/*30,Poor Metabolizer
+CYP2B6,*30/*31,Intermediate Metabolizer
+CYP2B6,*30/*32,Intermediate Metabolizer
+CYP2B6,*30/*33,Indeterminate
+CYP2B6,*30/*34,Poor Metabolizer
+CYP2B6,*30/*35,Poor Metabolizer
+CYP2B6,*30/*36,Poor Metabolizer
+CYP2B6,*30/*37,Poor Metabolizer
+CYP2B6,*30/*38,Poor Metabolizer
+CYP2B6,*31/*31,Normal Metabolizer
+CYP2B6,*31/*32,Normal Metabolizer
+CYP2B6,*31/*33,Indeterminate
+CYP2B6,*31/*34,Intermediate Metabolizer
+CYP2B6,*31/*35,Intermediate Metabolizer
+CYP2B6,*31/*36,Intermediate Metabolizer
+CYP2B6,*31/*37,Intermediate Metabolizer
+CYP2B6,*31/*38,Intermediate Metabolizer
+CYP2B6,*32/*32,Normal Metabolizer
+CYP2B6,*32/*33,Indeterminate
+CYP2B6,*32/*34,Intermediate Metabolizer
+CYP2B6,*32/*35,Intermediate Metabolizer
+CYP2B6,*32/*36,Intermediate Metabolizer
+CYP2B6,*32/*37,Intermediate Metabolizer
+CYP2B6,*32/*38,Intermediate Metabolizer
+CYP2B6,*33/*33,Indeterminate
+CYP2B6,*33/*34,Indeterminate
+CYP2B6,*33/*35,Indeterminate
+CYP2B6,*33/*36,Indeterminate
+CYP2B6,*33/*37,Indeterminate
+CYP2B6,*33/*38,Indeterminate
+CYP2B6,*34/*34,Poor Metabolizer
+CYP2B6,*34/*35,Poor Metabolizer
+CYP2B6,*34/*36,Poor Metabolizer
+CYP2B6,*34/*37,Poor Metabolizer
+CYP2B6,*34/*38,Poor Metabolizer
+CYP2B6,*35/*35,Poor Metabolizer
+CYP2B6,*35/*36,Poor Metabolizer
+CYP2B6,*35/*37,Poor Metabolizer
+CYP2B6,*35/*38,Poor Metabolizer
+CYP2B6,*36/*36,Poor Metabolizer
+CYP2B6,*36/*37,Poor Metabolizer
+CYP2B6,*36/*38,Poor Metabolizer
+CYP2B6,*37/*37,Poor Metabolizer
+CYP2B6,*37/*38,Poor Metabolizer
+CYP2B6,*38/*38,Poor Metabolizer
+CYP2C19,*1/*2,Intermediate Metabolizer
+CYP2C19,*1/*22,Intermediate Metabolizer
+CYP2C19,*1/*24,Intermediate Metabolizer
+CYP2C19,*1/*3,Intermediate Metabolizer
+CYP2C19,*1/*35,Intermediate Metabolizer
+CYP2C19,*1/*36,Intermediate Metabolizer
+CYP2C19,*1/*37,Intermediate Metabolizer
+CYP2C19,*1/*4,Intermediate Metabolizer
+CYP2C19,*1/*5,Intermediate Metabolizer
+CYP2C19,*1/*6,Intermediate Metabolizer
+CYP2C19,*1/*7,Intermediate Metabolizer
+CYP2C19,*1/*8,Intermediate Metabolizer
+CYP2C19,*11/*22,Intermediate Metabolizer
+CYP2C19,*11/*24,Intermediate Metabolizer
+CYP2C19,*11/*35,Intermediate Metabolizer
+CYP2C19,*11/*36,Intermediate Metabolizer
+CYP2C19,*11/*37,Intermediate Metabolizer
+CYP2C19,*13/*22,Intermediate Metabolizer
+CYP2C19,*13/*24,Intermediate Metabolizer
+CYP2C19,*13/*35,Intermediate Metabolizer
+CYP2C19,*13/*36,Intermediate Metabolizer
+CYP2C19,*13/*37,Intermediate Metabolizer
+CYP2C19,*15/*22,Intermediate Metabolizer
+CYP2C19,*15/*24,Intermediate Metabolizer
+CYP2C19,*15/*35,Intermediate Metabolizer
+CYP2C19,*15/*36,Intermediate Metabolizer
+CYP2C19,*15/*37,Intermediate Metabolizer
+CYP2C19,*17/*22,Intermediate Metabolizer
+CYP2C19,*17/*24,Intermediate Metabolizer
+CYP2C19,*17/*35,Intermediate Metabolizer
+CYP2C19,*17/*36,Intermediate Metabolizer
+CYP2C19,*17/*37,Intermediate Metabolizer
+CYP2C19,*18/*22,Intermediate Metabolizer
+CYP2C19,*18/*24,Intermediate Metabolizer
+CYP2C19,*18/*35,Intermediate Metabolizer
+CYP2C19,*18/*36,Intermediate Metabolizer
+CYP2C19,*18/*37,Intermediate Metabolizer
+CYP2C19,*2/*11,Intermediate Metabolizer
+CYP2C19,*2/*13,Intermediate Metabolizer
+CYP2C19,*2/*15,Intermediate Metabolizer
+CYP2C19,*2/*17,Intermediate Metabolizer
+CYP2C19,*2/*18,Intermediate Metabolizer
+CYP2C19,*2/*28,Intermediate Metabolizer
+CYP2C19,*2/*38,Intermediate Metabolizer
+CYP2C19,*22/*28,Intermediate Metabolizer
+CYP2C19,*22/*38,Intermediate Metabolizer
+CYP2C19,*24/*28,Intermediate Metabolizer
+CYP2C19,*24/*38,Intermediate Metabolizer
+CYP2C19,*28/*35,Intermediate Metabolizer
+CYP2C19,*28/*36,Intermediate Metabolizer
+CYP2C19,*28/*37,Intermediate Metabolizer
+CYP2C19,*3/*11,Intermediate Metabolizer
+CYP2C19,*3/*13,Intermediate Metabolizer
+CYP2C19,*3/*15,Intermediate Metabolizer
+CYP2C19,*3/*17,Intermediate Metabolizer
+CYP2C19,*3/*18,Intermediate Metabolizer
+CYP2C19,*3/*28,Intermediate Metabolizer
+CYP2C19,*3/*38,Intermediate Metabolizer
+CYP2C19,*35/*38,Intermediate Metabolizer
+CYP2C19,*36/*38,Intermediate Metabolizer
+CYP2C19,*37/*38,Intermediate Metabolizer
+CYP2C19,*4/*11,Intermediate Metabolizer
+CYP2C19,*4/*13,Intermediate Metabolizer
+CYP2C19,*4/*15,Intermediate Metabolizer
+CYP2C19,*4/*17,Intermediate Metabolizer
+CYP2C19,*4/*18,Intermediate Metabolizer
+CYP2C19,*4/*28,Intermediate Metabolizer
+CYP2C19,*4/*38,Intermediate Metabolizer
+CYP2C19,*5/*11,Intermediate Metabolizer
+CYP2C19,*5/*13,Intermediate Metabolizer
+CYP2C19,*5/*15,Intermediate Metabolizer
+CYP2C19,*5/*17,Intermediate Metabolizer
+CYP2C19,*5/*18,Intermediate Metabolizer
+CYP2C19,*5/*28,Intermediate Metabolizer
+CYP2C19,*5/*38,Intermediate Metabolizer
+CYP2C19,*6/*11,Intermediate Metabolizer
+CYP2C19,*6/*13,Intermediate Metabolizer
+CYP2C19,*6/*15,Intermediate Metabolizer
+CYP2C19,*6/*17,Intermediate Metabolizer
+CYP2C19,*6/*18,Intermediate Metabolizer
+CYP2C19,*6/*28,Intermediate Metabolizer
+CYP2C19,*6/*38,Intermediate Metabolizer
+CYP2C19,*7/*11,Intermediate Metabolizer
+CYP2C19,*7/*13,Intermediate Metabolizer
+CYP2C19,*7/*15,Intermediate Metabolizer
+CYP2C19,*7/*17,Intermediate Metabolizer
+CYP2C19,*7/*18,Intermediate Metabolizer
+CYP2C19,*7/*28,Intermediate Metabolizer
+CYP2C19,*7/*38,Intermediate Metabolizer
+CYP2C19,*8/*11,Intermediate Metabolizer
+CYP2C19,*8/*13,Intermediate Metabolizer
+CYP2C19,*8/*15,Intermediate Metabolizer
+CYP2C19,*8/*17,Intermediate Metabolizer
+CYP2C19,*8/*18,Intermediate Metabolizer
+CYP2C19,*8/*28,Intermediate Metabolizer
+CYP2C19,*8/*38,Intermediate Metabolizer
+CYP2C19,*1/*10,Likely Intermediate Metabolizer
+CYP2C19,*1/*16,Likely Intermediate Metabolizer
+CYP2C19,*1/*19,Likely Intermediate Metabolizer
+CYP2C19,*1/*25,Likely Intermediate Metabolizer
+CYP2C19,*1/*26,Likely Intermediate Metabolizer
+CYP2C19,*1/*9,Likely Intermediate Metabolizer
+CYP2C19,*10/*10,Likely Intermediate Metabolizer
+CYP2C19,*10/*11,Likely Intermediate Metabolizer
+CYP2C19,*10/*13,Likely Intermediate Metabolizer
+CYP2C19,*10/*15,Likely Intermediate Metabolizer
+CYP2C19,*10/*16,Likely Intermediate Metabolizer
+CYP2C19,*10/*17,Likely Intermediate Metabolizer
+CYP2C19,*10/*18,Likely Intermediate Metabolizer
+CYP2C19,*10/*19,Likely Intermediate Metabolizer
+CYP2C19,*10/*25,Likely Intermediate Metabolizer
+CYP2C19,*10/*26,Likely Intermediate Metabolizer
+CYP2C19,*10/*28,Likely Intermediate Metabolizer
+CYP2C19,*10/*38,Likely Intermediate Metabolizer
+CYP2C19,*11/*16,Likely Intermediate Metabolizer
+CYP2C19,*11/*19,Likely Intermediate Metabolizer
+CYP2C19,*11/*25,Likely Intermediate Metabolizer
+CYP2C19,*11/*26,Likely Intermediate Metabolizer
+CYP2C19,*13/*16,Likely Intermediate Metabolizer
+CYP2C19,*13/*19,Likely Intermediate Metabolizer
+CYP2C19,*13/*25,Likely Intermediate Metabolizer
+CYP2C19,*13/*26,Likely Intermediate Metabolizer
+CYP2C19,*15/*16,Likely Intermediate Metabolizer
+CYP2C19,*15/*19,Likely Intermediate Metabolizer
+CYP2C19,*15/*25,Likely Intermediate Metabolizer
+CYP2C19,*15/*26,Likely Intermediate Metabolizer
+CYP2C19,*16/*16,Likely Intermediate Metabolizer
+CYP2C19,*16/*17,Likely Intermediate Metabolizer
+CYP2C19,*16/*18,Likely Intermediate Metabolizer
+CYP2C19,*16/*19,Likely Intermediate Metabolizer
+CYP2C19,*16/*25,Likely Intermediate Metabolizer
+CYP2C19,*16/*26,Likely Intermediate Metabolizer
+CYP2C19,*16/*28,Likely Intermediate Metabolizer
+CYP2C19,*16/*38,Likely Intermediate Metabolizer
+CYP2C19,*17/*19,Likely Intermediate Metabolizer
+CYP2C19,*17/*25,Likely Intermediate Metabolizer
+CYP2C19,*17/*26,Likely Intermediate Metabolizer
+CYP2C19,*18/*19,Likely Intermediate Metabolizer
+CYP2C19,*18/*25,Likely Intermediate Metabolizer
+CYP2C19,*18/*26,Likely Intermediate Metabolizer
+CYP2C19,*19/*19,Likely Intermediate Metabolizer
+CYP2C19,*19/*25,Likely Intermediate Metabolizer
+CYP2C19,*19/*26,Likely Intermediate Metabolizer
+CYP2C19,*19/*28,Likely Intermediate Metabolizer
+CYP2C19,*19/*38,Likely Intermediate Metabolizer
+CYP2C19,*25/*25,Likely Intermediate Metabolizer
+CYP2C19,*25/*26,Likely Intermediate Metabolizer
+CYP2C19,*25/*28,Likely Intermediate Metabolizer
+CYP2C19,*25/*38,Likely Intermediate Metabolizer
+CYP2C19,*26/*26,Likely Intermediate Metabolizer
+CYP2C19,*26/*28,Likely Intermediate Metabolizer
+CYP2C19,*26/*38,Likely Intermediate Metabolizer
+CYP2C19,*9/*10,Likely Intermediate Metabolizer
+CYP2C19,*9/*11,Likely Intermediate Metabolizer
+CYP2C19,*9/*13,Likely Intermediate Metabolizer
+CYP2C19,*9/*15,Likely Intermediate Metabolizer
+CYP2C19,*9/*16,Likely Intermediate Metabolizer
+CYP2C19,*9/*17,Likely Intermediate Metabolizer
+CYP2C19,*9/*18,Likely Intermediate Metabolizer
+CYP2C19,*9/*19,Likely Intermediate Metabolizer
+CYP2C19,*9/*25,Likely Intermediate Metabolizer
+CYP2C19,*9/*26,Likely Intermediate Metabolizer
+CYP2C19,*9/*28,Likely Intermediate Metabolizer
+CYP2C19,*9/*38,Likely Intermediate Metabolizer
+CYP2C19,*9/*9,Likely Intermediate Metabolizer
+CYP2C19,*10/*22,Likely Poor Metabolizer
+CYP2C19,*10/*24,Likely Poor Metabolizer
+CYP2C19,*10/*35,Likely Poor Metabolizer
+CYP2C19,*10/*36,Likely Poor Metabolizer
+CYP2C19,*10/*37,Likely Poor Metabolizer
+CYP2C19,*16/*22,Likely Poor Metabolizer
+CYP2C19,*16/*24,Likely Poor Metabolizer
+CYP2C19,*16/*35,Likely Poor Metabolizer
+CYP2C19,*16/*36,Likely Poor Metabolizer
+CYP2C19,*16/*37,Likely Poor Metabolizer
+CYP2C19,*19/*22,Likely Poor Metabolizer
+CYP2C19,*19/*24,Likely Poor Metabolizer
+CYP2C19,*19/*35,Likely Poor Metabolizer
+CYP2C19,*19/*36,Likely Poor Metabolizer
+CYP2C19,*19/*37,Likely Poor Metabolizer
+CYP2C19,*2/*10,Likely Poor Metabolizer
+CYP2C19,*2/*16,Likely Poor Metabolizer
+CYP2C19,*2/*19,Likely Poor Metabolizer
+CYP2C19,*2/*25,Likely Poor Metabolizer
+CYP2C19,*2/*26,Likely Poor Metabolizer
+CYP2C19,*2/*9,Likely Poor Metabolizer
+CYP2C19,*22/*25,Likely Poor Metabolizer
+CYP2C19,*22/*26,Likely Poor Metabolizer
+CYP2C19,*24/*25,Likely Poor Metabolizer
+CYP2C19,*24/*26,Likely Poor Metabolizer
+CYP2C19,*25/*35,Likely Poor Metabolizer
+CYP2C19,*25/*36,Likely Poor Metabolizer
+CYP2C19,*25/*37,Likely Poor Metabolizer
+CYP2C19,*26/*35,Likely Poor Metabolizer
+CYP2C19,*26/*36,Likely Poor Metabolizer
+CYP2C19,*26/*37,Likely Poor Metabolizer
+CYP2C19,*3/*10,Likely Poor Metabolizer
+CYP2C19,*3/*16,Likely Poor Metabolizer
+CYP2C19,*3/*19,Likely Poor Metabolizer
+CYP2C19,*3/*25,Likely Poor Metabolizer
+CYP2C19,*3/*26,Likely Poor Metabolizer
+CYP2C19,*3/*9,Likely Poor Metabolizer
+CYP2C19,*4/*10,Likely Poor Metabolizer
+CYP2C19,*4/*16,Likely Poor Metabolizer
+CYP2C19,*4/*19,Likely Poor Metabolizer
+CYP2C19,*4/*25,Likely Poor Metabolizer
+CYP2C19,*4/*26,Likely Poor Metabolizer
+CYP2C19,*4/*9,Likely Poor Metabolizer
+CYP2C19,*5/*10,Likely Poor Metabolizer
+CYP2C19,*5/*16,Likely Poor Metabolizer
+CYP2C19,*5/*19,Likely Poor Metabolizer
+CYP2C19,*5/*25,Likely Poor Metabolizer
+CYP2C19,*5/*26,Likely Poor Metabolizer
+CYP2C19,*5/*9,Likely Poor Metabolizer
+CYP2C19,*6/*10,Likely Poor Metabolizer
+CYP2C19,*6/*16,Likely Poor Metabolizer
+CYP2C19,*6/*19,Likely Poor Metabolizer
+CYP2C19,*6/*25,Likely Poor Metabolizer
+CYP2C19,*6/*26,Likely Poor Metabolizer
+CYP2C19,*6/*9,Likely Poor Metabolizer
+CYP2C19,*7/*10,Likely Poor Metabolizer
+CYP2C19,*7/*16,Likely Poor Metabolizer
+CYP2C19,*7/*19,Likely Poor Metabolizer
+CYP2C19,*7/*25,Likely Poor Metabolizer
+CYP2C19,*7/*26,Likely Poor Metabolizer
+CYP2C19,*7/*9,Likely Poor Metabolizer
+CYP2C19,*8/*10,Likely Poor Metabolizer
+CYP2C19,*8/*16,Likely Poor Metabolizer
+CYP2C19,*8/*19,Likely Poor Metabolizer
+CYP2C19,*8/*25,Likely Poor Metabolizer
+CYP2C19,*8/*26,Likely Poor Metabolizer
+CYP2C19,*8/*9,Likely Poor Metabolizer
+CYP2C19,*9/*22,Likely Poor Metabolizer
+CYP2C19,*9/*24,Likely Poor Metabolizer
+CYP2C19,*9/*35,Likely Poor Metabolizer
+CYP2C19,*9/*36,Likely Poor Metabolizer
+CYP2C19,*9/*37,Likely Poor Metabolizer
+CYP2C19,*1/*1,Normal Metabolizer
+CYP2C19,*1/*11,Normal Metabolizer
+CYP2C19,*1/*13,Normal Metabolizer
+CYP2C19,*1/*15,Normal Metabolizer
+CYP2C19,*1/*18,Normal Metabolizer
+CYP2C19,*1/*28,Normal Metabolizer
+CYP2C19,*1/*38,Normal Metabolizer
+CYP2C19,*11/*11,Normal Metabolizer
+CYP2C19,*11/*13,Normal Metabolizer
+CYP2C19,*11/*15,Normal Metabolizer
+CYP2C19,*11/*18,Normal Metabolizer
+CYP2C19,*11/*28,Normal Metabolizer
+CYP2C19,*11/*38,Normal Metabolizer
+CYP2C19,*13/*13,Normal Metabolizer
+CYP2C19,*13/*15,Normal Metabolizer
+CYP2C19,*13/*18,Normal Metabolizer
+CYP2C19,*13/*28,Normal Metabolizer
+CYP2C19,*13/*38,Normal Metabolizer
+CYP2C19,*15/*15,Normal Metabolizer
+CYP2C19,*15/*18,Normal Metabolizer
+CYP2C19,*15/*28,Normal Metabolizer
+CYP2C19,*15/*38,Normal Metabolizer
+CYP2C19,*18/*18,Normal Metabolizer
+CYP2C19,*18/*28,Normal Metabolizer
+CYP2C19,*18/*38,Normal Metabolizer
+CYP2C19,*28/*28,Normal Metabolizer
+CYP2C19,*28/*38,Normal Metabolizer
+CYP2C19,*38/*38,Normal Metabolizer
+CYP2C19,*2/*2,Poor Metabolizer
+CYP2C19,*2/*22,Poor Metabolizer
+CYP2C19,*2/*24,Poor Metabolizer
+CYP2C19,*2/*3,Poor Metabolizer
+CYP2C19,*2/*35,Poor Metabolizer
+CYP2C19,*2/*36,Poor Metabolizer
+CYP2C19,*2/*37,Poor Metabolizer
+CYP2C19,*2/*4,Poor Metabolizer
+CYP2C19,*2/*5,Poor Metabolizer
+CYP2C19,*2/*6,Poor Metabolizer
+CYP2C19,*2/*7,Poor Metabolizer
+CYP2C19,*2/*8,Poor Metabolizer
+CYP2C19,*22/*22,Poor Metabolizer
+CYP2C19,*22/*24,Poor Metabolizer
+CYP2C19,*22/*35,Poor Metabolizer
+CYP2C19,*22/*36,Poor Metabolizer
+CYP2C19,*22/*37,Poor Metabolizer
+CYP2C19,*24/*24,Poor Metabolizer
+CYP2C19,*24/*35,Poor Metabolizer
+CYP2C19,*24/*36,Poor Metabolizer
+CYP2C19,*24/*37,Poor Metabolizer
+CYP2C19,*3/*22,Poor Metabolizer
+CYP2C19,*3/*24,Poor Metabolizer
+CYP2C19,*3/*3,Poor Metabolizer
+CYP2C19,*3/*35,Poor Metabolizer
+CYP2C19,*3/*36,Poor Metabolizer
+CYP2C19,*3/*37,Poor Metabolizer
+CYP2C19,*3/*4,Poor Metabolizer
+CYP2C19,*3/*5,Poor Metabolizer
+CYP2C19,*3/*6,Poor Metabolizer
+CYP2C19,*3/*7,Poor Metabolizer
+CYP2C19,*3/*8,Poor Metabolizer
+CYP2C19,*35/*35,Poor Metabolizer
+CYP2C19,*35/*36,Poor Metabolizer
+CYP2C19,*35/*37,Poor Metabolizer
+CYP2C19,*36/*36,Poor Metabolizer
+CYP2C19,*36/*37,Poor Metabolizer
+CYP2C19,*37/*37,Poor Metabolizer
+CYP2C19,*4/*22,Poor Metabolizer
+CYP2C19,*4/*24,Poor Metabolizer
+CYP2C19,*4/*35,Poor Metabolizer
+CYP2C19,*4/*36,Poor Metabolizer
+CYP2C19,*4/*37,Poor Metabolizer
+CYP2C19,*4/*4,Poor Metabolizer
+CYP2C19,*4/*5,Poor Metabolizer
+CYP2C19,*4/*6,Poor Metabolizer
+CYP2C19,*4/*7,Poor Metabolizer
+CYP2C19,*4/*8,Poor Metabolizer
+CYP2C19,*5/*22,Poor Metabolizer
+CYP2C19,*5/*24,Poor Metabolizer
+CYP2C19,*5/*35,Poor Metabolizer
+CYP2C19,*5/*36,Poor Metabolizer
+CYP2C19,*5/*37,Poor Metabolizer
+CYP2C19,*5/*5,Poor Metabolizer
+CYP2C19,*5/*6,Poor Metabolizer
+CYP2C19,*5/*7,Poor Metabolizer
+CYP2C19,*5/*8,Poor Metabolizer
+CYP2C19,*6/*22,Poor Metabolizer
+CYP2C19,*6/*24,Poor Metabolizer
+CYP2C19,*6/*35,Poor Metabolizer
+CYP2C19,*6/*36,Poor Metabolizer
+CYP2C19,*6/*37,Poor Metabolizer
+CYP2C19,*6/*6,Poor Metabolizer
+CYP2C19,*6/*7,Poor Metabolizer
+CYP2C19,*6/*8,Poor Metabolizer
+CYP2C19,*7/*22,Poor Metabolizer
+CYP2C19,*7/*24,Poor Metabolizer
+CYP2C19,*7/*35,Poor Metabolizer
+CYP2C19,*7/*36,Poor Metabolizer
+CYP2C19,*7/*37,Poor Metabolizer
+CYP2C19,*7/*7,Poor Metabolizer
+CYP2C19,*7/*8,Poor Metabolizer
+CYP2C19,*8/*22,Poor Metabolizer
+CYP2C19,*8/*24,Poor Metabolizer
+CYP2C19,*8/*35,Poor Metabolizer
+CYP2C19,*8/*36,Poor Metabolizer
+CYP2C19,*8/*37,Poor Metabolizer
+CYP2C19,*8/*8,Poor Metabolizer
+CYP2C19,*1/*17,Rapid Metabolizer
+CYP2C19,*11/*17,Rapid Metabolizer
+CYP2C19,*13/*17,Rapid Metabolizer
+CYP2C19,*15/*17,Rapid Metabolizer
+CYP2C19,*17/*18,Rapid Metabolizer
+CYP2C19,*17/*28,Rapid Metabolizer
+CYP2C19,*17/*38,Rapid Metabolizer
+CYP2C19,*17/*17,Ultrarapid Metabolizer
+CYP2C19,*1/*12,Indeterminate
+CYP2C19,*1/*14,Indeterminate
+CYP2C19,*1/*23,Indeterminate
+CYP2C19,*1/*29,Indeterminate
+CYP2C19,*1/*30,Indeterminate
+CYP2C19,*1/*31,Indeterminate
+CYP2C19,*1/*32,Indeterminate
+CYP2C19,*1/*33,Indeterminate
+CYP2C19,*1/*34,Indeterminate
+CYP2C19,*10/*12,Indeterminate
+CYP2C19,*10/*14,Indeterminate
+CYP2C19,*10/*23,Indeterminate
+CYP2C19,*10/*29,Indeterminate
+CYP2C19,*10/*30,Indeterminate
+CYP2C19,*10/*31,Indeterminate
+CYP2C19,*10/*32,Indeterminate
+CYP2C19,*10/*33,Indeterminate
+CYP2C19,*10/*34,Indeterminate
+CYP2C19,*11/*12,Indeterminate
+CYP2C19,*11/*14,Indeterminate
+CYP2C19,*11/*23,Indeterminate
+CYP2C19,*11/*29,Indeterminate
+CYP2C19,*11/*30,Indeterminate
+CYP2C19,*11/*31,Indeterminate
+CYP2C19,*11/*32,Indeterminate
+CYP2C19,*11/*33,Indeterminate
+CYP2C19,*11/*34,Indeterminate
+CYP2C19,*12/*12,Indeterminate
+CYP2C19,*12/*13,Indeterminate
+CYP2C19,*12/*14,Indeterminate
+CYP2C19,*12/*15,Indeterminate
+CYP2C19,*12/*16,Indeterminate
+CYP2C19,*12/*17,Indeterminate
+CYP2C19,*12/*18,Indeterminate
+CYP2C19,*12/*19,Indeterminate
+CYP2C19,*12/*22,Indeterminate
+CYP2C19,*12/*23,Indeterminate
+CYP2C19,*12/*24,Indeterminate
+CYP2C19,*12/*25,Indeterminate
+CYP2C19,*12/*26,Indeterminate
+CYP2C19,*12/*28,Indeterminate
+CYP2C19,*12/*29,Indeterminate
+CYP2C19,*12/*30,Indeterminate
+CYP2C19,*12/*31,Indeterminate
+CYP2C19,*12/*32,Indeterminate
+CYP2C19,*12/*33,Indeterminate
+CYP2C19,*12/*34,Indeterminate
+CYP2C19,*12/*35,Indeterminate
+CYP2C19,*12/*36,Indeterminate
+CYP2C19,*12/*37,Indeterminate
+CYP2C19,*12/*38,Indeterminate
+CYP2C19,*13/*14,Indeterminate
+CYP2C19,*13/*23,Indeterminate
+CYP2C19,*13/*29,Indeterminate
+CYP2C19,*13/*30,Indeterminate
+CYP2C19,*13/*31,Indeterminate
+CYP2C19,*13/*32,Indeterminate
+CYP2C19,*13/*33,Indeterminate
+CYP2C19,*13/*34,Indeterminate
+CYP2C19,*14/*14,Indeterminate
+CYP2C19,*14/*15,Indeterminate
+CYP2C19,*14/*16,Indeterminate
+CYP2C19,*14/*17,Indeterminate
+CYP2C19,*14/*18,Indeterminate
+CYP2C19,*14/*19,Indeterminate
+CYP2C19,*14/*22,Indeterminate
+CYP2C19,*14/*23,Indeterminate
+CYP2C19,*14/*24,Indeterminate
+CYP2C19,*14/*25,Indeterminate
+CYP2C19,*14/*26,Indeterminate
+CYP2C19,*14/*28,Indeterminate
+CYP2C19,*14/*29,Indeterminate
+CYP2C19,*14/*30,Indeterminate
+CYP2C19,*14/*31,Indeterminate
+CYP2C19,*14/*32,Indeterminate
+CYP2C19,*14/*33,Indeterminate
+CYP2C19,*14/*34,Indeterminate
+CYP2C19,*14/*35,Indeterminate
+CYP2C19,*14/*36,Indeterminate
+CYP2C19,*14/*37,Indeterminate
+CYP2C19,*14/*38,Indeterminate
+CYP2C19,*15/*23,Indeterminate
+CYP2C19,*15/*29,Indeterminate
+CYP2C19,*15/*30,Indeterminate
+CYP2C19,*15/*31,Indeterminate
+CYP2C19,*15/*32,Indeterminate
+CYP2C19,*15/*33,Indeterminate
+CYP2C19,*15/*34,Indeterminate
+CYP2C19,*16/*23,Indeterminate
+CYP2C19,*16/*29,Indeterminate
+CYP2C19,*16/*30,Indeterminate
+CYP2C19,*16/*31,Indeterminate
+CYP2C19,*16/*32,Indeterminate
+CYP2C19,*16/*33,Indeterminate
+CYP2C19,*16/*34,Indeterminate
+CYP2C19,*17/*23,Indeterminate
+CYP2C19,*17/*29,Indeterminate
+CYP2C19,*17/*30,Indeterminate
+CYP2C19,*17/*31,Indeterminate
+CYP2C19,*17/*32,Indeterminate
+CYP2C19,*17/*33,Indeterminate
+CYP2C19,*17/*34,Indeterminate
+CYP2C19,*18/*23,Indeterminate
+CYP2C19,*18/*29,Indeterminate
+CYP2C19,*18/*30,Indeterminate
+CYP2C19,*18/*31,Indeterminate
+CYP2C19,*18/*32,Indeterminate
+CYP2C19,*18/*33,Indeterminate
+CYP2C19,*18/*34,Indeterminate
+CYP2C19,*19/*23,Indeterminate
+CYP2C19,*19/*29,Indeterminate
+CYP2C19,*19/*30,Indeterminate
+CYP2C19,*19/*31,Indeterminate
+CYP2C19,*19/*32,Indeterminate
+CYP2C19,*19/*33,Indeterminate
+CYP2C19,*19/*34,Indeterminate
+CYP2C19,*2/*12,Indeterminate
+CYP2C19,*2/*14,Indeterminate
+CYP2C19,*2/*23,Indeterminate
+CYP2C19,*2/*29,Indeterminate
+CYP2C19,*2/*30,Indeterminate
+CYP2C19,*2/*31,Indeterminate
+CYP2C19,*2/*32,Indeterminate
+CYP2C19,*2/*33,Indeterminate
+CYP2C19,*2/*34,Indeterminate
+CYP2C19,*22/*23,Indeterminate
+CYP2C19,*22/*29,Indeterminate
+CYP2C19,*22/*30,Indeterminate
+CYP2C19,*22/*31,Indeterminate
+CYP2C19,*22/*32,Indeterminate
+CYP2C19,*22/*33,Indeterminate
+CYP2C19,*22/*34,Indeterminate
+CYP2C19,*23/*23,Indeterminate
+CYP2C19,*23/*24,Indeterminate
+CYP2C19,*23/*25,Indeterminate
+CYP2C19,*23/*26,Indeterminate
+CYP2C19,*23/*28,Indeterminate
+CYP2C19,*23/*29,Indeterminate
+CYP2C19,*23/*30,Indeterminate
+CYP2C19,*23/*31,Indeterminate
+CYP2C19,*23/*32,Indeterminate
+CYP2C19,*23/*33,Indeterminate
+CYP2C19,*23/*34,Indeterminate
+CYP2C19,*23/*35,Indeterminate
+CYP2C19,*23/*36,Indeterminate
+CYP2C19,*23/*37,Indeterminate
+CYP2C19,*23/*38,Indeterminate
+CYP2C19,*24/*29,Indeterminate
+CYP2C19,*24/*30,Indeterminate
+CYP2C19,*24/*31,Indeterminate
+CYP2C19,*24/*32,Indeterminate
+CYP2C19,*24/*33,Indeterminate
+CYP2C19,*24/*34,Indeterminate
+CYP2C19,*25/*29,Indeterminate
+CYP2C19,*25/*30,Indeterminate
+CYP2C19,*25/*31,Indeterminate
+CYP2C19,*25/*32,Indeterminate
+CYP2C19,*25/*33,Indeterminate
+CYP2C19,*25/*34,Indeterminate
+CYP2C19,*26/*29,Indeterminate
+CYP2C19,*26/*30,Indeterminate
+CYP2C19,*26/*31,Indeterminate
+CYP2C19,*26/*32,Indeterminate
+CYP2C19,*26/*33,Indeterminate
+CYP2C19,*26/*34,Indeterminate
+CYP2C19,*28/*29,Indeterminate
+CYP2C19,*28/*30,Indeterminate
+CYP2C19,*28/*31,Indeterminate
+CYP2C19,*28/*32,Indeterminate
+CYP2C19,*28/*33,Indeterminate
+CYP2C19,*28/*34,Indeterminate
+CYP2C19,*29/*29,Indeterminate
+CYP2C19,*29/*30,Indeterminate
+CYP2C19,*29/*31,Indeterminate
+CYP2C19,*29/*32,Indeterminate
+CYP2C19,*29/*33,Indeterminate
+CYP2C19,*29/*34,Indeterminate
+CYP2C19,*29/*35,Indeterminate
+CYP2C19,*29/*36,Indeterminate
+CYP2C19,*29/*37,Indeterminate
+CYP2C19,*29/*38,Indeterminate
+CYP2C19,*3/*12,Indeterminate
+CYP2C19,*3/*14,Indeterminate
+CYP2C19,*3/*23,Indeterminate
+CYP2C19,*3/*29,Indeterminate
+CYP2C19,*3/*30,Indeterminate
+CYP2C19,*3/*31,Indeterminate
+CYP2C19,*3/*32,Indeterminate
+CYP2C19,*3/*33,Indeterminate
+CYP2C19,*3/*34,Indeterminate
+CYP2C19,*30/*30,Indeterminate
+CYP2C19,*30/*31,Indeterminate
+CYP2C19,*30/*32,Indeterminate
+CYP2C19,*30/*33,Indeterminate
+CYP2C19,*30/*34,Indeterminate
+CYP2C19,*30/*35,Indeterminate
+CYP2C19,*30/*36,Indeterminate
+CYP2C19,*30/*37,Indeterminate
+CYP2C19,*30/*38,Indeterminate
+CYP2C19,*31/*31,Indeterminate
+CYP2C19,*31/*32,Indeterminate
+CYP2C19,*31/*33,Indeterminate
+CYP2C19,*31/*34,Indeterminate
+CYP2C19,*31/*35,Indeterminate
+CYP2C19,*31/*36,Indeterminate
+CYP2C19,*31/*37,Indeterminate
+CYP2C19,*31/*38,Indeterminate
+CYP2C19,*32/*32,Indeterminate
+CYP2C19,*32/*33,Indeterminate
+CYP2C19,*32/*34,Indeterminate
+CYP2C19,*32/*35,Indeterminate
+CYP2C19,*32/*36,Indeterminate
+CYP2C19,*32/*37,Indeterminate
+CYP2C19,*32/*38,Indeterminate
+CYP2C19,*33/*33,Indeterminate
+CYP2C19,*33/*34,Indeterminate
+CYP2C19,*33/*35,Indeterminate
+CYP2C19,*33/*36,Indeterminate
+CYP2C19,*33/*37,Indeterminate
+CYP2C19,*33/*38,Indeterminate
+CYP2C19,*34/*34,Indeterminate
+CYP2C19,*34/*35,Indeterminate
+CYP2C19,*34/*36,Indeterminate
+CYP2C19,*34/*37,Indeterminate
+CYP2C19,*34/*38,Indeterminate
+CYP2C19,*4/*12,Indeterminate
+CYP2C19,*4/*14,Indeterminate
+CYP2C19,*4/*23,Indeterminate
+CYP2C19,*4/*29,Indeterminate
+CYP2C19,*4/*30,Indeterminate
+CYP2C19,*4/*31,Indeterminate
+CYP2C19,*4/*32,Indeterminate
+CYP2C19,*4/*33,Indeterminate
+CYP2C19,*4/*34,Indeterminate
+CYP2C19,*5/*12,Indeterminate
+CYP2C19,*5/*14,Indeterminate
+CYP2C19,*5/*23,Indeterminate
+CYP2C19,*5/*29,Indeterminate
+CYP2C19,*5/*30,Indeterminate
+CYP2C19,*5/*31,Indeterminate
+CYP2C19,*5/*32,Indeterminate
+CYP2C19,*5/*33,Indeterminate
+CYP2C19,*5/*34,Indeterminate
+CYP2C19,*6/*12,Indeterminate
+CYP2C19,*6/*14,Indeterminate
+CYP2C19,*6/*23,Indeterminate
+CYP2C19,*6/*29,Indeterminate
+CYP2C19,*6/*30,Indeterminate
+CYP2C19,*6/*31,Indeterminate
+CYP2C19,*6/*32,Indeterminate
+CYP2C19,*6/*33,Indeterminate
+CYP2C19,*6/*34,Indeterminate
+CYP2C19,*7/*12,Indeterminate
+CYP2C19,*7/*14,Indeterminate
+CYP2C19,*7/*23,Indeterminate
+CYP2C19,*7/*29,Indeterminate
+CYP2C19,*7/*30,Indeterminate
+CYP2C19,*7/*31,Indeterminate
+CYP2C19,*7/*32,Indeterminate
+CYP2C19,*7/*33,Indeterminate
+CYP2C19,*7/*34,Indeterminate
+CYP2C19,*8/*12,Indeterminate
+CYP2C19,*8/*14,Indeterminate
+CYP2C19,*8/*23,Indeterminate
+CYP2C19,*8/*29,Indeterminate
+CYP2C19,*8/*30,Indeterminate
+CYP2C19,*8/*31,Indeterminate
+CYP2C19,*8/*32,Indeterminate
+CYP2C19,*8/*33,Indeterminate
+CYP2C19,*8/*34,Indeterminate
+CYP2C19,*9/*12,Indeterminate
+CYP2C19,*9/*14,Indeterminate
+CYP2C19,*9/*23,Indeterminate
+CYP2C19,*9/*29,Indeterminate
+CYP2C19,*9/*30,Indeterminate
+CYP2C19,*9/*31,Indeterminate
+CYP2C19,*9/*32,Indeterminate
+CYP2C19,*9/*33,Indeterminate
+CYP2C19,*9/*34,Indeterminate
+CYP3A5,*1/*1,Normal Metabolizer
+CYP3A5,*1/*2,Possible Intermediate Metabolizer
+CYP3A5,*1/*3,Intermediate Metabolizer
+CYP3A5,*1/*4,Possible Intermediate Metabolizer
+CYP3A5,*1/*5,Possible Intermediate Metabolizer
+CYP3A5,*1/*6,Intermediate Metabolizer
+CYP3A5,*1/*7,Intermediate Metabolizer
+CYP3A5,*1/*8,Possible Intermediate Metabolizer
+CYP3A5,*1/*9,Possible Intermediate Metabolizer
+CYP3A5,*2/*2,Indeterminate
+CYP3A5,*2/*3,Indeterminate
+CYP3A5,*2/*4,Indeterminate
+CYP3A5,*2/*5,Indeterminate
+CYP3A5,*2/*6,Indeterminate
+CYP3A5,*2/*7,Indeterminate
+CYP3A5,*2/*8,Indeterminate
+CYP3A5,*2/*9,Indeterminate
+CYP3A5,*3/*3,Poor Metabolizer
+CYP3A5,*3/*4,Indeterminate
+CYP3A5,*3/*5,Indeterminate
+CYP3A5,*3/*6,Poor Metabolizer
+CYP3A5,*3/*7,Poor Metabolizer
+CYP3A5,*3/*8,Indeterminate
+CYP3A5,*3/*9,Indeterminate
+CYP3A5,*4/*4,Indeterminate
+CYP3A5,*4/*5,Indeterminate
+CYP3A5,*4/*6,Indeterminate
+CYP3A5,*4/*7,Indeterminate
+CYP3A5,*4/*8,Indeterminate
+CYP3A5,*4/*9,Indeterminate
+CYP3A5,*5/*5,Indeterminate
+CYP3A5,*5/*6,Indeterminate
+CYP3A5,*5/*7,Indeterminate
+CYP3A5,*5/*8,Indeterminate
+CYP3A5,*5/*9,Indeterminate
+CYP3A5,*6/*6,Poor Metabolizer
+CYP3A5,*6/*7,Poor Metabolizer
+CYP3A5,*6/*8,Indeterminate
+CYP3A5,*6/*9,Indeterminate
+CYP3A5,*7/*7,Poor metabolizer
+CYP3A5,*7/*8,Indeterminate
+CYP3A5,*7/*9,Indeterminate
+CYP3A5,*8/*8,Indeterminate
+CYP3A5,*8/*9,Indeterminate
+CYP3A5,*9/*9,Indeterminate
+NUDT15,*1/*4,Indeterminate
+NUDT15,*1/*5,Indeterminate
+NUDT15,*1/*6,Indeterminate
+NUDT15,*1/*7,Indeterminate
+NUDT15,*1/*8,Indeterminate
+NUDT15,*4/*4,Indeterminate
+NUDT15,*4/*5,Indeterminate
+NUDT15,*4/*6,Indeterminate
+NUDT15,*4/*7,Indeterminate
+NUDT15,*4/*8,Indeterminate
+NUDT15,*5/*5,Indeterminate
+NUDT15,*5/*6,Indeterminate
+NUDT15,*5/*7,Indeterminate
+NUDT15,*5/*8,Indeterminate
+NUDT15,*6/*6,Indeterminate
+NUDT15,*6/*7,Indeterminate
+NUDT15,*6/*8,Indeterminate
+NUDT15,*7/*7,Indeterminate
+NUDT15,*7/*8,Indeterminate
+NUDT15,*8/*8,Indeterminate
+NUDT15,*1/*2,Intermediate Metabolizer
+NUDT15,*1/*3,Intermediate Metabolizer
+NUDT15,*1/*9,Intermediate Metabolizer
+NUDT15,*1/*1,Normal Metabolizer
+NUDT15,*2/*2,Poor Metabolizer
+NUDT15,*2/*3,Poor Metabolizer
+NUDT15,*2/*9,Poor Metabolizer
+NUDT15,*3/*3,Poor Metabolizer
+NUDT15,*3/*9,Poor Metabolizer
+NUDT15,*9/*9,Poor Metabolizer
+NUDT15,*2/*4,Possible Intermediate Metabolizer
+NUDT15,*2/*5,Possible Intermediate Metabolizer
+NUDT15,*2/*6,Possible Intermediate Metabolizer
+NUDT15,*2/*7,Possible Intermediate Metabolizer
+NUDT15,*2/*8,Possible Intermediate Metabolizer
+NUDT15,*3/*4,Possible Intermediate Metabolizer
+NUDT15,*3/*5,Possible Intermediate Metabolizer
+NUDT15,*3/*6,Possible Intermediate Metabolizer
+NUDT15,*3/*7,Possible Intermediate Metabolizer
+NUDT15,*3/*8,Possible Intermediate Metabolizer
+NUDT15,*4/*9,Possible Intermediate Metabolizer
+NUDT15,*5/*9,Possible Intermediate Metabolizer
+NUDT15,*6/*9,Possible Intermediate Metabolizer
+NUDT15,*7/*9,Possible Intermediate Metabolizer
+NUDT15,*8/*9,Possible Intermediate Metabolizer
+SLCO1B1,*1A/*1A,Normal Function
+SLCO1B1,*1A/*1B,Normal Function
+SLCO1B1,*1A/*2,Possible Decreased Function
+SLCO1B1,*1A/*3,Possible Decreased Function
+SLCO1B1,*1A/*4,Indeterminate
+SLCO1B1,*1A/*5,Decreased Function
+SLCO1B1,*1A/*6,Possible Decreased Function
+SLCO1B1,*1A/*7,Indeterminate
+SLCO1B1,*1A/*8,Indeterminate
+SLCO1B1,*1A/*9,Possible Decreased Function
+SLCO1B1,*1A/*10,Possible Decreased Function
+SLCO1B1,*1A/*11,Indeterminate
+SLCO1B1,*1A/*12,Indeterminate
+SLCO1B1,*1A/*13,Indeterminate
+SLCO1B1,*1A/*14,Possible Increased Function
+SLCO1B1,*1A/*15,Decreased Function
+SLCO1B1,*1A/*16,Indeterminate
+SLCO1B1,*1A/*17,Decreased Functionc
+SLCO1B1,*1A/*18,Indeterminate
+SLCO1B1,*1A/*19,Indeterminate
+SLCO1B1,*1A/*20,Indeterminate
+SLCO1B1,*1A/*21,Indeterminate
+SLCO1B1,*1A/*22,Indeterminate
+SLCO1B1,*1A/*23,Possible Decreased Function
+SLCO1B1,*1A/*24,Indeterminate
+SLCO1B1,*1A/*25,Indeterminate
+SLCO1B1,*1A/*26,Indeterminate
+SLCO1B1,*1A/*27,Indeterminate
+SLCO1B1,*1A/*28,Indeterminate
+SLCO1B1,*1A/*29,Indeterminate
+SLCO1B1,*1A/*30,Indeterminate
+SLCO1B1,*1A/*31,Possible Decreased Function
+SLCO1B1,*1A/*32,Indeterminate
+SLCO1B1,*1A/*33,Indeterminate
+SLCO1B1,*1A/*34,Indeterminate
+SLCO1B1,*1A/*35,Possible Increased Function
+SLCO1B1,*1A/*36,Indeterminate
+SLCO1B1,*1B/*1B,Normal Function
+SLCO1B1,*1B/*2,Possible Decreased Function
+SLCO1B1,*1B/*3,Possible Decreased Function
+SLCO1B1,*1B/*4,Indeterminate
+SLCO1B1,*1B/*5,Decreased Function
+SLCO1B1,*1B/*6,Possible Decreased Function
+SLCO1B1,*1B/*7,Indeterminate
+SLCO1B1,*1B/*8,Indeterminate
+SLCO1B1,*1B/*9,Possible Decreased Function
+SLCO1B1,*1B/*10,Possible Decreased Function
+SLCO1B1,*1B/*11,Indeterminate
+SLCO1B1,*1B/*12,Indeterminate
+SLCO1B1,*1B/*13,Indeterminate
+SLCO1B1,*1B/*14,Possible Increased Function
+SLCO1B1,*1B/*15,Decreased Function
+SLCO1B1,*1B/*16,Indeterminate
+SLCO1B1,*1B/*17,Decreased Function
+SLCO1B1,*1B/*18,Indeterminate
+SLCO1B1,*1B/*19,Indeterminate
+SLCO1B1,*1B/*20,Indeterminate
+SLCO1B1,*1B/*21,Indeterminate
+SLCO1B1,*1B/*22,Indeterminate
+SLCO1B1,*1B/*23,Possible Decreased Function
+SLCO1B1,*1B/*24,Indeterminate
+SLCO1B1,*1B/*25,Indeterminate
+SLCO1B1,*1B/*26,Indeterminate
+SLCO1B1,*1B/*27,Indeterminate
+SLCO1B1,*1B/*28,Indeterminate
+SLCO1B1,*1B/*29,Indeterminate
+SLCO1B1,*1B/*30,Indeterminate
+SLCO1B1,*1B/*31,Possible Decreased Function
+SLCO1B1,*1B/*32,Indeterminate
+SLCO1B1,*1B/*33,Indeterminate
+SLCO1B1,*1B/*34,Indeterminate
+SLCO1B1,*1B/*35,Possible Increased Function
+SLCO1B1,*1B/*36,Indeterminate
+SLCO1B1,*2/*2,Possible Poor Function
+SLCO1B1,*2/*3,Possible Poor Function
+SLCO1B1,*2/*4,Indeterminate
+SLCO1B1,*2/*5,Possible Poor Function
+SLCO1B1,*2/*6,Possible Poor Function
+SLCO1B1,*2/*7,Indeterminate
+SLCO1B1,*2/*8,Indeterminate
+SLCO1B1,*2/*9,Possible Poor Function
+SLCO1B1,*2/*10,Possible Poor Function
+SLCO1B1,*2/*11,Indeterminate
+SLCO1B1,*2/*12,Indeterminate
+SLCO1B1,*2/*13,Indeterminate
+SLCO1B1,*2/*14,Indeterminate
+SLCO1B1,*2/*15,Possible Poor Function
+SLCO1B1,*2/*16,Indeterminate
+SLCO1B1,*2/*17,Possible Poor Function
+SLCO1B1,*2/*18,Indeterminate
+SLCO1B1,*2/*19,Indeterminate
+SLCO1B1,*2/*20,Indeterminate
+SLCO1B1,*2/*21,Indeterminate
+SLCO1B1,*2/*22,Indeterminate
+SLCO1B1,*2/*23,Possible Poor Function
+SLCO1B1,*2/*24,Indeterminate
+SLCO1B1,*2/*25,Indeterminate
+SLCO1B1,*2/*26,Indeterminate
+SLCO1B1,*2/*27,Indeterminate
+SLCO1B1,*2/*28,Indeterminate
+SLCO1B1,*2/*29,Indeterminate
+SLCO1B1,*2/*30,Indeterminate
+SLCO1B1,*2/*31,Possible Poor Function
+SLCO1B1,*2/*32,Indeterminate
+SLCO1B1,*2/*33,Indeterminate
+SLCO1B1,*2/*34,Indeterminate
+SLCO1B1,*2/*35,Indeterminate
+SLCO1B1,*2/*36,Indeterminate
+SLCO1B1,*3/*3,Possible Poor Function
+SLCO1B1,*3/*4,Indeterminate
+SLCO1B1,*3/*5,Possible Poor Function
+SLCO1B1,*3/*6,Possible Poor Function
+SLCO1B1,*3/*7,Indeterminate
+SLCO1B1,*3/*8,Indeterminate
+SLCO1B1,*3/*9,Possible Poor Function
+SLCO1B1,*3/*10,Possible Poor Function
+SLCO1B1,*3/*11,Indeterminate
+SLCO1B1,*3/*12,Indeterminate
+SLCO1B1,*3/*13,Indeterminate
+SLCO1B1,*3/*14,Indeterminate
+SLCO1B1,*3/*15,Possible Poor Function
+SLCO1B1,*3/*16,Indeterminate
+SLCO1B1,*3/*17,Possible Poor Function
+SLCO1B1,*3/*18,Indeterminate
+SLCO1B1,*3/*19,Indeterminate
+SLCO1B1,*3/*20,Indeterminate
+SLCO1B1,*3/*21,Indeterminate
+SLCO1B1,*3/*22,Indeterminate
+SLCO1B1,*3/*23,Possible Poor Function
+SLCO1B1,*3/*24,Indeterminate
+SLCO1B1,*3/*25,Indeterminate
+SLCO1B1,*3/*26,Indeterminate
+SLCO1B1,*3/*27,Indeterminate
+SLCO1B1,*3/*28,Indeterminate
+SLCO1B1,*3/*29,Indeterminate
+SLCO1B1,*3/*30,Indeterminate
+SLCO1B1,*3/*31,Possible Poor Function
+SLCO1B1,*3/*32,Indeterminate
+SLCO1B1,*3/*33,Indeterminate
+SLCO1B1,*3/*34,Indeterminate
+SLCO1B1,*3/*35,Indeterminate
+SLCO1B1,*3/*36,Indeterminate
+SLCO1B1,*4/*4,Indeterminate
+SLCO1B1,*4/*5,Indeterminate
+SLCO1B1,*4/*6,Indeterminate
+SLCO1B1,*4/*7,Indeterminate
+SLCO1B1,*4/*8,Indeterminate
+SLCO1B1,*4/*9,Indeterminate
+SLCO1B1,*4/*10,Indeterminate
+SLCO1B1,*4/*11,Indeterminate
+SLCO1B1,*4/*12,Indeterminate
+SLCO1B1,*4/*13,Indeterminate
+SLCO1B1,*4/*14,Indeterminate
+SLCO1B1,*4/*15,Indeterminate
+SLCO1B1,*4/*16,Indeterminate
+SLCO1B1,*4/*17,Indeterminate
+SLCO1B1,*4/*18,Indeterminate
+SLCO1B1,*4/*19,Indeterminate
+SLCO1B1,*4/*20,Indeterminate
+SLCO1B1,*4/*21,Indeterminate
+SLCO1B1,*4/*22,Indeterminate
+SLCO1B1,*4/*23,Indeterminate
+SLCO1B1,*4/*24,Indeterminate
+SLCO1B1,*4/*25,Indeterminate
+SLCO1B1,*4/*26,Indeterminate
+SLCO1B1,*4/*27,Indeterminate
+SLCO1B1,*4/*28,Indeterminate
+SLCO1B1,*4/*29,Indeterminate
+SLCO1B1,*4/*30,Indeterminate
+SLCO1B1,*4/*31,Indeterminate
+SLCO1B1,*4/*32,Indeterminate
+SLCO1B1,*4/*33,Indeterminate
+SLCO1B1,*4/*34,Indeterminate
+SLCO1B1,*4/*35,Indeterminate
+SLCO1B1,*4/*36,Indeterminate
+SLCO1B1,*5/*5,Poor Function
+SLCO1B1,*5/*6,Possible Poor Function
+SLCO1B1,*5/*7,Indeterminate
+SLCO1B1,*5/*8,Indeterminate
+SLCO1B1,*5/*9,Possible Poor Function
+SLCO1B1,*5/*10,Possible Poor Function
+SLCO1B1,*5/*11,Indeterminate
+SLCO1B1,*5/*12,Indeterminate
+SLCO1B1,*5/*13,Indeterminate
+SLCO1B1,*5/*14,Indeterminate
+SLCO1B1,*5/*15,Poor Function
+SLCO1B1,*5/*16,Indeterminate
+SLCO1B1,*5/*17,Poor Function
+SLCO1B1,*5/*18,Indeterminate
+SLCO1B1,*5/*19,Indeterminate
+SLCO1B1,*5/*20,Indeterminate
+SLCO1B1,*5/*21,Indeterminate
+SLCO1B1,*5/*22,Indeterminate
+SLCO1B1,*5/*23,Possible Poor Function
+SLCO1B1,*5/*24,Indeterminate
+SLCO1B1,*5/*25,Indeterminate
+SLCO1B1,*5/*26,Indeterminate
+SLCO1B1,*5/*27,Indeterminate
+SLCO1B1,*5/*28,Indeterminate
+SLCO1B1,*5/*29,Indeterminate
+SLCO1B1,*5/*30,Indeterminate
+SLCO1B1,*5/*31,Possible Poor Function
+SLCO1B1,*5/*32,Indeterminate
+SLCO1B1,*5/*33,Indeterminate
+SLCO1B1,*5/*34,Indeterminate
+SLCO1B1,*5/*35,Indeterminate
+SLCO1B1,*5/*36,Indeterminate
+SLCO1B1,*6/*6,Possible Poor Function
+SLCO1B1,*6/*7,Indeterminate
+SLCO1B1,*6/*8,Indeterminate
+SLCO1B1,*6/*9,Possible Poor Function
+SLCO1B1,*6/*10,Possible Poor Function
+SLCO1B1,*6/*11,Indeterminate
+SLCO1B1,*6/*12,Indeterminate
+SLCO1B1,*6/*13,Indeterminate
+SLCO1B1,*6/*14,Indeterminate
+SLCO1B1,*6/*15,Possible Poor Function
+SLCO1B1,*6/*16,Indeterminate
+SLCO1B1,*6/*17,Possible Poor Function
+SLCO1B1,*6/*18,Indeterminate
+SLCO1B1,*6/*19,Indeterminate
+SLCO1B1,*6/*20,Indeterminate
+SLCO1B1,*6/*21,Indeterminate
+SLCO1B1,*6/*22,Indeterminate
+SLCO1B1,*6/*23,Possible Poor Function
+SLCO1B1,*6/*24,Indeterminate
+SLCO1B1,*6/*25,Indeterminate
+SLCO1B1,*6/*26,Indeterminate
+SLCO1B1,*6/*27,Indeterminate
+SLCO1B1,*6/*28,Indeterminate
+SLCO1B1,*6/*29,Indeterminate
+SLCO1B1,*6/*30,Indeterminate
+SLCO1B1,*6/*31,Possible Poor Function
+SLCO1B1,*6/*32,Indeterminate
+SLCO1B1,*6/*33,Indeterminate
+SLCO1B1,*6/*34,Indeterminate
+SLCO1B1,*6/*35,Indeterminate
+SLCO1B1,*6/*36,Indeterminate
+SLCO1B1,*7/*7,Indeterminate
+SLCO1B1,*7/*8,Indeterminate
+SLCO1B1,*7/*9,Indeterminate
+SLCO1B1,*7/*10,Indeterminate
+SLCO1B1,*7/*11,Indeterminate
+SLCO1B1,*7/*12,Indeterminate
+SLCO1B1,*7/*13,Indeterminate
+SLCO1B1,*7/*14,Indeterminate
+SLCO1B1,*7/*15,Indeterminate
+SLCO1B1,*7/*16,Indeterminate
+SLCO1B1,*7/*17,Indeterminate
+SLCO1B1,*7/*18,Indeterminate
+SLCO1B1,*7/*19,Indeterminate
+SLCO1B1,*7/*20,Indeterminate
+SLCO1B1,*7/*21,Indeterminate
+SLCO1B1,*7/*22,Indeterminate
+SLCO1B1,*7/*23,Indeterminate
+SLCO1B1,*7/*24,Indeterminate
+SLCO1B1,*7/*25,Indeterminate
+SLCO1B1,*7/*26,Indeterminate
+SLCO1B1,*7/*27,Indeterminate
+SLCO1B1,*7/*28,Indeterminate
+SLCO1B1,*7/*29,Indeterminate
+SLCO1B1,*7/*30,Indeterminate
+SLCO1B1,*7/*31,Indeterminate
+SLCO1B1,*7/*32,Indeterminate
+SLCO1B1,*7/*33,Indeterminate
+SLCO1B1,*7/*34,Indeterminate
+SLCO1B1,*7/*35,Indeterminate
+SLCO1B1,*7/*36,Indeterminate
+SLCO1B1,*8/*8,Indeterminate
+SLCO1B1,*8/*9,Indeterminate
+SLCO1B1,*8/*10,Indeterminate
+SLCO1B1,*8/*11,Indeterminate
+SLCO1B1,*8/*12,Indeterminate
+SLCO1B1,*8/*13,Indeterminate
+SLCO1B1,*8/*14,Indeterminate
+SLCO1B1,*8/*15,Indeterminate
+SLCO1B1,*8/*16,Indeterminate
+SLCO1B1,*8/*17,Indeterminate
+SLCO1B1,*8/*18,Indeterminate
+SLCO1B1,*8/*19,Indeterminate
+SLCO1B1,*8/*20,Indeterminate
+SLCO1B1,*8/*21,Indeterminate
+SLCO1B1,*8/*22,Indeterminate
+SLCO1B1,*8/*23,Indeterminate
+SLCO1B1,*8/*24,Indeterminate
+SLCO1B1,*8/*25,Indeterminate
+SLCO1B1,*8/*26,Indeterminate
+SLCO1B1,*8/*27,Indeterminate
+SLCO1B1,*8/*28,Indeterminate
+SLCO1B1,*8/*29,Indeterminate
+SLCO1B1,*8/*30,Indeterminate
+SLCO1B1,*8/*31,Indeterminate
+SLCO1B1,*8/*32,Indeterminate
+SLCO1B1,*8/*33,Indeterminate
+SLCO1B1,*8/*34,Indeterminate
+SLCO1B1,*8/*35,Indeterminate
+SLCO1B1,*8/*36,Indeterminate
+SLCO1B1,*9/*9,Possible Poor Function
+SLCO1B1,*9/*10,Possible Poor Function
+SLCO1B1,*9/*11,Indeterminate
+SLCO1B1,*9/*12,Indeterminate
+SLCO1B1,*9/*13,Indeterminate
+SLCO1B1,*9/*14,Indeterminate
+SLCO1B1,*9/*15,Possible Poor Function
+SLCO1B1,*9/*16,Indeterminate
+SLCO1B1,*9/*17,Possible Poor Function
+SLCO1B1,*9/*18,Indeterminate
+SLCO1B1,*9/*19,Indeterminate
+SLCO1B1,*9/*20,Indeterminate
+SLCO1B1,*9/*21,Indeterminate
+SLCO1B1,*9/*22,Indeterminate
+SLCO1B1,*9/*23,Possible Poor Function
+SLCO1B1,*9/*24,Indeterminate
+SLCO1B1,*9/*25,Indeterminate
+SLCO1B1,*9/*26,Indeterminate
+SLCO1B1,*9/*27,Indeterminate
+SLCO1B1,*9/*28,Indeterminate
+SLCO1B1,*9/*29,Indeterminate
+SLCO1B1,*9/*30,Indeterminate
+SLCO1B1,*9/*31,Possible Poor Function
+SLCO1B1,*9/*32,Indeterminate
+SLCO1B1,*9/*33,Indeterminate
+SLCO1B1,*9/*34,Indeterminate
+SLCO1B1,*9/*35,Indeterminate
+SLCO1B1,*9/*36,Indeterminate
+SLCO1B1,*10/*10,Possible Poor Function
+SLCO1B1,*10/*11,Indeterminate
+SLCO1B1,*10/*12,Indeterminate
+SLCO1B1,*10/*13,Indeterminate
+SLCO1B1,*10/*14,Indeterminate
+SLCO1B1,*10/*15,Possible Poor Function
+SLCO1B1,*10/*16,Indeterminate
+SLCO1B1,*10/*17,Possible Poor Function
+SLCO1B1,*10/*18,Indeterminate
+SLCO1B1,*10/*19,Indeterminate
+SLCO1B1,*10/*20,Indeterminate
+SLCO1B1,*10/*21,Indeterminate
+SLCO1B1,*10/*22,Indeterminate
+SLCO1B1,*10/*23,Possible Poor Function
+SLCO1B1,*10/*24,Indeterminate
+SLCO1B1,*10/*25,Indeterminate
+SLCO1B1,*10/*26,Indeterminate
+SLCO1B1,*10/*27,Indeterminate
+SLCO1B1,*10/*28,Indeterminate
+SLCO1B1,*10/*29,Indeterminate
+SLCO1B1,*10/*30,Indeterminate
+SLCO1B1,*10/*31,Possible Poor Function
+SLCO1B1,*10/*32,Indeterminate
+SLCO1B1,*10/*33,Indeterminate
+SLCO1B1,*10/*34,Indeterminate
+SLCO1B1,*10/*35,Indeterminate
+SLCO1B1,*10/*36,Indeterminate
+SLCO1B1,*11/*11,Indeterminate
+SLCO1B1,*11/*12,Indeterminate
+SLCO1B1,*11/*13,Indeterminate
+SLCO1B1,*11/*14,Indeterminate
+SLCO1B1,*11/*15,Indeterminate
+SLCO1B1,*11/*16,Indeterminate
+SLCO1B1,*11/*17,Indeterminate
+SLCO1B1,*11/*18,Indeterminate
+SLCO1B1,*11/*19,Indeterminate
+SLCO1B1,*11/*20,Indeterminate
+SLCO1B1,*11/*21,Indeterminate
+SLCO1B1,*11/*22,Indeterminate
+SLCO1B1,*11/*23,Indeterminate
+SLCO1B1,*11/*24,Indeterminate
+SLCO1B1,*11/*25,Indeterminate
+SLCO1B1,*11/*26,Indeterminate
+SLCO1B1,*11/*27,Indeterminate
+SLCO1B1,*11/*28,Indeterminate
+SLCO1B1,*11/*29,Indeterminate
+SLCO1B1,*11/*30,Indeterminate
+SLCO1B1,*11/*31,Indeterminate
+SLCO1B1,*11/*32,Indeterminate
+SLCO1B1,*11/*33,Indeterminate
+SLCO1B1,*11/*34,Indeterminate
+SLCO1B1,*11/*35,Indeterminate
+SLCO1B1,*11/*36,Indeterminate
+SLCO1B1,*12/*12,Indeterminate
+SLCO1B1,*12/*13,Indeterminate
+SLCO1B1,*12/*14,Indeterminate
+SLCO1B1,*12/*15,Indeterminate
+SLCO1B1,*12/*16,Indeterminate
+SLCO1B1,*12/*17,Indeterminate
+SLCO1B1,*12/*18,Indeterminate
+SLCO1B1,*12/*19,Indeterminate
+SLCO1B1,*12/*20,Indeterminate
+SLCO1B1,*12/*21,Indeterminate
+SLCO1B1,*12/*22,Indeterminate
+SLCO1B1,*12/*23,Indeterminate
+SLCO1B1,*12/*24,Indeterminate
+SLCO1B1,*12/*25,Indeterminate
+SLCO1B1,*12/*26,Indeterminate
+SLCO1B1,*12/*27,Indeterminate
+SLCO1B1,*12/*28,Indeterminate
+SLCO1B1,*12/*29,Indeterminate
+SLCO1B1,*12/*30,Indeterminate
+SLCO1B1,*12/*31,Indeterminate
+SLCO1B1,*12/*32,Indeterminate
+SLCO1B1,*12/*33,Indeterminate
+SLCO1B1,*12/*34,Indeterminate
+SLCO1B1,*12/*35,Indeterminate
+SLCO1B1,*12/*36,Indeterminate
+SLCO1B1,*13/*13,Indeterminate
+SLCO1B1,*13/*14,Indeterminate
+SLCO1B1,*13/*15,Indeterminate
+SLCO1B1,*13/*16,Indeterminate
+SLCO1B1,*13/*17,Indeterminate
+SLCO1B1,*13/*18,Indeterminate
+SLCO1B1,*13/*19,Indeterminate
+SLCO1B1,*13/*20,Indeterminate
+SLCO1B1,*13/*21,Indeterminate
+SLCO1B1,*13/*22,Indeterminate
+SLCO1B1,*13/*23,Indeterminate
+SLCO1B1,*13/*24,Indeterminate
+SLCO1B1,*13/*25,Indeterminate
+SLCO1B1,*13/*26,Indeterminate
+SLCO1B1,*13/*27,Indeterminate
+SLCO1B1,*13/*28,Indeterminate
+SLCO1B1,*13/*29,Indeterminate
+SLCO1B1,*13/*30,Indeterminate
+SLCO1B1,*13/*31,Indeterminate
+SLCO1B1,*13/*32,Indeterminate
+SLCO1B1,*13/*33,Indeterminate
+SLCO1B1,*13/*34,Indeterminate
+SLCO1B1,*13/*35,Indeterminate
+SLCO1B1,*13/*36,Indeterminate
+SLCO1B1,*14/*14,Possible Increased Function
+SLCO1B1,*14/*15,Indeterminate
+SLCO1B1,*14/*16,Indeterminate
+SLCO1B1,*14/*17,Indeterminate
+SLCO1B1,*14/*18,Indeterminate
+SLCO1B1,*14/*19,Indeterminate
+SLCO1B1,*14/*20,Indeterminate
+SLCO1B1,*14/*21,Indeterminate
+SLCO1B1,*14/*22,Indeterminate
+SLCO1B1,*14/*23,Indeterminate
+SLCO1B1,*14/*24,Indeterminate
+SLCO1B1,*14/*25,Indeterminate
+SLCO1B1,*14/*26,Indeterminate
+SLCO1B1,*14/*27,Indeterminate
+SLCO1B1,*14/*28,Indeterminate
+SLCO1B1,*14/*29,Indeterminate
+SLCO1B1,*14/*30,Indeterminate
+SLCO1B1,*14/*31,Indeterminate
+SLCO1B1,*14/*32,Indeterminate
+SLCO1B1,*14/*33,Indeterminate
+SLCO1B1,*14/*34,Indeterminate
+SLCO1B1,*14/*35,Indeterminate
+SLCO1B1,*14/*36,Indeterminate
+SLCO1B1,*15/*15,Poor Function
+SLCO1B1,*15/*16,Indeterminate
+SLCO1B1,*15/*17,Poor Function
+SLCO1B1,*15/*18,Indeterminate
+SLCO1B1,*15/*19,Indeterminate
+SLCO1B1,*15/*20,Indeterminate
+SLCO1B1,*15/*21,Indeterminate
+SLCO1B1,*15/*22,Indeterminate
+SLCO1B1,*15/*23,Possible Poor Function
+SLCO1B1,*15/*24,Indeterminate
+SLCO1B1,*15/*25,Indeterminate
+SLCO1B1,*15/*26,Indeterminate
+SLCO1B1,*15/*27,Indeterminate
+SLCO1B1,*15/*28,Indeterminate
+SLCO1B1,*15/*29,Indeterminate
+SLCO1B1,*15/*30,Indeterminate
+SLCO1B1,*15/*31,Possible Poor Function
+SLCO1B1,*15/*32,Indeterminate
+SLCO1B1,*15/*33,Indeterminate
+SLCO1B1,*15/*34,Indeterminate
+SLCO1B1,*15/*35,Indeterminate
+SLCO1B1,*15/*36,Indeterminate
+SLCO1B1,*16/*16,Indeterminate
+SLCO1B1,*16/*17,Indeterminate
+SLCO1B1,*16/*18,Indeterminate
+SLCO1B1,*16/*19,Indeterminate
+SLCO1B1,*16/*20,Indeterminate
+SLCO1B1,*16/*21,Indeterminate
+SLCO1B1,*16/*22,Indeterminate
+SLCO1B1,*16/*23,Indeterminate
+SLCO1B1,*16/*24,Indeterminate
+SLCO1B1,*16/*25,Indeterminate
+SLCO1B1,*16/*26,Indeterminate
+SLCO1B1,*16/*27,Indeterminate
+SLCO1B1,*16/*28,Indeterminate
+SLCO1B1,*16/*29,Indeterminate
+SLCO1B1,*16/*30,Indeterminate
+SLCO1B1,*16/*31,Indeterminate
+SLCO1B1,*16/*32,Indeterminate
+SLCO1B1,*16/*33,Indeterminate
+SLCO1B1,*16/*34,Indeterminate
+SLCO1B1,*16/*35,Indeterminate
+SLCO1B1,*16/*36,Indeterminate
+SLCO1B1,*17/*17,Poor Function
+SLCO1B1,*17/*18,Indeterminate
+SLCO1B1,*17/*19,Indeterminate
+SLCO1B1,*17/*20,Indeterminate
+SLCO1B1,*17/*21,Indeterminate
+SLCO1B1,*17/*22,Indeterminate
+SLCO1B1,*17/*23,Possible Poor Function
+SLCO1B1,*17/*24,Indeterminate
+SLCO1B1,*17/*25,Indeterminate
+SLCO1B1,*17/*26,Indeterminate
+SLCO1B1,*17/*27,Indeterminate
+SLCO1B1,*17/*28,Indeterminate
+SLCO1B1,*17/*29,Indeterminate
+SLCO1B1,*17/*30,Indeterminate
+SLCO1B1,*17/*31,Possible Poor Function
+SLCO1B1,*17/*32,Indeterminate
+SLCO1B1,*17/*33,Indeterminate
+SLCO1B1,*17/*34,Indeterminate
+SLCO1B1,*17/*35,Indeterminate
+SLCO1B1,*17/*36,Indeterminate
+SLCO1B1,*18/*18,Indeterminate
+SLCO1B1,*18/*19,Indeterminate
+SLCO1B1,*18/*20,Indeterminate
+SLCO1B1,*18/*21,Indeterminate
+SLCO1B1,*18/*22,Indeterminate
+SLCO1B1,*18/*23,Indeterminate
+SLCO1B1,*18/*24,Indeterminate
+SLCO1B1,*18/*25,Indeterminate
+SLCO1B1,*18/*26,Indeterminate
+SLCO1B1,*18/*27,Indeterminate
+SLCO1B1,*18/*28,Indeterminate
+SLCO1B1,*18/*29,Indeterminate
+SLCO1B1,*18/*30,Indeterminate
+SLCO1B1,*18/*31,Indeterminate
+SLCO1B1,*18/*32,Indeterminate
+SLCO1B1,*18/*33,Indeterminate
+SLCO1B1,*18/*34,Indeterminate
+SLCO1B1,*18/*35,Indeterminate
+SLCO1B1,*18/*36,Indeterminate
+SLCO1B1,*19/*19,Indeterminate
+SLCO1B1,*19/*20,Indeterminate
+SLCO1B1,*19/*21,Indeterminate
+SLCO1B1,*19/*22,Indeterminate
+SLCO1B1,*19/*23,Indeterminate
+SLCO1B1,*19/*24,Indeterminate
+SLCO1B1,*19/*25,Indeterminate
+SLCO1B1,*19/*26,Indeterminate
+SLCO1B1,*19/*27,Indeterminate
+SLCO1B1,*19/*28,Indeterminate
+SLCO1B1,*19/*29,Indeterminate
+SLCO1B1,*19/*30,Indeterminate
+SLCO1B1,*19/*31,Indeterminate
+SLCO1B1,*19/*32,Indeterminate
+SLCO1B1,*19/*33,Indeterminate
+SLCO1B1,*19/*34,Indeterminate
+SLCO1B1,*19/*35,Indeterminate
+SLCO1B1,*19/*36,Indeterminate
+SLCO1B1,*20/*20,Indeterminate
+SLCO1B1,*20/*21,Indeterminate
+SLCO1B1,*20/*22,Indeterminate
+SLCO1B1,*20/*23,Indeterminate
+SLCO1B1,*20/*24,Indeterminate
+SLCO1B1,*20/*25,Indeterminate
+SLCO1B1,*20/*26,Indeterminate
+SLCO1B1,*20/*27,Indeterminate
+SLCO1B1,*20/*28,Indeterminate
+SLCO1B1,*20/*29,Indeterminate
+SLCO1B1,*20/*30,Indeterminate
+SLCO1B1,*20/*31,Indeterminate
+SLCO1B1,*20/*32,Indeterminate
+SLCO1B1,*20/*33,Indeterminate
+SLCO1B1,*20/*34,Indeterminate
+SLCO1B1,*20/*35,Indeterminate
+SLCO1B1,*20/*36,Indeterminate
+SLCO1B1,*21/*21,Indeterminate
+SLCO1B1,*21/*22,Indeterminate
+SLCO1B1,*21/*23,Indeterminate
+SLCO1B1,*21/*24,Indeterminate
+SLCO1B1,*21/*25,Indeterminate
+SLCO1B1,*21/*26,Indeterminate
+SLCO1B1,*21/*27,Indeterminate
+SLCO1B1,*21/*28,Indeterminate
+SLCO1B1,*21/*29,Indeterminate
+SLCO1B1,*21/*30,Indeterminate
+SLCO1B1,*21/*31,Indeterminate
+SLCO1B1,*21/*32,Indeterminate
+SLCO1B1,*21/*33,Indeterminate
+SLCO1B1,*21/*34,Indeterminate
+SLCO1B1,*21/*35,Indeterminate
+SLCO1B1,*21/*36,Indeterminate
+SLCO1B1,*22/*22,Indeterminate
+SLCO1B1,*22/*23,Indeterminate
+SLCO1B1,*22/*24,Indeterminate
+SLCO1B1,*22/*25,Indeterminate
+SLCO1B1,*22/*26,Indeterminate
+SLCO1B1,*22/*27,Indeterminate
+SLCO1B1,*22/*28,Indeterminate
+SLCO1B1,*22/*29,Indeterminate
+SLCO1B1,*22/*30,Indeterminate
+SLCO1B1,*22/*31,Indeterminate
+SLCO1B1,*22/*32,Indeterminate
+SLCO1B1,*22/*33,Indeterminate
+SLCO1B1,*22/*34,Indeterminate
+SLCO1B1,*22/*35,Indeterminate
+SLCO1B1,*22/*36,Indeterminate
+SLCO1B1,*23/*23,Possible Poor Function
+SLCO1B1,*23/*24,Indeterminate
+SLCO1B1,*23/*25,Indeterminate
+SLCO1B1,*23/*26,Indeterminate
+SLCO1B1,*23/*27,Indeterminate
+SLCO1B1,*23/*28,Indeterminate
+SLCO1B1,*23/*29,Indeterminate
+SLCO1B1,*23/*30,Indeterminate
+SLCO1B1,*23/*31,Possible Poor Function
+SLCO1B1,*23/*32,Indeterminate
+SLCO1B1,*23/*33,Indeterminate
+SLCO1B1,*23/*34,Indeterminate
+SLCO1B1,*23/*35,Indeterminate
+SLCO1B1,*23/*36,Indeterminate
+SLCO1B1,*24/*24,Indeterminate
+SLCO1B1,*24/*25,Indeterminate
+SLCO1B1,*24/*26,Indeterminate
+SLCO1B1,*24/*27,Indeterminate
+SLCO1B1,*24/*28,Indeterminate
+SLCO1B1,*24/*29,Indeterminate
+SLCO1B1,*24/*30,Indeterminate
+SLCO1B1,*24/*31,Indeterminate
+SLCO1B1,*24/*32,Indeterminate
+SLCO1B1,*24/*33,Indeterminate
+SLCO1B1,*24/*34,Indeterminate
+SLCO1B1,*24/*35,Indeterminate
+SLCO1B1,*24/*36,Indeterminate
+SLCO1B1,*25/*25,Indeterminate
+SLCO1B1,*25/*26,Indeterminate
+SLCO1B1,*25/*27,Indeterminate
+SLCO1B1,*25/*28,Indeterminate
+SLCO1B1,*25/*29,Indeterminate
+SLCO1B1,*25/*30,Indeterminate
+SLCO1B1,*25/*31,Indeterminate
+SLCO1B1,*25/*32,Indeterminate
+SLCO1B1,*25/*33,Indeterminate
+SLCO1B1,*25/*34,Indeterminate
+SLCO1B1,*25/*35,Indeterminate
+SLCO1B1,*25/*36,Indeterminate
+SLCO1B1,*26/*26,Indeterminate
+SLCO1B1,*26/*27,Indeterminate
+SLCO1B1,*26/*28,Indeterminate
+SLCO1B1,*26/*29,Indeterminate
+SLCO1B1,*26/*30,Indeterminate
+SLCO1B1,*26/*31,Indeterminate
+SLCO1B1,*26/*32,Indeterminate
+SLCO1B1,*26/*33,Indeterminate
+SLCO1B1,*26/*34,Indeterminate
+SLCO1B1,*26/*35,Indeterminate
+SLCO1B1,*26/*36,Indeterminate
+SLCO1B1,*27/*27,Indeterminate
+SLCO1B1,*27/*28,Indeterminate
+SLCO1B1,*27/*29,Indeterminate
+SLCO1B1,*27/*30,Indeterminate
+SLCO1B1,*27/*31,Indeterminate
+SLCO1B1,*27/*32,Indeterminate
+SLCO1B1,*27/*33,Indeterminate
+SLCO1B1,*27/*34,Indeterminate
+SLCO1B1,*27/*35,Indeterminate
+SLCO1B1,*27/*36,Indeterminate
+SLCO1B1,*28/*28,Indeterminate
+SLCO1B1,*28/*29,Indeterminate
+SLCO1B1,*28/*30,Indeterminate
+SLCO1B1,*28/*31,Indeterminate
+SLCO1B1,*28/*32,Indeterminate
+SLCO1B1,*28/*33,Indeterminate
+SLCO1B1,*28/*34,Indeterminate
+SLCO1B1,*28/*35,Indeterminate
+SLCO1B1,*28/*36,Indeterminate
+SLCO1B1,*29/*29,Indeterminate
+SLCO1B1,*29/*30,Indeterminate
+SLCO1B1,*29/*31,Indeterminate
+SLCO1B1,*29/*32,Indeterminate
+SLCO1B1,*29/*33,Indeterminate
+SLCO1B1,*29/*34,Indeterminate
+SLCO1B1,*29/*35,Indeterminate
+SLCO1B1,*29/*36,Indeterminate
+SLCO1B1,*30/*30,Indeterminate
+SLCO1B1,*30/*31,Indeterminate
+SLCO1B1,*30/*32,Indeterminate
+SLCO1B1,*30/*33,Indeterminate
+SLCO1B1,*30/*34,Indeterminate
+SLCO1B1,*30/*35,Indeterminate
+SLCO1B1,*30/*36,Indeterminate
+SLCO1B1,*31/*31,Possible Poor Function
+SLCO1B1,*31/*32,Indeterminate
+SLCO1B1,*31/*33,Indeterminate
+SLCO1B1,*31/*34,Indeterminate
+SLCO1B1,*31/*35,Indeterminate
+SLCO1B1,*31/*36,Indeterminate
+SLCO1B1,*32/*32,Indeterminate
+SLCO1B1,*32/*33,Indeterminate
+SLCO1B1,*32/*34,Indeterminate
+SLCO1B1,*32/*35,Indeterminate
+SLCO1B1,*32/*36,Indeterminate
+SLCO1B1,*33/*33,Indeterminate
+SLCO1B1,*33/*34,Indeterminate
+SLCO1B1,*33/*35,Indeterminate
+SLCO1B1,*33/*36,Indeterminate
+SLCO1B1,*34/*34,Indeterminate
+SLCO1B1,*34/*35,Indeterminate
+SLCO1B1,*34/*36,Indeterminate
+SLCO1B1,*35/*35,Possible Increased Function
+SLCO1B1,*35/*36,Indeterminate
+SLCO1B1,*36/*36,Indeterminate
+TPMT,*1/*2,Intermediate Metabolizer
+TPMT,*1/*3A,Intermediate Metabolizer
+TPMT,*1/*3B,Intermediate Metabolizer
+TPMT,*1/*3C,Intermediate Metabolizer
+TPMT,*1/*4,Intermediate Metabolizer
+TPMT,*1/*11,Intermediate Metabolizer
+TPMT,*1/*14,Intermediate Metabolizer
+TPMT,*1/*15,Intermediate Metabolizer
+TPMT,*1/*23,Intermediate Metabolizer
+TPMT,*1/*29,Intermediate Metabolizer
+TPMT,*1/*41,Intermediate Metabolizer
+TPMT,*1/*1,Normal Metabolizer
+TPMT,*2/*2,Poor Metabolizer
+TPMT,*2/*3A,Poor Metabolizer
+TPMT,*2/*3B,Poor Metabolizer
+TPMT,*2/*3C,Poor Metabolizer
+TPMT,*2/*4,Poor Metabolizer
+TPMT,*2/*11,Poor Metabolizer
+TPMT,*2/*14,Poor Metabolizer
+TPMT,*2/*15,Poor Metabolizer
+TPMT,*2/*23,Poor Metabolizer
+TPMT,*2/*29,Poor Metabolizer
+TPMT,*2/*41,Poor Metabolizer
+TPMT,*3A/*3A,Poor Metabolizer
+TPMT,*3A/*3B,Poor Metabolizer
+TPMT,*3A/*3C,Poor Metabolizer
+TPMT,*3A/*4,Poor Metabolizer
+TPMT,*3A/*11,Poor Metabolizer
+TPMT,*3A/*14,Poor Metabolizer
+TPMT,*3A/*15,Poor Metabolizer
+TPMT,*3A/*23,Poor Metabolizer
+TPMT,*3A/*29,Poor Metabolizer
+TPMT,*3A/*41,Poor Metabolizer
+TPMT,*3B/*3B,Poor Metabolizer
+TPMT,*3B/*3C,Poor Metabolizer
+TPMT,*3B/*4,Poor Metabolizer
+TPMT,*3B/*11,Poor Metabolizer
+TPMT,*3B/*14,Poor Metabolizer
+TPMT,*3B/*15,Poor Metabolizer
+TPMT,*3B/*23,Poor Metabolizer
+TPMT,*3B/*29,Poor Metabolizer
+TPMT,*3B/*41,Poor Metabolizer
+TPMT,*3C/*3C,Poor Metabolizer
+TPMT,*3C/*4,Poor Metabolizer
+TPMT,*3C/*11,Poor Metabolizer
+TPMT,*3C/*14,Poor Metabolizer
+TPMT,*3C/*15,Poor Metabolizer
+TPMT,*3C/*23,Poor Metabolizer
+TPMT,*3C/*29,Poor Metabolizer
+TPMT,*3C/*41,Poor Metabolizer
+TPMT,*4/*4,Poor Metabolizer
+TPMT,*4/*11,Poor Metabolizer
+TPMT,*4/*14,Poor Metabolizer
+TPMT,*4/*15,Poor Metabolizer
+TPMT,*4/*23,Poor Metabolizer
+TPMT,*4/*29,Poor Metabolizer
+TPMT,*4/*41,Poor Metabolizer
+TPMT,*11/*11,Poor Metabolizer
+TPMT,*11/*14,Poor Metabolizer
+TPMT,*11/*15,Poor Metabolizer
+TPMT,*11/*23,Poor Metabolizer
+TPMT,*11/*29,Poor Metabolizer
+TPMT,*11/*41,Poor Metabolizer
+TPMT,*14/*14,Poor Metabolizer
+TPMT,*14/*15,Poor Metabolizer
+TPMT,*14/*23,Poor Metabolizer
+TPMT,*14/*29,Poor Metabolizer
+TPMT,*14/*41,Poor Metabolizer
+TPMT,*15/*15,Poor Metabolizer
+TPMT,*15/*23,Poor Metabolizer
+TPMT,*15/*29,Poor Metabolizer
+TPMT,*15/*41,Poor Metabolizer
+TPMT,*23/*23,Poor Metabolizer
+TPMT,*23/*29,Poor Metabolizer
+TPMT,*23/*41,Poor Metabolizer
+TPMT,*29/*29,Poor Metabolizer
+TPMT,*29/*41,Poor Metabolizer
+TPMT,*41/*41,Poor Metabolizer
+TPMT,*2/*5,Possible Intermediate Metabolizer
+TPMT,*2/*6,Possible Intermediate Metabolizer
+TPMT,*2/*7,Possible Intermediate Metabolizer
+TPMT,*2/*8,Possible Intermediate Metabolizer
+TPMT,*2/*9,Possible Intermediate Metabolizer
+TPMT,*2/*10,Possible Intermediate Metabolizer
+TPMT,*2/*12,Possible Intermediate Metabolizer
+TPMT,*2/*13,Possible Intermediate Metabolizer
+TPMT,*2/*16,Possible Intermediate Metabolizer
+TPMT,*2/*17,Possible Intermediate Metabolizer
+TPMT,*2/*18,Possible Intermediate Metabolizer
+TPMT,*2/*19,Possible Intermediate Metabolizer
+TPMT,*2/*20,Possible Intermediate Metabolizer
+TPMT,*2/*21,Possible Intermediate Metabolizer
+TPMT,*2/*22,Possible Intermediate Metabolizer
+TPMT,*2/*24,Possible Intermediate Metabolizer
+TPMT,*2/*25,Possible Intermediate Metabolizer
+TPMT,*2/*26,Possible Intermediate Metabolizer
+TPMT,*2/*27,Possible Intermediate Metabolizer
+TPMT,*2/*28,Possible Intermediate Metabolizer
+TPMT,*2/*30,Possible Intermediate Metabolizer
+TPMT,*2/*31,Possible Intermediate Metabolizer
+TPMT,*2/*32,Possible Intermediate Metabolizer
+TPMT,*2/*33,Possible Intermediate Metabolizer
+TPMT,*2/*34,Possible Intermediate Metabolizer
+TPMT,*2/*35,Possible Intermediate Metabolizer
+TPMT,*2/*36,Possible Intermediate Metabolizer
+TPMT,*2/*37,Possible Intermediate Metabolizer
+TPMT,*2/*38,Possible Intermediate Metabolizer
+TPMT,*2/*39,Possible Intermediate Metabolizer
+TPMT,*2/*40,Possible Intermediate Metabolizer
+TPMT,*3A/*5,Possible Intermediate Metabolizer
+TPMT,*3A/*6,Possible Intermediate Metabolizer
+TPMT,*3A/*7,Possible Intermediate Metabolizer
+TPMT,*3A/*8,Possible Intermediate Metabolizer
+TPMT,*3A/*9,Possible Intermediate Metabolizer
+TPMT,*3A/*10,Possible Intermediate Metabolizer
+TPMT,*3A/*12,Possible Intermediate Metabolizer
+TPMT,*3A/*13,Possible Intermediate Metabolizer
+TPMT,*3A/*16,Possible Intermediate Metabolizer
+TPMT,*3A/*17,Possible Intermediate Metabolizer
+TPMT,*3A/*18,Possible Intermediate Metabolizer
+TPMT,*3A/*19,Possible Intermediate Metabolizer
+TPMT,*3A/*20,Possible Intermediate Metabolizer
+TPMT,*3A/*21,Possible Intermediate Metabolizer
+TPMT,*3A/*22,Possible Intermediate Metabolizer
+TPMT,*3A/*24,Possible Intermediate Metabolizer
+TPMT,*3A/*25,Possible Intermediate Metabolizer
+TPMT,*3A/*26,Possible Intermediate Metabolizer
+TPMT,*3A/*27,Possible Intermediate Metabolizer
+TPMT,*3A/*28,Possible Intermediate Metabolizer
+TPMT,*3A/*30,Possible Intermediate Metabolizer
+TPMT,*3A/*31,Possible Intermediate Metabolizer
+TPMT,*3A/*32,Possible Intermediate Metabolizer
+TPMT,*3A/*33,Possible Intermediate Metabolizer
+TPMT,*3A/*34,Possible Intermediate Metabolizer
+TPMT,*3A/*35,Possible Intermediate Metabolizer
+TPMT,*3A/*36,Possible Intermediate Metabolizer
+TPMT,*3A/*37,Possible Intermediate Metabolizer
+TPMT,*3A/*38,Possible Intermediate Metabolizer
+TPMT,*3A/*39,Possible Intermediate Metabolizer
+TPMT,*3A/*40,Possible Intermediate Metabolizer
+TPMT,*3B/*5,Possible Intermediate Metabolizer
+TPMT,*3B/*6,Possible Intermediate Metabolizer
+TPMT,*3B/*7,Possible Intermediate Metabolizer
+TPMT,*3B/*8,Possible Intermediate Metabolizer
+TPMT,*3B/*9,Possible Intermediate Metabolizer
+TPMT,*3B/*10,Possible Intermediate Metabolizer
+TPMT,*3B/*12,Possible Intermediate Metabolizer
+TPMT,*3B/*13,Possible Intermediate Metabolizer
+TPMT,*3B/*16,Possible Intermediate Metabolizer
+TPMT,*3B/*17,Possible Intermediate Metabolizer
+TPMT,*3B/*18,Possible Intermediate Metabolizer
+TPMT,*3B/*19,Possible Intermediate Metabolizer
+TPMT,*3B/*20,Possible Intermediate Metabolizer
+TPMT,*3B/*21,Possible Intermediate Metabolizer
+TPMT,*3B/*22,Possible Intermediate Metabolizer
+TPMT,*3B/*24,Possible Intermediate Metabolizer
+TPMT,*3B/*25,Possible Intermediate Metabolizer
+TPMT,*3B/*26,Possible Intermediate Metabolizer
+TPMT,*3B/*27,Possible Intermediate Metabolizer
+TPMT,*3B/*28,Possible Intermediate Metabolizer
+TPMT,*3B/*30,Possible Intermediate Metabolizer
+TPMT,*3B/*31,Possible Intermediate Metabolizer
+TPMT,*3B/*32,Possible Intermediate Metabolizer
+TPMT,*3B/*33,Possible Intermediate Metabolizer
+TPMT,*3B/*34,Possible Intermediate Metabolizer
+TPMT,*3B/*35,Possible Intermediate Metabolizer
+TPMT,*3B/*36,Possible Intermediate Metabolizer
+TPMT,*3B/*37,Possible Intermediate Metabolizer
+TPMT,*3B/*38,Possible Intermediate Metabolizer
+TPMT,*3B/*39,Possible Intermediate Metabolizer
+TPMT,*3B/*40,Possible Intermediate Metabolizer
+TPMT,*3C/*5,Possible Intermediate Metabolizer
+TPMT,*3C/*6,Possible Intermediate Metabolizer
+TPMT,*3C/*7,Possible Intermediate Metabolizer
+TPMT,*3C/*8,Possible Intermediate Metabolizer
+TPMT,*3C/*9,Possible Intermediate Metabolizer
+TPMT,*3C/*10,Possible Intermediate Metabolizer
+TPMT,*3C/*12,Possible Intermediate Metabolizer
+TPMT,*3C/*13,Possible Intermediate Metabolizer
+TPMT,*3C/*16,Possible Intermediate Metabolizer
+TPMT,*3C/*17,Possible Intermediate Metabolizer
+TPMT,*3C/*18,Possible Intermediate Metabolizer
+TPMT,*3C/*19,Possible Intermediate Metabolizer
+TPMT,*3C/*20,Possible Intermediate Metabolizer
+TPMT,*3C/*21,Possible Intermediate Metabolizer
+TPMT,*3C/*22,Possible Intermediate Metabolizer
+TPMT,*3C/*24,Possible Intermediate Metabolizer
+TPMT,*3C/*25,Possible Intermediate Metabolizer
+TPMT,*3C/*26,Possible Intermediate Metabolizer
+TPMT,*3C/*27,Possible Intermediate Metabolizer
+TPMT,*3C/*28,Possible Intermediate Metabolizer
+TPMT,*3C/*30,Possible Intermediate Metabolizer
+TPMT,*3C/*31,Possible Intermediate Metabolizer
+TPMT,*3C/*32,Possible Intermediate Metabolizer
+TPMT,*3C/*33,Possible Intermediate Metabolizer
+TPMT,*3C/*34,Possible Intermediate Metabolizer
+TPMT,*3C/*35,Possible Intermediate Metabolizer
+TPMT,*3C/*36,Possible Intermediate Metabolizer
+TPMT,*3C/*37,Possible Intermediate Metabolizer
+TPMT,*3C/*38,Possible Intermediate Metabolizer
+TPMT,*3C/*39,Possible Intermediate Metabolizer
+TPMT,*3C/*40,Possible Intermediate Metabolizer
+TPMT,*4/*5,Possible Intermediate Metabolizer
+TPMT,*4/*6,Possible Intermediate Metabolizer
+TPMT,*4/*7,Possible Intermediate Metabolizer
+TPMT,*4/*8,Possible Intermediate Metabolizer
+TPMT,*4/*9,Possible Intermediate Metabolizer
+TPMT,*4/*10,Possible Intermediate Metabolizer
+TPMT,*4/*12,Possible Intermediate Metabolizer
+TPMT,*4/*13,Possible Intermediate Metabolizer
+TPMT,*4/*16,Possible Intermediate Metabolizer
+TPMT,*4/*17,Possible Intermediate Metabolizer
+TPMT,*4/*18,Possible Intermediate Metabolizer
+TPMT,*4/*19,Possible Intermediate Metabolizer
+TPMT,*4/*20,Possible Intermediate Metabolizer
+TPMT,*4/*21,Possible Intermediate Metabolizer
+TPMT,*4/*22,Possible Intermediate Metabolizer
+TPMT,*4/*24,Possible Intermediate Metabolizer
+TPMT,*4/*25,Possible Intermediate Metabolizer
+TPMT,*4/*26,Possible Intermediate Metabolizer
+TPMT,*4/*27,Possible Intermediate Metabolizer
+TPMT,*4/*28,Possible Intermediate Metabolizer
+TPMT,*4/*30,Possible Intermediate Metabolizer
+TPMT,*4/*31,Possible Intermediate Metabolizer
+TPMT,*4/*32,Possible Intermediate Metabolizer
+TPMT,*4/*33,Possible Intermediate Metabolizer
+TPMT,*4/*34,Possible Intermediate Metabolizer
+TPMT,*4/*35,Possible Intermediate Metabolizer
+TPMT,*4/*36,Possible Intermediate Metabolizer
+TPMT,*4/*37,Possible Intermediate Metabolizer
+TPMT,*4/*38,Possible Intermediate Metabolizer
+TPMT,*4/*39,Possible Intermediate Metabolizer
+TPMT,*4/*40,Possible Intermediate Metabolizer
+TPMT,*5/*11,Possible Intermediate Metabolizer
+TPMT,*5/*14,Possible Intermediate Metabolizer
+TPMT,*5/*15,Possible Intermediate Metabolizer
+TPMT,*5/*23,Possible Intermediate Metabolizer
+TPMT,*5/*29,Possible Intermediate Metabolizer
+TPMT,*5/*41,Possible Intermediate Metabolizer
+TPMT,*6/*11,Possible Intermediate Metabolizer
+TPMT,*6/*14,Possible Intermediate Metabolizer
+TPMT,*6/*15,Possible Intermediate Metabolizer
+TPMT,*6/*23,Possible Intermediate Metabolizer
+TPMT,*6/*29,Possible Intermediate Metabolizer
+TPMT,*6/*41,Possible Intermediate Metabolizer
+TPMT,*7/*11,Possible Intermediate Metabolizer
+TPMT,*7/*14,Possible Intermediate Metabolizer
+TPMT,*7/*15,Possible Intermediate Metabolizer
+TPMT,*7/*23,Possible Intermediate Metabolizer
+TPMT,*7/*29,Possible Intermediate Metabolizer
+TPMT,*7/*41,Possible Intermediate Metabolizer
+TPMT,*8/*11,Possible Intermediate Metabolizer
+TPMT,*8/*14,Possible Intermediate Metabolizer
+TPMT,*8/*15,Possible Intermediate Metabolizer
+TPMT,*8/*23,Possible Intermediate Metabolizer
+TPMT,*8/*29,Possible Intermediate Metabolizer
+TPMT,*8/*41,Possible Intermediate Metabolizer
+TPMT,*9/*11,Possible Intermediate Metabolizer
+TPMT,*9/*14,Possible Intermediate Metabolizer
+TPMT,*9/*15,Possible Intermediate Metabolizer
+TPMT,*9/*23,Possible Intermediate Metabolizer
+TPMT,*9/*29,Possible Intermediate Metabolizer
+TPMT,*9/*41,Possible Intermediate Metabolizer
+TPMT,*10/*11,Possible Intermediate Metabolizer
+TPMT,*10/*14,Possible Intermediate Metabolizer
+TPMT,*10/*15,Possible Intermediate Metabolizer
+TPMT,*10/*23,Possible Intermediate Metabolizer
+TPMT,*10/*29,Possible Intermediate Metabolizer
+TPMT,*10/*41,Possible Intermediate Metabolizer
+TPMT,*11/*12,Possible Intermediate Metabolizer
+TPMT,*11/*13,Possible Intermediate Metabolizer
+TPMT,*11/*16,Possible Intermediate Metabolizer
+TPMT,*11/*17,Possible Intermediate Metabolizer
+TPMT,*11/*18,Possible Intermediate Metabolizer
+TPMT,*11/*19,Possible Intermediate Metabolizer
+TPMT,*11/*20,Possible Intermediate Metabolizer
+TPMT,*11/*21,Possible Intermediate Metabolizer
+TPMT,*11/*22,Possible Intermediate Metabolizer
+TPMT,*11/*24,Possible Intermediate Metabolizer
+TPMT,*11/*25,Possible Intermediate Metabolizer
+TPMT,*11/*26,Possible Intermediate Metabolizer
+TPMT,*11/*27,Possible Intermediate Metabolizer
+TPMT,*11/*28,Possible Intermediate Metabolizer
+TPMT,*11/*30,Possible Intermediate Metabolizer
+TPMT,*11/*31,Possible Intermediate Metabolizer
+TPMT,*11/*32,Possible Intermediate Metabolizer
+TPMT,*11/*33,Possible Intermediate Metabolizer
+TPMT,*11/*34,Possible Intermediate Metabolizer
+TPMT,*11/*35,Possible Intermediate Metabolizer
+TPMT,*11/*36,Possible Intermediate Metabolizer
+TPMT,*11/*37,Possible Intermediate Metabolizer
+TPMT,*11/*38,Possible Intermediate Metabolizer
+TPMT,*11/*39,Possible Intermediate Metabolizer
+TPMT,*11/*40,Possible Intermediate Metabolizer
+TPMT,*12/*14,Possible Intermediate Metabolizer
+TPMT,*12/*15,Possible Intermediate Metabolizer
+TPMT,*12/*23,Possible Intermediate Metabolizer
+TPMT,*12/*29,Possible Intermediate Metabolizer
+TPMT,*12/*41,Possible Intermediate Metabolizer
+TPMT,*13/*14,Possible Intermediate Metabolizer
+TPMT,*13/*15,Possible Intermediate Metabolizer
+TPMT,*13/*23,Possible Intermediate Metabolizer
+TPMT,*13/*29,Possible Intermediate Metabolizer
+TPMT,*13/*41,Possible Intermediate Metabolizer
+TPMT,*14/*16,Possible Intermediate Metabolizer
+TPMT,*14/*17,Possible Intermediate Metabolizer
+TPMT,*14/*18,Possible Intermediate Metabolizer
+TPMT,*14/*19,Possible Intermediate Metabolizer
+TPMT,*14/*20,Possible Intermediate Metabolizer
+TPMT,*14/*21,Possible Intermediate Metabolizer
+TPMT,*14/*22,Possible Intermediate Metabolizer
+TPMT,*14/*24,Possible Intermediate Metabolizer
+TPMT,*14/*25,Possible Intermediate Metabolizer
+TPMT,*14/*26,Possible Intermediate Metabolizer
+TPMT,*14/*27,Possible Intermediate Metabolizer
+TPMT,*14/*28,Possible Intermediate Metabolizer
+TPMT,*14/*30,Possible Intermediate Metabolizer
+TPMT,*14/*31,Possible Intermediate Metabolizer
+TPMT,*14/*32,Possible Intermediate Metabolizer
+TPMT,*14/*33,Possible Intermediate Metabolizer
+TPMT,*14/*34,Possible Intermediate Metabolizer
+TPMT,*14/*35,Possible Intermediate Metabolizer
+TPMT,*14/*36,Possible Intermediate Metabolizer
+TPMT,*14/*37,Possible Intermediate Metabolizer
+TPMT,*14/*38,Possible Intermediate Metabolizer
+TPMT,*14/*39,Possible Intermediate Metabolizer
+TPMT,*14/*40,Possible Intermediate Metabolizer
+TPMT,*15/*16,Possible Intermediate Metabolizer
+TPMT,*15/*17,Possible Intermediate Metabolizer
+TPMT,*15/*18,Possible Intermediate Metabolizer
+TPMT,*15/*19,Possible Intermediate Metabolizer
+TPMT,*15/*20,Possible Intermediate Metabolizer
+TPMT,*15/*21,Possible Intermediate Metabolizer
+TPMT,*15/*22,Possible Intermediate Metabolizer
+TPMT,*15/*24,Possible Intermediate Metabolizer
+TPMT,*15/*25,Possible Intermediate Metabolizer
+TPMT,*15/*26,Possible Intermediate Metabolizer
+TPMT,*15/*27,Possible Intermediate Metabolizer
+TPMT,*15/*28,Possible Intermediate Metabolizer
+TPMT,*15/*30,Possible Intermediate Metabolizer
+TPMT,*15/*31,Possible Intermediate Metabolizer
+TPMT,*15/*32,Possible Intermediate Metabolizer
+TPMT,*15/*33,Possible Intermediate Metabolizer
+TPMT,*15/*34,Possible Intermediate Metabolizer
+TPMT,*15/*35,Possible Intermediate Metabolizer
+TPMT,*15/*36,Possible Intermediate Metabolizer
+TPMT,*15/*37,Possible Intermediate Metabolizer
+TPMT,*15/*38,Possible Intermediate Metabolizer
+TPMT,*15/*39,Possible Intermediate Metabolizer
+TPMT,*15/*40,Possible Intermediate Metabolizer
+TPMT,*16/*23,Possible Intermediate Metabolizer
+TPMT,*16/*29,Possible Intermediate Metabolizer
+TPMT,*16/*41,Possible Intermediate Metabolizer
+TPMT,*17/*23,Possible Intermediate Metabolizer
+TPMT,*17/*29,Possible Intermediate Metabolizer
+TPMT,*17/*41,Possible Intermediate Metabolizer
+TPMT,*18/*23,Possible Intermediate Metabolizer
+TPMT,*18/*29,Possible Intermediate Metabolizer
+TPMT,*18/*41,Possible Intermediate Metabolizer
+TPMT,*19/*23,Possible Intermediate Metabolizer
+TPMT,*19/*29,Possible Intermediate Metabolizer
+TPMT,*19/*41,Possible Intermediate Metabolizer
+TPMT,*20/*23,Possible Intermediate Metabolizer
+TPMT,*20/*29,Possible Intermediate Metabolizer
+TPMT,*20/*41,Possible Intermediate Metabolizer
+TPMT,*21/*23,Possible Intermediate Metabolizer
+TPMT,*21/*29,Possible Intermediate Metabolizer
+TPMT,*21/*41,Possible Intermediate Metabolizer
+TPMT,*22/*23,Possible Intermediate Metabolizer
+TPMT,*22/*29,Possible Intermediate Metabolizer
+TPMT,*22/*41,Possible Intermediate Metabolizer
+TPMT,*23/*24,Possible Intermediate Metabolizer
+TPMT,*23/*25,Possible Intermediate Metabolizer
+TPMT,*23/*26,Possible Intermediate Metabolizer
+TPMT,*23/*27,Possible Intermediate Metabolizer
+TPMT,*23/*28,Possible Intermediate Metabolizer
+TPMT,*23/*30,Possible Intermediate Metabolizer
+TPMT,*23/*31,Possible Intermediate Metabolizer
+TPMT,*23/*32,Possible Intermediate Metabolizer
+TPMT,*23/*33,Possible Intermediate Metabolizer
+TPMT,*23/*34,Possible Intermediate Metabolizer
+TPMT,*23/*35,Possible Intermediate Metabolizer
+TPMT,*23/*36,Possible Intermediate Metabolizer
+TPMT,*23/*37,Possible Intermediate Metabolizer
+TPMT,*23/*38,Possible Intermediate Metabolizer
+TPMT,*23/*39,Possible Intermediate Metabolizer
+TPMT,*23/*40,Possible Intermediate Metabolizer
+TPMT,*24/*29,Possible Intermediate Metabolizer
+TPMT,*24/*41,Possible Intermediate Metabolizer
+TPMT,*25/*29,Possible Intermediate Metabolizer
+TPMT,*25/*41,Possible Intermediate Metabolizer
+TPMT,*26/*29,Possible Intermediate Metabolizer
+TPMT,*26/*41,Possible Intermediate Metabolizer
+TPMT,*27/*29,Possible Intermediate Metabolizer
+TPMT,*27/*41,Possible Intermediate Metabolizer
+TPMT,*28/*29,Possible Intermediate Metabolizer
+TPMT,*28/*41,Possible Intermediate Metabolizer
+TPMT,*29/*30,Possible Intermediate Metabolizer
+TPMT,*29/*31,Possible Intermediate Metabolizer
+TPMT,*29/*32,Possible Intermediate Metabolizer
+TPMT,*29/*33,Possible Intermediate Metabolizer
+TPMT,*29/*34,Possible Intermediate Metabolizer
+TPMT,*29/*35,Possible Intermediate Metabolizer
+TPMT,*29/*36,Possible Intermediate Metabolizer
+TPMT,*29/*37,Possible Intermediate Metabolizer
+TPMT,*29/*38,Possible Intermediate Metabolizer
+TPMT,*29/*39,Possible Intermediate Metabolizer
+TPMT,*29/*40,Possible Intermediate Metabolizer
+TPMT,*30/*41,Possible Intermediate Metabolizer
+TPMT,*31/*41,Possible Intermediate Metabolizer
+TPMT,*32/*41,Possible Intermediate Metabolizer
+TPMT,*33/*41,Possible Intermediate Metabolizer
+TPMT,*34/*41,Possible Intermediate Metabolizer
+TPMT,*35/*41,Possible Intermediate Metabolizer
+TPMT,*36/*41,Possible Intermediate Metabolizer
+TPMT,*37/*41,Possible Intermediate Metabolizer
+TPMT,*38/*41,Possible Intermediate Metabolizer
+TPMT,*39/*41,Possible Intermediate Metabolizer
+TPMT,*40/*41,Possible Intermediate Metabolizer
+TPMT,*1/*5,Indeterminate
+TPMT,*1/*6,Indeterminate
+TPMT,*1/*7,Indeterminate
+TPMT,*1/*8,Indeterminate
+TPMT,*1/*9,Indeterminate
+TPMT,*1/*10,Indeterminate
+TPMT,*1/*12,Indeterminate
+TPMT,*1/*13,Indeterminate
+TPMT,*1/*16,Indeterminate
+TPMT,*1/*17,Indeterminate
+TPMT,*1/*18,Indeterminate
+TPMT,*1/*19,Indeterminate
+TPMT,*1/*20,Indeterminate
+TPMT,*1/*21,Indeterminate
+TPMT,*1/*22,Indeterminate
+TPMT,*1/*24,Indeterminate
+TPMT,*1/*25,Indeterminate
+TPMT,*1/*26,Indeterminate
+TPMT,*1/*27,Indeterminate
+TPMT,*1/*28,Indeterminate
+TPMT,*1/*30,Indeterminate
+TPMT,*1/*31,Indeterminate
+TPMT,*1/*32,Indeterminate
+TPMT,*1/*33,Indeterminate
+TPMT,*1/*34,Indeterminate
+TPMT,*1/*35,Indeterminate
+TPMT,*1/*36,Indeterminate
+TPMT,*1/*37,Indeterminate
+TPMT,*1/*38,Indeterminate
+TPMT,*1/*39,Indeterminate
+TPMT,*1/*40,Indeterminate
+TPMT,*5/*5,Indeterminate
+TPMT,*5/*6,Indeterminate
+TPMT,*5/*7,Indeterminate
+TPMT,*5/*8,Indeterminate
+TPMT,*5/*9,Indeterminate
+TPMT,*5/*10,Indeterminate
+TPMT,*5/*12,Indeterminate
+TPMT,*5/*13,Indeterminate
+TPMT,*5/*16,Indeterminate
+TPMT,*5/*17,Indeterminate
+TPMT,*5/*18,Indeterminate
+TPMT,*5/*19,Indeterminate
+TPMT,*5/*20,Indeterminate
+TPMT,*5/*21,Indeterminate
+TPMT,*5/*22,Indeterminate
+TPMT,*5/*24,Indeterminate
+TPMT,*5/*25,Indeterminate
+TPMT,*5/*26,Indeterminate
+TPMT,*5/*27,Indeterminate
+TPMT,*5/*28,Indeterminate
+TPMT,*5/*30,Indeterminate
+TPMT,*5/*31,Indeterminate
+TPMT,*5/*32,Indeterminate
+TPMT,*5/*33,Indeterminate
+TPMT,*5/*34,Indeterminate
+TPMT,*5/*35,Indeterminate
+TPMT,*5/*36,Indeterminate
+TPMT,*5/*37,Indeterminate
+TPMT,*5/*38,Indeterminate
+TPMT,*5/*39,Indeterminate
+TPMT,*5/*40,Indeterminate
+TPMT,*6/*6,Indeterminate
+TPMT,*6/*7,Indeterminate
+TPMT,*6/*8,Indeterminate
+TPMT,*6/*9,Indeterminate
+TPMT,*6/*10,Indeterminate
+TPMT,*6/*12,Indeterminate
+TPMT,*6/*13,Indeterminate
+TPMT,*6/*16,Indeterminate
+TPMT,*6/*17,Indeterminate
+TPMT,*6/*18,Indeterminate
+TPMT,*6/*19,Indeterminate
+TPMT,*6/*20,Indeterminate
+TPMT,*6/*21,Indeterminate
+TPMT,*6/*22,Indeterminate
+TPMT,*6/*24,Indeterminate
+TPMT,*6/*25,Indeterminate
+TPMT,*6/*26,Indeterminate
+TPMT,*6/*27,Indeterminate
+TPMT,*6/*28,Indeterminate
+TPMT,*6/*30,Indeterminate
+TPMT,*6/*31,Indeterminate
+TPMT,*6/*32,Indeterminate
+TPMT,*6/*33,Indeterminate
+TPMT,*6/*34,Indeterminate
+TPMT,*6/*35,Indeterminate
+TPMT,*6/*36,Indeterminate
+TPMT,*6/*37,Indeterminate
+TPMT,*6/*38,Indeterminate
+TPMT,*6/*39,Indeterminate
+TPMT,*6/*40,Indeterminate
+TPMT,*7/*7,Indeterminate
+TPMT,*7/*8,Indeterminate
+TPMT,*7/*9,Indeterminate
+TPMT,*7/*10,Indeterminate
+TPMT,*7/*12,Indeterminate
+TPMT,*7/*13,Indeterminate
+TPMT,*7/*16,Indeterminate
+TPMT,*7/*17,Indeterminate
+TPMT,*7/*18,Indeterminate
+TPMT,*7/*19,Indeterminate
+TPMT,*7/*20,Indeterminate
+TPMT,*7/*21,Indeterminate
+TPMT,*7/*22,Indeterminate
+TPMT,*7/*24,Indeterminate
+TPMT,*7/*25,Indeterminate
+TPMT,*7/*26,Indeterminate
+TPMT,*7/*27,Indeterminate
+TPMT,*7/*28,Indeterminate
+TPMT,*7/*30,Indeterminate
+TPMT,*7/*31,Indeterminate
+TPMT,*7/*32,Indeterminate
+TPMT,*7/*33,Indeterminate
+TPMT,*7/*34,Indeterminate
+TPMT,*7/*35,Indeterminate
+TPMT,*7/*36,Indeterminate
+TPMT,*7/*37,Indeterminate
+TPMT,*7/*38,Indeterminate
+TPMT,*7/*39,Indeterminate
+TPMT,*7/*40,Indeterminate
+TPMT,*8/*8,Indeterminate
+TPMT,*8/*9,Indeterminate
+TPMT,*8/*10,Indeterminate
+TPMT,*8/*12,Indeterminate
+TPMT,*8/*13,Indeterminate
+TPMT,*8/*16,Indeterminate
+TPMT,*8/*17,Indeterminate
+TPMT,*8/*18,Indeterminate
+TPMT,*8/*19,Indeterminate
+TPMT,*8/*20,Indeterminate
+TPMT,*8/*21,Indeterminate
+TPMT,*8/*22,Indeterminate
+TPMT,*8/*24,Indeterminate
+TPMT,*8/*25,Indeterminate
+TPMT,*8/*26,Indeterminate
+TPMT,*8/*27,Indeterminate
+TPMT,*8/*28,Indeterminate
+TPMT,*8/*30,Indeterminate
+TPMT,*8/*31,Indeterminate
+TPMT,*8/*32,Indeterminate
+TPMT,*8/*33,Indeterminate
+TPMT,*8/*34,Indeterminate
+TPMT,*8/*35,Indeterminate
+TPMT,*8/*36,Indeterminate
+TPMT,*8/*37,Indeterminate
+TPMT,*8/*38,Indeterminate
+TPMT,*8/*39,Indeterminate
+TPMT,*8/*40,Indeterminate
+TPMT,*9/*9,Indeterminate
+TPMT,*9/*10,Indeterminate
+TPMT,*9/*12,Indeterminate
+TPMT,*9/*13,Indeterminate
+TPMT,*9/*16,Indeterminate
+TPMT,*9/*17,Indeterminate
+TPMT,*9/*18,Indeterminate
+TPMT,*9/*19,Indeterminate
+TPMT,*9/*20,Indeterminate
+TPMT,*9/*21,Indeterminate
+TPMT,*9/*22,Indeterminate
+TPMT,*9/*24,Indeterminate
+TPMT,*9/*25,Indeterminate
+TPMT,*9/*26,Indeterminate
+TPMT,*9/*27,Indeterminate
+TPMT,*9/*28,Indeterminate
+TPMT,*9/*30,Indeterminate
+TPMT,*9/*31,Indeterminate
+TPMT,*9/*32,Indeterminate
+TPMT,*9/*33,Indeterminate
+TPMT,*9/*34,Indeterminate
+TPMT,*9/*35,Indeterminate
+TPMT,*9/*36,Indeterminate
+TPMT,*9/*37,Indeterminate
+TPMT,*9/*38,Indeterminate
+TPMT,*9/*39,Indeterminate
+TPMT,*9/*40,Indeterminate
+TPMT,*10/*10,Indeterminate
+TPMT,*10/*12,Indeterminate
+TPMT,*10/*13,Indeterminate
+TPMT,*10/*16,Indeterminate
+TPMT,*10/*17,Indeterminate
+TPMT,*10/*18,Indeterminate
+TPMT,*10/*19,Indeterminate
+TPMT,*10/*20,Indeterminate
+TPMT,*10/*21,Indeterminate
+TPMT,*10/*22,Indeterminate
+TPMT,*10/*24,Indeterminate
+TPMT,*10/*25,Indeterminate
+TPMT,*10/*26,Indeterminate
+TPMT,*10/*27,Indeterminate
+TPMT,*10/*28,Indeterminate
+TPMT,*10/*30,Indeterminate
+TPMT,*10/*31,Indeterminate
+TPMT,*10/*32,Indeterminate
+TPMT,*10/*33,Indeterminate
+TPMT,*10/*34,Indeterminate
+TPMT,*10/*35,Indeterminate
+TPMT,*10/*36,Indeterminate
+TPMT,*10/*37,Indeterminate
+TPMT,*10/*38,Indeterminate
+TPMT,*10/*39,Indeterminate
+TPMT,*10/*40,Indeterminate
+TPMT,*12/*12,Indeterminate
+TPMT,*12/*13,Indeterminate
+TPMT,*12/*16,Indeterminate
+TPMT,*12/*17,Indeterminate
+TPMT,*12/*18,Indeterminate
+TPMT,*12/*19,Indeterminate
+TPMT,*12/*20,Indeterminate
+TPMT,*12/*21,Indeterminate
+TPMT,*12/*22,Indeterminate
+TPMT,*12/*24,Indeterminate
+TPMT,*12/*25,Indeterminate
+TPMT,*12/*26,Indeterminate
+TPMT,*12/*27,Indeterminate
+TPMT,*12/*28,Indeterminate
+TPMT,*12/*30,Indeterminate
+TPMT,*12/*31,Indeterminate
+TPMT,*12/*32,Indeterminate
+TPMT,*12/*33,Indeterminate
+TPMT,*12/*34,Indeterminate
+TPMT,*12/*35,Indeterminate
+TPMT,*12/*36,Indeterminate
+TPMT,*12/*37,Indeterminate
+TPMT,*12/*38,Indeterminate
+TPMT,*12/*39,Indeterminate
+TPMT,*12/*40,Indeterminate
+TPMT,*13/*13,Indeterminate
+TPMT,*13/*16,Indeterminate
+TPMT,*13/*17,Indeterminate
+TPMT,*13/*18,Indeterminate
+TPMT,*13/*19,Indeterminate
+TPMT,*13/*20,Indeterminate
+TPMT,*13/*21,Indeterminate
+TPMT,*13/*22,Indeterminate
+TPMT,*13/*24,Indeterminate
+TPMT,*13/*25,Indeterminate
+TPMT,*13/*26,Indeterminate
+TPMT,*13/*27,Indeterminate
+TPMT,*13/*28,Indeterminate
+TPMT,*13/*30,Indeterminate
+TPMT,*13/*31,Indeterminate
+TPMT,*13/*32,Indeterminate
+TPMT,*13/*33,Indeterminate
+TPMT,*13/*34,Indeterminate
+TPMT,*13/*35,Indeterminate
+TPMT,*13/*36,Indeterminate
+TPMT,*13/*37,Indeterminate
+TPMT,*13/*38,Indeterminate
+TPMT,*13/*39,Indeterminate
+TPMT,*13/*40,Indeterminate
+TPMT,*16/*16,Indeterminate
+TPMT,*16/*17,Indeterminate
+TPMT,*16/*18,Indeterminate
+TPMT,*16/*19,Indeterminate
+TPMT,*16/*20,Indeterminate
+TPMT,*16/*21,Indeterminate
+TPMT,*16/*22,Indeterminate
+TPMT,*16/*24,Indeterminate
+TPMT,*16/*25,Indeterminate
+TPMT,*16/*26,Indeterminate
+TPMT,*16/*27,Indeterminate
+TPMT,*16/*28,Indeterminate
+TPMT,*16/*30,Indeterminate
+TPMT,*16/*31,Indeterminate
+TPMT,*16/*32,Indeterminate
+TPMT,*16/*33,Indeterminate
+TPMT,*16/*34,Indeterminate
+TPMT,*16/*35,Indeterminate
+TPMT,*16/*36,Indeterminate
+TPMT,*16/*37,Indeterminate
+TPMT,*16/*38,Indeterminate
+TPMT,*16/*39,Indeterminate
+TPMT,*16/*40,Indeterminate
+TPMT,*17/*17,Indeterminate
+TPMT,*17/*18,Indeterminate
+TPMT,*17/*19,Indeterminate
+TPMT,*17/*20,Indeterminate
+TPMT,*17/*21,Indeterminate
+TPMT,*17/*22,Indeterminate
+TPMT,*17/*24,Indeterminate
+TPMT,*17/*25,Indeterminate
+TPMT,*17/*26,Indeterminate
+TPMT,*17/*27,Indeterminate
+TPMT,*17/*28,Indeterminate
+TPMT,*17/*30,Indeterminate
+TPMT,*17/*31,Indeterminate
+TPMT,*17/*32,Indeterminate
+TPMT,*17/*33,Indeterminate
+TPMT,*17/*34,Indeterminate
+TPMT,*17/*35,Indeterminate
+TPMT,*17/*36,Indeterminate
+TPMT,*17/*37,Indeterminate
+TPMT,*17/*38,Indeterminate
+TPMT,*17/*39,Indeterminate
+TPMT,*17/*40,Indeterminate
+TPMT,*18/*18,Indeterminate
+TPMT,*18/*19,Indeterminate
+TPMT,*18/*20,Indeterminate
+TPMT,*18/*21,Indeterminate
+TPMT,*18/*22,Indeterminate
+TPMT,*18/*24,Indeterminate
+TPMT,*18/*25,Indeterminate
+TPMT,*18/*26,Indeterminate
+TPMT,*18/*27,Indeterminate
+TPMT,*18/*28,Indeterminate
+TPMT,*18/*30,Indeterminate
+TPMT,*18/*31,Indeterminate
+TPMT,*18/*32,Indeterminate
+TPMT,*18/*33,Indeterminate
+TPMT,*18/*34,Indeterminate
+TPMT,*18/*35,Indeterminate
+TPMT,*18/*36,Indeterminate
+TPMT,*18/*37,Indeterminate
+TPMT,*18/*38,Indeterminate
+TPMT,*18/*39,Indeterminate
+TPMT,*18/*40,Indeterminate
+TPMT,*19/*19,Indeterminate
+TPMT,*19/*20,Indeterminate
+TPMT,*19/*21,Indeterminate
+TPMT,*19/*22,Indeterminate
+TPMT,*19/*24,Indeterminate
+TPMT,*19/*25,Indeterminate
+TPMT,*19/*26,Indeterminate
+TPMT,*19/*27,Indeterminate
+TPMT,*19/*28,Indeterminate
+TPMT,*19/*30,Indeterminate
+TPMT,*19/*31,Indeterminate
+TPMT,*19/*32,Indeterminate
+TPMT,*19/*33,Indeterminate
+TPMT,*19/*34,Indeterminate
+TPMT,*19/*35,Indeterminate
+TPMT,*19/*36,Indeterminate
+TPMT,*19/*37,Indeterminate
+TPMT,*19/*38,Indeterminate
+TPMT,*19/*39,Indeterminate
+TPMT,*19/*40,Indeterminate
+TPMT,*20/*20,Indeterminate
+TPMT,*20/*21,Indeterminate
+TPMT,*20/*22,Indeterminate
+TPMT,*20/*24,Indeterminate
+TPMT,*20/*25,Indeterminate
+TPMT,*20/*26,Indeterminate
+TPMT,*20/*27,Indeterminate
+TPMT,*20/*28,Indeterminate
+TPMT,*20/*30,Indeterminate
+TPMT,*20/*31,Indeterminate
+TPMT,*20/*32,Indeterminate
+TPMT,*20/*33,Indeterminate
+TPMT,*20/*34,Indeterminate
+TPMT,*20/*35,Indeterminate
+TPMT,*20/*36,Indeterminate
+TPMT,*20/*37,Indeterminate
+TPMT,*20/*38,Indeterminate
+TPMT,*20/*39,Indeterminate
+TPMT,*20/*40,Indeterminate
+TPMT,*21/*21,Indeterminate
+TPMT,*21/*22,Indeterminate
+TPMT,*21/*24,Indeterminate
+TPMT,*21/*25,Indeterminate
+TPMT,*21/*26,Indeterminate
+TPMT,*21/*27,Indeterminate
+TPMT,*21/*28,Indeterminate
+TPMT,*21/*30,Indeterminate
+TPMT,*21/*31,Indeterminate
+TPMT,*21/*32,Indeterminate
+TPMT,*21/*33,Indeterminate
+TPMT,*21/*34,Indeterminate
+TPMT,*21/*35,Indeterminate
+TPMT,*21/*36,Indeterminate
+TPMT,*21/*37,Indeterminate
+TPMT,*21/*38,Indeterminate
+TPMT,*21/*39,Indeterminate
+TPMT,*21/*40,Indeterminate
+TPMT,*22/*22,Indeterminate
+TPMT,*22/*24,Indeterminate
+TPMT,*22/*25,Indeterminate
+TPMT,*22/*26,Indeterminate
+TPMT,*22/*27,Indeterminate
+TPMT,*22/*28,Indeterminate
+TPMT,*22/*30,Indeterminate
+TPMT,*22/*31,Indeterminate
+TPMT,*22/*32,Indeterminate
+TPMT,*22/*33,Indeterminate
+TPMT,*22/*34,Indeterminate
+TPMT,*22/*35,Indeterminate
+TPMT,*22/*36,Indeterminate
+TPMT,*22/*37,Indeterminate
+TPMT,*22/*38,Indeterminate
+TPMT,*22/*39,Indeterminate
+TPMT,*22/*40,Indeterminate
+TPMT,*24/*24,Indeterminate
+TPMT,*24/*25,Indeterminate
+TPMT,*24/*26,Indeterminate
+TPMT,*24/*27,Indeterminate
+TPMT,*24/*28,Indeterminate
+TPMT,*24/*30,Indeterminate
+TPMT,*24/*31,Indeterminate
+TPMT,*24/*32,Indeterminate
+TPMT,*24/*33,Indeterminate
+TPMT,*24/*34,Indeterminate
+TPMT,*24/*35,Indeterminate
+TPMT,*24/*36,Indeterminate
+TPMT,*24/*37,Indeterminate
+TPMT,*24/*38,Indeterminate
+TPMT,*24/*39,Indeterminate
+TPMT,*24/*40,Indeterminate
+TPMT,*25/*25,Indeterminate
+TPMT,*25/*26,Indeterminate
+TPMT,*25/*27,Indeterminate
+TPMT,*25/*28,Indeterminate
+TPMT,*25/*30,Indeterminate
+TPMT,*25/*31,Indeterminate
+TPMT,*25/*32,Indeterminate
+TPMT,*25/*33,Indeterminate
+TPMT,*25/*34,Indeterminate
+TPMT,*25/*35,Indeterminate
+TPMT,*25/*36,Indeterminate
+TPMT,*25/*37,Indeterminate
+TPMT,*25/*38,Indeterminate
+TPMT,*25/*39,Indeterminate
+TPMT,*25/*40,Indeterminate
+TPMT,*26/*26,Indeterminate
+TPMT,*26/*27,Indeterminate
+TPMT,*26/*28,Indeterminate
+TPMT,*26/*30,Indeterminate
+TPMT,*26/*31,Indeterminate
+TPMT,*26/*32,Indeterminate
+TPMT,*26/*33,Indeterminate
+TPMT,*26/*34,Indeterminate
+TPMT,*26/*35,Indeterminate
+TPMT,*26/*36,Indeterminate
+TPMT,*26/*37,Indeterminate
+TPMT,*26/*38,Indeterminate
+TPMT,*26/*39,Indeterminate
+TPMT,*26/*40,Indeterminate
+TPMT,*27/*27,Indeterminate
+TPMT,*27/*28,Indeterminate
+TPMT,*27/*30,Indeterminate
+TPMT,*27/*31,Indeterminate
+TPMT,*27/*32,Indeterminate
+TPMT,*27/*33,Indeterminate
+TPMT,*27/*34,Indeterminate
+TPMT,*27/*35,Indeterminate
+TPMT,*27/*36,Indeterminate
+TPMT,*27/*37,Indeterminate
+TPMT,*27/*38,Indeterminate
+TPMT,*27/*39,Indeterminate
+TPMT,*27/*40,Indeterminate
+TPMT,*28/*28,Indeterminate
+TPMT,*28/*30,Indeterminate
+TPMT,*28/*31,Indeterminate
+TPMT,*28/*32,Indeterminate
+TPMT,*28/*33,Indeterminate
+TPMT,*28/*34,Indeterminate
+TPMT,*28/*35,Indeterminate
+TPMT,*28/*36,Indeterminate
+TPMT,*28/*37,Indeterminate
+TPMT,*28/*38,Indeterminate
+TPMT,*28/*39,Indeterminate
+TPMT,*28/*40,Indeterminate
+TPMT,*30/*30,Indeterminate
+TPMT,*30/*31,Indeterminate
+TPMT,*30/*32,Indeterminate
+TPMT,*30/*33,Indeterminate
+TPMT,*30/*34,Indeterminate
+TPMT,*30/*35,Indeterminate
+TPMT,*30/*36,Indeterminate
+TPMT,*30/*37,Indeterminate
+TPMT,*30/*38,Indeterminate
+TPMT,*30/*39,Indeterminate
+TPMT,*30/*40,Indeterminate
+TPMT,*31/*31,Indeterminate
+TPMT,*31/*32,Indeterminate
+TPMT,*31/*33,Indeterminate
+TPMT,*31/*34,Indeterminate
+TPMT,*31/*35,Indeterminate
+TPMT,*31/*36,Indeterminate
+TPMT,*31/*37,Indeterminate
+TPMT,*31/*38,Indeterminate
+TPMT,*31/*39,Indeterminate
+TPMT,*31/*40,Indeterminate
+TPMT,*32/*32,Indeterminate
+TPMT,*32/*33,Indeterminate
+TPMT,*32/*34,Indeterminate
+TPMT,*32/*35,Indeterminate
+TPMT,*32/*36,Indeterminate
+TPMT,*32/*37,Indeterminate
+TPMT,*32/*38,Indeterminate
+TPMT,*32/*39,Indeterminate
+TPMT,*32/*40,Indeterminate
+TPMT,*33/*33,Indeterminate
+TPMT,*33/*34,Indeterminate
+TPMT,*33/*35,Indeterminate
+TPMT,*33/*36,Indeterminate
+TPMT,*33/*37,Indeterminate
+TPMT,*33/*38,Indeterminate
+TPMT,*33/*39,Indeterminate
+TPMT,*33/*40,Indeterminate
+TPMT,*34/*34,Indeterminate
+TPMT,*34/*35,Indeterminate
+TPMT,*34/*36,Indeterminate
+TPMT,*34/*37,Indeterminate
+TPMT,*34/*38,Indeterminate
+TPMT,*34/*39,Indeterminate
+TPMT,*34/*40,Indeterminate
+TPMT,*35/*35,Indeterminate
+TPMT,*35/*36,Indeterminate
+TPMT,*35/*37,Indeterminate
+TPMT,*35/*38,Indeterminate
+TPMT,*35/*39,Indeterminate
+TPMT,*35/*40,Indeterminate
+TPMT,*36/*36,Indeterminate
+TPMT,*36/*37,Indeterminate
+TPMT,*36/*38,Indeterminate
+TPMT,*36/*39,Indeterminate
+TPMT,*36/*40,Indeterminate
+TPMT,*37/*37,Indeterminate
+TPMT,*37/*38,Indeterminate
+TPMT,*37/*39,Indeterminate
+TPMT,*37/*40,Indeterminate
+TPMT,*38/*38,Indeterminate
+TPMT,*38/*39,Indeterminate
+TPMT,*38/*40,Indeterminate
+TPMT,*39/*39,Indeterminate
+TPMT,*39/*40,Indeterminate
+TPMT,*40/*40,Indeterminate
+UGT1A1,*1/*1,Normal Metabolizer
+UGT1A1,*1/*6,Intermediate Metabolizer
+UGT1A1,*1/*27,Intermediate Metabolizer
+UGT1A1,*1/*28,Intermediate Metabolizer
+UGT1A1,*1/*36,Normal Metabolizer
+UGT1A1,*1/*37,Intermediate Metabolizer
+UGT1A1,*1/*80,Indeterminate
+UGT1A1,*6/*6,Poor Metabolizer
+UGT1A1,*6/*27,Poor Metabolizer
+UGT1A1,*6/*28,Poor Metabolizer
+UGT1A1,*6/*36,Intermediate Metabolizer
+UGT1A1,*6/*37,Poor Metabolizer
+UGT1A1,*6/*80,Indeterminate
+UGT1A1,*27/*27,Poor Metabolizer
+UGT1A1,*27/*28,Poor Metabolizer
+UGT1A1,*27/*36,Intermediate Metabolizer
+UGT1A1,*27/*37,Poor Metabolizer
+UGT1A1,*27/*80,Indeterminate
+UGT1A1,*28/*28,Poor Metabolizer
+UGT1A1,*28/*36,Intermediate Metabolizer
+UGT1A1,*28/*37,Poor Metabolizer
+UGT1A1,*28/*80,Indeterminate
+UGT1A1,*36/*36,Normal Metabolizer
+UGT1A1,*36/*37,Intermediate Metabolizer
+UGT1A1,*36/*80,Indeterminate
+UGT1A1,*37/*37,Poor Metabolizer
+UGT1A1,*37/*80,Indeterminate
+UGT1A1,*80/*80,Indeterminate
+UGT1A1,*1/*80+*28,Intermediate Metabolizer
+UGT1A1,*6/*80+*28,Poor Metabolizer
+UGT1A1,*27/*80+*28,Poor Metabolizer
+UGT1A1,*28/*80+*28,Poor Metabolizer
+UGT1A1,*36/*80+*28,Intermediate Metabolizer
+UGT1A1,*37/*80+*28,Poor Metabolizer
+UGT1A1,*80/*80+*28,Indeterminate
+UGT1A1,*80+*28/*80+*28,Poor Metabolizer
+UGT1A1,*80+*28/*80+*37,Poor Metabolizer
+UGT1A1,*1/*80+*37,Intermediate Metabolizer
+UGT1A1,*6/*80+*37,Poor Metabolizer
+UGT1A1,*27/*80+*37,Poor Metabolizer
+UGT1A1,*28/*80+*37,Poor Metabolizer
+UGT1A1,*36/*80+*37,Intermediate Metabolizer
+UGT1A1,*37/*80+*37,Poor Metabolizer
+UGT1A1,*80/*80+*37,Indeterminate
+UGT1A1,*80+*37/*80+*37,Poor Metabolizer
