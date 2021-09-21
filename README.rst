@@ -51,7 +51,7 @@ Finally, you can clone the GitHub repository and then install PyPGx locally:
 .. code-block:: text
 
    $ git clone https://github.com/sbslee/pypgx
-   $ cd fuc
+   $ cd pypgx
    $ pip install .
 
 The nice thing about this approach is that you will have access to development versions that are not available in Anaconda or PyPI. For example, you can access a development branch with the ``git checkout`` command. When you do this, please make sure your environment already has all the dependencies installed.
