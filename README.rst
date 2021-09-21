@@ -32,6 +32,7 @@ The following packages are required to run PyPGx:
 .. parsed-literal::
 
    fuc
+   java-jdk
    scikit-learn
 
 There are various ways you can install PyPGx. The recommended way is via conda (`Anaconda <https://www.anaconda.com/>`__):
@@ -40,7 +41,7 @@ There are various ways you can install PyPGx. The recommended way is via conda (
 
    $ conda install -c bioconda pypgx
 
-Above will automatically download and install all the dependencies as well. Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install PyPGx and all of its dependencies:
+Above will automatically download and install all the dependencies as well. Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install PyPGx and all of its dependencies except ``java-jdk`` (i.e. Java JDK must be installed separately):
 
 .. code-block:: text
 
