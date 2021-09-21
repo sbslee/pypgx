@@ -20,10 +20,8 @@ setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License'
     ],
-    package_data={'pypgx.data': [
-            'activity-table.csv',
-            'gene-table',
-            'diplotype-table.csv',
-    ]},
+    package_data={
+        'pypgx.api': ['data/*', 'cnv/*']
+    },
     entry_points={'console_scripts': ['pypgx=pypgx.__main__:main']}
 )
