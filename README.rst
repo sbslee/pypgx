@@ -29,11 +29,21 @@ Installation
 
 The following packages are required to run PyPGx:
 
-.. parsed-literal::
+.. list-table:: Dependencies and their availability in Anaconda and PyPI
+   :header-rows: 1
 
-   fuc
-   openjdk
-   scikit-learn
+   * - Package
+     - Anaconda
+     - PyPI
+   * - ``fuc``
+     - ✅
+     - ✅
+   * - ``scikit-learn``
+     - ✅
+     - ✅
+   * - ``openjdk``
+     - ✅
+     - ❌
 
 There are various ways you can install PyPGx. The recommended way is via conda (`Anaconda <https://www.anaconda.com/>`__):
 
