@@ -36,7 +36,7 @@ Now that we have all the files we need, let's run the next-generation sequencing
   --tsv GeT-RM.tsv.gz \
   --control-statistics control-statistics-VDR.zip
 
-Above will create a number of archive files in the ``CYP2D6-pipeline`` directory:
+Above will create a number of archive files:
 
 .. code-block:: text
 

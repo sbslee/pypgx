@@ -56,7 +56,7 @@ Installation
 
 The following packages are required to run PyPGx:
 
-.. list-table:: Dependencies and their availability in Anaconda and PyPI
+.. list-table::
    :header-rows: 1
 
    * - Package
@@ -196,22 +196,67 @@ For getting help on a specific submodule (e.g. utils):
 CLI examples
 ============
 
-Run NGS pipeline for CYP2D6:
+We can print the metadata of an archive file:
 
 .. code-block:: text
 
-   $ pypgx run-ngs-pipeline \\
-   CYP2D6 \\
-   CYP2D6-pipeline \\
-   --vcf input.vcf \\
-   --panel ref.vcf \\
-   --tsv input.tsv \\
-   --control-statistics control-statistics-VDR.zip
+    $ pypgx print-metadata CYP2D6-copy-number.zip
+
+Above will print:
+
+.. code-block:: text
+
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=CovFrame[CopyNumber]
+    Platform=WGS
+    Control=VDR
+    Samples=None
+
+We can run the NGS pipeline for the *CYP2D6* gene:
+
+.. code-block:: text
+
+    $ pypgx run-ngs-pipeline \\
+    CYP2D6 \\
+    CYP2D6-pipeline \\
+    --vcf input.vcf \\
+    --panel ref.vcf \\
+    --tsv input.tsv \\
+    --control-statistics control-statistics-VDR.zip
+
+Above will create a number of archive files:
+
+.. code-block:: text
+
+    Saved VcfFrame[Imported] to: CYP2D6-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: CYP2D6-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: CYP2D6-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: CYP2D6-pipeline/alleles.zip
+    Saved CovFrame[ReadDepth] to: CYP2D6-pipeline/read-depth.zip
+    Saved CovFrame[CopyNumber] to: CYP2D6-pipeline/copy-number.zip
+    Saved SampleTable[CNVCalls] to: CYP2D6-pipeline/cnv-calls.zip
+    Saved SampleTable[Genotypes] to: CYP2D6-pipeline/genotypes.zip
+    Saved SampleTable[Results] to: CYP2D6-pipeline/results.zip
 
 API examples
 ============
 
-Predict phenotype based on two haplotype calls:
+We can obtain allele function for the *CYP2D6* gene:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.get_function('CYP2D6', '*1')
+    'Normal Function'
+    >>> pypgx.get_function('CYP2D6', '*4')
+    'No Function'
+    >>> pypgx.get_function('CYP2D6', '*22')
+    'Uncertain Function'
+    >>> pypgx.get_function('CYP2D6', '*140')
+    'Unknown Function'
+
+We can predict phenotype for the *CYP2D6* gene based on two haplotype calls:
 
 .. code:: python3
 
@@ -224,8 +269,6 @@ Predict phenotype based on two haplotype calls:
     'Indeterminate'
     >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
     'Ultrarapid Metabolizer'
-    >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')   # *4 has increased function
-    'Rapid Metabolizer'
 """.format(**d)
 
 readme_file = f'{utils.PROGRAM_PATH}/README.rst'
@@ -327,7 +370,7 @@ SDK
 Introduction
 ============
 
-This section describes software development kit (SDK) for PyPGx.
+This section describes the software development kit (SDK) for PyPGx.
 
 utils
 =====

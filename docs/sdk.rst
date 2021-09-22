@@ -7,7 +7,7 @@ SDK
 Introduction
 ============
 
-This section describes software development kit (SDK) for PyPGx.
+This section describes the software development kit (SDK) for PyPGx.
 
 utils
 =====

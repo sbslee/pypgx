@@ -1674,16 +1674,16 @@ def predict_score(gene, allele):
 
     return sum([parsecnv(x) for x in allele.split('+')])
 
-def print_metadata(archive):
+def print_metadata(input):
     """
     Print the metadata of specified archive.
 
     Parameters
     ----------
-    archive : pypgx.Archive
+    input : pypgx.Archive
         Archive file.
     """
-    zf = zipfile.ZipFile(archive)
+    zf = zipfile.ZipFile(input)
     parent = zf.filelist[0].filename.split('/')[0]
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
