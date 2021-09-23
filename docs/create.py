@@ -38,6 +38,18 @@ README
     :target: https://pypgx.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
+.. image:: https://anaconda.org/bioconda/pypgx/badges/version.svg
+   :target: https://anaconda.org/bioconda/pypgx
+
+.. image:: https://anaconda.org/bioconda/pypgx/badges/license.svg
+   :target: https://github.com/sbslee/pypgx/blob/main/LICENSE
+
+.. image:: https://anaconda.org/bioconda/pypgx/badges/downloads.svg
+   :target: https://anaconda.org/bioconda/pypgx/files
+
+.. image:: https://anaconda.org/bioconda/pypgx/badges/installer/conda.svg
+   :target: https://conda.anaconda.org/bioconda
+
 Introduction
 ============
 
