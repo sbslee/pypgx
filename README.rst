@@ -15,7 +15,7 @@ README
    :target: https://anaconda.org/bioconda/pypgx
 
 .. image:: https://anaconda.org/bioconda/pypgx/badges/license.svg
-   :target: https://github.com/sbslee/pypgx/blob/main/LICENSE
+   :target: https://github.com/sbslee/pypgx/blob/master/LICENSE
 
 .. image:: https://anaconda.org/bioconda/pypgx/badges/downloads.svg
    :target: https://anaconda.org/bioconda/pypgx/files
