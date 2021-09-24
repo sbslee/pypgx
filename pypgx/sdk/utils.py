@@ -199,6 +199,29 @@ def parse_pharmvar(fn):
         df2.to_csv(f'{gene}-{assembly}.csv')
 
 def parse_input_bams(bam=None, fn=None):
+    """
+    Parse input BAM files for downstream analyses.
+
+    Many of the PyPGx actions accept BAM files as input and users have a
+    choice between manually specifying individual BAM files (``bam``) and
+    simply provding a BAM list (``fn``). This method will parse a user's
+    choice and then return a list of input BAM files. As a bonus, it will
+    also determine whether the 'chr' string is found in the contig names.
+
+    Parameters
+    ----------
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+
+    Returns
+    -------
+    list
+        List of BAM files.
+    str
+        Either '' or 'chr' depending on the contig names.
+    """
     bam_files = []
 
     if bam is None and fn is None:
