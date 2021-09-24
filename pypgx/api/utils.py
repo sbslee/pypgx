@@ -266,31 +266,12 @@ def compute_control_statistics(
     pypgx.Archive
         Archive file with the semantic type SampleTable[Statistcs].
     """
-    bam_files = []
-
-    if bam is None and fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif bam is not None and fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif bam is not None and fn is None:
-        if isinstance(bam, str):
-            bam_files.append(bam)
-        else:
-            bam_files += bam
-    else:
-        bam_files += common.convert_file2list(fn)
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     df = load_gene_table()
 
     if gene is not None:
         region = df[df.Gene == gene][f'{assembly}Region'].values[0]
-
-    if all([pybam.has_chr(x) for x in bam_files]):
-        bam_prefix = 'chr'
-    else:
-        bam_prefix = ''
 
     cf = pycov.CovFrame.from_bam(
         bam=bam_files, region=f'{bam_prefix}{region}', zero=False
@@ -420,26 +401,7 @@ def compute_target_depth(
         'SemanticType': 'CovFrame[ReadDepth]',
     }
 
-    bam_files = []
-
-    if bam is None and fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif bam is not None and fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif bam is not None and fn is None:
-        if isinstance(bam, str):
-            bam_files.append(bam)
-        else:
-            bam_files += bam
-    else:
-        bam_files += common.convert_file2list(fn)
-
-    if all([pybam.has_chr(x) for x in bam_files]):
-        bam_prefix = 'chr'
-    else:
-        bam_prefix = ''
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     region = get_region(gene, assembly=assembly)
 
@@ -539,6 +501,8 @@ def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
     fuc.pycov.CovFrame
         CovFrame object.
     """
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
+
     regions = create_regions_bed(
         merge=True, sv_genes=True
     ).gr.df.apply(
@@ -548,7 +512,9 @@ def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
     cfs = []
 
     for region in regions:
-        cf = pycov.CovFrame.from_bam(bam=bam, fn=fn, region=region, zero=True)
+        cf = pycov.CovFrame.from_bam(
+            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
+        )
         cfs.append(cf)
 
     return pycov.concat(cfs)

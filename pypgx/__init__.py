@@ -62,5 +62,3 @@ from .api.pipeline import (
 from .sdk import (
     Archive,
 )
-
-del sdk
