@@ -1,3 +1,3 @@
-from .utils import Archive
+from .utils import (Archive, parse_input_bams)
 
-__all__ = ['Archive']
+__all__ = ['Archive', 'parse_input_bams']

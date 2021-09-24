@@ -6,7 +6,7 @@ import copy
 import pickle
 
 import pandas as pd
-from fuc import pyvcf, pycov, common
+from fuc import pyvcf, pycov, common, pybam
 
 class SemanticTypeNotFoundError(Exception):
     """Raise when specified semantic type is not supported."""
@@ -197,3 +197,25 @@ def parse_pharmvar(fn):
         df2['Alleles'] = df2.apply(lambda r: ','.join(variants[assembly][r.Name]), axis=1)
         df2['rsID'] = df2.apply(lambda r: rs_dict[r.Name], axis=1)
         df2.to_csv(f'{gene}-{assembly}.csv')
+
+def parse_input_bams(bam=None, fn=None):
+    bam_files = []
+
+    if bam is None and fn is None:
+        raise ValueError("Must provide either 'bam' or 'fn'")
+    elif bam is not None and fn is not None:
+        raise ValueError("Cannot use 'bam' and 'fn' together")
+    elif bam is not None and fn is None:
+        if isinstance(bam, str):
+            bam_files.append(bam)
+        else:
+            bam_files += bam
+    else:
+        bam_files += common.convert_file2list(fn)
+
+    if all([pybam.has_chr(x) for x in bam_files]):
+        chr_prefix = 'chr'
+    else:
+        chr_prefix = ''
+
+    return bam_files, chr_prefix
