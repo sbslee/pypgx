@@ -71,4 +71,4 @@ def main(args):
         bam=args.bam, fn=args.fn, gene=args.gene, region=args.region,
         assembly=args.assembly, bed=args.bed
     )
-    result.to_file(args.output)
+    result.to_file(args.control_statistics)
