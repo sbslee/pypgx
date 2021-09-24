@@ -523,7 +523,7 @@ def create_consolidated_vcf(imported, phased):
 
 def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
     """
-    Create TSV file containing read depth for genes with SV.
+    Create TSV file containing read depth for target genes with SV.
 
     Parameters
     ----------

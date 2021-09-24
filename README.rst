@@ -174,7 +174,7 @@ For getting help on the CLI:
        create-consolidated-vcf
                            Create consolidated VCF.
        create-read-depth-tsv
-                           Compute read depth for target gene with BAM data.
+                           Create TSV file containing read depth for target genes with SV.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.

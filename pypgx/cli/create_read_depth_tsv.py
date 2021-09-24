@@ -6,26 +6,22 @@ import fuc
 import pysam
 
 description = f"""
-#####################################################
-# Compute read depth for target gene with BAM data. #
-#####################################################
+###################################################################
+# Create TSV file containing read depth for target genes with SV. #
+###################################################################
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
-
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list --assembly GRCh38
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list --bed panel.bed
+  $ fuc {fuc.api.common._script_name()} read-depth.tsv --bam A.bam B.bam
+  $ fuc {fuc.api.common._script_name()} read-depth.tsv --fn bam.list
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute read depth for target gene with BAM data.',
+        help='Create TSV file containing read depth for target genes with SV.',
         description=description,
     )
     parser.add_argument(

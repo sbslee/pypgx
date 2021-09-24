@@ -31,7 +31,7 @@ For getting help on the CLI:
        create-consolidated-vcf
                            Create consolidated VCF.
        create-read-depth-tsv
-                           Compute read depth for target gene with BAM data.
+                           Create TSV file containing read depth for target genes with SV.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -249,19 +249,15 @@ create-read-depth-tsv
                                       [--assembly TEXT]
                                       tsv
    
-   #####################################################
-   # Compute read depth for target gene with BAM data. #
-   #####################################################
+   ###################################################################
+   # Create TSV file containing read depth for target genes with SV. #
+   ###################################################################
    
    Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
    
-   By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
-   
    Usage examples:
-     $ fuc create-read-depth-tsv gene out.zip --bam A.bam B.bam
-     $ fuc create-read-depth-tsv gene out.zip --fn bam.list
-     $ fuc create-read-depth-tsv gene out.zip --fn bam.list --assembly GRCh38
-     $ fuc create-read-depth-tsv gene out.zip --fn bam.list --bed panel.bed
+     $ fuc create-read-depth-tsv read-depth.tsv --bam A.bam B.bam
+     $ fuc create-read-depth-tsv read-depth.tsv --fn bam.list
    
    Positional arguments:
      tsv                   TSV file containing read depth.
