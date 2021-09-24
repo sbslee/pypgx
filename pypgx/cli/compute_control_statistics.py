@@ -29,8 +29,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'control_statistcs',
-        metavar='control-statistcs',
+        'control_statistics',
+        metavar='control-statistics',
         help='Archive file with the semantic type SampleTable[Statistics].'
     )
     parser.add_argument(
