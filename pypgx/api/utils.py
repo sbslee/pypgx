@@ -432,15 +432,15 @@ def compute_target_depth(
 
     return result
 
-def create_consolidated_vcf(imported, phased):
+def create_consolidated_vcf(imported_variants, phased_variants):
     """
     Create consolidated VCF.
 
     Parameters
     ----------
-    imported : pypgx.Archive
+    imported_variants : str or pypgx.Archive
         Archive file with the semantic type VcfFrame[Imported].
-    phased : pypgx.Archive
+    phased_variants : str or pypgx.Archive
         Archive file with the semandtic type VcfFrame[Phased].
 
     Returns
@@ -448,18 +448,28 @@ def create_consolidated_vcf(imported, phased):
     pypgx.Archive
         Archive file with the semantic type VcfFrame[Consolidated].
     """
-    if isinstance(imported, str):
-        imported = sdk.Archive.from_file(imported)
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
 
-    if isinstance(phased, str):
-        phased = sdk.Archive.from_file(phased)
+    imported_variants.check('VcfFrame[Imported]')
 
-    imported.data = imported.data.strip('GT:AD:DP:AF')
-    phased.data = phased.data.strip('GT')
+    if isinstance(phased_variants, str):
+        phased_variants = sdk.Archive.from_file(phased_variants)
+
+    phased_variants.check('VcfFrame[Phased]')
+
+    if imported_variants.metadata['Gene'] != phased_variants.metadata['Gene']:
+        raise ValueError('Found two different genes')
+
+    if imported_variants.metadata['Assembly'] != phased_variants.metadata['Assembly']:
+        raise ValueError('Found two different assemblies')
+
+    vf1 = imported_variants.data.strip('GT:AD:DP:AF')
+    vf2 = phased_variants.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = imported.data.fetch(variant)
+        s = imported_variants.data.fetch(variant)
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -469,14 +479,14 @@ def create_consolidated_vcf(imported, phased):
 
         return r
 
-    vf1 = pyvcf.VcfFrame([], phased.data.df.apply(one_row, axis=1))
-    vf1.df.FORMAT = 'GT:AD:DP:AF'
+    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
+    vf3.df.FORMAT = 'GT:AD:DP:AF'
 
-    vf2 = imported.data.filter_vcf(phased.data, opposite=True)
-    vf3 = pyvcf.VcfFrame([], pd.concat([vf1.df, vf2.df])).sort()
-    vf3 = vf3.pseudophase()
+    vf4 = vf1.filter_vcf(vf2, opposite=True)
+    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
+    vf5 = vf5.pseudophase()
 
-    metadata = phased.copy_metadata()
+    metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
     result = sdk.Archive(metadata, vf3)
@@ -1026,7 +1036,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     region = get_region(gene, assembly=assembly)
 
-    data = vf.slice(region).strip('GT:AD:DP')
+    data = vf.chr_prefix().slice(region).strip('GT:AD:DP')
     data = data.add_af()
 
     metadata = {
