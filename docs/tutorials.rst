@@ -18,13 +18,7 @@ Because downloading the entire WGS dataset is not feasible for most users due to
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/GeT-RM.tsv.gz
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/control-statistics-VDR.zip
 
-Next, we will download the 1000 Genomes Project phase 3 reference haplotype panel for the chromosome 22 where *CYP2D6* is located:
-
-.. code-block:: text
-
-  $ wget http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/chr22.1kg.phase3.v5a.vcf.gz
-
-Now that we have all the files we need, let's run the next-generation sequencing (NGS) pipeline:
+Next, run the next-generation sequencing (NGS) pipeline:
 
 .. code-block:: text
 
@@ -32,7 +26,6 @@ Now that we have all the files we need, let's run the next-generation sequencing
   CYP2D6 \
   CYP2D6-pipeline \
   --vcf GeT-RM.vcf.gz \
-  --panel chr22.1kg.phase3.v5a.vcf.gz \
   --tsv GeT-RM.tsv.gz \
   --control-statistics control-statistics-VDR.zip
 

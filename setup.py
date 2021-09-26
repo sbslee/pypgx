@@ -21,7 +21,7 @@ setup(
         'License :: OSI Approved :: MIT License'
     ],
     package_data={
-        'pypgx.api': ['beagle.28Jun21.220.jar', 'data/*', 'cnv/*']
+        'pypgx.api': ['beagle.28Jun21.220.jar', 'data/*', 'cnv/*', '1kgp/*']
     },
     entry_points={'console_scripts': ['pypgx=pypgx.__main__:main']}
 )

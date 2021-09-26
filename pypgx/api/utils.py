@@ -561,25 +561,17 @@ def create_regions_bed(
     return bf
 
 def estimate_phase_beagle(
-    imported_variants, panel, impute=False
+    imported_variants, panel=None, impute=False
 ):
     """
     Estimate haplotype phase of observed variants with the Beagle program.
-
-    If your input data is GRCh37, I recommend using the 1000 Genomes Project
-    phase 3 reference panel. You can easily download it thanks to the authors
-    of Beagle:
-
-    .. code-block:: console
-
-        $ wget -r --no-parent http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/
 
     Parameters
     ----------
     imported_variants : str
         Archive file with the semantic type VcfFrame[Imported].
-    panel : str
-        Reference haplotype panel.
+    panel : str, optional
+        Reference haplotype panel. By default, the 1KGP panel is used.
     impute : bool, default: False
         Whether to perform imputation of missing genotypes.
 
@@ -593,18 +585,23 @@ def estimate_phase_beagle(
 
     imported_variants.check('VcfFrame[Imported]')
 
-    region = get_region(imported_variants.metadata['Gene'], assembly=imported_variants.metadata['Assembly'])
-    path = os.path.dirname(os.path.abspath(__file__))
-    program = f'{path}/beagle.28Jun21.220.jar'
+    gene = imported_variants.metadata['Gene']
+    assembly = imported_variants.metadata['Assembly']
+    region = get_region(gene, assembly=assembly)
+    beagle = f'{PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
+    if panel is None:
+        panel = f'{PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
+
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
+
     if imported_variants.data.empty:
         return sdk.Archive(metadata, imported_variants.data.copy())
     with tempfile.TemporaryDirectory() as t:
         imported_variants.data.to_file(f'{t}/input.vcf')
         command = [
-            'java', '-Xmx2g', '-jar', program,
+            'java', '-Xmx2g', '-jar', beagle,
             f'gt={t}/input.vcf',
             f'chrom={region}',
             f'ref={panel}',
@@ -1006,12 +1003,12 @@ def import_read_depth(
 
 def import_variants(gene, vcf, assembly='GRCh37'):
     """
-    Import variant data for target gene.
+    Import variant data for the target gene.
 
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     vcf : fuc.pyvcf.VcfFrame or str
         VCF file (zipped or unzipped).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'

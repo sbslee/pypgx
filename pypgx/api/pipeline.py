@@ -50,7 +50,7 @@ def run_ngs_pipeline(
     if gene_table[gene_table.Gene == gene].Variants.values[0] and vcf is not None:
         imported_variants = utils.import_variants(gene, vcf)
         imported_variants.to_file(f'{output}/imported-variants.zip')
-        phased_variants = utils.estimate_phase_beagle(imported_variants, panel)
+        phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
         phased_variants.to_file(f'{output}/phased-variants.zip')
         consolidated_variants = utils.create_consolidated_vcf(imported_variants, phased_variants)
         consolidated_variants.to_file(f'{output}/consolidated-variants.zip')

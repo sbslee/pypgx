@@ -10,7 +10,7 @@ description = f"""
 #########################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 CYP2D6-pipeline --vcf input.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
 """
 
 def create_parser(subparsers):
@@ -34,11 +34,6 @@ def create_parser(subparsers):
         help='VCF file.'
     )
     parser.add_argument(
-        '--panel',
-        metavar='PATH',
-        help='Reference haplotype panel.'
-    )
-    parser.add_argument(
         '--tsv',
         metavar='PATH',
         help='TSV file containing read depth (zipped or unzipped).'
@@ -52,6 +47,11 @@ def create_parser(subparsers):
         '--force',
         action='store_true',
         help='Overwrite output directory if it already exists.'
+    )
+    parser.add_argument(
+        '--panel',
+        metavar='PATH',
+        help='Reference haplotype panel. By default, the 1KGP panel is used.'
     )
     parser.add_argument(
         '--do-not-plot-copy-number',

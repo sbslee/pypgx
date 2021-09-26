@@ -37,7 +37,7 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for target gene.
-       import-variants     Import variant data for target gene.
+       import-variants     Import variant data for the target gene.
        plot-bam-copy-number
                            Plot copy number profile with BAM data.
        plot-bam-read-depth
@@ -122,7 +122,7 @@ compute-control-statistics
                                            [--fn PATH] [--gene TEXT]
                                            [--region TEXT] [--assembly TEXT]
                                            [--bed PATH]
-                                           output
+                                           control-statistics
    
    ##############################################################
    # Compute various statistics for control gene with BAM data. #
@@ -133,12 +133,13 @@ compute-control-statistics
    By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
    
    Usage examples:
-     $ pypgx compute-control-statistics out.zip --bam A.bam B.bam --gene VDR
-     $ pypgx compute-control-statistics out.zip --fn bam.list --region chr:start-end
-     $ pypgx compute-control-statistics out.zip --fn bam.list --region chr:start-end --assembly GRCh38
+     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --bam A.bam B.bam
+     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --fn bam.list
+     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --fn bam.list --bed probes.bed
+     $ pypgx compute-control-statistics control-statistcs-custom.zip --region chr1:100-200 --fn bam.list
    
    Positional arguments:
-     output                Archive file with the semantic type SampleTable[Statistics].
+     control-statistics    Archive file with the semantic type SampleTable[Statistics].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -298,27 +299,23 @@ estimate-phase-beagle
 .. code-block:: text
 
    $ pypgx estimate-phase-beagle -h
-   usage: pypgx estimate-phase-beagle [-h] [--impute]
-                                      imported-variants panel phased-variants
+   usage: pypgx estimate-phase-beagle [-h] [--panel PATH] [--impute]
+                                      imported-variants phased-variants
    
    ##########################################################################
    # Estimate haplotype phase of observed variants with the Beagle program. #
    ##########################################################################
    
-   If your input data is GRCh37, I recommend using the 1000 Genomes Project phase 3 reference panel. You can easily download it thanks to the authors of Beagle:
-   
-   $ wget -r --no-parent http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/
-   
    Usage examples:
-     $ pypgx estimate-phase-beagle imported-variants.zip ref.vcf phased-variants.zip
+     $ pypgx estimate-phase-beagle imported-variants.zip phased-variants.zip
    
    Positional arguments:
      imported-variants  Archive file with the semantic type VcfFrame[Imported].
-     panel              Reference haplotype panel.
      phased-variants    Archive file with the semantic type VcfFrame[Phased].
    
    Optional arguments:
      -h, --help         Show this help message and exit.
+     --panel PATH       Reference haplotype panel. By default, the 1KGP panel is used.
      --impute           Whether to perform imputation of missing genotypes.
 
 filter-samples
@@ -385,23 +382,23 @@ import-variants
 .. code-block:: text
 
    $ pypgx import-variants -h
-   usage: pypgx import-variants [-h] [--assembly TEXT] gene vcf output
+   usage: pypgx import-variants [-h] [--assembly TEXT] gene vcf imported-variants
    
-   ########################################
-   # Import variant data for target gene. #
-   ########################################
+   ############################################
+   # Import variant data for the target gene. #
+   ############################################
    
    Usage examples:
-     $ pypgx import-variants CYP2D6 variants.vcf CYP2D6-variants-imported.zip
+     $ pypgx import-variants CYP2D6 input.vcf CYP2D6-imported-variants.zip
    
    Positional arguments:
-     gene             Target gene.
-     vcf              VCF file (zipped or unzipped).
-     output           Archive file with the semantic type VcfFrame[Imported].
+     gene               Target gene.
+     vcf                VCF file (zipped or unzipped).
+     imported-variants  Archive file with the semantic type VcfFrame[Imported].
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     -h, --help         Show this help message and exit.
+     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
 
 plot-bam-copy-number
 ====================
@@ -595,9 +592,9 @@ run-ngs-pipeline
 .. code-block:: text
 
    $ pypgx run-ngs-pipeline -h
-   usage: pypgx run-ngs-pipeline [-h] [--vcf PATH] [--panel PATH] [--tsv PATH]
+   usage: pypgx run-ngs-pipeline [-h] [--vcf PATH] [--tsv PATH]
                                  [--control-statistics PATH] [--force]
-                                 [--do-not-plot-copy-number]
+                                 [--panel PATH] [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
@@ -606,7 +603,7 @@ run-ngs-pipeline
    #########################################
    
    Usage examples:
-     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --vcf input.vcf --panel ref.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
+     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --vcf input.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
    
    Positional arguments:
      gene                  Target gene.
@@ -615,11 +612,11 @@ run-ngs-pipeline
    Optional arguments:
      -h, --help            Show this help message and exit.
      --vcf PATH            VCF file.
-     --panel PATH          Reference haplotype panel.
      --tsv PATH            TSV file containing read depth (zipped or unzipped).
      --control-statistics PATH
                            Archive file with the semandtic type SampleTable[Statistcs].
      --force               Overwrite output directory if it already exists.
+     --panel PATH          Reference haplotype panel. By default, the 1KGP panel is used.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
