@@ -1623,7 +1623,7 @@ def predict_score(gene, allele):
 
 def prepare_depth_of_coverage(bam=None, fn=None, assembly='GRCh37'):
     """
-    Create TSV file containing read depth for target genes with SV.
+    Prepare a depth of coverage file for target genes with SV.
 
     Parameters
     ----------

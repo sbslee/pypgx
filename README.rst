@@ -173,8 +173,6 @@ For getting help on the CLI:
                            Compute read depth for target gene with BAM data.
        create-consolidated-vcf
                            Create consolidated VCF.
-       create-read-depth-tsv
-                           Create TSV file containing read depth for target genes with SV.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -191,6 +189,8 @@ For getting help on the CLI:
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
+       prepare-depth-of-coverage
+                           Prepare a depth of coverage file for target genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.

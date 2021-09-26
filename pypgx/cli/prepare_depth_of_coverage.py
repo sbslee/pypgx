@@ -6,27 +6,28 @@ import fuc
 import pysam
 
 description = f"""
-###################################################################
-# Create TSV file containing read depth for target genes with SV. #
-###################################################################
+##############################################################
+# Prepare a depth of coverage file for target genes with SV. #
+##############################################################
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} read-depth.tsv --bam A.bam B.bam
-  $ fuc {fuc.api.common._script_name()} read-depth.tsv --fn bam.list
+  $ fuc {fuc.api.common._script_name()} depth-of-coverage.tsv --bam A.bam B.bam
+  $ fuc {fuc.api.common._script_name()} depth-of-coverage.tsv --fn bam.list
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Create TSV file containing read depth for target genes with SV.',
+        help='Prepare a depth of coverage file for target genes with SV.',
         description=description,
     )
     parser.add_argument(
-        'tsv',
-        help='TSV file containing read depth.'
+        'depth_of_coverage',
+        metavar='depth-of-coverage',
+        help='Depth of coverage file.'
     )
     parser.add_argument(
         '--bam',
@@ -50,4 +51,4 @@ def main(args):
     cf = utils.prepare_depth_of_coverage(
         bam=args.bam, fn=args.fn, assembly=args.assembly,
     )
-    cf.to_file(args.tsv)
+    cf.to_file(args.depth_of_coverage)

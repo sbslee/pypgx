@@ -30,8 +30,6 @@ For getting help on the CLI:
                            Compute read depth for target gene with BAM data.
        create-consolidated-vcf
                            Create consolidated VCF.
-       create-read-depth-tsv
-                           Create TSV file containing read depth for target genes with SV.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -48,6 +46,8 @@ For getting help on the CLI:
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
+       prepare-depth-of-coverage
+                           Prepare a depth of coverage file for target genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
@@ -223,52 +223,25 @@ create-consolidated-vcf
 .. code-block:: text
 
    $ pypgx create-consolidated-vcf -h
-   usage: pypgx create-consolidated-vcf [-h] imported phased output
+   usage: pypgx create-consolidated-vcf [-h]
+                                        imported-variants phased-variants
+                                        consolidated-variants
    
    ############################
    # Create consolidated VCF. #
    ############################
    
    Usage examples:
-     $ pypgx create-consolidated-vcf imported.zip phased.zip out.zip
+     $ pypgx create-consolidated-vcf CYP2D6-imported-variants.zip CYP2D6-phased-variants.zip CYP2D6-consolidated-variants.zip
    
    Positional arguments:
-     imported    Archive file with the semantic type VcfFrame[Imported].
-     phased      Archive file with the semantic type VcfFrame[Phased]
-     output      Archive file with the semantic type VcfFrame[Consolidated].
-   
-   Optional arguments:
-     -h, --help  Show this help message and exit.
-
-create-read-depth-tsv
-=====================
-
-.. code-block:: text
-
-   $ pypgx create-read-depth-tsv -h
-   usage: pypgx create-read-depth-tsv [-h] [--bam PATH [PATH ...]] [--fn PATH]
-                                      [--assembly TEXT]
-                                      tsv
-   
-   ###################################################################
-   # Create TSV file containing read depth for target genes with SV. #
-   ###################################################################
-   
-   Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
-   
-   Usage examples:
-     $ fuc create-read-depth-tsv read-depth.tsv --bam A.bam B.bam
-     $ fuc create-read-depth-tsv read-depth.tsv --fn bam.list
-   
-   Positional arguments:
-     tsv                   TSV file containing read depth.
+     imported-variants     Archive file with the semantic type VcfFrame[Imported].
+     phased-variants       Archive file with the semantic type VcfFrame[Phased]
+     consolidated-variants
+                           Archive file with the semantic type VcfFrame[Consolidated].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --bam PATH [PATH ...]
-                           One or more BAM files.
-     --fn PATH             File containing one BAM file per line.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
 
 create-regions-bed
 ==================
@@ -357,24 +330,24 @@ import-read-depth
 
    $ pypgx import-read-depth -h
    usage: pypgx import-read-depth [-h] [--assembly TEXT] [--platform TEXT]
-                                  gene read_depth output
+                                  gene depth-of-coverage read-depth
    
    ###########################################
    # Import read depth data for target gene. #
    ###########################################
    
    Usage examples:
-     $ pypgx import-read-depth CYP2D6 read-depth.tsv CYP2D6-read-depth.zip
+     $ pypgx import-read-depth CYP2D6 depth-of-coverage.tsv CYP2D6-read-depth.zip
    
    Positional arguments:
-     gene             Target gene.
-     read_depth       TSV file containing read depth (zipped or unzipped).
-     output           Archive file with the semantic type CovFrame[ReadDepth].
+     gene               Target gene.
+     depth-of-coverage  Depth of coverage file (zipped or unzipped).
+     read-depth         Archive file with the semantic type CovFrame[ReadDepth].
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --platform TEXT  NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted').
+     -h, --help         Show this help message and exit.
+     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted').
 
 import-variants
 ===============
@@ -547,7 +520,7 @@ predict-cnv
 .. code-block:: text
 
    $ pypgx predict-cnv -h
-   usage: pypgx predict-cnv [-h] input output
+   usage: pypgx predict-cnv [-h] copy-number cnv-calls
    
    ##########################################################
    # Predict CNV for target gene based on copy number data. #
@@ -556,14 +529,44 @@ predict-cnv
    If there are missing values because, for example, the input data was generated with targeted sequencing, they will be filled in with the sample's median copy number.
    
    Usage examples:
-     $ pypgx predict-cnv input.zip output.zip
+     $ pypgx predict-cnv CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
    
    Positional arguments:
-     input       Archive file with the semantic type CovFrame[CopyNumber].
-     output      Archive file with the semantic type SampleTable[CNVCalls].
+     copy-number  Archive file with the semantic type CovFrame[CopyNumber].
+     cnv-calls    Archive file with the semantic type SampleTable[CNVCalls].
    
    Optional arguments:
-     -h, --help  Show this help message and exit.
+     -h, --help   Show this help message and exit.
+
+prepare-depth-of-coverage
+=========================
+
+.. code-block:: text
+
+   $ pypgx prepare-depth-of-coverage -h
+   usage: pypgx prepare-depth-of-coverage [-h] [--bam PATH [PATH ...]]
+                                          [--fn PATH] [--assembly TEXT]
+                                          depth-of-coverage
+   
+   ##############################################################
+   # Prepare a depth of coverage file for target genes with SV. #
+   ##############################################################
+   
+   Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+   
+   Usage examples:
+     $ fuc prepare-depth-of-coverage depth-of-coverage.tsv --bam A.bam B.bam
+     $ fuc prepare-depth-of-coverage depth-of-coverage.tsv --fn bam.list
+   
+   Positional arguments:
+     depth-of-coverage     Depth of coverage file.
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --bam PATH [PATH ...]
+                           One or more BAM files.
+     --fn PATH             File containing one BAM file per line.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
 
 print-metadata
 ==============
