@@ -307,7 +307,7 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(read_depth, control_statistcs, samples=None):
+def compute_copy_number(read_depth, control_statistics, samples=None):
     """
     Compute copy number from read depth for target gene.
 
@@ -325,7 +325,7 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
     read_depth : pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
     control_statistcs : pypgx.Archive
-        Archive file with the semandtic type SampleTable[Statistcs].
+        Archive file with the semandtic type SampleTable[Statistics].
     samples : list, optional
         List of known samples without SV.
 
@@ -337,12 +337,19 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
     if isinstance(read_depth, str):
         read_depth = sdk.Archive.from_file(read_depth)
 
-    if isinstance(control_statistcs, str):
-        control_statistcs = sdk.Archive.from_file(control_statistcs)
+    read_depth.check('CovFrame[ReadDepth]')
+
+    if isinstance(control_statistics, str):
+        control_statistics = sdk.Archive.from_file(control_statistics)
+
+    control_statistics.check('SampleTable[Statistics]')
+
+    if set(read_depth.data.samples) != set(control_statistics.data.index):
+        raise ValueError('Different sample sets found')
 
     # Apply intra-sample normalization.
     df = read_depth.data.copy_df()
-    medians = control_statistcs.data['50%']
+    medians = control_statistics.data['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
 
     # Apply inter-sample normalization.
@@ -356,7 +363,7 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
     cf = pycov.CovFrame(df)
     metadata = read_depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
-    metadata['Control'] = control_statistcs.metadata['Control']
+    metadata['Control'] = control_statistics.metadata['Control']
     if samples is None:
         metadata['Samples'] = 'None'
     else:
@@ -492,42 +499,6 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     result = sdk.Archive(metadata, vf3)
 
     return result
-
-def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
-    """
-    Create TSV file containing read depth for target genes with SV.
-
-    Parameters
-    ----------
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-
-    Returns
-    -------
-    fuc.pycov.CovFrame
-        CovFrame object.
-    """
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
-    regions = create_regions_bed(
-        merge=True, sv_genes=True
-    ).gr.df.apply(
-        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
-    ).to_list()
-
-    cfs = []
-
-    for region in regions:
-        cf = pycov.CovFrame.from_bam(
-            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
-        )
-        cfs.append(cf)
-
-    return pycov.concat(cfs)
 
 def create_regions_bed(
     assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
@@ -972,7 +943,7 @@ def has_score(gene):
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
 def import_read_depth(
-    gene, read_depth, assembly='GRCh37', platform='WGS'
+    gene, coverage, assembly='GRCh37', platform='WGS'
 ):
     """
     Import read depth data for target gene.
@@ -981,8 +952,8 @@ def import_read_depth(
     ----------
     gene : str
         Gene name.
-    read_depth : fuc.pycov.CovFrame or str
-        TSV file containing read depth (zipped or unzipped).
+    coverage : fuc.pycov.CovFrame or str
+        Depth of coverage file (zipped or unzipped).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     platform : {'WGS', 'Targeted'}, default: 'WGS'
@@ -993,10 +964,10 @@ def import_read_depth(
     pypgx.Archive
         Archive file with the semantic type CovFrame[ReadDepth].
     """
-    if isinstance(read_depth, str):
-        cf = pycov.CovFrame.from_file(read_depth)
+    if isinstance(coverage, str):
+        cf = pycov.CovFrame.from_file(coverage)
     else:
-        cf = read_depth
+        cf = coverage
 
     region = get_region(gene, assembly=assembly)
 
@@ -1493,8 +1464,8 @@ def predict_cnv(copy_number):
 
     Parameters
     ----------
-    target : pypgx.Archive or str
-        Archive file with the semantic type CovFrame[CopyNumber].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
 
     Returns
     -------
@@ -1503,6 +1474,9 @@ def predict_cnv(copy_number):
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
+
+    copy_number.check('CovFrame[CopyNumber]')
+
     copy_number = _process_copy_number(copy_number)
     path = os.path.dirname(os.path.abspath(__file__))
     model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
@@ -1646,6 +1620,42 @@ def predict_score(gene, allele):
             return get_score(gene, x)
 
     return sum([parsecnv(x) for x in allele.split('+')])
+
+def prepare_depth_of_coverage(bam=None, fn=None, assembly='GRCh37'):
+    """
+    Create TSV file containing read depth for target genes with SV.
+
+    Parameters
+    ----------
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    fuc.pycov.CovFrame
+        CovFrame object.
+    """
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
+
+    regions = create_regions_bed(
+        merge=True, sv_genes=True
+    ).gr.df.apply(
+        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
+    ).to_list()
+
+    cfs = []
+
+    for region in regions:
+        cf = pycov.CovFrame.from_bam(
+            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
+        )
+        cfs.append(cf)
+
+    return pycov.concat(cfs)
 
 def print_metadata(input):
     """

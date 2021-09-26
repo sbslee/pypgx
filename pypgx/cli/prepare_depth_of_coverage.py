@@ -47,7 +47,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    cf = utils.create_read_depth_tsv(
+    cf = utils.prepare_depth_of_coverage(
         bam=args.bam, fn=args.fn, assembly=args.assembly,
     )
     cf.to_file(args.tsv)

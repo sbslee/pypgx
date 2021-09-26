@@ -13,7 +13,7 @@ description = f"""
 If there are missing values because, for example, the input data was generated with targeted sequencing, they will be filled in with the sample's median copy number.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} input.zip output.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
 """
 
 def create_parser(subparsers):
@@ -24,14 +24,16 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'input',
+        'copy_number',
+        metavar='copy-number',
         help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
-        'output',
+        'cnv_calls',
+        metavar='cnv-calls',
         help='Archive file with the semantic type SampleTable[CNVCalls].'
     )
 
 def main(args):
-    result = utils.predict_cnv(args.input)
-    result.to_file(args.output)
+    archive = utils.predict_cnv(args.copy_number)
+    archive.to_file(args.cnv_calls)
