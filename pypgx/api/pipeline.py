@@ -9,8 +9,9 @@ import os
 from . import utils, plot, genotype
 
 def run_ngs_pipeline(
-    gene, output, vcf=None, panel=None, tsv=None, control_statistics=None,
-    force=False, do_not_plot_copy_number=False,
+    gene, output, variants=None, depth_of_coverage=None,
+    control_statistics=None, panel=None, force=False,
+    do_not_plot_copy_number=False,
     do_not_plot_allele_fraction=False
 ):
     """
@@ -22,14 +23,14 @@ def run_ngs_pipeline(
         Target gene.
     output : str
         Output directory.
-    vcf : str, optional
-        VCF file.
-    panel : str, optional
-        Reference haplotype panel.
-    tsv : str, optional
-        TSV file containing read depth (zipped or unzipped).
+    variants : str, optional
+        VCF file (zipped or unzipped).
+    depth_of_coverage : str, optional
+        Depth of coverage file (zipped or unzipped).
     control_statistics : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Statistics].
+    panel : str, optional
+        Reference haplotype panel.
     force : bool, default : False
         Overwrite output directory if it already exists.
     do_not_plot_copy_number : bool, default: False
@@ -47,8 +48,8 @@ def run_ngs_pipeline(
     alleles = None
     cnv_calls = None
 
-    if gene_table[gene_table.Gene == gene].Variants.values[0] and vcf is not None:
-        imported_variants = utils.import_variants(gene, vcf)
+    if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
+        imported_variants = utils.import_variants(gene, variants)
         imported_variants.to_file(f'{output}/imported-variants.zip')
         phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
         phased_variants.to_file(f'{output}/phased-variants.zip')
@@ -62,10 +63,10 @@ def run_ngs_pipeline(
                 imported_variants, path=f'{output}/allele-fraction-profile'
             )
 
-    if gene_table[gene_table.Gene == gene].SV.values[0] and tsv is not None:
+    if gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
         if control_statistics is None:
             raise ValueError('CovFrame[ReadDepth] requires SampleTable[Statistcs]')
-        read_depth = utils.import_read_depth(gene, tsv)
+        read_depth = utils.import_read_depth(gene, depth_of_coverage)
         read_depth.to_file(f'{output}/read-depth.zip')
         copy_number = utils.compute_copy_number(read_depth, control_statistics)
         copy_number.to_file(f'{output}/copy-number.zip')

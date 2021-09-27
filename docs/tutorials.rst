@@ -14,8 +14,8 @@ Because downloading the entire WGS dataset is not feasible for most users due to
 
   $ mkdir getrm-tutorial
   $ cd getrm-tutorial
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/GeT-RM.vcf.gz
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/GeT-RM.tsv.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/variants.vcf.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/depth-of-coverage.tsv.gz
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/control-statistics-VDR.zip
 
 Next, run the next-generation sequencing (NGS) pipeline:
@@ -25,8 +25,8 @@ Next, run the next-generation sequencing (NGS) pipeline:
   $ pypgx run-ngs-pipeline \
   CYP2D6 \
   CYP2D6-pipeline \
-  --vcf GeT-RM.vcf.gz \
-  --tsv GeT-RM.tsv.gz \
+  --variants variants.vcf.gz \
+  --depth-of-coverage depth-of-coverage.tsv.gz \
   --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

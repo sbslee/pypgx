@@ -595,9 +595,10 @@ run-ngs-pipeline
 .. code-block:: text
 
    $ pypgx run-ngs-pipeline -h
-   usage: pypgx run-ngs-pipeline [-h] [--vcf PATH] [--tsv PATH]
-                                 [--control-statistics PATH] [--force]
-                                 [--panel PATH] [--do-not-plot-copy-number]
+   usage: pypgx run-ngs-pipeline [-h] [--variants PATH]
+                                 [--depth-of-coverage PATH]
+                                 [--control-statistics PATH] [--panel PATH]
+                                 [--force] [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
@@ -606,7 +607,7 @@ run-ngs-pipeline
    #########################################
    
    Usage examples:
-     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --vcf input.vcf --tsv input.tsv --control-statistcs control-statistics-VDR.zip
+     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
    
    Positional arguments:
      gene                  Target gene.
@@ -614,12 +615,13 @@ run-ngs-pipeline
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --vcf PATH            VCF file.
-     --tsv PATH            TSV file containing read depth (zipped or unzipped).
+     --variants PATH       VCF file (zipped or unzipped).
+     --depth-of-coverage PATH
+                           Depth of coverage file (zipped or unzipped).
      --control-statistics PATH
                            Archive file with the semandtic type SampleTable[Statistcs].
-     --force               Overwrite output directory if it already exists.
      --panel PATH          Reference haplotype panel. By default, the 1KGP panel is used.
+     --force               Overwrite output directory if it already exists.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction

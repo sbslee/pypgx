@@ -476,7 +476,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = imported_variants.data.fetch(variant)
+        s = vf1.fetch(variant)
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -496,7 +496,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
-    result = sdk.Archive(metadata, vf3)
+    result = sdk.Archive(metadata, vf5)
 
     return result
 
@@ -1621,9 +1621,15 @@ def predict_score(gene, allele):
 
     return sum([parsecnv(x) for x in allele.split('+')])
 
-def prepare_depth_of_coverage(bam=None, fn=None, assembly='GRCh37'):
+def prepare_depth_of_coverage(
+    bam=None, fn=None, assembly='GRCh37', bed=None
+):
     """
     Prepare a depth of coverage file for target genes with SV.
+
+    By default, the input data is assumed to be WGS. If it's targeted
+    sequencing, you must provide a BED file with ``bed`` to indicate
+    probed regions.
 
     Parameters
     ----------
@@ -1633,6 +1639,8 @@ def prepare_depth_of_coverage(bam=None, fn=None, assembly='GRCh37'):
         File containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    bed : str, optional
+        BED file.
 
     Returns
     -------
@@ -1654,6 +1662,22 @@ def prepare_depth_of_coverage(bam=None, fn=None, assembly='GRCh37'):
             bam=bam_files, region=f'{bam_prefix}{region}', zero=True
         )
         cfs.append(cf)
+
+    if bed:
+        bf = pybed.BedFrame.from_file(bed)
+        if any(['chr' in x for x in bf.contigs]):
+            bed_prefix = 'chr'
+        else:
+            bed_prefix = ''
+        if bam_prefix and bed_prefix:
+            pass
+        elif not bam_prefix and not bed_prefix:
+            pass
+        elif bam_prefix and not bed_prefix:
+            bf = bf.chr_prefix(mode='add')
+        else:
+            bf = bf.chr_prefix(mode='remove')
+        cf = cf.mask_bed(bf, opposite=True)
 
     return pycov.concat(cfs)
 

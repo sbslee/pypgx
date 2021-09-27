@@ -248,9 +248,8 @@ We can run the NGS pipeline for the *CYP2D6* gene:
     $ pypgx run-ngs-pipeline \
     CYP2D6 \
     CYP2D6-pipeline \
-    --vcf input.vcf \
-    --panel ref.vcf \
-    --tsv input.tsv \
+    --variants variants.vcf \
+    --depth-of-coverage depth-of-coverage.tsv \
     --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:
