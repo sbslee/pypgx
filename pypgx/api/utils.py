@@ -52,12 +52,20 @@ def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
     region = get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
     chrom, start, end = common.parse_region(region)
+    
     if (end - start + 1) > copy_number.data.shape[0]:
         temp = pd.DataFrame.from_dict({'Temp': range(int(df.Position.iat[0]-1), int(df.Position.iat[-1])+1)})
         temp = temp.merge(df, left_on='Temp', right_on='Position', how='outer')
         df = temp.drop(columns='Temp')
-    df = df.fillna(df.median())
+
+    df = df.fillna(method='ffill')
+    df = df.fillna(method='bfill')
+
     df.iloc[:, 2:] = df.iloc[:, 2:].apply(lambda c: median_filter(c, size=1000), axis=0)
+
+    if df.isnull().values.any():
+        raise ValueError('Missing values detected')
+
     return sdk.Archive(copy_number.copy_metadata(), pycov.CovFrame(df))
 
 ##################
@@ -1473,7 +1481,6 @@ def predict_cnv(copy_number):
     path = os.path.dirname(os.path.abspath(__file__))
     model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
     df = copy_number.data.df.iloc[:, 2:]
-    df = df.fillna(df.median())
     X = df.T.to_numpy()
     predictions = model.predict(X)
     df = load_cnv_table()
