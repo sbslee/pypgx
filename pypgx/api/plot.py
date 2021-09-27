@@ -40,7 +40,7 @@ def _plot_exons(gene, assembly, ax):
 ##################
 
 def plot_bam_copy_number(
-    copy_number, path=None, samples=None, ymin=None, ymax=None
+    copy_number, path=None, samples=None, ymin=None, ymax=None, fitted=False
 ):
     """
     Plot copy number profile with BAM data.
@@ -57,6 +57,8 @@ def plot_bam_copy_number(
         Y-axis bottom.
     ymax : float, optional
         Y-axis top.
+    fitted : bool, default: False
+        If True, show the fitted line as well.
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
@@ -73,6 +75,9 @@ def plot_bam_copy_number(
 
             _plot_exons(copy_number.metadata['Gene'], copy_number.metadata['Assembly'], ax1)
             copy_number.data.plot_region(sample, ax=ax2, legend=False)
+
+            if fitted:
+                utils._process_copy_number(copy_number).data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
             ax2.set_xlabel('Coordinate (Mb)', fontsize=25)

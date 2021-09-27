@@ -49,9 +49,14 @@ def create_parser(subparsers):
         type=float,
         help='Y-axis top.'
     )
+    parser.add_argument(
+        '--fitted',
+        action='store_true',
+        help='Show the fitted line as well.'
+    )
 
 def main(args):
     plot.plot_bam_copy_number(
         args.copy_number, path=args.path, samples=args.samples,
-        ymin=args.ymin, ymax=args.ymax
+        ymin=args.ymin, ymax=args.ymax, fitted=args.fitted
     )
