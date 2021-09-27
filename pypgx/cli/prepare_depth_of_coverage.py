@@ -15,8 +15,8 @@ Input BAM files must be specified with either '--bam' or '--fn', but it's an err
 By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} depth-of-coverage.tsv --bam A.bam B.bam
-  $ fuc {fuc.api.common._script_name()} depth-of-coverage.tsv --fn bam.list
+  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.tsv --bam A.bam B.bam
+  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.tsv --fn bam.list
 """
 
 def create_parser(subparsers):

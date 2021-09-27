@@ -200,10 +200,10 @@ compute-target-depth
    By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
    
    Usage examples:
-     $ fuc compute-target-depth gene out.zip --bam A.bam B.bam
-     $ fuc compute-target-depth gene out.zip --fn bam.list
-     $ fuc compute-target-depth gene out.zip --fn bam.list --assembly GRCh38
-     $ fuc compute-target-depth gene out.zip --fn bam.list --bed panel.bed
+     $ pypgx compute-target-depth gene out.zip --bam A.bam B.bam
+     $ pypgx compute-target-depth gene out.zip --fn bam.list
+     $ pypgx compute-target-depth gene out.zip --fn bam.list --assembly GRCh38
+     $ pypgx compute-target-depth gene out.zip --fn bam.list --bed panel.bed
    
    Positional arguments:
      gene                  Target gene.
@@ -558,8 +558,8 @@ prepare-depth-of-coverage
    By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
    
    Usage examples:
-     $ fuc prepare-depth-of-coverage depth-of-coverage.tsv --bam A.bam B.bam
-     $ fuc prepare-depth-of-coverage depth-of-coverage.tsv --fn bam.list
+     $ pypgx prepare-depth-of-coverage depth-of-coverage.tsv --bam A.bam B.bam
+     $ pypgx prepare-depth-of-coverage depth-of-coverage.tsv --fn bam.list
    
    Positional arguments:
      depth-of-coverage     Depth of coverage file.
