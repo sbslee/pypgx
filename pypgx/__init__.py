@@ -56,7 +56,7 @@ from .api.genotype import (
 )
 
 from .api.pipeline import (
-    run_ngs_pipeline,
+    run_wgs_pipeline,
 )
 
 from .sdk import (

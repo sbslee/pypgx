@@ -225,11 +225,11 @@ Above will print:
     Control=VDR
     Samples=None
 
-We can run the NGS pipeline for the *CYP2D6* gene:
+We can run the WGS pipeline for the *CYP2D6* gene:
 
 .. code-block:: text
 
-    $ pypgx run-ngs-pipeline \\
+    $ pypgx run-wgs-pipeline \\
     CYP2D6 \\
     CYP2D6-pipeline \\
     --variants variants.vcf \\

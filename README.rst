@@ -192,7 +192,7 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for the target gene.
+       run-wgs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -241,11 +241,11 @@ Above will print:
     Control=VDR
     Samples=None
 
-We can run the NGS pipeline for the *CYP2D6* gene:
+We can run the WGS pipeline for the *CYP2D6* gene:
 
 .. code-block:: text
 
-    $ pypgx run-ngs-pipeline \
+    $ pypgx run-wgs-pipeline \
     CYP2D6 \
     CYP2D6-pipeline \
     --variants variants.vcf \

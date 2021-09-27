@@ -8,14 +8,14 @@ import os
 
 from . import utils, plot, genotype
 
-def run_ngs_pipeline(
+def run_wgs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
-    control_statistics=None, panel=None, force=False,
-    do_not_plot_copy_number=False,
+    control_statistics=None, panel=None,
+    force=False, do_not_plot_copy_number=False,
     do_not_plot_allele_fraction=False
 ):
     """
-    Run NGS pipeline for target gene.
+    Run WGS pipeline for a target gene.
 
     Parameters
     ----------

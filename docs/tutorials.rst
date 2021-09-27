@@ -18,11 +18,11 @@ Because downloading the entire WGS dataset is not feasible for most users due to
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/depth-of-coverage.tsv.gz
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/control-statistics-VDR.zip
 
-Next, run the next-generation sequencing (NGS) pipeline:
+Next, run the WGS pipeline:
 
 .. code-block:: text
 
-  $ pypgx run-ngs-pipeline \
+  $ pypgx run-wgs-pipeline \
   CYP2D6 \
   CYP2D6-pipeline \
   --variants variants.vcf.gz \

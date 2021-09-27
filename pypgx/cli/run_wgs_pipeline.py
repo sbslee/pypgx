@@ -6,7 +6,7 @@ import fuc
 
 description = f"""
 #########################################
-# Run NGS pipeline for the target gene. #
+# Run WGS pipeline for the target gene. #
 #########################################
 
 Usage examples:
@@ -65,7 +65,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    pipeline.run_ngs_pipeline(
+    pipeline.run_wgs_pipeline(
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
         control_statistics=args.control_statistics,
