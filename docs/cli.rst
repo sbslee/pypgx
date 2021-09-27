@@ -546,6 +546,7 @@ prepare-depth-of-coverage
    $ pypgx prepare-depth-of-coverage -h
    usage: pypgx prepare-depth-of-coverage [-h] [--bam PATH [PATH ...]]
                                           [--fn PATH] [--assembly TEXT]
+                                          [--bed PATH]
                                           depth-of-coverage
    
    ##############################################################
@@ -553,6 +554,8 @@ prepare-depth-of-coverage
    ##############################################################
    
    Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+   
+   By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
    
    Usage examples:
      $ fuc prepare-depth-of-coverage depth-of-coverage.tsv --bam A.bam B.bam
@@ -567,6 +570,7 @@ prepare-depth-of-coverage
                            One or more BAM files.
      --fn PATH             File containing one BAM file per line.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            BED file.
 
 print-metadata
 ==============
