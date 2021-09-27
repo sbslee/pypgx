@@ -1660,6 +1660,8 @@ def prepare_depth_of_coverage(
         )
         cfs.append(cf)
 
+    cf = pycov.concat(cfs)
+
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
@@ -1679,10 +1681,7 @@ def prepare_depth_of_coverage(
     else:
         metadata['Platform'] = 'WGS'
 
-    data = pycov.concat(cfs)
-    archive = sdk.Archive(metadata, data)
-
-    return archive
+    return sdk.Archive(metadata, cf)
 
 def print_metadata(input):
     """

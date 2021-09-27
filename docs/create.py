@@ -147,7 +147,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
 - ``CovFrame[DepthOfCoverage]``
     * CovFrame for storing read depth for all target genes with SV.
-    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``.
 - ``CovFrame[ReadDepth]``
     * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
