@@ -118,8 +118,11 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+- ``CovFrame[DepthOfCoverage]``
+    * CovFrame for storing read depth for all target genes with SV.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
 - ``CovFrame[ReadDepth]``
-    * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
+    * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
@@ -190,7 +193,7 @@ For getting help on the CLI:
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for target genes with SV.
+                           Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-wgs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.

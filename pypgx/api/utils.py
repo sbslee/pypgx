@@ -175,17 +175,17 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
 
     Parameters
     ----------
-    genotypes : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Genotypes].
-    alleles : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Alleles].
-    cnv_calls : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[CNVCalls].
+    genotypes : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[Genotypes].
+    alleles : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[Alleles].
+    cnv_calls : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Results].
+        Archive object with the semantic type SampleTable[Results].
     """
     if isinstance(genotypes, str):
         genotypes = sdk.Archive.from_file(genotypes)
@@ -264,7 +264,7 @@ def compute_control_statistics(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Statistcs].
+        Archive object with the semantic type SampleTable[Statistcs].
     """
     bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
@@ -322,10 +322,10 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
 
     Parameters
     ----------
-    read_depth : pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
-    control_statistcs : pypgx.Archive
-        Archive file with the semandtic type SampleTable[Statistics].
+    read_depth : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[ReadDepth].
+    control_statistcs : str or pypgx.Archive
+        Archive file or object with the semandtic type SampleTable[Statistics].
     samples : list, optional
         List of known samples without SV.
 
@@ -400,7 +400,7 @@ def compute_target_depth(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
+        Archive object with the semantic type CovFrame[ReadDepth].
     """
     metadata = {
         'Gene': gene,
@@ -446,14 +446,14 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
-        Archive file with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported].
     phased_variants : str or pypgx.Archive
-        Archive file with the semandtic type VcfFrame[Phased].
+        Archive file or object with the semandtic type VcfFrame[Phased].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Consolidated].
+        Archive object with the semantic type VcfFrame[Consolidated].
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
@@ -549,8 +549,8 @@ def estimate_phase_beagle(
 
     Parameters
     ----------
-    imported_variants : str
-        Archive file with the semantic type VcfFrame[Imported].
+    imported_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Imported].
     panel : str, optional
         Reference haplotype panel. By default, the 1KGP panel is used.
     impute : bool, default: False
@@ -559,7 +559,7 @@ def estimate_phase_beagle(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Phased].
+        Archive object with the semantic type VcfFrame[Phased].
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
@@ -602,8 +602,8 @@ def filter_samples(archive, samples=None, exclude=False, fn=None):
 
     Parameters
     ----------
-    archive : pypgx.archive or str
-        Archive object or file.
+    archive : str or pypgx.archive
+        Archive file or object.
     samples : str or list
         Sample name or list of names (the order matters).
     exclude : bool, default: False
@@ -943,7 +943,7 @@ def has_score(gene):
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
 def import_read_depth(
-    gene, coverage, assembly='GRCh37', platform='WGS'
+    gene, depth_of_coverage
 ):
     """
     Import read depth data for target gene.
@@ -952,33 +952,25 @@ def import_read_depth(
     ----------
     gene : str
         Gene name.
-    coverage : fuc.pycov.CovFrame or str
-        Depth of coverage file (zipped or unzipped).
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-    platform : {'WGS', 'Targeted'}, default: 'WGS'
-        NGS platform.
+    depth_of_coverage : str or pypgx.Archive
+        Archive file or object with the semantic type
+        CovFrame[DepthOfCoverage].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
+        Archive object with the semantic type CovFrame[ReadDepth].
     """
-    if isinstance(coverage, str):
-        cf = pycov.CovFrame.from_file(coverage)
-    else:
-        cf = coverage
+    if isinstance(depth_of_coverage, str):
+        depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
 
-    region = get_region(gene, assembly=assembly)
+    depth_of_coverage.check('CovFrame[DepthOfCoverage]')
 
-    data = cf.chr_prefix().slice(region)
-
-    metadata = {
-        'Gene': gene,
-        'Assembly': assembly,
-        'SemanticType': 'CovFrame[ReadDepth]',
-        'Platform': platform,
-    }
+    metadata = depth_of_coverage.copy_metadata()
+    region = get_region(gene, assembly=metadata['Assembly'])
+    data = depth_of_coverage.data.chr_prefix().slice(region)
+    metadata['Gene'] = gene
+    metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
     return sdk.Archive(metadata, data)
 
@@ -998,7 +990,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Imported].
+        Archive object with the semantic type VcfFrame[Imported].
     """
     if isinstance(vcf, str):
         vf = pyvcf.VcfFrame.from_file(vcf)
@@ -1470,7 +1462,7 @@ def predict_cnv(copy_number):
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[CNVCalls].
+        Archive object with the semantic type SampleTable[CNVCalls].
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
@@ -1748,12 +1740,12 @@ def test_cnv_caller(
 
     Parameters
     ----------
-    cnv_caller : pypgx.Archive
-        Archive file with the semantic type Model[CNV].
-    copy_number : pypgx.Archive
-        Archive file with the semantic type CovFrame[CopyNumber].
-    cnv_calls : pypgx.Archive
-        Archive file with the semantic type SampleTable[CNVCalls].
+    cnv_caller : str or pypgx.Archive
+        Archive file or object with the semantic type Model[CNV].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    cnv_calls : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
         Write the confusion matrix as a CSV file.
     """

@@ -47,7 +47,7 @@ For getting help on the CLI:
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for target genes with SV.
+                           Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-wgs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
@@ -337,11 +337,11 @@ import-read-depth
    ###########################################
    
    Usage examples:
-     $ pypgx import-read-depth CYP2D6 depth-of-coverage.tsv CYP2D6-read-depth.zip
+     $ pypgx import-read-depth CYP2D6 depth-of-coverage.zip CYP2D6-read-depth.zip
    
    Positional arguments:
      gene               Target gene.
-     depth-of-coverage  Depth of coverage file (zipped or unzipped).
+     depth-of-coverage  Archive file with the semantic type CovFrame[DepthOfCoverage].
      read-depth         Archive file with the semantic type CovFrame[ReadDepth].
    
    Optional arguments:
@@ -549,20 +549,20 @@ prepare-depth-of-coverage
                                           [--bed PATH]
                                           depth-of-coverage
    
-   ##############################################################
-   # Prepare a depth of coverage file for target genes with SV. #
-   ##############################################################
+   ##################################################################
+   # Prepare a depth of coverage file for all target genes with SV. #
+   ##################################################################
    
    Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
    
    By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
    
    Usage examples:
-     $ pypgx prepare-depth-of-coverage depth-of-coverage.tsv --bam A.bam B.bam
-     $ pypgx prepare-depth-of-coverage depth-of-coverage.tsv --fn bam.list
+     $ pypgx prepare-depth-of-coverage depth-of-coverage.zip --bam A.bam B.bam
+     $ pypgx prepare-depth-of-coverage depth-of-coverage.zip --fn bam.list
    
    Positional arguments:
-     depth-of-coverage     Depth of coverage file.
+     depth-of-coverage     Archive file with the semantic type CovFrame[DepthOfCoverage].
    
    Optional arguments:
      -h, --help            Show this help message and exit.

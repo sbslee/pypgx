@@ -11,6 +11,7 @@ Changelog
 * Add ``bed`` argument to :command:`prepare-depth-of-coverage` command.
 * Rename command :command:`run-ngs-pipeline-tsv` to :command:`run-wgs-pipeline`.
 * Update :command:`prepare-depth-of-coverage` command to output an archive file.
+* Update :command:`import-read-depth` command to accept archive file as input instead of TSV file.
 
 0.4.1 (2021-09-21)
 ------------------

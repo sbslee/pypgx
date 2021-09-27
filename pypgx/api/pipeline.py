@@ -26,7 +26,8 @@ def run_wgs_pipeline(
     variants : str, optional
         VCF file (zipped or unzipped).
     depth_of_coverage : str, optional
-        Depth of coverage file (zipped or unzipped).
+        Archive file or object with the semantic type
+        CovFrame[DepthOfCoverage].
     control_statistics : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Statistics].
     panel : str, optional

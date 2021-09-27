@@ -11,7 +11,7 @@ description = f"""
 ###########################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 depth-of-coverage.tsv CYP2D6-read-depth.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6 depth-of-coverage.zip CYP2D6-read-depth.zip
 """
 
 def create_parser(subparsers):
@@ -28,7 +28,7 @@ def create_parser(subparsers):
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Depth of coverage file (zipped or unzipped).'
+        help='Archive file with the semantic type CovFrame[DepthOfCoverage].'
     )
     parser.add_argument(
         'read_depth',
