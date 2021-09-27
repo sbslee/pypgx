@@ -6,30 +6,30 @@ import fuc
 import pysam
 
 description = f"""
-##############################################################
-# Prepare a depth of coverage file for target genes with SV. #
-##############################################################
+##################################################################
+# Prepare a depth of coverage file for all target genes with SV. #
+##################################################################
 
 Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
 
 By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.tsv --bam A.bam B.bam
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.tsv --fn bam.list
+  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --bam A.bam B.bam
+  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --fn bam.list
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Prepare a depth of coverage file for target genes with SV.',
+        help='Prepare a depth of coverage file for all target genes with SV.',
         description=description,
     )
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Depth of coverage file.'
+        help='Archive file with the semantic type CovFrame[DepthOfCoverage].'
     )
     parser.add_argument(
         '--bam',
@@ -55,7 +55,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    cf = utils.prepare_depth_of_coverage(
+    archive = utils.prepare_depth_of_coverage(
         bam=args.bam, fn=args.fn, assembly=args.assembly, bed=args.bed
     )
-    cf.to_file(args.depth_of_coverage)
+    archive.to_file(args.depth_of_coverage)

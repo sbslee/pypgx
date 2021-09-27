@@ -60,8 +60,8 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    result = utils.compute_target_depth(
+    archive = utils.compute_target_depth(
         args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly,
         bed=args.bed
     )
-    result.to_file(args.output)
+    archive.to_file(args.output)

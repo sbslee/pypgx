@@ -435,9 +435,9 @@ def compute_target_depth(
     else:
         metadata['Platform'] = 'WGS'
 
-    result = sdk.Archive(metadata, data)
+    archive = sdk.Archive(metadata, data)
 
-    return result
+    return archive
 
 def create_consolidated_vcf(imported_variants, phased_variants):
     """
@@ -1625,7 +1625,7 @@ def prepare_depth_of_coverage(
     bam=None, fn=None, assembly='GRCh37', bed=None
 ):
     """
-    Prepare a depth of coverage file for target genes with SV.
+    Prepare a depth of coverage file for all target genes with SV.
 
     By default, the input data is assumed to be WGS. If it's targeted
     sequencing, you must provide a BED file with ``bed`` to indicate
@@ -1644,9 +1644,14 @@ def prepare_depth_of_coverage(
 
     Returns
     -------
-    fuc.pycov.CovFrame
-        CovFrame object.
+    pypgx.Archive
+        Archive object with the semantic type CovFrame[DepthOfCoverage].
     """
+    metadata = {
+        'Assembly': assembly,
+        'SemanticType': 'CovFrame[DepthOfCoverage]',
+    }
+
     bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     regions = create_regions_bed(
@@ -1664,6 +1669,7 @@ def prepare_depth_of_coverage(
         cfs.append(cf)
 
     if bed:
+        metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
         if any(['chr' in x for x in bf.contigs]):
             bed_prefix = 'chr'
@@ -1678,8 +1684,13 @@ def prepare_depth_of_coverage(
         else:
             bf = bf.chr_prefix(mode='remove')
         cf = cf.mask_bed(bf, opposite=True)
+    else:
+        metadata['Platform'] = 'WGS'
 
-    return pycov.concat(cfs)
+    data = pycov.concat(cfs)
+    archive = sdk.Archive(metadata, data)
+
+    return archive
 
 def print_metadata(input):
     """

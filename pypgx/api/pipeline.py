@@ -80,9 +80,6 @@ def run_wgs_pipeline(
             )
 
     genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)
-
     genotypes.to_file(f'{output}/genotypes.zip')
-
     results = utils.combine_results(genotypes=genotypes, alleles=alleles, cnv_calls=cnv_calls)
-
     results.to_file(f'{output}/results.zip')

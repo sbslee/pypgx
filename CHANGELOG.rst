@@ -10,6 +10,7 @@ Changelog
 * Rename command :command:`create-read-depth-tsv` to :command:`prepare-depth-of-coverage`.
 * Add ``bed`` argument to :command:`prepare-depth-of-coverage` command.
 * Rename command :command:`run-ngs-pipeline-tsv` to :command:`run-wgs-pipeline`.
+* Update :command:`prepare-depth-of-coverage` command to output an archive file.
 
 0.4.1 (2021-09-21)
 ------------------

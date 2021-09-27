@@ -145,8 +145,11 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+- ``CovFrame[DepthOfCoverage]``
+    * CovFrame for storing read depth for all target genes with SV.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
 - ``CovFrame[ReadDepth]``
-    * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
+    * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
