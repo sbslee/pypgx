@@ -12,6 +12,7 @@ Changelog
 * Update :command:`prepare-depth-of-coverage` command to output archive file instead of TSV file.
 * Update :command:`import-read-depth` command to accept archive file as input instead of TSV file.
 * Add ``fitted`` argument to ``api.plot.plot_bam_copy_number`` method.
+* From now on, missing copy number will be imputed with forward filling instead of column median.
 
 0.4.1 (2021-09-21)
 ------------------
