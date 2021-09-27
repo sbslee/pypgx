@@ -49,7 +49,7 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-wgs-pipeline    Run NGS pipeline for the target gene.
+       run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -593,13 +593,13 @@ print-metadata
    Optional arguments:
      -h, --help  Show this help message and exit.
 
-run-wgs-pipeline
+run-ngs-pipeline
 ================
 
 .. code-block:: text
 
-   $ pypgx run-wgs-pipeline -h
-   usage: pypgx run-wgs-pipeline [-h] [--variants PATH]
+   $ pypgx run-ngs-pipeline -h
+   usage: pypgx run-ngs-pipeline [-h] [--variants PATH]
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--panel PATH]
                                  [--force] [--do-not-plot-copy-number]
@@ -607,11 +607,11 @@ run-wgs-pipeline
                                  gene output
    
    #########################################
-   # Run WGS pipeline for the target gene. #
+   # Run NGS pipeline for the target gene. #
    #########################################
    
    Usage examples:
-     $ pypgx run-wgs-pipeline CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
+     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
    
    Positional arguments:
      gene                  Target gene.

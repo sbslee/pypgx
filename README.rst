@@ -120,7 +120,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
 - ``CovFrame[DepthOfCoverage]``
     * CovFrame for storing read depth for all target genes with SV.
-    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``.
 - ``CovFrame[ReadDepth]``
     * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
@@ -195,7 +195,7 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-wgs-pipeline    Run NGS pipeline for the target gene.
+       run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -244,15 +244,15 @@ Above will print:
     Control=VDR
     Samples=None
 
-We can run the WGS pipeline for the *CYP2D6* gene:
+We can run the NGS pipeline for the *CYP2D6* gene:
 
 .. code-block:: text
 
-    $ pypgx run-wgs-pipeline \
+    $ pypgx run-ngs-pipeline \
     CYP2D6 \
     CYP2D6-pipeline \
     --variants variants.vcf \
-    --depth-of-coverage depth-of-coverage.tsv \
+    --depth-of-coverage depth-of-coverage.zip \
     --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

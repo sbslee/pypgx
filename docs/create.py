@@ -228,15 +228,15 @@ Above will print:
     Control=VDR
     Samples=None
 
-We can run the WGS pipeline for the *CYP2D6* gene:
+We can run the NGS pipeline for the *CYP2D6* gene:
 
 .. code-block:: text
 
-    $ pypgx run-wgs-pipeline \\
+    $ pypgx run-ngs-pipeline \\
     CYP2D6 \\
     CYP2D6-pipeline \\
     --variants variants.vcf \\
-    --depth-of-coverage depth-of-coverage.tsv \\
+    --depth-of-coverage depth-of-coverage.zip \\
     --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

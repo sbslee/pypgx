@@ -10,7 +10,7 @@ from .. import sdk
 
 from . import utils, plot, genotype
 
-def run_wgs_pipeline(
+def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
     control_statistics=None, panel=None,
     force=False, do_not_plot_copy_number=False,
@@ -69,16 +69,20 @@ def run_wgs_pipeline(
     if gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
         if isinstance(depth_of_coverage, str):
             depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
+
         depth_of_coverage.check('CovFrame[DepthOfCoverage]')
-        if depth_of_coverage.metadata['Platform'] != 'WGS':
-            raise ValueError('CovFrame[DepthOfCoverage] is not WGS')
+
         if control_statistics is None:
             raise ValueError('SV detection requires SampleTable[Statistcs]')
+
         if isinstance(control_statistics, str):
             control_statistics = sdk.Archive.from_file(control_statistics)
+
         control_statistics.check('SampleTable[Statistics]')
-        if control_statistics.metadata['Platform'] != 'WGS':
-            raise ValueError('SampleTable[Statistics] is not WGS')
+
+        if depth_of_coverage.metadata['Platform'] != control_statistics.metadata['Platform']:
+            raise ValueError('Different platforms detected')
+
         read_depth = utils.import_read_depth(gene, depth_of_coverage)
         read_depth.to_file(f'{output}/read-depth.zip')
         copy_number = utils.compute_copy_number(read_depth, control_statistics)
