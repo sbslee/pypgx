@@ -12,18 +12,18 @@ class TestPypgx(unittest.TestCase):
 
         for assembly in ['GRCh37', 'GRCh38']:
             # Find duplicate alleles with the same definition.
-            i = df[[assembly, 'SV']].dropna().duplicated(keep=False)
-            l = sorted(df[[assembly, 'SV']].dropna()[i][assembly].to_list())
+            i = df[[f'{assembly}Core', 'SV']].dropna().duplicated(keep=False)
+            l = sorted(df[[f'{assembly}Core', 'SV']].dropna()[i][f'{assembly}Core'].to_list())
             if l:
                 raise ValueError(f'Found duplicate alleles in {assembly}: {l}')
 
             def one_row(r):
-                if pd.isna(r[assembly]):
+                if pd.isna(r[f'{assembly}Core']):
                     pass
                 else:
-                    ordered = ','.join(sorted(r[assembly].split(','), key=lambda x: common.parse_variant(x)[1]))
-                    if r[assembly] != ordered:
-                        raise ValueError(f"Variant are not sorted: '{r[assembly]}' should be changed to '{ordered}'")
+                    ordered = ','.join(sorted(r[f'{assembly}Core'].split(','), key=lambda x: common.parse_variant(x)[1]))
+                    if r[f'{assembly}Core'] != ordered:
+                        raise ValueError(f"Variant are not sorted: '{r[f'{assembly}Core']}' should be changed to '{ordered}'")
 
             df.apply(one_row, axis=1)
 
@@ -67,11 +67,14 @@ class TestPypgx(unittest.TestCase):
             for assembly in ['GRCh37', 'GRCh38']:
                 variants = []
                 for i, r in temp1.iterrows():
-                    if pd.isna(r[assembly]):
-                        continue
-                    for variant in r[assembly].split(','):
-                        if variant not in variants:
-                            variants.append(variant)
+                    if not pd.isna(r[f'{assembly}Core']):
+                        for variant in r[f'{assembly}Core'].split(','):
+                            if variant not in variants:
+                                variants.append(variant)
+                    if not pd.isna(r[f'{assembly}Tag']):
+                        for variant in r[f'{assembly}Tag'].split(','):
+                            if variant not in variants:
+                                variants.append(variant)
                 s = temp2[f'{assembly}Name'].unique()
                 diff = set(variants) ^ set(s[~pd.isna(s)])
                 if diff:

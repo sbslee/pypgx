@@ -116,20 +116,20 @@ def build_definition_table(gene, assembly='GRCh37'):
     df1 = df1[df1.Gene == gene]
     variants = []
     for i, r in df1.iterrows():
-        if pd.isna(r[assembly]):
+        if pd.isna(r[f'{assembly}Core']):
             continue
-        for variant in r[assembly].split(','):
+        for variant in r[f'{assembly}Core'].split(','):
             if variant not in variants:
                 variants.append(variant)
     data = {x: [] for x in pyvcf.HEADERS}
 
     for i, r in df1.iterrows():
-        if r.SV or pd.isna(r[assembly]):
+        if r.SV or pd.isna(r[f'{assembly}Core']):
             continue
 
         data[r.StarAllele] = [
-            '0' if pd.isna(r[assembly]) else
-            '1' if x in r[assembly].split(',') else
+            '0' if pd.isna(r[f'{assembly}Core']) else
+            '1' if x in r[f'{assembly}Core'].split(',') else
             '0' for x in variants
         ]
 
@@ -495,6 +495,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
         return r
 
     vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
+    vf3.df.INFO = 'Phased'
     vf3.df.FORMAT = 'GT:AD:DP:AF'
 
     vf4 = vf1.filter_vcf(vf2, opposite=True)
@@ -1189,7 +1190,7 @@ def list_variants(gene, allele, assembly='GRCh37'):
     if df.empty:
         raise AlleleNotFoundError(gene, allele)
 
-    variants = df[assembly].values[0]
+    variants = df[f'{assembly}Core'].values[0]
 
     if pd.isna(variants):
         return []
