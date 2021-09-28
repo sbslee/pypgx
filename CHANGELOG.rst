@@ -15,6 +15,7 @@ Changelog
 * From now on, missing copy number will be imputed with forward filling instead of column median.
 * Update :command:`predict-cnv` command to support a user-defined CNV caller.
 * Add **Database of Pharmacogenomic Structural Variants (DPSV)** page.
+* Update :command:`predict-alleles` command to output variant data even for alleles in ``AlternativePhase`` column.
 
 0.4.1 (2021-09-21)
 ------------------

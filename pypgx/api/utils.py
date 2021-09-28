@@ -1433,6 +1433,7 @@ def predict_alleles(consolidated_variants):
             else:
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
+                all_alleles += [x for x in candidates if x not in all_alleles]
                 all_alleles = sort_alleles(gene, all_alleles)
             samples[sample].append(';'.join(candidates) + ';')
 

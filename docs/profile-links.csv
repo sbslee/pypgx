@@ -1,2 +1,2 @@
-Gene,SampleID,CopyNumberProfile,AlleleFractionProfile
-CYP2B6,3fcca708192c4ffe8e57318c7d64e480,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-CN.png>`,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-AF.png>`
+Gene,SV Name,Study,Sample ID,BAM ID,Copy Number Profile,Allele Fraction Profile
+CYP2B6,Hybrid,`GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__,NA19178,3fcca708192c4ffe8e57318c7d64e480,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-CN.png>`,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-AF.png>`
