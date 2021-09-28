@@ -52,7 +52,7 @@ def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
     region = get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
     chrom, start, end = common.parse_region(region)
-    
+
     if (end - start + 1) > copy_number.data.shape[0]:
         temp = pd.DataFrame.from_dict({'Temp': range(int(df.Position.iat[0]-1), int(df.Position.iat[-1])+1)})
         temp = temp.merge(df, left_on='Temp', right_on='Position', how='outer')
@@ -1454,7 +1454,7 @@ def predict_alleles(consolidated_variants):
     result = sdk.Archive(metadata, data)
     return result
 
-def predict_cnv(copy_number):
+def predict_cnv(copy_number, cnv_caller=None):
     """
     Predict CNV for target gene based on copy number data.
 
@@ -1466,6 +1466,9 @@ def predict_cnv(copy_number):
     ----------
     copy_number : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[CopyNumber].
+    cnv_caller : str or pypgx.Archive, optional
+        Archive file or object with the semantic type Model[CNV]. By default,
+        a pre-trained CNV caller will be used.
 
     Returns
     -------
@@ -1477,12 +1480,19 @@ def predict_cnv(copy_number):
 
     copy_number.check('CovFrame[CopyNumber]')
 
+    if cnv_caller is None:
+        cnv_caller = sdk.Archive.from_file(f"{PROGRAM_PATH}/pypgx/api/cnv/{copy_number.metadata['Gene']}.zip").data
+    else:
+        if isinstance(cnv_caller, str):
+            cnv_caller = sdk.Archive.from_file(cnv_caller)
+
+        cnv_caller.check('Model[CNV]')
+
     copy_number = _process_copy_number(copy_number)
-    path = os.path.dirname(os.path.abspath(__file__))
-    model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
+
     df = copy_number.data.df.iloc[:, 2:]
     X = df.T.to_numpy()
-    predictions = model.predict(X)
+    predictions = cnv_caller.predict(X)
     df = load_cnv_table()
     df = df[df.Gene == copy_number.metadata['Gene']]
     cnvs = dict(zip(df.Code, df.Name))

@@ -33,6 +33,11 @@ def create_parser(subparsers):
         metavar='cnv-calls',
         help='Archive file with the semantic type SampleTable[CNVCalls].'
     )
+    parser.add_argument(
+        '--cnv-caller',
+        metavar='PATH',
+        help='Archive file with the semantic type Model[CNV]. By default, a pre-trained CNV caller will be used.'
+    )
 
 def main(args):
     archive = utils.predict_cnv(args.copy_number)

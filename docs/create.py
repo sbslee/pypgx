@@ -66,7 +66,7 @@ Your contributions (e.g. feature ideas, pull requests) are most welcome.
 Installation
 ============
 
-The following packages are required to run PyPGx:
+Following packages are required to run PyPGx:
 
 .. list-table::
    :header-rows: 1

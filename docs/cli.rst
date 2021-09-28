@@ -381,7 +381,7 @@ plot-bam-copy-number
    $ pypgx plot-bam-copy-number -h
    usage: pypgx plot-bam-copy-number [-h] [--path PATH]
                                      [--samples TEXT [TEXT ...]] [--ymin FLOAT]
-                                     [--ymax FLOAT]
+                                     [--ymax FLOAT] [--fitted]
                                      copy-number
    
    ###########################################
@@ -401,6 +401,7 @@ plot-bam-copy-number
                            Create plots only for these samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
+     --fitted              Show the fitted line as well.
 
 plot-bam-read-depth
 ===================
@@ -520,7 +521,7 @@ predict-cnv
 .. code-block:: text
 
    $ pypgx predict-cnv -h
-   usage: pypgx predict-cnv [-h] copy-number cnv-calls
+   usage: pypgx predict-cnv [-h] [--cnv-caller PATH] copy-number cnv-calls
    
    ##########################################################
    # Predict CNV for target gene based on copy number data. #
@@ -532,11 +533,12 @@ predict-cnv
      $ pypgx predict-cnv CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
    
    Positional arguments:
-     copy-number  Archive file with the semantic type CovFrame[CopyNumber].
-     cnv-calls    Archive file with the semantic type SampleTable[CNVCalls].
+     copy-number        Archive file with the semantic type CovFrame[CopyNumber].
+     cnv-calls          Archive file with the semantic type SampleTable[CNVCalls].
    
    Optional arguments:
-     -h, --help   Show this help message and exit.
+     -h, --help         Show this help message and exit.
+     --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By default, a pre-trained CNV caller will be used.
 
 prepare-depth-of-coverage
 =========================
