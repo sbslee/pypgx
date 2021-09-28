@@ -7,6 +7,7 @@ Welcome to PyPGx's documentation!
 
    readme
    tutorials
+   dpsv
    cli
    api
    sdk

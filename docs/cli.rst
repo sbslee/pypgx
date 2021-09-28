@@ -527,7 +527,7 @@ predict-cnv
    # Predict CNV for target gene based on copy number data. #
    ##########################################################
    
-   If there are missing values because, for example, the input data was generated with targeted sequencing, they will be filled in with the sample's median copy number.
+   If there are missing values because, for example, the input data was generated with targeted sequencing, they will be imputed with forward filling.
    
    Usage examples:
      $ pypgx predict-cnv CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip

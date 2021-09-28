@@ -14,6 +14,7 @@ Changelog
 * Add ``fitted`` argument to ``api.plot.plot_bam_copy_number`` method.
 * From now on, missing copy number will be imputed with forward filling instead of column median.
 * Update :command:`predict-cnv` command to support a user-defined CNV caller.
+* Add **Database of Pharmacogenomic Structural Variants (DPSV)** page.
 
 0.4.1 (2021-09-21)
 ------------------

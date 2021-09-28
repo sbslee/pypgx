@@ -1459,8 +1459,8 @@ def predict_cnv(copy_number, cnv_caller=None):
     Predict CNV for target gene based on copy number data.
 
     If there are missing values because, for example, the input data was
-    generated with targeted sequencing, they will be filled in with the
-    sample's median copy number.
+    generated with targeted sequencing, they will be imputed with forward
+    filling.
 
     Parameters
     ----------
