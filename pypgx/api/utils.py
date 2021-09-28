@@ -1481,7 +1481,7 @@ def predict_cnv(copy_number, cnv_caller=None):
     copy_number.check('CovFrame[CopyNumber]')
 
     if cnv_caller is None:
-        cnv_caller = sdk.Archive.from_file(f"{PROGRAM_PATH}/pypgx/api/cnv/{copy_number.metadata['Gene']}.zip").data
+        cnv_caller = sdk.Archive.from_file(f"{PROGRAM_PATH}/pypgx/api/cnv/{copy_number.metadata['Gene']}.zip")
     else:
         if isinstance(cnv_caller, str):
             cnv_caller = sdk.Archive.from_file(cnv_caller)
