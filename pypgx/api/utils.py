@@ -1492,7 +1492,7 @@ def predict_cnv(copy_number, cnv_caller=None):
 
     df = copy_number.data.df.iloc[:, 2:]
     X = df.T.to_numpy()
-    predictions = cnv_caller.predict(X)
+    predictions = cnv_caller.data.predict(X)
     df = load_cnv_table()
     df = df[df.Gene == copy_number.metadata['Gene']]
     cnvs = dict(zip(df.Code, df.Name))
