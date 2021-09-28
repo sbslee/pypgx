@@ -18,6 +18,7 @@ Changelog
 * Update :command:`predict-alleles` command to output variant data even for alleles in ``AlternativePhase`` column.
 * Update :command:`create-consolidated-vcf` command to mark phased variants with 'Phased' in ``INFO`` column in VCF.
 * Update the allele table.
+* Update :meth:`api.utils.list_alleles` method to be able to only list alleles carrying specified variant(s) as a part of definition.
 
 0.4.1 (2021-09-21)
 ------------------

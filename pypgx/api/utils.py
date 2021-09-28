@@ -1019,14 +1019,18 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     return sdk.Archive(metadata, data)
 
-def list_alleles(gene):
+def list_alleles(gene, variants=None, assembly='GRCh37'):
     """
-    List all alleles present in the allele table.
+    List all star alleles present in the allele table.
 
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
+    variants : str or list, optional
+        Only list alleles carrying specified variant(s) as a part of definition.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
 
     Returns
     -------
@@ -1039,12 +1043,28 @@ def list_alleles(gene):
     >>> import pypgx
     >>> pypgx.list_alleles('CYP4F2')
     ['*1', '*2', '*3']
+    >>> pypgx.list_alleles('CYP2B6', variants=['19-41515263-A-G'], assembly='GRCh37')
+    ['*4', '*6', '*7', '*13', '*19', '*20', '*26', '*34', '*36', '*37', '*38']
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
     df = load_allele_table()
     df = df[df.Gene == gene]
+
+    if variants is not None:
+        if isinstance(variants, str):
+            variants = [variants]
+
+        def one_row(r):
+            l = []
+            if not pd.isna(r[f'{assembly}Core']):
+                l += r[f'{assembly}Core'].split(',')
+            if not pd.isna(r[f'{assembly}Tag']):
+                l += r[f'{assembly}Tag'].split(',')
+            return all([x in l for x in variants])
+
+        df = df[df.apply(one_row, axis=1)]
 
     return df.StarAllele.to_list()
 
