@@ -1035,7 +1035,7 @@ def list_alleles(gene, variants=None, assembly='GRCh37'):
     Returns
     -------
     list
-        Available alleles.
+        Requested alleles.
 
     Examples
     --------
