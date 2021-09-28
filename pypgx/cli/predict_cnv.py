@@ -40,5 +40,5 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    archive = utils.predict_cnv(args.copy_number)
+    archive = utils.predict_cnv(args.copy_number, cnv_caller=args.cnv_caller)
     archive.to_file(args.cnv_calls)
