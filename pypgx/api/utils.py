@@ -168,8 +168,8 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
         for b in alleles:
             if a == b:
                 continue
-            v1 = set(list_variants(gene, a, assembly=assembly))
-            v2 = set(list_variants(gene, b, assembly=assembly))
+            v1 = set(list_variants(gene, a, assembly=assembly, mode='core'))
+            v2 = set(list_variants(gene, b, assembly=assembly, mode='core'))
             if v1.issubset(v2):
                 result = True
                 break
@@ -546,7 +546,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                     for star_allele in star_alleles:
                         score = 0
                         for x in anchors[sample][j]:
-                            if x in list_variants(gene, star_allele, assembly=assembly):
+                            if x in list_variants(gene, star_allele, assembly=assembly, mode='all'):
                                 score += 1
                         if score > scores[i][j]:
                             scores[i][j] = score
