@@ -19,6 +19,8 @@ Changelog
 * Update :command:`create-consolidated-vcf` command to mark phased variants with 'Phased' in ``INFO`` column in VCF.
 * Update the allele table.
 * Update :meth:`api.utils.list_alleles` method to be able to only list alleles carrying specified variant(s) as a part of definition.
+* Add ``mode`` argument to :meth:`api.utils.list_variants` method.
+* Update :command:`create-consolidated-vcf` command to implement phase-extension algorithm.
 
 0.4.1 (2021-09-21)
 ------------------

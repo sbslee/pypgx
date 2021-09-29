@@ -476,8 +476,12 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     if imported_variants.metadata['Gene'] != phased_variants.metadata['Gene']:
         raise ValueError('Found two different genes')
 
+    gene = imported_variants.metadata['Gene']
+
     if imported_variants.metadata['Assembly'] != phased_variants.metadata['Assembly']:
         raise ValueError('Found two different assemblies')
+
+    assembly = imported_variants.metadata['Assembly']
 
     vf1 = imported_variants.data.strip('GT:AD:DP:AF')
     vf2 = phased_variants.data.strip('GT')
@@ -500,7 +504,90 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
-    vf5 = vf5.pseudophase()
+
+    anchors = {}
+
+    for i, r in vf2.df.iterrows():
+        for allele in r.ALT.split(','):
+            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
+            for sample in vf2.samples:
+                if sample not in anchors:
+                    anchors[sample] = [[], []]
+                gt = r[sample].split(':')[0].split('|')
+                if gt[0] != '0':
+                    anchors[sample][0].append(variant)
+                if gt[1] != '0':
+                    anchors[sample][1].append(variant)
+
+    def one_row(r):
+        if 'Phased' in r.INFO:
+            return r
+
+        for sample in vf5.samples:
+            if not pyvcf.gt_het(r[sample]):
+                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
+                continue
+
+            scores = [[0, 0], [0, 0]]
+
+            gt = r[sample].split(':')[0].split('/')
+
+            for i in [0, 1]:
+                if gt[i] == '0':
+                    continue
+
+                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
+
+                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                star_alleles = list_alleles(gene, variants=variant, assembly=assembly)
+
+                for j in [0, 1]:
+                    for star_allele in star_alleles:
+                        score = 0
+                        for x in anchors[sample][j]:
+                            if x in list_variants(gene, star_allele, assembly=assembly):
+                                score += 1
+                        if score > scores[i][j]:
+                            scores[i][j] = score
+
+            a = scores[0][0]
+            b = scores[0][1]
+            c = scores[1][0]
+            d = scores[1][1]
+
+            if max([a, b]) == max([c, d]):
+                if a < b and c > d:
+                    flip = True
+                elif a == b and c > d:
+                    flip = True
+                elif a < b and c == d:
+                    flip = True
+                else:
+                    flip = False
+            else:
+                if max([a, b]) > max([c, d]):
+                    if a > b:
+                        flip = False
+                    else:
+                        flip = True
+                else:
+                    if c > d:
+                        flip = True
+                    else:
+                        flip = False
+
+            if flip:
+                result = f'{gt[1]}|{gt[0]}'
+            else:
+                result = f'{gt[0]}|{gt[1]}'
+
+            result = result + ':' + ':'.join(r[sample].split(':')[1:])
+            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
+
+        return r
+
+    vf5.df = vf5.df.apply(one_row, axis=1)
 
     metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
@@ -1009,7 +1096,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     region = get_region(gene, assembly=assembly)
 
     data = vf.chr_prefix().slice(region).strip('GT:AD:DP')
-    data = data.add_af()
+    data = data.add_af().unphase()
 
     metadata = {
         'Gene': gene,
@@ -1169,7 +1256,7 @@ def list_phenotypes(gene=None):
 
     return sorted(list(df.Phenotype.unique()))
 
-def list_variants(gene, allele, assembly='GRCh37'):
+def list_variants(gene, allele, mode='all', assembly='GRCh37'):
     """
     List all variants that define specified allele.
 
@@ -1179,9 +1266,12 @@ def list_variants(gene, allele, assembly='GRCh37'):
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     allele : str
         Star allele.
+    mode : {'all', 'core', 'tag'}, default: 'all'
+        Whether to return all variants, core variants only, or tag variants
+        only.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
 
@@ -1200,6 +1290,12 @@ def list_variants(gene, allele, assembly='GRCh37'):
     ['19-15897578-A-C']
     >>> pypgx.list_variants('CYP4F2', '*1')
     []
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='all')
+    ['19-41495755-T-C', '19-41496461-T-C', '19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='tag')
+    ['19-41495755-T-C', '19-41496461-T-C']
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -1210,12 +1306,29 @@ def list_variants(gene, allele, assembly='GRCh37'):
     if df.empty:
         raise AlleleNotFoundError(gene, allele)
 
-    variants = df[f'{assembly}Core'].values[0]
+    core = df[f'{assembly}Core'].values[0]
+    tag = df[f'{assembly}Tag'].values[0]
 
-    if pd.isna(variants):
-        return []
+    if pd.isna(core):
+        core = []
+    else:
+        core = core.split(',')
 
-    return variants.split(',')
+    if pd.isna(tag):
+        tag = []
+    else:
+        tag = tag.split(',')
+
+    if mode == 'all':
+        results = tag + core
+    elif mode == 'core':
+        results = core
+    elif mode == 'tag':
+        results = tag
+    else:
+        raise ValueError('Incorrect mode')
+
+    return results
 
 def load_allele_table():
     """
