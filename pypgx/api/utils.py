@@ -98,14 +98,14 @@ def build_definition_table(gene, assembly='GRCh37'):
     >>> import pypgx
     >>> vf = pypgx.build_definition_table('CYP4F2')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
-    0    19  15990431  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
-    1    19  16008388  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER      INFO FORMAT *2 *3
+    0    19  15990431  rs2108622   C   T    .      .  VI=V433M     GT  0  1
+    1    19  16008388  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
-    0    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
-    1    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER      INFO FORMAT *2 *3
+    0    19  15879621  rs2108622   C   T    .      .  VI=V433M     GT  0  1
+    1    19  15897578  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -147,12 +147,11 @@ def build_definition_table(gene, assembly='GRCh37'):
         data['ALT'].append(alt)
         data['QUAL'].append('.')
         data['FILTER'].append('.')
-        data['INFO'].append(f'VI={s.Impact.values[0]};SO={s.SO.values[0]}')
+        data['INFO'].append(f'VI={s.Impact.values[0]}')
         data['FORMAT'].append('GT')
     meta = [
         '##fileformat=VCFv4.1',
         '##INFO=<ID=VI,Number=1,Type=String,Description="Variant impact">',
-        '##INFO=<ID=SO,Number=1,Type=String,Description="Sequence ontology">',
         '##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">',
     ]
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
