@@ -523,6 +523,8 @@ def create_consolidated_vcf(imported_variants, phased_variants):
         if 'Phased' in r.INFO:
             return r
 
+        r.FORMAT += ':PE'
+
         for sample in vf5.samples:
             if not pyvcf.gt_het(r[sample]):
                 r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
