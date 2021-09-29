@@ -103,16 +103,7 @@ class CYP2B6Genotyper:
         if r.CNV == 'Normal':
             result = '/'.join(sorted(alleles))
         elif r.CNV == 'Hybrid':
-            h1 = len(r.Haplotype1)
-            h2 = len(r.Haplotype2)
-            if h1 == h2:
-                result = '/'.join(sorted([alleles[0], '*29']))
-            elif h1 < h2:
-                result = '/'.join(sorted([alleles[1], '*29']))
-            elif h1 > h2:
-                result = '/'.join(sorted([alleles[0], '*29']))
-            else:
-                result = 'Unassigned'
+            result = '/'.join(sorted([utils.sort_alleles('CYP2B6', alleles)[0], '*29']))
         else:
             result = 'Unassigned'
         return result

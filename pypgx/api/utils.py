@@ -1877,8 +1877,8 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
     def f(allele):
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
-        variants = list_variants(gene, allele, assembly=assembly)
-        b = len(variants) * -1
+        core = list_variants(gene, allele, assembly=assembly, mode='core')
+        b = len(core) * -1
         return (a, b)
 
     return sorted(alleles, key=f)
