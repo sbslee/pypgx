@@ -234,13 +234,21 @@ class GSTM1Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'DeletionHet':
-            result = '/'.join(sorted([alleles[0], '*0']))
+            if a1 == a2:
+                result = '/'.join(sorted([a1, '*0']))
+            else:
+                result = 'Unassigned'
         elif r.CNV == 'DeletionHom':
             result = '*0/*0'
+        elif r.CNV == 'Duplication':
+            if a1 == a2:
+                result = '/'.join(sorted([a1, a2 + 'x2']))
+            else:
+                result = 'Unassigned'
         elif r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = '/'.join(sorted([a1, a2]))
         else:
             result = 'Unassigned'
         return result
