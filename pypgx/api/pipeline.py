@@ -41,6 +41,9 @@ def run_ngs_pipeline(
     do_not_plot_allele_fraction : bool, default: False
         Do not plot allele fraction profile.
     """
+    if not utils.is_target_gene(gene):
+        raise utils.NotTargetGeneError(gene)
+
     if os.path.exists(output) and force:
         shutil.rmtree(output)
 
