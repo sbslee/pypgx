@@ -41,6 +41,9 @@ class AlleleNotFoundError(Exception):
 class GeneNotFoundError(Exception):
     """Raise if specified gene is not present in the gene table."""
 
+class NotTargetGeneError(Exception):
+    """Raise if specified gene is not one of the target genes."""
+
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
@@ -1106,6 +1109,31 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     }
 
     return sdk.Archive(metadata, data)
+
+def is_target_gene(gene):
+    """
+    Return True if specified gene is one of the target genes.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+
+    Returns
+    -------
+    bool
+        True if specified gene is one of the target genes.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.is_target_gene('CYP2D6')
+    True
+    >>> pypgx.is_target_gene('CYP2D7')
+    False
+    """
+    return gene in list_genes(mode='target')
 
 def list_alleles(gene, variants=None, assembly='GRCh37'):
     """

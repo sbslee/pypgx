@@ -20,6 +20,7 @@ from .api.utils import (
     has_score,
     import_read_depth,
     import_variants,
+    is_target_gene,
     list_alleles,
     list_functions,
     list_genes,

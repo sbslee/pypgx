@@ -24,6 +24,8 @@ Changelog
 * Remove ``SO`` and ``Type`` columns from the variant table.
 * Update :class:`api.genotype.GSTM1Genotyper` class.
 * Update variant information for following alleles: CYP2B6*17, CYP2D6*15, CYP2D6*21, SLCO1B1*S1, SLCO1B1*S2.
+* Add ``NotTargetGeneError`` error.
+* Add new method ``api.utils.is_target_gene``.
 
 0.4.1 (2021-09-21)
 ------------------
