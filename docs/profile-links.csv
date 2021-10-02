@@ -1,2 +1,3 @@
-Gene,SV Name,Study,Sample ID,BAM ID,Copy Number Profile,Allele Fraction Profile
-CYP2B6,Hybrid,`GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__,NA19178,3fcca708192c4ffe8e57318c7d64e480,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-CN.png>`,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-AF.png>`
+Gene,SV Name,Source,Sample ID,Genotype,Copy Number Profile,Allele Fraction Profile,BAM ID
+CYP2B6,Hybrid,`GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__,NA19178,*6/*29,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-CN.png>`,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2B6-1-AF.png>`,3fcca708192c4ffe8e57318c7d64e480
+CYP2D6,Deletion,`GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__,NA18861,*5/*29,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2D6-1-CN.png>`,:download:`click <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/CYP2D6-1-AF.png>`,543558ae08cd44b3850fc7b835484037
