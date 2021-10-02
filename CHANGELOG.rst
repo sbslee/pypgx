@@ -23,7 +23,7 @@ Changelog
 * Update :command:`create-consolidated-vcf` command to implement phase-extension algorithm.
 * Remove ``SO`` and ``Type`` columns from the variant table.
 * Update :class:`api.genotype.GSTM1Genotyper` class.
-* Update variant information for following alleles: CYP2B6*17, CYP2D6*15, CYP2D6*21, SLCO1B1*S1, SLCO1B1*S2.
+* Update variant information for following alleles: CYP1A2*1C, CYP1A2*1F, CYP1A2*1K, CYP1A2*1L, CYP2B6*17, CYP2D6*15, CYP2D6*21, SLCO1B1*S1, SLCO1B1*S2.
 * Add ``NotTargetGeneError`` error.
 * Add new method ``api.utils.is_target_gene``.
 * Update :command:`run-ngs-pipeline` command to check whether input gene is one of the target genes before attempting to run the pipeline.
