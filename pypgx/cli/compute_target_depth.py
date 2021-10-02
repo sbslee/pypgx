@@ -15,10 +15,10 @@ Input BAM files must be specified with either '--bam' or '--fn', but it's an err
 By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
 
 Usage examples:
-  $ fuc {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list --assembly GRCh38
-  $ fuc {fuc.api.common._script_name()} gene out.zip --fn bam.list --bed panel.bed
+  $ pypgx {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
+  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list
+  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list --assembly GRCh38
+  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list --bed panel.bed
 """
 
 def create_parser(subparsers):
@@ -60,8 +60,8 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    result = utils.compute_target_depth(
+    archive = utils.compute_target_depth(
         args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly,
         bed=args.bed
     )
-    result.to_file(args.output)
+    archive.to_file(args.output)

@@ -39,7 +39,7 @@ Your contributions (e.g. feature ideas, pull requests) are most welcome.
 Installation
 ============
 
-The following packages are required to run PyPGx:
+Following packages are required to run PyPGx:
 
 .. list-table::
    :header-rows: 1
@@ -118,8 +118,11 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+- ``CovFrame[DepthOfCoverage]``
+    * CovFrame for storing read depth for all target genes with SV.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``.
 - ``CovFrame[ReadDepth]``
-    * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
+    * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
@@ -173,14 +176,12 @@ For getting help on the CLI:
                            Compute read depth for target gene with BAM data.
        create-consolidated-vcf
                            Create consolidated VCF.
-       create-read-depth-tsv
-                           Compute read depth for target gene with BAM data.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for target gene.
-       import-variants     Import variant data for target gene.
+       import-variants     Import variant data for the target gene.
        plot-bam-copy-number
                            Plot copy number profile with BAM data.
        plot-bam-read-depth
@@ -191,6 +192,8 @@ For getting help on the CLI:
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
        predict-cnv         Predict CNV for target gene based on copy number data.
+       prepare-depth-of-coverage
+                           Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-ngs-pipeline    Run NGS pipeline for the target gene.
        test-cnv-caller     Test a CNV caller for the target gene.
@@ -248,9 +251,8 @@ We can run the NGS pipeline for the *CYP2D6* gene:
     $ pypgx run-ngs-pipeline \
     CYP2D6 \
     CYP2D6-pipeline \
-    --vcf input.vcf \
-    --panel ref.vcf \
-    --tsv input.tsv \
+    --variants variants.vcf \
+    --depth-of-coverage depth-of-coverage.zip \
     --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

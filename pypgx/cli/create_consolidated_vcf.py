@@ -11,7 +11,7 @@ description = f"""
 ############################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} imported.zip phased.zip out.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-imported-variants.zip CYP2D6-phased-variants.zip CYP2D6-consolidated-variants.zip
 """
 
 def create_parser(subparsers):
@@ -22,20 +22,23 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'imported',
+        'imported_variants',
+        metavar='imported-variants',
         help='Archive file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
-        'phased',
+        'phased_variants',
+        metavar='phased-variants',
         help='Archive file with the semantic type VcfFrame[Phased]'
     )
     parser.add_argument(
-        'output',
+        'consolidated_variants',
+        metavar='consolidated-variants',
         help='Archive file with the semantic type VcfFrame[Consolidated].'
     )
 
 def main(args):
-    result = utils.create_consolidated_vcf(
-        args.imported, args.phased
+    archive = utils.create_consolidated_vcf(
+        args.imported_variants, args.phased_variants
     )
-    result.to_file(args.output)
+    archive.to_file(args.consolidated_variants)

@@ -66,7 +66,7 @@ Your contributions (e.g. feature ideas, pull requests) are most welcome.
 Installation
 ============
 
-The following packages are required to run PyPGx:
+Following packages are required to run PyPGx:
 
 .. list-table::
    :header-rows: 1
@@ -145,8 +145,11 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``, ``Control``, ``Samples``.
+- ``CovFrame[DepthOfCoverage]``
+    * CovFrame for storing read depth for all target genes with SV.
+    * Requires following metadata: ``Assembly``, ``SemanticType``, ``Platform``.
 - ``CovFrame[ReadDepth]``
-    * CovFrame for storing target gene's per-base read depth which is computed from BAM files.
+    * CovFrame for storing read depth for single target gene.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``Model[CNV]``
     * Model for calling CNV in target gene.
@@ -232,9 +235,8 @@ We can run the NGS pipeline for the *CYP2D6* gene:
     $ pypgx run-ngs-pipeline \\
     CYP2D6 \\
     CYP2D6-pipeline \\
-    --vcf input.vcf \\
-    --panel ref.vcf \\
-    --tsv input.tsv \\
+    --variants variants.vcf \\
+    --depth-of-coverage depth-of-coverage.zip \\
     --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

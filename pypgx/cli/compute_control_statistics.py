@@ -15,9 +15,10 @@ Input BAM files must be specified with either '--bam' or '--fn', but it's an err
 By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} out.zip --bam A.bam B.bam --gene VDR
-  $ pypgx {fuc.api.common._script_name()} out.zip --fn bam.list --region chr:start-end
-  $ pypgx {fuc.api.common._script_name()} out.zip --fn bam.list --region chr:start-end --assembly GRCh38
+  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --bam A.bam B.bam
+  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --fn bam.list
+  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --fn bam.list --bed probes.bed
+  $ pypgx {fuc.api.common._script_name()} control-statistcs-custom.zip --region chr1:100-200 --fn bam.list
 """
 
 def create_parser(subparsers):
@@ -28,7 +29,8 @@ def create_parser(subparsers):
         description=description,
     )
     parser.add_argument(
-        'output',
+        'control_statistics',
+        metavar='control-statistics',
         help='Archive file with the semantic type SampleTable[Statistics].'
     )
     parser.add_argument(
@@ -69,4 +71,4 @@ def main(args):
         bam=args.bam, fn=args.fn, gene=args.gene, region=args.region,
         assembly=args.assembly, bed=args.bed
     )
-    result.to_file(args.output)
+    result.to_file(args.control_statistics)

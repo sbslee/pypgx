@@ -41,6 +41,9 @@ class AlleleNotFoundError(Exception):
 class GeneNotFoundError(Exception):
     """Raise if specified gene is not present in the gene table."""
 
+class NotTargetGeneError(Exception):
+    """Raise if specified gene is not one of the target genes."""
+
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
@@ -52,12 +55,20 @@ def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
     region = get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
     chrom, start, end = common.parse_region(region)
+
     if (end - start + 1) > copy_number.data.shape[0]:
         temp = pd.DataFrame.from_dict({'Temp': range(int(df.Position.iat[0]-1), int(df.Position.iat[-1])+1)})
         temp = temp.merge(df, left_on='Temp', right_on='Position', how='outer')
         df = temp.drop(columns='Temp')
-    df = df.fillna(df.median())
+
+    df = df.fillna(method='ffill')
+    df = df.fillna(method='bfill')
+
     df.iloc[:, 2:] = df.iloc[:, 2:].apply(lambda c: median_filter(c, size=1000), axis=0)
+
+    if df.isnull().values.any():
+        raise ValueError('Missing values detected')
+
     return sdk.Archive(copy_number.copy_metadata(), pycov.CovFrame(df))
 
 ##################
@@ -90,14 +101,14 @@ def build_definition_table(gene, assembly='GRCh37'):
     >>> import pypgx
     >>> vf = pypgx.build_definition_table('CYP4F2')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
-    0    19  15990431  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
-    1    19  16008388  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER      INFO FORMAT *2 *3
+    0    19  15990431  rs2108622   C   T    .      .  VI=V433M     GT  0  1
+    1    19  16008388  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     >>> vf = pypgx.build_definition_table('CYP4F2', assembly='GRCh38')
     >>> vf.df
-      CHROM       POS         ID REF ALT QUAL FILTER                          INFO FORMAT *2 *3
-    0    19  15879621  rs2108622   C   T    .      .  VI=V433M;SO=Missense Variant     GT  0  1
-    1    19  15897578  rs3093105   A   C    .      .   VI=W12G;SO=Missense Variant     GT  1  0
+      CHROM       POS         ID REF ALT QUAL FILTER      INFO FORMAT *2 *3
+    0    19  15879621  rs2108622   C   T    .      .  VI=V433M     GT  0  1
+    1    19  15897578  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -108,20 +119,20 @@ def build_definition_table(gene, assembly='GRCh37'):
     df1 = df1[df1.Gene == gene]
     variants = []
     for i, r in df1.iterrows():
-        if pd.isna(r[assembly]):
+        if pd.isna(r[f'{assembly}Core']):
             continue
-        for variant in r[assembly].split(','):
+        for variant in r[f'{assembly}Core'].split(','):
             if variant not in variants:
                 variants.append(variant)
     data = {x: [] for x in pyvcf.HEADERS}
 
     for i, r in df1.iterrows():
-        if r.SV or pd.isna(r[assembly]):
+        if r.SV or pd.isna(r[f'{assembly}Core']):
             continue
 
         data[r.StarAllele] = [
-            '0' if pd.isna(r[assembly]) else
-            '1' if x in r[assembly].split(',') else
+            '0' if pd.isna(r[f'{assembly}Core']) else
+            '1' if x in r[f'{assembly}Core'].split(',') else
             '0' for x in variants
         ]
 
@@ -139,12 +150,11 @@ def build_definition_table(gene, assembly='GRCh37'):
         data['ALT'].append(alt)
         data['QUAL'].append('.')
         data['FILTER'].append('.')
-        data['INFO'].append(f'VI={s.Impact.values[0]};SO={s.SO.values[0]}')
+        data['INFO'].append(f'VI={s.Impact.values[0]}')
         data['FORMAT'].append('GT')
     meta = [
         '##fileformat=VCFv4.1',
         '##INFO=<ID=VI,Number=1,Type=String,Description="Variant impact">',
-        '##INFO=<ID=SO,Number=1,Type=String,Description="Sequence ontology">',
         '##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">',
     ]
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
@@ -160,8 +170,8 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
         for b in alleles:
             if a == b:
                 continue
-            v1 = set(list_variants(gene, a, assembly=assembly))
-            v2 = set(list_variants(gene, b, assembly=assembly))
+            v1 = set(list_variants(gene, a, assembly=assembly, mode='core'))
+            v2 = set(list_variants(gene, b, assembly=assembly, mode='core'))
             if v1.issubset(v2):
                 result = True
                 break
@@ -175,17 +185,17 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
 
     Parameters
     ----------
-    genotypes : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Genotypes].
-    alleles : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[Alleles].
-    cnv_calls : pypgx.Archive or str
-        Archive file with the semantic type SampleTable[CNVCalls].
+    genotypes : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[Genotypes].
+    alleles : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[Alleles].
+    cnv_calls : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[CNVCalls].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Results].
+        Archive object with the semantic type SampleTable[Results].
     """
     if isinstance(genotypes, str):
         genotypes = sdk.Archive.from_file(genotypes)
@@ -264,33 +274,14 @@ def compute_control_statistics(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[Statistcs].
+        Archive object with the semantic type SampleTable[Statistcs].
     """
-    bam_files = []
-
-    if bam is None and fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif bam is not None and fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif bam is not None and fn is None:
-        if isinstance(bam, str):
-            bam_files.append(bam)
-        else:
-            bam_files += bam
-    else:
-        bam_files += common.convert_file2list(fn)
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     df = load_gene_table()
 
     if gene is not None:
         region = df[df.Gene == gene][f'{assembly}Region'].values[0]
-
-    if all([pybam.has_chr(x) for x in bam_files]):
-        bam_prefix = 'chr'
-    else:
-        bam_prefix = ''
 
     cf = pycov.CovFrame.from_bam(
         bam=bam_files, region=f'{bam_prefix}{region}', zero=False
@@ -326,7 +317,7 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(read_depth, control_statistcs, samples=None):
+def compute_copy_number(read_depth, control_statistics, samples=None):
     """
     Compute copy number from read depth for target gene.
 
@@ -341,10 +332,10 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
 
     Parameters
     ----------
-    read_depth : pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
-    control_statistcs : pypgx.Archive
-        Archive file with the semandtic type SampleTable[Statistcs].
+    read_depth : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[ReadDepth].
+    control_statistcs : str or pypgx.Archive
+        Archive file or object with the semandtic type SampleTable[Statistics].
     samples : list, optional
         List of known samples without SV.
 
@@ -356,12 +347,19 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
     if isinstance(read_depth, str):
         read_depth = sdk.Archive.from_file(read_depth)
 
-    if isinstance(control_statistcs, str):
-        control_statistcs = sdk.Archive.from_file(control_statistcs)
+    read_depth.check('CovFrame[ReadDepth]')
+
+    if isinstance(control_statistics, str):
+        control_statistics = sdk.Archive.from_file(control_statistics)
+
+    control_statistics.check('SampleTable[Statistics]')
+
+    if set(read_depth.data.samples) != set(control_statistics.data.index):
+        raise ValueError('Different sample sets found')
 
     # Apply intra-sample normalization.
     df = read_depth.data.copy_df()
-    medians = control_statistcs.data['50%']
+    medians = control_statistics.data['50%']
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
 
     # Apply inter-sample normalization.
@@ -375,7 +373,7 @@ def compute_copy_number(read_depth, control_statistcs, samples=None):
     cf = pycov.CovFrame(df)
     metadata = read_depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
-    metadata['Control'] = control_statistcs.metadata['Control']
+    metadata['Control'] = control_statistics.metadata['Control']
     if samples is None:
         metadata['Samples'] = 'None'
     else:
@@ -412,7 +410,7 @@ def compute_target_depth(
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
+        Archive object with the semantic type CovFrame[ReadDepth].
     """
     metadata = {
         'Gene': gene,
@@ -420,26 +418,7 @@ def compute_target_depth(
         'SemanticType': 'CovFrame[ReadDepth]',
     }
 
-    bam_files = []
-
-    if bam is None and fn is None:
-        raise ValueError(
-            "Either the 'bam' or 'fn' parameter must be provided.")
-    elif bam is not None and fn is not None:
-        raise ValueError(
-            "The 'bam' and 'fn' parameters cannot be used together.")
-    elif bam is not None and fn is None:
-        if isinstance(bam, str):
-            bam_files.append(bam)
-        else:
-            bam_files += bam
-    else:
-        bam_files += common.convert_file2list(fn)
-
-    if all([pybam.has_chr(x) for x in bam_files]):
-        bam_prefix = 'chr'
-    else:
-        bam_prefix = ''
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     region = get_region(gene, assembly=assembly)
 
@@ -466,38 +445,52 @@ def compute_target_depth(
     else:
         metadata['Platform'] = 'WGS'
 
-    result = sdk.Archive(metadata, data)
+    archive = sdk.Archive(metadata, data)
 
-    return result
+    return archive
 
-def create_consolidated_vcf(imported, phased):
+def create_consolidated_vcf(imported_variants, phased_variants):
     """
     Create consolidated VCF.
 
     Parameters
     ----------
-    imported : pypgx.Archive
-        Archive file with the semantic type VcfFrame[Imported].
-    phased : pypgx.Archive
-        Archive file with the semandtic type VcfFrame[Phased].
+    imported_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Imported].
+    phased_variants : str or pypgx.Archive
+        Archive file or object with the semandtic type VcfFrame[Phased].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Consolidated].
+        Archive object with the semantic type VcfFrame[Consolidated].
     """
-    if isinstance(imported, str):
-        imported = sdk.Archive.from_file(imported)
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
 
-    if isinstance(phased, str):
-        phased = sdk.Archive.from_file(phased)
+    imported_variants.check('VcfFrame[Imported]')
 
-    imported.data = imported.data.strip('GT:AD:DP:AF')
-    phased.data = phased.data.strip('GT')
+    if isinstance(phased_variants, str):
+        phased_variants = sdk.Archive.from_file(phased_variants)
+
+    phased_variants.check('VcfFrame[Phased]')
+
+    if imported_variants.metadata['Gene'] != phased_variants.metadata['Gene']:
+        raise ValueError('Found two different genes')
+
+    gene = imported_variants.metadata['Gene']
+
+    if imported_variants.metadata['Assembly'] != phased_variants.metadata['Assembly']:
+        raise ValueError('Found two different assemblies')
+
+    assembly = imported_variants.metadata['Assembly']
+
+    vf1 = imported_variants.data.strip('GT:AD:DP:AF')
+    vf2 = phased_variants.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
-        s = imported.data.fetch(variant)
+        s = vf1.fetch(variant)
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -507,51 +500,105 @@ def create_consolidated_vcf(imported, phased):
 
         return r
 
-    vf1 = pyvcf.VcfFrame([], phased.data.df.apply(one_row, axis=1))
-    vf1.df.FORMAT = 'GT:AD:DP:AF'
+    vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
+    vf3.df.INFO = 'Phased'
+    vf3.df.FORMAT = 'GT:AD:DP:AF'
 
-    vf2 = imported.data.filter_vcf(phased.data, opposite=True)
-    vf3 = pyvcf.VcfFrame([], pd.concat([vf1.df, vf2.df])).sort()
-    vf3 = vf3.pseudophase()
+    vf4 = vf1.filter_vcf(vf2, opposite=True)
+    vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
 
-    metadata = phased.copy_metadata()
+    anchors = {}
+
+    for i, r in vf2.df.iterrows():
+        for allele in r.ALT.split(','):
+            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
+            for sample in vf2.samples:
+                if sample not in anchors:
+                    anchors[sample] = [[], []]
+                gt = r[sample].split(':')[0].split('|')
+                if gt[0] != '0':
+                    anchors[sample][0].append(variant)
+                if gt[1] != '0':
+                    anchors[sample][1].append(variant)
+
+    def one_row(r):
+        if 'Phased' in r.INFO:
+            return r
+
+        r.FORMAT += ':PE'
+
+        for sample in vf5.samples:
+            if not pyvcf.gt_het(r[sample]):
+                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
+                continue
+
+            scores = [[0, 0], [0, 0]]
+
+            gt = r[sample].split(':')[0].split('/')
+
+            for i in [0, 1]:
+                if gt[i] == '0':
+                    continue
+
+                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
+
+                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                star_alleles = list_alleles(gene, variants=variant, assembly=assembly)
+
+                for j in [0, 1]:
+                    for star_allele in star_alleles:
+                        score = 0
+                        for x in anchors[sample][j]:
+                            if x in list_variants(gene, star_allele, assembly=assembly, mode='all'):
+                                score += 1
+                        if score > scores[i][j]:
+                            scores[i][j] = score
+
+            a = scores[0][0]
+            b = scores[0][1]
+            c = scores[1][0]
+            d = scores[1][1]
+
+            if max([a, b]) == max([c, d]):
+                if a < b and c > d:
+                    flip = True
+                elif a == b and c > d:
+                    flip = True
+                elif a < b and c == d:
+                    flip = True
+                else:
+                    flip = False
+            else:
+                if max([a, b]) > max([c, d]):
+                    if a > b:
+                        flip = False
+                    else:
+                        flip = True
+                else:
+                    if c > d:
+                        flip = True
+                    else:
+                        flip = False
+
+            if flip:
+                result = f'{gt[1]}|{gt[0]}'
+            else:
+                result = f'{gt[0]}|{gt[1]}'
+
+            result = result + ':' + ':'.join(r[sample].split(':')[1:])
+            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
+
+        return r
+
+    vf5.df = vf5.df.apply(one_row, axis=1)
+
+    metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
-    result = sdk.Archive(metadata, vf3)
+    result = sdk.Archive(metadata, vf5)
 
     return result
-
-def create_read_depth_tsv(bam=None, fn=None, assembly='GRCh37'):
-    """
-    Create TSV file containing read depth for genes with SV.
-
-    Parameters
-    ----------
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-
-    Returns
-    -------
-    fuc.pycov.CovFrame
-        CovFrame object.
-    """
-    regions = create_regions_bed(
-        merge=True, sv_genes=True
-    ).gr.df.apply(
-        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
-    ).to_list()
-
-    cfs = []
-
-    for region in regions:
-        cf = pycov.CovFrame.from_bam(bam=bam, fn=fn, region=region, zero=True)
-        cfs.append(cf)
-
-    return pycov.concat(cfs)
 
 def create_regions_bed(
     assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
@@ -595,50 +642,47 @@ def create_regions_bed(
     return bf
 
 def estimate_phase_beagle(
-    imported_variants, panel, impute=False
+    imported_variants, panel=None, impute=False
 ):
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
-    If your input data is GRCh37, I recommend using the 1000 Genomes Project
-    phase 3 reference panel. You can easily download it thanks to the authors
-    of Beagle:
-
-    .. code-block:: console
-
-        $ wget -r --no-parent http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/
-
     Parameters
     ----------
-    imported_variants : str
-        Archive file with the semantic type VcfFrame[Imported].
-    panel : str
-        Reference haplotype panel.
+    imported_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Imported].
+    panel : str, optional
+        Reference haplotype panel. By default, the 1KGP panel is used.
     impute : bool, default: False
         Whether to perform imputation of missing genotypes.
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Phased].
+        Archive object with the semantic type VcfFrame[Phased].
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
     imported_variants.check('VcfFrame[Imported]')
 
-    region = get_region(imported_variants.metadata['Gene'], assembly=imported_variants.metadata['Assembly'])
-    path = os.path.dirname(os.path.abspath(__file__))
-    program = f'{path}/beagle.28Jun21.220.jar'
+    gene = imported_variants.metadata['Gene']
+    assembly = imported_variants.metadata['Assembly']
+    region = get_region(gene, assembly=assembly)
+    beagle = f'{PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
+    if panel is None:
+        panel = f'{PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
+
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
+
     if imported_variants.data.empty:
         return sdk.Archive(metadata, imported_variants.data.copy())
     with tempfile.TemporaryDirectory() as t:
         imported_variants.data.to_file(f'{t}/input.vcf')
         command = [
-            'java', '-Xmx2g', '-jar', program,
+            'java', '-Xmx2g', '-jar', beagle,
             f'gt={t}/input.vcf',
             f'chrom={region}',
             f'ref={panel}',
@@ -658,8 +702,8 @@ def filter_samples(archive, samples=None, exclude=False, fn=None):
 
     Parameters
     ----------
-    archive : pypgx.archive or str
-        Archive object or file.
+    archive : str or pypgx.archive
+        Archive file or object.
     samples : str or list
         Sample name or list of names (the order matters).
     exclude : bool, default: False
@@ -999,7 +1043,7 @@ def has_score(gene):
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
 def import_read_depth(
-    gene, read_depth, assembly='GRCh37', platform='WGS'
+    gene, depth_of_coverage
 ):
     """
     Import read depth data for target gene.
@@ -1008,44 +1052,36 @@ def import_read_depth(
     ----------
     gene : str
         Gene name.
-    read_depth : fuc.pycov.CovFrame or str
-        TSV file containing read depth (zipped or unzipped).
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
-    platform : {'WGS', 'Targeted'}, default: 'WGS'
-        NGS platform.
+    depth_of_coverage : str or pypgx.Archive
+        Archive file or object with the semantic type
+        CovFrame[DepthOfCoverage].
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type CovFrame[ReadDepth].
+        Archive object with the semantic type CovFrame[ReadDepth].
     """
-    if isinstance(read_depth, str):
-        cf = pycov.CovFrame.from_file(read_depth)
-    else:
-        cf = read_depth
+    if isinstance(depth_of_coverage, str):
+        depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
 
-    region = get_region(gene, assembly=assembly)
+    depth_of_coverage.check('CovFrame[DepthOfCoverage]')
 
-    data = cf.chr_prefix().slice(region)
-
-    metadata = {
-        'Gene': gene,
-        'Assembly': assembly,
-        'SemanticType': 'CovFrame[ReadDepth]',
-        'Platform': platform,
-    }
+    metadata = depth_of_coverage.copy_metadata()
+    region = get_region(gene, assembly=metadata['Assembly'])
+    data = depth_of_coverage.data.chr_prefix().slice(region)
+    metadata['Gene'] = gene
+    metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
     return sdk.Archive(metadata, data)
 
 def import_variants(gene, vcf, assembly='GRCh37'):
     """
-    Import variant data for target gene.
+    Import variant data for the target gene.
 
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     vcf : fuc.pyvcf.VcfFrame or str
         VCF file (zipped or unzipped).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
@@ -1054,7 +1090,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type VcfFrame[Imported].
+        Archive object with the semantic type VcfFrame[Imported].
     """
     if isinstance(vcf, str):
         vf = pyvcf.VcfFrame.from_file(vcf)
@@ -1063,8 +1099,8 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     region = get_region(gene, assembly=assembly)
 
-    data = vf.slice(region).strip('GT:AD:DP')
-    data = data.add_af()
+    data = vf.chr_prefix().slice(region).strip('GT:AD:DP')
+    data = data.add_af().unphase()
 
     metadata = {
         'Gene': gene,
@@ -1074,9 +1110,9 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     return sdk.Archive(metadata, data)
 
-def list_alleles(gene):
+def is_target_gene(gene):
     """
-    List all alleles present in the allele table.
+    Return True if specified gene is one of the target genes.
 
     Parameters
     ----------
@@ -1085,8 +1121,37 @@ def list_alleles(gene):
 
     Returns
     -------
+    bool
+        True if specified gene is one of the target genes.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.is_target_gene('CYP2D6')
+    True
+    >>> pypgx.is_target_gene('CYP2D7')
+    False
+    """
+    return gene in list_genes(mode='target')
+
+def list_alleles(gene, variants=None, assembly='GRCh37'):
+    """
+    List all star alleles present in the allele table.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    variants : str or list, optional
+        Only list alleles carrying specified variant(s) as a part of definition.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
     list
-        Available alleles.
+        Requested alleles.
 
     Examples
     --------
@@ -1094,12 +1159,28 @@ def list_alleles(gene):
     >>> import pypgx
     >>> pypgx.list_alleles('CYP4F2')
     ['*1', '*2', '*3']
+    >>> pypgx.list_alleles('CYP2B6', variants=['19-41515263-A-G'], assembly='GRCh37')
+    ['*4', '*6', '*7', '*13', '*19', '*20', '*26', '*34', '*36', '*37', '*38']
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
     df = load_allele_table()
     df = df[df.Gene == gene]
+
+    if variants is not None:
+        if isinstance(variants, str):
+            variants = [variants]
+
+        def one_row(r):
+            l = []
+            if not pd.isna(r[f'{assembly}Core']):
+                l += r[f'{assembly}Core'].split(',')
+            if not pd.isna(r[f'{assembly}Tag']):
+                l += r[f'{assembly}Tag'].split(',')
+            return all([x in l for x in variants])
+
+        df = df[df.apply(one_row, axis=1)]
 
     return df.StarAllele.to_list()
 
@@ -1204,7 +1285,7 @@ def list_phenotypes(gene=None):
 
     return sorted(list(df.Phenotype.unique()))
 
-def list_variants(gene, allele, assembly='GRCh37'):
+def list_variants(gene, allele, mode='all', assembly='GRCh37'):
     """
     List all variants that define specified allele.
 
@@ -1214,9 +1295,12 @@ def list_variants(gene, allele, assembly='GRCh37'):
     Parameters
     ----------
     gene : str
-        Gene name.
+        Target gene.
     allele : str
         Star allele.
+    mode : {'all', 'core', 'tag'}, default: 'all'
+        Whether to return all variants, core variants only, or tag variants
+        only.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
 
@@ -1235,6 +1319,12 @@ def list_variants(gene, allele, assembly='GRCh37'):
     ['19-15897578-A-C']
     >>> pypgx.list_variants('CYP4F2', '*1')
     []
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='all')
+    ['19-41495755-T-C', '19-41496461-T-C', '19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', '*6', mode='tag')
+    ['19-41495755-T-C', '19-41496461-T-C']
     """
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
@@ -1245,12 +1335,29 @@ def list_variants(gene, allele, assembly='GRCh37'):
     if df.empty:
         raise AlleleNotFoundError(gene, allele)
 
-    variants = df[assembly].values[0]
+    core = df[f'{assembly}Core'].values[0]
+    tag = df[f'{assembly}Tag'].values[0]
 
-    if pd.isna(variants):
-        return []
+    if pd.isna(core):
+        core = []
+    else:
+        core = core.split(',')
 
-    return variants.split(',')
+    if pd.isna(tag):
+        tag = []
+    else:
+        tag = tag.split(',')
+
+    if mode == 'all':
+        results = tag + core
+    elif mode == 'core':
+        results = core
+    elif mode == 'tag':
+        results = tag
+    else:
+        raise ValueError('Incorrect mode')
+
+    return results
 
 def load_allele_table():
     """
@@ -1489,6 +1596,7 @@ def predict_alleles(consolidated_variants):
             else:
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
+                all_alleles += [x for x in candidates if x not in all_alleles]
                 all_alleles = sort_alleles(gene, all_alleles)
             samples[sample].append(';'.join(candidates) + ';')
 
@@ -1510,33 +1618,45 @@ def predict_alleles(consolidated_variants):
     result = sdk.Archive(metadata, data)
     return result
 
-def predict_cnv(copy_number):
+def predict_cnv(copy_number, cnv_caller=None):
     """
     Predict CNV for target gene based on copy number data.
 
     If there are missing values because, for example, the input data was
-    generated with targeted sequencing, they will be filled in with the
-    sample's median copy number.
+    generated with targeted sequencing, they will be imputed with forward
+    filling.
 
     Parameters
     ----------
-    target : pypgx.Archive or str
-        Archive file with the semantic type CovFrame[CopyNumber].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    cnv_caller : str or pypgx.Archive, optional
+        Archive file or object with the semantic type Model[CNV]. By default,
+        a pre-trained CNV caller will be used.
 
     Returns
     -------
     pypgx.Archive
-        Archive file with the semantic type SampleTable[CNVCalls].
+        Archive object with the semantic type SampleTable[CNVCalls].
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
+
+    copy_number.check('CovFrame[CopyNumber]')
+
+    if cnv_caller is None:
+        cnv_caller = sdk.Archive.from_file(f"{PROGRAM_PATH}/pypgx/api/cnv/{copy_number.metadata['Gene']}.zip")
+    else:
+        if isinstance(cnv_caller, str):
+            cnv_caller = sdk.Archive.from_file(cnv_caller)
+
+        cnv_caller.check('Model[CNV]')
+
     copy_number = _process_copy_number(copy_number)
-    path = os.path.dirname(os.path.abspath(__file__))
-    model = sdk.Archive.from_file(f"{path}/cnv/{copy_number.metadata['Gene']}.zip").data
+
     df = copy_number.data.df.iloc[:, 2:]
-    df = df.fillna(df.median())
     X = df.T.to_numpy()
-    predictions = model.predict(X)
+    predictions = cnv_caller.data.predict(X)
     df = load_cnv_table()
     df = df[df.Gene == copy_number.metadata['Gene']]
     cnvs = dict(zip(df.Code, df.Name))
@@ -1674,6 +1794,76 @@ def predict_score(gene, allele):
 
     return sum([parsecnv(x) for x in allele.split('+')])
 
+def prepare_depth_of_coverage(
+    bam=None, fn=None, assembly='GRCh37', bed=None
+):
+    """
+    Prepare a depth of coverage file for all target genes with SV.
+
+    By default, the input data is assumed to be WGS. If it's targeted
+    sequencing, you must provide a BED file with ``bed`` to indicate
+    probed regions.
+
+    Parameters
+    ----------
+    bam : list, optional
+        One or more BAM files.
+    fn : str, optional
+        File containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    bed : str, optional
+        BED file.
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive object with the semantic type CovFrame[DepthOfCoverage].
+    """
+    metadata = {
+        'Assembly': assembly,
+        'SemanticType': 'CovFrame[DepthOfCoverage]',
+    }
+
+    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
+
+    regions = create_regions_bed(
+        merge=True, sv_genes=True
+    ).gr.df.apply(
+        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
+    ).to_list()
+
+    cfs = []
+
+    for region in regions:
+        cf = pycov.CovFrame.from_bam(
+            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
+        )
+        cfs.append(cf)
+
+    cf = pycov.concat(cfs)
+
+    if bed:
+        metadata['Platform'] = 'Targeted'
+        bf = pybed.BedFrame.from_file(bed)
+        if any(['chr' in x for x in bf.contigs]):
+            bed_prefix = 'chr'
+        else:
+            bed_prefix = ''
+        if bam_prefix and bed_prefix:
+            pass
+        elif not bam_prefix and not bed_prefix:
+            pass
+        elif bam_prefix and not bed_prefix:
+            bf = bf.chr_prefix(mode='add')
+        else:
+            bf = bf.chr_prefix(mode='remove')
+        cf = cf.mask_bed(bf, opposite=True)
+    else:
+        metadata['Platform'] = 'WGS'
+
+    return sdk.Archive(metadata, cf)
+
 def print_metadata(input):
     """
     Print the metadata of specified archive.
@@ -1716,8 +1906,8 @@ def sort_alleles(gene, alleles, assembly='GRCh37'):
     def f(allele):
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
-        variants = list_variants(gene, allele, assembly=assembly)
-        b = len(variants) * -1
+        core = list_variants(gene, allele, assembly=assembly, mode='core')
+        b = len(core) * -1
         return (a, b)
 
     return sorted(alleles, key=f)
@@ -1730,12 +1920,12 @@ def test_cnv_caller(
 
     Parameters
     ----------
-    cnv_caller : pypgx.Archive
-        Archive file with the semantic type Model[CNV].
-    copy_number : pypgx.Archive
-        Archive file with the semantic type CovFrame[CopyNumber].
-    cnv_calls : pypgx.Archive
-        Archive file with the semantic type SampleTable[CNVCalls].
+    cnv_caller : str or pypgx.Archive
+        Archive file or object with the semantic type Model[CNV].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    cnv_calls : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
         Write the confusion matrix as a CSV file.
     """

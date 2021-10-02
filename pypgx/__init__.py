@@ -6,7 +6,6 @@ from .api.utils import (
     compute_copy_number,
     compute_target_depth,
     create_consolidated_vcf,
-    create_read_depth_tsv,
     create_regions_bed,
     estimate_phase_beagle,
     filter_samples,
@@ -21,6 +20,7 @@ from .api.utils import (
     has_score,
     import_read_depth,
     import_variants,
+    is_target_gene,
     list_alleles,
     list_functions,
     list_genes,
@@ -38,6 +38,7 @@ from .api.utils import (
     predict_cnv,
     predict_phenotype,
     predict_score,
+    prepare_depth_of_coverage,
     print_metadata,
     sort_alleles,
     test_cnv_caller,
@@ -62,5 +63,3 @@ from .api.pipeline import (
 from .sdk import (
     Archive,
 )
-
-del sdk

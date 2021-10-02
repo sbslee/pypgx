@@ -14,26 +14,19 @@ Because downloading the entire WGS dataset is not feasible for most users due to
 
   $ mkdir getrm-tutorial
   $ cd getrm-tutorial
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/GeT-RM.vcf.gz
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/GeT-RM.tsv.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/variants.vcf.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/depth-of-coverage.zip
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-tutorial/control-statistics-VDR.zip
 
-Next, we will download the 1000 Genomes Project phase 3 reference haplotype panel for the chromosome 22 where *CYP2D6* is located:
-
-.. code-block:: text
-
-  $ wget http://bochet.gcc.biostat.washington.edu/beagle/1000_Genomes_phase3_v5a/b37.vcf/chr22.1kg.phase3.v5a.vcf.gz
-
-Now that we have all the files we need, let's run the next-generation sequencing (NGS) pipeline:
+Next, run the next-generation sequencing (NGS) pipeline:
 
 .. code-block:: text
 
   $ pypgx run-ngs-pipeline \
   CYP2D6 \
   CYP2D6-pipeline \
-  --vcf GeT-RM.vcf.gz \
-  --panel chr22.1kg.phase3.v5a.vcf.gz \
-  --tsv GeT-RM.tsv.gz \
+  --variants variants.vcf.gz \
+  --depth-of-coverage depth-of-coverage.zip \
   --control-statistics control-statistics-VDR.zip
 
 Above will create a number of archive files:

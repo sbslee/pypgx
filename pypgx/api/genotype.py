@@ -103,16 +103,7 @@ class CYP2B6Genotyper:
         if r.CNV == 'Normal':
             result = '/'.join(sorted(alleles))
         elif r.CNV == 'Hybrid':
-            h1 = len(r.Haplotype1)
-            h2 = len(r.Haplotype2)
-            if h1 == h2:
-                result = '/'.join(sorted([alleles[0], '*29']))
-            elif h1 < h2:
-                result = '/'.join(sorted([alleles[1], '*29']))
-            elif h1 > h2:
-                result = '/'.join(sorted([alleles[0], '*29']))
-            else:
-                result = 'Unassigned'
+            result = '/'.join(sorted([utils.sort_alleles('CYP2B6', alleles)[0], '*29']))
         else:
             result = 'Unassigned'
         return result
@@ -243,13 +234,21 @@ class GSTM1Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'DeletionHet':
-            result = '/'.join(sorted([alleles[0], '*0']))
+            if a1 == a2:
+                result = '/'.join(sorted([a1, '*0']))
+            else:
+                result = 'Unassigned'
         elif r.CNV == 'DeletionHom':
             result = '*0/*0'
+        elif r.CNV == 'Duplication':
+            if a1 == a2:
+                result = '/'.join(sorted([a1, a2 + 'x2']))
+            else:
+                result = 'Unassigned'
         elif r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = '/'.join(sorted([a1, a2]))
         else:
             result = 'Unassigned'
         return result
