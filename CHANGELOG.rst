@@ -4,6 +4,8 @@ Changelog
 0.6.0 (in development)
 ----------------------
 
+* :issue:`25`: Add new extension ``sphinx-issues`` to Read the Docs.
+
 0.5.0 (2021-10-02)
 ------------------
 

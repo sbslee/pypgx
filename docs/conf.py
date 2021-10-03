@@ -32,11 +32,14 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_rtd_theme',
     'autodocsumm',
+    'sphinx_issues',
 ]
 
 autodoc_default_options = {
     'autosummary': True,
 }
+
+issues_github_path = 'sbslee/pypgx'
 
 napoleon_use_param = False
 
