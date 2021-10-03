@@ -18,8 +18,7 @@ def _call_duplication(r):
     """
     Call whole gene duplication.
     """
-    a1 = r.Haplotype1[0]
-    a2 = r.Haplotype2[0]
+    a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
 
     if r.VariantData[a1]:
         h1 = all([x > 0.5 for x in r.VariantData[a1][1]])
@@ -33,19 +32,19 @@ def _call_duplication(r):
 
     if h1 and h2:
         if a1 == a2:
-            result = '/'.join(sorted([a2, a1+'x2']))
+            result = [a2, a1+'x2']
         elif r.VariantData[a1] and not r.VariantData[a2]:
-            result = '/'.join(sorted([a2, a1+'x2']))
+            result = [a2, a1+'x2']
         elif not r.VariantData[a1] and r.VariantData[a2]:
-            result = '/'.join(sorted([a1, a2+'x2']))
+            result = [a1, a2+'x2']
         else:
-            result = 'Unassigned'
+            result = ['Unassigned']
     elif h1 and not h2:
-        result = '/'.join(sorted([a2, a1+'x2']))
+        result = [a2, a1+'x2']
     elif not h1 and h2:
-        result = '/'.join(sorted([a1, a2+'x2']))
+        result = [a1, a2+'x2']
     else:
-        result = 'Unassigned'
+        result = ['Unassigned']
 
     return result
 
@@ -117,75 +116,75 @@ class CYP2D6Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'DeletionHom':
-            result = '*5/*5'
+            result = ['*5', '*5']
         elif r.CNV == 'DeletionHet':
-            if alleles[0] == alleles[1]:
-                result = '/'.join(sorted([alleles[0], '*5']))
-            elif alleles[0] == '*1':
-                result = '/'.join(sorted([alleles[1], '*5']))
-            elif alleles[1] == '*1':
-                result = '/'.join(sorted([alleles[0], '*5']))
+            if a1 == a2:
+                result = [a1, '*5']
+            elif a1 == '*1':
+                result = [a2, '*5']
+            elif a2 == '*1':
+                result = [a1, '*5']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
         elif r.CNV == 'Tandem1':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*68+*4']))
+                result = [a1, '*68+*4']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*68+*4']))
+                result = [a2, '*68+*4']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*68+*4']))
+                result = [a1, '*68+*4']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'Tandem2A':
             h1 = '*10' in r.Haplotype1
             h2 = '*10' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*36+*10']))
+                result = [a1, '*36+*10']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*36+*10']))
+                result = [a2, '*36+*10']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*36+*10']))
+                result = [a1, '*36+*10']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'Tandem2B':
             h1 = '*10' in r.Haplotype1
             h2 = '*10' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted(['*36+*10', '*36+*10']))
+                result = ['*36+*10', '*36+*10']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*36x2+*10']))
+                result = [a2, '*36x2+*10']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*36x2+*10']))
+                result = [a1, '*36x2+*10']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
-            if '*4' in r.Haplotype1 or '*4' in r.Haplotype2:
-                result = '/'.join(sorted(['*5', '*68+*4']))
+            if '*4' in a1 or '*4' in a2:
+                result = ['*5', '*68+*4']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif 'Duplication' in r.CNV and 'Tandem1' in r.CNV:
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted(['*4x2', '*68+*4']))
+                result = ['*4x2', '*68+*4']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1]+'x2', '*68+*4']))
+                result = [a2+'x2', '*68+*4']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0]+'x2', '*68+*4']))
+                result = [a1+'x2', '*68+*4']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         else:
-            result = 'Unassigned'
+            result = ['Unassigned']
 
-        return result
+        return '/'.join(utils.sort_alleles('CYP2D6', result, method='name'))
 
     def __init__(self, df):
         self.results = df.apply(self.one_row, axis=1)
