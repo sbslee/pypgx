@@ -5,6 +5,7 @@ Changelog
 ----------------------
 
 * :issue:`25`: Add new extension ``sphinx-issues`` to Read the Docs.
+* :issue:`26`: Add ``sphinx.ext.linkcode`` extension to Read the Docs.
 
 0.5.0 (2021-10-02)
 ------------------
