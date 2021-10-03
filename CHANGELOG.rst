@@ -6,6 +6,7 @@ Changelog
 
 * :issue:`25`: Add new extension ``sphinx-issues`` to Read the Docs.
 * :issue:`26`: Add new extension ``sphinx.ext.linkcode`` to Read the Docs.
+* Add ``method`` argument to :meth:`api.utils.sort_alleles` method. When ``method='name'`` it will sort star alleles by allele number.
 
 0.5.0 (2021-10-02)
 ------------------

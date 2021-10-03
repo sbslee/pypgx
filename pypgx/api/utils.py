@@ -1878,39 +1878,84 @@ def print_metadata(input):
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
 
-def sort_alleles(gene, alleles, assembly='GRCh37'):
+def sort_alleles(gene, alleles, method='priority', assembly='GRCh37'):
     """
-    Sort star alleles by various creteria.
+    Sort star alleles with specified method.
+
+    The priority of allele function decreases in the following order:
+
+    - 'No Function',
+    - 'Decreased Function',
+    - 'Possible Decreased Function',
+    - 'Increased Function',
+    - 'Possible Increased Function',
+    - 'Uncertain Function',
+    - 'Unknown Function',
+    - 'Normal Function',
 
     Parameters
     ----------
     gene : str
-        Gene name.
-    alleles : str
-        List of star allele.
+        Target gene.
+    alleles : list
+        List of alleles.
+    method : {'priority', 'name'}, default: 'priority'
+        Determines which method to use for sorting alleles:
+
+        * 'priority': Report high priority alleles first. This method will
+          sort by allele function and then number of core variants.
+        * 'name': Report alleles with a smaller number first. This method
+          will sort by star allele number.
+
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
 
     Returns
     -------
     list
-        Sorted list.
+        Sorted list of alleles.
 
     Examples
     --------
 
+    Assume we have following alleles for the *CYP2D6* gene:
+
+    >>> alleles = ['*1', '*2', '*4', '*10']
+
+    We can sort them by their prioirty with ``method='priority'``:
+
     >>> import pypgx
-    >>> pypgx.sort_alleles('CYP2D6', ['*1', '*4'])
-    ['*4', '*1']
+    >>> alleles = pypgx.sort_alleles('CYP2D6', alleles, method='priority', assembly='GRCh37')
+    >>> alleles
+    ['*4', '*10', '*1', '*2']
+
+    We can restore the original order by sorting again with ``method='name'``:
+
+    >>> alleles = pypgx.sort_alleles('CYP2D6', alleles, method='name')
+    >>> alleles
+    ['*1', '*2', '*4', '*10']
     """
-    def f(allele):
+    def func1(allele):
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
         core = list_variants(gene, allele, assembly=assembly, mode='core')
         b = len(core) * -1
         return (a, b)
 
-    return sorted(alleles, key=f)
+    def func2(allele):
+        cn = 1
+        if '*' not in allele:
+            n = 999
+        else:
+            _ = allele.split('+')[0].split('x')[0]
+            n = int(''.join([x for x in _ if x.isdigit()]))
+            if 'x' in allele.split('+')[0]:
+                cn = int(allele.split('+')[0].split('x')[1])
+        return (n, cn, len(allele))
+
+    methods = {'priority': func1, 'name': func2}
+
+    return sorted(alleles, key=methods[method])
 
 def test_cnv_caller(
     cnv_caller, copy_number, cnv_calls, confusion_matrix=None
