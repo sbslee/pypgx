@@ -1575,7 +1575,7 @@ def predict_alleles(consolidated_variants):
             candidates.append(default_allele)
         if not candidates:
             candidates.append(default_allele)
-        candidates = sort_alleles(gene, candidates)
+        candidates = sort_alleles(candidates, by='priority', gene=gene, assembly=assembly)
         return candidates
 
     for sample in vf.samples:
@@ -1597,7 +1597,7 @@ def predict_alleles(consolidated_variants):
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
                 all_alleles += [x for x in candidates if x not in all_alleles]
-                all_alleles = sort_alleles(gene, all_alleles)
+                all_alleles = sort_alleles(all_alleles, by='priority', gene=gene, assembly=assembly)
             samples[sample].append(';'.join(candidates) + ';')
 
         af_list = []
@@ -1878,37 +1878,40 @@ def print_metadata(input):
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
 
-def sort_alleles(gene, alleles, method='priority', assembly='GRCh37'):
+def sort_alleles(
+    alleles, by='priority', gene=None, assembly='GRCh37'
+):
     """
-    Sort star alleles with specified method.
+    Sort star alleles either by priority or name.
 
-    The priority of allele function decreases in the following order:
+    When ``by`` is 'priority' the method will report high priority alleles
+    first. This means alleles are sorted by allele function (e.g.
+    'No Function' > 'Normal Function') and then by the number of core
+    variants (e.g. three SNVs > one SNV). The priority of allele function
+    decreases in the following order: 'No Function', 'Decreased Function',
+    'Possible Decreased Function', 'Increased Function', 'Possible Increased
+    Function', 'Uncertain Function', 'Unknown Function', 'Normal Function'.
 
-    - 'No Function',
-    - 'Decreased Function',
-    - 'Possible Decreased Function',
-    - 'Increased Function',
-    - 'Possible Increased Function',
-    - 'Uncertain Function',
-    - 'Unknown Function',
-    - 'Normal Function',
+    When ``by`` is 'name' the method will report alleles with a smaller
+    number first. This means, for example, '\*4' will come before '\*10'
+    whereas lexicographic sorting would produce the opposite result. This is
+    particularly useful when forming a diplotype (e.g. '\*4/\*10' vs.
+    '\*10/\*4').
 
     Parameters
     ----------
-    gene : str
-        Target gene.
     alleles : list
         List of alleles.
-    method : {'priority', 'name'}, default: 'priority'
+    by : {'priority', 'name'}, default: 'priority'
         Determines which method to use for sorting alleles:
 
-        * 'priority': Report high priority alleles first. This method will
-          sort by allele function and then number of core variants.
-        * 'name': Report alleles with a smaller number first. This method
-          will sort by star allele number.
+        * 'priority': Report high priority alleles first.
+        * 'name': Report alleles with a smaller number first.
 
+    gene : str
+        Target gene. Required when ``method`` is 'priority'.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
+        Reference genome assembly. Used when ``method`` is 'priority'.
 
     Returns
     -------
@@ -1925,13 +1928,13 @@ def sort_alleles(gene, alleles, method='priority', assembly='GRCh37'):
     We can sort them by their prioirty with ``method='priority'``:
 
     >>> import pypgx
-    >>> alleles = pypgx.sort_alleles('CYP2D6', alleles, method='priority', assembly='GRCh37')
+    >>> alleles = pypgx.sort_alleles(alleles, by='priority', gene='CYP2D6', assembly='GRCh37')
     >>> alleles
     ['*4', '*10', '*1', '*2']
 
     We can restore the original order by sorting again with ``method='name'``:
 
-    >>> alleles = pypgx.sort_alleles('CYP2D6', alleles, method='name')
+    >>> alleles = pypgx.sort_alleles(alleles, by='name')
     >>> alleles
     ['*1', '*2', '*4', '*10']
     """
@@ -1948,14 +1951,15 @@ def sort_alleles(gene, alleles, method='priority', assembly='GRCh37'):
             n = 999
         else:
             _ = allele.split('+')[0].split('x')[0]
-            n = int(''.join([x for x in _ if x.isdigit()]))
+            _ = ''.join([x for x in _ if x.isdigit()])
+            n = int(_) if _ else 999
             if 'x' in allele.split('+')[0]:
                 cn = int(allele.split('+')[0].split('x')[1])
         return (n, cn, len(allele))
 
-    methods = {'priority': func1, 'name': func2}
+    funcs = {'priority': func1, 'name': func2}
 
-    return sorted(alleles, key=methods[method])
+    return sorted(alleles, key=funcs[by])
 
 def test_cnv_caller(
     cnv_caller, copy_number, cnv_calls, confusion_matrix=None

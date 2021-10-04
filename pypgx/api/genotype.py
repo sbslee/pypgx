@@ -58,11 +58,13 @@ class SimpleGenotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
-        result = '/'.join(sorted(alleles))
-        return result
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        result = [a1, a2]
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, gene, assembly):
+        self.gene = gene
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2A6Genotyper:
@@ -71,25 +73,27 @@ class CYP2A6Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'DeletionHom':
-            result = '*4/*4'
+            result = ['*4', '*4']
         elif r.CNV == 'DeletionHet':
-            if alleles[0] == alleles[1]:
-                result = '/'.join(sorted([alleles[0], '*4']))
-            elif alleles[0] == '*1':
-                result = '/'.join(sorted([alleles[1], '*4']))
-            elif alleles[1] == '*1':
-                result = '/'.join(sorted([alleles[0], '*4']))
+            if a1 == a2:
+                result = [a1, '*4']
+            elif a1 == '*1':
+                result = [a2, '*4']
+            elif a2 == '*1':
+                result = [a1, '*4']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'CYP2A6'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2B6Genotyper:
@@ -98,16 +102,20 @@ class CYP2B6Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        p = utils.sort_alleles([a1, a2], by='priority',
+            gene=self.gene, assembly=self.assembly)[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'Hybrid':
-            result = '/'.join(sorted([utils.sort_alleles('CYP2B6', alleles)[0], '*29']))
+            result = [p, '*29']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'CYP2B6'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2D6Genotyper:
@@ -184,9 +192,11 @@ class CYP2D6Genotyper:
         else:
             result = ['Unassigned']
 
-        return '/'.join(utils.sort_alleles('CYP2D6', result, method='name'))
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'CYP2D6'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class CYP2E1Genotyper:
@@ -195,36 +205,38 @@ class CYP2E1Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'PartialDuplication':
             h1 = '*4'in r.Haplotype1 and '*7' in r.Haplotype1
             h2 = '*4'in r.Haplotype2 and '*7' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S1']))
+                result = [a1, '*S1']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*S1']))
+                result = [a2, '*S1']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S1']))
+                result = [a1, '*S1']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'Duplication':
             h1 = '*7'in r.Haplotype1
             h2 = '*7'in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*7x2']))
+                result = [a1, '*7x2']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*7x2']))
+                result = [a2, '*7x2']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*7x2']))
+                result = [a1, '*7x2']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'CYP2E1'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class GSTM1Genotyper:
@@ -236,23 +248,25 @@ class GSTM1Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'DeletionHet':
             if a1 == a2:
-                result = '/'.join(sorted([a1, '*0']))
+                result = [a1, '*0']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'DeletionHom':
-            result = '*0/*0'
+            result = ['*0', '*0']
         elif r.CNV == 'Duplication':
             if a1 == a2:
-                result = '/'.join(sorted([a1, a2 + 'x2']))
+                result = [a1, a2 + 'x2']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         elif r.CNV == 'Normal':
-            result = '/'.join(sorted([a1, a2]))
+            result = [a1, a2]
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'GSTM1'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class GSTT1Genotyper:
@@ -262,16 +276,18 @@ class GSTT1Genotyper:
 
     def one_row(self, r):
         if r.CNV == 'DeletionHet':
-            result = '*A/*0'
+            result = ['*A', '*0']
         elif r.CNV == 'DeletionHom':
-            result = '*0/*0'
+            result = ['*0', '*0']
         elif r.CNV == 'Normal':
-            result = '*A/*A'
+            result = ['*A', '*A']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'GSTT1'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class SLC22A2Genotyper:
@@ -280,36 +296,38 @@ class SLC22A2Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'Intron9Deletion':
             h1 = '*K432Q'in r.Haplotype1
             h2 = '*K432Q'in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S1']))
+                result = [a1, '*S1']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*S1']))
+                result = [a2, '*S1']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S1']))
+                result = [a1, '*S1']
             else:
                 result = 'Unassigned'
         elif r.CNV == 'Exon11Deletion':
-            h1 = r.Haplotype1 == ['*3']
-            h2 = r.Haplotype2 == ['*3']
+            h1 = '*3' in r.Haplotype1
+            h2 = '*3' in r.Haplotype2
             if h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S2']))
+                result = [a1, '*S2']
             elif h1 and not h2:
-                result = '/'.join(sorted([alleles[1], '*S2']))
+                result = [a2, '*S2']
             elif not h1 and h2:
-                result = '/'.join(sorted([alleles[0], '*S2']))
+                result = [a1, '*S2']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'SLC22A2'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class UGT2B15Genotyper:
@@ -318,19 +336,21 @@ class UGT2B15Genotyper:
     """
 
     def one_row(self, r):
-        alleles = [r.Haplotype1[0], r.Haplotype2[0]]
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV == 'Normal':
-            result = '/'.join(sorted(alleles))
+            result = [a1, a2]
         elif r.CNV == 'PartialDeletion':
-            if alleles[0] == alleles[1]:
-                result = '/'.join(sorted([alleles[0], '*S1']))
+            if a1 == a2:
+                result = [a1, '*S1']
             else:
-                result = 'Unassigned'
+                result = ['Unassigned']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'UGT2B15'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 class UGT2B17Genotyper:
@@ -340,16 +360,18 @@ class UGT2B17Genotyper:
 
     def one_row(self, r):
         if r.CNV == 'DeletionHet':
-            result = '*1/*2'
+            result = ['*1', '*2']
         elif r.CNV == 'DeletionHom':
-            result = '*2/*2'
+            result = ['*2', '*2']
         elif r.CNV == 'Normal':
-            result = '*1/*1'
+            result = ['*1', '*1']
         else:
-            result = 'Unassigned'
-        return result
+            result = ['Unassigned']
+        return '/'.join(utils.sort_alleles(result, by='name'))
 
-    def __init__(self, df):
+    def __init__(self, df, assembly):
+        self.gene = 'UGT2B17'
+        self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
 def call_genotypes(alleles=None, cnv_calls=None):
@@ -430,9 +452,9 @@ def call_genotypes(alleles=None, cnv_calls=None):
     df = df.apply(one_row, axis=1)
 
     if gene in sv_genotypers:
-        df = sv_genotypers[gene](df).results.to_frame()
+        df = sv_genotypers[gene](df, assembly).results.to_frame()
     else:
-        df = SimpleGenotyper(df).results.to_frame()
+        df = SimpleGenotyper(df, gene, assembly).results.to_frame()
 
     df.columns = ['Genotype']
 
