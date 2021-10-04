@@ -220,16 +220,7 @@ class CYP2E1Genotyper:
             else:
                 result = ['Unassigned']
         elif r.CNV == 'Duplication':
-            h1 = '*7'in r.Haplotype1
-            h2 = '*7'in r.Haplotype2
-            if h1 and h2:
-                result = [a1, '*7x2']
-            elif h1 and not h2:
-                result = [a2, '*7x2']
-            elif not h1 and h2:
-                result = [a1, '*7x2']
-            else:
-                result = ['Unassigned']
+            result = _call_duplication(r)
         else:
             result = ['Unassigned']
         return '/'.join(utils.sort_alleles(result, by='name'))
