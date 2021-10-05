@@ -70,8 +70,11 @@ def call_phenotypes(genotypes):
     genotypes.check('SampleTable[Genotypes]')
 
     def one_row(r):
-        a1, a2 = r.Genotype.split('/')
-        phenotype = core.predict_phenotype('CYP2D6', a1, a2)
+        if r.Genotype == 'Indeterminate':
+            phenotype = 'Indeterminate'
+        else:
+            a1, a2 = r.Genotype.split('/')
+            phenotype = core.predict_phenotype('CYP2D6', a1, a2)
         return phenotype
 
     data = genotypes.data.apply(one_row, axis=1).to_frame()

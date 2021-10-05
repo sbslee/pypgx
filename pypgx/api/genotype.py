@@ -38,13 +38,13 @@ def _call_duplication(r):
         elif not r.VariantData[a1] and r.VariantData[a2]:
             result = [a1, a2+'x2']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
     elif h1 and not h2:
         result = [a2, a1+'x2']
     elif not h1 and h2:
         result = [a1, a2+'x2']
     else:
-        result = ['Unassigned']
+        result = ['Indeterminate']
 
     return result
 
@@ -86,9 +86,11 @@ class CYP2A6Genotyper:
             elif a2 == '*1':
                 result = [a1, '*4']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
+        elif r.CNV == 'Duplication':
+            result = _call_duplication(r)
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -110,7 +112,7 @@ class CYP2B6Genotyper:
         elif r.CNV == 'Hybrid':
             result = [p, '*29']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -137,7 +139,7 @@ class CYP2D6Genotyper:
             elif a2 == '*1':
                 result = [a1, '*5']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
         elif r.CNV == 'Tandem1':
@@ -150,7 +152,7 @@ class CYP2D6Genotyper:
             elif not h1 and h2:
                 result = [a1, '*68+*4']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'Tandem2A':
             h1 = '*10' in r.Haplotype1
             h2 = '*10' in r.Haplotype2
@@ -161,7 +163,7 @@ class CYP2D6Genotyper:
             elif not h1 and h2:
                 result = [a1, '*36+*10']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'Tandem2B':
             h1 = '*10' in r.Haplotype1
             h2 = '*10' in r.Haplotype2
@@ -172,12 +174,12 @@ class CYP2D6Genotyper:
             elif not h1 and h2:
                 result = [a1, '*36x2+*10']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif 'Duplication' in r.CNV and 'Tandem1' in r.CNV:
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
@@ -188,9 +190,9 @@ class CYP2D6Genotyper:
             elif not h1 and h2:
                 result = [a1+'x2', '*68+*4']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
 
         return '/'.join(core.sort_alleles(result, by='name'))
 
@@ -218,11 +220,11 @@ class CYP2E1Genotyper:
             elif not h1 and h2:
                 result = [a1, '*S1']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -241,18 +243,18 @@ class GSTM1Genotyper:
             if a1 == a2:
                 result = [a1, '*0']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
             if a1 == a2:
                 result = [a1, a2 + 'x2']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         elif r.CNV == 'Normal':
             result = [a1, a2]
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -273,7 +275,7 @@ class GSTT1Genotyper:
         elif r.CNV == 'Normal':
             result = ['*A', '*A']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -300,7 +302,7 @@ class SLC22A2Genotyper:
             elif not h1 and h2:
                 result = [a1, '*S1']
             else:
-                result = 'Unassigned'
+                result = 'Indeterminate'
         elif r.CNV == 'Exon11Deletion':
             h1 = '*3' in r.Haplotype1
             h2 = '*3' in r.Haplotype2
@@ -311,9 +313,9 @@ class SLC22A2Genotyper:
             elif not h1 and h2:
                 result = [a1, '*S2']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -334,9 +336,9 @@ class UGT2B15Genotyper:
             if a1 == a2:
                 result = [a1, '*S1']
             else:
-                result = ['Unassigned']
+                result = ['Indeterminate']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
@@ -357,7 +359,7 @@ class UGT2B17Genotyper:
         elif r.CNV == 'Normal':
             result = ['*1', '*1']
         else:
-            result = ['Unassigned']
+            result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
