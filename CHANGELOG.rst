@@ -16,6 +16,7 @@ Changelog
 * Split ``api.utils`` submodule into two submodules ``api.utils`` and ``api.core``.
 * Update :command:`run-ngs-pipeline` command to include phenotype calling step.
 * Update :command:`plot-bam-copy-number` command to run faster when `--samples` argument is used.
+* Change 'Unassigned' genotype to 'Indeterminate' genotype.
 
 0.5.0 (2021-10-02)
 ------------------
