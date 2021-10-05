@@ -14,6 +14,7 @@ Changelog
 * Add ``--phenotypes`` argument  to :command:`combine-results` command.
 * Deprecate :meth:`api.utils.load_control_table` method.
 * Split ``api.utils`` submodule into two submodules ``api.utils`` and ``api.core``.
+* Update :command:`run-ngs-pipeline` command to include phenotype calling step.
 
 0.5.0 (2021-10-02)
 ------------------
