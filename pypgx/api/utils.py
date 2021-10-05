@@ -160,6 +160,39 @@ def build_definition_table(gene, assembly='GRCh37'):
     vf = pyvcf.VcfFrame.from_dict(meta, data).sort()
     return vf
 
+def call_phenotypes(genotypes):
+    """
+    Call phenotypes for the target gene.
+
+    Parameters
+    ----------
+    genotypes : str or pypgx.Archive
+        Archive file or object with the semantic type SampleTable[Genotypes].
+
+    Returns
+    -------
+    pypgx.Archive
+        Archive object with the semantic type SampleTable[Phenotypes].
+    """
+    if isinstance(genotypes, str):
+        genotypes = sdk.Archive.from_file(genotypes)
+
+    genotypes.check('SampleTable[Genotypes]')
+
+    def one_row(r):
+        a1, a2 = r.Genotype.split('/')
+        phenotype = predict_phenotype('CYP2D6', a1, a2)
+        return phenotype
+
+    data = genotypes.data.apply(one_row, axis=1).to_frame()
+    data.columns = ['Phenotype']
+
+    metadata = {}
+    metadata['Gene'] = genotypes.metadata['Gene']
+    metadata['SemanticType'] = 'SampleTable[Phenotypes]'
+
+    return sdk.utils.Archive(metadata, data)
+
 def collapse_alleles(gene, alleles, assembly='GRCh37'):
     """
     Collapse redundant candidate alleles.

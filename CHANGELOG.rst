@@ -8,6 +8,8 @@ Changelog
 * :issue:`26`: Add new extension ``sphinx.ext.linkcode`` to Read the Docs.
 * Add ``by`` argument to :meth:`api.utils.sort_alleles` method. When ``by='name'`` it will sort star alleles by allele number.
 * Update :command:`call-genotypes` command to output genotypes with number-sorted alleles (e.g. '\*4/\*10' instead of '\*10/\*4').
+* Add new semantic type ``SampleTable[Phenotypes]``.
+* Add new method :meth:`api.utils.call_phenotypes`.
 
 0.5.0 (2021-10-02)
 ------------------

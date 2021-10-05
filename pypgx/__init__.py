@@ -1,5 +1,6 @@
 from .api.utils import (
     build_definition_table,
+    call_phenotypes,
     collapse_alleles,
     combine_results,
     compute_control_statistics,
