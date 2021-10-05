@@ -6,7 +6,7 @@ import pypgx.api
 from pypgx.api import utils
 from pypgx.cli import commands
 
-submodules = ['genotype', 'pipeline', 'plot', 'utils']
+submodules = ['core', 'genotype', 'pipeline', 'plot', 'utils']
 
 credit = """
 ..

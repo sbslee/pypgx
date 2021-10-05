@@ -215,10 +215,11 @@ For getting help on a specific command (e.g. call-genotypes):
 
 Below is the list of submodules available in the API:
 
+- **core** : The core submodule is the main suite of tools for PGx research.
 - **genotype** : The genotype submodule is a suite of tools for accurately predicting genotype calls.
 - **pipeline** : The pipeline submodule is used to provide convenient methods that combine multiple PyPGx actions and automatically handle semantic types.
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
-- **utils** : The utils submodule is the main suite of tools for PGx research.
+- **utils** : The utils submodule contains main actions of PyPGx.
 
 
 For getting help on a specific submodule (e.g. utils):

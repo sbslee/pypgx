@@ -18,7 +18,7 @@ import pandas as pd
 def _plot_exons(gene, assembly, ax):
     region = utils.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
-    df = utils.load_gene_table()
+    df = core.load_gene_table()
     starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     paralog = utils.get_paralog(gene)

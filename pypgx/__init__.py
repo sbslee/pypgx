@@ -1,3 +1,10 @@
+from .api.core import (
+    is_target_gene,
+    list_genes,
+    load_allele_table,
+    load_gene_table,
+)
+
 from .api.utils import (
     build_definition_table,
     call_phenotypes,
@@ -21,18 +28,13 @@ from .api.utils import (
     has_score,
     import_read_depth,
     import_variants,
-    is_target_gene,
     list_alleles,
     list_functions,
-    list_genes,
     list_phenotypes,
     list_variants,
-    load_allele_table,
-    load_control_table,
     load_cnv_table,
     load_diplotype_table,
     load_equation_table,
-    load_gene_table,
     load_phenotype_table,
     load_variant_table,
     predict_alleles,

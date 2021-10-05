@@ -41,7 +41,7 @@ def run_ngs_pipeline(
     do_not_plot_allele_fraction : bool, default: False
         Do not plot allele fraction profile.
     """
-    if not utils.is_target_gene(gene):
+    if not core.is_target_gene(gene):
         raise utils.NotTargetGeneError(gene)
 
     if os.path.exists(output) and force:
@@ -49,7 +49,7 @@ def run_ngs_pipeline(
 
     os.mkdir(output)
 
-    gene_table = utils.load_gene_table()
+    gene_table = core.load_gene_table()
 
     alleles = None
     cnv_calls = None

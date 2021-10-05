@@ -12,6 +12,7 @@ Changelog
 * Add new method :meth:`api.utils.call_phenotypes`.
 * Add new command :command:`call-phenotypes`.
 * Add ``--phenotypes`` argument  to :command:`combine-results` command.
+* Deprecate :meth:`api.utils.load_control_table` method.
 
 0.5.0 (2021-10-02)
 ------------------

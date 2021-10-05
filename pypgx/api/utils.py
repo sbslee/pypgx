@@ -1,5 +1,5 @@
 """
-The utils submodule is the main suite of tools for PGx research.
+The utils submodule contains main actions of PyPGx.
 """
 
 import pkgutil
@@ -11,6 +11,7 @@ import os
 import pickle
 import pathlib
 
+from . import core
 from .. import sdk
 
 import numpy as np
@@ -322,7 +323,7 @@ def compute_control_statistics(
     """
     bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
-    df = load_gene_table()
+    df = core.load_gene_table()
 
     if gene is not None:
         region = df[df.Gene == gene][f'{assembly}Region'].values[0]
@@ -667,7 +668,7 @@ def create_regions_bed(
     fuc.pybed.BedFrame
         BED file.
     """
-    df = load_gene_table()
+    df = core.load_gene_table()
     if sv_genes:
         df = df[df.SV]
     data = []
@@ -809,7 +810,7 @@ def get_default_allele(gene, assembly='GRCh37'):
     >>> pypgx.get_default_allele('CYP2D6', assembly='GRCh38')
     '*1'
     """
-    df = load_gene_table()
+    df = core.load_gene_table()
     allele = df[df.Gene == gene][f'{assembly}Default'].values[0]
     return allele
 
@@ -878,7 +879,7 @@ def get_paralog(gene):
     >>> pypgx.get_paralog('CYP2B6')
     ''
     """
-    df = load_gene_table()
+    df = core.load_gene_table()
     df = df[df.Gene == gene]
     paralog = df.Paralog.values[0]
     if pd.isna(paralog):
@@ -950,7 +951,7 @@ def get_ref_allele(gene, assembly='GRCh37'):
     >>> pypgx.get_ref_allele('NAT1')
     '*4'
     """
-    df = load_gene_table()
+    df = core.load_gene_table()
     allele = df[df.Gene == gene]['RefAllele'].values[0]
     return allele
 
@@ -973,7 +974,7 @@ def get_region(gene, assembly='GRCh37'):
     if gene not in list_genes(mode='all'):
         raise GeneNotFoundError(gene)
 
-    df = load_gene_table()
+    df = core.load_gene_table()
     df = df[df.Gene == gene]
 
     return df[f'{assembly}Region'].values[0]
@@ -1052,7 +1053,7 @@ def has_phenotype(gene):
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
-    df = load_gene_table()
+    df = core.load_gene_table()
 
     return gene in df[~df.PhenotypeMethod.isna()].Gene.to_list()
 
@@ -1082,7 +1083,7 @@ def has_score(gene):
     if gene not in list_genes():
         raise GeneNotFoundError(gene)
 
-    df = load_gene_table()
+    df = core.load_gene_table()
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
@@ -1153,31 +1154,6 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     }
 
     return sdk.Archive(metadata, data)
-
-def is_target_gene(gene):
-    """
-    Return True if specified gene is one of the target genes.
-
-    Parameters
-    ----------
-    gene : str
-        Gene name.
-
-    Returns
-    -------
-    bool
-        True if specified gene is one of the target genes.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> pypgx.is_target_gene('CYP2D6')
-    True
-    >>> pypgx.is_target_gene('CYP2D7')
-    False
-    """
-    return gene in list_genes(mode='target')
 
 def list_alleles(gene, variants=None, assembly='GRCh37'):
     """
@@ -1260,42 +1236,6 @@ def list_functions(gene=None):
         df = df[df.Gene == gene]
 
     return list(df.Function.unique())
-
-def list_genes(mode='target'):
-    """
-    List genes in the gene table.
-
-    Parameters
-    ----------
-    mode : {'target', 'control', 'all'}, default: 'target'
-        Specify which gene set to return.
-
-    Returns
-    -------
-    list
-        Gene set.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> pypgx.list_genes()[:5] # First five target genes
-    ['CACNA1S', 'CFTR', 'CYP2A13', 'CYP2B6', 'CYP2C8']
-    >>> pypgx.list_genes(mode='control')
-    ['EGFR', 'RYR1', 'VDR']
-    >>> pypgx.list_genes(mode='all')[:5] # First five genes in the table
-    ['CACNA1S', 'CFTR', 'CYP2A13', 'CYP2B6', 'CYP2C8']
-    """
-    df = load_gene_table()
-
-    if mode == 'target':
-        df = df[df.Target]
-    elif mode == 'control':
-        df = df[df.Control]
-    else:
-        pass
-
-    return df.Gene.to_list()
 
 def list_phenotypes(gene=None):
     """
@@ -1403,42 +1343,6 @@ def list_variants(gene, allele, mode='all', assembly='GRCh37'):
 
     return results
 
-def load_allele_table():
-    """
-    Load the allele table.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Requested table.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> df = pypgx.load_allele_table()
-    """
-    b = BytesIO(pkgutil.get_data(__name__, 'data/allele-table.csv'))
-    return pd.read_csv(b)
-
-def load_control_table():
-    """
-    Load the control gene table.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Requested table.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> df = pypgx.load_control_table()
-    """
-    b = BytesIO(pkgutil.get_data(__name__, 'data/control-table.csv'))
-    return pd.read_csv(b)
-
 def load_cnv_table():
     """
     Load the CNV table.
@@ -1491,24 +1395,6 @@ def load_equation_table():
     >>> df = pypgx.load_equation_table()
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/equation-table.csv'))
-    return pd.read_csv(b)
-
-def load_gene_table():
-    """
-    Load the gene table.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Requested table.
-
-    Examples
-    --------
-
-    >>> import pypgx
-    >>> df = pypgx.load_gene_table()
-    """
-    b = BytesIO(pkgutil.get_data(__name__, 'data/gene-table.csv'))
     return pd.read_csv(b)
 
 def load_phenotype_table():
