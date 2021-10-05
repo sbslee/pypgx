@@ -3,7 +3,6 @@ import sys
 from ..api import genotype
 
 import fuc
-import pysam
 
 description = f"""
 ###################################

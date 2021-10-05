@@ -10,6 +10,7 @@ Changelog
 * Update :command:`call-genotypes` command to output genotypes with number-sorted alleles (e.g. '\*4/\*10' instead of '\*10/\*4').
 * Add new semantic type ``SampleTable[Phenotypes]``.
 * Add new method :meth:`api.utils.call_phenotypes`.
+* Add new command :command:`call-phenotypes`.
 
 0.5.0 (2021-10-02)
 ------------------

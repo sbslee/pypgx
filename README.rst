@@ -170,6 +170,7 @@ For getting help on the CLI:
    positional arguments:
      COMMAND
        call-genotypes      Call genotypes for target gene.
+       call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
        compute-control-statistics
                            Compute various statistics for control gene with BAM data.

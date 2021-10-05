@@ -21,6 +21,7 @@ For getting help on the CLI:
    positional arguments:
      COMMAND
        call-genotypes      Call genotypes for target gene.
+       call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
        compute-control-statistics
                            Compute various statistics for control gene with BAM data.
@@ -85,6 +86,28 @@ call-genotypes
      -h, --help        Show this help message and exit.
      --alleles PATH    Archive file with the semantic type SampleTable[Alleles].
      --cnv-calls PATH  Archive file with the semantic type SampleTable[CNVCalls].
+
+call-phenotypes
+===============
+
+.. code-block:: text
+
+   $ pypgx call-phenotypes -h
+   usage: pypgx call-phenotypes [-h] genotypes phenotypes
+   
+   ########################################
+   # Call phenotypes for the target gene. #
+   ########################################
+   
+   Usage examples:
+     $ pypgx call-phenotypes CYP2D6-genotypes.zip CYP2D6-phenotypes.zip
+   
+   Positional arguments:
+     genotypes   Archive file with the semantic type SampleTable[Genotypes].
+     phenotypes  Archive file with the semantic type SampleTable[Phenotypes].
+   
+   Optional arguments:
+     -h, --help  Show this help message and exit.
 
 combine-results
 ===============
