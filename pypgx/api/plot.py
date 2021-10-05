@@ -3,7 +3,7 @@ The plot submodule is used to plot various kinds of profiles such as read
 depth, copy number, and allele fraction.
 """
 
-from . import utils
+from . import utils, core
 from .. import sdk
 
 from fuc import pyvcf, pycov, common
@@ -16,12 +16,12 @@ import pandas as pd
 ###################
 
 def _plot_exons(gene, assembly, ax):
-    region = utils.get_region(gene, assembly=assembly)
+    region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()
     starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-    paralog = utils.get_paralog(gene)
+    paralog = core.get_paralog(gene)
     if paralog:
         starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
         ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
@@ -224,7 +224,7 @@ def plot_vcf_read_depth(
     """
     vf = pyvcf.VcfFrame.from_file(vcf)
 
-    region = utils.get_region(gene, assembly=assembly)
+    region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
 
     if samples is None:

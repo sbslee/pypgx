@@ -3,7 +3,7 @@ import subprocess
 
 import pypgx
 import pypgx.api
-from pypgx.api import utils
+from pypgx.api import core
 from pypgx.cli import commands
 
 submodules = ['core', 'genotype', 'pipeline', 'plot', 'utils']
@@ -288,7 +288,7 @@ We can predict phenotype for the *CYP2D6* gene based on two haplotype calls:
     'Ultrarapid Metabolizer'
 """.format(**d)
 
-readme_file = f'{utils.PROGRAM_PATH}/README.rst'
+readme_file = f'{core.PROGRAM_PATH}/README.rst'
 
 with open(readme_file, 'w') as f:
     f.write(readme.lstrip())
@@ -335,7 +335,7 @@ for command in commands:
     s += '\n'
     cli += s
 
-cli_file = f'{utils.PROGRAM_PATH}/docs/cli.rst'
+cli_file = f'{core.PROGRAM_PATH}/docs/cli.rst'
 
 with open(cli_file, 'w') as f:
     f.write(cli.lstrip())
@@ -374,7 +374,7 @@ for submodule in submodules:
     s += '\n'
     api += s
 
-with open(f'{utils.PROGRAM_PATH}/docs/api.rst', 'w') as f:
+with open(f'{core.PROGRAM_PATH}/docs/api.rst', 'w') as f:
     f.write(api.lstrip())
 
 # -- sdk.rst -----------------------------------------------------------------
@@ -397,5 +397,5 @@ utils
 
 """.format(**d)
 
-with open(f'{utils.PROGRAM_PATH}/docs/sdk.rst', 'w') as f:
+with open(f'{core.PROGRAM_PATH}/docs/sdk.rst', 'w') as f:
     f.write(sdk.lstrip())

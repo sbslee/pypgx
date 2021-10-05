@@ -6,7 +6,7 @@ calls.
 import warnings
 
 from .. import sdk
-from . import utils
+from . import core
 
 import pandas as pd
 
@@ -60,7 +60,7 @@ class SimpleGenotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         result = [a1, a2]
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, gene, assembly):
         self.gene = gene
@@ -89,7 +89,7 @@ class CYP2A6Genotyper:
                 result = ['Unassigned']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'CYP2A6'
@@ -103,7 +103,7 @@ class CYP2B6Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        p = utils.sort_alleles([a1, a2], by='priority',
+        p = core.sort_alleles([a1, a2], by='priority',
             gene=self.gene, assembly=self.assembly)[0]
         if r.CNV == 'Normal':
             result = [a1, a2]
@@ -111,7 +111,7 @@ class CYP2B6Genotyper:
             result = [p, '*29']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'CYP2B6'
@@ -192,7 +192,7 @@ class CYP2D6Genotyper:
         else:
             result = ['Unassigned']
 
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'CYP2D6'
@@ -223,7 +223,7 @@ class CYP2E1Genotyper:
             result = _call_duplication(r)
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'CYP2E1'
@@ -253,7 +253,7 @@ class GSTM1Genotyper:
             result = [a1, a2]
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'GSTM1'
@@ -274,7 +274,7 @@ class GSTT1Genotyper:
             result = ['*A', '*A']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'GSTT1'
@@ -314,7 +314,7 @@ class SLC22A2Genotyper:
                 result = ['Unassigned']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'SLC22A2'
@@ -337,7 +337,7 @@ class UGT2B15Genotyper:
                 result = ['Unassigned']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'UGT2B15'
@@ -358,7 +358,7 @@ class UGT2B17Genotyper:
             result = ['*1', '*1']
         else:
             result = ['Unassigned']
-        return '/'.join(utils.sort_alleles(result, by='name'))
+        return '/'.join(core.sort_alleles(result, by='name'))
 
     def __init__(self, df, assembly):
         self.gene = 'UGT2B17'
