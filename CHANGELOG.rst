@@ -11,6 +11,7 @@ Changelog
 * Add new semantic type ``SampleTable[Phenotypes]``.
 * Add new method :meth:`api.utils.call_phenotypes`.
 * Add new command :command:`call-phenotypes`.
+* Add ``--phenotypes`` argument  to :command:`combine-results` command.
 
 0.5.0 (2021-10-02)
 ------------------

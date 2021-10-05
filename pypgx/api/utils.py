@@ -212,17 +212,21 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
 
     return [x for i, x in enumerate(alleles) if not results[i]]
 
-def combine_results(genotypes=None, alleles=None, cnv_calls=None):
+def combine_results(
+    genotypes=None, phenotypes=None, alleles=None, cnv_calls=None
+):
     """
     Combine various results for the target gene.
 
     Parameters
     ----------
-    genotypes : str or pypgx.Archive
+    genotypes : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Genotypes].
-    alleles : str or pypgx.Archive
+    phenotypes : str or pypgx.Archive, optional
+        Archive file or object with the semantic type SampleTable[Phenotypes].
+    alleles : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Alleles].
-    cnv_calls : str or pypgx.Archive
+    cnv_calls : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[CNVCalls].
 
     Returns
@@ -236,6 +240,12 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     if genotypes is not None:
         genotypes.check('SampleTable[Genotypes]')
 
+    if isinstance(phenotypes, str):
+        phenotypes = sdk.Archive.from_file(phenotypes)
+
+    if phenotypes is not None:
+        phenotypes.check('SampleTable[Phenotypes]')
+
     if isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
 
@@ -248,7 +258,8 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     if cnv_calls is not None:
         cnv_calls.check('SampleTable[CNVCalls]')
 
-    tables = [x for x in [genotypes, alleles, cnv_calls] if x is not None]
+    tables = [x for x in [genotypes, phenotypes, alleles, cnv_calls]
+        if x is not None]
 
     if not tables:
         raise ValueError('No input data detected')
@@ -256,7 +267,7 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
     metadata = {}
 
     for k in ['Gene', 'Assembly']:
-        l = [x.metadata[k] for x in tables]
+        l = [x.metadata[k] for x in tables if k in x.metadata]
         if len(set(l)) > 1:
             raise ValueError(f'Found incompatible inputs: {l}')
         metadata[k] = l[0]
@@ -265,7 +276,7 @@ def combine_results(genotypes=None, alleles=None, cnv_calls=None):
 
     df = pd.concat(data, axis=1)
 
-    cols = ['Genotype', 'Haplotype1', 'Haplotype2', 'AlternativePhase', 'VariantData', 'CNV']
+    cols = ['Genotype', 'Phenotype', 'Haplotype1', 'Haplotype2', 'AlternativePhase', 'VariantData', 'CNV']
 
     for col in cols:
         if col not in df.columns:
