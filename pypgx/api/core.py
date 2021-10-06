@@ -466,6 +466,31 @@ def get_score(gene, allele):
 
     return df.ActivityScore.values[0]
 
+def get_variant_synonyms(gene, assembly='GRCh37'):
+    """
+    Get variant synonyms.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    dict
+        Variant synonyms.
+    """
+    df = load_variant_table()
+    df = df[df.Gene == gene]
+    synonyms = {}
+    for i, r in df.iterrows():
+        if pd.isna(r[f'{assembly}Synonym']):
+            continue
+        synonyms[r[f'{assembly}Synonym']] = r[f'{assembly}Name']
+    return synonyms
+
 def list_alleles(gene, variants=None, assembly='GRCh37'):
     """
     List all star alleles present in the allele table.

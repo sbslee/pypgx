@@ -17,6 +17,7 @@ Changelog
 * Update :command:`run-ngs-pipeline` command to include phenotype calling step.
 * Update :command:`plot-bam-copy-number` command to run faster when ``--samples`` argument is used.
 * Change 'Unassigned' genotype to 'Indeterminate' genotype.
+* Add new method :meth:`api.core.get_variant_synonyms`.
 
 0.5.0 (2021-10-02)
 ------------------

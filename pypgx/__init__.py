@@ -11,6 +11,7 @@ from .api.core import (
     get_ref_allele,
     get_region,
     get_score,
+    get_variant_synonyms,
     list_alleles,
     list_functions,
     list_genes,
