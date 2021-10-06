@@ -481,6 +481,15 @@ def get_variant_synonyms(gene, assembly='GRCh37'):
     -------
     dict
         Variant synonyms.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_variant_synonyms('UGT1A1')
+    {'2-234668879-CAT-CATAT': '2-234668879-C-CAT', '2-234668879-CAT-CATATAT': '2-234668879-C-CATAT'}
+    >>> pypgx.get_variant_synonyms('CYP2D6')
+    {}
     """
     df = load_variant_table()
     df = df[df.Gene == gene]
