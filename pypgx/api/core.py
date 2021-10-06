@@ -8,7 +8,7 @@ from io import BytesIO
 
 import numpy as np
 import pandas as pd
-from fuc import pyvcf
+from fuc import pyvcf, common
 
 PROGRAM_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
@@ -130,8 +130,8 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
         for b in alleles:
             if a == b:
                 continue
-            v1 = set(list_variants(gene, a, assembly=assembly, mode='core'))
-            v2 = set(list_variants(gene, b, assembly=assembly, mode='core'))
+            v1 = set(list_variants(gene, alleles=a, assembly=assembly, mode='core'))
+            v2 = set(list_variants(gene, alleles=b, assembly=assembly, mode='core'))
             if v1.issubset(v2):
                 result = True
                 break
@@ -650,19 +650,19 @@ def list_phenotypes(gene=None):
 
     return sorted(list(df.Phenotype.unique()))
 
-def list_variants(gene, allele, mode='all', assembly='GRCh37'):
+def list_variants(gene, alleles=None, mode='all', assembly='GRCh37'):
     """
-    List all variants that define specified allele.
+    List variants that are used to define star alleles.
 
-    Some alleles will return an empty list because they do not contain any
-    variants (e.g. reference allele).
+    Some alleles, such as reference alleles, may return an empty list because
+    they do not contain any variants.
 
     Parameters
     ----------
     gene : str
         Target gene.
-    allele : str
-        Star allele.
+    alleles : str or list, optional
+        Allele name or list of alleles.
     mode : {'all', 'core', 'tag'}, default: 'all'
         Whether to return all variants, core variants only, or tag variants
         only.
@@ -672,57 +672,69 @@ def list_variants(gene, allele, mode='all', assembly='GRCh37'):
     Returns
     -------
     list
-        Defining variants.
+        Coordinate sorted list of variants.
 
     Examples
     --------
 
     >>> import pypgx
-    >>> pypgx.list_variants('CYP4F2', '*2')
+    >>> pypgx.list_variants('CYP4F2')
+    ['19-15990431-C-T', '19-16008388-A-C']
+    >>> pypgx.list_variants('CYP4F2', alleles=['*2'])
     ['19-16008388-A-C']
-    >>> pypgx.list_variants('CYP4F2', '*2', assembly='GRCh38')
+    >>> pypgx.list_variants('CYP4F2', alleles=['*2', '*3'])
+    ['19-15990431-C-T', '19-16008388-A-C']
+    >>> pypgx.list_variants('CYP4F2', alleles=['*2'], assembly='GRCh38')
     ['19-15897578-A-C']
-    >>> pypgx.list_variants('CYP4F2', '*1')
+    >>> pypgx.list_variants('CYP4F2', alleles=['*1'])
     []
-    >>> pypgx.list_variants('CYP2B6', '*6', mode='all')
+    >>> pypgx.list_variants('CYP2B6', alleles=['*6'], mode='all')
     ['19-41495755-T-C', '19-41496461-T-C', '19-41512841-G-T', '19-41515263-A-G']
-    >>> pypgx.list_variants('CYP2B6', '*6', mode='core')
+    >>> pypgx.list_variants('CYP2B6', alleles=['*6'], mode='core')
     ['19-41512841-G-T', '19-41515263-A-G']
-    >>> pypgx.list_variants('CYP2B6', '*6', mode='tag')
+    >>> pypgx.list_variants('CYP2B6', alleles=['*6'], mode='tag')
     ['19-41495755-T-C', '19-41496461-T-C']
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
-    df = load_allele_table()
-    df = df[(df.Gene == gene) & (df.StarAllele == allele)]
+    allele_table = load_allele_table()
+    allele_table = allele_table[allele_table.Gene == gene]
 
-    if df.empty:
-        raise AlleleNotFoundError(gene, allele)
+    core_variants = []
+    tag_variants = []
 
-    core = df[f'{assembly}Core'].values[0]
-    tag = df[f'{assembly}Tag'].values[0]
+    if alleles is None:
+        alleles = list_alleles(gene, assembly=assembly)
 
-    if pd.isna(core):
-        core = []
-    else:
-        core = core.split(',')
+    if isinstance(alleles, str):
+        alleles = [alleles]
 
-    if pd.isna(tag):
-        tag = []
-    else:
-        tag = tag.split(',')
+    for allele in alleles:
+        df = allele_table[allele_table.StarAllele == allele]
+
+        if df.empty:
+            raise AlleleNotFoundError(gene, allele)
+
+        c = df[f'{assembly}Core'].values[0]
+        t = df[f'{assembly}Tag'].values[0]
+
+        if not pd.isna(c):
+            core_variants += c.split(',')
+
+        if not pd.isna(t):
+            tag_variants += t.split(',')
 
     if mode == 'all':
-        results = tag + core
+        results = core_variants + tag_variants
     elif mode == 'core':
-        results = core
+        results = core_variants
     elif mode == 'tag':
-        results = tag
+        results = tag_variants
     else:
-        raise ValueError('Incorrect mode')
+        raise ValueError(f'Incorrect mode: {mode}')
 
-    return results
+    return common.sort_variants(set(results))
 
 def load_allele_table():
     """
@@ -1047,7 +1059,7 @@ def sort_alleles(
     def func1(allele):
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
-        core = list_variants(gene, allele, assembly=assembly, mode='core')
+        core = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
         b = len(core) * -1
         return (a, b)
 

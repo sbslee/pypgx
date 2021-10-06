@@ -470,7 +470,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                     for star_allele in star_alleles:
                         score = 0
                         for x in anchors[sample][j]:
-                            if x in core.list_variants(gene, star_allele, assembly=assembly, mode='all'):
+                            if x in core.list_variants(gene, alleles=star_allele, assembly=assembly, mode='all'):
                                 score += 1
                         if score > scores[i][j]:
                             scores[i][j] = score
