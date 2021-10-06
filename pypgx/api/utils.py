@@ -69,19 +69,21 @@ def call_phenotypes(genotypes):
 
     genotypes.check('SampleTable[Genotypes]')
 
+    gene = genotypes.metadata['Gene']
+
     def one_row(r):
         if r.Genotype == 'Indeterminate':
             phenotype = 'Indeterminate'
         else:
             a1, a2 = r.Genotype.split('/')
-            phenotype = core.predict_phenotype('CYP2D6', a1, a2)
+            phenotype = core.predict_phenotype(gene, a1, a2)
         return phenotype
 
     data = genotypes.data.apply(one_row, axis=1).to_frame()
     data.columns = ['Phenotype']
 
     metadata = {}
-    metadata['Gene'] = genotypes.metadata['Gene']
+    metadata['Gene'] = gene
     metadata['SemanticType'] = 'SampleTable[Phenotypes]'
 
     return sdk.utils.Archive(metadata, data)

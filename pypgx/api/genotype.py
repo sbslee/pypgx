@@ -48,6 +48,19 @@ def _call_duplication(r):
 
     return result
 
+def _call_multiplication(r):
+    """
+    Call whole gene multiplication.
+    """
+    a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+
+    if a1 == a2:
+        result = [a2, a1+'x3']
+    else:
+        result = ['Indeterminate']
+
+    return result
+
 ###############################
 # Public classes and methods  #
 ###############################
@@ -223,6 +236,8 @@ class CYP2E1Genotyper:
                 result = ['Indeterminate']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
+        elif r.CNV == 'Multiplication':
+            result = _call_multiplication(r)
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

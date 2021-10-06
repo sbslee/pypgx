@@ -822,8 +822,8 @@ def predict_phenotype(gene, a, b):
     """
     Predict phenotype based on two haplotype calls.
 
-    The method can handle star alleles with SV including gene deletion,
-    duplication, and tandem arrangement.
+    The method can handle star alleles with structural variation including
+    gene deletion, duplication, and tandem arrangement.
 
     Parameters
     ----------
@@ -852,10 +852,13 @@ def predict_phenotype(gene, a, b):
     >>> pypgx.predict_phenotype('CYP2B6', '*1', '*4')   # *4 has increased function
     'Rapid Metabolizer'
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
-    if has_score(gene):
+    df = load_gene_table()
+    phenotype_method = df[df.Gene == gene].PhenotypeMethod.values[0]
+
+    if phenotype_method == 'Score':
         df = load_equation_table()
         df = df[df.Gene == gene]
         def one_row(r, score):
@@ -865,12 +868,14 @@ def predict_phenotype(gene, a, b):
             return 'Indeterminate'
         i = df.apply(one_row, args=(score,), axis=1)
         return df[i].Phenotype.values[0]
-    else:
+    elif phenotype_method == 'Diplotype':
         df = load_diplotype_table()
         df = df[df.Gene == gene]
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         return df[i].Phenotype.values[0]
+    else:
+        return 'Indeterminate'
 
 def predict_score(gene, allele):
     """
