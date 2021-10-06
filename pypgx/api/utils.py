@@ -741,58 +741,46 @@ def predict_alleles(consolidated_variants):
     -------
     pypgx.Archive
         Archive object with the semantic type VcfFrame SampleTable[Alleles].
-
-    Examples
-    --------
-
-    >>> from fuc import pyvcf
-    >>> import pypgx
-    >>> data = {
-    ...     'CHROM': ['19', '19'],
-    ...     'POS': [15990431, 16008388],
-    ...     'ID': ['.', '.'],
-    ...     'REF': ['C', 'A'],
-    ...     'ALT': ['T', 'C'],
-    ...     'QUAL': ['.', '.'],
-    ...     'FILTER': ['.', '.'],
-    ...     'INFO': ['.', '.'],
-    ...     'FORMAT': ['GT', 'GT'],
-    ...     'A': ['0|0', '0|1'],
-    ...     'B': ['1|0', '0|1'],
-    ... }
-    >>> vf = pyvcf.VcfFrame.from_dict([], data)
-    >>> vf.df
-      CHROM       POS ID REF ALT QUAL FILTER INFO FORMAT    A    B
-    0    19  15990431  .   C   T    .      .    .     GT  0|0  1|0
-    1    19  16008388  .   A   C    .      .    .     GT  0|1  0|1
-    >>> pypgx.predict_alleles(vf, 'CYP4F2')
-    {'A': [['*1'], ['*2']], 'B': [['*3'], ['*2']]}
     """
     if isinstance(consolidated_variants, str):
         consolidated_variants = sdk.Archive.from_file(consolidated_variants)
+
     consolidated_variants.check('VcfFrame[Consolidated]')
+
     gene = consolidated_variants.metadata['Gene']
     assembly = consolidated_variants.metadata['Assembly']
+
     definition_table = core.build_definition_table(gene, assembly)
-    vf = consolidated_variants.data.filter_vcf(definition_table)
     ref_allele = core.get_ref_allele(gene, assembly)
     default_allele = core.get_default_allele(gene, assembly)
+    defining_variants = core.list_variants(gene, assembly=assembly)
+    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
 
-    stars = {}
+    reformatted_variants = {}
 
-    func = lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
+    for x in consolidated_variants.data.variants():
+        if x in variant_synonyms:
+            y = variant_synonyms[x]
+            if y in reformatted_variants:
+                raise ValueError('Multiple variant synonyms detected')
+            reformatted_variants[y] = x
 
-    for star in definition_table.samples:
-        df = definition_table.df[definition_table.df[star] == '1']
-        stars[star] = set(df.apply(func, axis=1))
+    star_alleles = {}
+
+    for allele in definition_table.samples:
+        df = definition_table.df[definition_table.df[allele] == '1']
+        star_alleles[allele] = set(df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1))
 
     samples = {}
 
     def one_haplotype(observed):
+        """
+        Call candidate alleles for haplotype.
+        """
         candidates = []
-        for star, variants in stars.items():
+        for allele, variants in star_alleles.items():
             if variants.issubset(observed):
-                candidates.append(star)
+                candidates.append(allele)
         candidates = core.collapse_alleles(gene, candidates, assembly=assembly)
         if ref_allele != default_allele and ref_allele not in candidates and default_allele not in candidates:
             candidates.append(default_allele)
@@ -801,27 +789,40 @@ def predict_alleles(consolidated_variants):
         candidates = core.sort_alleles(candidates, by='priority', gene=gene, assembly=assembly)
         return candidates
 
-    for sample in vf.samples:
-        samples[sample] = []
-        df = vf.df[sample].str.split(':').str[0].str.split('|', expand=True)
-        df.index = vf.df.apply(func, axis=1)
+    def one_row(r, sample, i):
+        gt = r[sample].split(':')[0]
+        if '.' in gt:
+            return ''
+        j = int(gt.split('|')[i])
+        if j == 0:
+            return ''
+        alt = r.ALT.split(',')[j-1]
+        variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt}'
+        if variant in variant_synonyms:
+            variant = variant_synonyms[variant]
+        if variant not in defining_variants:
+            return ''
+        return variant
+
+    for sample in consolidated_variants.data.samples:
+        results = []
         alt_phase = []
         all_alleles = []
+
         for i in [0, 1, 2]:
-            try:
-                observed = set(df[i][df[i] == '1'].index)
-            except KeyError:
-                observed = set()
-            if i != 2:
-                alt_phase += [x for x in observed if x not in alt_phase]
-                candidates = one_haplotype(observed)
-                all_alleles += [x for x in candidates if x not in all_alleles]
-            else:
+            if i == 2:
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
                 all_alleles += [x for x in candidates if x not in all_alleles]
                 all_alleles = core.sort_alleles(all_alleles, by='priority', gene=gene, assembly=assembly)
-            samples[sample].append(';'.join(candidates) + ';')
+            else:
+                observed = consolidated_variants.data.df.apply(one_row, args=(sample, i), axis=1)
+                observed = [x for x in observed if x]
+                alt_phase += [x for x in observed if x not in alt_phase]
+                candidates = one_haplotype(observed)
+                all_alleles += [x for x in candidates if x not in all_alleles]
+
+            results.append(';'.join(candidates) + ';')
 
         af_list = []
 
@@ -829,17 +830,19 @@ def predict_alleles(consolidated_variants):
             if allele == default_allele:
                 af_list.append(f'{allele}:default')
             else:
-                variants = ','.join(stars[allele])
-                fractions = ','.join([str(vf.get_af(sample, x)) for x in stars[allele]])
+                variants = ','.join(star_alleles[allele])
+                fractions = ','.join([str(consolidated_variants.data.get_af(sample, reformatted_variants[x])) if x in reformatted_variants else str(consolidated_variants.data.get_af(sample, x)) for x in star_alleles[allele]])
                 af_list.append(f'{allele}:{variants}:{fractions}')
-        samples[sample].append(';'.join(af_list) + ';')
+
+        results.append(';'.join(af_list) + ';')
+        samples[sample] = results
 
     data = pd.DataFrame(samples).T
     data.columns = ['Haplotype1', 'Haplotype2', 'AlternativePhase', 'VariantData']
     metadata = consolidated_variants.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[Alleles]'
-    result = sdk.Archive(metadata, data)
-    return result
+
+    return sdk.Archive(metadata, data)
 
 def predict_cnv(copy_number, cnv_caller=None):
     """
