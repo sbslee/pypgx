@@ -1073,7 +1073,7 @@ def sort_alleles(
             n = int(_) if _ else 999
             if 'x' in allele.split('+')[0]:
                 cn = int(allele.split('+')[0].split('x')[1])
-        return (n, cn, len(allele))
+        return (n, cn, len(allele), allele)
 
     funcs = {'priority': func1, 'name': func2}
 
