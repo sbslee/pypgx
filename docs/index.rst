@@ -6,6 +6,7 @@ Welcome to PyPGx's documentation!
    :caption: Contents:
 
    readme
+   genes
    tutorials
    dpsv
    cli

@@ -21,6 +21,7 @@ Changelog
 * Update :meth:`api.core.list_variants` method to accept multiple star alleles.
 * Update :command:`predict-alleles` command to support multiallelic variants.
 * Update :meth:`api.utils.sort_alleles` method to give priority to non-reference or non-default alleles when breaking ties (i.e. alleles have the same functional status and same number of variants).
+* Update variant information for following alleles: CYP2D6\*122.
 
 0.5.0 (2021-10-02)
 ------------------
@@ -44,7 +45,7 @@ Changelog
 * Update :command:`create-consolidated-vcf` command to implement phase-extension algorithm.
 * Remove ``SO`` and ``Type`` columns from the variant table.
 * Update :class:`api.genotype.GSTM1Genotyper` class.
-* Update variant information for following alleles: CYP1A2*1C, CYP1A2*1F, CYP1A2*1K, CYP1A2*1L, CYP2B6*17, CYP2D6*15, CYP2D6*21, SLCO1B1*S1, SLCO1B1*S2.
+* Update variant information for following alleles: CYP1A2\*1C, CYP1A2\*1F, CYP1A2\*1K, CYP1A2\*1L, CYP2B6\*17, CYP2D6\*15, CYP2D6\*21, SLCO1B1\*S1, SLCO1B1\*S2.
 * Add ``NotTargetGeneError`` error.
 * Add new method ``api.utils.is_target_gene``.
 * Update :command:`run-ngs-pipeline` command to check whether input gene is one of the target genes before attempting to run the pipeline.

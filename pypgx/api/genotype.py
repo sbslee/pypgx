@@ -140,19 +140,13 @@ class CYP2D6Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV == 'Normal':
             result = [a1, a2]
         elif r.CNV == 'DeletionHom':
             result = ['*5', '*5']
         elif r.CNV == 'DeletionHet':
-            if a1 == a2:
-                result = [a1, '*5']
-            elif a1 == '*1':
-                result = [a2, '*5']
-            elif a2 == '*1':
-                result = [a1, '*5']
-            else:
-                result = ['Indeterminate']
+            result = [s1, '*5']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
         elif r.CNV == 'Tandem1':
