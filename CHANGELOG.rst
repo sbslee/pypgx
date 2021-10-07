@@ -21,7 +21,7 @@ Changelog
 * Update :meth:`api.core.list_variants` method to accept multiple star alleles.
 * Update :command:`predict-alleles` command to support multiallelic variants.
 * Update :meth:`api.utils.sort_alleles` method to give priority to non-reference or non-default alleles when breaking ties (i.e. alleles have the same functional status and same number of variants).
-* Update variant information for following alleles: CYP2D6\*122, CYP2D6\*139.
+* Update variant information for following alleles: CYP2D6\*122, CYP2D6\*127, CYP2D6\*139.
 
 0.5.0 (2021-10-02)
 ------------------
