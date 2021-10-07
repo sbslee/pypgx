@@ -70,8 +70,8 @@ def build_definition_table(gene, assembly='GRCh37'):
     0    19  15879621  rs2108622   C   T    .      .  VI=V433M     GT  0  1
     1    19  15897578  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
 
@@ -162,8 +162,8 @@ def has_phenotype(gene):
     >>> pypgx.has_phenotype('CYP4F2')
     False
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -192,8 +192,8 @@ def has_score(gene):
     >>> pypgx.has_score('CYP2B6')
     False
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -284,8 +284,8 @@ def get_function(gene, allele):
     >>> pypgx.get_function('CYP2D6', '*140')
     nan
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     df = load_allele_table()
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
@@ -354,8 +354,8 @@ def get_priority(gene, phenotype):
     >>> pypgx.get_priority('CYP3A5', 'Poor Metabolizer')
     'Normal/Routine/Low Risk'
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     if phenotype not in list_phenotypes():
         raise PhenotypeNotFoundError(phenotype)
@@ -452,8 +452,8 @@ def get_score(gene, allele):
     >>> pypgx.get_score('CYP2B6', '*1')  # CYP2B6 does not have activity score
     nan
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -527,8 +527,8 @@ def list_alleles(gene, variants=None, assembly='GRCh37'):
     >>> pypgx.list_alleles('CYP2B6', variants=['19-41515263-A-G'], assembly='GRCh37')
     ['*4', '*6', '*7', '*13', '*19', '*20', '*26', '*34', '*36', '*37', '*38']
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     df = load_allele_table()
     df = df[df.Gene == gene]
@@ -575,8 +575,8 @@ def list_functions(gene=None):
     df = load_allele_table()
 
     if gene is not None:
-        if gene not in list_genes():
-            raise GeneNotFoundError(gene)
+        if not is_target_gene(gene):
+            raise NotTargetGeneError(gene)
 
         df = df[df.Gene == gene]
 
@@ -644,8 +644,8 @@ def list_phenotypes(gene=None):
     df = load_phenotype_table()
 
     if gene is not None:
-        if gene not in list_genes():
-            raise GeneNotFoundError(gene)
+        if not is_target_gene(gene):
+            raise NotTargetGeneError(gene)
         df = df[df.Gene == gene]
 
     return sorted(list(df.Phenotype.unique()))
@@ -976,8 +976,8 @@ def predict_score(gene, allele):
     >>> pypgx.predict_score('CYP2B6', '*1')            # CYP2B6 does not have activity score
     nan
     """
-    if gene not in list_genes():
-        raise GeneNotFoundError(gene)
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -1057,11 +1057,14 @@ def sort_alleles(
     ['*1', '*2', '*4', '*10']
     """
     def func1(allele):
+        if gene is None:
+            raise ValueError('Target gene missing')
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
         core = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
         b = len(core) * -1
-        return (a, b)
+        c = allele == get_ref_allele(gene, assembly=assembly) or allele == get_default_allele(gene, assembly=assembly)
+        return (a, b, c)
 
     def func2(allele):
         cn = 1

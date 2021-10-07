@@ -20,6 +20,7 @@ Changelog
 * Add new method :meth:`api.core.get_variant_synonyms`.
 * Update :meth:`api.core.list_variants` method to accept multiple star alleles.
 * Update :command:`predict-alleles` command to support multiallelic variants.
+* Update :meth:`api.utils.sort_alleles` method to give priority to non-reference or non-default alleles when breaking ties (i.e. alleles have the same functional status and same number of variants).
 
 0.5.0 (2021-10-02)
 ------------------
