@@ -1,6 +1,28 @@
 Changelog
 *********
 
+0.6.0 (2021-10-09)
+------------------
+
+* :issue:`25`: Add new extension ``sphinx-issues`` to Read the Docs.
+* :issue:`26`: Add new extension ``sphinx.ext.linkcode`` to Read the Docs.
+* Add ``by`` argument to :meth:`api.utils.sort_alleles` method. When ``by='name'`` it will sort star alleles by allele number.
+* Update :command:`call-genotypes` command to output genotypes with number-sorted alleles (e.g. '\*4/\*10' instead of '\*10/\*4').
+* Add new semantic type ``SampleTable[Phenotypes]``.
+* Add new method :meth:`api.utils.call_phenotypes`.
+* Add new command :command:`call-phenotypes`.
+* Add ``--phenotypes`` argument  to :command:`combine-results` command.
+* Deprecate :meth:`api.utils.load_control_table` method.
+* Split ``api.utils`` submodule into two submodules ``api.utils`` and ``api.core``.
+* Update :command:`run-ngs-pipeline` command to include phenotype calling step.
+* Update :command:`plot-bam-copy-number` command to run faster when ``--samples`` argument is used.
+* Change 'Unassigned' genotype to 'Indeterminate' genotype.
+* Add new method :meth:`api.core.get_variant_synonyms`.
+* Update :meth:`api.core.list_variants` method to accept multiple star alleles.
+* Update :command:`predict-alleles` command to support multiallelic variants.
+* Update :meth:`api.utils.sort_alleles` method to give priority to non-reference or non-default alleles when breaking ties (i.e. alleles have the same functional status and same number of variants).
+* Update variant information for following alleles: CYP2D6\*122, CYP2D6\*127, CYP2D6\*139.
+
 0.5.0 (2021-10-02)
 ------------------
 
@@ -23,7 +45,7 @@ Changelog
 * Update :command:`create-consolidated-vcf` command to implement phase-extension algorithm.
 * Remove ``SO`` and ``Type`` columns from the variant table.
 * Update :class:`api.genotype.GSTM1Genotyper` class.
-* Update variant information for following alleles: CYP1A2*1C, CYP1A2*1F, CYP1A2*1K, CYP1A2*1L, CYP2B6*17, CYP2D6*15, CYP2D6*21, SLCO1B1*S1, SLCO1B1*S2.
+* Update variant information for following alleles: CYP1A2\*1C, CYP1A2\*1F, CYP1A2\*1K, CYP1A2\*1L, CYP2B6\*17, CYP2D6\*15, CYP2D6\*21, SLCO1B1\*S1, SLCO1B1\*S2.
 * Add ``NotTargetGeneError`` error.
 * Add new method ``api.utils.is_target_gene``.
 * Update :command:`run-ngs-pipeline` command to check whether input gene is one of the target genes before attempting to run the pipeline.

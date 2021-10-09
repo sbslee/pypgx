@@ -10,7 +10,7 @@ description = f"""
 ################################################
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+  $ pypgx {fuc.api.common._script_name()} CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --phenotypes CYP2D6-phenotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
 """
 
 def create_parser(subparsers):
@@ -30,6 +30,11 @@ def create_parser(subparsers):
         help='Archive file with the semantic type SampleTable[Genotypes].'
     )
     parser.add_argument(
+        '--phenotypes',
+        metavar='PATH',
+        help='Archive file with the semantic type SampleTable[Phenotypes].'
+    )
+    parser.add_argument(
         '--alleles',
         metavar='PATH',
         help='Archive file with the semantic type SampleTable[Alleles].'
@@ -42,7 +47,7 @@ def create_parser(subparsers):
 
 def main(args):
     archive = utils.combine_results(
-        genotypes=args.genotypes, alleles=args.alleles,
-        cnv_calls=args.cnv_calls
+        genotypes=args.genotypes, phenotypes=args.phenotypes,
+        alleles=args.alleles, cnv_calls=args.cnv_calls
     )
     archive.to_file(args.results)

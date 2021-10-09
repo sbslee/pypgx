@@ -8,7 +8,7 @@ import os
 
 from .. import sdk
 
-from . import utils, plot, genotype
+from . import utils, plot, genotype, core
 
 def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
@@ -41,15 +41,15 @@ def run_ngs_pipeline(
     do_not_plot_allele_fraction : bool, default: False
         Do not plot allele fraction profile.
     """
-    if not utils.is_target_gene(gene):
-        raise utils.NotTargetGeneError(gene)
+    if not core.is_target_gene(gene):
+        raise core.NotTargetGeneError(gene)
 
     if os.path.exists(output) and force:
         shutil.rmtree(output)
 
     os.mkdir(output)
 
-    gene_table = utils.load_gene_table()
+    gene_table = core.load_gene_table()
 
     alleles = None
     cnv_calls = None
@@ -101,5 +101,10 @@ def run_ngs_pipeline(
 
     genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)
     genotypes.to_file(f'{output}/genotypes.zip')
-    results = utils.combine_results(genotypes=genotypes, alleles=alleles, cnv_calls=cnv_calls)
+    phenotypes = utils.call_phenotypes(genotypes)
+    phenotypes.to_file(f'{output}/phenotypes.zip')
+    results = utils.combine_results(
+        genotypes=genotypes, phenotypes=phenotypes, alleles=alleles,
+        cnv_calls=cnv_calls
+    )
     results.to_file(f'{output}/results.zip')

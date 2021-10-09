@@ -31,12 +31,16 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.napoleon',
     'sphinx_rtd_theme',
+    'sphinx.ext.linkcode',
     'autodocsumm',
+    'sphinx_issues',
 ]
 
 autodoc_default_options = {
     'autosummary': True,
 }
+
+issues_github_path = 'sbslee/pypgx'
 
 napoleon_use_param = False
 
@@ -60,3 +64,52 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
+
+# -- Add external links to source code with sphinx.ext.linkcode --------------
+
+import inspect
+import pypgx
+
+def linkcode_resolve(domain, info):
+    if domain != 'py':
+        return None
+
+    modname = info['module']
+
+    if not modname:
+        return None
+
+    submod = sys.modules.get(modname)
+
+    if submod is None:
+        return None
+
+    fullname = info['fullname']
+    obj = submod
+
+    for part in fullname.split('.'):
+        try:
+            obj = getattr(obj, part)
+        except AttributeError:
+            return None
+
+    try:
+        fn = inspect.getsourcefile(inspect.unwrap(obj))
+    except TypeError:
+        fn = None
+    if not fn:
+        return None
+
+    try:
+        source, lineno = inspect.getsourcelines(obj)
+    except OSError:
+        lineno = None
+
+    if lineno:
+        linespec = f'#L{lineno}-L{lineno + len(source) - 1}'
+    else:
+        linespec = ''
+
+    fn = os.path.relpath(fn, start=os.path.dirname(pypgx.__file__))
+
+    return f'https://github.com/sbslee/pypgx/tree/master/pypgx/{fn}/{linespec}'

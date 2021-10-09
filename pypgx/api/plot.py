@@ -3,7 +3,7 @@ The plot submodule is used to plot various kinds of profiles such as read
 depth, copy number, and allele fraction.
 """
 
-from . import utils
+from . import utils, core
 from .. import sdk
 
 from fuc import pyvcf, pycov, common
@@ -16,12 +16,12 @@ import pandas as pd
 ###################
 
 def _plot_exons(gene, assembly, ax):
-    region = utils.get_region(gene, assembly=assembly)
+    region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
-    df = utils.load_gene_table()
+    df = core.load_gene_table()
     starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-    paralog = utils.get_paralog(gene)
+    paralog = core.get_paralog(gene)
     if paralog:
         starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
         ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
@@ -67,6 +67,13 @@ def plot_bam_copy_number(
 
     if samples is None:
         samples = copy_number.data.samples
+    else:
+        copy_number = utils.filter_samples(copy_number, samples=samples)
+
+    if fitted:
+        processed_copy_number = utils._process_copy_number(copy_number)
+    else:
+        processed_copy_number = None
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
@@ -76,8 +83,8 @@ def plot_bam_copy_number(
             _plot_exons(copy_number.metadata['Gene'], copy_number.metadata['Assembly'], ax1)
             copy_number.data.plot_region(sample, ax=ax2, legend=False)
 
-            if fitted:
-                utils._process_copy_number(copy_number).data.plot_region(sample, ax=ax2, legend=False)
+            if processed_copy_number is not None:
+                processed_copy_number.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
             ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
@@ -224,7 +231,7 @@ def plot_vcf_read_depth(
     """
     vf = pyvcf.VcfFrame.from_file(vcf)
 
-    region = utils.get_region(gene, assembly=assembly)
+    region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
 
     if samples is None:

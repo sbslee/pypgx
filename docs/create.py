@@ -3,10 +3,10 @@ import subprocess
 
 import pypgx
 import pypgx.api
-from pypgx.api import utils
+from pypgx.api import core
 from pypgx.cli import commands
 
-submodules = ['genotype', 'pipeline', 'plot', 'utils']
+submodules = ['core', 'genotype', 'pipeline', 'plot', 'utils']
 
 credit = """
 ..
@@ -163,6 +163,9 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 - ``SampleTable[Genotypes]``
     * TSV file for storing target gene's genotype call for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
+- ``SampleTable[Phenotypes]``
+    * TSV file for storing target gene's phenotype call for each sample.
+    * Requires following metadata: ``Gene``, ``SemanticType``.
 - ``SampleTable[Results]``
     * TSV file for storing various results for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
@@ -285,7 +288,7 @@ We can predict phenotype for the *CYP2D6* gene based on two haplotype calls:
     'Ultrarapid Metabolizer'
 """.format(**d)
 
-readme_file = f'{utils.PROGRAM_PATH}/README.rst'
+readme_file = f'{core.PROGRAM_PATH}/README.rst'
 
 with open(readme_file, 'w') as f:
     f.write(readme.lstrip())
@@ -332,7 +335,7 @@ for command in commands:
     s += '\n'
     cli += s
 
-cli_file = f'{utils.PROGRAM_PATH}/docs/cli.rst'
+cli_file = f'{core.PROGRAM_PATH}/docs/cli.rst'
 
 with open(cli_file, 'w') as f:
     f.write(cli.lstrip())
@@ -371,7 +374,7 @@ for submodule in submodules:
     s += '\n'
     api += s
 
-with open(f'{utils.PROGRAM_PATH}/docs/api.rst', 'w') as f:
+with open(f'{core.PROGRAM_PATH}/docs/api.rst', 'w') as f:
     f.write(api.lstrip())
 
 # -- sdk.rst -----------------------------------------------------------------
@@ -394,5 +397,5 @@ utils
 
 """.format(**d)
 
-with open(f'{utils.PROGRAM_PATH}/docs/sdk.rst', 'w') as f:
+with open(f'{core.PROGRAM_PATH}/docs/sdk.rst', 'w') as f:
     f.write(sdk.lstrip())
