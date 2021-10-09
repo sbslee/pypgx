@@ -1071,9 +1071,11 @@ def sort_alleles(
         if '*' not in allele:
             n = 999
         else:
-            _ = allele.split('+')[0].split('x')[0]
-            _ = ''.join([x for x in _ if x.isdigit()])
-            n = int(_) if _ else 999
+            _ = allele.split('+')[0].split('x')[0].replace('*', '')
+            if [x for x in _ if not x.isdigit()]:
+                n = 999
+            else:
+                n = int(''.join([x for x in _ if x.isdigit()]))
             if 'x' in allele.split('+')[0]:
                 cn = int(allele.split('+')[0].split('x')[1])
         return (n, cn, len(allele), allele)
