@@ -913,15 +913,20 @@ def predict_phenotype(gene, a, b):
         if np.isnan(score):
             return 'Indeterminate'
         i = df.apply(one_row, args=(score,), axis=1)
-        return df[i].Phenotype.values[0]
+        phenotype = df[i].Phenotype.values[0]
     elif phenotype_method == 'Diplotype':
         df = load_diplotype_table()
         df = df[df.Gene == gene]
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
-        return df[i].Phenotype.values[0]
+        try:
+            phenotype = df[i].Phenotype.values[0]
+        except IndexError:
+            phenotype = 'Indeterminate'
     else:
-        return 'Indeterminate'
+        phenotype = 'Indeterminate'
+
+    return phenotype
 
 def predict_score(gene, allele):
     """

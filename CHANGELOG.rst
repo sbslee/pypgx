@@ -4,6 +4,8 @@ Changelog
 0.7.0 (in development)
 ----------------------
 
+* Fix minor bug in :meth:`api.core.predict_phenotype` when specified diplotype is not present in diplotype table.
+
 0.6.0 (2021-10-09)
 ------------------
 
