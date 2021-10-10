@@ -1,8 +1,32 @@
 Genes
 *****
 
+CYP2A6
+======
+
+Filtered alleles
+----------------
+
+Some alleles in PharmVar will not be called by PyPGx because one or more of their variants have a high false positive rate, likely due to read misalignment to the *CYP2A7* pseudogene. Those alleles are listed in below table. If problematic variants are present in gnomAD, their links are provided so that you can look at filtering status, allele imbalance for heterozygotes, etc.
+
+.. list-table::
+   :widths: 25 25 25 25
+   :header-rows: 1
+
+   * - Problematic Variant
+     - Star Alleles
+     - GRCh37
+     - GRCh38
+   * - rs143731390 (N438Y)
+     - \*35
+     - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
+     - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
+
 CYP2D6
 ======
+
+Filtered alleles
+----------------
 
 Some alleles in PharmVar will not be called by PyPGx because one or more of their variants have a high false positive rate, likely due to read misalignment to the *CYP2D7* pseudogene. Those alleles are listed in below table. If problematic variants are present in gnomAD, their links are provided so that you can look at filtering status, allele imbalance for heterozygotes, etc.
 
