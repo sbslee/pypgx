@@ -487,13 +487,13 @@ def get_variant_impact(variant):
     --------
 
     >>> import pypgx
-    >>> pypgx.get_variant_impact('22-42522580-C-T')
+    >>> pypgx.get_variant_impact('22-42522580-C-T') # Missense variant
     'R497H'
-    >>> pypgx.get_variant_impact('10-96541756-T-A')
+    >>> pypgx.get_variant_impact('10-96541756-T-A') # Splice variant
     'Splice Defect'
-    >>> pypgx.get_variant_impact('22-42524435-T-A')
+    >>> pypgx.get_variant_impact('22-42524435-T-A') # Intron variant
     ''
-    >>> pypgx.get_variant_impact('22-42524435-T-C')
+    >>> pypgx.get_variant_impact('22-42524435-T-C') # Does not exist
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
       File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 489, in get_variant_impact
