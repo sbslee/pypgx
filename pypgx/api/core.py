@@ -1105,14 +1105,17 @@ def sort_alleles(
     ['*1', '*2', '*4', '*10']
     """
     def func1(allele):
-        if gene is None:
-            raise ValueError('Target gene missing')
+        if not is_target_gene(gene):
+            raise NotTargetGeneError(gene)
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
-        core = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
-        b = len(core) * -1
-        c = allele == get_ref_allele(gene, assembly=assembly) or allele == get_default_allele(gene, assembly=assembly)
-        return (a, b, c)
+        core_variants = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
+        b = len(core_variants) * -1
+        impacts = [get_variant_impact(x) for x in core_variants]
+        impacts = [x for x in impacts if x]
+        c = len(impacts) * -1
+        d = allele == get_ref_allele(gene, assembly=assembly) or allele == get_default_allele(gene, assembly=assembly)
+        return (a, b, c, d)
 
     def func2(allele):
         cn = 1
