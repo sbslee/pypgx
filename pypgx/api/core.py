@@ -482,6 +482,23 @@ def get_variant_impact(variant):
     -------
     str
         Variant impact.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_variant_impact('22-42522580-C-T')
+    'R497H'
+    >>> pypgx.get_variant_impact('10-96541756-T-A')
+    'Splice Defect'
+    >>> pypgx.get_variant_impact('22-42524435-T-A')
+    ''
+    >>> pypgx.get_variant_impact('22-42524435-T-C')
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 489, in get_variant_impact
+        raise VariantNotFoundError(variant)
+    pypgx.api.core.VariantNotFoundError: 22-42524435-T-C
     """
     df = load_variant_table()
     df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
