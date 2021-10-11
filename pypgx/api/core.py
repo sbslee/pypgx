@@ -1048,15 +1048,19 @@ def sort_alleles(
     alleles, by='priority', gene=None, assembly='GRCh37'
 ):
     """
-    Sort star alleles either by priority or name.
+    Sort star alleles by either priority or name.
 
-    When ``by='priority'`` (default) the method will report high priority
-    alleles first. This means alleles are sorted by allele function (e.g.
-    'No Function' > 'Normal Function') and then by the number of core
-    variants (e.g. three SNVs > one SNV). The priority of allele function
-    decreases in the following order: 'No Function', 'Decreased Function',
-    'Possible Decreased Function', 'Increased Function', 'Possible Increased
-    Function', 'Uncertain Function', 'Unknown Function', 'Normal Function'.
+    By default (``by='priority'``) the method reports high priority alleles
+    first. This means alleles are sorted by the following order: 1. allele
+    function (e.g. 'No Function' > 'Normal Function'), 2. number of core
+    variants (e.g. three SNVs > one SNV), 3. number of core variants that
+    impact protein coding (e.g. two misssense variants > one missense variant
+    plus one intron variant), and 4. reference allele status (e.g.
+    non-reference allele with one SNV > reference allele with one SNV).
+    Note that the priority of allele function decreases in the following
+    order: 'No Function', 'Decreased Function', 'Possible Decreased
+    Function', 'Increased Function', 'Possible Increased Function',
+    'Uncertain Function', 'Unknown Function', 'Normal Function'.
 
     When ``by='name'`` the method will report alleles with a smaller
     number first. This means, for example, '\*4' will come before '\*10'
@@ -1075,9 +1079,9 @@ def sort_alleles(
         * 'name': Report alleles with a smaller number first.
 
     gene : str
-        Target gene. Required when ``method`` is 'priority'.
+        Target gene. Only required when ``method='priority'``.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly. Used when ``method`` is 'priority'.
+        Reference genome assembly. Only relevant when ``method='priority'``.
 
     Returns
     -------
@@ -1114,7 +1118,7 @@ def sort_alleles(
         impacts = [get_variant_impact(x) for x in core_variants]
         impacts = [x for x in impacts if x]
         c = len(impacts) * -1
-        d = allele == get_ref_allele(gene, assembly=assembly) or allele == get_default_allele(gene, assembly=assembly)
+        d = allele == get_ref_allele(gene, assembly=assembly)
         return (a, b, c, d)
 
     def func2(allele):
