@@ -1127,7 +1127,7 @@ def sort_alleles(
             n = 999
         else:
             _ = allele.split('+')[0].split('x')[0].replace('*', '')
-            if [x for x in _ if not x.isdigit()]:
+            if not _[0].isdigit():
                 n = 999
             else:
                 n = int(''.join([x for x in _ if x.isdigit()]))
