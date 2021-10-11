@@ -35,6 +35,9 @@ class NotTargetGeneError(Exception):
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
+class VariantNotFoundError(Exception):
+    """Raise if specified variant is not present in the variant table."""
+
 def build_definition_table(gene, assembly='GRCh37'):
     """
     Build the definition table of star alleles for specified gene.
@@ -465,6 +468,29 @@ def get_score(gene, allele):
         raise AlleleNotFoundError(gene + allele)
 
     return df.ActivityScore.values[0]
+
+def get_variant_impact(variant):
+    """
+    Get variant impact from the variant table.
+
+    Parameters
+    ----------
+    variant : str
+        Variant name.
+
+    Returns
+    -------
+    str
+        Variant impact.
+    """
+    df = load_variant_table()
+    df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
+    if df.empty:
+        raise VariantNotFoundError(variant)
+    impact = df.Impact.values[0]
+    if pd.isna(impact):
+        impact = ''
+    return impact
 
 def get_variant_synonyms(gene, assembly='GRCh37'):
     """
@@ -1007,15 +1033,15 @@ def sort_alleles(
     """
     Sort star alleles either by priority or name.
 
-    When ``by`` is 'priority' the method will report high priority alleles
-    first. This means alleles are sorted by allele function (e.g.
+    When ``by='priority'`` (default) the method will report high priority
+    alleles first. This means alleles are sorted by allele function (e.g.
     'No Function' > 'Normal Function') and then by the number of core
     variants (e.g. three SNVs > one SNV). The priority of allele function
     decreases in the following order: 'No Function', 'Decreased Function',
     'Possible Decreased Function', 'Increased Function', 'Possible Increased
     Function', 'Uncertain Function', 'Unknown Function', 'Normal Function'.
 
-    When ``by`` is 'name' the method will report alleles with a smaller
+    When ``by='name'`` the method will report alleles with a smaller
     number first. This means, for example, '\*4' will come before '\*10'
     whereas lexicographic sorting would produce the opposite result. This is
     particularly useful when forming a diplotype (e.g. '\*4/\*10' vs.

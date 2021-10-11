@@ -7,6 +7,7 @@ Changelog
 * Fix minor bug in :meth:`api.core.predict_phenotype` when specified diplotype is not present in diplotype table.
 * Update variant information for following alleles: CYP2A6\*35.
 * Dissolve **Database of Pharmacogenomic Structural Variants (DPSV)** page and move its SV data to **Genes** page.
+* Add new method :meth:`api.core.get_variant_impact`.
 
 0.6.0 (2021-10-09)
 ------------------
