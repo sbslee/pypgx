@@ -8,7 +8,6 @@ Welcome to PyPGx's documentation!
    readme
    genes
    tutorials
-   dpsv
    cli
    api
    sdk
