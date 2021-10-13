@@ -273,7 +273,7 @@ create-regions-bed
 .. code-block:: text
 
    $ pypgx create-regions-bed -h
-   usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--chr-prefix]
+   usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--add-chr-prefix]
                                    [--merge] [--sv-genes]
    
    ###############################################################
@@ -284,11 +284,11 @@ create-regions-bed
      $ pypgx create-regions-bed > regions.bed
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --chr-prefix     Whether to add the 'chr' string in contig names.
-     --merge          Whether to merge overlapping intervals (gene names will be removed too).
-     --sv-genes       Whether to only return genes with SV.
+     -h, --help        Show this help message and exit.
+     --assembly TEXT   Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --add-chr-prefix  Whether to add the 'chr' string in contig names.
+     --merge           Whether to merge overlapping intervals (gene names will be removed too).
+     --sv-genes        Whether to only return genes with SV.
 
 estimate-phase-beagle
 =====================

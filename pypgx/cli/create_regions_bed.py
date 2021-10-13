@@ -28,7 +28,7 @@ def create_parser(subparsers):
         help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
-        '--chr-prefix',
+        '--add-chr-prefix',
         action='store_true',
         help="Whether to add the 'chr' string in contig names."
     )
@@ -45,7 +45,7 @@ def create_parser(subparsers):
 
 def main(args):
     bf = utils.create_regions_bed(
-        assembly=args.assembly, chr_prefix=args.chr_prefix,
+        assembly=args.assembly, add_chr_prefix=args.add_chr_prefix,
         merge=args.merge, sv_genes=args.sv_genes
     )
     sys.stdout.write(bf.to_string())

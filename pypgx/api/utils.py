@@ -521,7 +521,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     return result
 
 def create_regions_bed(
-    assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
+    assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -530,7 +530,7 @@ def create_regions_bed(
     ----------
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
-    chr_prefix : bool, default: False
+    add_chr_prefix : bool, default: False
         Whether to add the 'chr' string in contig names.
     merge : bool, default: False
         Whether to merge overlapping intervals (gene names will be removed
@@ -555,7 +555,7 @@ def create_regions_bed(
     df = pd.DataFrame(data)
     df.columns = ['Chromosome', 'Start', 'End', 'Name']
     bf = pybed.BedFrame.from_frame([], df)
-    if chr_prefix:
+    if add_chr_prefix:
         bf = bf.update_chr_prefix(mode='add')
     if merge:
         bf = bf.merge()

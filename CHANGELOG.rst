@@ -10,6 +10,7 @@ Changelog
 * Add new method :meth:`api.core.get_variant_impact`.
 * Update :meth:`api.utils.sort_alleles` method to give priority to alleles that impact protein coding when breaking ties (i.e. alleles have the same functional status and same number of variants).
 * Update CNV caller for SLC22A2 gene.
+* Rename ``--chr-prefix`` argument in :command:`create-regions-bed` to ``--add-chr-prefix``.
 
 0.6.0 (2021-10-09)
 ------------------
