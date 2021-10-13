@@ -9,7 +9,7 @@ Changelog
 * Dissolve **Database of Pharmacogenomic Structural Variants (DPSV)** page and move its SV data to **Genes** page.
 * Add new method :meth:`api.core.get_variant_impact`.
 * Update :meth:`api.utils.sort_alleles` method to give priority to alleles that impact protein coding when breaking ties (i.e. alleles have the same functional status and same number of variants).
-* Update CNV caller for SLC22A2 gene.
+* Update CNV caller for SLC22A2 and UGT2B15 genes.
 * Rename ``--chr-prefix`` argument in :command:`create-regions-bed` to ``--add-chr-prefix``.
 
 0.6.0 (2021-10-09)
