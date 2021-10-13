@@ -192,7 +192,7 @@ def parse_pharmvar(fn):
             raise ValueError('Something went wrong')
 
     for assembly in ['GRCh37', 'GRCh38']:
-        df2 = pyvcf.merge(vfs[assembly]).chr_prefix().df
+        df2 = pyvcf.merge(vfs[assembly]).update_chr_prefix(mode='remove').df
         df2['Name'] = df2.apply(func, axis=1)
         df2['Alleles'] = df2.apply(lambda r: ','.join(variants[assembly][r.Name]), axis=1)
         df2['rsID'] = df2.apply(lambda r: rs_dict[r.Name], axis=1)
@@ -236,7 +236,7 @@ def parse_input_bams(bam=None, fn=None):
     else:
         bam_files += common.convert_file2list(fn)
 
-    if all([pybam.has_chr(x) for x in bam_files]):
+    if all([pybam.has_chr_prefix(x) for x in bam_files]):
         chr_prefix = 'chr'
     else:
         chr_prefix = ''

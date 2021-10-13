@@ -216,7 +216,7 @@ def compute_control_statistics(
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
-        if any(['chr' in x for x in bf.contigs]):
+        if bf.has_chr_prefix:
             bed_prefix = 'chr'
         else:
             bed_prefix = ''
@@ -225,9 +225,9 @@ def compute_control_statistics(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         cf = cf.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
@@ -358,9 +358,9 @@ def compute_target_depth(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         data = data.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
@@ -556,7 +556,7 @@ def create_regions_bed(
     df.columns = ['Chromosome', 'Start', 'End', 'Name']
     bf = pybed.BedFrame.from_frame([], df)
     if chr_prefix:
-        bf = bf.chr_prefix(mode='add')
+        bf = bf.update_chr_prefix(mode='add')
     if merge:
         bf = bf.merge()
     return bf
@@ -686,7 +686,7 @@ def import_read_depth(
 
     metadata = depth_of_coverage.copy_metadata()
     region = core.get_region(gene, assembly=metadata['Assembly'])
-    data = depth_of_coverage.data.chr_prefix().slice(region)
+    data = depth_of_coverage.data.update_chr_prefix(mode='remove').slice(region)
     metadata['Gene'] = gene
     metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
@@ -717,7 +717,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     region = core.get_region(gene, assembly=assembly)
 
-    data = vf.chr_prefix().slice(region).strip('GT:AD:DP')
+    data = vf.update_chr_prefix(mode='remove').slice(region).strip('GT:AD:DP')
     data = data.add_af().unphase()
 
     metadata = {
@@ -954,9 +954,9 @@ def prepare_depth_of_coverage(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         cf = cf.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
