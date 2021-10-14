@@ -6,9 +6,9 @@ import fuc
 import pysam
 
 description = f"""
-########################################################
-# Compute copy number from read depth for target gene. #
-########################################################
+############################################################
+# Compute copy number from read depth for the target gene. #
+############################################################
 
 The method will convert read depth from target gene to copy number by performing intra-sample normalization using summary statistics from control gene.
 
@@ -22,7 +22,7 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute copy number from read depth for target gene.',
+        help='Compute copy number from read depth for the target gene.',
         description=description,
     )
     parser.add_argument(

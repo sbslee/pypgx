@@ -239,7 +239,7 @@ def compute_control_statistics(
 
 def compute_copy_number(read_depth, control_statistics, samples=None):
     """
-    Compute copy number from read depth for target gene.
+    Compute copy number from read depth for the target gene.
 
     The method will convert read depth from target gene to copy number by
     performing intra-sample normalization using summary statistics from
