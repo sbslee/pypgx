@@ -1,6 +1,8 @@
 Genes
 *****
 
+This section describes gene-specific information.
+
 CYP2A6
 ======
 
@@ -262,3 +264,55 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
      - 0d73bafef55a4a718489f3fdca91fd55
+
+GSTM1
+=====
+
+Structural variation
+--------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - Copy Number
+    - Allele Fraction
+    - Data Type
+    - Source
+    - Sample ID
+    - BAM ID
+  * - \*0
+    - DeletionHet
+    - \*0/\*A
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-1-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-1-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18855
+    - 03bc76a2c27140bc8143c56767ca6877
+  * - \*0
+    - DeletionHom
+    - \*0/\*0
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-2-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-2-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA10831
+    - 021ab129bb594be5804b02e08e14d93d
+  * - \*Ax2
+    - Duplication
+    - \*A/\*Ax2
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-3-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GSTM1-3-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19908
+    - 0d73bafef55a4a718489f3fdca91fd55
