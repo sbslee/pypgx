@@ -359,6 +359,80 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA11832
     - 22d9ea3d16804243afbfea7e776c5237
 
+SLC22A2
+=======
+
+Structural variation
+--------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - Copy Number
+    - Allele Fraction
+    - Data Type
+    - Source
+    - Sample ID
+    - BAM ID
+  * - \*S1
+    - Intron9Deletion
+    - \*1/\*S1
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19176
+    - d7b5cf7015d44c23a949dc117c149c80
+  * - \*S2
+    - Exon11Deletion
+    - \*1/\*S2
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-2-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-2-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19819
+    - a04f109738f34a358850f5f69d7d8814
+
+UGT2B15
+=======
+
+Structural variation
+--------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - Copy Number
+    - Allele Fraction
+    - Data Type
+    - Source
+    - Sample ID
+    - BAM ID
+  * - \*S1
+    - PartialDeletion
+    - \*4/\*S1
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B15-1-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B15-1-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18855
+    - 03bc76a2c27140bc8143c56767ca6877
+
 UGT2B17
 =======
 
