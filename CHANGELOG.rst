@@ -13,7 +13,7 @@ Changelog
 * Rename ``--chr-prefix`` argument in :command:`create-regions-bed` to ``--add-chr-prefix``.
 * Add ``--samples`` argument to :command:`run-ngs-pipeline` command.
 * Add new command :command:`compare-genotypes`.
-* Update :meth:`api.genotype.call_genotypes` method to assume the samples have no SV when CNV calls are not provided even if the target is known to have SV.
+* Update :meth:`api.genotype.call_genotypes` method to assume the samples have no SV when CNV calls are not provided even if the target gene is known to have SV.
 
 0.6.0 (2021-10-09)
 ------------------
