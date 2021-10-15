@@ -9,6 +9,8 @@ description = f"""
 # Calculate concordance rate between two genotype results. #
 ############################################################
 
+The method will only use samples that appear in both genotype results.
+
 Usage examples:
   $ pypgx {fuc.api.common._script_name()} first-results.zip second-results.zip
 """

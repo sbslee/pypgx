@@ -172,10 +172,11 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
+       compare-genotypes   Calculate concordance rate between two genotype results.
        compute-control-statistics
                            Compute various statistics for control gene with BAM data.
        compute-copy-number
-                           Compute copy number from read depth for target gene.
+                           Compute copy number from read depth for the target gene.
        compute-target-depth
                            Compute read depth for target gene with BAM data.
        create-consolidated-vcf

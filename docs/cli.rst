@@ -23,10 +23,11 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
+       compare-genotypes   Calculate concordance rate between two genotype results.
        compute-control-statistics
                            Compute various statistics for control gene with BAM data.
        compute-copy-number
-                           Compute copy number from read depth for target gene.
+                           Compute copy number from read depth for the target gene.
        compute-target-depth
                            Compute read depth for target gene with BAM data.
        create-consolidated-vcf
@@ -136,6 +137,28 @@ combine-results
      --alleles PATH     Archive file with the semantic type SampleTable[Alleles].
      --cnv-calls PATH   Archive file with the semantic type SampleTable[CNVCalls].
 
+compare-genotypes
+=================
+
+.. code-block:: text
+
+   $ pypgx compare-genotypes -h
+   usage: pypgx compare-genotypes [-h] first second
+   
+   ############################################################
+   # Calculate concordance rate between two genotype results. #
+   ############################################################
+   
+   Usage examples:
+     $ pypgx compare-genotypes first-results.zip second-results.zip
+   
+   Positional arguments:
+     first       First archive file with the semantic type SampleTable[Results].
+     second      Second archive file with the semantic type SampleTable[Results].
+   
+   Optional arguments:
+     -h, --help  Show this help message and exit.
+
 compute-control-statistics
 ==========================
 
@@ -184,9 +207,9 @@ compute-copy-number
    usage: pypgx compute-copy-number [-h] [--samples TEXT [TEXT ...]]
                                     read-depth control-statistcs output
    
-   ########################################################
-   # Compute copy number from read depth for target gene. #
-   ########################################################
+   ############################################################
+   # Compute copy number from read depth for the target gene. #
+   ############################################################
    
    The method will convert read depth from target gene to copy number by performing intra-sample normalization using summary statistics from control gene.
    
@@ -628,13 +651,16 @@ run-ngs-pipeline
    usage: pypgx run-ngs-pipeline [-h] [--variants PATH]
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--panel PATH]
-                                 [--force] [--do-not-plot-copy-number]
+                                 [--force] [--samples TEXT [TEXT ...]]
+                                 [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
    #########################################
    # Run NGS pipeline for the target gene. #
    #########################################
+   
+   When computing copy number from read depth, if the input data was generated with targeted sequencing as opposed to WGS, the method will apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV with '--samples'.
    
    Usage examples:
      $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
@@ -652,6 +678,8 @@ run-ngs-pipeline
                            Archive file with the semandtic type SampleTable[Statistcs].
      --panel PATH          Reference haplotype panel. By default, the 1KGP panel is used.
      --force               Overwrite output directory if it already exists.
+     --samples TEXT [TEXT ...]
+                           List of known samples with no SV.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction

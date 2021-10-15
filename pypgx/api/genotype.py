@@ -87,7 +87,7 @@ class CYP2A6Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'DeletionHom':
             result = ['*4', '*4']
@@ -120,7 +120,7 @@ class CYP2B6Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         p = core.sort_alleles([a1, a2], by='priority',
             gene=self.gene, assembly=self.assembly)[0]
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Hybrid':
             result = [p, '*29']
@@ -141,7 +141,7 @@ class CYP2D6Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'DeletionHom':
             result = ['*5', '*5']
@@ -215,7 +215,7 @@ class CYP2E1Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'PartialDuplication':
             h1 = '*4'in r.Haplotype1 and '*7' in r.Haplotype1
@@ -260,7 +260,7 @@ class GSTM1Genotyper:
                 result = [a1, a2 + 'x2']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'Normal':
+        elif r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         else:
             result = ['Indeterminate']
@@ -281,7 +281,7 @@ class GSTT1Genotyper:
             result = ['*A', '*0']
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
-        elif r.CNV == 'Normal':
+        elif r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*A', '*A']
         else:
             result = ['Indeterminate']
@@ -299,7 +299,7 @@ class SLC22A2Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Intron9Deletion':
             h1 = '*K432Q'in r.Haplotype1
@@ -339,7 +339,7 @@ class UGT2B15Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'Normal':
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'PartialDeletion':
             if a1 == a2:
@@ -365,7 +365,7 @@ class UGT2B17Genotyper:
             result = ['*1', '*2']
         elif r.CNV == 'DeletionHom':
             result = ['*2', '*2']
-        elif r.CNV == 'Normal':
+        elif r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*1', '*1']
         else:
             result = ['Indeterminate']
@@ -454,6 +454,14 @@ def call_genotypes(alleles=None, cnv_calls=None):
     df = df.apply(one_row, axis=1)
 
     if gene in sv_genotypers:
+        if 'CNV' not in df.columns:
+            df['CNV'] = 'AssumeNormal'
+            message = (
+                'The user did not provide CNV calls even though the target '
+                'gene is known to have SV. PyPGx will assume all of the '
+                'samples do not have SV.'
+            )
+            warnings.warn(message)
         df = sv_genotypers[gene](df, assembly).results.to_frame()
     else:
         df = SimpleGenotyper(df, gene, assembly).results.to_frame()
