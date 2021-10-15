@@ -162,6 +162,52 @@ def combine_results(
 
     return sdk.Archive(metadata, df[cols])
 
+def compare_genotypes(first, second):
+    """
+    Calculate concordance rate between two genotype results.
+
+    The method will only use samples that appear in both genotype results.
+
+    Parameters
+    ----------
+    first : str or pypgx.Archive
+        First archive file or object with the semantic type
+        SampleTable[Results].
+    second : str or pypgx.Archive
+        Second archive file or object with the semantic type
+        SampleTable[Results].
+
+    Examples
+    --------
+    >>> import pypgx
+    >>> pypgx.compare_genotypes('first-results.zip', 'second-results.zip')
+    Total: 32
+    Compared: 32
+    Concordance: 1.000 (32/32)
+    """
+    if isinstance(first, str):
+        first = sdk.Archive.from_file(first)
+
+    first.check('SampleTable[Results]')
+
+    if isinstance(second, str):
+        second = sdk.Archive.from_file(second)
+
+    second.check('SampleTable[Results]')
+
+    df = pd.concat([first.data.Genotype, second.data.Genotype], axis=1)
+
+    print(f'Total: {df.shape[0]}')
+
+    df.columns = ['First', 'Second']
+    df = df.dropna()
+
+    print(f'Compared: {df.shape[0]}')
+
+    results = df.First == df.Second
+
+    print(f'Concordance: {sum(results)/len(results):.3f} ({sum(results)}/{len(results)})')
+
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
 ):

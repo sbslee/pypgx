@@ -34,6 +34,7 @@ from .api.utils import (
     call_phenotypes,
     combine_results,
     compute_control_statistics,
+    compare_genotypes,
     compute_copy_number,
     compute_target_depth,
     create_consolidated_vcf,

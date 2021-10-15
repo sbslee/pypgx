@@ -12,6 +12,7 @@ Changelog
 * Update CNV caller for SLC22A2 and UGT2B15 genes.
 * Rename ``--chr-prefix`` argument in :command:`create-regions-bed` to ``--add-chr-prefix``.
 * Add ``--samples`` argument to :command:`run-ngs-pipeline` command.
+* Add new command :command:`compare-genotypes`.
 
 0.6.0 (2021-10-09)
 ------------------
