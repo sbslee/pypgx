@@ -5,21 +5,22 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-#########################################
-# Run NGS pipeline for the target gene. #
-#########################################
-
-When computing copy number from read depth, if the input data was generated with targeted sequencing as opposed to WGS, the method will apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV with '--samples'.
+Run genotyping pipeline for NGS data.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
+  $ pypgx {fuc.api.common._script_name()} \\
+    CYP2D6 \\
+    CYP2D6-pipeline \\
+    --variants variants.vcf \\
+    --depth-of-coverage depth-of-coverage.tsv \\
+    --control-statistcs control-statistics-VDR.zip
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Run NGS pipeline for the target gene.',
+        help='Run genotyping pipeline for NGS data.',
         description=description,
     )
     parser.add_argument(
@@ -46,6 +47,14 @@ def create_parser(subparsers):
         help='Archive file with the semandtic type SampleTable[Statistcs].'
     )
     parser.add_argument(
+        '--platform',
+        metavar='TEXT',
+        default='WGS',
+        choices=['WGS', 'Targeted'],
+        help="Genotyping platform (default: 'WGS') (choices: 'WGS', \n"
+             "'Targeted')"
+    )
+    parser.add_argument(
         '--panel',
         metavar='PATH',
         help='Reference haplotype panel. By default, the 1KGP panel is used.'
@@ -59,7 +68,12 @@ def create_parser(subparsers):
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='List of known samples with no SV.'
+        help="When computing copy number from read depth, if the input \n"
+             "data was generated with targeted sequencing as opposed to \n"
+             "WGS, the method will apply inter-sample normalization using \n"
+             "summary statistics across all samples. For best results, it \n"
+             "is recommended to manually specify a list of known reference \n"
+             "samples that do not have SV with '--samples'."
     )
     parser.add_argument(
         '--do-not-plot-copy-number',

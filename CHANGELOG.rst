@@ -14,6 +14,8 @@ Changelog
 * Add ``--samples`` argument to :command:`run-ngs-pipeline` command.
 * Add new command :command:`compare-genotypes`.
 * Update :meth:`api.genotype.call_genotypes` method to assume the samples have no SV when CNV calls are not provided even if the target gene is known to have SV.
+* Add new command :command:`run-chip-pipeline`.
+* Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 
 0.6.0 (2021-10-09)
 ------------------

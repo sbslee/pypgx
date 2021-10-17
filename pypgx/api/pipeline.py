@@ -10,14 +10,57 @@ from .. import sdk
 
 from . import utils, plot, genotype, core
 
+def run_chip_pipeline(
+    gene, output, variants, panel=None, force=False
+):
+    """
+    Run genotyping pipeline for chip data.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    output : str
+        Output directory.
+    variants : str, optional
+        VCF file (zipped or unzipped).
+    force : bool, default : False
+        Overwrite output directory if it already exists.
+    """
+    if not core.is_target_gene(gene):
+        raise core.NotTargetGeneError(gene)
+
+    if os.path.exists(output) and force:
+        shutil.rmtree(output)
+
+    os.mkdir(output)
+
+    imported_variants = utils.import_variants(gene, variants, platform='Chip')
+    imported_variants.to_file(f'{output}/imported-variants.zip')
+    phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
+    phased_variants.to_file(f'{output}/phased-variants.zip')
+    consolidated_variants = utils.create_consolidated_vcf(imported_variants, phased_variants)
+    consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
+    alleles = utils.predict_alleles(consolidated_variants)
+    alleles.to_file(f'{output}/alleles.zip')
+    genotypes = genotype.call_genotypes(alleles=alleles)
+    genotypes.to_file(f'{output}/genotypes.zip')
+    phenotypes = utils.call_phenotypes(genotypes)
+    phenotypes.to_file(f'{output}/phenotypes.zip')
+    results = utils.combine_results(
+        genotypes=genotypes, phenotypes=phenotypes, alleles=alleles,
+        cnv_calls=cnv_calls
+    )
+    results.to_file(f'{output}/results.zip')
+
 def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
-    control_statistics=None, panel=None,
+    control_statistics=None, platform='WGS', panel=None,
     force=False, samples=None, do_not_plot_copy_number=False,
     do_not_plot_allele_fraction=False
 ):
     """
-    Run WGS pipeline for a target gene.
+    Run genotyping pipeline for NGS data (WGS and targeted sequencing).
 
     Parameters
     ----------
@@ -32,6 +75,8 @@ def run_ngs_pipeline(
         CovFrame[DepthOfCoverage].
     control_statistics : str or pypgx.Archive, optional
         Archive file or object with the semantic type SampleTable[Statistics].
+    platform : {'WGS', 'Targeted'}, default: 'WGS'
+        Genotyping platform.
     panel : str, optional
         Reference haplotype panel.
     force : bool, default : False
@@ -57,7 +102,7 @@ def run_ngs_pipeline(
     cnv_calls = None
 
     if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
-        imported_variants = utils.import_variants(gene, variants)
+        imported_variants = utils.import_variants(gene, variants, platform=platform)
         imported_variants.to_file(f'{output}/imported-variants.zip')
         phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
         phased_variants.to_file(f'{output}/phased-variants.zip')

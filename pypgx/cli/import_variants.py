@@ -6,12 +6,13 @@ import fuc
 import pysam
 
 description = f"""
-############################################
-# Import variant data for the target gene. #
-############################################
+Import variant data for the target gene.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 input.vcf CYP2D6-imported-variants.zip
+  $ pypgx {fuc.api.common._script_name()} \\
+    CYP2D6 \\
+    input.vcf \\
+    imported-variants.zip
 """
 
 def create_parser(subparsers):
@@ -38,11 +39,20 @@ def create_parser(subparsers):
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
+    )
+    parser.add_argument(
+        '--platform',
+        metavar='TEXT',
+        default='WGS',
+        choices=['WGS', 'Targeted', 'Chip'],
+        help="NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted', \n"
+             "'Chip')."
     )
 
 def main(args):
     archive = utils.import_variants(
-        args.gene, args.vcf, assembly=args.assembly
+        args.gene, args.vcf, assembly=args.assembly, platform=args.platform
     )
     archive.to_file(args.imported_variants)

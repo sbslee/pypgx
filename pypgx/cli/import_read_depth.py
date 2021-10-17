@@ -6,12 +6,13 @@ import fuc
 import pysam
 
 description = f"""
-###########################################
-# Import read depth data for target gene. #
-###########################################
+Import read depth data for the target gene.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 depth-of-coverage.zip CYP2D6-read-depth.zip
+  $ pypgx {fuc.api.common._script_name()} \\
+    CYP2D6 \\
+    depth-of-coverage.zip \\
+    read-depth.zip
 """
 
 def create_parser(subparsers):
@@ -40,19 +41,12 @@ def create_parser(subparsers):
         metavar='TEXT',
         default='GRCh37',
         choices=['GRCh37', 'GRCh38'],
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
-    )
-    parser.add_argument(
-        '--platform',
-        metavar='TEXT',
-        default='WGS',
-        choices=['WGS', 'Targeted'],
-        help="NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted')."
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
     )
 
 def main(args):
     archive = utils.import_read_depth(
         args.gene, args.depth_of_coverage, assembly=args.assembly,
-        platform=args.platform
     )
     archive.to_file(args.read_depth)

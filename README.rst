@@ -101,8 +101,8 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - Target gene.
       - ``CYP2D6``, ``GSTT1``
     * - ``Platform``
-      - NGS platform.
-      - ``WGS``, ``Targeted``
+      - Genotyping platform.
+      - ``WGS``, ``Targeted``, ``Chip``
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``

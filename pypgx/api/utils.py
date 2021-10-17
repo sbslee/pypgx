@@ -655,7 +655,7 @@ def estimate_phase_beagle(
             f'out={t}/output',
             f'impute={str(impute).lower()}'
         ]
-        subprocess.run(command, stdout=subprocess.DEVNULL)
+        subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
@@ -738,7 +738,7 @@ def import_read_depth(
 
     return sdk.Archive(metadata, data)
 
-def import_variants(gene, vcf, assembly='GRCh37'):
+def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     """
     Import variant data for the target gene.
 
@@ -750,6 +750,8 @@ def import_variants(gene, vcf, assembly='GRCh37'):
         VCF file (zipped or unzipped).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
+        Genotyping platform.
 
     Returns
     -------
@@ -767,6 +769,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
     data = data.add_af().unphase()
 
     metadata = {
+        'Platform': platform,
         'Gene': gene,
         'Assembly': assembly,
         'SemanticType': 'VcfFrame[Imported]',

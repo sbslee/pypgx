@@ -6,17 +6,18 @@ import fuc
 import pysam
 
 description = f"""
-##################################################################
-# Prepare a depth of coverage file for all target genes with SV. #
-##################################################################
+Prepare a depth of coverage file for all target genes with SV.
 
-Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+When input data is WGS:
+  $ pypgx {fuc.api.common._script_name()} \\
+    depth-of-coverage.zip \\
+    --bam A.bam B.bam
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --bam A.bam B.bam
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --fn bam.list
+When input data is targeted sequencing:
+  $ pypgx {fuc.api.common._script_name()} \\
+    depth-of-coverage.zip \\
+    --fn bam.txt \\
+    --bed probes.bed
 """
 
 def create_parser(subparsers):
@@ -35,23 +36,27 @@ def create_parser(subparsers):
         '--bam',
         metavar='PATH',
         nargs='+',
-        help='One or more BAM files.'
+        help="One or more BAM files. Cannot be used with '--fn'."
     )
     parser.add_argument(
         '--fn',
         metavar='PATH',
-        help='File containing one BAM file per line.'
+        help="File containing one BAM file per line. Cannot be used with \n"
+             "'--bam'."
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help='BED file.'
+        help="By default, the input data is assumed to be WGS. If it is \n"
+             "targeted sequencing, you must provide a BED file to indicate \n"
+             "probed regions."
     )
 
 def main(args):
