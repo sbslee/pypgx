@@ -451,12 +451,25 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     assembly = imported_variants.metadata['Assembly']
 
-    vf1 = imported_variants.data.strip('GT:AD:DP:AF')
+    if imported_variants.metadata['Platform'] != phased_variants.metadata['Platform']:
+        raise ValueError('Found two different platforms')
+
+    platform = imported_variants.metadata['Platform']
+
+    if platform in ['WGS', 'Targeted']:
+        format = 'GT:AD:DP:AF'
+    else:
+        format = 'GT'
+
+    vf1 = imported_variants.data.strip(format)
     vf2 = phased_variants.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
         s = vf1.fetch(variant)
+
+        if s.empty:
+            return r
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -468,7 +481,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
     vf3.df.INFO = 'Phased'
-    vf3.df.FORMAT = 'GT:AD:DP:AF'
+    vf3.df.FORMAT = format
 
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
@@ -779,7 +792,7 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
 
 def predict_alleles(consolidated_variants):
     """
-    Predict candidate star alleles based on observed SNVs and INDELs.
+    Predict candidate star alleles based on observed SNVs and indels.
 
     Parameters
     ----------

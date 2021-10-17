@@ -43,7 +43,7 @@ def build_definition_table(gene, assembly='GRCh37'):
     Build the definition table of star alleles for specified gene.
 
     The table will only contain star alleles that are defined by SNVs and/or
-    INDELs. It will not include alleles with SV (e.g. CYP2D6*5) or alleles
+    indels. It will not include alleles with SV (e.g. CYP2D6*5) or alleles
     with no variants (e.g. CYP2D6*2 for GRCh37 and CYP2D6*1 for GRCh38).
 
     Parameters

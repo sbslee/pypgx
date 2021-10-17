@@ -34,6 +34,11 @@ def create_parser(subparsers):
         help='VCF file (zipped or unzipped).'
     )
     parser.add_argument(
+        '--impute',
+        action='store_true',
+        help='Whether to perform imputation of missing genotypes.'
+    )
+    parser.add_argument(
         '--force',
         action='store_true',
         help='Overwrite output directory if it already exists.'
@@ -41,5 +46,6 @@ def create_parser(subparsers):
 
 def main(args):
     pipeline.run_chip_pipeline(
-        args.gene, args.output, args.variants, force=args.force
+        args.gene, args.output, args.variants, impute=args.impute,
+        force=args.force
     )

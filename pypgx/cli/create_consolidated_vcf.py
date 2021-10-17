@@ -6,12 +6,13 @@ import fuc
 import pysam
 
 description = f"""
-############################
-# Create consolidated VCF. #
-############################
+Create a consolidated VCF.
 
 Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-imported-variants.zip CYP2D6-phased-variants.zip CYP2D6-consolidated-variants.zip
+$ pypgx {fuc.api.common._script_name()} \\
+imported-variants.zip \\
+phased-variants.zip \\
+consolidated-variants.zip
 """
 
 def create_parser(subparsers):
@@ -29,7 +30,7 @@ def create_parser(subparsers):
     parser.add_argument(
         'phased_variants',
         metavar='phased-variants',
-        help='Archive file with the semantic type VcfFrame[Phased]'
+        help='Archive file with the semantic type VcfFrame[Phased].'
     )
     parser.add_argument(
         'consolidated_variants',

@@ -129,7 +129,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
 - ``SampleTable[Alleles]``
     * TSV file for storing target gene's candidate star alleles for each sample.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 - ``SampleTable[CNVCalls]``
     * TSV file for storing target gene's CNV call for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
@@ -147,13 +147,13 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
     * VcfFrame for storing target gene's consolidated variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 - ``VcfFrame[Imported]``
     * VcfFrame for storing target gene's raw variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``.
 - ``VcfFrame[Phased]``
     * VcfFrame for storing target gene's phased variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
 Getting help
 ============
@@ -200,7 +200,8 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for the target gene.
+       run-chip-pipeline   Run genotyping pipeline for chip data.
+       run-ngs-pipeline    Run genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    

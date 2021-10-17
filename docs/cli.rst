@@ -51,7 +51,8 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for the target gene.
+       run-chip-pipeline   Run genotyping pipeline for chip data.
+       run-ngs-pipeline    Run genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -378,15 +379,16 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] [--assembly TEXT] [--platform TEXT]
+   usage: pypgx import-read-depth [-h] [--assembly TEXT]
                                   gene depth-of-coverage read-depth
    
-   ###########################################
-   # Import read depth data for target gene. #
-   ###########################################
+   Import read depth data for the target gene.
    
    Usage examples:
-     $ pypgx import-read-depth CYP2D6 depth-of-coverage.zip CYP2D6-read-depth.zip
+     $ pypgx import-read-depth \
+       CYP2D6 \
+       depth-of-coverage.zip \
+       read-depth.zip
    
    Positional arguments:
      gene               Target gene.
@@ -395,8 +397,8 @@ import-read-depth
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted').
+     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
+                        'GRCh37', 'GRCh38').
 
 import-variants
 ===============
@@ -404,14 +406,16 @@ import-variants
 .. code-block:: text
 
    $ pypgx import-variants -h
-   usage: pypgx import-variants [-h] [--assembly TEXT] gene vcf imported-variants
+   usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
+                                gene vcf imported-variants
    
-   ############################################
-   # Import variant data for the target gene. #
-   ############################################
+   Import variant data for the target gene.
    
    Usage examples:
-     $ pypgx import-variants CYP2D6 input.vcf CYP2D6-imported-variants.zip
+     $ pypgx import-variants \
+       CYP2D6 \
+       input.vcf \
+       imported-variants.zip
    
    Positional arguments:
      gene               Target gene.
@@ -420,7 +424,10 @@ import-variants
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
+                        'GRCh37', 'GRCh38').
+     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted', 
+                        'Chip').
 
 plot-bam-copy-number
 ====================
@@ -600,17 +607,18 @@ prepare-depth-of-coverage
                                           [--bed PATH]
                                           depth-of-coverage
    
-   ##################################################################
-   # Prepare a depth of coverage file for all target genes with SV. #
-   ##################################################################
+   Prepare a depth of coverage file for all target genes with SV.
    
-   Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+   When input data is WGS:
+     $ pypgx prepare-depth-of-coverage \
+       depth-of-coverage.zip \
+       --bam A.bam B.bam
    
-   By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
-   
-   Usage examples:
-     $ pypgx prepare-depth-of-coverage depth-of-coverage.zip --bam A.bam B.bam
-     $ pypgx prepare-depth-of-coverage depth-of-coverage.zip --fn bam.list
+   When input data is targeted sequencing:
+     $ pypgx prepare-depth-of-coverage \
+       depth-of-coverage.zip \
+       --fn bam.txt \
+       --bed probes.bed
    
    Positional arguments:
      depth-of-coverage     Archive file with the semantic type CovFrame[DepthOfCoverage].
@@ -618,10 +626,14 @@ prepare-depth-of-coverage
    Optional arguments:
      -h, --help            Show this help message and exit.
      --bam PATH [PATH ...]
-                           One or more BAM files.
-     --fn PATH             File containing one BAM file per line.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            BED file.
+                           One or more BAM files. Cannot be used with '--fn'.
+     --fn PATH             File containing one BAM file per line. Cannot be used with 
+                           '--bam'.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If it is 
+                           targeted sequencing, you must provide a BED file to indicate 
+                           probed regions.
 
 print-metadata
 ==============
@@ -644,6 +656,31 @@ print-metadata
    Optional arguments:
      -h, --help  Show this help message and exit.
 
+run-chip-pipeline
+=================
+
+.. code-block:: text
+
+   $ pypgx run-chip-pipeline -h
+   usage: pypgx run-chip-pipeline [-h] [--force] gene output variants
+   
+   Run genotyping pipeline for chip data.
+   
+   Usage examples:
+     $ pypgx run-chip-pipeline \
+       CYP3A5 \
+       CYP3A5-pipeline \
+       --variants variants.vcf
+   
+   Positional arguments:
+     gene        Target gene.
+     output      Output directory.
+     variants    VCF file (zipped or unzipped).
+   
+   Optional arguments:
+     -h, --help  Show this help message and exit.
+     --force     Overwrite output directory if it already exists.
+
 run-ngs-pipeline
 ================
 
@@ -652,20 +689,22 @@ run-ngs-pipeline
    $ pypgx run-ngs-pipeline -h
    usage: pypgx run-ngs-pipeline [-h] [--variants PATH]
                                  [--depth-of-coverage PATH]
-                                 [--control-statistics PATH] [--panel PATH]
-                                 [--force] [--samples TEXT [TEXT ...]]
+                                 [--control-statistics PATH] [--platform TEXT]
+                                 [--panel PATH] [--force]
+                                 [--samples TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
-   #########################################
-   # Run NGS pipeline for the target gene. #
-   #########################################
-   
-   When computing copy number from read depth, if the input data was generated with targeted sequencing as opposed to WGS, the method will apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV with '--samples'.
+   Run genotyping pipeline for NGS data.
    
    Usage examples:
-     $ pypgx run-ngs-pipeline CYP2D6 CYP2D6-pipeline --variants variants.vcf --depth-of-coverage depth-of-coverage.tsv --control-statistcs control-statistics-VDR.zip
+     $ pypgx run-ngs-pipeline \
+       CYP2D6 \
+       CYP2D6-pipeline \
+       --variants variants.vcf \
+       --depth-of-coverage depth-of-coverage.tsv \
+       --control-statistcs control-statistics-VDR.zip
    
    Positional arguments:
      gene                  Target gene.
@@ -678,10 +717,17 @@ run-ngs-pipeline
                            Depth of coverage file (zipped or unzipped).
      --control-statistics PATH
                            Archive file with the semandtic type SampleTable[Statistcs].
+     --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
+                           'Targeted')
      --panel PATH          Reference haplotype panel. By default, the 1KGP panel is used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
-                           List of known samples with no SV.
+                           When computing copy number from read depth, if the input 
+                           data was generated with targeted sequencing as opposed to 
+                           WGS, the method will apply inter-sample normalization using 
+                           summary statistics across all samples. For best results, it 
+                           is recommended to manually specify a list of known reference 
+                           samples that do not have SV with '--samples'.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction

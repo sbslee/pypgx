@@ -11,7 +11,7 @@ from .. import sdk
 from . import utils, plot, genotype, core
 
 def run_chip_pipeline(
-    gene, output, variants, panel=None, force=False
+    gene, output, variants, panel=None, impute=False, force=False
 ):
     """
     Run genotyping pipeline for chip data.
@@ -24,6 +24,8 @@ def run_chip_pipeline(
         Output directory.
     variants : str, optional
         VCF file (zipped or unzipped).
+    impute : bool, default: False
+        Whether to perform imputation of missing genotypes.
     force : bool, default : False
         Overwrite output directory if it already exists.
     """
@@ -37,7 +39,7 @@ def run_chip_pipeline(
 
     imported_variants = utils.import_variants(gene, variants, platform='Chip')
     imported_variants.to_file(f'{output}/imported-variants.zip')
-    phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
+    phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel, impute=impute)
     phased_variants.to_file(f'{output}/phased-variants.zip')
     consolidated_variants = utils.create_consolidated_vcf(imported_variants, phased_variants)
     consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
@@ -48,8 +50,7 @@ def run_chip_pipeline(
     phenotypes = utils.call_phenotypes(genotypes)
     phenotypes.to_file(f'{output}/phenotypes.zip')
     results = utils.combine_results(
-        genotypes=genotypes, phenotypes=phenotypes, alleles=alleles,
-        cnv_calls=cnv_calls
+        genotypes=genotypes, phenotypes=phenotypes, alleles=alleles
     )
     results.to_file(f'{output}/results.zip')
 
