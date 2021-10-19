@@ -6,12 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-###########################################
-# Plot copy number profile with BAM data. #
-###########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-copy-number.zip
+Plot copy number profile with BAM data.
 """
 
 def create_parser(subparsers):
