@@ -16,6 +16,9 @@ Changelog
 * Update :meth:`api.genotype.call_genotypes` method to assume the samples have no SV when CNV calls are not provided even if the target gene is known to have SV.
 * Add new command :command:`run-chip-pipeline`.
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
+* Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
+* Add new argument ``--verbose`` to :command:`compare-genotypes` command.
+* Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 
 0.6.0 (2021-10-09)
 ------------------

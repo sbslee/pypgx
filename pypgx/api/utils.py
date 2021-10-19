@@ -162,7 +162,7 @@ def combine_results(
 
     return sdk.Archive(metadata, df[cols])
 
-def compare_genotypes(first, second):
+def compare_genotypes(first, second, verbose=False):
     """
     Calculate concordance rate between two genotype results.
 
@@ -176,6 +176,8 @@ def compare_genotypes(first, second):
     second : str or pypgx.Archive
         Second archive file or object with the semantic type
         SampleTable[Results].
+    verbose : bool, default: False
+        If True, print the verbose version of output.
 
     Examples
     --------
@@ -204,9 +206,13 @@ def compare_genotypes(first, second):
 
     print(f'Compared: {df.shape[0]}')
 
-    results = df.First == df.Second
+    df['Concordant'] = df.First == df.Second
 
-    print(f'Concordance: {sum(results)/len(results):.3f} ({sum(results)}/{len(results)})')
+    print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
+
+    if verbose:
+        print('Discordant genotypes:')
+        print(df[~df.Concordant])
 
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
@@ -500,6 +506,8 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                 if gt[1] != '0':
                     anchors[sample][1].append(variant)
 
+    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
+
     def one_row(r):
         if 'Phased' in r.INFO:
             return r
@@ -522,6 +530,9 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                 alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
 
                 variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                if variant in variant_synonyms:
+                    variant = variant_synonyms[variant]
 
                 star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
 

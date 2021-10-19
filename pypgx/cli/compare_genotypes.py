@@ -5,14 +5,9 @@ from ..api import utils
 import fuc
 
 description = f"""
-############################################################
-# Calculate concordance rate between two genotype results. #
-############################################################
+Calculate concordance rate between two genotype results.
 
-The method will only use samples that appear in both genotype results.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} first-results.zip second-results.zip
+The command will only use samples that appear in both genotype results.
 """
 
 def create_parser(subparsers):
@@ -24,13 +19,20 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'first',
-        help='First archive file with the semantic type SampleTable[Results].'
+        help='First archive file with the semantic type \n'
+             'SampleTable[Results].'
     )
 
     parser.add_argument(
         'second',
-        help='Second archive file with the semantic type SampleTable[Results].'
+        help='Second archive file with the semantic type \n'
+             'SampleTable[Results].'
+    )
+    parser.add_argument(
+        '--verbose',
+        action='store_true',
+        help='Whether to print the verbose version of output.'
     )
 
 def main(args):
-    utils.compare_genotypes(args.first, args.second)
+    utils.compare_genotypes(args.first, args.second, verbose=args.verbose)
