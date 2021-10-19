@@ -17,7 +17,7 @@ Changelog
 * Add new command :command:`run-chip-pipeline`.
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
-* Add new argument ``--verbose`` to :command:`compare-genotypes` command.
+* Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have SV.
 * Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 
 0.6.0 (2021-10-09)

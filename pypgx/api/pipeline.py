@@ -5,6 +5,7 @@ multiple PyPGx actions and automatically handle semantic types.
 
 import shutil
 import os
+import warnings
 
 from .. import sdk
 
@@ -116,6 +117,13 @@ def run_ngs_pipeline(
             plot.plot_vcf_allele_fraction(
                 imported_variants, path=f'{output}/allele-fraction-profile'
             )
+
+    if not gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
+        message = (
+            'The user provided CovFrame[DepthOfCoverage] even though the '
+            'target gene will not be tested for SV. PyPGx will ignore it.'
+        )
+        warnings.warn(message)
 
     if gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
         if isinstance(depth_of_coverage, str):
