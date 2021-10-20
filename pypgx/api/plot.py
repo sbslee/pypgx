@@ -79,7 +79,7 @@ def _plot_vcf_allele_fraction_one(
 ##################
 
 def plot_bam_copy_number(
-    copy_number, fitted=False, path=None, samples=None, ymin=0, ymax=6,
+    copy_number, fitted=False, path=None, samples=None, ymin=-0.3, ymax=6.3,
     fontsize=25
 ):
     """
@@ -193,8 +193,8 @@ def plot_bam_read_depth(
             plt.close()
 
 def plot_cn_af(
-    copy_number, imported_variants, path=None, samples=None, ymin=None,
-    ymax=None, fontsize=25
+    copy_number, imported_variants, path=None, samples=None, ymin=-0.3,
+    ymax=6.3, fontsize=25
 ):
     """
     Plot both copy number profile and allele fraction profile in one figure.

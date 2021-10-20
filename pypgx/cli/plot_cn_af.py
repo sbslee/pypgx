@@ -41,15 +41,15 @@ def create_parser(subparsers):
         '--ymin',
         metavar='FLOAT',
         type=float,
-        default=0,
-        help='Y-axis bottom (default: 0).'
+        default=-0.3,
+        help='Y-axis bottom (default: -0.3).'
     )
     parser.add_argument(
         '--ymax',
         metavar='FLOAT',
         type=float,
-        default=6,
-        help='Y-axis top (default: 6).'
+        default=6.3,
+        help='Y-axis top (default: 6.3).'
     )
     parser.add_argument(
         '--fontsize',
