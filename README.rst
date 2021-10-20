@@ -191,6 +191,7 @@ For getting help on the CLI:
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
+       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth

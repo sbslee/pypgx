@@ -42,6 +42,7 @@ For getting help on the CLI:
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
+       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
@@ -450,8 +451,8 @@ plot-bam-copy-number
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
-     --ymin FLOAT          Y-axis bottom.
-     --ymax FLOAT          Y-axis top.
+     --ymin FLOAT          Y-axis bottom (default: 0).
+     --ymax FLOAT          Y-axis top (default: 6).
      --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-bam-read-depth
@@ -483,6 +484,31 @@ plot-bam-read-depth
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
 
+plot-cn-af
+==========
+
+.. code-block:: text
+
+   $ pypgx plot-cn-af -h
+   usage: pypgx plot-cn-af [-h] [--path PATH] [--samples TEXT [TEXT ...]]
+                           [--ymin FLOAT] [--ymax FLOAT] [--fontsize FLOAT]
+                           copy-number imported-variants
+   
+   Plot both copy number profile and allele fraction profile in one figure.
+   
+   Positional arguments:
+     copy-number           Archive file with the semantic type CovFrame[CopyNumber].
+     imported-variants     Archive file with the semantic type VcfFrame[Imported].
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --path PATH           Create plots in this directory.
+     --samples TEXT [TEXT ...]
+                           Create plots only for these samples.
+     --ymin FLOAT          Y-axis bottom (default: 0).
+     --ymax FLOAT          Y-axis top (default: 6).
+     --fontsize FLOAT      Text fontsize (default: 25).
+
 plot-vcf-allele-fraction
 ========================
 
@@ -491,26 +517,20 @@ plot-vcf-allele-fraction
    $ pypgx plot-vcf-allele-fraction -h
    usage: pypgx plot-vcf-allele-fraction [-h] [--path PATH]
                                          [--samples TEXT [TEXT ...]]
-                                         [--ymin FLOAT] [--ymax FLOAT]
+                                         [--fontsize FLOAT]
                                          imported-variants
    
-   ###############################################
-   # Plot allele fraction profile with VCF data. #
-   ###############################################
-   
-   Usage examples:
-     $ pypgx plot-vcf-allele-fraction CYP2D6 in.vcf
+   Plot allele fraction profile from VcfFrame[Imported].
    
    Positional arguments:
-     imported-variants     VCF file.
+     imported-variants     Archive file with the semantic type VcfFrame[Imported].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
-     --ymin FLOAT          Y-axis bottom.
-     --ymax FLOAT          Y-axis top.
+     --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-vcf-read-depth
 ===================

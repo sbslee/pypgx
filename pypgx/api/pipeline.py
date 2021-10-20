@@ -103,6 +103,14 @@ def run_ngs_pipeline(
     alleles = None
     cnv_calls = None
 
+    if not gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
+        message = (
+            'The user provided a VCF file even though the target gene does '
+            'not have any star alleles defined by SNVs/indels. PyPGx will '
+            'ignore it.'
+        )
+        warnings.warn(message)
+
     if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
         imported_variants = utils.import_variants(gene, variants, platform=platform)
         imported_variants.to_file(f'{output}/imported-variants.zip')
@@ -121,7 +129,8 @@ def run_ngs_pipeline(
     if not gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
         message = (
             'The user provided CovFrame[DepthOfCoverage] even though the '
-            'target gene will not be tested for SV. PyPGx will ignore it.'
+            'target gene does not have any star alleles defined by SVs. '
+            'PyPGx will ignore it.'
         )
         warnings.warn(message)
 

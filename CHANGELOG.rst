@@ -17,12 +17,13 @@ Changelog
 * Add new command :command:`run-chip-pipeline`.
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
-* Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have SV.
+* Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have any star alleles defined by SVs.
 * Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 * Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
 * Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
 * Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
 * Add new command :command:`plot-cn-af`.
+* Update :command:`run-ngs-pipeline` command to output a warning when user provides a VCF file even though target gene does not have any star alleles defined by SNVs/indels.
 
 0.6.0 (2021-10-09)
 ------------------
