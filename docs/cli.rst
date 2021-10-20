@@ -451,8 +451,8 @@ plot-bam-copy-number
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
-     --ymin FLOAT          Y-axis bottom (default: 0).
-     --ymax FLOAT          Y-axis top (default: 6).
+     --ymin FLOAT          Y-axis bottom (default: -0.3).
+     --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-bam-read-depth
@@ -505,8 +505,8 @@ plot-cn-af
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
-     --ymin FLOAT          Y-axis bottom (default: 0).
-     --ymax FLOAT          Y-axis top (default: 6).
+     --ymin FLOAT          Y-axis bottom (default: -0.3).
+     --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-vcf-allele-fraction
