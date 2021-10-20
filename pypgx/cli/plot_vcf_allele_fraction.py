@@ -6,12 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-###############################################
-# Plot allele fraction profile with VCF data. #
-###############################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf
+Plot allele fraction profile from VcfFrame[Imported].
 """
 
 def create_parser(subparsers):
@@ -24,7 +19,7 @@ def create_parser(subparsers):
     parser.add_argument(
         'imported_variants',
         metavar='imported-variants',
-        help='VCF file.'
+        help='Archive file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
         '--path',
@@ -38,20 +33,15 @@ def create_parser(subparsers):
         help='Create plots only for these samples.'
     )
     parser.add_argument(
-        '--ymin',
+        '--fontsize',
         metavar='FLOAT',
         type=float,
-        help='Y-axis bottom.'
-    )
-    parser.add_argument(
-        '--ymax',
-        metavar='FLOAT',
-        type=float,
-        help='Y-axis top.'
+        default=25,
+        help='Text fontsize (default: 25).'
     )
 
 def main(args):
     plot.plot_vcf_allele_fraction(
         args.imported_variants, path=args.path, samples=args.samples,
-        ymin=args.ymin, ymax=args.ymax
+        fontsize=args.fontsize
     )

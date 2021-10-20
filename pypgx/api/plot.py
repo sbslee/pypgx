@@ -35,9 +35,82 @@ def _plot_exons(gene, assembly, ax, fontsize=25):
     ax.set_xlim([start, end])
     ax.axis('off')
 
+def _plot_bam_copy_number_one(
+    ax1, ax2, sample, copy_number, gene, assembly, processed_copy_number,
+    ymin, ymax, fontsize
+):
+    _plot_exons(gene, assembly, ax1, fontsize=fontsize)
+
+    copy_number.data.plot_region(sample, ax=ax2, legend=False)
+
+    if processed_copy_number is not None:
+        processed_copy_number.data.plot_region(sample,
+            ax=ax2, legend=False)
+
+    ax2.set_ylim([ymin, ymax])
+    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_ylabel('Copy number', fontsize=fontsize)
+    ax2.tick_params(axis='both', which='major', labelsize=fontsize)
+    ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+    ax2.xaxis.get_offset_text().set_fontsize(fontsize)
+
+    return ax1, ax2
+
+def _plot_vcf_allele_fraction_one(
+    ax1, ax2, sample, imported_variants, gene, assembly, fontsize
+):
+
+    _plot_exons(gene, assembly, ax1, fontsize=fontsize)
+
+    imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
+    imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
+
+    ax2.set_ylim([0, 1])
+    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_ylabel('Allele fraction', fontsize=fontsize)
+    ax2.tick_params(axis='both', which='major', labelsize=fontsize)
+    ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+    ax2.xaxis.get_offset_text().set_fontsize(fontsize)
+
+    return ax1, ax2
+
 ##################
 # Public methods #
 ##################
+
+def plot_cn_af(copy_number, imported_variants):
+
+    processed_copy_number = utils._process_copy_number(copy_number)
+
+    gene = copy_number.metadata['Gene']
+    assembly = copy_number.metadata['Assembly']
+
+    samples = copy_number.data.samples
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+
+            fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(2, 2, figsize=(20, 10),
+                gridspec_kw={'height_ratios': [1, 10]})
+
+            ax1, ax3 = _plot_bam_copy_number_one(
+                ax1, ax3, sample, copy_number, gene, assembly,
+                processed_copy_number, ymin, ymax, fontsize
+            )
+
+            ax2, ax4 = _plot_vcf_allele_fraction_one(
+                ax2, ax4, sample, imported_variants, gene, assembly, ymin,
+                ymax, fontsize
+            )
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            plt.tight_layout()
+            fig.savefig(output)
+            plt.close()
 
 def plot_bam_copy_number(
     copy_number, fitted=False, path=None, samples=None, ymin=None, ymax=None,
@@ -87,20 +160,10 @@ def plot_bam_copy_number(
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12),
                 gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(gene, assembly, ax1, fontsize=fontsize)
-
-            copy_number.data.plot_region(sample, ax=ax2, legend=False)
-
-            if processed_copy_number is not None:
-                processed_copy_number.data.plot_region(sample,
-                    ax=ax2, legend=False)
-
-            ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
-            ax2.set_ylabel('Copy number', fontsize=fontsize)
-            ax2.tick_params(axis='both', which='major', labelsize=fontsize)
-            ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
-            ax2.xaxis.get_offset_text().set_fontsize(fontsize)
+            ax1, ax2 = _plot_bam_copy_number_one(
+                ax1, ax2, sample, copy_number, gene, assembly,
+                processed_copy_number, ymin, ymax, fontsize
+            )
 
             if path is None:
                 output = f'{sample}.png'
@@ -164,10 +227,10 @@ def plot_bam_read_depth(
             plt.close()
 
 def plot_vcf_allele_fraction(
-    imported_variants, path=None, samples=None, ymin=None, ymax=None
+    imported_variants, path=None, samples=None, fontsize=25
 ):
     """
-    Plot allele fraction profile with VCF data.
+    Plot allele fraction profile from VcfFrame[Imported].
 
     Parameters
     ----------
@@ -177,15 +240,16 @@ def plot_vcf_allele_fraction(
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, optional
-        Y-axis bottom.
-    ymax : float, optional
-        Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
     imported_variants.check('VcfFrame[Imported]')
+
+    gene = imported_variants.metadata['Gene']
+    assembly = imported_variants.metadata['Assembly']
 
     if samples is None:
         samples = imported_variants.data.samples
@@ -195,21 +259,14 @@ def plot_vcf_allele_fraction(
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(imported_variants.metadata['Gene'], imported_variants.metadata['Assembly'], ax1)
-
-            imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
-            imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
+            ax1, ax2 = _plot_vcf_allele_fraction_one(
+                ax1, ax2, sample, imported_variants, gene, assembly, fontsize
+            )
 
             if path is None:
                 output = f'{sample}.png'
             else:
                 output = f'{path}/{sample}.png'
-
-            ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Allele fraction', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
-            ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
 
             plt.tight_layout()
             fig.savefig(output)

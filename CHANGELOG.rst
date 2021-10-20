@@ -20,6 +20,7 @@ Changelog
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have SV.
 * Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 * Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
+* Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
 
 0.6.0 (2021-10-09)
 ------------------
