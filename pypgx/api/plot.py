@@ -26,12 +26,13 @@ def _plot_exons(gene, assembly, ax, fontsize=25):
         starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
         ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     common.plot_exons(
-        starts1, ends1, ax=ax, name=gene, fontsize=fontsize
+        starts1, ends1, ax=ax, name=gene, fontsize=fontsize, offset=2
     )
     if paralog:
         common.plot_exons(
-            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize
+            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize, offset=2
     )
+    ax.set_ylim([-1.5, 1.5])
     ax.set_xlim([start, end])
     ax.axis('off')
 

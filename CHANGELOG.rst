@@ -24,6 +24,7 @@ Changelog
 * Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
 * Add new command :command:`plot-cn-af`.
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides a VCF file even though target gene does not have any star alleles defined by SNVs/indels.
+* Update aesthetics of copy number profile and allele fraction profile.
 
 0.6.0 (2021-10-09)
 ------------------
