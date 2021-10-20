@@ -21,6 +21,8 @@ Changelog
 * Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 * Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
 * Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
+* Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
+* Add new command :command:`plot-cn-af`.
 
 0.6.0 (2021-10-09)
 ------------------

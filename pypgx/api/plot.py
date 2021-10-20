@@ -65,7 +65,7 @@ def _plot_vcf_allele_fraction_one(
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
 
-    ax2.set_ylim([0, 1])
+    ax2.set_ylim([-0.05, 1.05])
     ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Allele fraction', fontsize=fontsize)
     ax2.tick_params(axis='both', which='major', labelsize=fontsize)
@@ -78,42 +78,8 @@ def _plot_vcf_allele_fraction_one(
 # Public methods #
 ##################
 
-def plot_cn_af(copy_number, imported_variants):
-
-    processed_copy_number = utils._process_copy_number(copy_number)
-
-    gene = copy_number.metadata['Gene']
-    assembly = copy_number.metadata['Assembly']
-
-    samples = copy_number.data.samples
-
-    with sns.axes_style('darkgrid'):
-        for sample in samples:
-
-            fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(2, 2, figsize=(20, 10),
-                gridspec_kw={'height_ratios': [1, 10]})
-
-            ax1, ax3 = _plot_bam_copy_number_one(
-                ax1, ax3, sample, copy_number, gene, assembly,
-                processed_copy_number, ymin, ymax, fontsize
-            )
-
-            ax2, ax4 = _plot_vcf_allele_fraction_one(
-                ax2, ax4, sample, imported_variants, gene, assembly, ymin,
-                ymax, fontsize
-            )
-
-            if path is None:
-                output = f'{sample}.png'
-            else:
-                output = f'{path}/{sample}.png'
-
-            plt.tight_layout()
-            fig.savefig(output)
-            plt.close()
-
 def plot_bam_copy_number(
-    copy_number, fitted=False, path=None, samples=None, ymin=None, ymax=None,
+    copy_number, fitted=False, path=None, samples=None, ymin=0, ymax=6,
     fontsize=25
 ):
     """
@@ -129,9 +95,9 @@ def plot_bam_copy_number(
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, optional
+    ymin : float, default: 0
         Y-axis bottom.
-    ymax : float, optional
+    ymax : float, default: 6
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
@@ -216,6 +182,57 @@ def plot_bam_read_depth(
             ax2.set_ylabel('Read depth', fontsize=25)
             ax2.tick_params(axis='both', which='major', labelsize=20)
             ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            plt.tight_layout()
+            fig.savefig(output)
+            plt.close()
+
+def plot_cn_af(
+    copy_number, imported_variants, path=None, samples=None, ymin=None,
+    ymax=None, fontsize=25
+):
+    """
+    Plot both copy number profile and allele fraction profile in one figure.
+    """
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
+
+    imported_variants.check('VcfFrame[Imported]')
+
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
+
+    imported_variants.check('VcfFrame[Imported]')
+
+    if samples is None:
+        samples = copy_number.data.samples
+    else:
+        copy_number = utils.filter_samples(copy_number, samples=samples)
+
+    processed_copy_number = utils._process_copy_number(copy_number)
+
+    gene = copy_number.metadata['Gene']
+    assembly = copy_number.metadata['Assembly']
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+
+            fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(2, 2, figsize=(20, 10),
+                gridspec_kw={'height_ratios': [1, 10]})
+
+            ax1, ax3 = _plot_bam_copy_number_one(
+                ax1, ax3, sample, copy_number, gene, assembly,
+                processed_copy_number, ymin, ymax, fontsize
+            )
+
+            ax2, ax4 = _plot_vcf_allele_fraction_one(
+                ax2, ax4, sample, imported_variants, gene, assembly, fontsize
+            )
 
             if path is None:
                 output = f'{sample}.png'

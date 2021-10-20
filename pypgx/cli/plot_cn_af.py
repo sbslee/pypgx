@@ -6,14 +6,14 @@ import fuc
 import pysam
 
 description = f"""
-Plot copy number profile from CovFrame[CopyNumber].
+Plot both copy number profile and allele fraction profile in one figure.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot copy number profile from CovFrame[CopyNumber].',
+        help='Plot both copy number profile and allele fraction profile in one figure.',
         description=description,
     )
     parser.add_argument(
@@ -22,9 +22,9 @@ def create_parser(subparsers):
         help='Archive file with the semantic type CovFrame[CopyNumber].'
     )
     parser.add_argument(
-        '--fitted',
-        action='store_true',
-        help='Show the fitted line as well.'
+        'imported_variants',
+        metavar='imported-variants',
+        help='Archive file with the semantic type VcfFrame[Imported].'
     )
     parser.add_argument(
         '--path',
@@ -60,8 +60,8 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    plot.plot_bam_copy_number(
-        args.copy_number, fitted=args.fitted, path=args.path,
+    plot.plot_cn_af(
+        args.copy_number, args.imported_variants, path=args.path,
         samples=args.samples, ymin=args.ymin, ymax=args.ymax,
         fontsize=args.fontsize
     )
