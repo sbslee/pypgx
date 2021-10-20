@@ -15,7 +15,7 @@ import pandas as pd
 # Private methods #
 ###################
 
-def _plot_exons(gene, assembly, ax):
+def _plot_exons(gene, assembly, ax, fontsize=25):
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()
@@ -26,11 +26,11 @@ def _plot_exons(gene, assembly, ax):
         starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
         ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     common.plot_exons(
-        starts1, ends1, ax=ax, name=gene, fontsize=20
+        starts1, ends1, ax=ax, name=gene, fontsize=fontsize
     )
     if paralog:
         common.plot_exons(
-            starts2, ends2, ax=ax, name=paralog, fontsize=20
+            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize
     )
     ax.set_xlim([start, end])
     ax.axis('off')
@@ -40,15 +40,18 @@ def _plot_exons(gene, assembly, ax):
 ##################
 
 def plot_bam_copy_number(
-    copy_number, path=None, samples=None, ymin=None, ymax=None, fitted=False
+    copy_number, fitted=False, path=None, samples=None, ymin=None, ymax=None,
+    fontsize=25
 ):
     """
-    Plot copy number profile with BAM data.
+    Plot copy number profile from CovFrame[CopyNumber].
 
     Parameters
     ----------
-    copy_number : pypgx.Archive or str
-        Archive file with the semantic type CovFrame[CopyNumber].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    fitted : bool, default: False
+        If True, show the fitted line as well.
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -57,13 +60,16 @@ def plot_bam_copy_number(
         Y-axis bottom.
     ymax : float, optional
         Y-axis top.
-    fitted : bool, default: False
-        If True, show the fitted line as well.
+    fontsize : float, default: 25
+        Text fontsize.
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
     copy_number.check('CovFrame[CopyNumber]')
+
+    gene = copy_number.metadata['Gene']
+    assembly = copy_number.metadata['Assembly']
 
     if samples is None:
         samples = copy_number.data.samples
@@ -78,19 +84,23 @@ def plot_bam_copy_number(
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
-            fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
+            fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12),
+                gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(copy_number.metadata['Gene'], copy_number.metadata['Assembly'], ax1)
+            _plot_exons(gene, assembly, ax1, fontsize=fontsize)
+
             copy_number.data.plot_region(sample, ax=ax2, legend=False)
 
             if processed_copy_number is not None:
-                processed_copy_number.data.plot_region(sample, ax=ax2, legend=False)
+                processed_copy_number.data.plot_region(sample,
+                    ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Copy number', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
+            ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+            ax2.set_ylabel('Copy number', fontsize=fontsize)
+            ax2.tick_params(axis='both', which='major', labelsize=fontsize)
             ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+            ax2.xaxis.get_offset_text().set_fontsize(fontsize)
 
             if path is None:
                 output = f'{sample}.png'

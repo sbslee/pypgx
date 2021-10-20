@@ -188,7 +188,7 @@ For getting help on the CLI:
        import-read-depth   Import read depth data for target gene.
        import-variants     Import variant data for the target gene.
        plot-bam-copy-number
-                           Plot copy number profile with BAM data.
+                           Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
        plot-vcf-allele-fraction

@@ -39,7 +39,7 @@ For getting help on the CLI:
        import-read-depth   Import read depth data for target gene.
        import-variants     Import variant data for the target gene.
        plot-bam-copy-number
-                           Plot copy number profile with BAM data.
+                           Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
        plot-vcf-allele-fraction
@@ -144,23 +144,21 @@ compare-genotypes
 .. code-block:: text
 
    $ pypgx compare-genotypes -h
-   usage: pypgx compare-genotypes [-h] first second
+   usage: pypgx compare-genotypes [-h] [--verbose] first second
    
-   ############################################################
-   # Calculate concordance rate between two genotype results. #
-   ############################################################
+   Calculate concordance rate between two genotype results.
    
-   The method will only use samples that appear in both genotype results.
-   
-   Usage examples:
-     $ pypgx compare-genotypes first-results.zip second-results.zip
+   The command will only use samples that appear in both genotype results.
    
    Positional arguments:
-     first       First archive file with the semantic type SampleTable[Results].
-     second      Second archive file with the semantic type SampleTable[Results].
+     first       First archive file with the semantic type 
+                 SampleTable[Results].
+     second      Second archive file with the semantic type 
+                 SampleTable[Results].
    
    Optional arguments:
      -h, --help  Show this help message and exit.
+     --verbose   Whether to print the verbose version of output.
 
 compute-control-statistics
 ==========================
@@ -277,16 +275,17 @@ create-consolidated-vcf
                                         imported-variants phased-variants
                                         consolidated-variants
    
-   ############################
-   # Create consolidated VCF. #
-   ############################
+   Create a consolidated VCF.
    
    Usage examples:
-     $ pypgx create-consolidated-vcf CYP2D6-imported-variants.zip CYP2D6-phased-variants.zip CYP2D6-consolidated-variants.zip
+   $ pypgx create-consolidated-vcf \
+   imported-variants.zip \
+   phased-variants.zip \
+   consolidated-variants.zip
    
    Positional arguments:
      imported-variants     Archive file with the semantic type VcfFrame[Imported].
-     phased-variants       Archive file with the semantic type VcfFrame[Phased]
+     phased-variants       Archive file with the semantic type VcfFrame[Phased].
      consolidated-variants
                            Archive file with the semantic type VcfFrame[Consolidated].
    
@@ -435,29 +434,25 @@ plot-bam-copy-number
 .. code-block:: text
 
    $ pypgx plot-bam-copy-number -h
-   usage: pypgx plot-bam-copy-number [-h] [--path PATH]
+   usage: pypgx plot-bam-copy-number [-h] [--fitted] [--path PATH]
                                      [--samples TEXT [TEXT ...]] [--ymin FLOAT]
-                                     [--ymax FLOAT] [--fitted]
+                                     [--ymax FLOAT] [--fontsize FLOAT]
                                      copy-number
    
-   ###########################################
-   # Plot copy number profile with BAM data. #
-   ###########################################
-   
-   Usage examples:
-     $ pypgx plot-bam-copy-number CYP2D6-copy-number.zip
+   Plot copy number profile from CovFrame[CopyNumber].
    
    Positional arguments:
      copy-number           Archive file with the semantic type CovFrame[CopyNumber].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
+     --fitted              Show the fitted line as well.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
-     --fitted              Show the fitted line as well.
+     --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-bam-read-depth
 ===================
@@ -662,7 +657,7 @@ run-chip-pipeline
 .. code-block:: text
 
    $ pypgx run-chip-pipeline -h
-   usage: pypgx run-chip-pipeline [-h] [--force] gene output variants
+   usage: pypgx run-chip-pipeline [-h] [--impute] [--force] gene output variants
    
    Run genotyping pipeline for chip data.
    
@@ -679,6 +674,7 @@ run-chip-pipeline
    
    Optional arguments:
      -h, --help  Show this help message and exit.
+     --impute    Whether to perform imputation of missing genotypes.
      --force     Overwrite output directory if it already exists.
 
 run-ngs-pipeline

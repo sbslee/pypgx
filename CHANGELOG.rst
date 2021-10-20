@@ -19,6 +19,7 @@ Changelog
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have SV.
 * Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
+* Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
 
 0.6.0 (2021-10-09)
 ------------------
