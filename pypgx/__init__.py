@@ -37,6 +37,7 @@ from .api.utils import (
     compare_genotypes,
     compute_copy_number,
     compute_target_depth,
+    count_alleles,
     create_consolidated_vcf,
     create_regions_bed,
     estimate_phase_beagle,

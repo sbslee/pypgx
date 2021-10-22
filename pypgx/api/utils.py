@@ -421,6 +421,28 @@ def compute_target_depth(
 
     return archive
 
+def count_alleles(results):
+    """
+    Count star alleles from genotype calls.
+    """
+    if isinstance(results, str):
+        results = sdk.Archive.from_file(results)
+
+    results.check('SampleTable[Results]')
+
+    df = results.data.copy()
+
+    def one_row(r):
+        if r.Genotype == 'Indeterminate':
+            return ['Indeterminate', 'Indeterminate']
+        return r.Genotype.split('/')
+    df = df.apply(one_row, axis=1, result_type='expand')
+    s = pd.concat([df[0], df[1]])
+    s = s.reset_index(drop=True)
+    s = s.value_counts()
+    s = s[core.sort_alleles(s.index.to_list(), by='name')]
+    return s
+
 def create_consolidated_vcf(imported_variants, phased_variants):
     """
     Create consolidated VCF.
