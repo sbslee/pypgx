@@ -162,34 +162,81 @@ def combine_results(
 
     return sdk.Archive(metadata, df[cols])
 
+def compare_genotypes(first, second, verbose=False):
+    """
+    Calculate concordance rate between two genotype results.
+
+    The method will only use samples that appear in both genotype results.
+
+    Parameters
+    ----------
+    first : str or pypgx.Archive
+        First archive file or object with the semantic type
+        SampleTable[Results].
+    second : str or pypgx.Archive
+        Second archive file or object with the semantic type
+        SampleTable[Results].
+    verbose : bool, default: False
+        If True, print the verbose version of output.
+
+    Examples
+    --------
+    >>> import pypgx
+    >>> pypgx.compare_genotypes('first-results.zip', 'second-results.zip')
+    Total: 32
+    Compared: 32
+    Concordance: 1.000 (32/32)
+    """
+    if isinstance(first, str):
+        first = sdk.Archive.from_file(first)
+
+    first.check('SampleTable[Results]')
+
+    if isinstance(second, str):
+        second = sdk.Archive.from_file(second)
+
+    second.check('SampleTable[Results]')
+
+    df = pd.concat([first.data.Genotype, second.data.Genotype], axis=1)
+
+    print(f'Total: {df.shape[0]}')
+
+    df.columns = ['First', 'Second']
+    df = df.dropna()
+
+    print(f'Compared: {df.shape[0]}')
+
+    df['Concordant'] = df.First == df.Second
+
+    print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
+
+    if verbose:
+        print('Discordant genotypes:')
+        print(df[~df.Concordant])
+
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
 ):
     """
-    Compute copy number from read depth for target gene.
-
-    Input BAM files must be specified with either ``bam`` or ``fn``, but
-    it's an error to use both. Similarly, control gene must be specified with
-    either ``gene`` or ``region``, but it's an error to use both.
-
-    By default, the input data is assumed to be WGS. If it's targeted
-    sequencing, you must provide a BED file with ``bed`` to indicate
-    probed regions.
+    Compute summary statistics for the control gene from BAM files.
 
     Parameters
     ----------
     bam : list, optional
-        One or more BAM files.
+        One or more BAM files. Cannot be used with ``fn``.
     fn : str, optional
-        File containing one BAM file per line.
+        File containing one BAM file per line. Cannot be used with ``bam``.
     gene : str, optional
-        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
+        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR'). Cannot be
+        used with ``region``.
     region : str, optional
-        Custom region to use as control gene ('chrom:start-end').
+        Custom region to use as control gene ('chrom:start-end'). Cannot be
+        used with ``gene``.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        BED file.
+        By default, the input data is assumed to be WGS. If it targeted
+        sequencing, you must provide a BED file to indicate probed regions.
 
     Returns
     -------
@@ -216,7 +263,7 @@ def compute_control_statistics(
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
-        if any(['chr' in x for x in bf.contigs]):
+        if bf.has_chr_prefix:
             bed_prefix = 'chr'
         else:
             bed_prefix = ''
@@ -225,9 +272,9 @@ def compute_control_statistics(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         cf = cf.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
@@ -239,7 +286,7 @@ def compute_control_statistics(
 
 def compute_copy_number(read_depth, control_statistics, samples=None):
     """
-    Compute copy number from read depth for target gene.
+    Compute copy number from read depth for the target gene.
 
     The method will convert read depth from target gene to copy number by
     performing intra-sample normalization using summary statistics from
@@ -305,7 +352,7 @@ def compute_target_depth(
     gene, bam=None, fn=None, assembly='GRCh37', bed=None
 ):
     """
-    Compute read depth for target gene with BAM data.
+    Compute read depth for the target gene from BAM files.
 
     Input BAM files must be specified with either ``bam`` or ``fn``, but
     it's an error to use both.
@@ -358,9 +405,9 @@ def compute_target_depth(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         data = data.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
@@ -369,9 +416,31 @@ def compute_target_depth(
 
     return archive
 
+def count_alleles(results):
+    """
+    Count star alleles from genotype calls.
+    """
+    if isinstance(results, str):
+        results = sdk.Archive.from_file(results)
+
+    results.check('SampleTable[Results]')
+
+    df = results.data.copy()
+
+    def one_row(r):
+        if r.Genotype == 'Indeterminate':
+            return ['Indeterminate', 'Indeterminate']
+        return r.Genotype.split('/')
+    df = df.apply(one_row, axis=1, result_type='expand')
+    s = pd.concat([df[0], df[1]])
+    s = s.reset_index(drop=True)
+    s = s.value_counts()
+    s = s[core.sort_alleles(s.index.to_list(), by='name')]
+    return s
+
 def create_consolidated_vcf(imported_variants, phased_variants):
     """
-    Create consolidated VCF.
+    Create a consolidated VCF file.
 
     Parameters
     ----------
@@ -405,12 +474,25 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     assembly = imported_variants.metadata['Assembly']
 
-    vf1 = imported_variants.data.strip('GT:AD:DP:AF')
+    if imported_variants.metadata['Platform'] != phased_variants.metadata['Platform']:
+        raise ValueError('Found two different platforms')
+
+    platform = imported_variants.metadata['Platform']
+
+    if platform in ['WGS', 'Targeted']:
+        format = 'GT:AD:DP:AF'
+    else:
+        format = 'GT'
+
+    vf1 = imported_variants.data.strip(format)
     vf2 = phased_variants.data.strip('GT')
 
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
         s = vf1.fetch(variant)
+
+        if s.empty:
+            return r
 
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
@@ -422,7 +504,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
     vf3.df.INFO = 'Phased'
-    vf3.df.FORMAT = 'GT:AD:DP:AF'
+    vf3.df.FORMAT = format
 
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
@@ -440,6 +522,8 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                     anchors[sample][0].append(variant)
                 if gt[1] != '0':
                     anchors[sample][1].append(variant)
+
+    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
 
     def one_row(r):
         if 'Phased' in r.INFO:
@@ -463,6 +547,9 @@ def create_consolidated_vcf(imported_variants, phased_variants):
                 alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
 
                 variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                if variant in variant_synonyms:
+                    variant = variant_synonyms[variant]
 
                 star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
 
@@ -521,7 +608,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     return result
 
 def create_regions_bed(
-    assembly='GRCh37', chr_prefix=False, merge=False, sv_genes=False
+    assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -530,7 +617,7 @@ def create_regions_bed(
     ----------
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
-    chr_prefix : bool, default: False
+    add_chr_prefix : bool, default: False
         Whether to add the 'chr' string in contig names.
     merge : bool, default: False
         Whether to merge overlapping intervals (gene names will be removed
@@ -555,8 +642,8 @@ def create_regions_bed(
     df = pd.DataFrame(data)
     df.columns = ['Chromosome', 'Start', 'End', 'Name']
     bf = pybed.BedFrame.from_frame([], df)
-    if chr_prefix:
-        bf = bf.chr_prefix(mode='add')
+    if add_chr_prefix:
+        bf = bf.update_chr_prefix(mode='add')
     if merge:
         bf = bf.merge()
     return bf
@@ -572,9 +659,10 @@ def estimate_phase_beagle(
     imported_variants : str or pypgx.Archive
         Archive file or object with the semantic type VcfFrame[Imported].
     panel : str, optional
-        Reference haplotype panel. By default, the 1KGP panel is used.
+        VCF file corresponding to a reference haplotype panel (zipped or
+        unzipped). By default, the 1KGP panel is used.
     impute : bool, default: False
-        Whether to perform imputation of missing genotypes.
+        If True, perform imputation of missing genotypes.
 
     Returns
     -------
@@ -609,27 +697,26 @@ def estimate_phase_beagle(
             f'out={t}/output',
             f'impute={str(impute).lower()}'
         ]
-        subprocess.run(command, stdout=subprocess.DEVNULL)
+        subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
-def filter_samples(archive, samples=None, exclude=False, fn=None):
+def filter_samples(archive, samples=None, fn=None, exclude=False):
     """
     Filter Archive for specified samples.
-
-    Samples can be specified with either ``samples`` or ``fn``, but it's an
-    error to use both.
 
     Parameters
     ----------
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Sample name or list of names (the order matters).
+        Sample name or list of names (the order matters). Cannot be used with
+        ``fn``.
+    fn : str
+        File containing one filename per line. Cannot be used with
+        ``samples``.
     exclude : bool, default: False
         If True, exclude specified samples.
-    fn : str
-        File containing one filename per line.
 
     Returns
     -------
@@ -686,13 +773,13 @@ def import_read_depth(
 
     metadata = depth_of_coverage.copy_metadata()
     region = core.get_region(gene, assembly=metadata['Assembly'])
-    data = depth_of_coverage.data.chr_prefix().slice(region)
+    data = depth_of_coverage.data.update_chr_prefix(mode='remove').slice(region)
     metadata['Gene'] = gene
     metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
     return sdk.Archive(metadata, data)
 
-def import_variants(gene, vcf, assembly='GRCh37'):
+def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     """
     Import variant data for the target gene.
 
@@ -704,6 +791,8 @@ def import_variants(gene, vcf, assembly='GRCh37'):
         VCF file (zipped or unzipped).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
+        Genotyping platform.
 
     Returns
     -------
@@ -717,10 +806,11 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
     region = core.get_region(gene, assembly=assembly)
 
-    data = vf.chr_prefix().slice(region).strip('GT:AD:DP')
+    data = vf.update_chr_prefix(mode='remove').slice(region).strip('GT:AD:DP')
     data = data.add_af().unphase()
 
     metadata = {
+        'Platform': platform,
         'Gene': gene,
         'Assembly': assembly,
         'SemanticType': 'VcfFrame[Imported]',
@@ -730,7 +820,7 @@ def import_variants(gene, vcf, assembly='GRCh37'):
 
 def predict_alleles(consolidated_variants):
     """
-    Predict candidate star alleles based on observed SNVs and INDELs.
+    Predict candidate star alleles based on observed SNVs and indels.
 
     Parameters
     ----------
@@ -846,11 +936,10 @@ def predict_alleles(consolidated_variants):
 
 def predict_cnv(copy_number, cnv_caller=None):
     """
-    Predict CNV for target gene based on copy number data.
+    Predict CNV for the target gene based on copy number data.
 
-    If there are missing values because, for example, the input data was
-    generated with targeted sequencing, they will be imputed with forward
-    filling.
+    Genomic positions that are missing copy number, because for example the
+    input data is targeted sequencing, will be imputed with forward filling.
 
     Parameters
     ----------
@@ -954,9 +1043,9 @@ def prepare_depth_of_coverage(
         elif not bam_prefix and not bed_prefix:
             pass
         elif bam_prefix and not bed_prefix:
-            bf = bf.chr_prefix(mode='add')
+            bf = bf.update_chr_prefix(mode='add')
         else:
-            bf = bf.chr_prefix(mode='remove')
+            bf = bf.update_chr_prefix(mode='remove')
         cf = cf.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'

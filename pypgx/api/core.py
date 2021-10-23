@@ -35,12 +35,15 @@ class NotTargetGeneError(Exception):
 class PhenotypeNotFoundError(Exception):
     """Raise if specified phenotype is not present in the phenotype table."""
 
+class VariantNotFoundError(Exception):
+    """Raise if specified variant is not present in the variant table."""
+
 def build_definition_table(gene, assembly='GRCh37'):
     """
     Build the definition table of star alleles for specified gene.
 
     The table will only contain star alleles that are defined by SNVs and/or
-    INDELs. It will not include alleles with SV (e.g. CYP2D6*5) or alleles
+    indels. It will not include alleles with SV (e.g. CYP2D6*5) or alleles
     with no variants (e.g. CYP2D6*2 for GRCh37 and CYP2D6*1 for GRCh38).
 
     Parameters
@@ -465,6 +468,46 @@ def get_score(gene, allele):
         raise AlleleNotFoundError(gene + allele)
 
     return df.ActivityScore.values[0]
+
+def get_variant_impact(variant):
+    """
+    Get variant impact from the variant table.
+
+    Parameters
+    ----------
+    variant : str
+        Variant name.
+
+    Returns
+    -------
+    str
+        Variant impact.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_variant_impact('22-42522580-C-T') # Missense variant
+    'R497H'
+    >>> pypgx.get_variant_impact('10-96541756-T-A') # Splice variant
+    'Splice Defect'
+    >>> pypgx.get_variant_impact('22-42524435-T-A') # Intron variant
+    ''
+    >>> pypgx.get_variant_impact('22-42524435-T-C') # Does not exist
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 489, in get_variant_impact
+        raise VariantNotFoundError(variant)
+    pypgx.api.core.VariantNotFoundError: 22-42524435-T-C
+    """
+    df = load_variant_table()
+    df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
+    if df.empty:
+        raise VariantNotFoundError(variant)
+    impact = df.Impact.values[0]
+    if pd.isna(impact):
+        impact = ''
+    return impact
 
 def get_variant_synonyms(gene, assembly='GRCh37'):
     """
@@ -913,15 +956,20 @@ def predict_phenotype(gene, a, b):
         if np.isnan(score):
             return 'Indeterminate'
         i = df.apply(one_row, args=(score,), axis=1)
-        return df[i].Phenotype.values[0]
+        phenotype = df[i].Phenotype.values[0]
     elif phenotype_method == 'Diplotype':
         df = load_diplotype_table()
         df = df[df.Gene == gene]
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
-        return df[i].Phenotype.values[0]
+        try:
+            phenotype = df[i].Phenotype.values[0]
+        except IndexError:
+            phenotype = 'Indeterminate'
     else:
-        return 'Indeterminate'
+        phenotype = 'Indeterminate'
+
+    return phenotype
 
 def predict_score(gene, allele):
     """
@@ -1000,17 +1048,21 @@ def sort_alleles(
     alleles, by='priority', gene=None, assembly='GRCh37'
 ):
     """
-    Sort star alleles either by priority or name.
+    Sort star alleles by either priority or name.
 
-    When ``by`` is 'priority' the method will report high priority alleles
-    first. This means alleles are sorted by allele function (e.g.
-    'No Function' > 'Normal Function') and then by the number of core
-    variants (e.g. three SNVs > one SNV). The priority of allele function
-    decreases in the following order: 'No Function', 'Decreased Function',
-    'Possible Decreased Function', 'Increased Function', 'Possible Increased
-    Function', 'Uncertain Function', 'Unknown Function', 'Normal Function'.
+    By default (``by='priority'``) the method reports high priority alleles
+    first. This means alleles are sorted by the following order: 1. allele
+    function (e.g. 'No Function' > 'Normal Function'), 2. number of core
+    variants (e.g. three SNVs > one SNV), 3. number of core variants that
+    impact protein coding (e.g. two misssense variants > one missense variant
+    plus one intron variant), and 4. reference allele status (e.g.
+    non-reference allele with one SNV > reference allele with one SNV).
+    Note that the priority of allele function decreases in the following
+    order: 'No Function', 'Decreased Function', 'Possible Decreased
+    Function', 'Increased Function', 'Possible Increased Function',
+    'Uncertain Function', 'Unknown Function', 'Normal Function'.
 
-    When ``by`` is 'name' the method will report alleles with a smaller
+    When ``by='name'`` the method will report alleles with a smaller
     number first. This means, for example, '\*4' will come before '\*10'
     whereas lexicographic sorting would produce the opposite result. This is
     particularly useful when forming a diplotype (e.g. '\*4/\*10' vs.
@@ -1027,9 +1079,9 @@ def sort_alleles(
         * 'name': Report alleles with a smaller number first.
 
     gene : str
-        Target gene. Required when ``method`` is 'priority'.
+        Target gene. Only required when ``method='priority'``.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly. Used when ``method`` is 'priority'.
+        Reference genome assembly. Only relevant when ``method='priority'``.
 
     Returns
     -------
@@ -1057,14 +1109,17 @@ def sort_alleles(
     ['*1', '*2', '*4', '*10']
     """
     def func1(allele):
-        if gene is None:
-            raise ValueError('Target gene missing')
+        if not is_target_gene(gene):
+            raise NotTargetGeneError(gene)
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
-        core = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
-        b = len(core) * -1
-        c = allele == get_ref_allele(gene, assembly=assembly) or allele == get_default_allele(gene, assembly=assembly)
-        return (a, b, c)
+        core_variants = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
+        b = len(core_variants) * -1
+        impacts = [get_variant_impact(x) for x in core_variants]
+        impacts = [x for x in impacts if x]
+        c = len(impacts) * -1
+        d = allele == get_ref_allele(gene, assembly=assembly)
+        return (a, b, c, d)
 
     def func2(allele):
         cn = 1
@@ -1072,7 +1127,7 @@ def sort_alleles(
             n = 999
         else:
             _ = allele.split('+')[0].split('x')[0].replace('*', '')
-            if [x for x in _ if not x.isdigit()]:
+            if not _[0].isdigit():
                 n = 999
             else:
                 n = int(''.join([x for x in _ if x.isdigit()]))

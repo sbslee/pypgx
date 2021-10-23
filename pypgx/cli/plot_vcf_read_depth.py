@@ -6,20 +6,15 @@ import fuc
 import pysam
 
 description = f"""
-##########################################
-# Plot read depth profile with VCF data. #
-##########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 in.vcf
+Plot read depth profile with VCF data.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot read depth profile with VCF data.',
         description=description,
+        help='Plot read depth profile with VCF data.',
     )
     parser.add_argument(
         'gene',
@@ -33,7 +28,8 @@ def create_parser(subparsers):
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') \n"
+             "(choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--path',

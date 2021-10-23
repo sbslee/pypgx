@@ -15,7 +15,7 @@ import pandas as pd
 # Private methods #
 ###################
 
-def _plot_exons(gene, assembly, ax):
+def _plot_exons(gene, assembly, ax, fontsize=25):
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()
@@ -26,44 +26,90 @@ def _plot_exons(gene, assembly, ax):
         starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
         ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
     common.plot_exons(
-        starts1, ends1, ax=ax, name=gene, fontsize=20
+        starts1, ends1, ax=ax, name=gene, fontsize=fontsize, offset=2
     )
     if paralog:
         common.plot_exons(
-            starts2, ends2, ax=ax, name=paralog, fontsize=20
+            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize, offset=2
     )
+    ax.set_ylim([-1.5, 1.5])
     ax.set_xlim([start, end])
     ax.axis('off')
+
+def _plot_bam_copy_number_one(
+    ax1, ax2, sample, copy_number, gene, assembly, processed_copy_number,
+    ymin, ymax, fontsize
+):
+    _plot_exons(gene, assembly, ax1, fontsize=fontsize)
+
+    copy_number.data.plot_region(sample, ax=ax2, legend=False)
+
+    if processed_copy_number is not None:
+        processed_copy_number.data.plot_region(sample,
+            ax=ax2, legend=False)
+
+    ax2.set_ylim([ymin, ymax])
+    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_ylabel('Copy number', fontsize=fontsize)
+    ax2.tick_params(axis='both', which='major', labelsize=fontsize)
+    ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+    ax2.xaxis.get_offset_text().set_fontsize(fontsize)
+
+    return ax1, ax2
+
+def _plot_vcf_allele_fraction_one(
+    ax1, ax2, sample, imported_variants, gene, assembly, fontsize
+):
+
+    _plot_exons(gene, assembly, ax1, fontsize=fontsize)
+
+    imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
+    imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
+
+    ax2.set_ylim([-0.05, 1.05])
+    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_ylabel('Allele fraction', fontsize=fontsize)
+    ax2.tick_params(axis='both', which='major', labelsize=fontsize)
+    ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+    ax2.xaxis.get_offset_text().set_fontsize(fontsize)
+
+    return ax1, ax2
 
 ##################
 # Public methods #
 ##################
 
 def plot_bam_copy_number(
-    copy_number, path=None, samples=None, ymin=None, ymax=None, fitted=False
+    copy_number, fitted=False, path=None, samples=None, ymin=-0.3, ymax=6.3,
+    fontsize=25
 ):
     """
-    Plot copy number profile with BAM data.
+    Plot copy number profile from CovFrame[CopyNumber].
 
     Parameters
     ----------
-    copy_number : pypgx.Archive or str
-        Archive file with the semantic type CovFrame[CopyNumber].
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    fitted : bool, default: False
+        If True, show the fitted line as well.
     path : str, optional
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, optional
+    ymin : float, default: 0
         Y-axis bottom.
-    ymax : float, optional
+    ymax : float, default: 6
         Y-axis top.
-    fitted : bool, default: False
-        If True, show the fitted line as well.
+    fontsize : float, default: 25
+        Text fontsize.
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
     copy_number.check('CovFrame[CopyNumber]')
+
+    gene = copy_number.metadata['Gene']
+    assembly = copy_number.metadata['Assembly']
 
     if samples is None:
         samples = copy_number.data.samples
@@ -78,19 +124,13 @@ def plot_bam_copy_number(
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
-            fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
+            fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12),
+                gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(copy_number.metadata['Gene'], copy_number.metadata['Assembly'], ax1)
-            copy_number.data.plot_region(sample, ax=ax2, legend=False)
-
-            if processed_copy_number is not None:
-                processed_copy_number.data.plot_region(sample, ax=ax2, legend=False)
-
-            ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Copy number', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
-            ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
+            ax1, ax2 = _plot_bam_copy_number_one(
+                ax1, ax2, sample, copy_number, gene, assembly,
+                processed_copy_number, ymin, ymax, fontsize
+            )
 
             if path is None:
                 output = f'{sample}.png'
@@ -153,11 +193,62 @@ def plot_bam_read_depth(
             fig.savefig(output)
             plt.close()
 
-def plot_vcf_allele_fraction(
-    imported_variants, path=None, samples=None, ymin=None, ymax=None
+def plot_cn_af(
+    copy_number, imported_variants, path=None, samples=None, ymin=-0.3,
+    ymax=6.3, fontsize=25
 ):
     """
-    Plot allele fraction profile with VCF data.
+    Plot both copy number profile and allele fraction profile in one figure.
+    """
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
+
+    imported_variants.check('VcfFrame[Imported]')
+
+    if isinstance(imported_variants, str):
+        imported_variants = sdk.Archive.from_file(imported_variants)
+
+    imported_variants.check('VcfFrame[Imported]')
+
+    if samples is None:
+        samples = copy_number.data.samples
+    else:
+        copy_number = utils.filter_samples(copy_number, samples=samples)
+
+    processed_copy_number = utils._process_copy_number(copy_number)
+
+    gene = copy_number.metadata['Gene']
+    assembly = copy_number.metadata['Assembly']
+
+    with sns.axes_style('darkgrid'):
+        for sample in samples:
+
+            fig, [[ax1, ax2], [ax3, ax4]] = plt.subplots(2, 2, figsize=(20, 10),
+                gridspec_kw={'height_ratios': [1, 10]})
+
+            ax1, ax3 = _plot_bam_copy_number_one(
+                ax1, ax3, sample, copy_number, gene, assembly,
+                processed_copy_number, ymin, ymax, fontsize
+            )
+
+            ax2, ax4 = _plot_vcf_allele_fraction_one(
+                ax2, ax4, sample, imported_variants, gene, assembly, fontsize
+            )
+
+            if path is None:
+                output = f'{sample}.png'
+            else:
+                output = f'{path}/{sample}.png'
+
+            plt.tight_layout()
+            fig.savefig(output)
+            plt.close()
+
+def plot_vcf_allele_fraction(
+    imported_variants, path=None, samples=None, fontsize=25
+):
+    """
+    Plot allele fraction profile from VcfFrame[Imported].
 
     Parameters
     ----------
@@ -167,15 +258,16 @@ def plot_vcf_allele_fraction(
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, optional
-        Y-axis bottom.
-    ymax : float, optional
-        Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
     imported_variants.check('VcfFrame[Imported]')
+
+    gene = imported_variants.metadata['Gene']
+    assembly = imported_variants.metadata['Assembly']
 
     if samples is None:
         samples = imported_variants.data.samples
@@ -185,21 +277,14 @@ def plot_vcf_allele_fraction(
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(imported_variants.metadata['Gene'], imported_variants.metadata['Assembly'], ax1)
-
-            imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
-            imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
+            ax1, ax2 = _plot_vcf_allele_fraction_one(
+                ax1, ax2, sample, imported_variants, gene, assembly, fontsize
+            )
 
             if path is None:
                 output = f'{sample}.png'
             else:
                 output = f'{path}/{sample}.png'
-
-            ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Allele fraction', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
-            ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
 
             plt.tight_layout()
             fig.savefig(output)

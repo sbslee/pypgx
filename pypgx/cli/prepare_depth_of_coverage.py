@@ -5,53 +5,62 @@ from ..api import utils
 import fuc
 import pysam
 
-description = f"""
-##################################################################
-# Prepare a depth of coverage file for all target genes with SV. #
-##################################################################
+description = """
+Prepare a depth of coverage file for all target genes with SV.
+"""
 
-Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+epilog = f"""
+[Example] When the input data is WGS:
+  $ pypgx {fuc.api.common._script_name()} \\
+  depth-of-coverage.zip \\
+  --bam A.bam B.bam
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --bam A.bam B.bam
-  $ pypgx {fuc.api.common._script_name()} depth-of-coverage.zip --fn bam.list
+[Example] When the input data is targeted sequencing:
+  $ pypgx {fuc.api.common._script_name()} \\
+  depth-of-coverage.zip \\
+  --fn bam.txt \\
+  --bed probes.bed
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Prepare a depth of coverage file for all target genes with SV.',
         description=description,
+        epilog=epilog,
+        help='Prepare a depth of coverage file for all target genes with SV.',
     )
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Archive file with the semantic type CovFrame[DepthOfCoverage].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[DepthOfCoverage].'
     )
     parser.add_argument(
         '--bam',
         metavar='PATH',
         nargs='+',
-        help='One or more BAM files.'
+        help='One or more BAM files. Cannot be used with --fn.'
     )
     parser.add_argument(
         '--fn',
         metavar='PATH',
-        help='File containing one BAM file per line.'
+        help='File containing one BAM file per line. Cannot be used \n'
+             'with --bam.'
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') \n"
+             "(choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help='BED file.'
+        help="By default, the input data is assumed to be WGS. If it \n"
+             "is targeted sequencing, you must provide a BED file to \n"
+             "indicate probed regions."
     )
 
 def main(args):

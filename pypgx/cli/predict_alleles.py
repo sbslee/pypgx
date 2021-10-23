@@ -6,29 +6,26 @@ import fuc
 import pysam
 
 description = f"""
-##############################################################
-# Predict candidate star alleles based on observed variants. #
-##############################################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-consolidated-variants.zip CYP2D6-alleles.zip
+Predict candidate star alleles based on observed variants.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Predict candidate star alleles based on observed variants.',
         description=description,
+        help='Predict candidate star alleles based on observed variants.',
     )
     parser.add_argument(
         'consolidated_variants',
         metavar='consolidated-variants',
-        help='Archive file with the semantic type VcfFrame[Consolidated].'
+        help='Archive file with the semantic type \n'
+             'VcfFrame[Consolidated].'
     )
     parser.add_argument(
         'alleles',
-        help='Archive file with the semantic type SampleTable[Alleles].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Alleles].'
     )
 
 def main(args):

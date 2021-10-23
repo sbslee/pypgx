@@ -5,24 +5,20 @@ from ..api import genotype
 import fuc
 
 description = f"""
-###################################
-# Call genotypes for target gene. #
-###################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+Call genotypes for the target gene.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Call genotypes for target gene.',
+        help='Call genotypes for the target gene.',
         description=description,
     )
     parser.add_argument(
         'genotypes',
-        help='Archive file with the semantic type SampleTable[Genotypes].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Genotypes].'
     )
     parser.add_argument(
         '--alleles',

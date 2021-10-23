@@ -5,12 +5,7 @@ from ..api import utils
 import fuc
 
 description = f"""
-########################################
-# Call phenotypes for the target gene. #
-########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-genotypes.zip CYP2D6-phenotypes.zip
+Call phenotypes for the target gene.
 """
 
 def create_parser(subparsers):

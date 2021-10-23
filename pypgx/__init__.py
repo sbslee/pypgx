@@ -11,6 +11,7 @@ from .api.core import (
     get_ref_allele,
     get_region,
     get_score,
+    get_variant_impact,
     get_variant_synonyms,
     list_alleles,
     list_functions,
@@ -33,8 +34,10 @@ from .api.utils import (
     call_phenotypes,
     combine_results,
     compute_control_statistics,
+    compare_genotypes,
     compute_copy_number,
     compute_target_depth,
+    count_alleles,
     create_consolidated_vcf,
     create_regions_bed,
     estimate_phase_beagle,
@@ -52,6 +55,7 @@ from .api.utils import (
 from .api.plot import (
     plot_bam_copy_number,
     plot_bam_read_depth,
+    plot_cn_af,
     plot_vcf_allele_fraction,
     plot_vcf_read_depth,
 )

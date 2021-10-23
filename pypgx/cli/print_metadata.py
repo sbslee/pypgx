@@ -6,12 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-############################################
-# Print the metadata of specified archive. #
-############################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} in.zip
+Print the metadata of specified archive.
 """
 
 def create_parser(subparsers):

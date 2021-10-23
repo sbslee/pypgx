@@ -5,65 +5,77 @@ from ..api import utils
 import fuc
 import pysam
 
-description = f"""
-##############################################################
-# Compute various statistics for control gene with BAM data. #
-##############################################################
+description = """
+Compute summary statistics for the control gene from BAM files.
+"""
 
-Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both. Similarly, control gene must be specified with either '--gene' or '--region', but it's an error to use both.
+epilog = f"""
+[Example] To compute summary statistics for the VDR gene from WGS data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  control-statistcs-VDR.zip \\
+  --gene VDR \\
+  --bam A.bam B.bam
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --bam A.bam B.bam
-  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --fn bam.list
-  $ pypgx {fuc.api.common._script_name()} control-statistcs-VDR.zip --gene VDR --fn bam.list --bed probes.bed
-  $ pypgx {fuc.api.common._script_name()} control-statistcs-custom.zip --region chr1:100-200 --fn bam.list
+[Example] For a custom region from targeted sequencing data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  control-statistcs-VDR.zip \\
+  --gene chr1:100-200 \\
+  --fn bam.list \\
+  --bed probes.bed
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute various statistics for control gene with BAM data.',
         description=description,
+        epilog=epilog,
+        help='Compute summary statistics for the control gene from '
+             'BAM files.',
     )
     parser.add_argument(
         'control_statistics',
         metavar='control-statistics',
-        help='Archive file with the semantic type SampleTable[Statistics].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Statistics].'
     )
     parser.add_argument(
         '--bam',
         metavar='PATH',
         nargs='+',
-        help='One or more BAM files.'
+        help='One or more BAM files. Cannot be used with --fn.'
     )
     parser.add_argument(
         '--fn',
         metavar='PATH',
-        help='File containing one BAM file per line.'
+        help='File containing one BAM file per line. Cannot be \n'
+             'used with --bam.'
     )
     parser.add_argument(
         '--gene',
         metavar='TEXT',
-        help="Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR')."
+        help="Control gene (recommended choices: 'EGFR', 'RYR1', \n"
+             "'VDR'). Cannot be used with --region."
     )
     parser.add_argument(
         '--region',
         metavar='TEXT',
-        help="Custom region to use as control gene ('chrom:start-end')."
+        help="Custom region to use as control gene \n"
+             "('chrom:start-end'). Cannot be used with --gene."
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') \n"
+             "(choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help='BED file.'
+        help="By default, the input data is assumed to be WGS. If it \n"
+             "is targeted sequencing, you must provide a BED file to \n"
+             "indicate probed regions."
     )
 
 def main(args):

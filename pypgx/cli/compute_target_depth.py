@@ -6,27 +6,31 @@ import fuc
 import pysam
 
 description = f"""
-#####################################################
-# Compute read depth for target gene with BAM data. #
-#####################################################
+Compute read depth for the target gene from BAM files.
+"""
 
-Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
+epilog = f"""
+[Example] For the CYP2D6 gene from WGS data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  CYP2D6 \\
+  read-depth.zip \\
+  --bam A.bam B.bam
 
-By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} gene out.zip --bam A.bam B.bam
-  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list
-  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list --assembly GRCh38
-  $ pypgx {fuc.api.common._script_name()} gene out.zip --fn bam.list --bed panel.bed
+[Example] For the CYP2D6 gene from targeted sequencing data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  CYP2D6 \\
+  read-depth.zip \\
+  --fn bam.txt \\
+  --bed probes.bed
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Compute read depth for target gene with BAM data.',
         description=description,
+        epilog=epilog,
+        help='Compute read depth for the target gene from BAM files.',
     )
     parser.add_argument(
         'gene',
@@ -34,29 +38,34 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'output',
-        help='Archive file with the semantic type CovFrame[ReadDepth].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[ReadDepth].'
     )
     parser.add_argument(
         '--bam',
         metavar='PATH',
         nargs='+',
-        help='One or more BAM files.'
+        help='One or more BAM files. Cannot be used with --fn.'
     )
     parser.add_argument(
         '--fn',
         metavar='PATH',
-        help='File containing one BAM file per line.'
+        help='File containing one BAM file per line. Cannot be \n'
+             'used with --bam.'
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') \n"
+             "(choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help='BED file.'
+        help="By default, the input data is assumed to be WGS. If it \n"
+             "is targeted sequencing, you must provide a BED file to \n"
+             "indicate probed regions."
     )
 
 def main(args):

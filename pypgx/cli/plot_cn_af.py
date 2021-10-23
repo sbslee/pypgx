@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Plot allele fraction profile from VcfFrame[Imported].
+Plot both copy number profile and allele fraction profile in one figure.
 """
 
 def create_parser(subparsers):
@@ -14,7 +14,14 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Plot allele fraction profile with VCF data.',
+        help='Plot both copy number profile and allele fraction profile in '
+             'one figure.',
+    )
+    parser.add_argument(
+        'copy_number',
+        metavar='copy-number',
+        help='Archive file with the semantic type \n'
+             'CovFrame[CopyNumber].'
     )
     parser.add_argument(
         'imported_variants',
@@ -34,6 +41,20 @@ def create_parser(subparsers):
         help='Create plots only for these samples.'
     )
     parser.add_argument(
+        '--ymin',
+        metavar='FLOAT',
+        type=float,
+        default=-0.3,
+        help='Y-axis bottom (default: -0.3).'
+    )
+    parser.add_argument(
+        '--ymax',
+        metavar='FLOAT',
+        type=float,
+        default=6.3,
+        help='Y-axis top (default: 6.3).'
+    )
+    parser.add_argument(
         '--fontsize',
         metavar='FLOAT',
         type=float,
@@ -42,7 +63,8 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    plot.plot_vcf_allele_fraction(
-        args.imported_variants, path=args.path, samples=args.samples,
+    plot.plot_cn_af(
+        args.copy_number, args.imported_variants, path=args.path,
+        samples=args.samples, ymin=args.ymin, ymax=args.ymax,
         fontsize=args.fontsize
     )

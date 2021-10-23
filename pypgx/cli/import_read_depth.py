@@ -6,20 +6,15 @@ import fuc
 import pysam
 
 description = f"""
-###########################################
-# Import read depth data for target gene. #
-###########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 depth-of-coverage.zip CYP2D6-read-depth.zip
+Import read depth data for the target gene.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Import read depth data for target gene.',
         description=description,
+        help='Import read depth data for the target gene.',
     )
     parser.add_argument(
         'gene',
@@ -28,7 +23,8 @@ def create_parser(subparsers):
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Archive file with the semantic type CovFrame[DepthOfCoverage].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[DepthOfCoverage].'
     )
     parser.add_argument(
         'read_depth',
@@ -40,19 +36,12 @@ def create_parser(subparsers):
         metavar='TEXT',
         default='GRCh37',
         choices=['GRCh37', 'GRCh38'],
-        help="Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38')."
-    )
-    parser.add_argument(
-        '--platform',
-        metavar='TEXT',
-        default='WGS',
-        choices=['WGS', 'Targeted'],
-        help="NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted')."
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
     )
 
 def main(args):
     archive = utils.import_read_depth(
         args.gene, args.depth_of_coverage, assembly=args.assembly,
-        platform=args.platform
     )
     archive.to_file(args.read_depth)

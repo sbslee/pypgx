@@ -101,8 +101,8 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - Target gene.
       - ``CYP2D6``, ``GSTT1``
     * - ``Platform``
-      - NGS platform.
-      - ``WGS``, ``Targeted``
+      - Genotyping platform.
+      - ``WGS``, ``Targeted``, ``Chip``
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``
@@ -129,7 +129,7 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
 - ``SampleTable[Alleles]``
     * TSV file for storing target gene's candidate star alleles for each sample.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 - ``SampleTable[CNVCalls]``
     * TSV file for storing target gene's CNV call for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Control``.
@@ -147,13 +147,13 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
     * VcfFrame for storing target gene's consolidated variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 - ``VcfFrame[Imported]``
     * VcfFrame for storing target gene's raw variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``.
 - ``VcfFrame[Phased]``
     * VcfFrame for storing target gene's phased variant data.
-    * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+    * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
 Getting help
 ============
@@ -169,17 +169,18 @@ For getting help on the CLI:
    
    positional arguments:
      COMMAND
-       call-genotypes      Call genotypes for target gene.
+       call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
+       compare-genotypes   Calculate concordance rate between two genotype results.
        compute-control-statistics
-                           Compute various statistics for control gene with BAM data.
+                           Compute summary statistics for the control gene from BAM files.
        compute-copy-number
-                           Compute copy number from read depth for target gene.
+                           Compute copy number from read depth for the target gene.
        compute-target-depth
-                           Compute read depth for target gene with BAM data.
+                           Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
-                           Create consolidated VCF.
+                           Create a consolidated VCF file.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -187,19 +188,21 @@ For getting help on the CLI:
        import-read-depth   Import read depth data for target gene.
        import-variants     Import variant data for the target gene.
        plot-bam-copy-number
-                           Plot copy number profile with BAM data.
+                           Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
+       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for target gene based on copy number data.
+       predict-cnv         Predict CNV for the target gene based on copy number data.
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-ngs-pipeline    Run NGS pipeline for the target gene.
+       run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
