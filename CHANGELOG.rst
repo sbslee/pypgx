@@ -1,11 +1,10 @@
 Changelog
 *********
 
-0.7.0 (in development)
-----------------------
+0.7.0 (2021-10-23)
+------------------
 
 * Fix minor bug in :meth:`api.core.predict_phenotype` when specified diplotype is not present in diplotype table.
-* Update variant information for following alleles: CYP2A6\*35.
 * Dissolve **Database of Pharmacogenomic Structural Variants (DPSV)** page and move its SV data to **Genes** page.
 * Add new method :meth:`api.core.get_variant_impact`.
 * Update :meth:`api.utils.sort_alleles` method to give priority to alleles that impact protein coding when breaking ties (i.e. alleles have the same functional status and same number of variants).
@@ -18,7 +17,6 @@ Changelog
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have any star alleles defined by SVs.
-* Update variant information for following alleles: UGT1A1\*28, UGT1A1\*37.
 * Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
 * Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
 * Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
@@ -26,6 +24,7 @@ Changelog
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides a VCF file even though target gene does not have any star alleles defined by SNVs/indels.
 * Update aesthetics of copy number profile and allele fraction profile.
 * Add new method :meth:`api.utils.count_alleles`.
+* Update variant information for following alleles: CYP2A6\*35, UGT1A1\*28, UGT1A1\*37.
 
 0.6.0 (2021-10-09)
 ------------------
@@ -71,10 +70,10 @@ Changelog
 * Update :command:`create-consolidated-vcf` command to implement phase-extension algorithm.
 * Remove ``SO`` and ``Type`` columns from the variant table.
 * Update :class:`api.genotype.GSTM1Genotyper` class.
-* Update variant information for following alleles: CYP1A2\*1C, CYP1A2\*1F, CYP1A2\*1K, CYP1A2\*1L, CYP2B6\*17, CYP2D6\*15, CYP2D6\*21, SLCO1B1\*S1, SLCO1B1\*S2.
 * Add ``NotTargetGeneError`` error.
 * Add new method ``api.utils.is_target_gene``.
 * Update :command:`run-ngs-pipeline` command to check whether input gene is one of the target genes before attempting to run the pipeline.
+* Update variant information for following alleles: CYP1A2\*1C, CYP1A2\*1F, CYP1A2\*1K, CYP1A2\*1L, CYP2B6\*17, CYP2D6\*15, CYP2D6\*21, SLCO1B1\*S1, SLCO1B1\*S2.
 
 0.4.1 (2021-09-21)
 ------------------
