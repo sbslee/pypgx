@@ -6,24 +6,20 @@ import fuc
 import pysam
 
 description = f"""
-##########################################
-# Plot read depth profile with BAM data. #
-##########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6 target.tsv
+Plot read depth profile with BAM data.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot read depth profile with BAM data.',
         description=description,
+        help='Plot read depth profile with BAM data.',
     )
     parser.add_argument(
         'read_depth',
-        help='Archive file with the semantic type CovFrame[ReadDepth]'
+        help='Archive file with the semantic type \n'
+             'CovFrame[ReadDepth].'
     )
     parser.add_argument(
         '--path',

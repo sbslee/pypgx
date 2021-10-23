@@ -169,18 +169,18 @@ For getting help on the CLI:
    
    positional arguments:
      COMMAND
-       call-genotypes      Call genotypes for target gene.
+       call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance rate between two genotype results.
        compute-control-statistics
-                           Compute various statistics for control gene with BAM data.
+                           Compute summary statistics for the control gene from BAM files.
        compute-copy-number
                            Compute copy number from read depth for the target gene.
        compute-target-depth
-                           Compute read depth for target gene with BAM data.
+                           Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
-                           Create consolidated VCF.
+                           Create a consolidated VCF file.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -197,12 +197,12 @@ For getting help on the CLI:
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for target gene based on copy number data.
+       predict-cnv         Predict CNV for the target gene based on copy number data.
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-chip-pipeline   Run genotyping pipeline for chip data.
-       run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    

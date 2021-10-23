@@ -4,24 +4,47 @@ from ..api import pipeline
 
 import fuc
 
-description = f"""
-Run genotyping pipeline for NGS data.
+description = """
+Run PyPGx's genotyping pipeline for NGS data.
 
-Usage examples:
+During copy number analysis, if the input data is targeted sequencing, the
+command will apply inter-sample normalization using summary statistics across
+all samples. For best results, it is recommended to specify known samples
+without SV using --samples.
+"""
+
+epilog = f"""
+[Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:
   $ pypgx {fuc.api.common._script_name()} \\
-    CYP2D6 \\
-    CYP2D6-pipeline \\
-    --variants variants.vcf \\
-    --depth-of-coverage depth-of-coverage.tsv \\
-    --control-statistcs control-statistics-VDR.zip
+  CYP3A5 \\
+  CYP3A5-pipeline \\
+  --variants variants.vcf
+
+[Example] To genotype the CYP2D6 gene, which does have SV, from WGS data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  CYP2D6 \\
+  CYP2D6-pipeline \\
+  --variants variants.vcf \\
+  --depth-of-coverage depth-of-coverage.tsv \\
+  --control-statistcs control-statistics-VDR.zip
+
+[Example] To genotype the CYP2D6 gene from targeted sequencing data:
+  $ pypgx {fuc.api.common._script_name()} \\
+  CYP2D6 \\
+  CYP2D6-pipeline \\
+  --variants variants.vcf \\
+  --depth-of-coverage depth-of-coverage.tsv \\
+  --control-statistcs control-statistics-VDR.zip \\
+  --platform Targeted
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Run genotyping pipeline for NGS data.',
         description=description,
+        epilog=epilog,
+        help="Run PyPGx's genotyping pipeline for NGS data.",
     )
     parser.add_argument(
         'gene',
@@ -44,7 +67,8 @@ def create_parser(subparsers):
     parser.add_argument(
         '--control-statistics',
         metavar='PATH',
-        help='Archive file with the semandtic type SampleTable[Statistcs].'
+        help='Archive file with the semandtic type \n'
+             'SampleTable[Statistcs].'
     )
     parser.add_argument(
         '--platform',
@@ -57,7 +81,9 @@ def create_parser(subparsers):
     parser.add_argument(
         '--panel',
         metavar='PATH',
-        help='Reference haplotype panel. By default, the 1KGP panel is used.'
+        help='VCF file corresponding to a reference haplotype panel \n'
+             '(zipped or unzipped). By default, the 1KGP panel is \n'
+             'used.'
     )
     parser.add_argument(
         '--force',
@@ -68,12 +94,7 @@ def create_parser(subparsers):
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help="When computing copy number from read depth, if the input \n"
-             "data was generated with targeted sequencing as opposed to \n"
-             "WGS, the method will apply inter-sample normalization using \n"
-             "summary statistics across all samples. For best results, it \n"
-             "is recommended to manually specify a list of known reference \n"
-             "samples that do not have SV with '--samples'."
+        help="List of known samples without SV."
     )
     parser.add_argument(
         '--do-not-plot-copy-number',

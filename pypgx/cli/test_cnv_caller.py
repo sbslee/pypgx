@@ -6,20 +6,15 @@ import fuc
 import pysam
 
 description = f"""
-##########################################
-# Test a CNV caller for the target gene. #
-##########################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-cnv-caller.zip CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
+Test a CNV caller for the target gene.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Test a CNV caller for the target gene.',
         description=description,
+        help='Test a CNV caller for the target gene.',
     )
     parser.add_argument(
         'cnv_caller',
@@ -29,12 +24,14 @@ def create_parser(subparsers):
     parser.add_argument(
         'copy_number',
         metavar='copy-number',
-        help='Archive file with the semantic type CovFrame[CopyNumber].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[CopyNumber].'
     )
     parser.add_argument(
         'cnv_calls',
         metavar='cnv-calls',
-        help='Archive file with the semantic type SampleTable[CNVCalls].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[CNVCalls].'
     )
     parser.add_argument(
         '--confusion-matrix',

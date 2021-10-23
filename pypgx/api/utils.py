@@ -218,30 +218,25 @@ def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
 ):
     """
-    Compute copy number from read depth for target gene.
-
-    Input BAM files must be specified with either ``bam`` or ``fn``, but
-    it's an error to use both. Similarly, control gene must be specified with
-    either ``gene`` or ``region``, but it's an error to use both.
-
-    By default, the input data is assumed to be WGS. If it's targeted
-    sequencing, you must provide a BED file with ``bed`` to indicate
-    probed regions.
+    Compute summary statistics for the control gene from BAM files.
 
     Parameters
     ----------
     bam : list, optional
-        One or more BAM files.
+        One or more BAM files. Cannot be used with ``fn``.
     fn : str, optional
-        File containing one BAM file per line.
+        File containing one BAM file per line. Cannot be used with ``bam``.
     gene : str, optional
-        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
+        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR'). Cannot be
+        used with ``region``.
     region : str, optional
-        Custom region to use as control gene ('chrom:start-end').
+        Custom region to use as control gene ('chrom:start-end'). Cannot be
+        used with ``gene``.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        BED file.
+        By default, the input data is assumed to be WGS. If it targeted
+        sequencing, you must provide a BED file to indicate probed regions.
 
     Returns
     -------
@@ -357,7 +352,7 @@ def compute_target_depth(
     gene, bam=None, fn=None, assembly='GRCh37', bed=None
 ):
     """
-    Compute read depth for target gene with BAM data.
+    Compute read depth for the target gene from BAM files.
 
     Input BAM files must be specified with either ``bam`` or ``fn``, but
     it's an error to use both.
@@ -445,7 +440,7 @@ def count_alleles(results):
 
 def create_consolidated_vcf(imported_variants, phased_variants):
     """
-    Create consolidated VCF.
+    Create a consolidated VCF file.
 
     Parameters
     ----------
@@ -664,9 +659,10 @@ def estimate_phase_beagle(
     imported_variants : str or pypgx.Archive
         Archive file or object with the semantic type VcfFrame[Imported].
     panel : str, optional
-        Reference haplotype panel. By default, the 1KGP panel is used.
+        VCF file corresponding to a reference haplotype panel (zipped or
+        unzipped). By default, the 1KGP panel is used.
     impute : bool, default: False
-        Whether to perform imputation of missing genotypes.
+        If True, perform imputation of missing genotypes.
 
     Returns
     -------
@@ -705,23 +701,22 @@ def estimate_phase_beagle(
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
-def filter_samples(archive, samples=None, exclude=False, fn=None):
+def filter_samples(archive, samples=None, fn=None, exclude=False):
     """
     Filter Archive for specified samples.
-
-    Samples can be specified with either ``samples`` or ``fn``, but it's an
-    error to use both.
 
     Parameters
     ----------
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Sample name or list of names (the order matters).
+        Sample name or list of names (the order matters). Cannot be used with
+        ``fn``.
+    fn : str
+        File containing one filename per line. Cannot be used with
+        ``samples``.
     exclude : bool, default: False
         If True, exclude specified samples.
-    fn : str
-        File containing one filename per line.
 
     Returns
     -------
@@ -941,11 +936,10 @@ def predict_alleles(consolidated_variants):
 
 def predict_cnv(copy_number, cnv_caller=None):
     """
-    Predict CNV for target gene based on copy number data.
+    Predict CNV for the target gene based on copy number data.
 
-    If there are missing values because, for example, the input data was
-    generated with targeted sequencing, they will be imputed with forward
-    filling.
+    Genomic positions that are missing copy number, because for example the
+    input data is targeted sequencing, will be imputed with forward filling.
 
     Parameters
     ----------

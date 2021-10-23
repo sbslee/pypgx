@@ -13,18 +13,21 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot both copy number profile and allele fraction profile in one figure.',
         description=description,
+        help='Plot both copy number profile and allele fraction profile in '
+             'one figure.',
     )
     parser.add_argument(
         'copy_number',
         metavar='copy-number',
-        help='Archive file with the semantic type CovFrame[CopyNumber].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[CopyNumber].'
     )
     parser.add_argument(
         'imported_variants',
         metavar='imported-variants',
-        help='Archive file with the semantic type VcfFrame[Imported].'
+        help='Archive file with the semantic type \n'
+             'VcfFrame[Imported].'
     )
     parser.add_argument(
         '--path',

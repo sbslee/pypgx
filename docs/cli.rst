@@ -20,18 +20,18 @@ For getting help on the CLI:
    
    positional arguments:
      COMMAND
-       call-genotypes      Call genotypes for target gene.
+       call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance rate between two genotype results.
        compute-control-statistics
-                           Compute various statistics for control gene with BAM data.
+                           Compute summary statistics for the control gene from BAM files.
        compute-copy-number
                            Compute copy number from read depth for the target gene.
        compute-target-depth
-                           Compute read depth for target gene with BAM data.
+                           Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
-                           Create consolidated VCF.
+                           Create a consolidated VCF file.
        create-regions-bed  Create a BED file which contains all regions used by PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
@@ -48,12 +48,12 @@ For getting help on the CLI:
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for target gene based on copy number data.
+       predict-cnv         Predict CNV for the target gene based on copy number data.
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target genes with SV.
        print-metadata      Print the metadata of specified archive.
-       run-chip-pipeline   Run genotyping pipeline for chip data.
-       run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
    
@@ -75,15 +75,11 @@ call-genotypes
    $ pypgx call-genotypes -h
    usage: pypgx call-genotypes [-h] [--alleles PATH] [--cnv-calls PATH] genotypes
    
-   ###################################
-   # Call genotypes for target gene. #
-   ###################################
-   
-   Usage examples:
-     $ pypgx call-genotypes CYP2D6-genotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+   Call genotypes for the target gene.
    
    Positional arguments:
-     genotypes         Archive file with the semantic type SampleTable[Genotypes].
+     genotypes         Archive file with the semantic type 
+                       SampleTable[Genotypes].
    
    Optional arguments:
      -h, --help        Show this help message and exit.
@@ -98,12 +94,7 @@ call-phenotypes
    $ pypgx call-phenotypes -h
    usage: pypgx call-phenotypes [-h] genotypes phenotypes
    
-   ########################################
-   # Call phenotypes for the target gene. #
-   ########################################
-   
-   Usage examples:
-     $ pypgx call-phenotypes CYP2D6-genotypes.zip CYP2D6-phenotypes.zip
+   Call phenotypes for the target gene.
    
    Positional arguments:
      genotypes   Archive file with the semantic type SampleTable[Genotypes].
@@ -122,22 +113,21 @@ combine-results
                                 [--alleles PATH] [--cnv-calls PATH]
                                 results
    
-   ################################################
-   # Combine various results for the target gene. #
-   ################################################
-   
-   Usage examples:
-     $ pypgx combine-results CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --phenotypes CYP2D6-phenotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+   Combine various results for the target gene.
    
    Positional arguments:
      results            Archive file with the semantic type SampleTable[Results].
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --genotypes PATH   Archive file with the semantic type SampleTable[Genotypes].
-     --phenotypes PATH  Archive file with the semantic type SampleTable[Phenotypes].
-     --alleles PATH     Archive file with the semantic type SampleTable[Alleles].
-     --cnv-calls PATH   Archive file with the semantic type SampleTable[CNVCalls].
+     --genotypes PATH   Archive file with the semantic type 
+                        SampleTable[Genotypes].
+     --phenotypes PATH  Archive file with the semantic type 
+                        SampleTable[Phenotypes].
+     --alleles PATH     Archive file with the semantic type 
+                        SampleTable[Alleles].
+     --cnv-calls PATH   Archive file with the semantic type 
+                        SampleTable[CNVCalls].
 
 compare-genotypes
 =================
@@ -173,32 +163,40 @@ compute-control-statistics
                                            [--bed PATH]
                                            control-statistics
    
-   ##############################################################
-   # Compute various statistics for control gene with BAM data. #
-   ##############################################################
-   
-   Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both. Similarly, control gene must be specified with either '--gene' or '--region', but it's an error to use both.
-   
-   By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with '--bed' to indicate probed regions.
-   
-   Usage examples:
-     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --bam A.bam B.bam
-     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --fn bam.list
-     $ pypgx compute-control-statistics control-statistcs-VDR.zip --gene VDR --fn bam.list --bed probes.bed
-     $ pypgx compute-control-statistics control-statistcs-custom.zip --region chr1:100-200 --fn bam.list
+   Compute summary statistics for the control gene from BAM files.
    
    Positional arguments:
-     control-statistics    Archive file with the semantic type SampleTable[Statistics].
+     control-statistics    Archive file with the semantic type 
+                           SampleTable[Statistics].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
      --bam PATH [PATH ...]
-                           One or more BAM files.
-     --fn PATH             File containing one BAM file per line.
-     --gene TEXT           Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
-     --region TEXT         Custom region to use as control gene ('chrom:start-end').
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            BED file.
+                           One or more BAM files. Cannot be used with --fn.
+     --fn PATH             File containing one BAM file per line. Cannot be 
+                           used with --bam.
+     --gene TEXT           Control gene (recommended choices: 'EGFR', 'RYR1', 
+                           'VDR'). Cannot be used with --region.
+     --region TEXT         Custom region to use as control gene 
+                           ('chrom:start-end'). Cannot be used with --gene.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If it 
+                           is targeted sequencing, you must provide a BED file to 
+                           indicate probed regions.
+   
+   [Example] To compute summary statistics for the VDR gene from WGS data:
+     $ pypgx compute-control-statistics \
+     control-statistcs-VDR.zip \
+     --gene VDR \
+     --bam A.bam B.bam
+   
+   [Example] For a custom region from targeted sequencing data:
+     $ pypgx compute-control-statistics \
+     control-statistcs-VDR.zip \
+     --gene chr1:100-200 \
+     --fn bam.list \
+     --bed probes.bed
 
 compute-copy-number
 ===================
@@ -209,21 +207,23 @@ compute-copy-number
    usage: pypgx compute-copy-number [-h] [--samples TEXT [TEXT ...]]
                                     read-depth control-statistcs output
    
-   ############################################################
-   # Compute copy number from read depth for the target gene. #
-   ############################################################
+   Compute copy number from read depth for the target gene.
    
-   The method will convert read depth from target gene to copy number by performing intra-sample normalization using summary statistics from control gene.
+   The command will convert read depth to copy number by performing intra-sample
+   normalization using summary statistics from the control gene.
    
-   If the input data was generated with targeted sequencing as opposed to WGS, the method will also apply inter-sample normalization using summary statistics across all samples. For best results, it is recommended to manually specify a list of known reference samples that do not have SV.
-   
-   Usage examples:
-     $ pypgx compute-copy-number CYP2D6-read-depth.zip VDR-control-statistcs.zip CYP2D6-copy-number.zip
+   During copy number analysis, if the input data is targeted sequencing, the
+   command will apply inter-sample normalization using summary statistics across
+   all samples. For best results, it is recommended to specify known samples
+   without SV using --samples.
    
    Positional arguments:
-     read-depth            Archive file with the semantic type CovFrame[ReadDepth].
-     control-statistcs     Archive file with the semantic type SampleTable[Statistics].
-     output                Archive file with the semantic type CovFrame[CopyNumber].
+     read-depth            Archive file with the semantic type 
+                           CovFrame[ReadDepth].
+     control-statistcs     Archive file with the semantic type 
+                           SampleTable[Statistics].
+     output                Archive file with the semantic type 
+                           CovFrame[CopyNumber].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -240,31 +240,37 @@ compute-target-depth
                                      [--assembly TEXT] [--bed PATH]
                                      gene output
    
-   #####################################################
-   # Compute read depth for target gene with BAM data. #
-   #####################################################
-   
-   Input BAM files must be specified with either '--bam' or '--fn', but it's an error to use both.
-   
-   By default, the input data is assumed to be WGS. If it's targeted sequencing, you must provide a BED file with ``bed`` to indicate probed regions.
-   
-   Usage examples:
-     $ pypgx compute-target-depth gene out.zip --bam A.bam B.bam
-     $ pypgx compute-target-depth gene out.zip --fn bam.list
-     $ pypgx compute-target-depth gene out.zip --fn bam.list --assembly GRCh38
-     $ pypgx compute-target-depth gene out.zip --fn bam.list --bed panel.bed
+   Compute read depth for the target gene from BAM files.
    
    Positional arguments:
      gene                  Target gene.
-     output                Archive file with the semantic type CovFrame[ReadDepth].
+     output                Archive file with the semantic type 
+                           CovFrame[ReadDepth].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
      --bam PATH [PATH ...]
-                           One or more BAM files.
-     --fn PATH             File containing one BAM file per line.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            BED file.
+                           One or more BAM files. Cannot be used with --fn.
+     --fn PATH             File containing one BAM file per line. Cannot be 
+                           used with --bam.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If it 
+                           is targeted sequencing, you must provide a BED file to 
+                           indicate probed regions.
+   
+   [Example] For the CYP2D6 gene from WGS data:
+     $ pypgx compute-target-depth \
+     CYP2D6 \
+     read-depth.zip \
+     --bam A.bam B.bam
+   
+   [Example] For the CYP2D6 gene from targeted sequencing data:
+     $ pypgx compute-target-depth \
+     CYP2D6 \
+     read-depth.zip \
+     --fn bam.txt \
+     --bed probes.bed
 
 create-consolidated-vcf
 =======================
@@ -276,19 +282,16 @@ create-consolidated-vcf
                                         imported-variants phased-variants
                                         consolidated-variants
    
-   Create a consolidated VCF.
-   
-   Usage examples:
-   $ pypgx create-consolidated-vcf \
-   imported-variants.zip \
-   phased-variants.zip \
-   consolidated-variants.zip
+   Create a consolidated VCF file.
    
    Positional arguments:
-     imported-variants     Archive file with the semantic type VcfFrame[Imported].
-     phased-variants       Archive file with the semantic type VcfFrame[Phased].
+     imported-variants     Archive file with the semantic type 
+                           VcfFrame[Imported].
+     phased-variants       Archive file with the semantic type 
+                           VcfFrame[Phased].
      consolidated-variants
-                           Archive file with the semantic type VcfFrame[Consolidated].
+                           Archive file with the semantic type 
+                           VcfFrame[Consolidated].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -302,18 +305,15 @@ create-regions-bed
    usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--add-chr-prefix]
                                    [--merge] [--sv-genes]
    
-   ###############################################################
-   # Create a BED file which contains all regions used by PyPGx. #
-   ###############################################################
-   
-   Usage examples:
-     $ pypgx create-regions-bed > regions.bed
+   Create a BED file which contains all regions used by PyPGx.
    
    Optional arguments:
      -h, --help        Show this help message and exit.
-     --assembly TEXT   Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --assembly TEXT   Reference genome assembly (default: 'GRCh37') 
+                       (choices: 'GRCh37', 'GRCh38').
      --add-chr-prefix  Whether to add the 'chr' string in contig names.
-     --merge           Whether to merge overlapping intervals (gene names will be removed too).
+     --merge           Whether to merge overlapping intervals (gene names will 
+                       be removed too).
      --sv-genes        Whether to only return genes with SV.
 
 estimate-phase-beagle
@@ -325,12 +325,7 @@ estimate-phase-beagle
    usage: pypgx estimate-phase-beagle [-h] [--panel PATH] [--impute]
                                       imported-variants phased-variants
    
-   ##########################################################################
-   # Estimate haplotype phase of observed variants with the Beagle program. #
-   ##########################################################################
-   
-   Usage examples:
-     $ pypgx estimate-phase-beagle imported-variants.zip phased-variants.zip
+   Estimate haplotype phase of observed variants with the Beagle program.
    
    Positional arguments:
      imported-variants  Archive file with the semantic type VcfFrame[Imported].
@@ -338,8 +333,10 @@ estimate-phase-beagle
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --panel PATH       Reference haplotype panel. By default, the 1KGP panel is used.
-     --impute           Whether to perform imputation of missing genotypes.
+     --panel PATH       VCF file corresponding to a reference haplotype panel 
+                        (zipped or unzipped). By default, the 1KGP panel is 
+                        used.
+     --impute           Perform imputation of missing genotypes.
 
 filter-samples
 ==============
@@ -347,20 +344,11 @@ filter-samples
 .. code-block:: text
 
    $ pypgx filter-samples -h
-   usage: pypgx filter-samples [-h] [--samples TEXT [TEXT ...]] [--exclude]
-                               [--fn PATH]
+   usage: pypgx filter-samples [-h] [--samples TEXT [TEXT ...]] [--fn PATH]
+                               [--exclude]
                                input output
    
-   ##############################################
-   # Filter Archive file for specified samples. #
-   ##############################################
-   
-   Samples can be specified with either '--samples' or '--fn', but it's an error to use both.
-   
-   Usage examples:
-     $ pypgx filter-samples in.zip out.zip --samples A B C
-     $ pypgx filter-samples in.zip out.zip --samples A B C --exclude
-     $ pypgx filter-samples in.zip out.zip --fn samples.list
+   Filter Archive file for specified samples.
    
    Positional arguments:
      input                 Input archive file.
@@ -369,9 +357,11 @@ filter-samples
    Optional arguments:
      -h, --help            Show this help message and exit.
      --samples TEXT [TEXT ...]
-                           Space-separated list of samples names (the order matters).
+                           List of samples names (the order matters). Cannot be 
+                           used with --fn.
+     --fn PATH             File containing one sample name per line. Cannot be 
+                           used with --samples.
      --exclude             Exclude specified samples.
-     --fn PATH             File containing one sample name per line.
 
 import-read-depth
 =================
@@ -384,15 +374,10 @@ import-read-depth
    
    Import read depth data for the target gene.
    
-   Usage examples:
-     $ pypgx import-read-depth \
-       CYP2D6 \
-       depth-of-coverage.zip \
-       read-depth.zip
-   
    Positional arguments:
      gene               Target gene.
-     depth-of-coverage  Archive file with the semantic type CovFrame[DepthOfCoverage].
+     depth-of-coverage  Archive file with the semantic type 
+                        CovFrame[DepthOfCoverage].
      read-depth         Archive file with the semantic type CovFrame[ReadDepth].
    
    Optional arguments:
@@ -411,12 +396,6 @@ import-variants
    
    Import variant data for the target gene.
    
-   Usage examples:
-     $ pypgx import-variants \
-       CYP2D6 \
-       input.vcf \
-       imported-variants.zip
-   
    Positional arguments:
      gene               Target gene.
      vcf                VCF file (zipped or unzipped).
@@ -426,8 +405,8 @@ import-variants
      -h, --help         Show this help message and exit.
      --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
                         'GRCh37', 'GRCh38').
-     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted', 
-                        'Chip').
+     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 
+                        'Targeted', 'Chip').
 
 plot-bam-copy-number
 ====================
@@ -443,7 +422,8 @@ plot-bam-copy-number
    Plot copy number profile from CovFrame[CopyNumber].
    
    Positional arguments:
-     copy-number           Archive file with the semantic type CovFrame[CopyNumber].
+     copy-number           Archive file with the semantic type 
+                           CovFrame[CopyNumber].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -466,15 +446,11 @@ plot-bam-read-depth
                                     [--ymax FLOAT]
                                     read_depth
    
-   ##########################################
-   # Plot read depth profile with BAM data. #
-   ##########################################
-   
-   Usage examples:
-     $ pypgx plot-bam-read-depth CYP2D6 target.tsv
+   Plot read depth profile with BAM data.
    
    Positional arguments:
-     read_depth            Archive file with the semantic type CovFrame[ReadDepth]
+     read_depth            Archive file with the semantic type 
+                           CovFrame[ReadDepth].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -497,8 +473,10 @@ plot-cn-af
    Plot both copy number profile and allele fraction profile in one figure.
    
    Positional arguments:
-     copy-number           Archive file with the semantic type CovFrame[CopyNumber].
-     imported-variants     Archive file with the semantic type VcfFrame[Imported].
+     copy-number           Archive file with the semantic type 
+                           CovFrame[CopyNumber].
+     imported-variants     Archive file with the semantic type 
+                           VcfFrame[Imported].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -523,7 +501,8 @@ plot-vcf-allele-fraction
    Plot allele fraction profile from VcfFrame[Imported].
    
    Positional arguments:
-     imported-variants     Archive file with the semantic type VcfFrame[Imported].
+     imported-variants     Archive file with the semantic type 
+                           VcfFrame[Imported].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -543,12 +522,7 @@ plot-vcf-read-depth
                                     [--ymax FLOAT]
                                     gene vcf
    
-   ##########################################
-   # Plot read depth profile with VCF data. #
-   ##########################################
-   
-   Usage examples:
-     $ pypgx plot-vcf-read-depth CYP2D6 in.vcf
+   Plot read depth profile with VCF data.
    
    Positional arguments:
      gene                  Target gene.
@@ -556,7 +530,8 @@ plot-vcf-read-depth
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 'GRCh37', 'GRCh38').
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
                            Create plots only for these samples.
@@ -571,17 +546,14 @@ predict-alleles
    $ pypgx predict-alleles -h
    usage: pypgx predict-alleles [-h] consolidated-variants alleles
    
-   ##############################################################
-   # Predict candidate star alleles based on observed variants. #
-   ##############################################################
-   
-   Usage examples:
-     $ pypgx predict-alleles CYP2D6-consolidated-variants.zip CYP2D6-alleles.zip
+   Predict candidate star alleles based on observed variants.
    
    Positional arguments:
      consolidated-variants
-                           Archive file with the semantic type VcfFrame[Consolidated].
-     alleles               Archive file with the semantic type SampleTable[Alleles].
+                           Archive file with the semantic type 
+                           VcfFrame[Consolidated].
+     alleles               Archive file with the semantic type 
+                           SampleTable[Alleles].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -594,22 +566,20 @@ predict-cnv
    $ pypgx predict-cnv -h
    usage: pypgx predict-cnv [-h] [--cnv-caller PATH] copy-number cnv-calls
    
-   ##########################################################
-   # Predict CNV for target gene based on copy number data. #
-   ##########################################################
+   Predict CNV for the target gene based on copy number data.
    
-   If there are missing values because, for example, the input data was generated with targeted sequencing, they will be imputed with forward filling.
-   
-   Usage examples:
-     $ pypgx predict-cnv CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
+   Genomic positions that are missing copy number, because for example the input
+   data is targeted sequencing, will be imputed with forward filling.
    
    Positional arguments:
      copy-number        Archive file with the semantic type CovFrame[CopyNumber].
-     cnv-calls          Archive file with the semantic type SampleTable[CNVCalls].
+     cnv-calls          Archive file with the semantic type 
+                        SampleTable[CNVCalls].
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By default, a pre-trained CNV caller will be used.
+     --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By 
+                        default, a pre-trained CNV caller will be used.
 
 prepare-depth-of-coverage
 =========================
@@ -624,31 +594,32 @@ prepare-depth-of-coverage
    
    Prepare a depth of coverage file for all target genes with SV.
    
-   When input data is WGS:
-     $ pypgx prepare-depth-of-coverage \
-       depth-of-coverage.zip \
-       --bam A.bam B.bam
-   
-   When input data is targeted sequencing:
-     $ pypgx prepare-depth-of-coverage \
-       depth-of-coverage.zip \
-       --fn bam.txt \
-       --bed probes.bed
-   
    Positional arguments:
-     depth-of-coverage     Archive file with the semantic type CovFrame[DepthOfCoverage].
+     depth-of-coverage     Archive file with the semantic type 
+                           CovFrame[DepthOfCoverage].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
      --bam PATH [PATH ...]
-                           One or more BAM files. Cannot be used with '--fn'.
-     --fn PATH             File containing one BAM file per line. Cannot be used with 
-                           '--bam'.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
-                           'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it is 
-                           targeted sequencing, you must provide a BED file to indicate 
-                           probed regions.
+                           One or more BAM files. Cannot be used with --fn.
+     --fn PATH             File containing one BAM file per line. Cannot be used 
+                           with --bam.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If it 
+                           is targeted sequencing, you must provide a BED file to 
+                           indicate probed regions.
+   
+   [Example] When the input data is WGS:
+     $ pypgx prepare-depth-of-coverage \
+     depth-of-coverage.zip \
+     --bam A.bam B.bam
+   
+   [Example] When the input data is targeted sequencing:
+     $ pypgx prepare-depth-of-coverage \
+     depth-of-coverage.zip \
+     --fn bam.txt \
+     --bed probes.bed
 
 print-metadata
 ==============
@@ -658,12 +629,7 @@ print-metadata
    $ pypgx print-metadata -h
    usage: pypgx print-metadata [-h] input
    
-   ############################################
-   # Print the metadata of specified archive. #
-   ############################################
-   
-   Usage examples:
-     $ pypgx print-metadata in.zip
+   Print the metadata of specified archive.
    
    Positional arguments:
      input       Archive file.
@@ -679,13 +645,7 @@ run-chip-pipeline
    $ pypgx run-chip-pipeline -h
    usage: pypgx run-chip-pipeline [-h] [--impute] [--force] gene output variants
    
-   Run genotyping pipeline for chip data.
-   
-   Usage examples:
-     $ pypgx run-chip-pipeline \
-       CYP3A5 \
-       CYP3A5-pipeline \
-       --variants variants.vcf
+   Run PyPGx's genotyping pipeline for chip data.
    
    Positional arguments:
      gene        Target gene.
@@ -694,8 +654,14 @@ run-chip-pipeline
    
    Optional arguments:
      -h, --help  Show this help message and exit.
-     --impute    Whether to perform imputation of missing genotypes.
+     --impute    Perform imputation of missing genotypes.
      --force     Overwrite output directory if it already exists.
+   
+   [Example] To genotype the CYP3A5 gene from chip data:
+     $ pypgx run-chip-pipeline \
+     CYP3A5 \
+     CYP3A5-pipeline \
+     variants.vcf
 
 run-ngs-pipeline
 ================
@@ -712,15 +678,12 @@ run-ngs-pipeline
                                  [--do-not-plot-allele-fraction]
                                  gene output
    
-   Run genotyping pipeline for NGS data.
+   Run PyPGx's genotyping pipeline for NGS data.
    
-   Usage examples:
-     $ pypgx run-ngs-pipeline \
-       CYP2D6 \
-       CYP2D6-pipeline \
-       --variants variants.vcf \
-       --depth-of-coverage depth-of-coverage.tsv \
-       --control-statistcs control-statistics-VDR.zip
+   During copy number analysis, if the input data is targeted sequencing, the
+   command will apply inter-sample normalization using summary statistics across
+   all samples. For best results, it is recommended to specify known samples
+   without SV using --samples.
    
    Positional arguments:
      gene                  Target gene.
@@ -732,22 +695,43 @@ run-ngs-pipeline
      --depth-of-coverage PATH
                            Depth of coverage file (zipped or unzipped).
      --control-statistics PATH
-                           Archive file with the semandtic type SampleTable[Statistcs].
+                           Archive file with the semandtic type 
+                           SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
-     --panel PATH          Reference haplotype panel. By default, the 1KGP panel is used.
+     --panel PATH          VCF file corresponding to a reference haplotype panel 
+                           (zipped or unzipped). By default, the 1KGP panel is 
+                           used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
-                           When computing copy number from read depth, if the input 
-                           data was generated with targeted sequencing as opposed to 
-                           WGS, the method will apply inter-sample normalization using 
-                           summary statistics across all samples. For best results, it 
-                           is recommended to manually specify a list of known reference 
-                           samples that do not have SV with '--samples'.
+                           List of known samples without SV.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
+   
+   [Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:
+     $ pypgx run-ngs-pipeline \
+     CYP3A5 \
+     CYP3A5-pipeline \
+     --variants variants.vcf
+   
+   [Example] To genotype the CYP2D6 gene, which does have SV, from WGS data:
+     $ pypgx run-ngs-pipeline \
+     CYP2D6 \
+     CYP2D6-pipeline \
+     --variants variants.vcf \
+     --depth-of-coverage depth-of-coverage.tsv \
+     --control-statistcs control-statistics-VDR.zip
+   
+   [Example] To genotype the CYP2D6 gene from targeted sequencing data:
+     $ pypgx run-ngs-pipeline \
+     CYP2D6 \
+     CYP2D6-pipeline \
+     --variants variants.vcf \
+     --depth-of-coverage depth-of-coverage.tsv \
+     --control-statistcs control-statistics-VDR.zip \
+     --platform Targeted
 
 test-cnv-caller
 ===============
@@ -758,17 +742,14 @@ test-cnv-caller
    usage: pypgx test-cnv-caller [-h] [--confusion-matrix PATH]
                                 cnv-caller copy-number cnv-calls
    
-   ##########################################
-   # Test a CNV caller for the target gene. #
-   ##########################################
-   
-   Usage examples:
-     $ pypgx test-cnv-caller CYP2D6-cnv-caller.zip CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip
+   Test a CNV caller for the target gene.
    
    Positional arguments:
      cnv-caller            Archive file with the semantic type Model[CNV].
-     copy-number           Archive file with the semantic type CovFrame[CopyNumber].
-     cnv-calls             Archive file with the semantic type SampleTable[CNVCalls].
+     copy-number           Archive file with the semantic type 
+                           CovFrame[CopyNumber].
+     cnv-calls             Archive file with the semantic type 
+                           SampleTable[CNVCalls].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
@@ -784,18 +765,16 @@ train-cnv-caller
    usage: pypgx train-cnv-caller [-h] [--confusion-matrix PATH]
                                  copy-number cnv-calls cnv-caller
    
-   ###########################################
-   # Train a CNV caller for the target gene. #
-   ###########################################
+   Train a CNV caller for the target gene.
    
-   This command will return a SVM-based multiclass classifier that makes CNV calls using the one-vs-rest stategy.
-   
-   Usage examples:
-     $ pypgx train-cnv-caller CYP2D6-copy-number.zip CYP2D6-cnv-calls.zip CYP2D6-cnv-caller.zip
+   This command will return a SVM-based multiclass classifier that makes CNV
+   calls using the one-vs-rest stategy.
    
    Positional arguments:
-     copy-number           Archive file with the semantic type CovFrame[CopyNumber]
-     cnv-calls             Archive file with the semantic type SampleTable[CNVCalls].
+     copy-number           Archive file with the semantic type 
+                           CovFrame[CopyNumber].
+     cnv-calls             Archive file with the semantic type 
+                           SampleTable[CNVCalls].
      cnv-caller            Archive file with the semantic type Model[CNV].
    
    Optional arguments:

@@ -7,20 +7,14 @@ import pysam
 
 description = f"""
 Import variant data for the target gene.
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} \\
-    CYP2D6 \\
-    input.vcf \\
-    imported-variants.zip
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Import variant data for the target gene.',
         description=description,
+        help='Import variant data for the target gene.',
     )
     parser.add_argument(
         'gene',
@@ -47,8 +41,8 @@ def create_parser(subparsers):
         metavar='TEXT',
         default='WGS',
         choices=['WGS', 'Targeted', 'Chip'],
-        help="NGS platform (default: 'WGS') (choices: 'WGS', 'Targeted', \n"
-             "'Chip')."
+        help="NGS platform (default: 'WGS') (choices: 'WGS', \n"
+             "'Targeted', 'Chip')."
     )
 
 def main(args):

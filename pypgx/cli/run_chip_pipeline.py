@@ -5,21 +5,24 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-Run genotyping pipeline for chip data.
+Run PyPGx's genotyping pipeline for chip data.
+"""
 
-Usage examples:
+epilog = f"""
+[Example] To genotype the CYP3A5 gene from chip data:
   $ pypgx {fuc.api.common._script_name()} \\
-    CYP3A5 \\
-    CYP3A5-pipeline \\
-    --variants variants.vcf
+  CYP3A5 \\
+  CYP3A5-pipeline \\
+  variants.vcf
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Run genotyping pipeline for chip data.',
         description=description,
+        epilog=epilog,
+        help="Run PyPGx's genotyping pipeline for chip data.",
     )
     parser.add_argument(
         'gene',
@@ -36,7 +39,7 @@ def create_parser(subparsers):
     parser.add_argument(
         '--impute',
         action='store_true',
-        help='Whether to perform imputation of missing genotypes.'
+        help='Perform imputation of missing genotypes.'
     )
     parser.add_argument(
         '--force',

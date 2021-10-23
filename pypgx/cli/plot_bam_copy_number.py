@@ -13,13 +13,14 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Plot copy number profile from CovFrame[CopyNumber].',
         description=description,
+        help='Plot copy number profile from CovFrame[CopyNumber].',
     )
     parser.add_argument(
         'copy_number',
         metavar='copy-number',
-        help='Archive file with the semantic type CovFrame[CopyNumber].'
+        help='Archive file with the semantic type \n'
+             'CovFrame[CopyNumber].'
     )
     parser.add_argument(
         '--fitted',

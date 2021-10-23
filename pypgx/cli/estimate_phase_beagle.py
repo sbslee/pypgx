@@ -6,22 +6,16 @@ import fuc
 import pysam
 
 description = f"""
-##########################################################################
-# Estimate haplotype phase of observed variants with the Beagle program. #
-##########################################################################
-
-
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} imported-variants.zip phased-variants.zip
+Estimate haplotype phase of observed variants with the Beagle program.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Estimate haplotype phase of observed variants with the Beagle program.',
         description=description,
+        help='Estimate haplotype phase of observed variants with the '
+             'Beagle program.',
     )
     parser.add_argument(
         'imported_variants',
@@ -36,12 +30,14 @@ def create_parser(subparsers):
     parser.add_argument(
         '--panel',
         metavar='PATH',
-        help='Reference haplotype panel. By default, the 1KGP panel is used.'
+        help='VCF file corresponding to a reference haplotype panel \n'
+             '(zipped or unzipped). By default, the 1KGP panel is \n'
+             'used.'
     )
     parser.add_argument(
         '--impute',
         action='store_true',
-        help='Whether to perform imputation of missing genotypes.'
+        help='Perform imputation of missing genotypes.'
     )
 
 def main(args):

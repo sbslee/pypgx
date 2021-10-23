@@ -15,7 +15,7 @@ def run_chip_pipeline(
     gene, output, variants, panel=None, impute=False, force=False
 ):
     """
-    Run genotyping pipeline for chip data.
+    Run PyPGx's genotyping pipeline for chip data.
 
     Parameters
     ----------
@@ -23,10 +23,10 @@ def run_chip_pipeline(
         Target gene.
     output : str
         Output directory.
-    variants : str, optional
+    variants : str
         VCF file (zipped or unzipped).
     impute : bool, default: False
-        Whether to perform imputation of missing genotypes.
+        If True, perform imputation of missing genotypes.
     force : bool, default : False
         Overwrite output directory if it already exists.
     """
@@ -62,7 +62,12 @@ def run_ngs_pipeline(
     do_not_plot_allele_fraction=False
 ):
     """
-    Run genotyping pipeline for NGS data (WGS and targeted sequencing).
+    Run PyPGx's genotyping pipeline for NGS data.
+
+    During copy number analysis, if the input data is targeted sequencing,
+    the method will apply inter-sample normalization using summary statistics
+    across all samples. For best results, it is recommended to specify known
+    samples without SV using ``samples``.
 
     Parameters
     ----------
@@ -80,7 +85,8 @@ def run_ngs_pipeline(
     platform : {'WGS', 'Targeted'}, default: 'WGS'
         Genotyping platform.
     panel : str, optional
-        Reference haplotype panel.
+        VCF file corresponding to a reference haplotype panel (zipped or
+        unzipped). By default, the 1KGP panel is used.
     force : bool, default : False
         Overwrite output directory if it already exists.
     samples : list, optional

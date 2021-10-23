@@ -5,12 +5,7 @@ from ..api import utils
 import fuc
 
 description = f"""
-################################################
-# Combine various results for the target gene. #
-################################################
-
-Usage examples:
-  $ pypgx {fuc.api.common._script_name()} CYP2D6-results.zip --genotypes CYP2D6-genotypes.zip --phenotypes CYP2D6-phenotypes.zip --alleles CYP2D6-alleles.zip --cnv-calls CYP2D6-cnv-calls.zip
+Combine various results for the target gene.
 """
 
 def create_parser(subparsers):
@@ -27,22 +22,26 @@ def create_parser(subparsers):
     parser.add_argument(
         '--genotypes',
         metavar='PATH',
-        help='Archive file with the semantic type SampleTable[Genotypes].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Genotypes].'
     )
     parser.add_argument(
         '--phenotypes',
         metavar='PATH',
-        help='Archive file with the semantic type SampleTable[Phenotypes].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Phenotypes].'
     )
     parser.add_argument(
         '--alleles',
         metavar='PATH',
-        help='Archive file with the semantic type SampleTable[Alleles].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[Alleles].'
     )
     parser.add_argument(
         '--cnv-calls',
         metavar='PATH',
-        help='Archive file with the semantic type SampleTable[CNVCalls].'
+        help='Archive file with the semantic type \n'
+             'SampleTable[CNVCalls].'
     )
 
 def main(args):
