@@ -1095,7 +1095,7 @@ def sort_alleles(
 
     >>> alleles = ['*1', '*2', '*4', '*10']
 
-    We can sort them by their prioirty with ``method='priority'``:
+    We can sort the alleles by their prioirty with ``method='priority'``:
 
     >>> import pypgx
     >>> alleles = pypgx.sort_alleles(alleles, by='priority', gene='CYP2D6', assembly='GRCh37')
@@ -1107,8 +1107,17 @@ def sort_alleles(
     >>> alleles = pypgx.sort_alleles(alleles, by='name')
     >>> alleles
     ['*1', '*2', '*4', '*10']
+
+    Note that we can also sort alleles by name for genes that do not use the
+    star allele nomenclature (e.g. the *DPYD* gene):
+
+    >>> alleles = ['c.557A>G', 'c.2194G>A (*6)', 'c.496A>G', 'Reference', 'c.1627A>G (*5)']
+    >>> pypgx.sort_alleles(alleles, by='name')
+    ['Reference', 'c.496A>G', 'c.557A>G', 'c.1627A>G (*5)', 'c.2194G>A (*6)']
     """
     def func1(allele):
+        if gene is None:
+            raise ValueError('Gene is required when sorting by priority')
         if not is_target_gene(gene):
             raise NotTargetGeneError(gene)
         function = get_function(gene, allele)
@@ -1122,13 +1131,18 @@ def sort_alleles(
         return (a, b, c, d)
 
     def func2(allele):
+        n = 99999
         cn = 1
-        if '*' not in allele:
-            n = 999
+        if allele == 'Reference':
+            n = 0
+        elif 'c.' in allele: # For the DPYD gene
+            n = int(''.join([x for x in allele.split('>')[0] if x.isdigit()]))
+        elif '*' not in allele:
+            pass
         else:
             _ = allele.split('+')[0].split('x')[0].replace('*', '')
             if not _[0].isdigit():
-                n = 999
+                pass
             else:
                 n = int(''.join([x for x in _ if x.isdigit()]))
             if 'x' in allele.split('+')[0]:

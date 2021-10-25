@@ -4,6 +4,8 @@ Changelog
 0.8.0 (in development)
 ----------------------
 
+* Update :meth:`api.core.sort_alleles` method to also sort alleles by name for genes that do not use the star allele nomenclature (e.g. the DPYD gene).
+
 0.7.0 (2021-10-23)
 ------------------
 
