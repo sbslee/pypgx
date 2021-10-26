@@ -3,6 +3,7 @@ from .api.core import (
     collapse_alleles,
     has_phenotype,
     has_score,
+    is_legit_allele,
     is_target_gene,
     get_default_allele,
     get_function,

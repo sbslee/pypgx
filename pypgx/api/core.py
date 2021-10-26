@@ -202,6 +202,24 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
+def is_legit_allele(gene, allele):
+    """
+    Return True if specified allele exists in the allele table.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    allele : str
+        Allele to be tested.
+
+    Returns
+    -------
+    bool
+        True if the allele is legit.
+    """
+    return allele in list_alleles(gene)
+
 def is_target_gene(gene):
     """
     Return True if specified gene is one of the target genes.
