@@ -483,7 +483,7 @@ def get_score(gene, allele):
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene + allele)
+        raise AlleleNotFoundError(gene, allele)
 
     return df.ActivityScore.values[0]
 
@@ -978,6 +978,10 @@ def predict_phenotype(gene, a, b):
     elif phenotype_method == 'Diplotype':
         df = load_diplotype_table()
         df = df[df.Gene == gene]
+        if not is_legit_allele(gene, a):
+            raise AlleleNotFoundError(gene, a)
+        if not is_legit_allele(gene, b):
+            raise AlleleNotFoundError(gene, b)
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         try:
