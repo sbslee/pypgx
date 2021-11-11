@@ -1131,7 +1131,7 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     Train a CNV caller for the target gene.
 
     This method will return a SVM-based multiclass classifier that makes CNV
-    calls using the one-vs-rest stategy.
+    calls using the one-vs-rest strategy.
 
     Parameters
     ----------

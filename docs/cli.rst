@@ -36,7 +36,7 @@ For getting help on the CLI:
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
-       import-read-depth   Import read depth data for target gene.
+       import-read-depth   Import read depth data for the target gene.
        import-variants     Import variant data for the target gene.
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
@@ -768,7 +768,7 @@ train-cnv-caller
    Train a CNV caller for the target gene.
    
    This command will return a SVM-based multiclass classifier that makes CNV
-   calls using the one-vs-rest stategy.
+   calls using the one-vs-rest strategy.
    
    Positional arguments:
      copy-number           Archive file with the semantic type 

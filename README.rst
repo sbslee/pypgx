@@ -185,7 +185,7 @@ For getting help on the CLI:
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
-       import-read-depth   Import read depth data for target gene.
+       import-read-depth   Import read depth data for the target gene.
        import-variants     Import variant data for the target gene.
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
