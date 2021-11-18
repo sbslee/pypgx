@@ -7,7 +7,7 @@ Changelog
 * Update :meth:`api.core.sort_alleles` method to also sort alleles by name for genes that do not use the star allele nomenclature (e.g. the DPYD gene).
 * Add new method :meth:`api.core.is_legit_allele`.
 * Update :meth:`api.core.predict_phenotype` method to first check if the two alleles are legit.
-* Add new genes: ABCB1, CYP1A1, CYP1B1.
+* Add new genes: ABCB1, CYP1A1, CYP1B1, CYP4A11.
 
 0.7.0 (2021-10-23)
 ------------------
