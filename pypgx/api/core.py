@@ -14,6 +14,7 @@ PROGRAM_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 FUNCTION_ORDER = [
     'No Function',
+    'Severely Decreased Function',
     'Decreased Function',
     'Possible Decreased Function',
     'Increased Function',
