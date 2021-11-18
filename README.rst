@@ -232,6 +232,13 @@ For getting help on a specific submodule (e.g. utils):
    >>> from pypgx.api import utils
    >>> help(utils)
 
+For getting help on a specific method (e.g. predict_phenotype):
+
+.. code:: python3
+
+   >>> import pypgx
+   >>> help(pypgx.predict_phenotype)
+
 CLI examples
 ============
 
