@@ -19,9 +19,13 @@ FUNCTION_ORDER = [
     'Possible Decreased Function',
     'Increased Function',
     'Possible Increased Function',
+    'Class I (Deficient with CNSHA)',
+    'Class II (Deficient)',
+    'Class III (Deficient)',
     'Uncertain Function',
     'Unknown Function',
     'Normal Function',
+    'Class IV (Normal)',
 ]
 
 class AlleleNotFoundError(Exception):
