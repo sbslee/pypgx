@@ -9,7 +9,7 @@ description = f"""
 Train a CNV caller for the target gene.
 
 This command will return a SVM-based multiclass classifier that makes CNV
-calls using the one-vs-rest stategy.
+calls using the one-vs-rest strategy.
 """
 
 def create_parser(subparsers):
