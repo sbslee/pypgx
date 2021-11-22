@@ -4,6 +4,8 @@ Changelog
 0.9.0 (in development)
 ----------------------
 
+* Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes.
+
 0.8.0 (2021-11-20)
 ------------------
 
