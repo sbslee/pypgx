@@ -79,6 +79,13 @@ def create_parser(subparsers):
              "'Targeted')"
     )
     parser.add_argument(
+        '--assembly',
+        metavar='TEXT',
+        default='GRCh37',
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
+    )
+    parser.add_argument(
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
@@ -111,7 +118,7 @@ def main(args):
     pipeline.run_ngs_pipeline(
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
-        control_statistics=args.control_statistics,
+        control_statistics=args.control_statistics, assembly=args.assembly, 
         panel=args.panel, force=args.force, samples=args.samples,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction
