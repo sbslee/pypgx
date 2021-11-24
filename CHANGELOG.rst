@@ -6,6 +6,7 @@ Changelog
 
 * Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes.
 * Add 1KGP reference haplotype panels for GRCh38 for all target genes.
+* Update commands :command:`run-ngs-pipeline` and `run-chip-pipeline` to support GRCh38.
 
 0.8.0 (2021-11-20)
 ------------------
