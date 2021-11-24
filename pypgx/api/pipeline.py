@@ -12,7 +12,8 @@ from .. import sdk
 from . import utils, plot, genotype, core
 
 def run_chip_pipeline(
-    gene, output, variants, panel=None, impute=False, force=False
+    gene, output, variants, panel=None, assembly='GRCh37', impute=False,
+    force=False
 ):
     """
     Run PyPGx's genotyping pipeline for chip data.
@@ -25,6 +26,8 @@ def run_chip_pipeline(
         Output directory.
     variants : str
         VCF file (zipped or unzipped).
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
     force : bool, default : False
@@ -38,11 +41,14 @@ def run_chip_pipeline(
 
     os.mkdir(output)
 
-    imported_variants = utils.import_variants(gene, variants, platform='Chip')
+    imported_variants = utils.import_variants(gene, variants,
+        assembly=assembly, platform='Chip')
     imported_variants.to_file(f'{output}/imported-variants.zip')
-    phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel, impute=impute)
+    phased_variants = utils.estimate_phase_beagle(imported_variants,
+        panel=panel, impute=impute)
     phased_variants.to_file(f'{output}/phased-variants.zip')
-    consolidated_variants = utils.create_consolidated_vcf(imported_variants, phased_variants)
+    consolidated_variants = utils.create_consolidated_vcf(
+        imported_variants, phased_variants)
     consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
     alleles = utils.predict_alleles(consolidated_variants)
     alleles.to_file(f'{output}/alleles.zip')
@@ -57,7 +63,7 @@ def run_chip_pipeline(
 
 def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
-    control_statistics=None, platform='WGS', panel=None,
+    control_statistics=None, platform='WGS', assembly='GRCh37', panel=None,
     force=False, samples=None, do_not_plot_copy_number=False,
     do_not_plot_allele_fraction=False
 ):
@@ -84,6 +90,8 @@ def run_ngs_pipeline(
         Archive file or object with the semantic type SampleTable[Statistics].
     platform : {'WGS', 'Targeted'}, default: 'WGS'
         Genotyping platform.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (zipped or
         unzipped). By default, the 1KGP panel is used.
@@ -118,11 +126,14 @@ def run_ngs_pipeline(
         warnings.warn(message)
 
     if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
-        imported_variants = utils.import_variants(gene, variants, platform=platform)
+        imported_variants = utils.import_variants(gene, variants,
+            assembly=assembly, platform=platform)
         imported_variants.to_file(f'{output}/imported-variants.zip')
-        phased_variants = utils.estimate_phase_beagle(imported_variants, panel=panel)
+        phased_variants = utils.estimate_phase_beagle(
+            imported_variants, panel=panel)
         phased_variants.to_file(f'{output}/phased-variants.zip')
-        consolidated_variants = utils.create_consolidated_vcf(imported_variants, phased_variants)
+        consolidated_variants = utils.create_consolidated_vcf(
+            imported_variants, phased_variants)
         consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
         alleles = utils.predict_alleles(consolidated_variants)
         alleles.to_file(f'{output}/alleles.zip')
