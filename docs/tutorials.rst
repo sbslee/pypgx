@@ -4,46 +4,102 @@ Tutorials
 GeT-RM WGS tutorial
 ===================
 
-In this tutorial I will show you how to genotype the *CYP2D6* gene with whole genome sequencing (WGS) data.
+In this tutorial I'll walk you through PyPGx's genotype analysis of genes with or without structural variation (SV) using whole genome sequencing (WGS) data. I will also show how PyPGx can handle genomic data from two different Genome Reference Consortium Human (GRCh) builds: GRCh37 and GRCh38.
 
-The Centers for Disease Control and Prevention (CDC)–based Genetic Testing Reference Materials Coordination Program (GeT-RM) has established `genomic DNA reference materials <https://www.cdc.gov/labquality/get-rm/inherited-genetic-diseases-pharmacogenetics/pharmacogenetics.html>`__  to help the genetic testing community obtain characterized reference materials. In particular, GeT-RM has made WGS data for 70 of reference samples publicly available for download and use from the `European Nucleotide Archive <https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. This is the WGS data we will be using for the tutorial.
-
-Because downloading the entire WGS dataset is not feasible for most users due to its file size, I prepared input files:
+Before beginning this tutorial, create a new directory and change to that directory:
 
 .. code-block:: text
 
   $ mkdir getrm-wgs-tutorial
   $ cd getrm-wgs-tutorial
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/variants.vcf.gz
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/depth-of-coverage.zip
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/control-statistics-VDR.zip
 
-Next, run the next-generation sequencing (NGS) pipeline:
+The Centers for Disease Control and Prevention–based Genetic Testing Reference Materials Coordination Program (GeT-RM) has established `genomic DNA reference materials <https://www.cdc.gov/labquality/get-rm/inherited-genetic-diseases-pharmacogenetics/pharmacogenetics.html>`__  to help the genetic testing community obtain characterized reference materials. In particular, GeT-RM has made WGS data for 70 of reference samples publicly available for download and use from the `European Nucleotide Archive <https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. We will be using this WGS dataset throughout the tutorial.
+
+Because downloading the entire WGS dataset is not feasible for most users due to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files ranging from 2 KB to 17.6 MB. You can download those from:
 
 .. code-block:: text
 
-  $ pypgx run-ngs-pipeline \
-  CYP2D6 \
-  CYP2D6-pipeline \
-  --variants variants.vcf.gz \
-  --depth-of-coverage depth-of-coverage.zip \
-  --control-statistics control-statistics-VDR.zip
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-variants.vcf.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-depth-of-coverage.zip
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-control-statistics-VDR.zip
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
+
+Genotyping genes with SV
+------------------------
+
+First, let's run the next-generation sequencing (NGS) pipeline to genotype the *CYP2D6* gene:
+
+.. code-block:: text
+
+    pypgx run-ngs-pipeline \
+    CYP2D6 \
+    grch37-CYP2D6-pipeline \
+    --variants grch37-variants.vcf.gz \
+    --depth-of-coverage grch37-depth-of-coverage.zip \
+    --control-statistics grch37-control-statistics-VDR.zip
 
 Above will create a number of archive files:
 
 .. code-block:: text
 
-  Saved VcfFrame[Imported] to: CYP2D6-pipeline/imported-variants.zip
-  Saved VcfFrame[Phased] to: CYP2D6-pipeline/phased-variants.zip
-  Saved VcfFrame[Consolidated] to: CYP2D6-pipeline/consolidated-variants.zip
-  Saved SampleTable[Alleles] to: CYP2D6-pipeline/alleles.zip
-  Saved CovFrame[ReadDepth] to: CYP2D6-pipeline/read-depth.zip
-  Saved CovFrame[CopyNumber] to: CYP2D6-pipeline/copy-number.zip
-  Saved SampleTable[CNVCalls] to: CYP2D6-pipeline/cnv-calls.zip
-  Saved SampleTable[Genotypes] to: CYP2D6-pipeline/genotypes.zip
-  Saved SampleTable[Results] to: CYP2D6-pipeline/results.zip
+    Saved VcfFrame[Imported] to: grch37-CYP2D6-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: grch37-CYP2D6-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: grch37-CYP2D6-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: grch37-CYP2D6-pipeline/alleles.zip
+    Saved CovFrame[ReadDepth] to: grch37-CYP2D6-pipeline/read-depth.zip
+    Saved CovFrame[CopyNumber] to: grch37-CYP2D6-pipeline/copy-number.zip
+    Saved SampleTable[CNVCalls] to: grch37-CYP2D6-pipeline/cnv-calls.zip
+    Saved SampleTable[Genotypes] to: grch37-CYP2D6-pipeline/genotypes.zip
+    Saved SampleTable[Phenotypes] to: grch37-CYP2D6-pipeline/phenotypes.zip
+    Saved SampleTable[Results] to: grch37-CYP2D6-pipeline/results.zip
 
 Now that's it! You have successfully genotyped *CYP2D6* with WGS data.
+
+Genotyping genes without SV
+---------------------------
+
+Next, let's run the same pipeline to genotype other gene called *CYP3A5*:
+
+.. code-block:: text
+
+    pypgx run-ngs-pipeline \
+    CYP3A5 \
+    grch37-CYP3A5-pipeline \
+    --variants grch37-variants.vcf.gz \
+    --depth-of-coverage grch37-depth-of-coverage.zip \
+    --control-statistics grch37-control-statistics-VDR.zip
+
+As before, above will create a number of archive files:
+
+.. code-block:: text
+
+    Saved VcfFrame[Imported] to: grch37-CYP3A5-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: grch37-CYP3A5-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: grch37-CYP3A5-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: grch37-CYP3A5-pipeline/alleles.zip
+    Saved SampleTable[Genotypes] to: grch37-CYP3A5-pipeline/genotypes.zip
+    Saved SampleTable[Phenotypes] to: grch37-CYP3A5-pipeline/phenotypes.zip
+    Saved SampleTable[Results] to: grch37-CYP3A5-pipeline/results.zip
+
+For this run, you will notice two things:
+
+1. There are less output files than there was with *CYP2D6*.
+2. You will have received a warning from PyPGx that says: "UserWarning: The user provided CovFrame[DepthOfCoverage] even though the target gene does not have any star alleles defined by SVs. PyPGx will ignore it."
+
+GRCh37 vs. GRCh38
+-----------------
+
+Thus far, we have only considered GRCh37 data. But we can also run the pipeline for GRCh38 data:
+
+.. code-block:: text
+
+    pypgx run-ngs-pipeline \
+    CYP3A5 \
+    grch38-CYP3A5-pipeline \
+    --variants grch38-variants.vcf.gz \
+    --assembly GRCh38
 
 Coriell Affy tutorial
 =====================
