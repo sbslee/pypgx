@@ -105,7 +105,7 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - ``WGS``, ``Targeted``, ``Chip``
     * - ``Program``
       - Name of the phasing program.
-      - ``Beagle``
+      - ``Beagle``, ``SHAPEIT``
     * - ``Samples``
       - Samples used for inter-sample normalization.
       - ``NA07000,NA10854,NA11993``

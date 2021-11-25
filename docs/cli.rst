@@ -643,19 +643,22 @@ run-chip-pipeline
 .. code-block:: text
 
    $ pypgx run-chip-pipeline -h
-   usage: pypgx run-chip-pipeline [-h] [--impute] [--force] gene output variants
+   usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
+                                  gene output variants
    
    Run PyPGx's genotyping pipeline for chip data.
    
    Positional arguments:
-     gene        Target gene.
-     output      Output directory.
-     variants    VCF file (zipped or unzipped).
+     gene             Target gene.
+     output           Output directory.
+     variants         VCF file (zipped or unzipped).
    
    Optional arguments:
-     -h, --help  Show this help message and exit.
-     --impute    Perform imputation of missing genotypes.
-     --force     Overwrite output directory if it already exists.
+     -h, --help       Show this help message and exit.
+     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 
+                      'GRCh37', 'GRCh38').
+     --impute         Perform imputation of missing genotypes.
+     --force          Overwrite output directory if it already exists.
    
    [Example] To genotype the CYP3A5 gene from chip data:
      $ pypgx run-chip-pipeline \
@@ -672,7 +675,7 @@ run-ngs-pipeline
    usage: pypgx run-ngs-pipeline [-h] [--variants PATH]
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--platform TEXT]
-                                 [--panel PATH] [--force]
+                                 [--assembly TEXT] [--panel PATH] [--force]
                                  [--samples TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
@@ -699,6 +702,8 @@ run-ngs-pipeline
                            SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
                            (zipped or unzipped). By default, the 1KGP panel is 
                            used.

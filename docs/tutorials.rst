@@ -4,7 +4,7 @@ Tutorials
 GeT-RM WGS tutorial
 ===================
 
-In this tutorial I'll walk you through PyPGx's genotype analysis of genes with or without structural variation (SV) using whole genome sequencing (WGS) data. I will also show how PyPGx can handle genomic data from two different Genome Reference Consortium Human (GRCh) builds: GRCh37 and GRCh38.
+In this tutorial I'll walk you through PyPGx's genotype analysis using whole genome sequencing (WGS) data. By the end of this tutorial, you will have learned how to perform genotype analysis for genes with or without structural variation (SV), accordingly. I will also show how PyPGx can handle genomic data from two different Genome Reference Consortium Human (GRCh) builds: GRCh37 and GRCh38.
 
 Before beginning this tutorial, create a new directory and change to that directory:
 
@@ -15,7 +15,7 @@ Before beginning this tutorial, create a new directory and change to that direct
 
 The Centers for Disease Control and Prevention–based Genetic Testing Reference Materials Coordination Program (GeT-RM) has established `genomic DNA reference materials <https://www.cdc.gov/labquality/get-rm/inherited-genetic-diseases-pharmacogenetics/pharmacogenetics.html>`__  to help the genetic testing community obtain characterized reference materials. In particular, GeT-RM has made WGS data for 70 of reference samples publicly available for download and use from the `European Nucleotide Archive <https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. We will be using this WGS dataset throughout the tutorial.
 
-Because downloading the entire WGS dataset is not feasible for most users due to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files ranging from 2 KB to 17.6 MB. You can download those from:
+Because downloading the entire WGS dataset is not feasible for most users due to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files ranging from 2 KB to 17.6 MB, for both GRCh37 and GRCh38. You can download those from:
 
 .. code-block:: text
 
@@ -29,7 +29,7 @@ Because downloading the entire WGS dataset is not feasible for most users due to
 Genotyping genes with SV
 ------------------------
 
-First, let's run the next-generation sequencing (NGS) pipeline to genotype the *CYP2D6* gene:
+The first gene we are going to genotype is *CYP2D6* which has almost 150 star alleles including those with SV (e.g. gene deletions, duplications, and hybrids). To this end, we will run PyPGx's next-generation sequencing (NGS) pipeline:
 
 .. code-block:: text
 
