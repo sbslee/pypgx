@@ -61,11 +61,15 @@ def _plot_vcf_allele_fraction_one(
     ax1, ax2, sample, imported_variants, gene, assembly, fontsize
 ):
 
+    region = core.get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
     _plot_exons(gene, assembly, ax1, fontsize=fontsize)
 
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
 
+    ax2.set_xlim([start, end])
     ax2.set_ylim([-0.05, 1.05])
     ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Allele fraction', fontsize=fontsize)

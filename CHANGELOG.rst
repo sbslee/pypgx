@@ -8,6 +8,7 @@ Changelog
 * Add 1KGP reference haplotype panels for GRCh38 for all target genes.
 * Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to support GRCh38.
 * Update the **GeT-RM WGS** tutorial to include more genes and also GRCh38.
+* Update allele fraction profiles to have the same x-axis across all samples.
 
 0.8.0 (2021-11-20)
 ------------------
