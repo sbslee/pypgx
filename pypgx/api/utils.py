@@ -1016,7 +1016,7 @@ def prepare_depth_of_coverage(
     bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
 
     regions = create_regions_bed(
-        merge=True, sv_genes=True
+        merge=True, sv_genes=True, assembly=assembly,
     ).gr.df.apply(
         lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
     ).to_list()
