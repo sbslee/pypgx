@@ -105,9 +105,9 @@ def plot_bam_copy_number(
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, default: 0
+    ymin : float, default: -0.3
         Y-axis bottom.
-    ymax : float, default: 6
+    ymax : float, default: 6.3
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
@@ -151,7 +151,7 @@ def plot_bam_copy_number(
             plt.close()
 
 def plot_bam_read_depth(
-    read_depth, path=None, samples=None, ymin=None, ymax=None
+    read_depth, path=None, samples=None, ymin=None, ymax=None, fontsize=25
 ):
     """
     Plot copy number profile with BAM data.
@@ -168,6 +168,8 @@ def plot_bam_read_depth(
         Y-axis bottom.
     ymax : float, optional
         Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
     """
 
     if isinstance(read_depth, str):
@@ -188,9 +190,9 @@ def plot_bam_read_depth(
             read_depth.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Read depth', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
+            ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+            ax2.set_ylabel('Read depth', fontsize=fontsize)
+            ax2.tick_params(axis='both', which='major', labelsize=fontsize)
             ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
 
             if path is None:
