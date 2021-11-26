@@ -107,15 +107,7 @@ def run_ngs_pipeline(
     if not core.is_target_gene(gene):
         raise core.NotTargetGeneError(gene)
 
-    if os.path.exists(output) and force:
-        shutil.rmtree(output)
-
-    os.mkdir(output)
-
     gene_table = core.load_gene_table()
-
-    alleles = None
-    cnv_calls = None
 
     if not gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
         message = (
@@ -124,6 +116,22 @@ def run_ngs_pipeline(
             'ignore it.'
         )
         warnings.warn(message)
+
+    if not gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
+        message = (
+            'The user provided CovFrame[DepthOfCoverage] even though the '
+            'target gene does not have any star alleles defined by SVs. '
+            'PyPGx will ignore it.'
+        )
+        warnings.warn(message)
+
+    alleles = None
+    cnv_calls = None
+
+    if os.path.exists(output) and force:
+        shutil.rmtree(output)
+
+    os.mkdir(output)
 
     if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
         imported_variants = utils.import_variants(gene, variants,
@@ -142,14 +150,6 @@ def run_ngs_pipeline(
             plot.plot_vcf_allele_fraction(
                 imported_variants, path=f'{output}/allele-fraction-profile'
             )
-
-    if not gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
-        message = (
-            'The user provided CovFrame[DepthOfCoverage] even though the '
-            'target gene does not have any star alleles defined by SVs. '
-            'PyPGx will ignore it.'
-        )
-        warnings.warn(message)
 
     if gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
         if isinstance(depth_of_coverage, str):
