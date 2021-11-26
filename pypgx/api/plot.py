@@ -40,6 +40,9 @@ def _plot_bam_copy_number_one(
     ax1, ax2, sample, copy_number, gene, assembly, processed_copy_number,
     ymin, ymax, fontsize
 ):
+    region = core.get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
     _plot_exons(gene, assembly, ax1, fontsize=fontsize)
 
     copy_number.data.plot_region(sample, ax=ax2, legend=False)
@@ -48,6 +51,8 @@ def _plot_bam_copy_number_one(
         processed_copy_number.data.plot_region(sample,
             ax=ax2, legend=False)
 
+    ax2.set_xlim([start, end])
+    ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([ymin, ymax])
     ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Copy number', fontsize=fontsize)
@@ -60,7 +65,6 @@ def _plot_bam_copy_number_one(
 def _plot_vcf_allele_fraction_one(
     ax1, ax2, sample, imported_variants, gene, assembly, fontsize
 ):
-
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
 
@@ -70,6 +74,7 @@ def _plot_vcf_allele_fraction_one(
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
 
     ax2.set_xlim([start, end])
+    ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([-0.05, 1.05])
     ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Allele fraction', fontsize=fontsize)
@@ -203,11 +208,28 @@ def plot_cn_af(
 ):
     """
     Plot both copy number profile and allele fraction profile in one figure.
-    """
-    if isinstance(imported_variants, str):
-        imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    Parameters
+    ----------
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    imported_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Imported].
+    path : str, optional
+        Create plots in this directory.
+    samples : list, optional
+        Create plots only for these samples.
+    ymin : float, default: -0.3
+        Y-axis bottom.
+    ymax : float, default: 6.3
+        Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
+    """
+    if isinstance(copy_number, str):
+        copy_number = sdk.Archive.from_file(copy_number)
+
+    copy_number.check('CovFrame[CopyNumber]')
 
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)

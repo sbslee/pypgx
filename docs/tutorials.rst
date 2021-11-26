@@ -33,7 +33,7 @@ The first gene we are going to genotype is *CYP2D6* which has almost 150 star al
 
 .. code-block:: text
 
-    pypgx run-ngs-pipeline \
+    $ pypgx run-ngs-pipeline \
     CYP2D6 \
     grch37-CYP2D6-pipeline \
     --variants grch37-variants.vcf.gz \
@@ -64,7 +64,7 @@ Next, let's run the same pipeline to genotype other gene called *CYP3A5*:
 
 .. code-block:: text
 
-    pypgx run-ngs-pipeline \
+    $ pypgx run-ngs-pipeline \
     CYP3A5 \
     grch37-CYP3A5-pipeline \
     --variants grch37-variants.vcf.gz \
@@ -95,7 +95,7 @@ Thus far, we have only considered GRCh37 data. But we can also run the pipeline 
 
 .. code-block:: text
 
-    pypgx run-ngs-pipeline \
+    $ pypgx run-ngs-pipeline \
     CYP3A5 \
     grch38-CYP3A5-pipeline \
     --variants grch38-variants.vcf.gz \
