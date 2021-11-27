@@ -13,6 +13,7 @@ Changelog
 * Rename :meth:`sdk.utils.Archive.check` method to :meth:`sdk.utils.Archive.check_type`.
 * Add new method :meth:`sdk.utils.Archive.check_metadata`.
 * Add new error ``sdk.utils.IncorrectMetadataError``.
+* Update :command:`run-ngs-pipeline` command to check input files more vigorously.
 
 0.8.0 (2021-11-20)
 ------------------

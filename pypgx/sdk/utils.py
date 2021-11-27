@@ -8,14 +8,14 @@ import pickle
 import pandas as pd
 from fuc import pyvcf, pycov, common, pybam
 
-class SemanticTypeNotFoundError(Exception):
-    """Raised when specified semantic type is not supported."""
+class IncorrectMetadataError(Exception):
+    """Raised when specified metadata is incorrect."""
 
 class IncorrectSemanticTypeError(Exception):
     """Raised when specified semantic type is incorrect."""
 
-class IncorrectMetadataError(Exception):
-    """Raised when specified metadata is incorrect."""
+class SemanticTypeNotFoundError(Exception):
+    """Raised when specified semantic type is not supported."""
 
 class Archive:
     """
@@ -122,10 +122,12 @@ class Archive:
         Raise IncorrectMetadataError if the archive does not have specified
         pair of key and value.
         """
+        semantic_type = self.metadata['SemanticType']
         actual_value = self.metadata[key]
         if actual_value != value:
             raise IncorrectMetadataError(
-                f"Expected '{key}={value}' but found '{key}={actual_value}'")
+                f"Expected '{key}={value}' but found '{key}={actual_value}' "
+                f"for semantic type '{semantic_type}'")
 
 def zipdir(dir, output):
     """
