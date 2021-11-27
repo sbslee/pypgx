@@ -30,6 +30,8 @@ The main purpose of the PyPGx package is to provide a unified platform for pharm
 
 The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
+PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh) builds, GRCh37 and GRCh38.
+
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
 | Author: Seung-been "Steven" Lee
