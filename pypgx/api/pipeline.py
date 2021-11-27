@@ -108,18 +108,20 @@ def run_ngs_pipeline(
         raise core.NotTargetGeneError(gene)
 
     gene_table = core.load_gene_table()
+    small_var = gene_table[gene_table.Gene == gene].Variants.values[0]
+    large_var = gene_table[gene_table.Gene == gene].SV.values[0]
 
-    if not gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
+    if not small_var and variants is not None:
         message = (
-            'The user provided a VCF file even though the target gene does '
+            'User provided a VCF file even though the target gene does '
             'not have any star alleles defined by SNVs/indels. PyPGx will '
             'ignore it.'
         )
         warnings.warn(message)
 
-    if not gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
+    if not large_var and depth_of_coverage is not None:
         message = (
-            'The user provided CovFrame[DepthOfCoverage] even though the '
+            'User provided CovFrame[DepthOfCoverage] even though the '
             'target gene does not have any star alleles defined by SVs. '
             'PyPGx will ignore it.'
         )
@@ -133,7 +135,7 @@ def run_ngs_pipeline(
 
     os.mkdir(output)
 
-    if gene_table[gene_table.Gene == gene].Variants.values[0] and variants is not None:
+    if small_var and variants is not None:
         imported_variants = utils.import_variants(gene, variants,
             assembly=assembly, platform=platform)
         imported_variants.to_file(f'{output}/imported-variants.zip')
@@ -151,7 +153,7 @@ def run_ngs_pipeline(
                 imported_variants, path=f'{output}/allele-fraction-profile'
             )
 
-    if gene_table[gene_table.Gene == gene].SV.values[0] and depth_of_coverage is not None:
+    if large_var and depth_of_coverage is not None:
         if isinstance(depth_of_coverage, str):
             depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
 
