@@ -129,6 +129,20 @@ class Archive:
                 f"Expected '{key}={value}' but found '{key}={actual_value}' "
                 f"for semantic type '{semantic_type}'")
 
+def compare_metadata(a, b, key):
+    """
+    Raise IncorrectMetadataError if two archives have different values for
+    specified metadata key.
+    """
+    type1 = a.metadata['SemanticType']
+    type2 = a.metadata['SemanticType']
+    value1 = a.metadata[key]
+    value2 = b.metadata[key]
+    if value1 != value2:
+        raise IncorrectMetadataError(
+            f"First archive '{type1}' has '{key}={value1}' and second "
+            f"archive '{type2}' has '{key}={value2}'")
+
 def zipdir(dir, output):
     """
     Create a ZIP archive of a directory.

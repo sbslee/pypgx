@@ -1161,8 +1161,6 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
 
     cnv_calls.check_type('SampleTable[CNVCalls]')
 
-    copy_number = _process_copy_number(copy_number)
-
     gene1 = copy_number.metadata['Gene']
     gene2 = cnv_calls.metadata['Gene']
 
@@ -1176,6 +1174,8 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     if assembly1 != assembly2:
         raise ValueError("Different genes detected, CovFrame[CopyNumber] "
             f"has '{assembly1}' and SampleTable[CNVCalls] has '{assembly2}'")
+
+    copy_number = _process_copy_number(copy_number)
 
     cnv_table = core.load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
