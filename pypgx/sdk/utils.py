@@ -9,10 +9,13 @@ import pandas as pd
 from fuc import pyvcf, pycov, common, pybam
 
 class SemanticTypeNotFoundError(Exception):
-    """Raise when specified semantic type is not supported."""
+    """Raised when specified semantic type is not supported."""
 
 class IncorrectSemanticTypeError(Exception):
-    """Raise when specified semantic type is incorrect."""
+    """Raised when specified semantic type is incorrect."""
+
+class IncorrectMetadataError(Exception):
+    """Raised when specified metadata is incorrect."""
 
 class Archive:
     """
@@ -113,6 +116,16 @@ class Archive:
         if actual_type != semantic_type:
             raise IncorrectSemanticTypeError(
                 f"Expected '{semantic_type}' but found '{actual_type}'")
+
+    def check_metadata(self, key, value):
+        """
+        Raise IncorrectMetadataError if the archive does not have specified
+        pair of key and value.
+        """
+        actual_value = self.metadata[key]
+        if actual_value != value:
+            raise IncorrectMetadataError(
+                f"Expected '{key}={value}' but found '{key}={actual_value}'")
 
 def zipdir(dir, output):
     """

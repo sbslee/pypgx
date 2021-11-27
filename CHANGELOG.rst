@@ -11,6 +11,8 @@ Changelog
 * Make the profiles (e.g. copy number) look prettier.
 * Add CNV callers for GRCh38.
 * Rename :meth:`sdk.utils.Archive.check` method to :meth:`sdk.utils.Archive.check_type`.
+* Add new method :meth:`sdk.utils.Archive.check_metadata`.
+* Add new error ``sdk.utils.IncorrectMetadataError``.
 
 0.8.0 (2021-11-20)
 ------------------
