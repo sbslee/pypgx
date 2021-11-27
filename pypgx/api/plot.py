@@ -115,7 +115,7 @@ def plot_bam_copy_number(
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
@@ -175,7 +175,7 @@ def plot_bam_read_depth(
     if isinstance(read_depth, str):
         read_depth = sdk.Archive.from_file(read_depth)
 
-    read_depth.check('CovFrame[ReadDepth]')
+    read_depth.check_type('CovFrame[ReadDepth]')
 
     if samples is None:
         samples = read_depth.data.samples
@@ -231,12 +231,12 @@ def plot_cn_af(
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     if samples is None:
         samples = copy_number.data.samples
@@ -292,7 +292,7 @@ def plot_vcf_allele_fraction(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']

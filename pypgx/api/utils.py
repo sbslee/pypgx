@@ -67,7 +67,7 @@ def call_phenotypes(genotypes):
     if isinstance(genotypes, str):
         genotypes = sdk.Archive.from_file(genotypes)
 
-    genotypes.check('SampleTable[Genotypes]')
+    genotypes.check_type('SampleTable[Genotypes]')
 
     gene = genotypes.metadata['Gene']
 
@@ -114,25 +114,25 @@ def combine_results(
         genotypes = sdk.Archive.from_file(genotypes)
 
     if genotypes is not None:
-        genotypes.check('SampleTable[Genotypes]')
+        genotypes.check_type('SampleTable[Genotypes]')
 
     if isinstance(phenotypes, str):
         phenotypes = sdk.Archive.from_file(phenotypes)
 
     if phenotypes is not None:
-        phenotypes.check('SampleTable[Phenotypes]')
+        phenotypes.check_type('SampleTable[Phenotypes]')
 
     if isinstance(alleles, str):
         alleles = sdk.Archive.from_file(alleles)
 
     if alleles is not None:
-        alleles.check('SampleTable[Alleles]')
+        alleles.check_type('SampleTable[Alleles]')
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
 
     if cnv_calls is not None:
-        cnv_calls.check('SampleTable[CNVCalls]')
+        cnv_calls.check_type('SampleTable[CNVCalls]')
 
     tables = [x for x in [genotypes, phenotypes, alleles, cnv_calls]
         if x is not None]
@@ -190,12 +190,12 @@ def compare_genotypes(first, second, verbose=False):
     if isinstance(first, str):
         first = sdk.Archive.from_file(first)
 
-    first.check('SampleTable[Results]')
+    first.check_type('SampleTable[Results]')
 
     if isinstance(second, str):
         second = sdk.Archive.from_file(second)
 
-    second.check('SampleTable[Results]')
+    second.check_type('SampleTable[Results]')
 
     df = pd.concat([first.data.Genotype, second.data.Genotype], axis=1)
 
@@ -314,12 +314,12 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
     if isinstance(read_depth, str):
         read_depth = sdk.Archive.from_file(read_depth)
 
-    read_depth.check('CovFrame[ReadDepth]')
+    read_depth.check_type('CovFrame[ReadDepth]')
 
     if isinstance(control_statistics, str):
         control_statistics = sdk.Archive.from_file(control_statistics)
 
-    control_statistics.check('SampleTable[Statistics]')
+    control_statistics.check_type('SampleTable[Statistics]')
 
     if set(read_depth.data.samples) != set(control_statistics.data.index):
         raise ValueError('Different sample sets found')
@@ -423,7 +423,7 @@ def count_alleles(results):
     if isinstance(results, str):
         results = sdk.Archive.from_file(results)
 
-    results.check('SampleTable[Results]')
+    results.check_type('SampleTable[Results]')
 
     df = results.data.copy()
 
@@ -457,12 +457,12 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     if isinstance(phased_variants, str):
         phased_variants = sdk.Archive.from_file(phased_variants)
 
-    phased_variants.check('VcfFrame[Phased]')
+    phased_variants.check_type('VcfFrame[Phased]')
 
     if imported_variants.metadata['Gene'] != phased_variants.metadata['Gene']:
         raise ValueError('Found two different genes')
@@ -672,7 +672,7 @@ def estimate_phase_beagle(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']
@@ -769,7 +769,7 @@ def import_read_depth(
     if isinstance(depth_of_coverage, str):
         depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
 
-    depth_of_coverage.check('CovFrame[DepthOfCoverage]')
+    depth_of_coverage.check_type('CovFrame[DepthOfCoverage]')
 
     metadata = depth_of_coverage.copy_metadata()
     region = core.get_region(gene, assembly=metadata['Assembly'])
@@ -835,7 +835,7 @@ def predict_alleles(consolidated_variants):
     if isinstance(consolidated_variants, str):
         consolidated_variants = sdk.Archive.from_file(consolidated_variants)
 
-    consolidated_variants.check('VcfFrame[Consolidated]')
+    consolidated_variants.check_type('VcfFrame[Consolidated]')
 
     gene = consolidated_variants.metadata['Gene']
     assembly = consolidated_variants.metadata['Assembly']
@@ -957,7 +957,7 @@ def predict_cnv(copy_number, cnv_caller=None):
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
@@ -969,7 +969,7 @@ def predict_cnv(copy_number, cnv_caller=None):
         if isinstance(cnv_caller, str):
             cnv_caller = sdk.Archive.from_file(cnv_caller)
 
-        cnv_caller.check('Model[CNV]')
+        cnv_caller.check_type('Model[CNV]')
 
     copy_number = _process_copy_number(copy_number)
 
@@ -1090,17 +1090,17 @@ def test_cnv_caller(
     if isinstance(cnv_caller, str):
         cnv_caller = sdk.Archive.from_file(cnv_caller)
 
-    cnv_caller.check('Model[CNV]')
+    cnv_caller.check_type('Model[CNV]')
 
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
 
-    cnv_calls.check('SampleTable[CNVCalls]')
+    cnv_calls.check_type('SampleTable[CNVCalls]')
 
     if not cnv_caller.metadata['Gene'] == copy_number.metadata['Gene'] == cnv_calls.metadata['Gene']:
         raise ValueError(f"Model[CNV] has {cnv_caller.metadata['Gene']}, CovFrame[CopyNumber] has {copy_number.metadata['Gene']}, and SampleTable[CNVCalls] has {cnv_calls.metadata['Gene']}")
@@ -1154,12 +1154,12 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
 
-    cnv_calls.check('SampleTable[CNVCalls]')
+    cnv_calls.check_type('SampleTable[CNVCalls]')
 
     copy_number = _process_copy_number(copy_number)
 

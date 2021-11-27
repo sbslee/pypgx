@@ -104,9 +104,15 @@ class Archive:
             raise SemanticTypeNotFoundError(metadata['SemanticType'])
         return cls(metadata, data)
 
-    def check(self, semantic):
-        if self.metadata['SemanticType'] != semantic:
-            raise IncorrectSemanticTypeError(f"Expected {semantic}, but found {self.metadata['SemanticType']}")
+    def check_type(self, semantic_type):
+        """
+        Raise IncorrectSemanticTypeError if the archive does not have
+        specified semantic type.
+        """
+        actual_type = self.metadata['SemanticType']
+        if actual_type != semantic_type:
+            raise IncorrectSemanticTypeError(
+                f"Expected '{semantic_type}' but found '{actual_type}'")
 
 def zipdir(dir, output):
     """

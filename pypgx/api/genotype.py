@@ -408,13 +408,13 @@ def call_genotypes(alleles=None, cnv_calls=None):
         alleles = sdk.Archive.from_file(alleles)
 
     if alleles is not None:
-        alleles.check('SampleTable[Alleles]')
+        alleles.check_type('SampleTable[Alleles]')
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
 
     if cnv_calls is not None:
-        cnv_calls.check('SampleTable[CNVCalls]')
+        cnv_calls.check_type('SampleTable[CNVCalls]')
 
     if alleles is not None and cnv_calls is not None:
         if set(alleles.data.index) != set(cnv_calls.data.index):

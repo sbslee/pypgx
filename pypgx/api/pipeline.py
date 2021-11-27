@@ -155,7 +155,7 @@ def run_ngs_pipeline(
         if isinstance(depth_of_coverage, str):
             depth_of_coverage = sdk.Archive.from_file(depth_of_coverage)
 
-        depth_of_coverage.check('CovFrame[DepthOfCoverage]')
+        depth_of_coverage.check_type('CovFrame[DepthOfCoverage]')
 
         if control_statistics is None:
             raise ValueError('SV detection requires SampleTable[Statistcs]')
@@ -163,7 +163,7 @@ def run_ngs_pipeline(
         if isinstance(control_statistics, str):
             control_statistics = sdk.Archive.from_file(control_statistics)
 
-        control_statistics.check('SampleTable[Statistics]')
+        control_statistics.check_type('SampleTable[Statistics]')
 
         if depth_of_coverage.metadata['Platform'] != control_statistics.metadata['Platform']:
             raise ValueError('Different platforms detected')
