@@ -1102,8 +1102,8 @@ def test_cnv_caller(
 
     cnv_calls.check_type('SampleTable[CNVCalls]')
 
-    if not cnv_caller.metadata['Gene'] == copy_number.metadata['Gene'] == cnv_calls.metadata['Gene']:
-        raise ValueError(f"Model[CNV] has {cnv_caller.metadata['Gene']}, CovFrame[CopyNumber] has {copy_number.metadata['Gene']}, and SampleTable[CNVCalls] has {cnv_calls.metadata['Gene']}")
+    sdk.compare_metadata('Gene', cnv_caller, copy_number, cnv_calls)
+    sdk.compare_metadata('Assembly', cnv_caller, copy_number, cnv_calls)
 
     copy_number = _process_copy_number(copy_number)
 
@@ -1161,19 +1161,8 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
 
     cnv_calls.check_type('SampleTable[CNVCalls]')
 
-    gene1 = copy_number.metadata['Gene']
-    gene2 = cnv_calls.metadata['Gene']
-
-    if gene1 != gene2:
-        raise ValueError("Different genes detected, CovFrame[CopyNumber] "
-            f"has '{gene1}' and SampleTable[CNVCalls] has '{gene2}'")
-
-    assembly1 = copy_number.metadata['Assembly']
-    assembly2 = cnv_calls.metadata['Assembly']
-
-    if assembly1 != assembly2:
-        raise ValueError("Different genes detected, CovFrame[CopyNumber] "
-            f"has '{assembly1}' and SampleTable[CNVCalls] has '{assembly2}'")
+    sdk.compare_metadata('Gene', copy_number, cnv_calls)
+    sdk.compare_metadata('Assembly', copy_number, cnv_calls)
 
     copy_number = _process_copy_number(copy_number)
 
