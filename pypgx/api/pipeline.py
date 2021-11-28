@@ -127,6 +127,14 @@ def run_ngs_pipeline(
         )
         warnings.warn(message)
 
+    if not large_var and control_statistics is not None:
+        message = (
+            'User provided SampleTable[Statistics] even though the '
+            'target gene does not have any star alleles defined by SVs. '
+            'PyPGx will ignore it.'
+        )
+        warnings.warn(message)
+
     alleles = None
     cnv_calls = None
 

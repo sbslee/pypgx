@@ -6,10 +6,10 @@ Changelog
 
 * Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes.
 * Add 1KGP reference haplotype panels for GRCh38 for all target genes.
+* Add CNV callers for GRCh38.
 * Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to support GRCh38.
 * Update the **GeT-RM WGS** tutorial to include more genes and also GRCh38.
 * Make the profiles (e.g. copy number) look prettier.
-* Add CNV callers for GRCh38.
 * Rename :meth:`sdk.utils.Archive.check` method to :meth:`sdk.utils.Archive.check_type`.
 * Add new method :meth:`sdk.utils.Archive.check_metadata`.
 * Add new error ``sdk.utils.IncorrectMetadataError``.

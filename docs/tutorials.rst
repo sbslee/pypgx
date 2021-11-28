@@ -4,18 +4,35 @@ Tutorials
 GeT-RM WGS tutorial
 ===================
 
-In this tutorial I'll walk you through PyPGx's genotype analysis using whole genome sequencing (WGS) data. By the end of this tutorial, you will have learned how to perform genotype analysis for genes with or without structural variation (SV), accordingly. I will also show how PyPGx can handle genomic data from two different Genome Reference Consortium Human (GRCh) builds: GRCh37 and GRCh38.
+In this tutorial I'll walk you through PyPGx's genotype analysis using whole
+genome sequencing (WGS) data. By the end of this tutorial, you will have
+learned how to perform genotype analysis for genes with or without structural
+variation (SV), accordingly. I will also show how PyPGx can handle genomic
+data from two different Genome Reference Consortium Human (GRCh) builds:
+GRCh37 and GRCh38.
 
-Before beginning this tutorial, create a new directory and change to that directory:
+Before beginning this tutorial, create a new directory and change to that
+directory:
 
 .. code-block:: text
 
   $ mkdir getrm-wgs-tutorial
   $ cd getrm-wgs-tutorial
 
-The Centers for Disease Control and Prevention–based Genetic Testing Reference Materials Coordination Program (GeT-RM) has established `genomic DNA reference materials <https://www.cdc.gov/labquality/get-rm/inherited-genetic-diseases-pharmacogenetics/pharmacogenetics.html>`__  to help the genetic testing community obtain characterized reference materials. In particular, GeT-RM has made WGS data for 70 of reference samples publicly available for download and use from the `European Nucleotide Archive <https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. We will be using this WGS dataset throughout the tutorial.
+The Centers for Disease Control and Prevention–based Genetic Testing
+Reference Materials Coordination Program (GeT-RM) has established `genomic
+DNA reference materials <https://www.cdc.gov/labquality/get-rm/inherited-
+genetic-diseases-pharmacogenetics/pharmacogenetics.html>`__  to help the
+genetic testing community obtain characterized reference materials. In
+particular, GeT-RM has made WGS data for 70 of reference samples publicly
+available for download and use from the `European Nucleotide Archive
+<https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. We will be using this
+WGS dataset throughout the tutorial.
 
-Because downloading the entire WGS dataset is not feasible for most users due to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files ranging from 2 KB to 17.6 MB, for both GRCh37 and GRCh38. You can download those from:
+Because downloading the entire WGS dataset is not feasible for most users due
+to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files
+ranging from 2 KB to 17.6 MB, for both GRCh37 and GRCh38. You can download
+those from:
 
 .. code-block:: text
 
@@ -29,7 +46,10 @@ Because downloading the entire WGS dataset is not feasible for most users due to
 Genotyping genes with SV
 ------------------------
 
-The first gene we are going to genotype is *CYP2D6* which has almost 150 star alleles including those with SV (e.g. gene deletions, duplications, and hybrids). To this end, we will run PyPGx's next-generation sequencing (NGS) pipeline:
+The first gene we are going to genotype is *CYP2D6*, which has almost 150
+star alleles including those with SV (e.g. gene deletions, duplications, and
+hybrids). To this end, we will run PyPGx's next-generation sequencing (NGS)
+pipeline:
 
 .. code-block:: text
 
@@ -55,23 +75,26 @@ Above will create a number of archive files:
     Saved SampleTable[Phenotypes] to: grch37-CYP2D6-pipeline/phenotypes.zip
     Saved SampleTable[Results] to: grch37-CYP2D6-pipeline/results.zip
 
-Now that's it! You have successfully genotyped *CYP2D6* with WGS data.
+In addition to these files, PyPGx will have also created two directories
+called ``copy-number-profile`` and ``allele-fraction-profile``.
+
+Now that's it, you have successfully genotyped *CYP2D6* with WGS data!
 
 Genotyping genes without SV
 ---------------------------
 
-Next, let's run the same pipeline to genotype other gene called *CYP3A5*:
+The next gene we're going to genotype is *CYP3A5*. Unlike *CYP2D6*, this gene
+does not have any star alleles with SV. Therefore, we only need to provide
+``grch37-variants.vcf.gz`` to the NGS pipeline:
 
 .. code-block:: text
 
     $ pypgx run-ngs-pipeline \
     CYP3A5 \
     grch37-CYP3A5-pipeline \
-    --variants grch37-variants.vcf.gz \
-    --depth-of-coverage grch37-depth-of-coverage.zip \
-    --control-statistics grch37-control-statistics-VDR.zip
+    --variants grch37-variants.vcf.gz
 
-As before, above will create a number of archive files:
+Above will create a number of archive files:
 
 .. code-block:: text
 
@@ -83,15 +106,23 @@ As before, above will create a number of archive files:
     Saved SampleTable[Phenotypes] to: grch37-CYP3A5-pipeline/phenotypes.zip
     Saved SampleTable[Results] to: grch37-CYP3A5-pipeline/results.zip
 
-For this run, you will notice two things:
+Plus the ``allele-fraction-profile`` directory.
 
-1. There are less output files than there was with *CYP2D6*.
-2. You will have received a warning from PyPGx that says: "UserWarning: The user provided CovFrame[DepthOfCoverage] even though the target gene does not have any star alleles defined by SVs. PyPGx will ignore it."
+Congratulations, you have successfully genotyped *CYP3A5* as well!
+
+.. note::
+    Note that if you provide ``grch37-depth-of-coverage.zip`` and
+    ``grch37-control-statistics-VDR.zip`` to the pipeline, PyPGx will still
+    run without any issues, but it will output a warning that says those
+    files will be ignored. This is so that users don't have to memorize which
+    gene requires SV analysis. In other words, users can provide the same
+    input files for all target genes.
 
 GRCh37 vs. GRCh38
 -----------------
 
-Thus far, we have only considered GRCh37 data. But we can also run the pipeline for GRCh38 data:
+Thus far, we have only considered GRCh37 data. But we can also run the
+genotyping pipeline for GRCh38 data by changing the ``--assembly`` option:
 
 .. code-block:: text
 
