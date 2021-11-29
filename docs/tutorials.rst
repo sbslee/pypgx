@@ -9,15 +9,15 @@ genome sequencing (WGS) data. By the end of this tutorial, you will have
 learned how to perform genotype analysis for genes with or without structural
 variation (SV), accordingly. I will also show how PyPGx can handle genomic
 data from two different Genome Reference Consortium Human (GRCh) builds:
-GRCh37 and GRCh38.
+GRCh37 (hg19) and GRCh38 (hg38).
 
 Before beginning this tutorial, create a new directory and change to that
 directory:
 
 .. code-block:: text
 
-  $ mkdir getrm-wgs-tutorial
-  $ cd getrm-wgs-tutorial
+    $ mkdir getrm-wgs-tutorial
+    $ cd getrm-wgs-tutorial
 
 The Centers for Disease Control and Prevention–based Genetic Testing
 Reference Materials Coordination Program (GeT-RM) has established `genomic
@@ -36,12 +36,26 @@ those from:
 
 .. code-block:: text
 
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-variants.vcf.gz
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-depth-of-coverage.zip
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-control-statistics-VDR.zip
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
-  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-variants.vcf.gz
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-depth-of-coverage.zip
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-control-statistics-VDR.zip
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
+
+Let's look at the metadata for some of these files:
+
+.. code-block:: text
+
+    $ pypgx print-metadata grch37-depth-of-coverage.zip
+    Assembly=GRCh37
+    SemanticType=CovFrame[DepthOfCoverage]
+    Platform=WGS
+    $ pypgx print-metadata grch38-control-statistics-VDR.zip
+    Control=VDR
+    Assembly=GRCh38
+    SemanticType=SampleTable[Statistics]
+    Platform=WGS
 
 Genotyping genes with SV
 ------------------------
@@ -108,7 +122,7 @@ Above will create a number of archive files:
 
 Plus the ``allele-fraction-profile`` directory.
 
-Congratulations, you have successfully genotyped *CYP3A5* as well!
+Now you have successfully genotyped *CYP3A5* as well!
 
 .. note::
     Note that if you provide ``grch37-depth-of-coverage.zip`` and
@@ -118,8 +132,8 @@ Congratulations, you have successfully genotyped *CYP3A5* as well!
     gene requires SV analysis. In other words, users can provide the same
     input files for all target genes.
 
-GRCh37 vs. GRCh38
------------------
+Genotyping with GRCh38 data
+---------------------------
 
 Thus far, we have only considered GRCh37 data. But we can also run the
 genotyping pipeline for GRCh38 data by changing the ``--assembly`` option:
@@ -131,6 +145,20 @@ genotyping pipeline for GRCh38 data by changing the ``--assembly`` option:
     grch38-CYP3A5-pipeline \
     --variants grch38-variants.vcf.gz \
     --assembly GRCh38
+
+Which will create:
+
+.. code-block:: text
+
+    Saved VcfFrame[Imported] to: grch38-CYP3A5-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: grch38-CYP3A5-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: grch38-CYP3A5-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: grch38-CYP3A5-pipeline/alleles.zip
+    Saved SampleTable[Genotypes] to: grch38-CYP3A5-pipeline/genotypes.zip
+    Saved SampleTable[Phenotypes] to: grch38-CYP3A5-pipeline/phenotypes.zip
+    Saved SampleTable[Results] to: grch38-CYP3A5-pipeline/results.zip
+
+Congratulations, you have completed this tutorial!
 
 Coriell Affy tutorial
 =====================

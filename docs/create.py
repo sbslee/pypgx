@@ -53,11 +53,15 @@ README
 Introduction
 ============
 
-The main purpose of the PyPGx package is to provide a unified platform for pharmacogenomics (PGx) research.
+The main purpose of the PyPGx package is to provide a unified platform for
+pharmacogenomics (PGx) research.
 
-The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+The package is written in Python, and supports both command line interface
+(CLI) and application programming interface (API) whose documentations are
+available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
-PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh) builds, GRCh37 and GRCh38.
+PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
+builds, GRCh37 (hg19) and GRCh38 (hg38).
 
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
@@ -86,13 +90,17 @@ Following packages are required to run PyPGx:
      - ✅
      - ❌
 
-There are various ways you can install PyPGx. The recommended way is via conda (`Anaconda <https://www.anaconda.com/>`__):
+There are various ways you can install PyPGx. The recommended way is via
+conda (`Anaconda <https://www.anaconda.com/>`__):
 
 .. code-block:: text
 
    $ conda install -c bioconda pypgx
 
-Above will automatically download and install all the dependencies as well. Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install PyPGx and all of its dependencies except ``openjdk`` (i.e. Java JDK must be installed separately):
+Above will automatically download and install all the dependencies as well.
+Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install
+PyPGx and all of its dependencies except ``openjdk`` (i.e. Java JDK must be
+installed separately):
 
 .. code-block:: text
 
@@ -106,12 +114,63 @@ Finally, you can clone the GitHub repository and then install PyPGx locally:
    $ cd pypgx
    $ pip install .
 
-The nice thing about this approach is that you will have access to development versions that are not available in Anaconda or PyPI. For example, you can access a development branch with the ``git checkout`` command. When you do this, please make sure your environment already has all the dependencies installed.
+The nice thing about this approach is that you will have access to
+development versions that are not available in Anaconda or PyPI. For example,
+you can access a development branch with the ``git checkout`` command. When
+you do this, please make sure your environment already has all the
+dependencies installed.
+
+GRCh37 vs. GRCh38
+=================
+
+When working with genomic data, it's not uncommon to encounter a situation
+where you are handling GRCh37 data on one project but GRCh38 on another. You
+may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
+vice versa, but deep down you know it's going to be a mess (and please don't
+do this). The good news is, PyPGx supports both of the builds!
+
+In many of the PyPGx actions, you can simply indicate which human genome
+build to use. For example, you can use ``assembly`` for the API and
+``--assembly`` for the CLI. Note that GRCh37 will always be the default.
+
+However, there is one important caveat to consider if your sequencing data is
+GRCh38. That is, the sequence reads must be aligned only to the main contigs
+(i.e. ``chr1``, ``chr2``, ..., ``chrX``, ``chrY``), and not to the
+alternative (ALT) contigs such as ``chr1_KI270762v1_alt``. This is because
+the presence of ALT contigs will reduce the sensitivity of variant calling
+and many other analyses including SV detection. Therefore, if you have
+sequencing data in GRCh38 please make sure it's aligned to the main contigs
+only.
+
+The only exception to above rule is the *GSTT1* gene, which is located on
+``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
+known to have an extremely high rate of gene deletion polymorphism in the
+population and thus requires SV analysis. If you are interested in genotyping
+this gene with your GRCh38 data, then you must have sequence reads mapped to
+that contig as well. To this end, you can easily filter your reference FASTA
+file using the ``fuc`` program so that it only contains the main contigs plus
+the ALT contig:
+
+.. code-block:: text
+
+    $ cat contigs.list
+    chr1
+    chr2
+    ...
+    chrX
+    chrY
+    chr22_KI270879v1_alt
+    $ fuc fa-filter in.fa --contigs contigs.list > out.fa
 
 Archive file, semantic type, and metadata
 =========================================
 
-In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important information about the data file within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer data, PyPGx uses the ZIP archive
+file format (``.zip``) which supports lossless data compression. Each archive
+file created by PyPGx has a metadata file (``metadata.txt``) and a data file
+(e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important
+information about the data file within the same archive, which is expressed
+as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -142,7 +201,10 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
 
-Notably, all archive files have defined semantic types, which allows us to ensure that the data that is passed to a PyPGx command (CLI) or method (API) is meaningful for the operation that will be performed. Below is a list of currently defined semantic types:
+Notably, all archive files have defined semantic types, which allows us to
+ensure that the data that is passed to a PyPGx command (CLI) or method (API)
+is meaningful for the operation that will be performed. Below is a list of
+currently defined semantic types:
 
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
@@ -186,7 +248,9 @@ Notably, all archive files have defined semantic types, which allows us to ensur
 
 Getting help
 ============
-For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+For detailed documentations on the CLI and API, please refer to the
+`Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 For getting help on the CLI:
 
