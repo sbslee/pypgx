@@ -31,14 +31,6 @@ def create_parser(subparsers):
         metavar='read-depth',
         help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
-    parser.add_argument(
-        '--assembly',
-        metavar='TEXT',
-        default='GRCh37',
-        choices=['GRCh37', 'GRCh38'],
-        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
-             "'GRCh37', 'GRCh38')."
-    )
 
 def main(args):
     archive = utils.import_read_depth(
