@@ -19,6 +19,7 @@ Changelog
 * Add new method :meth:`api.core.get_strand`.
 * Add new method :meth:`api.core.get_exon_starts`.
 * Add new method :meth:`api.core.get_exon_ends`.
+* :pr:`31`: Fix minor bug in commands :command:`run-ngs-pipeline` and :command:`import-read-depth` (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 
 0.8.0 (2021-11-20)
 ------------------
