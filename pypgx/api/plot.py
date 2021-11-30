@@ -20,18 +20,21 @@ def _plot_exons(gene, assembly, ax, fontsize=25):
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()
-    starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-    ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+    starts1 = core.get_exon_starts(gene, assembly=assembly)
+    ends1 = core.get_exon_ends(gene, assembly=assembly)
     paralog = core.get_paralog(gene)
+    strand = core.get_strand(gene)
+    name1 = f'{gene} ({strand})'
     if paralog:
-        starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-        ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+        starts2 = core.get_exon_starts(paralog, assembly=assembly)
+        ends2 = core.get_exon_ends(paralog, assembly=assembly)
+        name2 = f'{paralog} ({strand})'
     common.plot_exons(
-        starts1, ends1, ax=ax, name=gene, fontsize=fontsize, offset=2
+        starts1, ends1, ax=ax, name=name1, fontsize=fontsize, offset=2
     )
     if paralog:
         common.plot_exons(
-            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize, offset=2
+            starts2, ends2, ax=ax, name=name2, fontsize=fontsize, offset=2
     )
     ax.set_ylim([-1.5, 1.5])
     ax.set_xlim([start, end])
@@ -55,7 +58,7 @@ def _plot_bam_copy_number_one(
     ax2.set_xlim([start, end])
     ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([ymin, ymax])
-    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_xlabel(f'Coordinate in chr{chrom} (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Copy number', fontsize=fontsize)
     ax2.tick_params(axis='both', which='major', labelsize=fontsize)
     ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))

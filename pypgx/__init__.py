@@ -6,6 +6,8 @@ from .api.core import (
     is_legit_allele,
     is_target_gene,
     get_default_allele,
+    get_exon_ends,
+    get_exon_starts,
     get_function,
     get_paralog,
     get_priority,

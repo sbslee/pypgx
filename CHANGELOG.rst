@@ -17,6 +17,8 @@ Changelog
 * Update :command:`run-ngs-pipeline` command to check input files more vigorously.
 * Add new method :meth:`sdk.utils.compare_metadata`.
 * Add new method :meth:`api.core.get_strand`.
+* Add new method :meth:`api.core.get_exon_starts`.
+* Add new method :meth:`api.core.get_exon_ends`.
 
 0.8.0 (2021-11-20)
 ------------------

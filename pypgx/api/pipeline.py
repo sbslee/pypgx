@@ -188,8 +188,7 @@ def run_ngs_pipeline(
         if not do_not_plot_copy_number:
             os.mkdir(f'{output}/copy-number-profile')
             plot.plot_bam_copy_number(
-                copy_number, path=f'{output}/copy-number-profile', ymin=0,
-                ymax=6
+                copy_number, path=f'{output}/copy-number-profile'
             )
 
     genotypes = genotype.call_genotypes(alleles=alleles, cnv_calls=cnv_calls)

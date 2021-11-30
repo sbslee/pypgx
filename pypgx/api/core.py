@@ -279,6 +279,52 @@ def get_default_allele(gene, assembly='GRCh37'):
     allele = df[df.Gene == gene][f'{assembly}Default'].values[0]
     return allele
 
+def get_exon_ends(gene, assembly='GRCh37'):
+    """
+    Get exon ends for specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        List of end positions.
+    """
+    if gene not in list_genes(mode='all'):
+        raise GeneNotFoundError(gene)
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+    s = df[f'{assembly}ExonEnds'].values[0]
+    return [int(x) for x in s.strip(',').split(',')]
+
+def get_exon_starts(gene, assembly='GRCh37'):
+    """
+    Get exon starts for specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        List of start positions.
+    """
+    if gene not in list_genes(mode='all'):
+        raise GeneNotFoundError(gene)
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+    s = df[f'{assembly}ExonStarts'].values[0]
+    return [int(x) for x in s.strip(',').split(',')]
+
 def get_function(gene, allele):
     """
     Get matched function from the allele table.
