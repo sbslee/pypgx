@@ -12,6 +12,7 @@ from .api.core import (
     get_ref_allele,
     get_region,
     get_score,
+    get_strand,
     get_variant_impact,
     get_variant_synonyms,
     list_alleles,

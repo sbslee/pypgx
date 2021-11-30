@@ -16,6 +16,7 @@ import pandas as pd
 ###################
 
 def _plot_exons(gene, assembly, ax, fontsize=25):
+    """Plot a gene model."""
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()

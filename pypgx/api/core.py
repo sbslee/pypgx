@@ -492,6 +492,28 @@ def get_score(gene, allele):
 
     return df.ActivityScore.values[0]
 
+def get_strand(gene):
+    """
+    Get DNA strand ('+' or '-') for specified gene.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+
+    Returns
+    -------
+    str
+        '+' or '-'.
+    """
+    if not is_target_gene(gene):
+        raise NotTargetGeneError(gene)
+
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+
+    return df['Strand'].values[0]
+
 def get_variant_impact(variant):
     """
     Get variant impact from the variant table.
