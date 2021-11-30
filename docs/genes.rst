@@ -460,8 +460,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - SV Name
     - Genotype
     - Reference
-    - Copy Number
-    - Allele Fraction
+    - GRCh37
+    - GRCh38
     - Data Type
     - Source
     - Sample ID
@@ -470,12 +470,12 @@ Below is comprehensive summary of SV described from real NGS studies:
     - PartialDeletion
     - \*4/\*S1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B15-1-CN.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B15-1-AF.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-1.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - NA18855
-    - 03bc76a2c27140bc8143c56767ca6877
+    - NA11993
+    - 20be9cf6bed64502b85c999ec59c784b
 
 UGT2B17
 =======
@@ -495,8 +495,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - SV Name
     - Genotype
     - Reference
-    - Copy Number
-    - Allele Fraction
+    - GRCh37
+    - GRCh38
     - Data Type
     - Source
     - Sample ID
@@ -505,8 +505,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - DeletionHet
     - \*1/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B17-1-CN.png>`
-    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-1.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
@@ -515,8 +515,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - DeletionHom
     - \*2/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/UGT2B17-2-CN.png>`
-    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-2.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18617

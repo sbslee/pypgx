@@ -80,7 +80,7 @@ def _plot_vcf_allele_fraction_one(
     ax2.set_xlim([start, end])
     ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([-0.05, 1.05])
-    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_xlabel(f'Coordinate in chr{chrom} (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Allele fraction', fontsize=fontsize)
     ax2.tick_params(axis='both', which='major', labelsize=fontsize)
     ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
