@@ -121,5 +121,6 @@ def main(args):
         control_statistics=args.control_statistics, assembly=args.assembly, 
         panel=args.panel, force=args.force, samples=args.samples,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
-        do_not_plot_allele_fraction=args.do_not_plot_allele_fraction
+        do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,
+        platform=args.platform
     )
