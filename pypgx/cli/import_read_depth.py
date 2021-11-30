@@ -42,6 +42,6 @@ def create_parser(subparsers):
 
 def main(args):
     archive = utils.import_read_depth(
-        args.gene, args.depth_of_coverage, assembly=args.assembly,
+        args.gene, args.depth_of_coverage
     )
     archive.to_file(args.read_depth)
