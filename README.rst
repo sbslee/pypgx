@@ -36,6 +36,71 @@ available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
+There are currently 57 pharmacogenes in PyPGx:
+
+.. list-table::
+
+   * - *ABCB1*
+     - *CACNA1S*
+     - *CFTR*
+     - *CYP1A1*
+     - *CYP1A2*
+   * - *CYP1B1*
+     - *CYP2A6/CYP2A7*
+     - *CYP2A13*
+     - *CYP2B6/CYP2B7*
+     - *CYP2C8*
+   * - *CYP2C9*
+     - *CYP2C19*
+     - *CYP2D6/CYP2D7*
+     - *CYP2E1*
+     - *CYP2F1*
+   * - *CYP2J2*
+     - *CYP2R1*
+     - *CYP2S1*
+     - *CYP2W1*
+     - *CYP3A4*
+   * - *CYP3A5*
+     - *CYP3A7*
+     - *CYP3A43*
+     - *CYP4A11*
+     - *CYP4A22*
+   * - *CYP4B1*
+     - *CYP4F2*
+     - *CYP17A1*
+     - *CYP19A1*
+     - *CYP26A1*
+   * - *DPYD*
+     - *G6PD*
+     - *GSTM1*
+     - *GSTP1*
+     - *GSTT1*
+   * - *IFNL3*
+     - *NAT1*
+     - *NAT2*
+     - *NUDT15*
+     - *POR*
+   * - *PTGIS*
+     - *RYR1*
+     - *SLC15A2*
+     - *SLC22A2*
+     - *SLCO1B1*
+   * - *SLCO1B3*
+     - *SLCO2B1*
+     - *SULT1A1*
+     - *TBXAS1*
+     - *TPMT*
+   * - *UGT1A1*
+     - *UGT1A4*
+     - *UGT2B7*
+     - *UGT2B15*
+     - *UGT2B17*
+   * - *VKORC1*
+     - *XPC*
+     -
+     -
+     -
+
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
 | Author: Seung-been "Steven" Lee
@@ -97,17 +162,17 @@ GRCh37 vs. GRCh38
 =================
 
 When working with genomic data, it's not uncommon to encounter a situation
-where you are handling GRCh37 data on one project but GRCh38 on another. You
+where you are handling GRCh37 data in one project but GRCh38 in another. You
 may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
 vice versa, but deep down you know it's going to be a mess (and please don't
 do this). The good news is, PyPGx supports both of the builds!
 
 In many of the PyPGx actions, you can simply indicate which human genome
 build to use. For example, you can use ``assembly`` for the API and
-``--assembly`` for the CLI. Note that GRCh37 will always be the default.
+``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
 
 However, there is one important caveat to consider if your sequencing data is
-GRCh38. That is, the sequence reads must be aligned only to the main contigs
+GRCh38. That is, sequence reads must be aligned only to the main contigs
 (i.e. ``chr1``, ``chr2``, ..., ``chrX``, ``chrY``), and not to the
 alternative (ALT) contigs such as ``chr1_KI270762v1_alt``. This is because
 the presence of ALT contigs will reduce the sensitivity of variant calling
@@ -118,11 +183,13 @@ only.
 The only exception to above rule is the *GSTT1* gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
 known to have an extremely high rate of gene deletion polymorphism in the
-population and thus requires SV analysis. If you are interested in genotyping
-this gene with your GRCh38 data, then you must have sequence reads mapped to
-that contig as well. To this end, you can easily filter your reference FASTA
-file using the ``fuc`` program so that it only contains the main contigs plus
-the ALT contig:
+population and thus requires SV analysis. Therefore, if you are interested in
+genotyping this gene with your GRCh38 data, then you must have sequence reads
+mapped to that contig as well. To this end, you can easily filter your
+reference FASTA file before read alignment so that it only contains the main
+contigs plus the ALT contig. If you don't know how to do this, here's one way
+using the ``fuc`` program (which should have already been installed along
+with PyPGx):
 
 .. code-block:: text
 
@@ -312,18 +379,15 @@ We can print the metadata of an archive file:
 
 .. code-block:: text
 
-    $ pypgx print-metadata CYP2D6-copy-number.zip
+    $ pypgx print-metadata grch37-depth-of-coverage.zip
 
 Above will print:
 
 .. code-block:: text
 
-    Gene=CYP2D6
     Assembly=GRCh37
-    SemanticType=CovFrame[CopyNumber]
+    SemanticType=CovFrame[DepthOfCoverage]
     Platform=WGS
-    Control=VDR
-    Samples=None
 
 We can run the NGS pipeline for the *CYP2D6* gene:
 
@@ -331,24 +395,25 @@ We can run the NGS pipeline for the *CYP2D6* gene:
 
     $ pypgx run-ngs-pipeline \
     CYP2D6 \
-    CYP2D6-pipeline \
-    --variants variants.vcf \
-    --depth-of-coverage depth-of-coverage.zip \
-    --control-statistics control-statistics-VDR.zip
+    grch37-CYP2D6-pipeline \
+    --variants grch37-variants.vcf.gz \
+    --depth-of-coverage grch37-depth-of-coverage.zip \
+    --control-statistics grch37-control-statistics-VDR.zip
 
 Above will create a number of archive files:
 
 .. code-block:: text
 
-    Saved VcfFrame[Imported] to: CYP2D6-pipeline/imported-variants.zip
-    Saved VcfFrame[Phased] to: CYP2D6-pipeline/phased-variants.zip
-    Saved VcfFrame[Consolidated] to: CYP2D6-pipeline/consolidated-variants.zip
-    Saved SampleTable[Alleles] to: CYP2D6-pipeline/alleles.zip
-    Saved CovFrame[ReadDepth] to: CYP2D6-pipeline/read-depth.zip
-    Saved CovFrame[CopyNumber] to: CYP2D6-pipeline/copy-number.zip
-    Saved SampleTable[CNVCalls] to: CYP2D6-pipeline/cnv-calls.zip
-    Saved SampleTable[Genotypes] to: CYP2D6-pipeline/genotypes.zip
-    Saved SampleTable[Results] to: CYP2D6-pipeline/results.zip
+    Saved VcfFrame[Imported] to: grch37-CYP2D6-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: grch37-CYP2D6-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: grch37-CYP2D6-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: grch37-CYP2D6-pipeline/alleles.zip
+    Saved CovFrame[ReadDepth] to: grch37-CYP2D6-pipeline/read-depth.zip
+    Saved CovFrame[CopyNumber] to: grch37-CYP2D6-pipeline/copy-number.zip
+    Saved SampleTable[CNVCalls] to: grch37-CYP2D6-pipeline/cnv-calls.zip
+    Saved SampleTable[Genotypes] to: grch37-CYP2D6-pipeline/genotypes.zip
+    Saved SampleTable[Phenotypes] to: grch37-CYP2D6-pipeline/phenotypes.zip
+    Saved SampleTable[Results] to: grch37-CYP2D6-pipeline/results.zip
 
 API examples
 ============

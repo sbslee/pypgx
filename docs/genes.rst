@@ -3,8 +3,8 @@ Genes
 
 This section describes gene-specific information.
 
-CYP2A6
-======
+*CYP2A6*
+========
 
 Structural variation
 --------------------
@@ -83,8 +83,8 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
 
-CYP2B6
-======
+*CYP2B6*
+========
 
 Structural variation
 --------------------
@@ -115,8 +115,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19178
      - 3fcca708192c4ffe8e57318c7d64e480
 
-CYP2D6
-======
+*CYP2D6*
+========
 
 Structural variation
 --------------------
@@ -213,8 +213,8 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523558-T-C <https://gnomad.broadinstitute.org/variant/22-42523558-T-C?dataset=gnomad_r2_1>`__
      - `22-42127556-T-C <https://gnomad.broadinstitute.org/variant/22-42127556-T-C?dataset=gnomad_r3>`__
 
-CYP2E1
-======
+*CYP2E1*
+========
 
 Structural variation
 --------------------
@@ -265,8 +265,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19908
      - 0d73bafef55a4a718489f3fdca91fd55
 
-GSTM1
-=====
+*GSTM1*
+=======
 
 Structural variation
 --------------------
@@ -317,8 +317,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19908
     - 0d73bafef55a4a718489f3fdca91fd55
 
-GSTT1
-=====
+*GSTT1*
+=======
 
 Structural variation
 --------------------
@@ -359,8 +359,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA11832
     - 22d9ea3d16804243afbfea7e776c5237
 
-SLC22A2
-=======
+*SLC22A2*
+=========
 
 Structural variation
 --------------------
@@ -391,7 +391,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19176
     - d7b5cf7015d44c23a949dc117c149c80
   * - \*S2
-    - Exon11Deletion
+    - Intron1Deletion
     - \*1/\*S2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-2-CN.png>`
@@ -401,8 +401,38 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19819
     - a04f109738f34a358850f5f69d7d8814
 
-UGT2B15
-=======
+*UGT1A4*
+========
+
+Structural variation
+--------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - GRCh37
+    - GRCh38
+    - Data Type
+    - Source
+    - Sample ID
+  * - \*S1
+    - Intron1Deletion
+    - \*1/\*S1
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-CN.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-AF.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19908
+
+*UGT2B15*
+=========
 
 Structural variation
 --------------------
@@ -433,8 +463,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18855
     - 03bc76a2c27140bc8143c56767ca6877
 
-UGT2B17
-=======
+*UGT2B17*
+=========
 
 Structural variation
 --------------------
