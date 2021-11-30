@@ -3,11 +3,11 @@ Genes
 
 This section describes gene-specific information.
 
-*CYP2A6*
-========
+CYP2A6
+======
 
-Structural variation
---------------------
+SV summary for CYP2A6
+---------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -65,8 +65,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - HG00436
      - 54db734bc1ec46b29fc6c5c6df35ca65
 
-Filtered alleles
-----------------
+Filtered alleles for CYP2A6
+---------------------------
 
 Some alleles in PharmVar will not be called by PyPGx because one or more of their variants have a high false positive rate, likely due to read misalignment to the *CYP2A7* pseudogene. Those alleles are listed in below table. If problematic variants are present in gnomAD, their links are provided so that you can look at filtering status, allele imbalance for heterozygotes, etc.
 
@@ -83,11 +83,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
 
-*CYP2B6*
-========
+CYP2B6
+======
 
-Structural variation
---------------------
+SV summary for CYP2B6
+---------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -115,11 +115,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19178
      - 3fcca708192c4ffe8e57318c7d64e480
 
-*CYP2D6*
-========
+CYP2D6
+======
 
-Structural variation
---------------------
+SV summary for CYP2D6
+---------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -187,8 +187,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA18524
      - ba64fb6dbb0a4b36a5cbe53bd8706ca7
 
-Filtered alleles
-----------------
+Filtered alleles for CYP2D6
+---------------------------
 
 Some alleles in PharmVar will not be called by PyPGx because one or more of their variants have a high false positive rate, likely due to read misalignment to the *CYP2D7* pseudogene. Those alleles are listed in below table. If problematic variants are present in gnomAD, their links are provided so that you can look at filtering status, allele imbalance for heterozygotes, etc.
 
@@ -213,11 +213,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523558-T-C <https://gnomad.broadinstitute.org/variant/22-42523558-T-C?dataset=gnomad_r2_1>`__
      - `22-42127556-T-C <https://gnomad.broadinstitute.org/variant/22-42127556-T-C?dataset=gnomad_r3>`__
 
-*CYP2E1*
-========
+CYP2E1
+======
 
-Structural variation
---------------------
+SV summary for CYP2E1
+---------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -265,11 +265,14 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19908
      - 0d73bafef55a4a718489f3fdca91fd55
 
-*GSTM1*
-=======
+GSTM1
+=====
 
-Structural variation
+SV summary for GSTM1
 --------------------
+
+This gene is known to have an extremely high rate of gene deletion
+polymorphism in the population and thus requires SV analysis.
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -317,11 +320,22 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19908
     - 0d73bafef55a4a718489f3fdca91fd55
 
-*GSTT1*
-=======
+GSTT1
+=====
 
-Structural variation
+GRCh38 data for GSTT1
+---------------------
+
+*GSTT1* is located on ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt``
+for GRCh38. Therefore, if you are interested in genotyping this gene with
+GRCh38 data, then you must have sequence reads mapped to the ALT contig.
+For more details, please read the :ref:`readme:GRCh37 vs. GRCh38` page.
+
+SV summary for GSTT1
 --------------------
+
+This gene is known to have an extremely high rate of gene deletion
+polymorphism in the population and thus requires SV analysis.
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -359,11 +373,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA11832
     - 22d9ea3d16804243afbfea7e776c5237
 
-*SLC22A2*
-=========
+SLC22A2
+=======
 
-Structural variation
---------------------
+SV summary for SLC22A2
+----------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -401,11 +415,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19819
     - a04f109738f34a358850f5f69d7d8814
 
-*UGT1A4*
-========
+UGT1A4
+======
 
-Structural variation
---------------------
+SV summary for UGT1A4
+---------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -431,11 +445,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
 
-*UGT2B15*
-=========
+UGT2B15
+=======
 
-Structural variation
---------------------
+SV summary for UGT2B15
+----------------------
 
 Below is comprehensive summary of SV described from real NGS studies:
 
@@ -463,11 +477,14 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18855
     - 03bc76a2c27140bc8143c56767ca6877
 
-*UGT2B17*
-=========
+UGT2B17
+=======
 
-Structural variation
---------------------
+SV summary for UGT2B17
+----------------------
+
+This gene is known to have an extremely high rate of gene deletion
+polymorphism in the population and thus requires SV analysis.
 
 Below is comprehensive summary of SV described from real NGS studies:
 

@@ -211,8 +211,8 @@ The only exception to above rule is the *GSTT1* gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
 known to have an extremely high rate of gene deletion polymorphism in the
 population and thus requires SV analysis. Therefore, if you are interested in
-genotyping this gene with your GRCh38 data, then you must have sequence reads
-mapped to that contig as well. To this end, you can easily filter your
+genotyping this gene with GRCh38 data, then you must include that contig 
+when performing read alignment. To this end, you can easily filter your
 reference FASTA file before read alignment so that it only contains the main
 contigs plus the ALT contig. If you don't know how to do this, here's one way
 using the ``fuc`` program (which should have already been installed along
