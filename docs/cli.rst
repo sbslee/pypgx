@@ -369,8 +369,7 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] [--assembly TEXT]
-                                  gene depth-of-coverage read-depth
+   usage: pypgx import-read-depth [-h] gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
    
@@ -382,8 +381,6 @@ import-read-depth
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
-                        'GRCh37', 'GRCh38').
 
 import-variants
 ===============
