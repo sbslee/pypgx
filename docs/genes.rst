@@ -1,187 +1,257 @@
 Genes
 *****
 
-This section describes gene-specific information.
-
-Gene summary
+Introduction
 ============
+
+This section describes gene-specific information. PyPGx currently supports a
+total of 57 pharmacogenes.
+
+Many of the genes are known to have structural variation (SV) including
+gene deletions, duplications, and hybrids.
+
+Some genes have a diplotype-phenotype table available from the Clinical
+Pharmacogenetics Implementation Consortium (CPIC). PyPGx will use this
+information to perform phenotype prediction with one of the two methods:
+diplotype-phenotype mapping or activity score. Please read the
+:ref:`readme:Phenotype prediction` page for more details.
+
+Below is a summary table:
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 10 70
+   :widths: 15 10 15 60
 
    * - Gene
      - SV
+     - Phenotype
      - Note
-   * - *ABCB1*
+   * - ABCB1
      -
      -
-   * - *CACNA1S*
+     -
+   * - CACNA1S
      -
      -
-   * - *CFTR*
+     -
+   * - CFTR
      -
      -
-   * - *CYP1A1*
+     -
+   * - CYP1A1
      -
      -
-   * - *CYP1A2*
+     -
+   * - CYP1A2
      -
      -
-   * - *CYP1B1*
+     -
+   * - CYP1B1
      -
      -
-   * - *CYP2A6*
-     - ✅
-     - Has pseudogene (*CYP2A7*).
-   * - *CYP2A13*
      -
-     -
-   * - *CYP2B6*
-     - ✅
-     - Has pseudogene (*CYP2B7*).
-   * - *CYP2C8*
-     -
-     -
-   * - *CYP2C9*
-     -
-     -
-   * - *CYP2C19*
-     -
-     -
-   * - *CYP2D6*
-     - ✅
-     - Has pseudogene (*CYP2D7*).
-   * - *CYP2E1*
+   * - :ref:`genes:CYP2A6`
      - ✅
      -
-   * - *CYP2F1*
+     - Has pseudogene (CYP2A7).
+   * - CYP2A13
      -
      -
-   * - *CYP2J2*
+     -
+   * - :ref:`genes:CYP2B6`
+     - ✅
+     - ✅
+     - Has pseudogene (CYP2B7).
+   * - CYP2C8
      -
      -
-   * - *CYP2R1*
      -
+   * - CYP2C9
      -
-   * - *CYP2S1*
-     -
-     -
-   * - *CYP2W1*
-     -
-     -
-   * - *CYP3A4*
-     -
-     -
-   * - *CYP3A5*
-     -
-     -
-   * - *CYP3A7*
-     -
-     -
-   * - *CYP3A43*
-     -
-     -
-   * - *CYP4A11*
-     -
-     -
-   * - *CYP4A22*
-     -
-     -
-   * - *CYP4B1*
-     -
-     -
-   * - *CYP4F2*
-     -
-     -
-   * - *CYP17A1*
-     -
-     -
-   * - *CYP19A1*
-     -
-     -
-   * - *CYP26A1*
-     -
-     -
-   * - *DPYD*
-     -
-     -
-   * - *G6PD*
-     -
-     -
-   * - *GSTM1*
      - ✅
      -
-   * - *GSTP1*
+   * - CYP2C19
      -
-     -
-   * - *GSTT1*
      - ✅
      -
-   * - *IFNL3*
-     -
-     -
-   * - *NAT1*
-     -
-     -
-   * - *NAT2*
-     -
-     -
-   * - *NUDT15*
-     -
-     -
-   * - *POR*
-     -
-     -
-   * - *PTGIS*
-     -
-     -
-   * - *RYR1*
-     -
-     -
-   * - *SLC15A2*
-     -
-     -
-   * - *SLC22A2*
+   * - :ref:`genes:CYP2D6`
+     - ✅
+     - ✅
+     - Has pseudogene (CYP2D7).
+   * - :ref:`genes:CYP2E1`
      - ✅
      -
-   * - *SLCO1B1*
+     -
+   * - CYP2F1
      -
      -
-   * - *SLCO1B3*
+     -
+   * - CYP2J2
      -
      -
-   * - *SLCO2B1*
+     -
+   * - CYP2R1
      -
      -
-   * - *SULT1A1*
+     -
+   * - CYP2S1
      -
      -
-   * - *TBXAS1*
+     -
+   * - CYP2W1
      -
      -
-   * - *TPMT*
+     -
+   * - CYP3A4
      -
      -
-   * - *UGT1A1*
      -
+   * - CYP3A5
      -
-   * - *UGT1A4*
      - ✅
      -
-   * - *UGT2B7*
+   * - CYP3A7
      -
      -
-   * - *UGT2B15*
+     -
+   * - CYP3A43
+     -
+     -
+     -
+   * - CYP4A11
+     -
+     -
+     -
+   * - CYP4A22
+     -
+     -
+     -
+   * - CYP4B1
+     -
+     -
+     -
+   * - CYP4F2
+     -
+     -
+     -
+   * - CYP17A1
+     -
+     -
+     -
+   * - CYP19A1
+     -
+     -
+     -
+   * - CYP26A1
+     -
+     -
+     -
+   * - DPYD
+     -
      - ✅
      -
-   * - *UGT2B17*
+   * - G6PD
+     -
+     -
+     -
+   * - :ref:`genes:GSTM1`
      - ✅
      -
-   * - *VKORC1*
+     -
+   * - GSTP1
      -
      -
-   * - *XPC*
+     -
+   * - :ref:`genes:GSTT1`
+     - ✅
+     -
+     -
+   * - IFNL3
+     -
+     -
+     -
+   * - NAT1
+     -
+     -
+     -
+   * - NAT2
+     -
+     -
+     -
+   * - NUDT15
+     -
+     - ✅
+     -
+   * - POR
+     -
+     -
+     -
+   * - PTGIS
+     -
+     -
+     -
+   * - RYR1
+     -
+     -
+     -
+   * - SLC15A2
+     -
+     -
+     -
+   * - :ref:`genes:SLC22A2`
+     - ✅
+     -
+     -
+   * - SLCO1B1
+     -
+     - ✅
+     -
+   * - SLCO1B3
+     -
+     -
+     -
+   * - SLCO2B1
+     -
+     -
+     -
+   * - SULT1A1
+     -
+     -
+     -
+   * - TBXAS1
+     -
+     -
+     -
+   * - TPMT
+     -
+     - ✅
+     -
+   * - UGT1A1
+     -
+     - ✅
+     -
+   * - :ref:`genes:UGT1A4`
+     - ✅
+     -
+     -
+   * - UGT2B7
+     -
+     -
+     -
+   * - :ref:`genes:UGT2B15`
+     - ✅
+     -
+     -
+   * - :ref:`genes:UGT2B17`
+     - ✅
+     -
+     -
+   * - VKORC1
+     -
+     -
+     -
+   * - XPC
+     -
      -
      -
 

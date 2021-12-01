@@ -211,7 +211,7 @@ The only exception to above rule is the *GSTT1* gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
 known to have an extremely high rate of gene deletion polymorphism in the
 population and thus requires SV analysis. Therefore, if you are interested in
-genotyping this gene with GRCh38 data, then you must include that contig 
+genotyping this gene with GRCh38 data, then you must include that contig
 when performing read alignment. To this end, you can easily filter your
 reference FASTA file before read alignment so that it only contains the main
 contigs plus the ALT contig. If you don't know how to do this, here's one way
@@ -312,6 +312,31 @@ currently defined semantic types:
 - ``VcfFrame[Phased]``
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+
+Some genes have a diplotype-phenotype table available from the Clinical
+Pharmacogenetics Implementation Consortium (CPIC). PyPGx will use this
+information to perform phenotype prediction. Note that there two types of
+phenotype prediction:
+
+Phenotype prediction
+====================
+
+Many of the genes in PyPGx have a diplotype-phenotype table available from
+the Clinical Pharmacogenetics Implementation Consortium (CPIC). PyPGx will
+use this information to perform phenotype prediction. Note that there two
+types of phenotype prediction:
+
+- Diplotype-phenotype mapping: This method directly uses the
+  diplotype-phenotype mapping as defined by CPIC.
+- Activity score: This method uses a standard unit of enzyme activity known
+  as an activity score. Using the CYP2D6 gene as an example, the fully
+  functional reference CYP2D6\*1 allele is assigned a value of 1,
+  decreased-function alleles such as CYP2D6\*9 and \*17 receive a value of
+  0.5, and nonfunctional alleles including CYP2D6\*4 and \*5 have a value of
+  0. The sum of values assigned to both alleles constitutes the activity
+  score of a diplotype. Consequently, subjects with CYP2D6\*1/\*1, \*1/\*4,
+  and \*4/\*5 diplotypes have an activity score of 2 (normal metabolizer),
+  1 (intermediate metabolizer), and 0 (poor metabolizer), respectively.
 
 Getting help
 ============
