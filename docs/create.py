@@ -67,63 +67,63 @@ There are currently 57 pharmacogenes in PyPGx:
 
 .. list-table::
 
-   * - *ABCB1*
-     - *CACNA1S*
-     - *CFTR*
-     - *CYP1A1*
-     - *CYP1A2*
-   * - *CYP1B1*
-     - *CYP2A6/CYP2A7*
-     - *CYP2A13*
-     - *CYP2B6/CYP2B7*
-     - *CYP2C8*
-   * - *CYP2C9*
-     - *CYP2C19*
-     - *CYP2D6/CYP2D7*
-     - *CYP2E1*
-     - *CYP2F1*
-   * - *CYP2J2*
-     - *CYP2R1*
-     - *CYP2S1*
-     - *CYP2W1*
-     - *CYP3A4*
-   * - *CYP3A5*
-     - *CYP3A7*
-     - *CYP3A43*
-     - *CYP4A11*
-     - *CYP4A22*
-   * - *CYP4B1*
-     - *CYP4F2*
-     - *CYP17A1*
-     - *CYP19A1*
-     - *CYP26A1*
-   * - *DPYD*
-     - *G6PD*
-     - *GSTM1*
-     - *GSTP1*
-     - *GSTT1*
-   * - *IFNL3*
-     - *NAT1*
-     - *NAT2*
-     - *NUDT15*
-     - *POR*
-   * - *PTGIS*
-     - *RYR1*
-     - *SLC15A2*
-     - *SLC22A2*
-     - *SLCO1B1*
-   * - *SLCO1B3*
-     - *SLCO2B1*
-     - *SULT1A1*
-     - *TBXAS1*
-     - *TPMT*
-   * - *UGT1A1*
-     - *UGT1A4*
-     - *UGT2B7*
-     - *UGT2B15*
-     - *UGT2B17*
-   * - *VKORC1*
-     - *XPC*
+   * - ABCB1
+     - CACNA1S
+     - CFTR
+     - CYP1A1
+     - CYP1A2
+   * - CYP1B1
+     - CYP2A6/CYP2A7
+     - CYP2A13
+     - CYP2B6/CYP2B7
+     - CYP2C8
+   * - CYP2C9
+     - CYP2C19
+     - CYP2D6/CYP2D7
+     - CYP2E1
+     - CYP2F1
+   * - CYP2J2
+     - CYP2R1
+     - CYP2S1
+     - CYP2W1
+     - CYP3A4
+   * - CYP3A5
+     - CYP3A7
+     - CYP3A43
+     - CYP4A11
+     - CYP4A22
+   * - CYP4B1
+     - CYP4F2
+     - CYP17A1
+     - CYP19A1
+     - CYP26A1
+   * - DPYD
+     - G6PD
+     - GSTM1
+     - GSTP1
+     - GSTT1
+   * - IFNL3
+     - NAT1
+     - NAT2
+     - NUDT15
+     - POR
+   * - PTGIS
+     - RYR1
+     - SLC15A2
+     - SLC22A2
+     - SLCO1B1
+   * - SLCO1B3
+     - SLCO2B1
+     - SULT1A1
+     - TBXAS1
+     - TPMT
+   * - UGT1A1
+     - UGT1A4
+     - UGT2B7
+     - UGT2B15
+     - UGT2B17
+   * - VKORC1
+     - XPC
      -
      -
      -
@@ -188,7 +188,7 @@ dependencies installed.
 GRCh37 vs. GRCh38
 =================
 
-When working with genomic data, it's not uncommon to encounter a situation
+When working with PGx data, it's not uncommon to encounter a situation
 where you are handling GRCh37 data in one project but GRCh38 in another. You
 may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
 vice versa, but deep down you know it's going to be a mess (and please don't
@@ -202,10 +202,9 @@ However, there is one important caveat to consider if your sequencing data is
 GRCh38. That is, sequence reads must be aligned only to the main contigs
 (i.e. ``chr1``, ``chr2``, ..., ``chrX``, ``chrY``), and not to the
 alternative (ALT) contigs such as ``chr1_KI270762v1_alt``. This is because
-the presence of ALT contigs will reduce the sensitivity of variant calling
+the presence of ALT contigs reduces the sensitivity of variant calling
 and many other analyses including SV detection. Therefore, if you have
-sequencing data in GRCh38 please make sure it's aligned to the main contigs
-only.
+sequencing data in GRCh38, make sure it's aligned to the main contigs only.
 
 The only exception to above rule is the *GSTT1* gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
@@ -326,17 +325,22 @@ the Clinical Pharmacogenetics Implementation Consortium (CPIC). PyPGx will
 use this information to perform phenotype prediction. Note that there two
 types of phenotype prediction:
 
-- Diplotype-phenotype mapping: This method directly uses the
-  diplotype-phenotype mapping as defined by CPIC.
-- Activity score: This method uses a standard unit of enzyme activity known
-  as an activity score. Using the CYP2D6 gene as an example, the fully
-  functional reference CYP2D6\*1 allele is assigned a value of 1,
-  decreased-function alleles such as CYP2D6\*9 and \*17 receive a value of
-  0.5, and nonfunctional alleles including CYP2D6\*4 and \*5 have a value of
+- Method 1. Diplotype-phenotype mapping: This method directly uses the
+  diplotype-phenotype mapping as defined by CPIC. Using the CYP2B6 gene as an
+  example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2, \*1/\*4, and \*4/\*4
+  correspond to ``Poor Metabolizer``, ``Intermediate Metabolizer``,
+  ``Normal Metabolizer``, ``Rapid Metabolizer``, and
+  ``Ultrarapid Metabolizer``.
+- Method 2. Activity score: This method uses a standard unit of enzyme
+  activity known as an activity score. Using the CYP2D6 gene as an example,
+  the fully functional reference \*1 allele is assigned a value of 1,
+  decreased-function alleles such as \*9 and \*17 receive a value of
+  0.5, and nonfunctional alleles including \*4 and \*5 have a value of
   0. The sum of values assigned to both alleles constitutes the activity
-  score of a diplotype. Consequently, subjects with CYP2D6\*1/\*1, \*1/\*4,
-  and \*4/\*5 diplotypes have an activity score of 2 (normal metabolizer),
-  1 (intermediate metabolizer), and 0 (poor metabolizer), respectively.
+  score of a diplotype. Consequently, subjects with \*1/\*1, \*1/\*4,
+  and \*4/\*5 diplotypes have an activity score of 2 (``Normal
+  Metabolizer``), 1 (``Intermediate Metabolizer``), and 0 (``Poor
+  Metabolizer``), respectively.
 
 Getting help
 ============
