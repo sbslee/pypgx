@@ -165,7 +165,7 @@ Below is a summary table:
    * - :ref:`genes:GSTT1`
      - ✅
      -
-     -
+     - Contig differs between GRCh37 and GRCh38.
    * - IFNL3
      -
      -
@@ -274,8 +274,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - GRCh38
      - Data Type
      - Source
-     - Sample ID
-     - BAM ID
+     - Coriell ID
    * - \*4
      - DeletionHet
      - \*1/\*4
@@ -285,7 +284,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18617
-     - 0b7cc95044c54d86a81151d856d0c5b2
    * - \*4
      - DeletionHom
      - \*4/\*4
@@ -295,7 +293,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18952
-     - 92ac6fc0f69345aabb9e7bd47452ed70
    * - \*1x2
      - Duplication
      - \*1x2/\*25
@@ -305,7 +302,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
-     - 543558ae08cd44b3850fc7b835484037
    * - Indeterminate
      - Hybrid
      - Indeterminate
@@ -315,7 +311,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - HG00436
-     - 54db734bc1ec46b29fc6c5c6df35ca65
 
 Filtered alleles for CYP2A6
 ---------------------------
@@ -354,8 +349,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - GRCh38
      - Data Type
      - Source
-     - Sample ID
-     - BAM ID
+     - Coriell ID
    * - \*29
      - Hybrid
      - \*6/\*29
@@ -365,7 +359,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19178
-     - 3fcca708192c4ffe8e57318c7d64e480
 
 CYP2D6
 ======
@@ -386,8 +379,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - GRCh38
      - Data Type
      - Source
-     - Sample ID
-     - BAM ID
+     - Coriell ID
    * - \*5
      - Deletion
      - \*5/\*29
@@ -397,7 +389,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
-     - 543558ae08cd44b3850fc7b835484037
    * - \*4x2
      - Duplication
      - \*2/\*4x2
@@ -407,7 +398,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19819
-     - a04f109738f34a358850f5f69d7d8814
    * - \*68+\*4
      - Tandem1
      - \*139/\*68+\*4
@@ -417,7 +407,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA11832
-     - 22d9ea3d16804243afbfea7e776c5237
    * - \*36+\*10
      - Tandem2A
      - \*2/\*36+\*10
@@ -427,7 +416,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18564
-     - 4323a15d7b5d4bf2b204e0c0088ba923
    * - \*36x2+\*10
      - Tandem2B
      - \*1/\*36x2+\*10
@@ -437,7 +425,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
-     - ba64fb6dbb0a4b36a5cbe53bd8706ca7
 
 Filtered alleles for CYP2D6
 ---------------------------
@@ -452,6 +439,10 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - Star Alleles
      - GRCh37
      - GRCh38
+   * - rs769157652 (E410K)
+     - \*27, \*32
+     - `22-42522940-C-T <https://gnomad.broadinstitute.org/variant/22-42522940-C-T?dataset=gnomad_r2_1>`__
+     - `22-42126938-C-T <https://gnomad.broadinstitute.org/variant/22-42126938-C-T?dataset=gnomad_r3>`__
    * - rs61745683 (V370I)
      - \*122
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/22-42523514-C-T?dataset=gnomad_r2_1>`__
@@ -464,6 +455,10 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - \*127
      - `22-42523558-T-C <https://gnomad.broadinstitute.org/variant/22-42523558-T-C?dataset=gnomad_r2_1>`__
      - `22-42127556-T-C <https://gnomad.broadinstitute.org/variant/22-42127556-T-C?dataset=gnomad_r3>`__
+   * - rs17002853 (L231P)
+     - \*131
+     - `22-42524327-A-G <https://gnomad.broadinstitute.org/variant/22-42524327-A-G?dataset=gnomad_r2_1>`__
+     - `22-42128325-A-G <https://gnomad.broadinstitute.org/variant/22-42128325-A-G?dataset=gnomad_r3>`__
 
 CYP2E1
 ======
@@ -484,8 +479,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - GRCh38
      - Data Type
      - Source
-     - Sample ID
-     - BAM ID
+     - Coriell ID
    * - \*S1
      - PartialDuplication
      - \*1/\*S1
@@ -495,7 +489,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
-     - 228fa4f74dd4431f8eb3526f37e355ed
    * - \*7x2
      - Duplication
      - \*1/\*7x2
@@ -505,7 +498,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19095
-     - 75331ab394f24d56ac73cee5d41fa15b
    * - \*7x3
      - Multiplication
      - \*7/\*7x3
@@ -515,7 +507,6 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
-     - 0d73bafef55a4a718489f3fdca91fd55
 
 GSTM1
 =====
@@ -539,8 +530,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
-    - BAM ID
+    - Coriell ID
   * - \*0
     - DeletionHet
     - \*0/\*A
@@ -550,7 +540,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
-    - 03bc76a2c27140bc8143c56767ca6877
   * - \*0
     - DeletionHom
     - \*0/\*0
@@ -560,7 +549,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA10831
-    - 021ab129bb594be5804b02e08e14d93d
   * - \*Ax2
     - Duplication
     - \*A/\*Ax2
@@ -570,7 +558,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
-    - 0d73bafef55a4a718489f3fdca91fd55
 
 GSTT1
 =====
@@ -602,8 +589,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
-    - BAM ID
+    - Coriell ID
   * - \*0
     - DeletionHet
     - \*0/\*A
@@ -613,7 +599,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
-    - 0d73bafef55a4a718489f3fdca91fd55
   * - \*0
     - DeletionHom
     - \*0/\*0
@@ -623,7 +608,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
-    - 22d9ea3d16804243afbfea7e776c5237
 
 SLC22A2
 =======
@@ -644,8 +628,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
-    - BAM ID
+    - Coriell ID
   * - \*S1
     - Intron9Deletion
     - \*1/\*S1
@@ -655,7 +638,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
-    - 03bc76a2c27140bc8143c56767ca6877
   * - \*S2
     - Intron1Deletion
     - \*1/\*S2
@@ -665,7 +647,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19819
-    - a04f109738f34a358850f5f69d7d8814
 
 UGT1A4
 ======
@@ -686,13 +667,13 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
+    - Coriell ID
   * - \*S1
     - Intron1Deletion
     - \*1/\*S1
     -
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-CN.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/SLC22A2-1-AF.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT1A4-1.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
@@ -716,8 +697,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
-    - BAM ID
+    - Coriell ID
   * - \*S1
     - PartialDeletion
     - \*4/\*S1
@@ -727,7 +707,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11993
-    - 20be9cf6bed64502b85c999ec59c784b
 
 UGT2B17
 =======
@@ -751,8 +730,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - GRCh38
     - Data Type
     - Source
-    - Sample ID
-    - BAM ID
+    - Coriell ID
   * - \*2
     - DeletionHet
     - \*1/\*2
@@ -762,7 +740,6 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
-    - 03bc76a2c27140bc8143c56767ca6877
   * - \*2
     - DeletionHom
     - \*2/\*2
@@ -772,4 +749,3 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18617
-    - 0b7cc95044c54d86a81151d856d0c5b2
