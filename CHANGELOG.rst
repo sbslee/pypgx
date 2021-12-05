@@ -20,6 +20,7 @@ Changelog
 * Add new method :meth:`api.core.get_exon_starts`.
 * Add new method :meth:`api.core.get_exon_ends`.
 * :pr:`31`: Fix minor bug in commands :command:`run-ngs-pipeline` and :command:`import-read-depth` (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
+* Fix minor bug in :meth:`api.core.predict_score` method.
 * Update variant information for following alleles: CYP2D6\*27, CYP2D6\*32, CYP2D6\*131, CYP2D6\*141.
 
 0.8.0 (2021-11-20)

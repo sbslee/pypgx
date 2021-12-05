@@ -1,6 +1,6 @@
 """
-The genotype submodule is a suite of tools for accurately predicting genotype
-calls.
+The genotype submodule is primarily used to make final diplotype calls by
+interpreting candidate star alleles and/or detected structural variants.
 """
 
 import warnings

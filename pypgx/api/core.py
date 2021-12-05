@@ -1097,6 +1097,8 @@ def predict_score(gene, allele):
     Examples
     --------
 
+    Here are some examples for the CYP2D6 gene:
+
     >>> import pypgx
     >>> pypgx.predict_score('CYP2D6', '*1')            # Allele with normal function
     1.0
@@ -1116,7 +1118,21 @@ def predict_score(gene, allele):
     0.25
     >>> pypgx.predict_score('CYP2D6', '*1x2+*4x2+*10') # Complex event
     2.25
-    >>> pypgx.predict_score('CYP2B6', '*1')            # CYP2B6 does not have activity score
+
+    We can also predict phenotypes for the DPYD gene:
+
+    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'Reference')
+    'Normal Metabolizer'
+    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'c.1905+1G>A (*2A)')
+    'Intermediate Metabolizer'
+    >>> pypgx.predict_phenotype('DPYD', 'c.295_298delTCAT (*7)', 'c.703C>T (*8)')
+    'Poor Metabolizer'
+
+    All of the CYP2B6 alleles will return ``NaN`` because it does not have activity score:
+
+    >>> pypgx.predict_score('CYP2B6', '*1')
+    nan
+    >>> pypgx.predict_score('CYP2B6', '*2')
     nan
     """
     if not is_target_gene(gene):
@@ -1125,19 +1141,25 @@ def predict_score(gene, allele):
     if not has_score(gene):
         return np.nan
 
+    df = load_gene_table()
+    df = df[df.Gene == gene]
+    is_sv_gene = df.SV.values[0]
+
     df = load_allele_table()
     df = df[df.Gene == gene]
 
-    def parsecnv(x):
-        if 'x' in x:
-            l = x.split('x')
-            base = l[0]
-            times = int(l[1])
-            return get_score(gene, base) * times
-        else:
-            return get_score(gene, x)
-
-    return sum([parsecnv(x) for x in allele.split('+')])
+    if is_sv_gene:
+        def parsecnv(x):
+            if 'x' in x:
+                l = x.split('x')
+                base = l[0]
+                times = int(l[1])
+                return get_score(gene, base) * times
+            else:
+                return get_score(gene, x)
+        return sum([parsecnv(x) for x in allele.split('+')])
+    else:
+        return get_score(gene, allele)
 
 def sort_alleles(
     alleles, by='priority', gene=None, assembly='GRCh37'

@@ -370,17 +370,17 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
-    * - ``Ultrarapid Metabolizer``
+    * - Ultrarapid Metabolizer
       - \*4/\*4
-    * - ``Rapid Metabolizer``
+    * - Rapid Metabolizer
       - \*1/\*4
-    * - ``Normal Metabolizer``
+    * - Normal Metabolizer
       - \*1/\*2
-    * - ``Intermediate Metabolizer``
+    * - Intermediate Metabolizer
       - \*1/\*29
-    * - ``Poor Metabolizer``
+    * - Poor Metabolizer
       - \*6/\*6
-    * - ``Indeterminate``
+    * - Indeterminate
       - \*1/\*3
 
 CYP2C9
@@ -397,13 +397,13 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - 2 == score
      - \*1/\*1
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - 1 <= score < 2
      - \*1/\*2
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - 0 <= score < 1
      - \*2/\*3
 
@@ -420,21 +420,21 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Ultrarapid Metabolizer``
+   * - Ultrarapid Metabolizer
      - \*17/\*17
-   * - ``Rapid Metabolizer``
+   * - Rapid Metabolizer
      - \*1/\*17
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - \*1/\*1
-   * - ``Likely Intermediate Metabolizer``
+   * - Likely Intermediate Metabolizer
      - \*1/\*10
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - \*1/\*2
-   * - ``Likely Poor Metabolizer``
+   * - Likely Poor Metabolizer
      - \*10/\*22
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - \*2/\*2
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*1/\*12
 
 CYP2D6
@@ -514,16 +514,16 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
-   * - ``Ultrarapid Metabolizer``
+   * - Ultrarapid Metabolizer
      - 2.5 <= score
      - \*1/\*2x2
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - 1.25 <= score < 2.5
      - \*1/\*1
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - 0.25 <= score < 1.25
      - \*1/\*4
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - 0 <= score < 0.25
      - \*4/\*5
 
@@ -622,15 +622,15 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - \*1/\*1
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - \*1/\*3
-   * - ``Possible Intermediate Metabolizer``
+   * - Possible Intermediate Metabolizer
      - \*1/\*2
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - \*6/\*6
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*2/\*2
 
 DPYD
@@ -640,6 +640,22 @@ Phenotype summary for DPYD
 --------------------------
 
 Activity score is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Activity Score
+     - Example
+   * - Normal Metabolizer
+     - 2 == score
+     - Reference/Reference
+   * - Intermediate Metabolizer
+     - 1 <= score < 2
+     - Reference/c.1905+1G>A (\*2A)
+   * - Poor Metabolizer
+     - 0 <= score < 1
+     - c.295_298delTCAT (\*7)/c.703C>T (\*8)
 
 GSTM1
 =====
@@ -755,15 +771,15 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - \*1/\*1
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - \*1/\*2
-   * - ``Possible Intermediate Metabolizer``
+   * - Possible Intermediate Metabolizer
      - \*3/\*4
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - \*2/\*3
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*1/\*4
 
 SLC22A2
@@ -796,7 +812,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
   * - \*S2
-    - Intron1Deletion
+    - Exon11Deletion
     - \*1/\*S2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-2.png>`
@@ -818,19 +834,19 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Possible Increased Function``
+   * - Possible Increased Function
      - \*1A/\*35
-   * - ``Normal Function``
+   * - Normal Function
      - \*1A/\*1A
-   * - ``Possible Decreased Function``
+   * - Possible Decreased Function
      - \*1A/\*2
-   * - ``Decreased Function``
+   * - Decreased Function
      - \*1A/\*5
-   * - ``Possible Poor Function``
+   * - Possible Poor Function
      - \*2/\*2
-   * - ``Poor Function``
+   * - Poor Function
      - \*5/\*5
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*1A/\*7
 
 TPMT
@@ -846,15 +862,15 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - \*1/\*1
-   * - ``Possible Intermediate Metabolizer``
+   * - Possible Intermediate Metabolizer
      - \*3A/\*12
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - \*1/\*2
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - \*2/\*3A
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*1/\*18
 
 UGT1A1
@@ -870,13 +886,13 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - ``Normal Metabolizer``
+   * - Normal Metabolizer
      - \*1/\*1
-   * - ``Intermediate Metabolizer``
+   * - Intermediate Metabolizer
      - \*1/\*6
-   * - ``Poor Metabolizer``
+   * - Poor Metabolizer
      - \*6/\*27
-   * - ``Indeterminate``
+   * - Indeterminate
      - \*28/\*80
 
 UGT1A4

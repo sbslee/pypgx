@@ -323,9 +323,8 @@ types of phenotype prediction:
 - Method 1. Diplotype-phenotype mapping: This method directly uses the
   diplotype-phenotype mapping as defined by CPIC. Using the CYP2B6 gene as an
   example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2, \*1/\*4, and \*4/\*4
-  correspond to ``Poor Metabolizer``, ``Intermediate Metabolizer``,
-  ``Normal Metabolizer``, ``Rapid Metabolizer``, and
-  ``Ultrarapid Metabolizer``.
+  correspond to Poor Metabolizer, Intermediate Metabolizer, Normal
+  Metabolizer, Rapid Metabolizer, and Ultrarapid Metabolizer.
 - Method 2. Activity score: This method uses a standard unit of enzyme
   activity known as an activity score. Using the CYP2D6 gene as an example,
   the fully functional reference \*1 allele is assigned a value of 1,
@@ -333,9 +332,8 @@ types of phenotype prediction:
   0.5, and nonfunctional alleles including \*4 and \*5 have a value of
   0. The sum of values assigned to both alleles constitutes the activity
   score of a diplotype. Consequently, subjects with \*1/\*1, \*1/\*4,
-  and \*4/\*5 diplotypes have an activity score of 2 (``Normal
-  Metabolizer``), 1 (``Intermediate Metabolizer``), and 0 (``Poor
-  Metabolizer``), respectively.
+  and \*4/\*5 diplotypes have an activity score of 2 (Normal Metabolizer),
+  1 (Intermediate Metabolizer), and 0 (Poor Metabolizer), respectively.
 
 Please visit the :doc:`Genes <./genes>` page to see the list of genes with a
 CPIC diplotype-phenotype table and each of their prediction method.
