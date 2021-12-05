@@ -308,8 +308,9 @@ types of phenotype prediction:
   and \*4/\*5 diplotypes have an activity score of 2 (Normal Metabolizer),
   1 (Intermediate Metabolizer), and 0 (Poor Metabolizer), respectively.
 
-Please visit the :doc:`Genes <./genes>` page to see the list of genes with a
-CPIC diplotype-phenotype table and each of their prediction method.
+Please visit the `Genes <https://pypgx.readthedocs.io/en/latest/
+genes.html>`__ page to see the list of genes with a CPIC diplotype-phenotype
+table and each of their prediction method.
 
 Getting help
 ============
