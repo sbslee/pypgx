@@ -1,15 +1,15 @@
 Changelog
 *********
 
-0.9.0 (in development)
-----------------------
+0.9.0 (2021-12-05)
+------------------
 
-* Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes.
+* Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes (in ``v0.8.0``).
 * Add 1KGP reference haplotype panels for GRCh38 for all target genes.
-* Add GRCh37 CNV callers for UGT1A4.
-* Add GRCh38 CNV callers for all target genes.
+* Add GRCh37 CNV caller for UGT1A4.
+* Add GRCh38 CNV callers for all ten SV genes (CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTTM1, GSTT1, SLC22A2, UGT1A4, UGT2B15, UGT2B17).
 * Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to support GRCh38.
-* Update the **GeT-RM WGS** tutorial to include more genes and also GRCh38.
+* Update the **GeT-RM WGS** tutorial to include a non-SV gene (i.e. CYP3A5) and also GRCh38.
 * Make the profiles (e.g. copy number) look prettier.
 * Rename :meth:`sdk.utils.Archive.check` method to :meth:`sdk.utils.Archive.check_type`.
 * Add new method :meth:`sdk.utils.Archive.check_metadata`.

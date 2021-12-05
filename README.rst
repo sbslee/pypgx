@@ -285,11 +285,6 @@ currently defined semantic types:
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
-Some genes have a diplotype-phenotype table available from the Clinical
-Pharmacogenetics Implementation Consortium (CPIC). PyPGx will use this
-information to perform phenotype prediction. Note that there two types of
-phenotype prediction:
-
 Phenotype prediction
 ====================
 
@@ -314,6 +309,9 @@ types of phenotype prediction:
   and \*4/\*5 diplotypes have an activity score of 2 (``Normal
   Metabolizer``), 1 (``Intermediate Metabolizer``), and 0 (``Poor
   Metabolizer``), respectively.
+
+Please visit the :doc:`Genes <./genes>` page to see the list of genes with a
+CPIC diplotype-phenotype table and each of their prediction method.
 
 Getting help
 ============

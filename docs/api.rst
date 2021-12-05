@@ -7,7 +7,7 @@ API
 Introduction
 ============
 
-This section describes the application programming interface (API) for PyPGx.
+This page describes the application programming interface (API) for PyPGx.
 
 Below is the list of submodules available in the API:
 

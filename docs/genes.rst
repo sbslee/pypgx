@@ -4,7 +4,7 @@ Genes
 Introduction
 ============
 
-This section describes gene-specific information. PyPGx currently supports a
+This page describes gene-specific information. PyPGx currently supports a
 total of 57 pharmacogenes.
 
 Many of the genes are known to have structural variation (SV) including
@@ -66,11 +66,11 @@ Below is a summary table:
      -
      -
      -
-   * - CYP2C9
+   * - :ref:`genes:CYP2C9`
      -
      - ✅
      -
-   * - CYP2C19
+   * - :ref:`genes:CYP2C19`
      -
      - ✅
      -
@@ -106,7 +106,7 @@ Below is a summary table:
      -
      -
      -
-   * - CYP3A5
+   * - :ref:`genes:CYP3A5`
      -
      - ✅
      -
@@ -146,7 +146,7 @@ Below is a summary table:
      -
      -
      -
-   * - DPYD
+   * - :ref:`genes:DPYD`
      -
      - ✅
      -
@@ -178,7 +178,7 @@ Below is a summary table:
      -
      -
      -
-   * - NUDT15
+   * - :ref:`genes:NUDT15`
      -
      - ✅
      -
@@ -202,7 +202,7 @@ Below is a summary table:
      - ✅
      -
      -
-   * - SLCO1B1
+   * - :ref:`genes:SLCO1B1`
      -
      - ✅
      -
@@ -222,11 +222,11 @@ Below is a summary table:
      -
      -
      -
-   * - TPMT
+   * - :ref:`genes:TPMT`
      -
      - ✅
      -
-   * - UGT1A1
+   * - :ref:`genes:UGT1A1`
      -
      - ✅
      -
@@ -360,6 +360,83 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19178
 
+Phenotype summary for CYP2B6
+----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - ``Ultrarapid Metabolizer``
+      - \*4/\*4
+    * - ``Rapid Metabolizer``
+      - \*1/\*4
+    * - ``Normal Metabolizer``
+      - \*1/\*2
+    * - ``Intermediate Metabolizer``
+      - \*1/\*29
+    * - ``Poor Metabolizer``
+      - \*6/\*6
+    * - ``Indeterminate``
+      - \*1/\*3
+
+CYP2C9
+======
+
+Phenotype summary for CYP2C9
+----------------------------
+
+Activity score is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Activity Score
+     - Example
+   * - ``Normal Metabolizer``
+     - 2 == score
+     - \*1/\*1
+   * - ``Intermediate Metabolizer``
+     - 1 <= score < 2
+     - \*1/\*2
+   * - ``Poor Metabolizer``
+     - 0 <= score < 1
+     - \*2/\*3
+
+CYP2C19
+=======
+
+Phenotype summary for CYP2C19
+-----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Ultrarapid Metabolizer``
+     - \*17/\*17
+   * - ``Rapid Metabolizer``
+     - \*1/\*17
+   * - ``Normal Metabolizer``
+     - \*1/\*1
+   * - ``Likely Intermediate Metabolizer``
+     - \*1/\*10
+   * - ``Intermediate Metabolizer``
+     - \*1/\*2
+   * - ``Likely Poor Metabolizer``
+     - \*10/\*22
+   * - ``Poor Metabolizer``
+     - \*2/\*2
+   * - ``Indeterminate``
+     - \*1/\*12
+
 CYP2D6
 ======
 
@@ -425,6 +502,30 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
+
+Phenotype summary for CYP2D6
+----------------------------
+
+Activity score is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Activity Score
+     - Example
+   * - ``Ultrarapid Metabolizer``
+     - 2.5 <= score
+     - \*1/\*2x2
+   * - ``Normal Metabolizer``
+     - 1.25 <= score < 2.5
+     - \*1/\*1
+   * - ``Intermediate Metabolizer``
+     - 0.25 <= score < 1.25
+     - \*1/\*4
+   * - ``Poor Metabolizer``
+     - 0 <= score < 0.25
+     - \*4/\*5
 
 Filtered alleles for CYP2D6
 ---------------------------
@@ -507,6 +608,38 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
+
+CYP3A5
+======
+
+Phenotype summary for CYP3A5
+----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Normal Metabolizer``
+     - \*1/\*1
+   * - ``Intermediate Metabolizer``
+     - \*1/\*3
+   * - ``Possible Intermediate Metabolizer``
+     - \*1/\*2
+   * - ``Poor Metabolizer``
+     - \*6/\*6
+   * - ``Indeterminate``
+     - \*2/\*2
+
+DPYD
+====
+
+Phenotype summary for DPYD
+--------------------------
+
+Activity score is used for phenotype prediction.
 
 GSTM1
 =====
@@ -609,6 +742,30 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
 
+NUDT15
+======
+
+Phenotype summary for NUDT15
+----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Normal Metabolizer``
+     - \*1/\*1
+   * - ``Intermediate Metabolizer``
+     - \*1/\*2
+   * - ``Possible Intermediate Metabolizer``
+     - \*3/\*4
+   * - ``Poor Metabolizer``
+     - \*2/\*3
+   * - ``Indeterminate``
+     - \*1/\*4
+
 SLC22A2
 =======
 
@@ -647,6 +804,80 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19819
+
+SLCO1B1
+=======
+
+Phenotype summary for SLCO1B1
+-----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Possible Increased Function``
+     - \*1A/\*35
+   * - ``Normal Function``
+     - \*1A/\*1A
+   * - ``Possible Decreased Function``
+     - \*1A/\*2
+   * - ``Decreased Function``
+     - \*1A/\*5
+   * - ``Possible Poor Function``
+     - \*2/\*2
+   * - ``Poor Function``
+     - \*5/\*5
+   * - ``Indeterminate``
+     - \*1A/\*7
+
+TPMT
+====
+
+Phenotype summary for TPMT
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Normal Metabolizer``
+     - \*1/\*1
+   * - ``Possible Intermediate Metabolizer``
+     - \*3A/\*12
+   * - ``Intermediate Metabolizer``
+     - \*1/\*2
+   * - ``Poor Metabolizer``
+     - \*2/\*3A
+   * - ``Indeterminate``
+     - \*1/\*18
+
+UGT1A1
+======
+
+Phenotype summary for UGT1A1
+----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - ``Normal Metabolizer``
+     - \*1/\*1
+   * - ``Intermediate Metabolizer``
+     - \*1/\*6
+   * - ``Poor Metabolizer``
+     - \*6/\*27
+   * - ``Indeterminate``
+     - \*28/\*80
 
 UGT1A4
 ======
