@@ -1,6 +1,6 @@
 """
-The genotype submodule is a suite of tools for accurately predicting genotype
-calls.
+The genotype submodule is primarily used to make final diplotype calls by
+interpreting candidate star alleles and/or detected structural variants.
 """
 
 import warnings
@@ -332,6 +332,29 @@ class SLC22A2Genotyper:
         self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
+class UGT1A4Genotyper:
+    """
+    Genotyper for UGT1A4.
+    """
+
+    def one_row(self, r):
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        if r.CNV in ['Normal', 'AssumeNormal']:
+            result = [a1, a2]
+        elif r.CNV == 'Intron1Deletion':
+            if a1 == a2:
+                result = [a1, '*S1']
+            else:
+                result = ['Indeterminate']
+        else:
+            result = ['Indeterminate']
+        return '/'.join(core.sort_alleles(result, by='name'))
+
+    def __init__(self, df, assembly):
+        self.gene = 'UGT1A4'
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class UGT2B15Genotyper:
     """
     Genotyper for UGT2B15.
@@ -400,6 +423,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,
+        'UGT1A4': UGT1A4Genotyper,
         'UGT2B15': UGT2B15Genotyper,
         'UGT2B17': UGT2B17Genotyper,
     }
@@ -408,13 +432,13 @@ def call_genotypes(alleles=None, cnv_calls=None):
         alleles = sdk.Archive.from_file(alleles)
 
     if alleles is not None:
-        alleles.check('SampleTable[Alleles]')
+        alleles.check_type('SampleTable[Alleles]')
 
     if isinstance(cnv_calls, str):
         cnv_calls = sdk.Archive.from_file(cnv_calls)
 
     if cnv_calls is not None:
-        cnv_calls.check('SampleTable[CNVCalls]')
+        cnv_calls.check_type('SampleTable[CNVCalls]')
 
     if alleles is not None and cnv_calls is not None:
         if set(alleles.data.index) != set(cnv_calls.data.index):

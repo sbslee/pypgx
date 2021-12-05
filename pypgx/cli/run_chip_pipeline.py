@@ -37,6 +37,13 @@ def create_parser(subparsers):
         help='VCF file (zipped or unzipped).'
     )
     parser.add_argument(
+        '--assembly',
+        metavar='TEXT',
+        default='GRCh37',
+        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
+             "'GRCh37', 'GRCh38')."
+    )
+    parser.add_argument(
         '--impute',
         action='store_true',
         help='Perform imputation of missing genotypes.'
@@ -49,6 +56,6 @@ def create_parser(subparsers):
 
 def main(args):
     pipeline.run_chip_pipeline(
-        args.gene, args.output, args.variants, impute=args.impute,
-        force=args.force
+        args.gene, args.output, args.variants, assembly=args.assembly,
+        impute=args.impute, force=args.force
     )

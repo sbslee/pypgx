@@ -1,6 +1,28 @@
 Changelog
 *********
 
+0.9.0 (2021-12-05)
+------------------
+
+* Add 1KGP reference haplotype panels for GRCh37 for the 17 recently added genes (in ``v0.8.0``).
+* Add 1KGP reference haplotype panels for GRCh38 for all target genes.
+* Add GRCh37 CNV caller for UGT1A4.
+* Add GRCh38 CNV callers for all ten SV genes (CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTTM1, GSTT1, SLC22A2, UGT1A4, UGT2B15, UGT2B17).
+* Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to support GRCh38.
+* Update the **GeT-RM WGS** tutorial to include a non-SV gene (i.e. CYP3A5) and also GRCh38.
+* Make the profiles (e.g. copy number) look prettier.
+* Rename :meth:`sdk.utils.Archive.check` method to :meth:`sdk.utils.Archive.check_type`.
+* Add new method :meth:`sdk.utils.Archive.check_metadata`.
+* Add new error ``sdk.utils.IncorrectMetadataError``.
+* Update :command:`run-ngs-pipeline` command to check input files more vigorously.
+* Add new method :meth:`sdk.utils.compare_metadata`.
+* Add new method :meth:`api.core.get_strand`.
+* Add new method :meth:`api.core.get_exon_starts`.
+* Add new method :meth:`api.core.get_exon_ends`.
+* :pr:`31`: Fix minor bug in commands :command:`run-ngs-pipeline` and :command:`import-read-depth` (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
+* Fix minor bug in :meth:`api.core.predict_score` method.
+* Update variant information for following alleles: CYP2D6\*27, CYP2D6\*32, CYP2D6\*131, CYP2D6\*141.
+
 0.8.0 (2021-11-20)
 ------------------
 

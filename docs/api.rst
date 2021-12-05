@@ -7,12 +7,12 @@ API
 Introduction
 ============
 
-This section describes the application programming interface (API) for PyPGx.
+This page describes the application programming interface (API) for PyPGx.
 
 Below is the list of submodules available in the API:
 
 - **core** : The core submodule is the main suite of tools for PGx research.
-- **genotype** : The genotype submodule is a suite of tools for accurately predicting genotype calls.
+- **genotype** : The genotype submodule is primarily used to make final diplotype calls by interpreting candidate star alleles and/or detected structural variants.
 - **pipeline** : The pipeline submodule is used to provide convenient methods that combine multiple PyPGx actions and automatically handle semantic types.
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.

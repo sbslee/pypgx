@@ -32,6 +32,7 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_rtd_theme',
     'sphinx.ext.linkcode',
+    'sphinx.ext.autosectionlabel',
     'autodocsumm',
     'sphinx_issues',
 ]
@@ -43,6 +44,8 @@ autodoc_default_options = {
 issues_github_path = 'sbslee/pypgx'
 
 napoleon_use_param = False
+
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

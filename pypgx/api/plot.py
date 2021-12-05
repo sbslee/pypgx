@@ -16,21 +16,25 @@ import pandas as pd
 ###################
 
 def _plot_exons(gene, assembly, ax, fontsize=25):
+    """Plot a gene model."""
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
     df = core.load_gene_table()
-    starts1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-    ends1 = [int(x) for x in df[df.Gene == gene][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+    starts1 = core.get_exon_starts(gene, assembly=assembly)
+    ends1 = core.get_exon_ends(gene, assembly=assembly)
     paralog = core.get_paralog(gene)
+    strand = core.get_strand(gene)
+    name1 = f'{gene} ({strand})'
     if paralog:
-        starts2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
-        ends2 = [int(x) for x in df[df.Gene == paralog][f'{assembly}ExonStarts'].values[0].strip(',').split(',')]
+        starts2 = core.get_exon_starts(paralog, assembly=assembly)
+        ends2 = core.get_exon_ends(paralog, assembly=assembly)
+        name2 = f'{paralog} ({strand})'
     common.plot_exons(
-        starts1, ends1, ax=ax, name=gene, fontsize=fontsize, offset=2
+        starts1, ends1, ax=ax, name=name1, fontsize=fontsize, offset=2
     )
     if paralog:
         common.plot_exons(
-            starts2, ends2, ax=ax, name=paralog, fontsize=fontsize, offset=2
+            starts2, ends2, ax=ax, name=name2, fontsize=fontsize, offset=2
     )
     ax.set_ylim([-1.5, 1.5])
     ax.set_xlim([start, end])
@@ -40,6 +44,9 @@ def _plot_bam_copy_number_one(
     ax1, ax2, sample, copy_number, gene, assembly, processed_copy_number,
     ymin, ymax, fontsize
 ):
+    region = core.get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
+
     _plot_exons(gene, assembly, ax1, fontsize=fontsize)
 
     copy_number.data.plot_region(sample, ax=ax2, legend=False)
@@ -48,8 +55,10 @@ def _plot_bam_copy_number_one(
         processed_copy_number.data.plot_region(sample,
             ax=ax2, legend=False)
 
+    ax2.set_xlim([start, end])
+    ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([ymin, ymax])
-    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_xlabel(f'Coordinate in chr{chrom} (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Copy number', fontsize=fontsize)
     ax2.tick_params(axis='both', which='major', labelsize=fontsize)
     ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
@@ -60,14 +69,18 @@ def _plot_bam_copy_number_one(
 def _plot_vcf_allele_fraction_one(
     ax1, ax2, sample, imported_variants, gene, assembly, fontsize
 ):
+    region = core.get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
 
     _plot_exons(gene, assembly, ax1, fontsize=fontsize)
 
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_REF', label='REF')
     imported_variants.data.plot_region(sample, ax=ax2, k='#AD_FRAC_ALT', label='ALT')
 
+    ax2.set_xlim([start, end])
+    ax2.locator_params(axis='x', nbins=4)
     ax2.set_ylim([-0.05, 1.05])
-    ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+    ax2.set_xlabel(f'Coordinate in chr{chrom} (Mb)', fontsize=fontsize)
     ax2.set_ylabel('Allele fraction', fontsize=fontsize)
     ax2.tick_params(axis='both', which='major', labelsize=fontsize)
     ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
@@ -96,9 +109,9 @@ def plot_bam_copy_number(
         Create plots in this directory.
     samples : list, optional
         Create plots only for these samples.
-    ymin : float, default: 0
+    ymin : float, default: -0.3
         Y-axis bottom.
-    ymax : float, default: 6
+    ymax : float, default: 6.3
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
@@ -106,7 +119,7 @@ def plot_bam_copy_number(
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
 
-    copy_number.check('CovFrame[CopyNumber]')
+    copy_number.check_type('CovFrame[CopyNumber]')
 
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
@@ -142,7 +155,7 @@ def plot_bam_copy_number(
             plt.close()
 
 def plot_bam_read_depth(
-    read_depth, path=None, samples=None, ymin=None, ymax=None
+    read_depth, path=None, samples=None, ymin=None, ymax=None, fontsize=25
 ):
     """
     Plot copy number profile with BAM data.
@@ -159,12 +172,14 @@ def plot_bam_read_depth(
         Y-axis bottom.
     ymax : float, optional
         Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
     """
 
     if isinstance(read_depth, str):
         read_depth = sdk.Archive.from_file(read_depth)
 
-    read_depth.check('CovFrame[ReadDepth]')
+    read_depth.check_type('CovFrame[ReadDepth]')
 
     if samples is None:
         samples = read_depth.data.samples
@@ -179,9 +194,9 @@ def plot_bam_read_depth(
             read_depth.data.plot_region(sample, ax=ax2, legend=False)
 
             ax2.set_ylim([ymin, ymax])
-            ax2.set_xlabel('Coordinate (Mb)', fontsize=25)
-            ax2.set_ylabel('Read depth', fontsize=25)
-            ax2.tick_params(axis='both', which='major', labelsize=20)
+            ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
+            ax2.set_ylabel('Read depth', fontsize=fontsize)
+            ax2.tick_params(axis='both', which='major', labelsize=fontsize)
             ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
 
             if path is None:
@@ -199,16 +214,33 @@ def plot_cn_af(
 ):
     """
     Plot both copy number profile and allele fraction profile in one figure.
+
+    Parameters
+    ----------
+    copy_number : str or pypgx.Archive
+        Archive file or object with the semantic type CovFrame[CopyNumber].
+    imported_variants : str or pypgx.Archive
+        Archive file or object with the semantic type VcfFrame[Imported].
+    path : str, optional
+        Create plots in this directory.
+    samples : list, optional
+        Create plots only for these samples.
+    ymin : float, default: -0.3
+        Y-axis bottom.
+    ymax : float, default: 6.3
+        Y-axis top.
+    fontsize : float, default: 25
+        Text fontsize.
     """
+    if isinstance(copy_number, str):
+        copy_number = sdk.Archive.from_file(copy_number)
+
+    copy_number.check_type('CovFrame[CopyNumber]')
+
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
-
-    if isinstance(imported_variants, str):
-        imported_variants = sdk.Archive.from_file(imported_variants)
-
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     if samples is None:
         samples = copy_number.data.samples
@@ -264,7 +296,7 @@ def plot_vcf_allele_fraction(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check('VcfFrame[Imported]')
+    imported_variants.check_type('VcfFrame[Imported]')
 
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']

@@ -8,11 +8,14 @@ import pickle
 import pandas as pd
 from fuc import pyvcf, pycov, common, pybam
 
-class SemanticTypeNotFoundError(Exception):
-    """Raise when specified semantic type is not supported."""
+class IncorrectMetadataError(Exception):
+    """Raised when specified metadata is incorrect."""
 
 class IncorrectSemanticTypeError(Exception):
-    """Raise when specified semantic type is incorrect."""
+    """Raised when specified semantic type is incorrect."""
+
+class SemanticTypeNotFoundError(Exception):
+    """Raised when specified semantic type is not supported."""
 
 class Archive:
     """
@@ -104,9 +107,42 @@ class Archive:
             raise SemanticTypeNotFoundError(metadata['SemanticType'])
         return cls(metadata, data)
 
-    def check(self, semantic):
-        if self.metadata['SemanticType'] != semantic:
-            raise IncorrectSemanticTypeError(f"Expected {semantic}, but found {self.metadata['SemanticType']}")
+    def check_type(self, semantic_type):
+        """
+        Raise IncorrectSemanticTypeError if the archive does not have
+        specified semantic type.
+        """
+        actual_type = self.metadata['SemanticType']
+        if actual_type != semantic_type:
+            raise IncorrectSemanticTypeError(
+                f"Expected '{semantic_type}' but found '{actual_type}'")
+
+    def check_metadata(self, key, value):
+        """
+        Raise IncorrectMetadataError if the archive does not have specified
+        pair of key and value.
+        """
+        semantic_type = self.metadata['SemanticType']
+        actual_value = self.metadata[key]
+        if actual_value != value:
+            raise IncorrectMetadataError(
+                f"Expected '{key}={value}' but found '{key}={actual_value}' "
+                f"for semantic type '{semantic_type}'")
+
+def compare_metadata(key, *archives):
+    """
+    Raise IncorrectMetadataError if two or more archives have different
+    values for specified metadata key.
+    """
+    if len(archives) < 2:
+        raise ValueError('Must provide at least two archives')
+
+    types = [x.metadata['SemanticType'] for x in archives]
+    values = [x.metadata[key] for x in archives]
+
+    if len(set(values)) > 1:
+        raise IncorrectMetadataError(
+            f"Archives {types} have '{key}'={values}, respectively")
 
 def zipdir(dir, output):
     """

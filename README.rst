@@ -26,9 +26,80 @@ README
 Introduction
 ============
 
-The main purpose of the PyPGx package is to provide a unified platform for pharmacogenomics (PGx) research.
+The main purpose of the PyPGx package is to provide a unified platform for
+pharmacogenomics (PGx) research.
 
-The package is written in Python, and supports both command line interface (CLI) and application programming interface (API) whose documentations are available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+The package is written in Python, and supports both command line interface
+(CLI) and application programming interface (API) whose documentations are
+available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
+builds, GRCh37 (hg19) and GRCh38 (hg38).
+
+There are currently 57 pharmacogenes in PyPGx:
+
+.. list-table::
+
+   * - ABCB1
+     - CACNA1S
+     - CFTR
+     - CYP1A1
+     - CYP1A2
+   * - CYP1B1
+     - CYP2A6/CYP2A7
+     - CYP2A13
+     - CYP2B6/CYP2B7
+     - CYP2C8
+   * - CYP2C9
+     - CYP2C19
+     - CYP2D6/CYP2D7
+     - CYP2E1
+     - CYP2F1
+   * - CYP2J2
+     - CYP2R1
+     - CYP2S1
+     - CYP2W1
+     - CYP3A4
+   * - CYP3A5
+     - CYP3A7
+     - CYP3A43
+     - CYP4A11
+     - CYP4A22
+   * - CYP4B1
+     - CYP4F2
+     - CYP17A1
+     - CYP19A1
+     - CYP26A1
+   * - DPYD
+     - G6PD
+     - GSTM1
+     - GSTP1
+     - GSTT1
+   * - IFNL3
+     - NAT1
+     - NAT2
+     - NUDT15
+     - POR
+   * - PTGIS
+     - RYR1
+     - SLC15A2
+     - SLC22A2
+     - SLCO1B1
+   * - SLCO1B3
+     - SLCO2B1
+     - SULT1A1
+     - TBXAS1
+     - TPMT
+   * - UGT1A1
+     - UGT1A4
+     - UGT2B7
+     - UGT2B15
+     - UGT2B17
+   * - VKORC1
+     - XPC
+     -
+     -
+     -
 
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
 
@@ -57,13 +128,17 @@ Following packages are required to run PyPGx:
      - ✅
      - ❌
 
-There are various ways you can install PyPGx. The recommended way is via conda (`Anaconda <https://www.anaconda.com/>`__):
+There are various ways you can install PyPGx. The recommended way is via
+conda (`Anaconda <https://www.anaconda.com/>`__):
 
 .. code-block:: text
 
    $ conda install -c bioconda pypgx
 
-Above will automatically download and install all the dependencies as well. Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install PyPGx and all of its dependencies except ``openjdk`` (i.e. Java JDK must be installed separately):
+Above will automatically download and install all the dependencies as well.
+Alternatively, you can use pip (`PyPI <https://pypi.org/>`__) to install
+PyPGx and all of its dependencies except ``openjdk`` (i.e. Java JDK must be
+installed separately):
 
 .. code-block:: text
 
@@ -77,12 +152,64 @@ Finally, you can clone the GitHub repository and then install PyPGx locally:
    $ cd pypgx
    $ pip install .
 
-The nice thing about this approach is that you will have access to development versions that are not available in Anaconda or PyPI. For example, you can access a development branch with the ``git checkout`` command. When you do this, please make sure your environment already has all the dependencies installed.
+The nice thing about this approach is that you will have access to
+development versions that are not available in Anaconda or PyPI. For example,
+you can access a development branch with the ``git checkout`` command. When
+you do this, please make sure your environment already has all the
+dependencies installed.
+
+GRCh37 vs. GRCh38
+=================
+
+When working with PGx data, it's not uncommon to encounter a situation
+where you are handling GRCh37 data in one project but GRCh38 in another. You
+may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
+vice versa, but deep down you know it's going to be a mess (and please don't
+do this). The good news is, PyPGx supports both of the builds!
+
+In many of the PyPGx actions, you can simply indicate which human genome
+build to use. For example, you can use ``assembly`` for the API and
+``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
+
+However, there is one important caveat to consider if your sequencing data is
+GRCh38. That is, sequence reads must be aligned only to the main contigs
+(i.e. ``chr1``, ``chr2``, ..., ``chrX``, ``chrY``), and not to the
+alternative (ALT) contigs such as ``chr1_KI270762v1_alt``. This is because
+the presence of ALT contigs reduces the sensitivity of variant calling
+and many other analyses including SV detection. Therefore, if you have
+sequencing data in GRCh38, make sure it's aligned to the main contigs only.
+
+The only exception to above rule is the *GSTT1* gene, which is located on
+``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
+known to have an extremely high rate of gene deletion polymorphism in the
+population and thus requires SV analysis. Therefore, if you are interested in
+genotyping this gene with GRCh38 data, then you must include that contig
+when performing read alignment. To this end, you can easily filter your
+reference FASTA file before read alignment so that it only contains the main
+contigs plus the ALT contig. If you don't know how to do this, here's one way
+using the ``fuc`` program (which should have already been installed along
+with PyPGx):
+
+.. code-block:: text
+
+    $ cat contigs.list
+    chr1
+    chr2
+    ...
+    chrX
+    chrY
+    chr22_KI270879v1_alt
+    $ fuc fa-filter in.fa --contigs contigs.list > out.fa
 
 Archive file, semantic type, and metadata
 =========================================
 
-In order to efficiently store and transfer data, PyPGx uses the ZIP archive file format (``.zip``) which supports lossless data compression. Each archive file created by PyPGx has a metadata file (``metadata.txt``) and a data file (e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important information about the data file within the same archive, which is expressed as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
+In order to efficiently store and transfer data, PyPGx uses the ZIP archive
+file format (``.zip``) which supports lossless data compression. Each archive
+file created by PyPGx has a metadata file (``metadata.txt``) and a data file
+(e.g. ``data.tsv``, ``data.vcf``). A metadata file contains important
+information about the data file within the same archive, which is expressed
+as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
 
 .. list-table::
     :widths: 20 40 40
@@ -105,7 +232,7 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - ``WGS``, ``Targeted``, ``Chip``
     * - ``Program``
       - Name of the phasing program.
-      - ``Beagle``
+      - ``Beagle``, ``SHAPEIT``
     * - ``Samples``
       - Samples used for inter-sample normalization.
       - ``NA07000,NA10854,NA11993``
@@ -113,7 +240,10 @@ In order to efficiently store and transfer data, PyPGx uses the ZIP archive file
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
 
-Notably, all archive files have defined semantic types, which allows us to ensure that the data that is passed to a PyPGx command (CLI) or method (API) is meaningful for the operation that will be performed. Below is a list of currently defined semantic types:
+Notably, all archive files have defined semantic types, which allows us to
+ensure that the data that is passed to a PyPGx command (CLI) or method (API)
+is meaningful for the operation that will be performed. Below is a list of
+currently defined semantic types:
 
 - ``CovFrame[CopyNumber]``
     * CovFrame for storing target gene's per-base copy number which is computed from read depth with control statistics.
@@ -155,9 +285,37 @@ Notably, all archive files have defined semantic types, which allows us to ensur
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
+Phenotype prediction
+====================
+
+Many of the genes in PyPGx have a diplotype-phenotype table available from
+the Clinical Pharmacogenetics Implementation Consortium (CPIC). PyPGx will
+use this information to perform phenotype prediction. Note that there two
+types of phenotype prediction:
+
+- Method 1. Diplotype-phenotype mapping: This method directly uses the
+  diplotype-phenotype mapping as defined by CPIC. Using the CYP2B6 gene as an
+  example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2, \*1/\*4, and \*4/\*4
+  correspond to Poor Metabolizer, Intermediate Metabolizer, Normal
+  Metabolizer, Rapid Metabolizer, and Ultrarapid Metabolizer.
+- Method 2. Activity score: This method uses a standard unit of enzyme
+  activity known as an activity score. Using the CYP2D6 gene as an example,
+  the fully functional reference \*1 allele is assigned a value of 1,
+  decreased-function alleles such as \*9 and \*17 receive a value of
+  0.5, and nonfunctional alleles including \*4 and \*5 have a value of
+  0. The sum of values assigned to both alleles constitutes the activity
+  score of a diplotype. Consequently, subjects with \*1/\*1, \*1/\*4,
+  and \*4/\*5 diplotypes have an activity score of 2 (Normal Metabolizer),
+  1 (Intermediate Metabolizer), and 0 (Poor Metabolizer), respectively.
+
+Please visit the :doc:`Genes <./genes>` page to see the list of genes with a
+CPIC diplotype-phenotype table and each of their prediction method.
+
 Getting help
 ============
-For detailed documentations on the CLI and API, please refer to the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
+
+For detailed documentations on the CLI and API, please refer to the
+`Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 For getting help on the CLI:
 
@@ -219,7 +377,7 @@ For getting help on a specific command (e.g. call-genotypes):
 Below is the list of submodules available in the API:
 
 - **core** : The core submodule is the main suite of tools for PGx research.
-- **genotype** : The genotype submodule is a suite of tools for accurately predicting genotype calls.
+- **genotype** : The genotype submodule is primarily used to make final diplotype calls by interpreting candidate star alleles and/or detected structural variants.
 - **pipeline** : The pipeline submodule is used to provide convenient methods that combine multiple PyPGx actions and automatically handle semantic types.
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.
@@ -246,18 +404,15 @@ We can print the metadata of an archive file:
 
 .. code-block:: text
 
-    $ pypgx print-metadata CYP2D6-copy-number.zip
+    $ pypgx print-metadata grch37-depth-of-coverage.zip
 
 Above will print:
 
 .. code-block:: text
 
-    Gene=CYP2D6
     Assembly=GRCh37
-    SemanticType=CovFrame[CopyNumber]
+    SemanticType=CovFrame[DepthOfCoverage]
     Platform=WGS
-    Control=VDR
-    Samples=None
 
 We can run the NGS pipeline for the *CYP2D6* gene:
 
@@ -265,24 +420,25 @@ We can run the NGS pipeline for the *CYP2D6* gene:
 
     $ pypgx run-ngs-pipeline \
     CYP2D6 \
-    CYP2D6-pipeline \
-    --variants variants.vcf \
-    --depth-of-coverage depth-of-coverage.zip \
-    --control-statistics control-statistics-VDR.zip
+    grch37-CYP2D6-pipeline \
+    --variants grch37-variants.vcf.gz \
+    --depth-of-coverage grch37-depth-of-coverage.zip \
+    --control-statistics grch37-control-statistics-VDR.zip
 
 Above will create a number of archive files:
 
 .. code-block:: text
 
-    Saved VcfFrame[Imported] to: CYP2D6-pipeline/imported-variants.zip
-    Saved VcfFrame[Phased] to: CYP2D6-pipeline/phased-variants.zip
-    Saved VcfFrame[Consolidated] to: CYP2D6-pipeline/consolidated-variants.zip
-    Saved SampleTable[Alleles] to: CYP2D6-pipeline/alleles.zip
-    Saved CovFrame[ReadDepth] to: CYP2D6-pipeline/read-depth.zip
-    Saved CovFrame[CopyNumber] to: CYP2D6-pipeline/copy-number.zip
-    Saved SampleTable[CNVCalls] to: CYP2D6-pipeline/cnv-calls.zip
-    Saved SampleTable[Genotypes] to: CYP2D6-pipeline/genotypes.zip
-    Saved SampleTable[Results] to: CYP2D6-pipeline/results.zip
+    Saved VcfFrame[Imported] to: grch37-CYP2D6-pipeline/imported-variants.zip
+    Saved VcfFrame[Phased] to: grch37-CYP2D6-pipeline/phased-variants.zip
+    Saved VcfFrame[Consolidated] to: grch37-CYP2D6-pipeline/consolidated-variants.zip
+    Saved SampleTable[Alleles] to: grch37-CYP2D6-pipeline/alleles.zip
+    Saved CovFrame[ReadDepth] to: grch37-CYP2D6-pipeline/read-depth.zip
+    Saved CovFrame[CopyNumber] to: grch37-CYP2D6-pipeline/copy-number.zip
+    Saved SampleTable[CNVCalls] to: grch37-CYP2D6-pipeline/cnv-calls.zip
+    Saved SampleTable[Genotypes] to: grch37-CYP2D6-pipeline/genotypes.zip
+    Saved SampleTable[Phenotypes] to: grch37-CYP2D6-pipeline/phenotypes.zip
+    Saved SampleTable[Results] to: grch37-CYP2D6-pipeline/results.zip
 
 API examples
 ============
