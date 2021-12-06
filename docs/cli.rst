@@ -37,7 +37,7 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
-       import-variants     Import variant data for the target gene.
+       import-variants     Import variant (SNV/indel) data for the target gene
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
@@ -391,12 +391,18 @@ import-variants
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
                                 gene vcf imported-variants
    
-   Import variant data for the target gene.
+   Import variant (SNV/indel) data for the target gene.
+   
+   The command will first slice input VCF for the target gene and then assess
+   whether every genotype call in the sliced VCF is haplotype phased. It will
+   return an archive file with the semantic type VcfFrame[Consolidated] if the
+   VCF is fully phased or otherwise VcfFrame[Imported].
    
    Positional arguments:
      gene               Target gene.
      vcf                VCF file (zipped or unzipped).
-     imported-variants  Archive file with the semantic type VcfFrame[Imported].
+     imported-variants  Archive file with the semantic type VcfFrame[Imported] 
+                        or VcfFrame[Consolidated].
    
    Optional arguments:
      -h, --help         Show this help message and exit.

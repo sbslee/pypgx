@@ -4,6 +4,8 @@ Changelog
 0.10.0 (in development)
 -----------------------
 
+* :issue:`32`: Update :command:`import-variants` command to accept phased VCF as input. It will output VcfFrame[Consolidated] if the input VCF is fully phased or otherwise VcfFrame[Imported] as usual.
+
 0.9.0 (2021-12-05)
 ------------------
 

@@ -781,7 +781,13 @@ def import_read_depth(
 
 def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     """
-    Import variant data for the target gene.
+    Import variant (SNV/indel) data for the target gene.
+
+    The method will first slice input VCF for the target gene and then assess
+    whether every genotype call in the sliced VCF is haplotype phased. It
+    will return an archive object with the semantic type
+    VcfFrame[Consolidated] if the VCF is fully phased or otherwise
+    VcfFrame[Imported].
 
     Parameters
     ----------
@@ -797,26 +803,35 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type VcfFrame[Imported].
+        Archive object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     """
     if isinstance(vcf, str):
-        vf = pyvcf.VcfFrame.from_file(vcf)
+        input_vf = pyvcf.VcfFrame.from_file(vcf)
     else:
-        vf = vcf
+        input_vf = vcf
 
     region = core.get_region(gene, assembly=assembly)
 
-    data = vf.update_chr_prefix(mode='remove').slice(region).strip('GT:AD:DP')
-    data = data.add_af().unphase()
+    vf = input_vf.slice(region)
+    vf = vf.update_chr_prefix(mode='remove')
+    vf = vf.strip('GT:AD:DP')
+    vf = vf.add_af()
+
+    if vf.phased:
+        semantic_type = 'VcfFrame[Consolidated]'
+    else:
+        vf = vf.unphase()
+        semantic_type = 'VcfFrame[Imported]'
 
     metadata = {
         'Platform': platform,
         'Gene': gene,
         'Assembly': assembly,
-        'SemanticType': 'VcfFrame[Imported]',
+        'SemanticType': semantic_type,
     }
 
-    return sdk.Archive(metadata, data)
+    return sdk.Archive(metadata, vf)
 
 def predict_alleles(consolidated_variants):
     """
@@ -830,7 +845,7 @@ def predict_alleles(consolidated_variants):
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type VcfFrame SampleTable[Alleles].
+        Archive object with the semantic type SampleTable[Alleles].
     """
     if isinstance(consolidated_variants, str):
         consolidated_variants = sdk.Archive.from_file(consolidated_variants)
