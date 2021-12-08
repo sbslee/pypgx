@@ -112,15 +112,29 @@ class Archive:
             raise SemanticTypeNotFoundError(metadata['SemanticType'])
         return cls(metadata, data)
 
-    def check_type(self, semantic_type):
+    def check_type(self, semantic_types):
         """
         Raise IncorrectSemanticTypeError if the archive does not have
-        specified semantic type.
+        specified semantic type(s).
+
+        Parameters
+        ----------
+        semantic_types : str or list
+            One or more semantic types.
         """
-        actual_type = self.metadata['SemanticType']
-        if actual_type != semantic_type:
-            raise IncorrectSemanticTypeError(
-                f"Expected '{semantic_type}' but found '{actual_type}'")
+        if isinstance(semantic_types, str):
+            semantic_types = [semantic_types]
+        elif isinstance(semantic_types, list):
+            pass
+        else:
+            message = ('Semantic types must be str or list, '
+                f'not {type(semantic_types).__name__}')
+            raise TypeError(message)
+
+        if self.type not in semantic_types:
+            message = (f"Expected {'/'.join(semantic_types)}, but"
+                f" instead found {self.type}")
+            raise IncorrectSemanticTypeError(message)
 
     def check_metadata(self, key, value):
         """
