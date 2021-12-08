@@ -7,6 +7,8 @@ Changelog
 * :issue:`32`: Update :command:`import-variants` command to accept phased VCF as input. It will output VcfFrame[Consolidated] if the input VCF is fully phased or otherwise VcfFrame[Imported] as usual.
 * Add new property ``sdk.utils.Archive.type`` to quickly access the archive's semantic type.
 * Update :meth:`sdk.utils.Archive.check_type` method to be able to test more than one semantic type at once.
+* Update :meth:`api.plot.plot_vcf_allele_fraction` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated]
+* :issue:`32`: Update :command:`run-ngs-pipeline` method to accept phased VCF as input. In this case, the method will skip statistical haplotype phasing.
 
 0.9.0 (2021-12-05)
 ------------------

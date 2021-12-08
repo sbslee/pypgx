@@ -280,12 +280,13 @@ def plot_vcf_allele_fraction(
     imported_variants, path=None, samples=None, fontsize=25
 ):
     """
-    Plot allele fraction profile from VcfFrame[Imported].
+    Plot allele fraction profile with VCF data.
 
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -296,7 +297,8 @@ def plot_vcf_allele_fraction(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check_type('VcfFrame[Imported]')
+    imported_variants.check_type(
+        ['VcfFrame[Imported]', 'VcfFrame[Consolidated]'])
 
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']

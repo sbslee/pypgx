@@ -57,7 +57,9 @@ def create_parser(subparsers):
     parser.add_argument(
         '--variants',
         metavar='PATH',
-        help='VCF file (zipped or unzipped).'
+        help='VCF file (zipped or unzipped). Statistical haplotype \n'
+             'phasing will be skipped if input VCF is already fully \n'
+             'phased.'
     )
     parser.add_argument(
         '--depth-of-coverage',
@@ -82,8 +84,8 @@ def create_parser(subparsers):
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') (choices: \n"
-             "'GRCh37', 'GRCh38')."
+        help="Reference genome assembly (default: 'GRCh37') \n"
+             "(choices: 'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
         '--panel',
@@ -118,7 +120,7 @@ def main(args):
     pipeline.run_ngs_pipeline(
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
-        control_statistics=args.control_statistics, assembly=args.assembly, 
+        control_statistics=args.control_statistics, assembly=args.assembly,
         panel=args.panel, force=args.force, samples=args.samples,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,

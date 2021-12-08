@@ -697,7 +697,9 @@ run-ngs-pipeline
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --variants PATH       VCF file (zipped or unzipped).
+     --variants PATH       VCF file (zipped or unzipped). Statistical haplotype 
+                           phasing will be skipped if input VCF is already fully 
+                           phased.
      --depth-of-coverage PATH
                            Depth of coverage file (zipped or unzipped).
      --control-statistics PATH
@@ -705,8 +707,8 @@ run-ngs-pipeline
                            SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
-                           'GRCh37', 'GRCh38').
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
                            (zipped or unzipped). By default, the 1KGP panel is 
                            used.

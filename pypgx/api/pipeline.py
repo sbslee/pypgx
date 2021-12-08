@@ -82,7 +82,8 @@ def run_ngs_pipeline(
     output : str
         Output directory.
     variants : str, optional
-        VCF file (zipped or unzipped).
+        VCF file (zipped or unzipped). Statistical haplotype phasing will be
+        skipped if input VCF is already fully phased.
     depth_of_coverage : str, optional
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].
@@ -147,14 +148,22 @@ def run_ngs_pipeline(
         imported_variants = utils.import_variants(gene, variants,
             assembly=assembly, platform=platform)
         imported_variants.to_file(f'{output}/imported-variants.zip')
-        phased_variants = utils.estimate_phase_beagle(
-            imported_variants, panel=panel)
-        phased_variants.to_file(f'{output}/phased-variants.zip')
-        consolidated_variants = utils.create_consolidated_vcf(
-            imported_variants, phased_variants)
-        consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
+
+        # Skip statistical phasing if input VCF is already fully phased.
+        if imported_variants.type == 'VcfFrame[Consolidated]':
+            consolidated_variants = imported_variants
+        else:
+            phased_variants = utils.estimate_phase_beagle(
+                imported_variants, panel=panel)
+            phased_variants.to_file(f'{output}/phased-variants.zip')
+            consolidated_variants = utils.create_consolidated_vcf(
+                imported_variants, phased_variants)
+            consolidated_variants.to_file(
+                f'{output}/consolidated-variants.zip')
+
         alleles = utils.predict_alleles(consolidated_variants)
         alleles.to_file(f'{output}/alleles.zip')
+
         if not do_not_plot_allele_fraction:
             os.mkdir(f'{output}/allele-fraction-profile')
             plot.plot_vcf_allele_fraction(
