@@ -33,6 +33,11 @@ class Archive:
         self.metadata = metadata
         self.data = data
 
+    @property
+    def type(self):
+        """str : Semantic type."""
+        return self.metadata['SemanticType']
+
     def copy_metadata(self):
         """dict : Copy of the metadata."""
         return copy.deepcopy(self.metadata)

@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * :issue:`32`: Update :command:`import-variants` command to accept phased VCF as input. It will output VcfFrame[Consolidated] if the input VCF is fully phased or otherwise VcfFrame[Imported] as usual.
+* Add new property ``sdk.utils.Archive.type`` to quickly access the archive's semantic type.
 
 0.9.0 (2021-12-05)
 ------------------
