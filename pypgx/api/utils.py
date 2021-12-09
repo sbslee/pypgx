@@ -627,7 +627,7 @@ def create_regions_bed(
 
     Returns
     -------
-    fuc.pybed.BedFrame
+    fuc.api.pybed.BedFrame
         BED file.
     """
     df = core.load_gene_table()
@@ -793,8 +793,8 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     ----------
     gene : str
         Target gene.
-    vcf : fuc.pyvcf.VcfFrame or str
-        VCF file (zipped or unzipped).
+    vcf : fuc.api.pyvcf.VcfFrame or str
+        VCF file (compressed or uncompressed).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
@@ -806,14 +806,13 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
         Archive object with the semantic type VcfFrame[Imported] or
         VcfFrame[Consolidated].
     """
-    if isinstance(vcf, str):
-        input_vf = pyvcf.VcfFrame.from_file(vcf)
-    else:
-        input_vf = vcf
-
     region = core.get_region(gene, assembly=assembly)
 
-    vf = input_vf.slice(region)
+    if isinstance(vcf, str):
+        vf = pyvcf.VcfFrame.from_file(vcf, regions=region)
+    else:
+        vf = vcf.slice(region)
+
     vf = vf.update_chr_prefix(mode='remove')
     vf = vf.strip('GT:AD:DP')
     vf = vf.add_af()
