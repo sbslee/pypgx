@@ -18,13 +18,13 @@ epilog = f"""
   $ pypgx {fuc.api.common._script_name()} \\
   CYP3A5 \\
   CYP3A5-pipeline \\
-  --variants variants.vcf
+  --variants variants.vcf.gz
 
 [Example] To genotype the CYP2D6 gene, which does have SV, from WGS data:
   $ pypgx {fuc.api.common._script_name()} \\
   CYP2D6 \\
   CYP2D6-pipeline \\
-  --variants variants.vcf \\
+  --variants variants.vcf.gz \\
   --depth-of-coverage depth-of-coverage.tsv \\
   --control-statistcs control-statistics-VDR.zip
 
@@ -32,7 +32,7 @@ epilog = f"""
   $ pypgx {fuc.api.common._script_name()} \\
   CYP2D6 \\
   CYP2D6-pipeline \\
-  --variants variants.vcf \\
+  --variants variants.vcf.gz \\
   --depth-of-coverage depth-of-coverage.tsv \\
   --control-statistcs control-statistics-VDR.zip \\
   --platform Targeted
@@ -57,9 +57,10 @@ def create_parser(subparsers):
     parser.add_argument(
         '--variants',
         metavar='PATH',
-        help='VCF file (compressed or uncompressed). Statistical \n'
-             'haplotype phasing will be skipped if input VCF is already \n'
-             'fully phased.'
+        help='Input VCF file must be already BGZF compressed (.gz) \n'
+             'and indexed (.tbi) to allow random access. Statistical \n'
+             'haplotype phasing will be skipped if input VCF is \n'
+             'already fully phased.'
     )
     parser.add_argument(
         '--depth-of-coverage',
@@ -91,8 +92,8 @@ def create_parser(subparsers):
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
-             '(compressed or uncompressed). By default, the 1KGP panel \n'
-             'is used.'
+             '(compressed or uncompressed). By default, the 1KGP \n'
+             'panel is used.'
     )
     parser.add_argument(
         '--force',

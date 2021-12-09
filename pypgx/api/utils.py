@@ -793,8 +793,10 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     ----------
     gene : str
         Target gene.
-    vcf : fuc.api.pyvcf.VcfFrame or str
-        VCF file (compressed or uncompressed).
+    vcf : str or fuc.api.pyvcf.VcfFrame
+        Input VCF file must be already BGZF compressed (.gz) and indexed
+        (.tbi) to allow random access. Alternatively, you can provide a
+        VcfFrame object.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'

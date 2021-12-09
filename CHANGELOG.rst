@@ -9,6 +9,7 @@ Changelog
 * Update :meth:`sdk.utils.Archive.check_type` method to be able to test more than one semantic type at once.
 * Update :meth:`api.plot.plot_vcf_allele_fraction` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated]
 * :issue:`32`: Update :command:`run-ngs-pipeline` method to accept phased VCF as input. In this case, the method will skip statistical haplotype phasing.
+* :issue:`34`: Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to load large VCF files significantly faster by allowing random access. This also means, from now on, input VCF files must be BGZF compressed (.gz) and indexed (.tbi).
 
 0.9.0 (2021-12-05)
 ------------------

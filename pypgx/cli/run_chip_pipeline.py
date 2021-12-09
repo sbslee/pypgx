@@ -13,7 +13,7 @@ epilog = f"""
   $ pypgx {fuc.api.common._script_name()} \\
   CYP3A5 \\
   CYP3A5-pipeline \\
-  variants.vcf
+  variants.vcf.gz
 """
 
 def create_parser(subparsers):
@@ -34,7 +34,10 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'variants',
-        help='VCF file (compressed or uncompressed).'
+        help='Input VCF file must be already BGZF compressed (.gz) \n'
+             'and indexed (.tbi) to allow random access. Statistical \n'
+             'haplotype phasing will be skipped if input VCF is \n'
+             'already fully phased.'
     )
     parser.add_argument(
         '--assembly',

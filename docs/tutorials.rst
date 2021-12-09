@@ -37,9 +37,11 @@ those from:
 .. code-block:: text
 
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-variants.vcf.gz
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-variants.vcf.gz.tbi
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-depth-of-coverage.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-control-statistics-VDR.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz.tbi
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
 
@@ -174,6 +176,7 @@ For convenience, I prepared input files:
   $ mkdir coriell-affy-tutorial
   $ cd coriell-affy-tutorial
   $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/coriell-affy-tutorial/variants.vcf.gz
+  $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/coriell-affy-tutorial/variants.vcf.gz.tbi
 
 Next, run the chip pipeline:
 

@@ -400,7 +400,8 @@ import-variants
    
    Positional arguments:
      gene               Target gene.
-     vcf                VCF file (compressed or uncompressed).
+     vcf                Input VCF file must be already BGZF compressed (.gz) and 
+                        indexed (.tbi) to allow random access.
      imported-variants  Archive file with the semantic type VcfFrame[Imported] 
                         or VcfFrame[Consolidated].
    
@@ -654,7 +655,10 @@ run-chip-pipeline
    Positional arguments:
      gene             Target gene.
      output           Output directory.
-     variants         VCF file (compressed or uncompressed).
+     variants         Input VCF file must be already BGZF compressed (.gz) 
+                      and indexed (.tbi) to allow random access. Statistical 
+                      haplotype phasing will be skipped if input VCF is 
+                      already fully phased.
    
    Optional arguments:
      -h, --help       Show this help message and exit.
@@ -667,7 +671,7 @@ run-chip-pipeline
      $ pypgx run-chip-pipeline \
      CYP3A5 \
      CYP3A5-pipeline \
-     variants.vcf
+     variants.vcf.gz
 
 run-ngs-pipeline
 ================
@@ -697,9 +701,10 @@ run-ngs-pipeline
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --variants PATH       VCF file (compressed or uncompressed). Statistical 
-                           haplotype phasing will be skipped if input VCF is already 
-                           fully phased.
+     --variants PATH       Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access. Statistical 
+                           haplotype phasing will be skipped if input VCF is 
+                           already fully phased.
      --depth-of-coverage PATH
                            Depth of coverage file (compressed or uncompressed).
      --control-statistics PATH
@@ -710,8 +715,8 @@ run-ngs-pipeline
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP panel 
-                           is used.
+                           (compressed or uncompressed). By default, the 1KGP 
+                           panel is used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            List of known samples without SV.
@@ -724,13 +729,13 @@ run-ngs-pipeline
      $ pypgx run-ngs-pipeline \
      CYP3A5 \
      CYP3A5-pipeline \
-     --variants variants.vcf
+     --variants variants.vcf.gz
    
    [Example] To genotype the CYP2D6 gene, which does have SV, from WGS data:
      $ pypgx run-ngs-pipeline \
      CYP2D6 \
      CYP2D6-pipeline \
-     --variants variants.vcf \
+     --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
      --control-statistcs control-statistics-VDR.zip
    
@@ -738,7 +743,7 @@ run-ngs-pipeline
      $ pypgx run-ngs-pipeline \
      CYP2D6 \
      CYP2D6-pipeline \
-     --variants variants.vcf \
+     --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
      --control-statistcs control-statistics-VDR.zip \
      --platform Targeted

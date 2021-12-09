@@ -24,8 +24,10 @@ def run_chip_pipeline(
         Target gene.
     output : str
         Output directory.
-    variants : str
-        VCF file (compressed or uncompressed).
+    variants : str, optional
+        Input VCF file must be already BGZF compressed (.gz) and indexed
+        (.tbi) to allow random access. Statistical haplotype phasing will be
+        skipped if input VCF is already fully phased.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     impute : bool, default: False
@@ -44,12 +46,19 @@ def run_chip_pipeline(
     imported_variants = utils.import_variants(gene, variants,
         assembly=assembly, platform='Chip')
     imported_variants.to_file(f'{output}/imported-variants.zip')
-    phased_variants = utils.estimate_phase_beagle(imported_variants,
-        panel=panel, impute=impute)
-    phased_variants.to_file(f'{output}/phased-variants.zip')
-    consolidated_variants = utils.create_consolidated_vcf(
-        imported_variants, phased_variants)
-    consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
+
+    # Skip statistical phasing if input VCF is already fully phased.
+    if imported_variants.type == 'VcfFrame[Consolidated]':
+        consolidated_variants = imported_variants
+    else:
+        phased_variants = utils.estimate_phase_beagle(
+            imported_variants, panel=panel)
+        phased_variants.to_file(f'{output}/phased-variants.zip')
+        consolidated_variants = utils.create_consolidated_vcf(
+            imported_variants, phased_variants)
+        consolidated_variants.to_file(
+            f'{output}/consolidated-variants.zip')
+
     alleles = utils.predict_alleles(consolidated_variants)
     alleles.to_file(f'{output}/alleles.zip')
     genotypes = genotype.call_genotypes(alleles=alleles)
@@ -82,8 +91,9 @@ def run_ngs_pipeline(
     output : str
         Output directory.
     variants : str, optional
-        VCF file (compressed or uncompressed). Statistical haplotype phasing
-        will be skipped if input VCF is already fully phased.
+        Input VCF file must be already BGZF compressed (.gz) and indexed
+        (.tbi) to allow random access. Statistical haplotype phasing will be
+        skipped if input VCF is already fully phased.
     depth_of_coverage : str, optional
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].

@@ -27,7 +27,8 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'vcf',
-        help='VCF file (compressed or uncompressed).'
+        help='Input VCF file must be already BGZF compressed (.gz) and \n'
+             'indexed (.tbi) to allow random access.'
     )
     parser.add_argument(
         'imported_variants',
