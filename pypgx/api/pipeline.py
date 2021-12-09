@@ -25,7 +25,7 @@ def run_chip_pipeline(
     output : str
         Output directory.
     variants : str
-        VCF file (zipped or unzipped).
+        VCF file (compressed or uncompressed).
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     impute : bool, default: False
@@ -82,8 +82,8 @@ def run_ngs_pipeline(
     output : str
         Output directory.
     variants : str, optional
-        VCF file (zipped or unzipped). Statistical haplotype phasing will be
-        skipped if input VCF is already fully phased.
+        VCF file (compressed or uncompressed). Statistical haplotype phasing
+        will be skipped if input VCF is already fully phased.
     depth_of_coverage : str, optional
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].

@@ -57,14 +57,14 @@ def create_parser(subparsers):
     parser.add_argument(
         '--variants',
         metavar='PATH',
-        help='VCF file (zipped or unzipped). Statistical haplotype \n'
-             'phasing will be skipped if input VCF is already fully \n'
-             'phased.'
+        help='VCF file (compressed or uncompressed). Statistical \n'
+             'haplotype phasing will be skipped if input VCF is already \n'
+             'fully phased.'
     )
     parser.add_argument(
         '--depth-of-coverage',
         metavar='PATH',
-        help='Depth of coverage file (zipped or unzipped).'
+        help='Depth of coverage file (compressed or uncompressed).'
     )
     parser.add_argument(
         '--control-statistics',
@@ -91,8 +91,8 @@ def create_parser(subparsers):
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
-             '(zipped or unzipped). By default, the 1KGP panel is \n'
-             'used.'
+             '(compressed or uncompressed). By default, the 1KGP panel \n'
+             'is used.'
     )
     parser.add_argument(
         '--force',

@@ -60,7 +60,7 @@ def build_definition_table(gene, assembly='GRCh37'):
 
     Returns
     -------
-    fuc.pyvcf.VcfFrame
+    fuc.api.pyvcf.VcfFrame
         Definition table.
 
     Examples

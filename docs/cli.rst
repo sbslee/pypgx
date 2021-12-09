@@ -334,8 +334,8 @@ estimate-phase-beagle
    Optional arguments:
      -h, --help         Show this help message and exit.
      --panel PATH       VCF file corresponding to a reference haplotype panel 
-                        (zipped or unzipped). By default, the 1KGP panel is 
-                        used.
+                        (compressed or uncompressed). By default, the 1KGP panel 
+                        is used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -400,7 +400,7 @@ import-variants
    
    Positional arguments:
      gene               Target gene.
-     vcf                VCF file (zipped or unzipped).
+     vcf                VCF file (compressed or uncompressed).
      imported-variants  Archive file with the semantic type VcfFrame[Imported] 
                         or VcfFrame[Consolidated].
    
@@ -654,7 +654,7 @@ run-chip-pipeline
    Positional arguments:
      gene             Target gene.
      output           Output directory.
-     variants         VCF file (zipped or unzipped).
+     variants         VCF file (compressed or uncompressed).
    
    Optional arguments:
      -h, --help       Show this help message and exit.
@@ -697,11 +697,11 @@ run-ngs-pipeline
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --variants PATH       VCF file (zipped or unzipped). Statistical haplotype 
-                           phasing will be skipped if input VCF is already fully 
-                           phased.
+     --variants PATH       VCF file (compressed or uncompressed). Statistical 
+                           haplotype phasing will be skipped if input VCF is already 
+                           fully phased.
      --depth-of-coverage PATH
-                           Depth of coverage file (zipped or unzipped).
+                           Depth of coverage file (compressed or uncompressed).
      --control-statistics PATH
                            Archive file with the semandtic type 
                            SampleTable[Statistcs].
@@ -710,8 +710,8 @@ run-ngs-pipeline
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (zipped or unzipped). By default, the 1KGP panel is 
-                           used.
+                           (compressed or uncompressed). By default, the 1KGP panel 
+                           is used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            List of known samples without SV.

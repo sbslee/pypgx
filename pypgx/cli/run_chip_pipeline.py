@@ -34,7 +34,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'variants',
-        help='VCF file (zipped or unzipped).'
+        help='VCF file (compressed or uncompressed).'
     )
     parser.add_argument(
         '--assembly',
