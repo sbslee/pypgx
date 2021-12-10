@@ -458,7 +458,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Source
      - Coriell ID
    * - \*5
-     - Deletion
+     - DeletionHet
      - \*5/\*29
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png>`
