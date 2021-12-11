@@ -23,13 +23,12 @@ FUNCTION_ORDER = [
     'Class II (Deficient)',
     'Class III (Deficient)',
     'Unfavorable Response',
-    'Malignant Hyperthermia Susceptibility',
+    'Malignant Hyperthermia Associated',
     'Uncertain Function',
     'Unknown Function',
     'Normal Function',
     'Favorable Response',
     'Class IV (Normal)',
-    'Uncertain Susceptibility',
 ]
 
 class AlleleNotFoundError(Exception):
