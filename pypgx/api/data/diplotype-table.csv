@@ -1377,6 +1377,16 @@ CYP3A5,*7/*9,Indeterminate
 CYP3A5,*8/*8,Indeterminate
 CYP3A5,*8/*9,Indeterminate
 CYP3A5,*9/*9,Indeterminate
+IFNL3,Reference/Reference,Favorable Response
+IFNL3,Reference/rs12979860,Unfavorable Response
+IFNL3,Reference/rs8099917,Indeterminate
+IFNL3,Reference/rs12980275,Indeterminate
+IFNL3,rs12979860/rs12979860,Unfavorable Response
+IFNL3,rs12979860/rs8099917,Unfavorable Response
+IFNL3,rs12979860/rs12980275,Unfavorable Response
+IFNL3,rs8099917/rs8099917,Indeterminate
+IFNL3,rs8099917/rs12980275,Indeterminate
+IFNL3,rs12980275/rs12980275,Indeterminate
 NUDT15,*1/*4,Indeterminate
 NUDT15,*1/*5,Indeterminate
 NUDT15,*1/*6,Indeterminate

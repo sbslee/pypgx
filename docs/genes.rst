@@ -166,9 +166,9 @@ Below is a summary table:
      - ✅
      -
      - Contig differs between GRCh37 and GRCh38.
-   * - IFNL3
+   * - :ref:`genes:IFNL3`
      -
-     -
+     - ✅
      -
    * - NAT1
      -
@@ -757,6 +757,31 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
+
+IFNL3
+=====
+
+Phenotype summary for IFNL3
+---------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - Favorable Response
+     - Reference/Reference
+   * - Unfavorable Response
+     - Reference/rs12979860
+   * - Indeterminate
+     - Reference/rs8099917
+
+Resources for IFNL3
+-------------------
+
+- `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
 
 NUDT15
 ======

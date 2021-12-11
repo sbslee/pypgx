@@ -22,9 +22,11 @@ FUNCTION_ORDER = [
     'Class I (Deficient with CNSHA)',
     'Class II (Deficient)',
     'Class III (Deficient)',
+    'Unfavorable Response',
     'Uncertain Function',
     'Unknown Function',
     'Normal Function',
+    'Favorable Response',
     'Class IV (Normal)',
 ]
 
