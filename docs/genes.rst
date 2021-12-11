@@ -36,8 +36,8 @@ Below is a summary table:
      -
    * - CFTR
      -
-     -
-     -
+     - ✅
+     - 
    * - CYP1A1
      -
      -
@@ -278,6 +278,43 @@ Resources for CACNA1S
 
 - `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
+
+CFTR
+=====
+
+Phenotype summary for CFTR
+-----------------------------
+def phenotyper(r):    
+    if 'G551D' in r:
+        return 'Increased open channel probability'
+    elif r == 'F508del/F508del':
+        return 'No change in open channel probability'
+    elif any(x in r for x in enhanced_list):
+        return 'Significantly enhanced channel open probability'
+    else:
+        return 'Indeterminate'
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Increased open channel probability
+      - G551D/Reference
+    * - No change in open channel probability
+      - F508del/F508del
+    * - Significantly enhanced channel open probability
+      - S1251N/F508del
+    * - Indeterminate
+      - F508del/Reference      
+
+Resources for CFTR
+---------------------
+
+- `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
+- `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
 
 CYP2A6
 ======
