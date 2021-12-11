@@ -41,6 +41,8 @@ NUDT15,Poor Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Normal Metabolizer,Normal/Routine/Low risk
 NUDT15,Intermediate Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Indeterminate,Abnormal/Priority/High Risk
+RYR1,Uncertain Susceptibility,Normal Risk
+RYR1,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
 SLCO1B1,Normal Function,Normal/Routine/Low Risk
 SLCO1B1,Decreased Function,Abnormal/Priority/High Risk
 SLCO1B1,Poor Function,Abnormal/Priority/High Risk

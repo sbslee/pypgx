@@ -190,9 +190,9 @@ Below is a summary table:
      -
      -
      -
-   * - RYR1
+   * - :ref:`genes:RYR1`
      -
-     -
+     - ✅
      -
    * - SLC15A2
      -
@@ -830,6 +830,30 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*2/\*3
    * - Indeterminate
      - \*1/\*4
+
+RYR1
+====
+
+Phenotype summary for RYR1
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+  :header-rows: 1
+
+  * - Phenotype
+    - Example
+  * - Uncertain Susceptibility
+    - Reference/Reference
+  * - Malignant Hyperthermia Susceptibility
+    - Reference/c.103T>C
+
+Resources for RYR1
+------------------
+
+- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 
 SLC22A2
 =======
