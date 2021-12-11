@@ -30,9 +30,9 @@ Below is a summary table:
      -
      -
      -
-   * - CACNA1S
+   * - :ref:`genes:CACNA1S`
      -
-     -
+     - ✅
      -
    * - CFTR
      -
@@ -254,6 +254,29 @@ Below is a summary table:
      -
      -
      -
+
+CACNA1S
+=======
+
+Phenotype summary for CACNA1S
+-----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Uncertain Susceptibility
+      - Reference/Reference
+    * - Malignant Hyperthermia Susceptibility
+      - Reference/c.520C>T
+
+Resources for CACNA1S
+---------------------
+
+- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 
 CYP2A6
 ======

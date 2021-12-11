@@ -1,4 +1,10 @@
 Gene,Diplotype,Phenotype
+CACNA1S,Reference/Reference,Uncertain Susceptibility
+CACNA1S,Reference/c.520C>T,Malignant Hyperthermia Susceptibility
+CACNA1S,Reference/c.3257G>A,Malignant Hyperthermia Susceptibility
+CACNA1S,c.520C>T/c.520C>T,Malignant Hyperthermia Susceptibility
+CACNA1S,c.520C>T/c.3257G>A,Malignant Hyperthermia Susceptibility
+CACNA1S,c.3257G>A/c.3257G>A,Malignant Hyperthermia Susceptibility
 CYP2B6,*1/*1,Normal Metabolizer
 CYP2B6,*1/*2,Normal Metabolizer
 CYP2B6,*1/*3,Indeterminate
