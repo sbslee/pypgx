@@ -34,10 +34,10 @@ Below is a summary table:
      -
      - ✅
      -
-   * - CFTR
+   * - :ref:`genes:CFTR`
      -
-     -
-     -
+     - ✅
+     - 
    * - CYP1A1
      -
      -
@@ -278,6 +278,32 @@ Resources for CACNA1S
 
 - `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
+
+CFTR
+=====
+
+Phenotype summary for CFTR
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Favorable Response
+      - Reference/G551D
+    * - Unfavorable Response
+      - F508del/F508del
+    * - Indeterminate
+      - Reference/F508del
+
+Resources for CFTR
+---------------------
+
+- `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
+- `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
 
 CYP2A6
 ======

@@ -1,6 +1,9 @@
 Gene,Phenotype,Priority
 CACNA1S,Uncertain Susceptibility,Normal Risk
 CACNA1S,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
+CFTR,Favorable Response,None
+CFTR,Unfavorable Response,None
+CFTR,Indeterminate,None
 CYP2B6,Intermediate Metabolizer,Abnormal/Priority/High Risk
 CYP2B6,Normal Metabolizer,Normal/Routine/Low Risk
 CYP2B6,Poor Metabolizer,Abnormal/Priority/High Risk
