@@ -5,6 +5,867 @@ CACNA1S,Reference/c.3257G>A,Malignant Hyperthermia Susceptibility
 CACNA1S,c.520C>T/c.520C>T,Malignant Hyperthermia Susceptibility
 CACNA1S,c.520C>T/c.3257G>A,Malignant Hyperthermia Susceptibility
 CACNA1S,c.3257G>A/c.3257G>A,Malignant Hyperthermia Susceptibility
+CFTR,Reference/F508del,Indeterminate
+CFTR,G1069R/G1244E,Favorable Response
+CFTR,G1069R/G1349D,Favorable Response
+CFTR,G1069R/G178R,Favorable Response
+CFTR,G1069R/G551D,Favorable Response
+CFTR,G1069R/G551S,Favorable Response
+CFTR,G1069R/K1060T,Favorable Response
+CFTR,G1069R/L206W,Favorable Response
+CFTR,G1069R/P67L,Favorable Response
+CFTR,G1069R/R1070Q,Favorable Response
+CFTR,G1069R/R1070W,Favorable Response
+CFTR,F1074L/S977F,Favorable Response
+CFTR,G1069R/R117C,Favorable Response
+CFTR,G1069R/R347H,Favorable Response
+CFTR,G1069R/R352Q,Favorable Response
+CFTR,G1069R/R74W,Favorable Response
+CFTR,G1069R/S1251N,Favorable Response
+CFTR,G1069R/S1255P,Favorable Response
+CFTR,G1069R/S549N,Favorable Response
+CFTR,G1069R/S549R(A>C),Favorable Response
+CFTR,G1069R/S549R(T>G),Favorable Response
+CFTR,G1069R/S945L,Favorable Response
+CFTR,G1069R/S977F,Favorable Response
+CFTR,G1069R/R117H,Favorable Response
+CFTR,F1074L/S945L,Favorable Response
+CFTR,F1074L/S549R(T>G),Favorable Response
+CFTR,F1074L/S549R(A>C),Favorable Response
+CFTR,F1052V/S549R(A>C),Favorable Response
+CFTR,F1052V/S549R(T>G),Favorable Response
+CFTR,F1052V/S945L,Favorable Response
+CFTR,F1052V/S977F,Favorable Response
+CFTR,F1074L/G1069R,Favorable Response
+CFTR,F1074L/G1244E,Favorable Response
+CFTR,F1074L/G1349D,Favorable Response
+CFTR,F1074L/G178R,Favorable Response
+CFTR,F1074L/G551D,Favorable Response
+CFTR,F1074L/G551S,Favorable Response
+CFTR,F1074L/K1060T,Favorable Response
+CFTR,F1074L/L206W,Favorable Response
+CFTR,F1074L/P67L,Favorable Response
+CFTR,F1074L/R1070Q,Favorable Response
+CFTR,F1074L/R1070W,Favorable Response
+CFTR,F1074L/R117C,Favorable Response
+CFTR,F1074L/R117H,Favorable Response
+CFTR,F1074L/R347H,Favorable Response
+CFTR,F1074L/R352Q,Favorable Response
+CFTR,F1074L/R74W,Favorable Response
+CFTR,F1074L/S1251N,Favorable Response
+CFTR,F1074L/S1255P,Favorable Response
+CFTR,F1074L/S549N,Favorable Response
+CFTR,G1244E/G1349D,Favorable Response
+CFTR,G1244E/G178R,Favorable Response
+CFTR,G1244E/G551D,Favorable Response
+CFTR,G1244E/G551S,Favorable Response
+CFTR,G1349D/R347H,Favorable Response
+CFTR,G1349D/R352Q,Favorable Response
+CFTR,G1349D/R74W,Favorable Response
+CFTR,G1349D/S1251N,Favorable Response
+CFTR,G1349D/S1255P,Favorable Response
+CFTR,G1349D/S549N,Favorable Response
+CFTR,G1349D/S549R(A>C),Favorable Response
+CFTR,G1349D/S549R(T>G),Favorable Response
+CFTR,G1349D/S945L,Favorable Response
+CFTR,G1349D/S977F,Favorable Response
+CFTR,G178R/G551D,Favorable Response
+CFTR,G178R/G551S,Favorable Response
+CFTR,G178R/K1060T,Favorable Response
+CFTR,G178R/L206W,Favorable Response
+CFTR,G178R/P67L,Favorable Response
+CFTR,G178R/R1070Q,Favorable Response
+CFTR,G178R/R1070W,Favorable Response
+CFTR,G178R/R117C,Favorable Response
+CFTR,G178R/R117H,Favorable Response
+CFTR,G178R/R347H,Favorable Response
+CFTR,G178R/R352Q,Favorable Response
+CFTR,G178R/R74W,Favorable Response
+CFTR,G178R/S1251N,Favorable Response
+CFTR,G1349D/R117H,Favorable Response
+CFTR,F1052V/S549N,Favorable Response
+CFTR,G1349D/R117C,Favorable Response
+CFTR,G1349D/R1070Q,Favorable Response
+CFTR,G1244E/K1060T,Favorable Response
+CFTR,G1244E/L206W,Favorable Response
+CFTR,G1244E/P67L,Favorable Response
+CFTR,G1244E/R1070Q,Favorable Response
+CFTR,G1244E/R1070W,Favorable Response
+CFTR,G1244E/R117C,Favorable Response
+CFTR,G1244E/R117H,Favorable Response
+CFTR,G1244E/R347H,Favorable Response
+CFTR,G1244E/R352Q,Favorable Response
+CFTR,G1244E/R74W,Favorable Response
+CFTR,G1244E/S1251N,Favorable Response
+CFTR,G1244E/S1255P,Favorable Response
+CFTR,G1244E/S549N,Favorable Response
+CFTR,G1244E/S549R(A>C),Favorable Response
+CFTR,G1244E/S549R(T>G),Favorable Response
+CFTR,G1244E/S945L,Favorable Response
+CFTR,G1244E/S977F,Favorable Response
+CFTR,G1349D/G178R,Favorable Response
+CFTR,G1349D/G551D,Favorable Response
+CFTR,G1349D/G551S,Favorable Response
+CFTR,G1349D/K1060T,Favorable Response
+CFTR,G1349D/L206W,Favorable Response
+CFTR,G1349D/P67L,Favorable Response
+CFTR,G1349D/R1070W,Favorable Response
+CFTR,F1052V/S1255P,Favorable Response
+CFTR,F1052V/S1251N,Favorable Response
+CFTR,F1052V/R74W,Favorable Response
+CFTR,E193K/R347H,Favorable Response
+CFTR,E193K/R352Q,Favorable Response
+CFTR,E193K/R74W,Favorable Response
+CFTR,E193K/S1251N,Favorable Response
+CFTR,E193K/S1255P,Favorable Response
+CFTR,E193K/S549N,Favorable Response
+CFTR,E193K/S549R(A>C),Favorable Response
+CFTR,E193K/S549R(T>G),Favorable Response
+CFTR,E193K/S945L,Favorable Response
+CFTR,E193K/S977F,Favorable Response
+CFTR,E56K/E831X,Favorable Response
+CFTR,E56K/F1052V,Favorable Response
+CFTR,E56K/F1074L,Favorable Response
+CFTR,E56K/G1069R,Favorable Response
+CFTR,E56K/G1244E,Favorable Response
+CFTR,E56K/G1349D,Favorable Response
+CFTR,E56K/G178R,Favorable Response
+CFTR,E56K/G551D,Favorable Response
+CFTR,E56K/G551S,Favorable Response
+CFTR,E56K/K1060T,Favorable Response
+CFTR,E56K/L206W,Favorable Response
+CFTR,E56K/P67L,Favorable Response
+CFTR,E56K/R1070Q,Favorable Response
+CFTR,E193K/R117H,Favorable Response
+CFTR,E56K/R1070W,Favorable Response
+CFTR,E193K/R117C,Favorable Response
+CFTR,E193K/R1070Q,Favorable Response
+CFTR,D579G/R347H,Favorable Response
+CFTR,D579G/R352Q,Favorable Response
+CFTR,D579G/R74W,Favorable Response
+CFTR,D579G/S1251N,Favorable Response
+CFTR,D579G/S1255P,Favorable Response
+CFTR,D579G/S549N,Favorable Response
+CFTR,D579G/S549R(A>C),Favorable Response
+CFTR,D579G/S549R(T>G),Favorable Response
+CFTR,D579G/S945L,Favorable Response
+CFTR,D579G/S977F,Favorable Response
+CFTR,E193K/E56K,Favorable Response
+CFTR,E193K/E831X,Favorable Response
+CFTR,E193K/F1052V,Favorable Response
+CFTR,E193K/F1074L,Favorable Response
+CFTR,E193K/G1069R,Favorable Response
+CFTR,E193K/G1244E,Favorable Response
+CFTR,E193K/G1349D,Favorable Response
+CFTR,E193K/G178R,Favorable Response
+CFTR,E193K/G551D,Favorable Response
+CFTR,E193K/G551S,Favorable Response
+CFTR,E193K/K1060T,Favorable Response
+CFTR,E193K/L206W,Favorable Response
+CFTR,E193K/P67L,Favorable Response
+CFTR,E193K/R1070W,Favorable Response
+CFTR,G178R/S1255P,Favorable Response
+CFTR,E56K/R117C,Favorable Response
+CFTR,E56K/R347H,Favorable Response
+CFTR,E831X/S1251N,Favorable Response
+CFTR,E831X/S1255P,Favorable Response
+CFTR,E831X/S549N,Favorable Response
+CFTR,E831X/S549R(A>C),Favorable Response
+CFTR,E831X/S549R(T>G),Favorable Response
+CFTR,E831X/S945L,Favorable Response
+CFTR,E831X/S977F,Favorable Response
+CFTR,F1052V/F1074L,Favorable Response
+CFTR,F1052V/G1069R,Favorable Response
+CFTR,F1052V/G1244E,Favorable Response
+CFTR,F1052V/G1349D,Favorable Response
+CFTR,F1052V/G178R,Favorable Response
+CFTR,F1052V/G551D,Favorable Response
+CFTR,F1052V/G551S,Favorable Response
+CFTR,F1052V/K1060T,Favorable Response
+CFTR,F1052V/L206W,Favorable Response
+CFTR,F1052V/P67L,Favorable Response
+CFTR,F1052V/R1070Q,Favorable Response
+CFTR,F1052V/R1070W,Favorable Response
+CFTR,F1052V/R117C,Favorable Response
+CFTR,F1052V/R117H,Favorable Response
+CFTR,F1052V/R347H,Favorable Response
+CFTR,F1052V/R352Q,Favorable Response
+CFTR,E831X/R74W,Favorable Response
+CFTR,E56K/R117H,Favorable Response
+CFTR,E831X/R352Q,Favorable Response
+CFTR,E831X/R117H,Favorable Response
+CFTR,E56K/R352Q,Favorable Response
+CFTR,E56K/R74W,Favorable Response
+CFTR,E56K/S1251N,Favorable Response
+CFTR,E56K/S1255P,Favorable Response
+CFTR,E56K/S549N,Favorable Response
+CFTR,E56K/S549R(A>C),Favorable Response
+CFTR,E56K/S549R(T>G),Favorable Response
+CFTR,E56K/S945L,Favorable Response
+CFTR,E56K/S977F,Favorable Response
+CFTR,E831X/F1052V,Favorable Response
+CFTR,E831X/F1074L,Favorable Response
+CFTR,E831X/G1069R,Favorable Response
+CFTR,E831X/G1244E,Favorable Response
+CFTR,E831X/G1349D,Favorable Response
+CFTR,E831X/G178R,Favorable Response
+CFTR,E831X/G551D,Favorable Response
+CFTR,E831X/G551S,Favorable Response
+CFTR,E831X/K1060T,Favorable Response
+CFTR,E831X/L206W,Favorable Response
+CFTR,E831X/P67L,Favorable Response
+CFTR,E831X/R1070Q,Favorable Response
+CFTR,E831X/R1070W,Favorable Response
+CFTR,E831X/R117C,Favorable Response
+CFTR,E831X/R347H,Favorable Response
+CFTR,G178R/S549N,Favorable Response
+CFTR,G178R/S549R(A>C),Favorable Response
+CFTR,G178R/S549R(T>G),Favorable Response
+CFTR,R347H/S945L,Favorable Response
+CFTR,R347H/S977F,Favorable Response
+CFTR,R352Q/R74W,Favorable Response
+CFTR,R352Q/S1251N,Favorable Response
+CFTR,R352Q/S1255P,Favorable Response
+CFTR,R352Q/S549N,Favorable Response
+CFTR,R352Q/S549R(A>C),Favorable Response
+CFTR,R352Q/S549R(T>G),Favorable Response
+CFTR,R352Q/S945L,Favorable Response
+CFTR,R352Q/S977F,Favorable Response
+CFTR,R74W/S1251N,Favorable Response
+CFTR,R74W/S1255P,Favorable Response
+CFTR,R74W/S549N,Favorable Response
+CFTR,R74W/S549R(A>C),Favorable Response
+CFTR,R74W/S549R(T>G),Favorable Response
+CFTR,R74W/S945L,Favorable Response
+CFTR,R74W/S977F,Favorable Response
+CFTR,S1251N/S1255P,Favorable Response
+CFTR,S1251N/S549N,Favorable Response
+CFTR,S1251N/S549R(A>C),Favorable Response
+CFTR,S1251N/S549R(T>G),Favorable Response
+CFTR,S1251N/S945L,Favorable Response
+CFTR,S1251N/S977F,Favorable Response
+CFTR,R347H/S549R(T>G),Favorable Response
+CFTR,S1255P/S549N,Favorable Response
+CFTR,R347H/S549R(A>C),Favorable Response
+CFTR,R347H/S1255P,Favorable Response
+CFTR,R117C/R347H,Favorable Response
+CFTR,R117C/R352Q,Favorable Response
+CFTR,R117C/R74W,Favorable Response
+CFTR,R117C/S1251N,Favorable Response
+CFTR,R117C/S1255P,Favorable Response
+CFTR,R117C/S549N,Favorable Response
+CFTR,R117C/S549R(A>C),Favorable Response
+CFTR,R117C/S549R(T>G),Favorable Response
+CFTR,R117C/S945L,Favorable Response
+CFTR,R117C/S977F,Favorable Response
+CFTR,R117H/R347H,Favorable Response
+CFTR,R117H/R352Q,Favorable Response
+CFTR,R117H/R74W,Favorable Response
+CFTR,R117H/S1251N,Favorable Response
+CFTR,R117H/S1255P,Favorable Response
+CFTR,R117H/S549N,Favorable Response
+CFTR,R117H/S549R(A>C),Favorable Response
+CFTR,R117H/S549R(T>G),Favorable Response
+CFTR,R117H/S945L,Favorable Response
+CFTR,R117H/S977F,Favorable Response
+CFTR,R347H/R352Q,Favorable Response
+CFTR,R347H/R74W,Favorable Response
+CFTR,R347H/S1251N,Favorable Response
+CFTR,R347H/S549N,Favorable Response
+CFTR,R117C/R117H,Favorable Response
+CFTR,S1255P/S549R(A>C),Favorable Response
+CFTR,S1255P/S945L,Favorable Response
+CFTR,F1052V/F1052V,Favorable Response
+CFTR,F1074L/F1074L,Favorable Response
+CFTR,G1069R/G1069R,Favorable Response
+CFTR,G1244E/G1244E,Favorable Response
+CFTR,G1349D/G1349D,Favorable Response
+CFTR,G178R/G178R,Favorable Response
+CFTR,G551D/G551D,Favorable Response
+CFTR,G551S/G551S,Favorable Response
+CFTR,K1060T/K1060T,Favorable Response
+CFTR,L206W/L206W,Favorable Response
+CFTR,P67L/P67L,Favorable Response
+CFTR,R1070Q/R1070Q,Favorable Response
+CFTR,R1070W/R1070W,Favorable Response
+CFTR,R117C/R117C,Favorable Response
+CFTR,R117H/R117H,Favorable Response
+CFTR,R347H/R347H,Favorable Response
+CFTR,R352Q/R352Q,Favorable Response
+CFTR,R74W/R74W,Favorable Response
+CFTR,S1251N/S1251N,Favorable Response
+CFTR,S1255P/S1255P,Favorable Response
+CFTR,S549N/S549N,Favorable Response
+CFTR,S549R(A>C)/S549R(A>C),Favorable Response
+CFTR,S549R(T>G)/S549R(T>G),Favorable Response
+CFTR,E831X/E831X,Favorable Response
+CFTR,S1255P/S549R(T>G),Favorable Response
+CFTR,E56K/E56K,Favorable Response
+CFTR,D579G/D579G,Favorable Response
+CFTR,S1255P/S977F,Favorable Response
+CFTR,S549N/S549R(A>C),Favorable Response
+CFTR,S549N/S549R(T>G),Favorable Response
+CFTR,S549N/S945L,Favorable Response
+CFTR,S549N/S977F,Favorable Response
+CFTR,S549R(A>C)/S549R(T>G),Favorable Response
+CFTR,S549R(A>C)/S945L,Favorable Response
+CFTR,S549R(A>C)/S977F,Favorable Response
+CFTR,S549R(T>G)/S945L,Favorable Response
+CFTR,S549R(T>G)/S977F,Favorable Response
+CFTR,S945L/S977F,Favorable Response
+CFTR,Reference/Reference,Indeterminate
+CFTR,F508del/F508del,Unfavorable Response
+CFTR,2789+5G->A/2789+5G->A,Favorable Response
+CFTR,3272-26A->G/3272-26A->G,Favorable Response
+CFTR,3849+10kbC->T/3849+10kbC->T,Favorable Response
+CFTR,711+3A->G/711+3A->G,Favorable Response
+CFTR,A1067T/A1067T,Favorable Response
+CFTR,A455E/A455E,Favorable Response
+CFTR,D110E/D110E,Favorable Response
+CFTR,D110H/D110H,Favorable Response
+CFTR,D1152H/D1152H,Favorable Response
+CFTR,D1270N/D1270N,Favorable Response
+CFTR,E193K/E193K,Favorable Response
+CFTR,D579G/R117H,Favorable Response
+CFTR,R1070W/S977F,Favorable Response
+CFTR,R1070W/S549R(T>G),Favorable Response
+CFTR,G551S/R347H,Favorable Response
+CFTR,G551S/R352Q,Favorable Response
+CFTR,G551S/R74W,Favorable Response
+CFTR,G551S/S1251N,Favorable Response
+CFTR,G551S/S1255P,Favorable Response
+CFTR,G551S/S549N,Favorable Response
+CFTR,G551S/S549R(A>C),Favorable Response
+CFTR,G551S/S549R(T>G),Favorable Response
+CFTR,G551S/S945L,Favorable Response
+CFTR,G551S/S977F,Favorable Response
+CFTR,K1060T/L206W,Favorable Response
+CFTR,K1060T/P67L,Favorable Response
+CFTR,K1060T/R1070Q,Favorable Response
+CFTR,K1060T/R1070W,Favorable Response
+CFTR,K1060T/R117C,Favorable Response
+CFTR,K1060T/R117H,Favorable Response
+CFTR,K1060T/R347H,Favorable Response
+CFTR,K1060T/R352Q,Favorable Response
+CFTR,K1060T/R74W,Favorable Response
+CFTR,K1060T/S1251N,Favorable Response
+CFTR,K1060T/S1255P,Favorable Response
+CFTR,K1060T/S549N,Favorable Response
+CFTR,K1060T/S549R(A>C),Favorable Response
+CFTR,G551S/R117H,Favorable Response
+CFTR,K1060T/S549R(T>G),Favorable Response
+CFTR,G551S/R117C,Favorable Response
+CFTR,G551S/R1070Q,Favorable Response
+CFTR,G178R/S945L,Favorable Response
+CFTR,G178R/S977F,Favorable Response
+CFTR,G551D/G551S,Favorable Response
+CFTR,G551D/K1060T,Favorable Response
+CFTR,G551D/L206W,Favorable Response
+CFTR,G551D/P67L,Favorable Response
+CFTR,G551D/R1070Q,Favorable Response
+CFTR,G551D/R1070W,Favorable Response
+CFTR,G551D/R117C,Favorable Response
+CFTR,G551D/R117H,Favorable Response
+CFTR,G551D/R347H,Favorable Response
+CFTR,G551D/R352Q,Favorable Response
+CFTR,G551D/R74W,Favorable Response
+CFTR,G551D/S1251N,Favorable Response
+CFTR,G551D/S1255P,Favorable Response
+CFTR,G551D/S549N,Favorable Response
+CFTR,G551D/S549R(A>C),Favorable Response
+CFTR,G551D/S549R(T>G),Favorable Response
+CFTR,G551D/S945L,Favorable Response
+CFTR,G551D/S977F,Favorable Response
+CFTR,G551S/K1060T,Favorable Response
+CFTR,G551S/L206W,Favorable Response
+CFTR,G551S/P67L,Favorable Response
+CFTR,G551S/R1070W,Favorable Response
+CFTR,R1070W/S945L,Favorable Response
+CFTR,K1060T/S945L,Favorable Response
+CFTR,L206W/P67L,Favorable Response
+CFTR,P67L/S977F,Favorable Response
+CFTR,R1070Q/R1070W,Favorable Response
+CFTR,R1070Q/R117C,Favorable Response
+CFTR,R1070Q/R117H,Favorable Response
+CFTR,R1070Q/R347H,Favorable Response
+CFTR,R1070Q/R352Q,Favorable Response
+CFTR,R1070Q/R74W,Favorable Response
+CFTR,R1070Q/S1251N,Favorable Response
+CFTR,R1070Q/S1255P,Favorable Response
+CFTR,R1070Q/S549N,Favorable Response
+CFTR,R1070Q/S549R(A>C),Favorable Response
+CFTR,R1070Q/S549R(T>G),Favorable Response
+CFTR,R1070Q/S945L,Favorable Response
+CFTR,R1070Q/S977F,Favorable Response
+CFTR,R1070W/R117C,Favorable Response
+CFTR,R1070W/R117H,Favorable Response
+CFTR,R1070W/R347H,Favorable Response
+CFTR,R1070W/R352Q,Favorable Response
+CFTR,R1070W/R74W,Favorable Response
+CFTR,R1070W/S1251N,Favorable Response
+CFTR,R1070W/S1255P,Favorable Response
+CFTR,R1070W/S549N,Favorable Response
+CFTR,R1070W/S549R(A>C),Favorable Response
+CFTR,P67L/S945L,Favorable Response
+CFTR,K1060T/S977F,Favorable Response
+CFTR,P67L/S549R(T>G),Favorable Response
+CFTR,P67L/S549N,Favorable Response
+CFTR,L206W/R1070Q,Favorable Response
+CFTR,L206W/R1070W,Favorable Response
+CFTR,L206W/R117C,Favorable Response
+CFTR,L206W/R117H,Favorable Response
+CFTR,L206W/R347H,Favorable Response
+CFTR,L206W/R352Q,Favorable Response
+CFTR,L206W/R74W,Favorable Response
+CFTR,L206W/S1251N,Favorable Response
+CFTR,L206W/S1255P,Favorable Response
+CFTR,L206W/S549N,Favorable Response
+CFTR,L206W/S549R(A>C),Favorable Response
+CFTR,L206W/S549R(T>G),Favorable Response
+CFTR,L206W/S945L,Favorable Response
+CFTR,L206W/S977F,Favorable Response
+CFTR,P67L/R1070Q,Favorable Response
+CFTR,P67L/R1070W,Favorable Response
+CFTR,P67L/R117C,Favorable Response
+CFTR,P67L/R117H,Favorable Response
+CFTR,P67L/R347H,Favorable Response
+CFTR,P67L/R352Q,Favorable Response
+CFTR,P67L/R74W,Favorable Response
+CFTR,P67L/S1251N,Favorable Response
+CFTR,P67L/S1255P,Favorable Response
+CFTR,P67L/S549R(A>C),Favorable Response
+CFTR,S945L/S945L,Favorable Response
+CFTR,D579G/R117C,Favorable Response
+CFTR,D579G/R1070Q,Favorable Response
+CFTR,3272-26A->G/G551S,Favorable Response
+CFTR,3272-26A->G/K1060T,Favorable Response
+CFTR,3272-26A->G/L206W,Favorable Response
+CFTR,3272-26A->G/P67L,Favorable Response
+CFTR,3272-26A->G/R1070Q,Favorable Response
+CFTR,3272-26A->G/R1070W,Favorable Response
+CFTR,3272-26A->G/R117C,Favorable Response
+CFTR,3272-26A->G/R117H,Favorable Response
+CFTR,3272-26A->G/R347H,Favorable Response
+CFTR,3272-26A->G/R352Q,Favorable Response
+CFTR,3272-26A->G/G551D,Favorable Response
+CFTR,3272-26A->G/R74W,Favorable Response
+CFTR,3272-26A->G/S1255P,Favorable Response
+CFTR,3272-26A->G/S549N,Favorable Response
+CFTR,3272-26A->G/S549R(A>C),Favorable Response
+CFTR,3272-26A->G/S549R(T>G),Favorable Response
+CFTR,3272-26A->G/S945L,Favorable Response
+CFTR,3272-26A->G/S977F,Favorable Response
+CFTR,3849+10kbC->T/711+3A->G,Favorable Response
+CFTR,3849+10kbC->T/A1067T,Favorable Response
+CFTR,3849+10kbC->T/A455E,Favorable Response
+CFTR,3849+10kbC->T/D110E,Favorable Response
+CFTR,3272-26A->G/S1251N,Favorable Response
+CFTR,3272-26A->G/G178R,Favorable Response
+CFTR,3272-26A->G/G1349D,Favorable Response
+CFTR,3272-26A->G/G1244E,Favorable Response
+CFTR,2789+5G->A/R74W,Favorable Response
+CFTR,2789+5G->A/S1251N,Favorable Response
+CFTR,2789+5G->A/S1255P,Favorable Response
+CFTR,2789+5G->A/S549N,Favorable Response
+CFTR,2789+5G->A/S549R(A>C),Favorable Response
+CFTR,2789+5G->A/S549R(T>G),Favorable Response
+CFTR,2789+5G->A/S945L,Favorable Response
+CFTR,2789+5G->A/S977F,Favorable Response
+CFTR,3272-26A->G/3849+10kbC->T,Favorable Response
+CFTR,3272-26A->G/711+3A->G,Favorable Response
+CFTR,3272-26A->G/A1067T,Favorable Response
+CFTR,3272-26A->G/A455E,Favorable Response
+CFTR,3272-26A->G/D110E,Favorable Response
+CFTR,3272-26A->G/D110H,Favorable Response
+CFTR,3272-26A->G/D1152H,Favorable Response
+CFTR,3272-26A->G/D1270N,Favorable Response
+CFTR,3272-26A->G/D579G,Favorable Response
+CFTR,3272-26A->G/E193K,Favorable Response
+CFTR,3272-26A->G/E56K,Favorable Response
+CFTR,3272-26A->G/E831X,Favorable Response
+CFTR,3272-26A->G/F1052V,Favorable Response
+CFTR,3272-26A->G/F1074L,Favorable Response
+CFTR,3272-26A->G/G1069R,Favorable Response
+CFTR,3849+10kbC->T/D110H,Favorable Response
+CFTR,3849+10kbC->T/D1152H,Favorable Response
+CFTR,3849+10kbC->T/D1270N,Favorable Response
+CFTR,3849+10kbC->T/D579G,Favorable Response
+CFTR,3849+10kbC->T/S977F,Favorable Response
+CFTR,711+3A->G/A1067T,Favorable Response
+CFTR,711+3A->G/A455E,Favorable Response
+CFTR,711+3A->G/D110E,Favorable Response
+CFTR,711+3A->G/D110H,Favorable Response
+CFTR,711+3A->G/D1152H,Favorable Response
+CFTR,711+3A->G/D1270N,Favorable Response
+CFTR,711+3A->G/D579G,Favorable Response
+CFTR,711+3A->G/E193K,Favorable Response
+CFTR,711+3A->G/E56K,Favorable Response
+CFTR,711+3A->G/E831X,Favorable Response
+CFTR,711+3A->G/F1052V,Favorable Response
+CFTR,711+3A->G/F1074L,Favorable Response
+CFTR,711+3A->G/G1069R,Favorable Response
+CFTR,711+3A->G/G1244E,Favorable Response
+CFTR,711+3A->G/G1349D,Favorable Response
+CFTR,711+3A->G/G178R,Favorable Response
+CFTR,711+3A->G/G551D,Favorable Response
+CFTR,711+3A->G/G551S,Favorable Response
+CFTR,711+3A->G/K1060T,Favorable Response
+CFTR,711+3A->G/L206W,Favorable Response
+CFTR,711+3A->G/P67L,Favorable Response
+CFTR,711+3A->G/R1070Q,Favorable Response
+CFTR,3849+10kbC->T/S945L,Favorable Response
+CFTR,2789+5G->A/R352Q,Favorable Response
+CFTR,3849+10kbC->T/S549R(T>G),Favorable Response
+CFTR,3849+10kbC->T/S549N,Favorable Response
+CFTR,3849+10kbC->T/E193K,Favorable Response
+CFTR,3849+10kbC->T/E56K,Favorable Response
+CFTR,3849+10kbC->T/E831X,Favorable Response
+CFTR,3849+10kbC->T/F1052V,Favorable Response
+CFTR,3849+10kbC->T/F1074L,Favorable Response
+CFTR,3849+10kbC->T/G1069R,Favorable Response
+CFTR,3849+10kbC->T/G1244E,Favorable Response
+CFTR,3849+10kbC->T/G1349D,Favorable Response
+CFTR,3849+10kbC->T/G178R,Favorable Response
+CFTR,3849+10kbC->T/G551D,Favorable Response
+CFTR,3849+10kbC->T/G551S,Favorable Response
+CFTR,3849+10kbC->T/K1060T,Favorable Response
+CFTR,3849+10kbC->T/L206W,Favorable Response
+CFTR,3849+10kbC->T/P67L,Favorable Response
+CFTR,3849+10kbC->T/R1070Q,Favorable Response
+CFTR,3849+10kbC->T/R1070W,Favorable Response
+CFTR,3849+10kbC->T/R117C,Favorable Response
+CFTR,3849+10kbC->T/R117H,Favorable Response
+CFTR,3849+10kbC->T/R347H,Favorable Response
+CFTR,3849+10kbC->T/R352Q,Favorable Response
+CFTR,3849+10kbC->T/R74W,Favorable Response
+CFTR,3849+10kbC->T/S1251N,Favorable Response
+CFTR,3849+10kbC->T/S1255P,Favorable Response
+CFTR,3849+10kbC->T/S549R(A>C),Favorable Response
+CFTR,2789+5G->A/R347H,Favorable Response
+CFTR,2789+5G->A/R117H,Favorable Response
+CFTR,2789+5G->A/R117C,Favorable Response
+CFTR,Reference/R117C,Favorable Response
+CFTR,Reference/R117H,Favorable Response
+CFTR,Reference/R347H,Favorable Response
+CFTR,Reference/R352Q,Favorable Response
+CFTR,Reference/R74W,Favorable Response
+CFTR,Reference/S1251N,Favorable Response
+CFTR,Reference/S1255P,Favorable Response
+CFTR,Reference/S549N,Favorable Response
+CFTR,Reference/S549R(A>C),Favorable Response
+CFTR,Reference/S549R(T>G),Favorable Response
+CFTR,Reference/S945L,Favorable Response
+CFTR,Reference/S977F,Favorable Response
+CFTR,F508del/2789+5G->A,Favorable Response
+CFTR,F508del/3272-26A->G,Favorable Response
+CFTR,F508del/3849+10kbC->T,Favorable Response
+CFTR,F508del/711+3A->G,Favorable Response
+CFTR,F508del/A1067T,Favorable Response
+CFTR,F508del/A455E,Favorable Response
+CFTR,F508del/D110E,Favorable Response
+CFTR,F508del/D110H,Favorable Response
+CFTR,F508del/D1152H,Favorable Response
+CFTR,F508del/D1270N,Favorable Response
+CFTR,F508del/D579G,Favorable Response
+CFTR,Reference/R1070W,Favorable Response
+CFTR,F508del/E193K,Favorable Response
+CFTR,Reference/R1070Q,Favorable Response
+CFTR,Reference/L206W,Favorable Response
+CFTR,Reference/2789+5G->A,Favorable Response
+CFTR,Reference/3272-26A->G,Favorable Response
+CFTR,Reference/3849+10kbC->T,Favorable Response
+CFTR,Reference/711+3A->G,Favorable Response
+CFTR,Reference/A1067T,Favorable Response
+CFTR,Reference/A455E,Favorable Response
+CFTR,Reference/D110E,Favorable Response
+CFTR,Reference/D110H,Favorable Response
+CFTR,Reference/D1152H,Favorable Response
+CFTR,Reference/D1270N,Favorable Response
+CFTR,Reference/D579G,Favorable Response
+CFTR,Reference/E193K,Favorable Response
+CFTR,Reference/E56K,Favorable Response
+CFTR,Reference/E831X,Favorable Response
+CFTR,Reference/F1052V,Favorable Response
+CFTR,Reference/F1074L,Favorable Response
+CFTR,Reference/G1069R,Favorable Response
+CFTR,Reference/G1244E,Favorable Response
+CFTR,Reference/G1349D,Favorable Response
+CFTR,Reference/G178R,Favorable Response
+CFTR,Reference/G551D,Favorable Response
+CFTR,Reference/G551S,Favorable Response
+CFTR,Reference/K1060T,Favorable Response
+CFTR,Reference/P67L,Favorable Response
+CFTR,711+3A->G/R1070W,Favorable Response
+CFTR,F508del/E56K,Favorable Response
+CFTR,F508del/F1052V,Favorable Response
+CFTR,2789+5G->A/A1067T,Favorable Response
+CFTR,2789+5G->A/A455E,Favorable Response
+CFTR,2789+5G->A/D110E,Favorable Response
+CFTR,2789+5G->A/D110H,Favorable Response
+CFTR,2789+5G->A/D1152H,Favorable Response
+CFTR,2789+5G->A/D1270N,Favorable Response
+CFTR,2789+5G->A/D579G,Favorable Response
+CFTR,2789+5G->A/E193K,Favorable Response
+CFTR,2789+5G->A/E56K,Favorable Response
+CFTR,2789+5G->A/E831X,Favorable Response
+CFTR,2789+5G->A/F1052V,Favorable Response
+CFTR,2789+5G->A/F1074L,Favorable Response
+CFTR,2789+5G->A/G1069R,Favorable Response
+CFTR,2789+5G->A/G1244E,Favorable Response
+CFTR,2789+5G->A/G1349D,Favorable Response
+CFTR,2789+5G->A/G178R,Favorable Response
+CFTR,2789+5G->A/G551D,Favorable Response
+CFTR,2789+5G->A/G551S,Favorable Response
+CFTR,2789+5G->A/K1060T,Favorable Response
+CFTR,2789+5G->A/L206W,Favorable Response
+CFTR,2789+5G->A/P67L,Favorable Response
+CFTR,2789+5G->A/R1070Q,Favorable Response
+CFTR,2789+5G->A/R1070W,Favorable Response
+CFTR,2789+5G->A/711+3A->G,Favorable Response
+CFTR,F508del/E831X,Favorable Response
+CFTR,2789+5G->A/3849+10kbC->T,Favorable Response
+CFTR,F508del/S977F,Favorable Response
+CFTR,F508del/F1074L,Favorable Response
+CFTR,F508del/G1069R,Favorable Response
+CFTR,F508del/G1244E,Favorable Response
+CFTR,F508del/G1349D,Favorable Response
+CFTR,F508del/G178R,Favorable Response
+CFTR,F508del/G551D,Favorable Response
+CFTR,F508del/G551S,Favorable Response
+CFTR,F508del/K1060T,Favorable Response
+CFTR,F508del/L206W,Favorable Response
+CFTR,F508del/P67L,Favorable Response
+CFTR,F508del/R1070Q,Favorable Response
+CFTR,F508del/R1070W,Favorable Response
+CFTR,F508del/R117C,Favorable Response
+CFTR,F508del/R117H,Favorable Response
+CFTR,F508del/R347H,Favorable Response
+CFTR,F508del/R352Q,Favorable Response
+CFTR,F508del/R74W,Favorable Response
+CFTR,F508del/S1251N,Favorable Response
+CFTR,F508del/S1255P,Favorable Response
+CFTR,F508del/S549N,Favorable Response
+CFTR,F508del/S549R(A>C),Favorable Response
+CFTR,F508del/S549R(T>G),Favorable Response
+CFTR,F508del/S945L,Favorable Response
+CFTR,2789+5G->A/3272-26A->G,Favorable Response
+CFTR,711+3A->G/R117C,Favorable Response
+CFTR,711+3A->G/R117H,Favorable Response
+CFTR,711+3A->G/R347H,Favorable Response
+CFTR,D110H/S549R(A>C),Favorable Response
+CFTR,D110H/S549R(T>G),Favorable Response
+CFTR,D110H/S945L,Favorable Response
+CFTR,D110H/S977F,Favorable Response
+CFTR,D1152H/D1270N,Favorable Response
+CFTR,D1152H/D579G,Favorable Response
+CFTR,D1152H/E193K,Favorable Response
+CFTR,D1152H/E56K,Favorable Response
+CFTR,D1152H/E831X,Favorable Response
+CFTR,D1152H/F1052V,Favorable Response
+CFTR,D1152H/F1074L,Favorable Response
+CFTR,D1152H/G1069R,Favorable Response
+CFTR,D1152H/G1244E,Favorable Response
+CFTR,D1152H/G1349D,Favorable Response
+CFTR,D1152H/G178R,Favorable Response
+CFTR,D1152H/G551D,Favorable Response
+CFTR,D1152H/G551S,Favorable Response
+CFTR,D1152H/K1060T,Favorable Response
+CFTR,D1152H/L206W,Favorable Response
+CFTR,D1152H/P67L,Favorable Response
+CFTR,D1152H/R1070Q,Favorable Response
+CFTR,D1152H/R1070W,Favorable Response
+CFTR,D1152H/R117C,Favorable Response
+CFTR,D110H/S549N,Favorable Response
+CFTR,D1152H/R117H,Favorable Response
+CFTR,D110H/S1255P,Favorable Response
+CFTR,D110H/R74W,Favorable Response
+CFTR,D110H/D1152H,Favorable Response
+CFTR,D110H/D1270N,Favorable Response
+CFTR,D110H/D579G,Favorable Response
+CFTR,D110H/E193K,Favorable Response
+CFTR,D110H/E56K,Favorable Response
+CFTR,D110H/E831X,Favorable Response
+CFTR,D110H/F1052V,Favorable Response
+CFTR,D110H/F1074L,Favorable Response
+CFTR,D110H/G1069R,Favorable Response
+CFTR,D110H/G1244E,Favorable Response
+CFTR,D110H/G1349D,Favorable Response
+CFTR,D110H/G178R,Favorable Response
+CFTR,D110H/G551D,Favorable Response
+CFTR,D110H/G551S,Favorable Response
+CFTR,D110H/K1060T,Favorable Response
+CFTR,D110H/L206W,Favorable Response
+CFTR,D110H/P67L,Favorable Response
+CFTR,D110H/R1070Q,Favorable Response
+CFTR,D110H/R1070W,Favorable Response
+CFTR,D110H/R117C,Favorable Response
+CFTR,D110H/R117H,Favorable Response
+CFTR,D110H/R347H,Favorable Response
+CFTR,D110H/R352Q,Favorable Response
+CFTR,D110H/S1251N,Favorable Response
+CFTR,D110E/S977F,Favorable Response
+CFTR,D1152H/R347H,Favorable Response
+CFTR,D1152H/R74W,Favorable Response
+CFTR,D1270N/R352Q,Favorable Response
+CFTR,D1270N/R74W,Favorable Response
+CFTR,D1270N/S1251N,Favorable Response
+CFTR,D1270N/S1255P,Favorable Response
+CFTR,D1270N/S549N,Favorable Response
+CFTR,D1270N/S549R(A>C),Favorable Response
+CFTR,D1270N/S549R(T>G),Favorable Response
+CFTR,D1270N/S945L,Favorable Response
+CFTR,D1270N/S977F,Favorable Response
+CFTR,D579G/E193K,Favorable Response
+CFTR,D579G/E56K,Favorable Response
+CFTR,D579G/E831X,Favorable Response
+CFTR,D579G/F1052V,Favorable Response
+CFTR,D579G/F1074L,Favorable Response
+CFTR,D579G/G1069R,Favorable Response
+CFTR,D579G/G1244E,Favorable Response
+CFTR,D579G/G1349D,Favorable Response
+CFTR,D579G/G178R,Favorable Response
+CFTR,D579G/G551D,Favorable Response
+CFTR,D579G/G551S,Favorable Response
+CFTR,D579G/K1060T,Favorable Response
+CFTR,D579G/L206W,Favorable Response
+CFTR,D579G/P67L,Favorable Response
+CFTR,D1270N/R347H,Favorable Response
+CFTR,D1152H/R352Q,Favorable Response
+CFTR,D1270N/R117H,Favorable Response
+CFTR,D1270N/R1070W,Favorable Response
+CFTR,D1152H/S1251N,Favorable Response
+CFTR,D1152H/S1255P,Favorable Response
+CFTR,D1152H/S549N,Favorable Response
+CFTR,D1152H/S549R(A>C),Favorable Response
+CFTR,D1152H/S549R(T>G),Favorable Response
+CFTR,D1152H/S945L,Favorable Response
+CFTR,D1152H/S977F,Favorable Response
+CFTR,D1270N/D579G,Favorable Response
+CFTR,D1270N/E193K,Favorable Response
+CFTR,D1270N/E56K,Favorable Response
+CFTR,D1270N/E831X,Favorable Response
+CFTR,D1270N/F1052V,Favorable Response
+CFTR,D1270N/F1074L,Favorable Response
+CFTR,D1270N/G1069R,Favorable Response
+CFTR,D1270N/G1244E,Favorable Response
+CFTR,D1270N/G1349D,Favorable Response
+CFTR,D1270N/G178R,Favorable Response
+CFTR,D1270N/G551D,Favorable Response
+CFTR,D1270N/G551S,Favorable Response
+CFTR,D1270N/K1060T,Favorable Response
+CFTR,D1270N/L206W,Favorable Response
+CFTR,D1270N/P67L,Favorable Response
+CFTR,D1270N/R1070Q,Favorable Response
+CFTR,D1270N/R117C,Favorable Response
+CFTR,D579G/R1070W,Favorable Response
+CFTR,D110E/S945L,Favorable Response
+CFTR,D110E/S549R(A>C),Favorable Response
+CFTR,A1067T/L206W,Favorable Response
+CFTR,A1067T/P67L,Favorable Response
+CFTR,A1067T/R1070Q,Favorable Response
+CFTR,A1067T/R1070W,Favorable Response
+CFTR,A1067T/R117C,Favorable Response
+CFTR,A1067T/R117H,Favorable Response
+CFTR,A1067T/R347H,Favorable Response
+CFTR,A1067T/R352Q,Favorable Response
+CFTR,A1067T/R74W,Favorable Response
+CFTR,A1067T/S1251N,Favorable Response
+CFTR,A1067T/S1255P,Favorable Response
+CFTR,A1067T/S549N,Favorable Response
+CFTR,A1067T/S549R(A>C),Favorable Response
+CFTR,A1067T/S549R(T>G),Favorable Response
+CFTR,A1067T/S945L,Favorable Response
+CFTR,A1067T/S977F,Favorable Response
+CFTR,A455E/D110E,Favorable Response
+CFTR,A455E/D110H,Favorable Response
+CFTR,A455E/D1152H,Favorable Response
+CFTR,A455E/D1270N,Favorable Response
+CFTR,A455E/D579G,Favorable Response
+CFTR,A455E/E193K,Favorable Response
+CFTR,A455E/E56K,Favorable Response
+CFTR,A1067T/K1060T,Favorable Response
+CFTR,A455E/E831X,Favorable Response
+CFTR,A1067T/G551S,Favorable Response
+CFTR,A1067T/G178R,Favorable Response
+CFTR,711+3A->G/R352Q,Favorable Response
+CFTR,711+3A->G/R74W,Favorable Response
+CFTR,711+3A->G/S1251N,Favorable Response
+CFTR,711+3A->G/S1255P,Favorable Response
+CFTR,711+3A->G/S549N,Favorable Response
+CFTR,711+3A->G/S549R(A>C),Favorable Response
+CFTR,711+3A->G/S549R(T>G),Favorable Response
+CFTR,711+3A->G/S945L,Favorable Response
+CFTR,711+3A->G/S977F,Favorable Response
+CFTR,A1067T/A455E,Favorable Response
+CFTR,A1067T/D110E,Favorable Response
+CFTR,A1067T/D110H,Favorable Response
+CFTR,A1067T/D1152H,Favorable Response
+CFTR,A1067T/D1270N,Favorable Response
+CFTR,A1067T/D579G,Favorable Response
+CFTR,A1067T/E193K,Favorable Response
+CFTR,A1067T/E56K,Favorable Response
+CFTR,A1067T/E831X,Favorable Response
+CFTR,A1067T/F1052V,Favorable Response
+CFTR,A1067T/F1074L,Favorable Response
+CFTR,A1067T/G1069R,Favorable Response
+CFTR,A1067T/G1244E,Favorable Response
+CFTR,A1067T/G1349D,Favorable Response
+CFTR,A1067T/G551D,Favorable Response
+CFTR,D110E/S549R(T>G),Favorable Response
+CFTR,A455E/F1052V,Favorable Response
+CFTR,A455E/G1069R,Favorable Response
+CFTR,D110E/E56K,Favorable Response
+CFTR,D110E/E831X,Favorable Response
+CFTR,D110E/F1052V,Favorable Response
+CFTR,D110E/F1074L,Favorable Response
+CFTR,D110E/G1069R,Favorable Response
+CFTR,D110E/G1244E,Favorable Response
+CFTR,D110E/G1349D,Favorable Response
+CFTR,D110E/G178R,Favorable Response
+CFTR,D110E/G551D,Favorable Response
+CFTR,D110E/G551S,Favorable Response
+CFTR,D110E/K1060T,Favorable Response
+CFTR,D110E/L206W,Favorable Response
+CFTR,D110E/P67L,Favorable Response
+CFTR,D110E/R1070Q,Favorable Response
+CFTR,D110E/R1070W,Favorable Response
+CFTR,D110E/R117C,Favorable Response
+CFTR,D110E/R117H,Favorable Response
+CFTR,D110E/R347H,Favorable Response
+CFTR,D110E/R352Q,Favorable Response
+CFTR,D110E/R74W,Favorable Response
+CFTR,D110E/S1251N,Favorable Response
+CFTR,D110E/S1255P,Favorable Response
+CFTR,D110E/S549N,Favorable Response
+CFTR,D110E/E193K,Favorable Response
+CFTR,A455E/F1074L,Favorable Response
+CFTR,D110E/D579G,Favorable Response
+CFTR,D110E/D1152H,Favorable Response
+CFTR,A455E/G1244E,Favorable Response
+CFTR,A455E/G1349D,Favorable Response
+CFTR,A455E/G178R,Favorable Response
+CFTR,A455E/G551D,Favorable Response
+CFTR,A455E/G551S,Favorable Response
+CFTR,A455E/K1060T,Favorable Response
+CFTR,A455E/L206W,Favorable Response
+CFTR,A455E/P67L,Favorable Response
+CFTR,A455E/R1070Q,Favorable Response
+CFTR,A455E/R1070W,Favorable Response
+CFTR,A455E/R117C,Favorable Response
+CFTR,A455E/R117H,Favorable Response
+CFTR,A455E/R347H,Favorable Response
+CFTR,A455E/R352Q,Favorable Response
+CFTR,A455E/R74W,Favorable Response
+CFTR,A455E/S1251N,Favorable Response
+CFTR,A455E/S1255P,Favorable Response
+CFTR,A455E/S549N,Favorable Response
+CFTR,A455E/S549R(A>C),Favorable Response
+CFTR,A455E/S549R(T>G),Favorable Response
+CFTR,A455E/S945L,Favorable Response
+CFTR,A455E/S977F,Favorable Response
+CFTR,D110E/D110H,Favorable Response
+CFTR,D110E/D1270N,Favorable Response
+CFTR,S977F/S977F,Favorable Response
 CYP2B6,*1/*1,Normal Metabolizer
 CYP2B6,*1/*2,Normal Metabolizer
 CYP2B6,*1/*3,Indeterminate
@@ -4357,1684 +5218,3 @@ UGT1A1,*36/*80+*37,Intermediate Metabolizer
 UGT1A1,*37/*80+*37,Poor Metabolizer
 UGT1A1,*80/*80+*37,Indeterminate
 UGT1A1,*80+*37/*80+*37,Poor Metabolizer
-CFTR,Reference/Reference,Indeterminate
-CFTR,Reference/F508del,Indeterminate
-CFTR,Reference/2789+5G->A,Significantly enhanced channel open probability
-CFTR,Reference/3272-26A->G,Significantly enhanced channel open probability
-CFTR,Reference/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,Reference/711+3A->G,Significantly enhanced channel open probability
-CFTR,Reference/A1067T,Significantly enhanced channel open probability
-CFTR,Reference/A455E,Significantly enhanced channel open probability
-CFTR,Reference/D110E,Significantly enhanced channel open probability
-CFTR,Reference/D110H,Significantly enhanced channel open probability
-CFTR,Reference/D1152H,Significantly enhanced channel open probability
-CFTR,Reference/D1270N,Significantly enhanced channel open probability
-CFTR,Reference/D579G,Significantly enhanced channel open probability
-CFTR,Reference/E193K,Significantly enhanced channel open probability
-CFTR,Reference/E56K,Significantly enhanced channel open probability
-CFTR,Reference/E831X,Significantly enhanced channel open probability
-CFTR,Reference/F1052V,Significantly enhanced channel open probability
-CFTR,Reference/F1074L,Significantly enhanced channel open probability
-CFTR,Reference/G1069R,Significantly enhanced channel open probability
-CFTR,Reference/G1244E,Significantly enhanced channel open probability
-CFTR,Reference/G1349D,Significantly enhanced channel open probability
-CFTR,Reference/G178R,Significantly enhanced channel open probability
-CFTR,Reference/G551D,Increased open channel probability
-CFTR,Reference/G551S,Significantly enhanced channel open probability
-CFTR,Reference/K1060T,Significantly enhanced channel open probability
-CFTR,Reference/L206W,Significantly enhanced channel open probability
-CFTR,Reference/P67L,Significantly enhanced channel open probability
-CFTR,Reference/R1070Q,Significantly enhanced channel open probability
-CFTR,Reference/R1070W,Significantly enhanced channel open probability
-CFTR,Reference/R117C,Significantly enhanced channel open probability
-CFTR,Reference/R117H,Significantly enhanced channel open probability
-CFTR,Reference/R347H,Significantly enhanced channel open probability
-CFTR,Reference/R352Q,Significantly enhanced channel open probability
-CFTR,Reference/R74W,Significantly enhanced channel open probability
-CFTR,Reference/S1251N,Significantly enhanced channel open probability
-CFTR,Reference/S1255P,Significantly enhanced channel open probability
-CFTR,Reference/S549N,Significantly enhanced channel open probability
-CFTR,Reference/S549R(A>C),Significantly enhanced channel open probability
-CFTR,Reference/S549R(T>G),Significantly enhanced channel open probability
-CFTR,Reference/S945L,Significantly enhanced channel open probability
-CFTR,Reference/S977F,Significantly enhanced channel open probability
-CFTR,Reference/F508del,Indeterminate
-CFTR,F508del/F508del,No change in open channel probability
-CFTR,F508del/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F508del/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F508del/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F508del/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/F508del,Significantly enhanced channel open probability
-CFTR,A455E/F508del,Significantly enhanced channel open probability
-CFTR,D110E/F508del,Significantly enhanced channel open probability
-CFTR,D110H/F508del,Significantly enhanced channel open probability
-CFTR,D1152H/F508del,Significantly enhanced channel open probability
-CFTR,D1270N/F508del,Significantly enhanced channel open probability
-CFTR,D579G/F508del,Significantly enhanced channel open probability
-CFTR,E193K/F508del,Significantly enhanced channel open probability
-CFTR,E56K/F508del,Significantly enhanced channel open probability
-CFTR,E831X/F508del,Significantly enhanced channel open probability
-CFTR,F1052V/F508del,Significantly enhanced channel open probability
-CFTR,F1074L/F508del,Significantly enhanced channel open probability
-CFTR,G1069R/F508del,Significantly enhanced channel open probability
-CFTR,G1244E/F508del,Significantly enhanced channel open probability
-CFTR,G1349D/F508del,Significantly enhanced channel open probability
-CFTR,G178R/F508del,Significantly enhanced channel open probability
-CFTR,G551D/F508del,Increased open channel probability
-CFTR,G551S/F508del,Significantly enhanced channel open probability
-CFTR,K1060T/F508del,Significantly enhanced channel open probability
-CFTR,L206W/F508del,Significantly enhanced channel open probability
-CFTR,P67L/F508del,Significantly enhanced channel open probability
-CFTR,R1070Q/F508del,Significantly enhanced channel open probability
-CFTR,R1070W/F508del,Significantly enhanced channel open probability
-CFTR,R117C/F508del,Significantly enhanced channel open probability
-CFTR,R117H/F508del,Significantly enhanced channel open probability
-CFTR,R347H/F508del,Significantly enhanced channel open probability
-CFTR,R352Q/F508del,Significantly enhanced channel open probability
-CFTR,R74W/F508del,Significantly enhanced channel open probability
-CFTR,S1251N/F508del,Significantly enhanced channel open probability
-CFTR,S1255P/F508del,Significantly enhanced channel open probability
-CFTR,S549N/F508del,Significantly enhanced channel open probability
-CFTR,F508del/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F508del/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/F508del,Significantly enhanced channel open probability
-CFTR,S977F/F508del,Significantly enhanced channel open probability
-CFTR,Reference/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F508del/2789+5G->A,Significantly enhanced channel open probability
-CFTR,2789+5G->A/2789+5G->A,Significantly enhanced channel open probability
-CFTR,2789+5G->A/3272-26A->G,Significantly enhanced channel open probability
-CFTR,2789+5G->A/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/2789+5G->A,Significantly enhanced channel open probability
-CFTR,A1067T/2789+5G->A,Significantly enhanced channel open probability
-CFTR,A455E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D110E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D110H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D1152H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D1270N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D579G/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E193K/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E56K/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E831X/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F1052V/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F1074L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1069R/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1244E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1349D/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G178R/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G551D/2789+5G->A,Increased open channel probability
-CFTR,G551S/2789+5G->A,Significantly enhanced channel open probability
-CFTR,K1060T/2789+5G->A,Significantly enhanced channel open probability
-CFTR,L206W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,P67L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R1070Q/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R1070W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R117C/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R117H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R347H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R352Q/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R74W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S1251N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S1255P/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S549N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,2789+5G->A/S549R(A>C),Significantly enhanced channel open probability
-CFTR,2789+5G->A/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S977F/2789+5G->A,Significantly enhanced channel open probability
-CFTR,Reference/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F508del/3272-26A->G,Significantly enhanced channel open probability
-CFTR,2789+5G->A/3272-26A->G,Significantly enhanced channel open probability
-CFTR,3272-26A->G/3272-26A->G,Significantly enhanced channel open probability
-CFTR,3272-26A->G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/3272-26A->G,Significantly enhanced channel open probability
-CFTR,A1067T/3272-26A->G,Significantly enhanced channel open probability
-CFTR,A455E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D110E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D110H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D1152H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D1270N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D579G/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E193K/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E56K/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E831X/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F1052V/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F1074L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1069R/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1244E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1349D/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G178R/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G551D/3272-26A->G,Increased open channel probability
-CFTR,G551S/3272-26A->G,Significantly enhanced channel open probability
-CFTR,K1060T/3272-26A->G,Significantly enhanced channel open probability
-CFTR,L206W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,P67L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R1070Q/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R1070W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R117C/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R117H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R347H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R352Q/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R74W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S1251N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S1255P/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549R(A>C)/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549R(T>G)/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S945L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S977F/3272-26A->G,Significantly enhanced channel open probability
-CFTR,Reference/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F508del/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,2789+5G->A/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,3272-26A->G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,3849+10kbC->T/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,A1067T/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,A455E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D110E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D110H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D1152H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D1270N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D579G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E193K/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E56K/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E831X/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F1052V/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F1074L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1069R/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1244E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1349D/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G178R/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G551D/3849+10kbC->T,Increased open channel probability
-CFTR,G551S/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,K1060T/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,L206W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,P67L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R1070Q/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R1070W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R117C/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R117H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R347H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R352Q/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R74W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S1251N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S1255P/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S549N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S549R(A>C)/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S549R(T>G)/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S945L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S977F/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,Reference/711+3A->G,Significantly enhanced channel open probability
-CFTR,F508del/711+3A->G,Significantly enhanced channel open probability
-CFTR,711+3A->G/2789+5G->A,Significantly enhanced channel open probability
-CFTR,711+3A->G/3272-26A->G,Significantly enhanced channel open probability
-CFTR,711+3A->G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/711+3A->G,Significantly enhanced channel open probability
-CFTR,A455E/711+3A->G,Significantly enhanced channel open probability
-CFTR,D110E/711+3A->G,Significantly enhanced channel open probability
-CFTR,D110H/711+3A->G,Significantly enhanced channel open probability
-CFTR,D1152H/711+3A->G,Significantly enhanced channel open probability
-CFTR,D1270N/711+3A->G,Significantly enhanced channel open probability
-CFTR,D579G/711+3A->G,Significantly enhanced channel open probability
-CFTR,E193K/711+3A->G,Significantly enhanced channel open probability
-CFTR,E56K/711+3A->G,Significantly enhanced channel open probability
-CFTR,E831X/711+3A->G,Significantly enhanced channel open probability
-CFTR,F1052V/711+3A->G,Significantly enhanced channel open probability
-CFTR,F1074L/711+3A->G,Significantly enhanced channel open probability
-CFTR,G1069R/711+3A->G,Significantly enhanced channel open probability
-CFTR,G1244E/711+3A->G,Significantly enhanced channel open probability
-CFTR,G1349D/711+3A->G,Significantly enhanced channel open probability
-CFTR,G178R/711+3A->G,Significantly enhanced channel open probability
-CFTR,G551D/711+3A->G,Increased open channel probability
-CFTR,G551S/711+3A->G,Significantly enhanced channel open probability
-CFTR,K1060T/711+3A->G,Significantly enhanced channel open probability
-CFTR,L206W/711+3A->G,Significantly enhanced channel open probability
-CFTR,P67L/711+3A->G,Significantly enhanced channel open probability
-CFTR,R1070Q/711+3A->G,Significantly enhanced channel open probability
-CFTR,R1070W/711+3A->G,Significantly enhanced channel open probability
-CFTR,R117C/711+3A->G,Significantly enhanced channel open probability
-CFTR,R117H/711+3A->G,Significantly enhanced channel open probability
-CFTR,R347H/711+3A->G,Significantly enhanced channel open probability
-CFTR,R352Q/711+3A->G,Significantly enhanced channel open probability
-CFTR,R74W/711+3A->G,Significantly enhanced channel open probability
-CFTR,S1251N/711+3A->G,Significantly enhanced channel open probability
-CFTR,S1255P/711+3A->G,Significantly enhanced channel open probability
-CFTR,S549N/711+3A->G,Significantly enhanced channel open probability
-CFTR,711+3A->G/S549R(A>C),Significantly enhanced channel open probability
-CFTR,711+3A->G/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/711+3A->G,Significantly enhanced channel open probability
-CFTR,S977F/711+3A->G,Significantly enhanced channel open probability
-CFTR,Reference/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/F508del,Significantly enhanced channel open probability
-CFTR,A1067T/2789+5G->A,Significantly enhanced channel open probability
-CFTR,A1067T/3272-26A->G,Significantly enhanced channel open probability
-CFTR,A1067T/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,A1067T/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/A1067T,Significantly enhanced channel open probability
-CFTR,D110E/A1067T,Significantly enhanced channel open probability
-CFTR,D110H/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/D1152H,Significantly enhanced channel open probability
-CFTR,A1067T/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/A1067T,Significantly enhanced channel open probability
-CFTR,E193K/A1067T,Significantly enhanced channel open probability
-CFTR,E56K/A1067T,Significantly enhanced channel open probability
-CFTR,E831X/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/F1052V,Significantly enhanced channel open probability
-CFTR,A1067T/F1074L,Significantly enhanced channel open probability
-CFTR,A1067T/G1069R,Significantly enhanced channel open probability
-CFTR,A1067T/G1244E,Significantly enhanced channel open probability
-CFTR,A1067T/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/A1067T,Significantly enhanced channel open probability
-CFTR,G551D/A1067T,Increased open channel probability
-CFTR,G551S/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/A1067T,Significantly enhanced channel open probability
-CFTR,P67L/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/R1070Q,Significantly enhanced channel open probability
-CFTR,A1067T/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/A1067T,Significantly enhanced channel open probability
-CFTR,R117H/A1067T,Significantly enhanced channel open probability
-CFTR,R347H/A1067T,Significantly enhanced channel open probability
-CFTR,R352Q/A1067T,Significantly enhanced channel open probability
-CFTR,R74W/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/S1251N,Significantly enhanced channel open probability
-CFTR,A1067T/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/A1067T,Significantly enhanced channel open probability
-CFTR,A1067T/S549R(A>C),Significantly enhanced channel open probability
-CFTR,A1067T/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/A1067T,Significantly enhanced channel open probability
-CFTR,S977F/A1067T,Significantly enhanced channel open probability
-CFTR,Reference/A455E,Significantly enhanced channel open probability
-CFTR,A455E/F508del,Significantly enhanced channel open probability
-CFTR,A455E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,A455E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,A455E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,A455E/711+3A->G,Significantly enhanced channel open probability
-CFTR,A455E/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/A455E,Significantly enhanced channel open probability
-CFTR,A455E/D110E,Significantly enhanced channel open probability
-CFTR,A455E/D110H,Significantly enhanced channel open probability
-CFTR,A455E/D1152H,Significantly enhanced channel open probability
-CFTR,A455E/D1270N,Significantly enhanced channel open probability
-CFTR,A455E/D579G,Significantly enhanced channel open probability
-CFTR,A455E/E193K,Significantly enhanced channel open probability
-CFTR,E56K/A455E,Significantly enhanced channel open probability
-CFTR,A455E/E831X,Significantly enhanced channel open probability
-CFTR,A455E/F1052V,Significantly enhanced channel open probability
-CFTR,A455E/F1074L,Significantly enhanced channel open probability
-CFTR,A455E/G1069R,Significantly enhanced channel open probability
-CFTR,A455E/G1244E,Significantly enhanced channel open probability
-CFTR,A455E/G1349D,Significantly enhanced channel open probability
-CFTR,A455E/G178R,Significantly enhanced channel open probability
-CFTR,A455E/G551D,Increased open channel probability
-CFTR,A455E/G551S,Significantly enhanced channel open probability
-CFTR,A455E/K1060T,Significantly enhanced channel open probability
-CFTR,A455E/L206W,Significantly enhanced channel open probability
-CFTR,P67L/A455E,Significantly enhanced channel open probability
-CFTR,A455E/R1070Q,Significantly enhanced channel open probability
-CFTR,A455E/R1070W,Significantly enhanced channel open probability
-CFTR,A455E/R117C,Significantly enhanced channel open probability
-CFTR,A455E/R117H,Significantly enhanced channel open probability
-CFTR,A455E/R347H,Significantly enhanced channel open probability
-CFTR,A455E/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/A455E,Significantly enhanced channel open probability
-CFTR,A455E/S1251N,Significantly enhanced channel open probability
-CFTR,A455E/S1255P,Significantly enhanced channel open probability
-CFTR,A455E/S549N,Significantly enhanced channel open probability
-CFTR,A455E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,A455E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,A455E/S945L,Significantly enhanced channel open probability
-CFTR,A455E/S977F,Significantly enhanced channel open probability
-CFTR,Reference/D110E,Significantly enhanced channel open probability
-CFTR,D110E/F508del,Significantly enhanced channel open probability
-CFTR,D110E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D110E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D110E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D110E/711+3A->G,Significantly enhanced channel open probability
-CFTR,D110E/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/D110E,Significantly enhanced channel open probability
-CFTR,D110E/D110E,Significantly enhanced channel open probability
-CFTR,D110E/D110H,Significantly enhanced channel open probability
-CFTR,D110E/D1152H,Significantly enhanced channel open probability
-CFTR,D110E/D1270N,Significantly enhanced channel open probability
-CFTR,D110E/D579G,Significantly enhanced channel open probability
-CFTR,D110E/E193K,Significantly enhanced channel open probability
-CFTR,E56K/D110E,Significantly enhanced channel open probability
-CFTR,D110E/E831X,Significantly enhanced channel open probability
-CFTR,D110E/F1052V,Significantly enhanced channel open probability
-CFTR,D110E/F1074L,Significantly enhanced channel open probability
-CFTR,D110E/G1069R,Significantly enhanced channel open probability
-CFTR,D110E/G1244E,Significantly enhanced channel open probability
-CFTR,D110E/G1349D,Significantly enhanced channel open probability
-CFTR,D110E/G178R,Significantly enhanced channel open probability
-CFTR,D110E/G551D,Increased open channel probability
-CFTR,D110E/G551S,Significantly enhanced channel open probability
-CFTR,D110E/K1060T,Significantly enhanced channel open probability
-CFTR,D110E/L206W,Significantly enhanced channel open probability
-CFTR,P67L/D110E,Significantly enhanced channel open probability
-CFTR,D110E/R1070Q,Significantly enhanced channel open probability
-CFTR,D110E/R1070W,Significantly enhanced channel open probability
-CFTR,D110E/R117C,Significantly enhanced channel open probability
-CFTR,D110E/R117H,Significantly enhanced channel open probability
-CFTR,D110E/R347H,Significantly enhanced channel open probability
-CFTR,D110E/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/D110E,Significantly enhanced channel open probability
-CFTR,D110E/S1251N,Significantly enhanced channel open probability
-CFTR,D110E/S1255P,Significantly enhanced channel open probability
-CFTR,D110E/S549N,Significantly enhanced channel open probability
-CFTR,D110E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D110E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D110E/S945L,Significantly enhanced channel open probability
-CFTR,D110E/S977F,Significantly enhanced channel open probability
-CFTR,Reference/D110H,Significantly enhanced channel open probability
-CFTR,D110H/F508del,Significantly enhanced channel open probability
-CFTR,D110H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D110H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D110H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D110H/711+3A->G,Significantly enhanced channel open probability
-CFTR,D110H/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/D110H,Significantly enhanced channel open probability
-CFTR,D110E/D110H,Significantly enhanced channel open probability
-CFTR,D110H/D110H,Significantly enhanced channel open probability
-CFTR,D110H/D1152H,Significantly enhanced channel open probability
-CFTR,D110H/D1270N,Significantly enhanced channel open probability
-CFTR,D110H/D579G,Significantly enhanced channel open probability
-CFTR,D110H/E193K,Significantly enhanced channel open probability
-CFTR,E56K/D110H,Significantly enhanced channel open probability
-CFTR,D110H/E831X,Significantly enhanced channel open probability
-CFTR,D110H/F1052V,Significantly enhanced channel open probability
-CFTR,D110H/F1074L,Significantly enhanced channel open probability
-CFTR,D110H/G1069R,Significantly enhanced channel open probability
-CFTR,D110H/G1244E,Significantly enhanced channel open probability
-CFTR,D110H/G1349D,Significantly enhanced channel open probability
-CFTR,D110H/G178R,Significantly enhanced channel open probability
-CFTR,D110H/G551D,Increased open channel probability
-CFTR,D110H/G551S,Significantly enhanced channel open probability
-CFTR,D110H/K1060T,Significantly enhanced channel open probability
-CFTR,D110H/L206W,Significantly enhanced channel open probability
-CFTR,P67L/D110H,Significantly enhanced channel open probability
-CFTR,D110H/R1070Q,Significantly enhanced channel open probability
-CFTR,D110H/R1070W,Significantly enhanced channel open probability
-CFTR,D110H/R117C,Significantly enhanced channel open probability
-CFTR,D110H/R117H,Significantly enhanced channel open probability
-CFTR,D110H/R347H,Significantly enhanced channel open probability
-CFTR,D110H/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/D110H,Significantly enhanced channel open probability
-CFTR,D110H/S1251N,Significantly enhanced channel open probability
-CFTR,D110H/S1255P,Significantly enhanced channel open probability
-CFTR,D110H/S549N,Significantly enhanced channel open probability
-CFTR,D110H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D110H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D110H/S945L,Significantly enhanced channel open probability
-CFTR,D110H/S977F,Significantly enhanced channel open probability
-CFTR,Reference/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/F508del,Significantly enhanced channel open probability
-CFTR,D1152H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D1152H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D1152H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D1152H/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/D1152H,Significantly enhanced channel open probability
-CFTR,A455E/D1152H,Significantly enhanced channel open probability
-CFTR,D110E/D1152H,Significantly enhanced channel open probability
-CFTR,D110H/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/D1152H,Significantly enhanced channel open probability
-CFTR,E193K/D1152H,Significantly enhanced channel open probability
-CFTR,E56K/D1152H,Significantly enhanced channel open probability
-CFTR,E831X/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/F1052V,Significantly enhanced channel open probability
-CFTR,D1152H/F1074L,Significantly enhanced channel open probability
-CFTR,D1152H/G1069R,Significantly enhanced channel open probability
-CFTR,D1152H/G1244E,Significantly enhanced channel open probability
-CFTR,D1152H/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/D1152H,Significantly enhanced channel open probability
-CFTR,G551D/D1152H,Increased open channel probability
-CFTR,G551S/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/D1152H,Significantly enhanced channel open probability
-CFTR,P67L/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/R1070Q,Significantly enhanced channel open probability
-CFTR,D1152H/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/D1152H,Significantly enhanced channel open probability
-CFTR,R117H/D1152H,Significantly enhanced channel open probability
-CFTR,R347H/D1152H,Significantly enhanced channel open probability
-CFTR,R352Q/D1152H,Significantly enhanced channel open probability
-CFTR,R74W/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/S1251N,Significantly enhanced channel open probability
-CFTR,D1152H/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/D1152H,Significantly enhanced channel open probability
-CFTR,D1152H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D1152H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/D1152H,Significantly enhanced channel open probability
-CFTR,S977F/D1152H,Significantly enhanced channel open probability
-CFTR,Reference/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/F508del,Significantly enhanced channel open probability
-CFTR,D1270N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D1270N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D1270N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D1270N/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/D1270N,Significantly enhanced channel open probability
-CFTR,A455E/D1270N,Significantly enhanced channel open probability
-CFTR,D110E/D1270N,Significantly enhanced channel open probability
-CFTR,D110H/D1270N,Significantly enhanced channel open probability
-CFTR,D1152H/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/D1270N,Significantly enhanced channel open probability
-CFTR,E193K/D1270N,Significantly enhanced channel open probability
-CFTR,E56K/D1270N,Significantly enhanced channel open probability
-CFTR,E831X/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/F1052V,Significantly enhanced channel open probability
-CFTR,D1270N/F1074L,Significantly enhanced channel open probability
-CFTR,D1270N/G1069R,Significantly enhanced channel open probability
-CFTR,D1270N/G1244E,Significantly enhanced channel open probability
-CFTR,D1270N/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/D1270N,Significantly enhanced channel open probability
-CFTR,G551D/D1270N,Increased open channel probability
-CFTR,G551S/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/D1270N,Significantly enhanced channel open probability
-CFTR,P67L/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/R1070Q,Significantly enhanced channel open probability
-CFTR,D1270N/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/D1270N,Significantly enhanced channel open probability
-CFTR,R117H/D1270N,Significantly enhanced channel open probability
-CFTR,R347H/D1270N,Significantly enhanced channel open probability
-CFTR,R352Q/D1270N,Significantly enhanced channel open probability
-CFTR,R74W/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/S1251N,Significantly enhanced channel open probability
-CFTR,D1270N/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/D1270N,Significantly enhanced channel open probability
-CFTR,D1270N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D1270N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/D1270N,Significantly enhanced channel open probability
-CFTR,S977F/D1270N,Significantly enhanced channel open probability
-CFTR,Reference/D579G,Significantly enhanced channel open probability
-CFTR,D579G/F508del,Significantly enhanced channel open probability
-CFTR,D579G/2789+5G->A,Significantly enhanced channel open probability
-CFTR,D579G/3272-26A->G,Significantly enhanced channel open probability
-CFTR,D579G/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,D579G/711+3A->G,Significantly enhanced channel open probability
-CFTR,D579G/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/D579G,Significantly enhanced channel open probability
-CFTR,D110E/D579G,Significantly enhanced channel open probability
-CFTR,D110H/D579G,Significantly enhanced channel open probability
-CFTR,D579G/D1152H,Significantly enhanced channel open probability
-CFTR,D579G/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/D579G,Significantly enhanced channel open probability
-CFTR,D579G/E193K,Significantly enhanced channel open probability
-CFTR,E56K/D579G,Significantly enhanced channel open probability
-CFTR,D579G/E831X,Significantly enhanced channel open probability
-CFTR,D579G/F1052V,Significantly enhanced channel open probability
-CFTR,D579G/F1074L,Significantly enhanced channel open probability
-CFTR,D579G/G1069R,Significantly enhanced channel open probability
-CFTR,D579G/G1244E,Significantly enhanced channel open probability
-CFTR,D579G/G1349D,Significantly enhanced channel open probability
-CFTR,D579G/G178R,Significantly enhanced channel open probability
-CFTR,D579G/G551D,Increased open channel probability
-CFTR,D579G/G551S,Significantly enhanced channel open probability
-CFTR,D579G/K1060T,Significantly enhanced channel open probability
-CFTR,D579G/L206W,Significantly enhanced channel open probability
-CFTR,P67L/D579G,Significantly enhanced channel open probability
-CFTR,D579G/R1070Q,Significantly enhanced channel open probability
-CFTR,D579G/R1070W,Significantly enhanced channel open probability
-CFTR,D579G/R117C,Significantly enhanced channel open probability
-CFTR,D579G/R117H,Significantly enhanced channel open probability
-CFTR,D579G/R347H,Significantly enhanced channel open probability
-CFTR,D579G/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/D579G,Significantly enhanced channel open probability
-CFTR,D579G/S1251N,Significantly enhanced channel open probability
-CFTR,D579G/S1255P,Significantly enhanced channel open probability
-CFTR,D579G/S549N,Significantly enhanced channel open probability
-CFTR,D579G/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D579G/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D579G/S945L,Significantly enhanced channel open probability
-CFTR,D579G/S977F,Significantly enhanced channel open probability
-CFTR,Reference/E193K,Significantly enhanced channel open probability
-CFTR,E193K/F508del,Significantly enhanced channel open probability
-CFTR,E193K/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E193K/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E193K/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E193K/711+3A->G,Significantly enhanced channel open probability
-CFTR,E193K/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/E193K,Significantly enhanced channel open probability
-CFTR,D110E/E193K,Significantly enhanced channel open probability
-CFTR,D110H/E193K,Significantly enhanced channel open probability
-CFTR,E193K/D1152H,Significantly enhanced channel open probability
-CFTR,E193K/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/E193K,Significantly enhanced channel open probability
-CFTR,E193K/E193K,Significantly enhanced channel open probability
-CFTR,E56K/E193K,Significantly enhanced channel open probability
-CFTR,E193K/E831X,Significantly enhanced channel open probability
-CFTR,E193K/F1052V,Significantly enhanced channel open probability
-CFTR,E193K/F1074L,Significantly enhanced channel open probability
-CFTR,E193K/G1069R,Significantly enhanced channel open probability
-CFTR,E193K/G1244E,Significantly enhanced channel open probability
-CFTR,E193K/G1349D,Significantly enhanced channel open probability
-CFTR,E193K/G178R,Significantly enhanced channel open probability
-CFTR,E193K/G551D,Increased open channel probability
-CFTR,E193K/G551S,Significantly enhanced channel open probability
-CFTR,E193K/K1060T,Significantly enhanced channel open probability
-CFTR,E193K/L206W,Significantly enhanced channel open probability
-CFTR,P67L/E193K,Significantly enhanced channel open probability
-CFTR,E193K/R1070Q,Significantly enhanced channel open probability
-CFTR,E193K/R1070W,Significantly enhanced channel open probability
-CFTR,E193K/R117C,Significantly enhanced channel open probability
-CFTR,E193K/R117H,Significantly enhanced channel open probability
-CFTR,E193K/R347H,Significantly enhanced channel open probability
-CFTR,E193K/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/E193K,Significantly enhanced channel open probability
-CFTR,E193K/S1251N,Significantly enhanced channel open probability
-CFTR,E193K/S1255P,Significantly enhanced channel open probability
-CFTR,E193K/S549N,Significantly enhanced channel open probability
-CFTR,E193K/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E193K/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E193K/S945L,Significantly enhanced channel open probability
-CFTR,E193K/S977F,Significantly enhanced channel open probability
-CFTR,Reference/E56K,Significantly enhanced channel open probability
-CFTR,E56K/F508del,Significantly enhanced channel open probability
-CFTR,E56K/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E56K/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E56K/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E56K/711+3A->G,Significantly enhanced channel open probability
-CFTR,E56K/A1067T,Significantly enhanced channel open probability
-CFTR,E56K/A455E,Significantly enhanced channel open probability
-CFTR,E56K/D110E,Significantly enhanced channel open probability
-CFTR,E56K/D110H,Significantly enhanced channel open probability
-CFTR,E56K/D1152H,Significantly enhanced channel open probability
-CFTR,E56K/D1270N,Significantly enhanced channel open probability
-CFTR,E56K/D579G,Significantly enhanced channel open probability
-CFTR,E56K/E193K,Significantly enhanced channel open probability
-CFTR,E56K/E56K,Significantly enhanced channel open probability
-CFTR,E56K/E831X,Significantly enhanced channel open probability
-CFTR,E56K/F1052V,Significantly enhanced channel open probability
-CFTR,E56K/F1074L,Significantly enhanced channel open probability
-CFTR,E56K/G1069R,Significantly enhanced channel open probability
-CFTR,E56K/G1244E,Significantly enhanced channel open probability
-CFTR,E56K/G1349D,Significantly enhanced channel open probability
-CFTR,E56K/G178R,Significantly enhanced channel open probability
-CFTR,E56K/G551D,Increased open channel probability
-CFTR,E56K/G551S,Significantly enhanced channel open probability
-CFTR,E56K/K1060T,Significantly enhanced channel open probability
-CFTR,E56K/L206W,Significantly enhanced channel open probability
-CFTR,E56K/P67L,Significantly enhanced channel open probability
-CFTR,E56K/R1070Q,Significantly enhanced channel open probability
-CFTR,E56K/R1070W,Significantly enhanced channel open probability
-CFTR,E56K/R117C,Significantly enhanced channel open probability
-CFTR,E56K/R117H,Significantly enhanced channel open probability
-CFTR,E56K/R347H,Significantly enhanced channel open probability
-CFTR,E56K/R352Q,Significantly enhanced channel open probability
-CFTR,E56K/R74W,Significantly enhanced channel open probability
-CFTR,E56K/S1251N,Significantly enhanced channel open probability
-CFTR,E56K/S1255P,Significantly enhanced channel open probability
-CFTR,E56K/S549N,Significantly enhanced channel open probability
-CFTR,E56K/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E56K/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E56K/S945L,Significantly enhanced channel open probability
-CFTR,E56K/S977F,Significantly enhanced channel open probability
-CFTR,Reference/E831X,Significantly enhanced channel open probability
-CFTR,E831X/F508del,Significantly enhanced channel open probability
-CFTR,E831X/2789+5G->A,Significantly enhanced channel open probability
-CFTR,E831X/3272-26A->G,Significantly enhanced channel open probability
-CFTR,E831X/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,E831X/711+3A->G,Significantly enhanced channel open probability
-CFTR,E831X/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/E831X,Significantly enhanced channel open probability
-CFTR,D110E/E831X,Significantly enhanced channel open probability
-CFTR,D110H/E831X,Significantly enhanced channel open probability
-CFTR,E831X/D1152H,Significantly enhanced channel open probability
-CFTR,E831X/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/E831X,Significantly enhanced channel open probability
-CFTR,E193K/E831X,Significantly enhanced channel open probability
-CFTR,E56K/E831X,Significantly enhanced channel open probability
-CFTR,E831X/E831X,Significantly enhanced channel open probability
-CFTR,E831X/F1052V,Significantly enhanced channel open probability
-CFTR,E831X/F1074L,Significantly enhanced channel open probability
-CFTR,E831X/G1069R,Significantly enhanced channel open probability
-CFTR,E831X/G1244E,Significantly enhanced channel open probability
-CFTR,E831X/G1349D,Significantly enhanced channel open probability
-CFTR,E831X/G178R,Significantly enhanced channel open probability
-CFTR,E831X/G551D,Increased open channel probability
-CFTR,E831X/G551S,Significantly enhanced channel open probability
-CFTR,E831X/K1060T,Significantly enhanced channel open probability
-CFTR,E831X/L206W,Significantly enhanced channel open probability
-CFTR,P67L/E831X,Significantly enhanced channel open probability
-CFTR,E831X/R1070Q,Significantly enhanced channel open probability
-CFTR,E831X/R1070W,Significantly enhanced channel open probability
-CFTR,E831X/R117C,Significantly enhanced channel open probability
-CFTR,E831X/R117H,Significantly enhanced channel open probability
-CFTR,E831X/R347H,Significantly enhanced channel open probability
-CFTR,E831X/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/E831X,Significantly enhanced channel open probability
-CFTR,E831X/S1251N,Significantly enhanced channel open probability
-CFTR,E831X/S1255P,Significantly enhanced channel open probability
-CFTR,E831X/S549N,Significantly enhanced channel open probability
-CFTR,E831X/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E831X/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E831X/S945L,Significantly enhanced channel open probability
-CFTR,E831X/S977F,Significantly enhanced channel open probability
-CFTR,Reference/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/F508del,Significantly enhanced channel open probability
-CFTR,F1052V/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F1052V/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F1052V/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F1052V/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/F1052V,Significantly enhanced channel open probability
-CFTR,A455E/F1052V,Significantly enhanced channel open probability
-CFTR,D110E/F1052V,Significantly enhanced channel open probability
-CFTR,D110H/F1052V,Significantly enhanced channel open probability
-CFTR,D1152H/F1052V,Significantly enhanced channel open probability
-CFTR,D1270N/F1052V,Significantly enhanced channel open probability
-CFTR,D579G/F1052V,Significantly enhanced channel open probability
-CFTR,E193K/F1052V,Significantly enhanced channel open probability
-CFTR,E56K/F1052V,Significantly enhanced channel open probability
-CFTR,E831X/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/F1074L,Significantly enhanced channel open probability
-CFTR,F1052V/G1069R,Significantly enhanced channel open probability
-CFTR,F1052V/G1244E,Significantly enhanced channel open probability
-CFTR,F1052V/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/F1052V,Significantly enhanced channel open probability
-CFTR,G551D/F1052V,Increased open channel probability
-CFTR,G551S/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/F1052V,Significantly enhanced channel open probability
-CFTR,P67L/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/R1070Q,Significantly enhanced channel open probability
-CFTR,F1052V/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/F1052V,Significantly enhanced channel open probability
-CFTR,R117H/F1052V,Significantly enhanced channel open probability
-CFTR,R347H/F1052V,Significantly enhanced channel open probability
-CFTR,R352Q/F1052V,Significantly enhanced channel open probability
-CFTR,R74W/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/S1251N,Significantly enhanced channel open probability
-CFTR,F1052V/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/F1052V,Significantly enhanced channel open probability
-CFTR,F1052V/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F1052V/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/F1052V,Significantly enhanced channel open probability
-CFTR,S977F/F1052V,Significantly enhanced channel open probability
-CFTR,Reference/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/F508del,Significantly enhanced channel open probability
-CFTR,F1074L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,F1074L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,F1074L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,F1074L/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/F1074L,Significantly enhanced channel open probability
-CFTR,A455E/F1074L,Significantly enhanced channel open probability
-CFTR,D110E/F1074L,Significantly enhanced channel open probability
-CFTR,D110H/F1074L,Significantly enhanced channel open probability
-CFTR,D1152H/F1074L,Significantly enhanced channel open probability
-CFTR,D1270N/F1074L,Significantly enhanced channel open probability
-CFTR,D579G/F1074L,Significantly enhanced channel open probability
-CFTR,E193K/F1074L,Significantly enhanced channel open probability
-CFTR,E56K/F1074L,Significantly enhanced channel open probability
-CFTR,E831X/F1074L,Significantly enhanced channel open probability
-CFTR,F1052V/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/G1069R,Significantly enhanced channel open probability
-CFTR,F1074L/G1244E,Significantly enhanced channel open probability
-CFTR,F1074L/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/F1074L,Significantly enhanced channel open probability
-CFTR,G551D/F1074L,Increased open channel probability
-CFTR,G551S/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/F1074L,Significantly enhanced channel open probability
-CFTR,P67L/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/R1070Q,Significantly enhanced channel open probability
-CFTR,F1074L/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/F1074L,Significantly enhanced channel open probability
-CFTR,R117H/F1074L,Significantly enhanced channel open probability
-CFTR,R347H/F1074L,Significantly enhanced channel open probability
-CFTR,R352Q/F1074L,Significantly enhanced channel open probability
-CFTR,R74W/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/S1251N,Significantly enhanced channel open probability
-CFTR,F1074L/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/F1074L,Significantly enhanced channel open probability
-CFTR,F1074L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F1074L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/F1074L,Significantly enhanced channel open probability
-CFTR,S977F/F1074L,Significantly enhanced channel open probability
-CFTR,Reference/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/F508del,Significantly enhanced channel open probability
-CFTR,G1069R/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1069R/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1069R/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1069R/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/G1069R,Significantly enhanced channel open probability
-CFTR,A455E/G1069R,Significantly enhanced channel open probability
-CFTR,D110E/G1069R,Significantly enhanced channel open probability
-CFTR,D110H/G1069R,Significantly enhanced channel open probability
-CFTR,D1152H/G1069R,Significantly enhanced channel open probability
-CFTR,D1270N/G1069R,Significantly enhanced channel open probability
-CFTR,D579G/G1069R,Significantly enhanced channel open probability
-CFTR,E193K/G1069R,Significantly enhanced channel open probability
-CFTR,E56K/G1069R,Significantly enhanced channel open probability
-CFTR,E831X/G1069R,Significantly enhanced channel open probability
-CFTR,F1052V/G1069R,Significantly enhanced channel open probability
-CFTR,F1074L/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/G1244E,Significantly enhanced channel open probability
-CFTR,G1069R/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/G1069R,Significantly enhanced channel open probability
-CFTR,G551D/G1069R,Increased open channel probability
-CFTR,G551S/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/G1069R,Significantly enhanced channel open probability
-CFTR,P67L/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/R1070Q,Significantly enhanced channel open probability
-CFTR,G1069R/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/G1069R,Significantly enhanced channel open probability
-CFTR,R117H/G1069R,Significantly enhanced channel open probability
-CFTR,R347H/G1069R,Significantly enhanced channel open probability
-CFTR,R352Q/G1069R,Significantly enhanced channel open probability
-CFTR,R74W/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/S1251N,Significantly enhanced channel open probability
-CFTR,G1069R/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/G1069R,Significantly enhanced channel open probability
-CFTR,G1069R/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1069R/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/G1069R,Significantly enhanced channel open probability
-CFTR,S977F/G1069R,Significantly enhanced channel open probability
-CFTR,Reference/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/F508del,Significantly enhanced channel open probability
-CFTR,G1244E/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1244E/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1244E/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1244E/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/G1244E,Significantly enhanced channel open probability
-CFTR,A455E/G1244E,Significantly enhanced channel open probability
-CFTR,D110E/G1244E,Significantly enhanced channel open probability
-CFTR,D110H/G1244E,Significantly enhanced channel open probability
-CFTR,D1152H/G1244E,Significantly enhanced channel open probability
-CFTR,D1270N/G1244E,Significantly enhanced channel open probability
-CFTR,D579G/G1244E,Significantly enhanced channel open probability
-CFTR,E193K/G1244E,Significantly enhanced channel open probability
-CFTR,E56K/G1244E,Significantly enhanced channel open probability
-CFTR,E831X/G1244E,Significantly enhanced channel open probability
-CFTR,F1052V/G1244E,Significantly enhanced channel open probability
-CFTR,F1074L/G1244E,Significantly enhanced channel open probability
-CFTR,G1069R/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/G1244E,Significantly enhanced channel open probability
-CFTR,G551D/G1244E,Increased open channel probability
-CFTR,G551S/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/G1244E,Significantly enhanced channel open probability
-CFTR,P67L/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/R1070Q,Significantly enhanced channel open probability
-CFTR,G1244E/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/G1244E,Significantly enhanced channel open probability
-CFTR,R117H/G1244E,Significantly enhanced channel open probability
-CFTR,R347H/G1244E,Significantly enhanced channel open probability
-CFTR,R352Q/G1244E,Significantly enhanced channel open probability
-CFTR,R74W/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/S1251N,Significantly enhanced channel open probability
-CFTR,G1244E/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/G1244E,Significantly enhanced channel open probability
-CFTR,G1244E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1244E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/G1244E,Significantly enhanced channel open probability
-CFTR,S977F/G1244E,Significantly enhanced channel open probability
-CFTR,Reference/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/F508del,Significantly enhanced channel open probability
-CFTR,G1349D/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G1349D/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G1349D/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G1349D/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/G1349D,Significantly enhanced channel open probability
-CFTR,A455E/G1349D,Significantly enhanced channel open probability
-CFTR,D110E/G1349D,Significantly enhanced channel open probability
-CFTR,D110H/G1349D,Significantly enhanced channel open probability
-CFTR,D1152H/G1349D,Significantly enhanced channel open probability
-CFTR,D1270N/G1349D,Significantly enhanced channel open probability
-CFTR,D579G/G1349D,Significantly enhanced channel open probability
-CFTR,E193K/G1349D,Significantly enhanced channel open probability
-CFTR,E56K/G1349D,Significantly enhanced channel open probability
-CFTR,E831X/G1349D,Significantly enhanced channel open probability
-CFTR,F1052V/G1349D,Significantly enhanced channel open probability
-CFTR,F1074L/G1349D,Significantly enhanced channel open probability
-CFTR,G1069R/G1349D,Significantly enhanced channel open probability
-CFTR,G1244E/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/G1349D,Significantly enhanced channel open probability
-CFTR,G551D/G1349D,Increased open channel probability
-CFTR,G551S/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/G1349D,Significantly enhanced channel open probability
-CFTR,P67L/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/R1070Q,Significantly enhanced channel open probability
-CFTR,G1349D/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/G1349D,Significantly enhanced channel open probability
-CFTR,R117H/G1349D,Significantly enhanced channel open probability
-CFTR,R347H/G1349D,Significantly enhanced channel open probability
-CFTR,R352Q/G1349D,Significantly enhanced channel open probability
-CFTR,R74W/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/S1251N,Significantly enhanced channel open probability
-CFTR,G1349D/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/G1349D,Significantly enhanced channel open probability
-CFTR,G1349D/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1349D/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/G1349D,Significantly enhanced channel open probability
-CFTR,S977F/G1349D,Significantly enhanced channel open probability
-CFTR,Reference/G178R,Significantly enhanced channel open probability
-CFTR,G178R/F508del,Significantly enhanced channel open probability
-CFTR,G178R/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G178R/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G178R/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G178R/711+3A->G,Significantly enhanced channel open probability
-CFTR,G178R/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/G178R,Significantly enhanced channel open probability
-CFTR,D110E/G178R,Significantly enhanced channel open probability
-CFTR,D110H/G178R,Significantly enhanced channel open probability
-CFTR,G178R/D1152H,Significantly enhanced channel open probability
-CFTR,G178R/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/G178R,Significantly enhanced channel open probability
-CFTR,E193K/G178R,Significantly enhanced channel open probability
-CFTR,E56K/G178R,Significantly enhanced channel open probability
-CFTR,E831X/G178R,Significantly enhanced channel open probability
-CFTR,G178R/F1052V,Significantly enhanced channel open probability
-CFTR,G178R/F1074L,Significantly enhanced channel open probability
-CFTR,G178R/G1069R,Significantly enhanced channel open probability
-CFTR,G178R/G1244E,Significantly enhanced channel open probability
-CFTR,G178R/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/G178R,Significantly enhanced channel open probability
-CFTR,G178R/G551D,Increased open channel probability
-CFTR,G178R/G551S,Significantly enhanced channel open probability
-CFTR,G178R/K1060T,Significantly enhanced channel open probability
-CFTR,G178R/L206W,Significantly enhanced channel open probability
-CFTR,P67L/G178R,Significantly enhanced channel open probability
-CFTR,G178R/R1070Q,Significantly enhanced channel open probability
-CFTR,G178R/R1070W,Significantly enhanced channel open probability
-CFTR,G178R/R117C,Significantly enhanced channel open probability
-CFTR,G178R/R117H,Significantly enhanced channel open probability
-CFTR,G178R/R347H,Significantly enhanced channel open probability
-CFTR,G178R/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/G178R,Significantly enhanced channel open probability
-CFTR,G178R/S1251N,Significantly enhanced channel open probability
-CFTR,G178R/S1255P,Significantly enhanced channel open probability
-CFTR,G178R/S549N,Significantly enhanced channel open probability
-CFTR,G178R/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G178R/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G178R/S945L,Significantly enhanced channel open probability
-CFTR,G178R/S977F,Significantly enhanced channel open probability
-CFTR,Reference/G551D,Increased open channel probability
-CFTR,G551D/F508del,Increased open channel probability
-CFTR,G551D/2789+5G->A,Increased open channel probability
-CFTR,G551D/3272-26A->G,Increased open channel probability
-CFTR,G551D/3849+10kbC->T,Increased open channel probability
-CFTR,G551D/711+3A->G,Increased open channel probability
-CFTR,G551D/A1067T,Increased open channel probability
-CFTR,A455E/G551D,Increased open channel probability
-CFTR,D110E/G551D,Increased open channel probability
-CFTR,D110H/G551D,Increased open channel probability
-CFTR,G551D/D1152H,Increased open channel probability
-CFTR,G551D/D1270N,Increased open channel probability
-CFTR,D579G/G551D,Increased open channel probability
-CFTR,E193K/G551D,Increased open channel probability
-CFTR,E56K/G551D,Increased open channel probability
-CFTR,E831X/G551D,Increased open channel probability
-CFTR,G551D/F1052V,Increased open channel probability
-CFTR,G551D/F1074L,Increased open channel probability
-CFTR,G551D/G1069R,Increased open channel probability
-CFTR,G551D/G1244E,Increased open channel probability
-CFTR,G551D/G1349D,Increased open channel probability
-CFTR,G178R/G551D,Increased open channel probability
-CFTR,G551D/G551D,Increased open channel probability
-CFTR,G551D/G551S,Increased open channel probability
-CFTR,G551D/K1060T,Increased open channel probability
-CFTR,G551D/L206W,Increased open channel probability
-CFTR,P67L/G551D,Increased open channel probability
-CFTR,G551D/R1070Q,Increased open channel probability
-CFTR,G551D/R1070W,Increased open channel probability
-CFTR,G551D/R117C,Increased open channel probability
-CFTR,G551D/R117H,Increased open channel probability
-CFTR,G551D/R347H,Increased open channel probability
-CFTR,G551D/R352Q,Increased open channel probability
-CFTR,R74W/G551D,Increased open channel probability
-CFTR,G551D/S1251N,Increased open channel probability
-CFTR,G551D/S1255P,Increased open channel probability
-CFTR,G551D/S549N,Increased open channel probability
-CFTR,G551D/S549R(A>C),Increased open channel probability
-CFTR,G551D/S549R(T>G),Increased open channel probability
-CFTR,G551D/S945L,Increased open channel probability
-CFTR,G551D/S977F,Increased open channel probability
-CFTR,Reference/G551S,Significantly enhanced channel open probability
-CFTR,G551S/F508del,Significantly enhanced channel open probability
-CFTR,G551S/2789+5G->A,Significantly enhanced channel open probability
-CFTR,G551S/3272-26A->G,Significantly enhanced channel open probability
-CFTR,G551S/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,G551S/711+3A->G,Significantly enhanced channel open probability
-CFTR,G551S/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/G551S,Significantly enhanced channel open probability
-CFTR,D110E/G551S,Significantly enhanced channel open probability
-CFTR,D110H/G551S,Significantly enhanced channel open probability
-CFTR,G551S/D1152H,Significantly enhanced channel open probability
-CFTR,G551S/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/G551S,Significantly enhanced channel open probability
-CFTR,E193K/G551S,Significantly enhanced channel open probability
-CFTR,E56K/G551S,Significantly enhanced channel open probability
-CFTR,E831X/G551S,Significantly enhanced channel open probability
-CFTR,G551S/F1052V,Significantly enhanced channel open probability
-CFTR,G551S/F1074L,Significantly enhanced channel open probability
-CFTR,G551S/G1069R,Significantly enhanced channel open probability
-CFTR,G551S/G1244E,Significantly enhanced channel open probability
-CFTR,G551S/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/G551S,Significantly enhanced channel open probability
-CFTR,G551D/G551S,Increased open channel probability
-CFTR,G551S/G551S,Significantly enhanced channel open probability
-CFTR,G551S/K1060T,Significantly enhanced channel open probability
-CFTR,G551S/L206W,Significantly enhanced channel open probability
-CFTR,P67L/G551S,Significantly enhanced channel open probability
-CFTR,G551S/R1070Q,Significantly enhanced channel open probability
-CFTR,G551S/R1070W,Significantly enhanced channel open probability
-CFTR,G551S/R117C,Significantly enhanced channel open probability
-CFTR,G551S/R117H,Significantly enhanced channel open probability
-CFTR,G551S/R347H,Significantly enhanced channel open probability
-CFTR,G551S/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/G551S,Significantly enhanced channel open probability
-CFTR,G551S/S1251N,Significantly enhanced channel open probability
-CFTR,G551S/S1255P,Significantly enhanced channel open probability
-CFTR,G551S/S549N,Significantly enhanced channel open probability
-CFTR,G551S/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G551S/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G551S/S945L,Significantly enhanced channel open probability
-CFTR,G551S/S977F,Significantly enhanced channel open probability
-CFTR,Reference/K1060T,Significantly enhanced channel open probability
-CFTR,K1060T/F508del,Significantly enhanced channel open probability
-CFTR,K1060T/2789+5G->A,Significantly enhanced channel open probability
-CFTR,K1060T/3272-26A->G,Significantly enhanced channel open probability
-CFTR,K1060T/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,K1060T/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/K1060T,Significantly enhanced channel open probability
-CFTR,A455E/K1060T,Significantly enhanced channel open probability
-CFTR,D110E/K1060T,Significantly enhanced channel open probability
-CFTR,D110H/K1060T,Significantly enhanced channel open probability
-CFTR,D1152H/K1060T,Significantly enhanced channel open probability
-CFTR,D1270N/K1060T,Significantly enhanced channel open probability
-CFTR,D579G/K1060T,Significantly enhanced channel open probability
-CFTR,E193K/K1060T,Significantly enhanced channel open probability
-CFTR,E56K/K1060T,Significantly enhanced channel open probability
-CFTR,E831X/K1060T,Significantly enhanced channel open probability
-CFTR,F1052V/K1060T,Significantly enhanced channel open probability
-CFTR,F1074L/K1060T,Significantly enhanced channel open probability
-CFTR,G1069R/K1060T,Significantly enhanced channel open probability
-CFTR,G1244E/K1060T,Significantly enhanced channel open probability
-CFTR,G1349D/K1060T,Significantly enhanced channel open probability
-CFTR,G178R/K1060T,Significantly enhanced channel open probability
-CFTR,G551D/K1060T,Increased open channel probability
-CFTR,G551S/K1060T,Significantly enhanced channel open probability
-CFTR,K1060T/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/K1060T,Significantly enhanced channel open probability
-CFTR,P67L/K1060T,Significantly enhanced channel open probability
-CFTR,K1060T/R1070Q,Significantly enhanced channel open probability
-CFTR,K1060T/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/K1060T,Significantly enhanced channel open probability
-CFTR,R117H/K1060T,Significantly enhanced channel open probability
-CFTR,R347H/K1060T,Significantly enhanced channel open probability
-CFTR,R352Q/K1060T,Significantly enhanced channel open probability
-CFTR,R74W/K1060T,Significantly enhanced channel open probability
-CFTR,K1060T/S1251N,Significantly enhanced channel open probability
-CFTR,K1060T/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/K1060T,Significantly enhanced channel open probability
-CFTR,K1060T/S549R(A>C),Significantly enhanced channel open probability
-CFTR,K1060T/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/K1060T,Significantly enhanced channel open probability
-CFTR,S977F/K1060T,Significantly enhanced channel open probability
-CFTR,Reference/L206W,Significantly enhanced channel open probability
-CFTR,L206W/F508del,Significantly enhanced channel open probability
-CFTR,L206W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,L206W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,L206W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,L206W/711+3A->G,Significantly enhanced channel open probability
-CFTR,L206W/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/L206W,Significantly enhanced channel open probability
-CFTR,D110E/L206W,Significantly enhanced channel open probability
-CFTR,D110H/L206W,Significantly enhanced channel open probability
-CFTR,L206W/D1152H,Significantly enhanced channel open probability
-CFTR,L206W/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/L206W,Significantly enhanced channel open probability
-CFTR,E193K/L206W,Significantly enhanced channel open probability
-CFTR,E56K/L206W,Significantly enhanced channel open probability
-CFTR,E831X/L206W,Significantly enhanced channel open probability
-CFTR,L206W/F1052V,Significantly enhanced channel open probability
-CFTR,L206W/F1074L,Significantly enhanced channel open probability
-CFTR,L206W/G1069R,Significantly enhanced channel open probability
-CFTR,L206W/G1244E,Significantly enhanced channel open probability
-CFTR,L206W/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/L206W,Significantly enhanced channel open probability
-CFTR,G551D/L206W,Increased open channel probability
-CFTR,G551S/L206W,Significantly enhanced channel open probability
-CFTR,L206W/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/L206W,Significantly enhanced channel open probability
-CFTR,P67L/L206W,Significantly enhanced channel open probability
-CFTR,L206W/R1070Q,Significantly enhanced channel open probability
-CFTR,L206W/R1070W,Significantly enhanced channel open probability
-CFTR,L206W/R117C,Significantly enhanced channel open probability
-CFTR,L206W/R117H,Significantly enhanced channel open probability
-CFTR,L206W/R347H,Significantly enhanced channel open probability
-CFTR,L206W/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/L206W,Significantly enhanced channel open probability
-CFTR,L206W/S1251N,Significantly enhanced channel open probability
-CFTR,L206W/S1255P,Significantly enhanced channel open probability
-CFTR,L206W/S549N,Significantly enhanced channel open probability
-CFTR,L206W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,L206W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,L206W/S945L,Significantly enhanced channel open probability
-CFTR,L206W/S977F,Significantly enhanced channel open probability
-CFTR,Reference/P67L,Significantly enhanced channel open probability
-CFTR,P67L/F508del,Significantly enhanced channel open probability
-CFTR,P67L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,P67L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,P67L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,P67L/711+3A->G,Significantly enhanced channel open probability
-CFTR,P67L/A1067T,Significantly enhanced channel open probability
-CFTR,P67L/A455E,Significantly enhanced channel open probability
-CFTR,P67L/D110E,Significantly enhanced channel open probability
-CFTR,P67L/D110H,Significantly enhanced channel open probability
-CFTR,P67L/D1152H,Significantly enhanced channel open probability
-CFTR,P67L/D1270N,Significantly enhanced channel open probability
-CFTR,P67L/D579G,Significantly enhanced channel open probability
-CFTR,P67L/E193K,Significantly enhanced channel open probability
-CFTR,E56K/P67L,Significantly enhanced channel open probability
-CFTR,P67L/E831X,Significantly enhanced channel open probability
-CFTR,P67L/F1052V,Significantly enhanced channel open probability
-CFTR,P67L/F1074L,Significantly enhanced channel open probability
-CFTR,P67L/G1069R,Significantly enhanced channel open probability
-CFTR,P67L/G1244E,Significantly enhanced channel open probability
-CFTR,P67L/G1349D,Significantly enhanced channel open probability
-CFTR,P67L/G178R,Significantly enhanced channel open probability
-CFTR,P67L/G551D,Increased open channel probability
-CFTR,P67L/G551S,Significantly enhanced channel open probability
-CFTR,P67L/K1060T,Significantly enhanced channel open probability
-CFTR,P67L/L206W,Significantly enhanced channel open probability
-CFTR,P67L/P67L,Significantly enhanced channel open probability
-CFTR,P67L/R1070Q,Significantly enhanced channel open probability
-CFTR,P67L/R1070W,Significantly enhanced channel open probability
-CFTR,P67L/R117C,Significantly enhanced channel open probability
-CFTR,P67L/R117H,Significantly enhanced channel open probability
-CFTR,P67L/R347H,Significantly enhanced channel open probability
-CFTR,P67L/R352Q,Significantly enhanced channel open probability
-CFTR,P67L/R74W,Significantly enhanced channel open probability
-CFTR,P67L/S1251N,Significantly enhanced channel open probability
-CFTR,P67L/S1255P,Significantly enhanced channel open probability
-CFTR,P67L/S549N,Significantly enhanced channel open probability
-CFTR,P67L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,P67L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,P67L/S945L,Significantly enhanced channel open probability
-CFTR,P67L/S977F,Significantly enhanced channel open probability
-CFTR,Reference/R1070Q,Significantly enhanced channel open probability
-CFTR,R1070Q/F508del,Significantly enhanced channel open probability
-CFTR,R1070Q/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R1070Q/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R1070Q/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R1070Q/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/R1070Q,Significantly enhanced channel open probability
-CFTR,A455E/R1070Q,Significantly enhanced channel open probability
-CFTR,D110E/R1070Q,Significantly enhanced channel open probability
-CFTR,D110H/R1070Q,Significantly enhanced channel open probability
-CFTR,D1152H/R1070Q,Significantly enhanced channel open probability
-CFTR,D1270N/R1070Q,Significantly enhanced channel open probability
-CFTR,D579G/R1070Q,Significantly enhanced channel open probability
-CFTR,E193K/R1070Q,Significantly enhanced channel open probability
-CFTR,E56K/R1070Q,Significantly enhanced channel open probability
-CFTR,E831X/R1070Q,Significantly enhanced channel open probability
-CFTR,F1052V/R1070Q,Significantly enhanced channel open probability
-CFTR,F1074L/R1070Q,Significantly enhanced channel open probability
-CFTR,G1069R/R1070Q,Significantly enhanced channel open probability
-CFTR,G1244E/R1070Q,Significantly enhanced channel open probability
-CFTR,G1349D/R1070Q,Significantly enhanced channel open probability
-CFTR,G178R/R1070Q,Significantly enhanced channel open probability
-CFTR,G551D/R1070Q,Increased open channel probability
-CFTR,G551S/R1070Q,Significantly enhanced channel open probability
-CFTR,K1060T/R1070Q,Significantly enhanced channel open probability
-CFTR,L206W/R1070Q,Significantly enhanced channel open probability
-CFTR,P67L/R1070Q,Significantly enhanced channel open probability
-CFTR,R1070Q/R1070Q,Significantly enhanced channel open probability
-CFTR,R1070Q/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R1070Q,Significantly enhanced channel open probability
-CFTR,R117H/R1070Q,Significantly enhanced channel open probability
-CFTR,R347H/R1070Q,Significantly enhanced channel open probability
-CFTR,R352Q/R1070Q,Significantly enhanced channel open probability
-CFTR,R74W/R1070Q,Significantly enhanced channel open probability
-CFTR,R1070Q/S1251N,Significantly enhanced channel open probability
-CFTR,R1070Q/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/R1070Q,Significantly enhanced channel open probability
-CFTR,R1070Q/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R1070Q/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/R1070Q,Significantly enhanced channel open probability
-CFTR,S977F/R1070Q,Significantly enhanced channel open probability
-CFTR,Reference/R1070W,Significantly enhanced channel open probability
-CFTR,R1070W/F508del,Significantly enhanced channel open probability
-CFTR,R1070W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R1070W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R1070W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R1070W/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/R1070W,Significantly enhanced channel open probability
-CFTR,A455E/R1070W,Significantly enhanced channel open probability
-CFTR,D110E/R1070W,Significantly enhanced channel open probability
-CFTR,D110H/R1070W,Significantly enhanced channel open probability
-CFTR,D1152H/R1070W,Significantly enhanced channel open probability
-CFTR,D1270N/R1070W,Significantly enhanced channel open probability
-CFTR,D579G/R1070W,Significantly enhanced channel open probability
-CFTR,E193K/R1070W,Significantly enhanced channel open probability
-CFTR,E56K/R1070W,Significantly enhanced channel open probability
-CFTR,E831X/R1070W,Significantly enhanced channel open probability
-CFTR,F1052V/R1070W,Significantly enhanced channel open probability
-CFTR,F1074L/R1070W,Significantly enhanced channel open probability
-CFTR,G1069R/R1070W,Significantly enhanced channel open probability
-CFTR,G1244E/R1070W,Significantly enhanced channel open probability
-CFTR,G1349D/R1070W,Significantly enhanced channel open probability
-CFTR,G178R/R1070W,Significantly enhanced channel open probability
-CFTR,G551D/R1070W,Increased open channel probability
-CFTR,G551S/R1070W,Significantly enhanced channel open probability
-CFTR,K1060T/R1070W,Significantly enhanced channel open probability
-CFTR,L206W/R1070W,Significantly enhanced channel open probability
-CFTR,P67L/R1070W,Significantly enhanced channel open probability
-CFTR,R1070Q/R1070W,Significantly enhanced channel open probability
-CFTR,R1070W/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R1070W,Significantly enhanced channel open probability
-CFTR,R117H/R1070W,Significantly enhanced channel open probability
-CFTR,R347H/R1070W,Significantly enhanced channel open probability
-CFTR,R352Q/R1070W,Significantly enhanced channel open probability
-CFTR,R74W/R1070W,Significantly enhanced channel open probability
-CFTR,R1070W/S1251N,Significantly enhanced channel open probability
-CFTR,R1070W/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/R1070W,Significantly enhanced channel open probability
-CFTR,R1070W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R1070W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/R1070W,Significantly enhanced channel open probability
-CFTR,S977F/R1070W,Significantly enhanced channel open probability
-CFTR,Reference/R117C,Significantly enhanced channel open probability
-CFTR,R117C/F508del,Significantly enhanced channel open probability
-CFTR,R117C/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R117C/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R117C/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R117C/711+3A->G,Significantly enhanced channel open probability
-CFTR,R117C/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/R117C,Significantly enhanced channel open probability
-CFTR,D110E/R117C,Significantly enhanced channel open probability
-CFTR,D110H/R117C,Significantly enhanced channel open probability
-CFTR,R117C/D1152H,Significantly enhanced channel open probability
-CFTR,R117C/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/R117C,Significantly enhanced channel open probability
-CFTR,E193K/R117C,Significantly enhanced channel open probability
-CFTR,E56K/R117C,Significantly enhanced channel open probability
-CFTR,E831X/R117C,Significantly enhanced channel open probability
-CFTR,R117C/F1052V,Significantly enhanced channel open probability
-CFTR,R117C/F1074L,Significantly enhanced channel open probability
-CFTR,R117C/G1069R,Significantly enhanced channel open probability
-CFTR,R117C/G1244E,Significantly enhanced channel open probability
-CFTR,R117C/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/R117C,Significantly enhanced channel open probability
-CFTR,G551D/R117C,Increased open channel probability
-CFTR,G551S/R117C,Significantly enhanced channel open probability
-CFTR,R117C/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/R117C,Significantly enhanced channel open probability
-CFTR,P67L/R117C,Significantly enhanced channel open probability
-CFTR,R117C/R1070Q,Significantly enhanced channel open probability
-CFTR,R117C/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R117C,Significantly enhanced channel open probability
-CFTR,R117C/R117H,Significantly enhanced channel open probability
-CFTR,R117C/R347H,Significantly enhanced channel open probability
-CFTR,R117C/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/R117C,Significantly enhanced channel open probability
-CFTR,R117C/S1251N,Significantly enhanced channel open probability
-CFTR,R117C/S1255P,Significantly enhanced channel open probability
-CFTR,R117C/S549N,Significantly enhanced channel open probability
-CFTR,R117C/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R117C/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R117C/S945L,Significantly enhanced channel open probability
-CFTR,R117C/S977F,Significantly enhanced channel open probability
-CFTR,Reference/R117H,Significantly enhanced channel open probability
-CFTR,R117H/F508del,Significantly enhanced channel open probability
-CFTR,R117H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R117H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R117H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R117H/711+3A->G,Significantly enhanced channel open probability
-CFTR,R117H/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/R117H,Significantly enhanced channel open probability
-CFTR,D110E/R117H,Significantly enhanced channel open probability
-CFTR,D110H/R117H,Significantly enhanced channel open probability
-CFTR,R117H/D1152H,Significantly enhanced channel open probability
-CFTR,R117H/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/R117H,Significantly enhanced channel open probability
-CFTR,E193K/R117H,Significantly enhanced channel open probability
-CFTR,E56K/R117H,Significantly enhanced channel open probability
-CFTR,E831X/R117H,Significantly enhanced channel open probability
-CFTR,R117H/F1052V,Significantly enhanced channel open probability
-CFTR,R117H/F1074L,Significantly enhanced channel open probability
-CFTR,R117H/G1069R,Significantly enhanced channel open probability
-CFTR,R117H/G1244E,Significantly enhanced channel open probability
-CFTR,R117H/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/R117H,Significantly enhanced channel open probability
-CFTR,G551D/R117H,Increased open channel probability
-CFTR,G551S/R117H,Significantly enhanced channel open probability
-CFTR,R117H/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/R117H,Significantly enhanced channel open probability
-CFTR,P67L/R117H,Significantly enhanced channel open probability
-CFTR,R117H/R1070Q,Significantly enhanced channel open probability
-CFTR,R117H/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R117H,Significantly enhanced channel open probability
-CFTR,R117H/R117H,Significantly enhanced channel open probability
-CFTR,R117H/R347H,Significantly enhanced channel open probability
-CFTR,R117H/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/R117H,Significantly enhanced channel open probability
-CFTR,R117H/S1251N,Significantly enhanced channel open probability
-CFTR,R117H/S1255P,Significantly enhanced channel open probability
-CFTR,R117H/S549N,Significantly enhanced channel open probability
-CFTR,R117H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R117H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R117H/S945L,Significantly enhanced channel open probability
-CFTR,R117H/S977F,Significantly enhanced channel open probability
-CFTR,Reference/R347H,Significantly enhanced channel open probability
-CFTR,R347H/F508del,Significantly enhanced channel open probability
-CFTR,R347H/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R347H/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R347H/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R347H/711+3A->G,Significantly enhanced channel open probability
-CFTR,R347H/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/R347H,Significantly enhanced channel open probability
-CFTR,D110E/R347H,Significantly enhanced channel open probability
-CFTR,D110H/R347H,Significantly enhanced channel open probability
-CFTR,R347H/D1152H,Significantly enhanced channel open probability
-CFTR,R347H/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/R347H,Significantly enhanced channel open probability
-CFTR,E193K/R347H,Significantly enhanced channel open probability
-CFTR,E56K/R347H,Significantly enhanced channel open probability
-CFTR,E831X/R347H,Significantly enhanced channel open probability
-CFTR,R347H/F1052V,Significantly enhanced channel open probability
-CFTR,R347H/F1074L,Significantly enhanced channel open probability
-CFTR,R347H/G1069R,Significantly enhanced channel open probability
-CFTR,R347H/G1244E,Significantly enhanced channel open probability
-CFTR,R347H/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/R347H,Significantly enhanced channel open probability
-CFTR,G551D/R347H,Increased open channel probability
-CFTR,G551S/R347H,Significantly enhanced channel open probability
-CFTR,R347H/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/R347H,Significantly enhanced channel open probability
-CFTR,P67L/R347H,Significantly enhanced channel open probability
-CFTR,R347H/R1070Q,Significantly enhanced channel open probability
-CFTR,R347H/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R347H,Significantly enhanced channel open probability
-CFTR,R117H/R347H,Significantly enhanced channel open probability
-CFTR,R347H/R347H,Significantly enhanced channel open probability
-CFTR,R347H/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/R347H,Significantly enhanced channel open probability
-CFTR,R347H/S1251N,Significantly enhanced channel open probability
-CFTR,R347H/S1255P,Significantly enhanced channel open probability
-CFTR,R347H/S549N,Significantly enhanced channel open probability
-CFTR,R347H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R347H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R347H/S945L,Significantly enhanced channel open probability
-CFTR,R347H/S977F,Significantly enhanced channel open probability
-CFTR,Reference/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/F508del,Significantly enhanced channel open probability
-CFTR,R352Q/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R352Q/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R352Q/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R352Q/711+3A->G,Significantly enhanced channel open probability
-CFTR,R352Q/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/R352Q,Significantly enhanced channel open probability
-CFTR,D110E/R352Q,Significantly enhanced channel open probability
-CFTR,D110H/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/D1152H,Significantly enhanced channel open probability
-CFTR,R352Q/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/R352Q,Significantly enhanced channel open probability
-CFTR,E193K/R352Q,Significantly enhanced channel open probability
-CFTR,E56K/R352Q,Significantly enhanced channel open probability
-CFTR,E831X/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/F1052V,Significantly enhanced channel open probability
-CFTR,R352Q/F1074L,Significantly enhanced channel open probability
-CFTR,R352Q/G1069R,Significantly enhanced channel open probability
-CFTR,R352Q/G1244E,Significantly enhanced channel open probability
-CFTR,R352Q/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/R352Q,Significantly enhanced channel open probability
-CFTR,G551D/R352Q,Increased open channel probability
-CFTR,G551S/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/R352Q,Significantly enhanced channel open probability
-CFTR,P67L/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/R1070Q,Significantly enhanced channel open probability
-CFTR,R352Q/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/R352Q,Significantly enhanced channel open probability
-CFTR,R117H/R352Q,Significantly enhanced channel open probability
-CFTR,R347H/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/R352Q,Significantly enhanced channel open probability
-CFTR,R352Q/S1251N,Significantly enhanced channel open probability
-CFTR,R352Q/S1255P,Significantly enhanced channel open probability
-CFTR,R352Q/S549N,Significantly enhanced channel open probability
-CFTR,R352Q/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R352Q/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R352Q/S945L,Significantly enhanced channel open probability
-CFTR,R352Q/S977F,Significantly enhanced channel open probability
-CFTR,Reference/R74W,Significantly enhanced channel open probability
-CFTR,R74W/F508del,Significantly enhanced channel open probability
-CFTR,R74W/2789+5G->A,Significantly enhanced channel open probability
-CFTR,R74W/3272-26A->G,Significantly enhanced channel open probability
-CFTR,R74W/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,R74W/711+3A->G,Significantly enhanced channel open probability
-CFTR,R74W/A1067T,Significantly enhanced channel open probability
-CFTR,R74W/A455E,Significantly enhanced channel open probability
-CFTR,R74W/D110E,Significantly enhanced channel open probability
-CFTR,R74W/D110H,Significantly enhanced channel open probability
-CFTR,R74W/D1152H,Significantly enhanced channel open probability
-CFTR,R74W/D1270N,Significantly enhanced channel open probability
-CFTR,R74W/D579G,Significantly enhanced channel open probability
-CFTR,R74W/E193K,Significantly enhanced channel open probability
-CFTR,E56K/R74W,Significantly enhanced channel open probability
-CFTR,R74W/E831X,Significantly enhanced channel open probability
-CFTR,R74W/F1052V,Significantly enhanced channel open probability
-CFTR,R74W/F1074L,Significantly enhanced channel open probability
-CFTR,R74W/G1069R,Significantly enhanced channel open probability
-CFTR,R74W/G1244E,Significantly enhanced channel open probability
-CFTR,R74W/G1349D,Significantly enhanced channel open probability
-CFTR,R74W/G178R,Significantly enhanced channel open probability
-CFTR,R74W/G551D,Increased open channel probability
-CFTR,R74W/G551S,Significantly enhanced channel open probability
-CFTR,R74W/K1060T,Significantly enhanced channel open probability
-CFTR,R74W/L206W,Significantly enhanced channel open probability
-CFTR,P67L/R74W,Significantly enhanced channel open probability
-CFTR,R74W/R1070Q,Significantly enhanced channel open probability
-CFTR,R74W/R1070W,Significantly enhanced channel open probability
-CFTR,R74W/R117C,Significantly enhanced channel open probability
-CFTR,R74W/R117H,Significantly enhanced channel open probability
-CFTR,R74W/R347H,Significantly enhanced channel open probability
-CFTR,R74W/R352Q,Significantly enhanced channel open probability
-CFTR,R74W/R74W,Significantly enhanced channel open probability
-CFTR,R74W/S1251N,Significantly enhanced channel open probability
-CFTR,R74W/S1255P,Significantly enhanced channel open probability
-CFTR,R74W/S549N,Significantly enhanced channel open probability
-CFTR,R74W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R74W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R74W/S945L,Significantly enhanced channel open probability
-CFTR,R74W/S977F,Significantly enhanced channel open probability
-CFTR,Reference/S1251N,Significantly enhanced channel open probability
-CFTR,S1251N/F508del,Significantly enhanced channel open probability
-CFTR,S1251N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S1251N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S1251N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S1251N/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/S1251N,Significantly enhanced channel open probability
-CFTR,A455E/S1251N,Significantly enhanced channel open probability
-CFTR,D110E/S1251N,Significantly enhanced channel open probability
-CFTR,D110H/S1251N,Significantly enhanced channel open probability
-CFTR,D1152H/S1251N,Significantly enhanced channel open probability
-CFTR,D1270N/S1251N,Significantly enhanced channel open probability
-CFTR,D579G/S1251N,Significantly enhanced channel open probability
-CFTR,E193K/S1251N,Significantly enhanced channel open probability
-CFTR,E56K/S1251N,Significantly enhanced channel open probability
-CFTR,E831X/S1251N,Significantly enhanced channel open probability
-CFTR,F1052V/S1251N,Significantly enhanced channel open probability
-CFTR,F1074L/S1251N,Significantly enhanced channel open probability
-CFTR,G1069R/S1251N,Significantly enhanced channel open probability
-CFTR,G1244E/S1251N,Significantly enhanced channel open probability
-CFTR,G1349D/S1251N,Significantly enhanced channel open probability
-CFTR,G178R/S1251N,Significantly enhanced channel open probability
-CFTR,G551D/S1251N,Increased open channel probability
-CFTR,G551S/S1251N,Significantly enhanced channel open probability
-CFTR,K1060T/S1251N,Significantly enhanced channel open probability
-CFTR,L206W/S1251N,Significantly enhanced channel open probability
-CFTR,P67L/S1251N,Significantly enhanced channel open probability
-CFTR,R1070Q/S1251N,Significantly enhanced channel open probability
-CFTR,R1070W/S1251N,Significantly enhanced channel open probability
-CFTR,R117C/S1251N,Significantly enhanced channel open probability
-CFTR,R117H/S1251N,Significantly enhanced channel open probability
-CFTR,R347H/S1251N,Significantly enhanced channel open probability
-CFTR,R352Q/S1251N,Significantly enhanced channel open probability
-CFTR,R74W/S1251N,Significantly enhanced channel open probability
-CFTR,S1251N/S1251N,Significantly enhanced channel open probability
-CFTR,S1251N/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/S1251N,Significantly enhanced channel open probability
-CFTR,S1251N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S1251N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S1251N,Significantly enhanced channel open probability
-CFTR,S977F/S1251N,Significantly enhanced channel open probability
-CFTR,Reference/S1255P,Significantly enhanced channel open probability
-CFTR,S1255P/F508del,Significantly enhanced channel open probability
-CFTR,S1255P/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S1255P/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S1255P/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S1255P/711+3A->G,Significantly enhanced channel open probability
-CFTR,A1067T/S1255P,Significantly enhanced channel open probability
-CFTR,A455E/S1255P,Significantly enhanced channel open probability
-CFTR,D110E/S1255P,Significantly enhanced channel open probability
-CFTR,D110H/S1255P,Significantly enhanced channel open probability
-CFTR,D1152H/S1255P,Significantly enhanced channel open probability
-CFTR,D1270N/S1255P,Significantly enhanced channel open probability
-CFTR,D579G/S1255P,Significantly enhanced channel open probability
-CFTR,E193K/S1255P,Significantly enhanced channel open probability
-CFTR,E56K/S1255P,Significantly enhanced channel open probability
-CFTR,E831X/S1255P,Significantly enhanced channel open probability
-CFTR,F1052V/S1255P,Significantly enhanced channel open probability
-CFTR,F1074L/S1255P,Significantly enhanced channel open probability
-CFTR,G1069R/S1255P,Significantly enhanced channel open probability
-CFTR,G1244E/S1255P,Significantly enhanced channel open probability
-CFTR,G1349D/S1255P,Significantly enhanced channel open probability
-CFTR,G178R/S1255P,Significantly enhanced channel open probability
-CFTR,G551D/S1255P,Increased open channel probability
-CFTR,G551S/S1255P,Significantly enhanced channel open probability
-CFTR,K1060T/S1255P,Significantly enhanced channel open probability
-CFTR,L206W/S1255P,Significantly enhanced channel open probability
-CFTR,P67L/S1255P,Significantly enhanced channel open probability
-CFTR,R1070Q/S1255P,Significantly enhanced channel open probability
-CFTR,R1070W/S1255P,Significantly enhanced channel open probability
-CFTR,R117C/S1255P,Significantly enhanced channel open probability
-CFTR,R117H/S1255P,Significantly enhanced channel open probability
-CFTR,R347H/S1255P,Significantly enhanced channel open probability
-CFTR,R352Q/S1255P,Significantly enhanced channel open probability
-CFTR,R74W/S1255P,Significantly enhanced channel open probability
-CFTR,S1251N/S1255P,Significantly enhanced channel open probability
-CFTR,S1255P/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/S1255P,Significantly enhanced channel open probability
-CFTR,S1255P/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S1255P/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S1255P,Significantly enhanced channel open probability
-CFTR,S977F/S1255P,Significantly enhanced channel open probability
-CFTR,Reference/S549N,Significantly enhanced channel open probability
-CFTR,S549N/F508del,Significantly enhanced channel open probability
-CFTR,S549N/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S549N/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549N/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S549N/711+3A->G,Significantly enhanced channel open probability
-CFTR,S549N/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/S549N,Significantly enhanced channel open probability
-CFTR,D110E/S549N,Significantly enhanced channel open probability
-CFTR,D110H/S549N,Significantly enhanced channel open probability
-CFTR,S549N/D1152H,Significantly enhanced channel open probability
-CFTR,S549N/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/S549N,Significantly enhanced channel open probability
-CFTR,E193K/S549N,Significantly enhanced channel open probability
-CFTR,E56K/S549N,Significantly enhanced channel open probability
-CFTR,E831X/S549N,Significantly enhanced channel open probability
-CFTR,S549N/F1052V,Significantly enhanced channel open probability
-CFTR,S549N/F1074L,Significantly enhanced channel open probability
-CFTR,S549N/G1069R,Significantly enhanced channel open probability
-CFTR,S549N/G1244E,Significantly enhanced channel open probability
-CFTR,S549N/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/S549N,Significantly enhanced channel open probability
-CFTR,G551D/S549N,Increased open channel probability
-CFTR,G551S/S549N,Significantly enhanced channel open probability
-CFTR,S549N/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/S549N,Significantly enhanced channel open probability
-CFTR,P67L/S549N,Significantly enhanced channel open probability
-CFTR,S549N/R1070Q,Significantly enhanced channel open probability
-CFTR,S549N/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/S549N,Significantly enhanced channel open probability
-CFTR,R117H/S549N,Significantly enhanced channel open probability
-CFTR,R347H/S549N,Significantly enhanced channel open probability
-CFTR,R352Q/S549N,Significantly enhanced channel open probability
-CFTR,R74W/S549N,Significantly enhanced channel open probability
-CFTR,S549N/S1251N,Significantly enhanced channel open probability
-CFTR,S549N/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/S549N,Significantly enhanced channel open probability
-CFTR,S549N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S549N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S549N/S945L,Significantly enhanced channel open probability
-CFTR,S549N/S977F,Significantly enhanced channel open probability
-CFTR,Reference/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F508del/S549R(A>C),Significantly enhanced channel open probability
-CFTR,2789+5G->A/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S549R(A>C)/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549R(A>C)/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/S549R(A>C),Significantly enhanced channel open probability
-CFTR,A1067T/S549R(A>C),Significantly enhanced channel open probability
-CFTR,A455E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D110E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D110H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D1152H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D1270N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,D579G/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E193K/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E56K/S549R(A>C),Significantly enhanced channel open probability
-CFTR,E831X/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F1052V/S549R(A>C),Significantly enhanced channel open probability
-CFTR,F1074L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1069R/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1244E/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G1349D/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G178R/S549R(A>C),Significantly enhanced channel open probability
-CFTR,G551D/S549R(A>C),Increased open channel probability
-CFTR,G551S/S549R(A>C),Significantly enhanced channel open probability
-CFTR,K1060T/S549R(A>C),Significantly enhanced channel open probability
-CFTR,L206W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,P67L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R1070Q/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R1070W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R117C/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R117H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R347H/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R352Q/S549R(A>C),Significantly enhanced channel open probability
-CFTR,R74W/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S1251N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S1255P/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S549N/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S549R(A>C)/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S549R(A>C)/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S977F/S549R(A>C),Significantly enhanced channel open probability
-CFTR,Reference/S549R(T>G),Significantly enhanced channel open probability
-CFTR,F508del/S549R(T>G),Significantly enhanced channel open probability
-CFTR,2789+5G->A/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S549R(T>G)/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S549R(T>G)/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,711+3A->G/S549R(T>G),Significantly enhanced channel open probability
-CFTR,A1067T/S549R(T>G),Significantly enhanced channel open probability
-CFTR,A455E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D110E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D110H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D1152H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D1270N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,D579G/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E193K/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E56K/S549R(T>G),Significantly enhanced channel open probability
-CFTR,E831X/S549R(T>G),Significantly enhanced channel open probability
-CFTR,F1052V/S549R(T>G),Significantly enhanced channel open probability
-CFTR,F1074L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G1069R/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G1244E/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G1349D/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G178R/S549R(T>G),Significantly enhanced channel open probability
-CFTR,G551D/S549R(T>G),Increased open channel probability
-CFTR,G551S/S549R(T>G),Significantly enhanced channel open probability
-CFTR,K1060T/S549R(T>G),Significantly enhanced channel open probability
-CFTR,L206W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,P67L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R1070Q/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R1070W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R117C/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R117H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R347H/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R352Q/S549R(T>G),Significantly enhanced channel open probability
-CFTR,R74W/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S1251N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S1255P/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S549N/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S549R(A>C)/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S549R(T>G)/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S977F/S549R(T>G),Significantly enhanced channel open probability
-CFTR,Reference/S945L,Significantly enhanced channel open probability
-CFTR,S945L/F508del,Significantly enhanced channel open probability
-CFTR,S945L/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S945L/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S945L/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S945L/711+3A->G,Significantly enhanced channel open probability
-CFTR,S945L/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/S945L,Significantly enhanced channel open probability
-CFTR,D110E/S945L,Significantly enhanced channel open probability
-CFTR,D110H/S945L,Significantly enhanced channel open probability
-CFTR,S945L/D1152H,Significantly enhanced channel open probability
-CFTR,S945L/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/S945L,Significantly enhanced channel open probability
-CFTR,E193K/S945L,Significantly enhanced channel open probability
-CFTR,E56K/S945L,Significantly enhanced channel open probability
-CFTR,E831X/S945L,Significantly enhanced channel open probability
-CFTR,S945L/F1052V,Significantly enhanced channel open probability
-CFTR,S945L/F1074L,Significantly enhanced channel open probability
-CFTR,S945L/G1069R,Significantly enhanced channel open probability
-CFTR,S945L/G1244E,Significantly enhanced channel open probability
-CFTR,S945L/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/S945L,Significantly enhanced channel open probability
-CFTR,G551D/S945L,Increased open channel probability
-CFTR,G551S/S945L,Significantly enhanced channel open probability
-CFTR,S945L/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/S945L,Significantly enhanced channel open probability
-CFTR,P67L/S945L,Significantly enhanced channel open probability
-CFTR,S945L/R1070Q,Significantly enhanced channel open probability
-CFTR,S945L/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/S945L,Significantly enhanced channel open probability
-CFTR,R117H/S945L,Significantly enhanced channel open probability
-CFTR,R347H/S945L,Significantly enhanced channel open probability
-CFTR,R352Q/S945L,Significantly enhanced channel open probability
-CFTR,R74W/S945L,Significantly enhanced channel open probability
-CFTR,S945L/S1251N,Significantly enhanced channel open probability
-CFTR,S945L/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/S945L,Significantly enhanced channel open probability
-CFTR,S945L/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S945L/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S945L,Significantly enhanced channel open probability
-CFTR,S945L/S977F,Significantly enhanced channel open probability
-CFTR,Reference/S977F,Significantly enhanced channel open probability
-CFTR,S977F/F508del,Significantly enhanced channel open probability
-CFTR,S977F/2789+5G->A,Significantly enhanced channel open probability
-CFTR,S977F/3272-26A->G,Significantly enhanced channel open probability
-CFTR,S977F/3849+10kbC->T,Significantly enhanced channel open probability
-CFTR,S977F/711+3A->G,Significantly enhanced channel open probability
-CFTR,S977F/A1067T,Significantly enhanced channel open probability
-CFTR,A455E/S977F,Significantly enhanced channel open probability
-CFTR,D110E/S977F,Significantly enhanced channel open probability
-CFTR,D110H/S977F,Significantly enhanced channel open probability
-CFTR,S977F/D1152H,Significantly enhanced channel open probability
-CFTR,S977F/D1270N,Significantly enhanced channel open probability
-CFTR,D579G/S977F,Significantly enhanced channel open probability
-CFTR,E193K/S977F,Significantly enhanced channel open probability
-CFTR,E56K/S977F,Significantly enhanced channel open probability
-CFTR,E831X/S977F,Significantly enhanced channel open probability
-CFTR,S977F/F1052V,Significantly enhanced channel open probability
-CFTR,S977F/F1074L,Significantly enhanced channel open probability
-CFTR,S977F/G1069R,Significantly enhanced channel open probability
-CFTR,S977F/G1244E,Significantly enhanced channel open probability
-CFTR,S977F/G1349D,Significantly enhanced channel open probability
-CFTR,G178R/S977F,Significantly enhanced channel open probability
-CFTR,G551D/S977F,Increased open channel probability
-CFTR,G551S/S977F,Significantly enhanced channel open probability
-CFTR,S977F/K1060T,Significantly enhanced channel open probability
-CFTR,L206W/S977F,Significantly enhanced channel open probability
-CFTR,P67L/S977F,Significantly enhanced channel open probability
-CFTR,S977F/R1070Q,Significantly enhanced channel open probability
-CFTR,S977F/R1070W,Significantly enhanced channel open probability
-CFTR,R117C/S977F,Significantly enhanced channel open probability
-CFTR,R117H/S977F,Significantly enhanced channel open probability
-CFTR,R347H/S977F,Significantly enhanced channel open probability
-CFTR,R352Q/S977F,Significantly enhanced channel open probability
-CFTR,R74W/S977F,Significantly enhanced channel open probability
-CFTR,S977F/S1251N,Significantly enhanced channel open probability
-CFTR,S977F/S1255P,Significantly enhanced channel open probability
-CFTR,S549N/S977F,Significantly enhanced channel open probability
-CFTR,S977F/S549R(A>C),Significantly enhanced channel open probability
-CFTR,S977F/S549R(T>G),Significantly enhanced channel open probability
-CFTR,S945L/S977F,Significantly enhanced channel open probability
-CFTR,S977F/S977F,Significantly enhanced channel open probability
