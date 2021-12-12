@@ -283,7 +283,7 @@ CFTR
 =====
 
 Phenotype summary for CFTR
------------------------------
+--------------------------
 
 Diplotype-phenotype mapping is used for phenotype prediction.
 
