@@ -34,7 +34,7 @@ Below is a summary table:
      -
      - ✅
      -
-   * - CFTR
+   * - :ref:`genes:CFTR`
      -
      - ✅
      - 
