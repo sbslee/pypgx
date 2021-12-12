@@ -292,14 +292,12 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
-    * - Increased open channel probability
-      - G551D/Reference
-    * - No change in open channel probability
+    * - Favorable Response
+      - Reference/G551D
+    * - Unfavorable Response
       - F508del/F508del
-    * - Significantly enhanced channel open probability
-      - S1251N/F508del
     * - Indeterminate
-      - F508del/Reference      
+      - Reference/F508del
 
 Resources for CFTR
 ---------------------
