@@ -2244,6 +2244,9 @@ CYP3A5,*7/*9,Indeterminate
 CYP3A5,*8/*8,Indeterminate
 CYP3A5,*8/*9,Indeterminate
 CYP3A5,*9/*9,Indeterminate
+F5,Reference/c.1601G>A,Unfavorable Response
+F5,Reference/Reference,Favorable Response
+F5,c.1601G>A/c.1601G>A,Unfavorable Response
 IFNL3,Reference/Reference,Favorable Response
 IFNL3,Reference/rs12979860,Unfavorable Response
 IFNL3,Reference/rs8099917,Indeterminate
