@@ -63,7 +63,7 @@ available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
-There are currently 57 pharmacogenes in PyPGx:
+There are currently 58 pharmacogenes in PyPGx:
 
 .. list-table::
 
@@ -98,33 +98,33 @@ There are currently 57 pharmacogenes in PyPGx:
      - CYP19A1
      - CYP26A1
    * - DPYD
+     - F5
      - G6PD
      - GSTM1
      - GSTP1
-     - GSTT1
-   * - IFNL3
+   * - GSTT1
+     - IFNL3
      - NAT1
      - NAT2
      - NUDT15
-     - POR
-   * - PTGIS
+   * - POR
+     - PTGIS
      - RYR1
      - SLC15A2
      - SLC22A2
-     - SLCO1B1
-   * - SLCO1B3
+   * - SLCO1B1
+     - SLCO1B3
      - SLCO2B1
      - SULT1A1
      - TBXAS1
-     - TPMT
-   * - UGT1A1
+   * - TPMT
+     - UGT1A1
      - UGT1A4
      - UGT2B7
      - UGT2B15
-     - UGT2B17
-   * - VKORC1
+   * - UGT2B17
+     - VKORC1
      - XPC
-     -
      -
      -
 

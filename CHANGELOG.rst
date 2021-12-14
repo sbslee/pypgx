@@ -11,7 +11,7 @@ Changelog
 * :issue:`32`: Update :command:`run-ngs-pipeline` method to accept phased VCF as input. In this case, the method will skip statistical haplotype phasing.
 * :issue:`34`: Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to load large VCF files significantly faster by allowing random access. This also means, from now on, input VCF files must be BGZF compressed (.gz) and indexed (.tbi).
 * :issue:`36`: Update phenotype data for CACNA1S, CFTR, IFNL3, RYR1 (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
-* Add new gene: F5.
+* :pr:`39`: Add new gene F5 (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 
 0.9.0 (2021-12-05)
 ------------------
