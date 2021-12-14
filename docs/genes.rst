@@ -712,7 +712,7 @@ Activity score is used for phenotype prediction.
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
 
 F5
-====
+==
 
 Phenotype summary for F5
 --------------------------
