@@ -150,6 +150,10 @@ Below is a summary table:
      -
      - ✅
      -
+   * - :ref:`genes:F5`
+     -
+     - ✅
+     - 
    * - G6PD
      -
      -
@@ -706,6 +710,29 @@ Activity score is used for phenotype prediction.
    * - Poor Metabolizer
      - 0 <= score < 1
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
+
+F5
+==
+
+Phenotype summary for F5
+------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Favorable Response
+      - Reference/Reference
+    * - Unfavorable Response
+      - Reference/Leiden
+
+Resources for F5
+----------------
+
+- `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
 
 GSTM1
 =====
