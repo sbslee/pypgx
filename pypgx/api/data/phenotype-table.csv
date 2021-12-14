@@ -36,9 +36,8 @@ DPYD,Normal Metabolizer,Normal/Routine/Low Risk
 DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
-F5,Favorable Response,Normal Risk
-F5,Unfavorable Response,High Risk
-F5,Indeterminate,Normal Risk
+F5,Favorable Response,None
+F5,Unfavorable Response,None
 IFNL3,Favorable Response,None
 IFNL3,Unfavorable Response,None
 IFNL3,Indeterminate,None
