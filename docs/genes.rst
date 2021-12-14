@@ -715,7 +715,7 @@ F5
 ==
 
 Phenotype summary for F5
---------------------------
+------------------------
 
 Diplotype-phenotype mapping is used for phenotype prediction.
 
