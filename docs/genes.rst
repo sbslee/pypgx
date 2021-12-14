@@ -727,7 +727,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Favorable Response
       - Reference/Reference
     * - Unfavorable Response
-      - Reference/c.1601G>A
+      - Reference/Leiden
 
 GSTM1
 =====
