@@ -729,6 +729,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Unfavorable Response
       - Reference/Leiden
 
+Resources for F5
+----------------
+
+- `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
+
 GSTM1
 =====
 
