@@ -132,47 +132,47 @@ Below is a summary table:
      - ✅
      - ✅
      -
-   * - CYP3A7
+   * - :ref:`genes:CYP3A7`
      -
      -
      - ✅
      -
-   * - CYP3A43
+   * - :ref:`genes:CYP3A43`
      -
      -
      - ✅
      -
-   * - CYP4A11
+   * - :ref:`genes:CYP4A11`
      -
      -
      - ✅
      -
-   * - CYP4A22
+   * - :ref:`genes:CYP4A22`
      -
      -
      - ✅
      -
-   * - CYP4B1
+   * - :ref:`genes:CYP4B1`
      -
      -
      - ✅
      -
-   * - CYP4F2
+   * - :ref:`genes:CYP4F2`
      -
      -
      - ✅
      -
-   * - CYP17A1
+   * - :ref:`genes:CYP17A1`
      -
      -
      - ✅
      -
-   * - CYP19A1
+   * - :ref:`genes:CYP19A1`
      -
      -
      - ✅
      -
-   * - CYP26A1
+   * - :ref:`genes:CYP26A1`
      -
      -
      - ✅
@@ -227,12 +227,12 @@ Below is a summary table:
      - ✅
      - ✅
      -
-   * - POR
+   * - :ref:`genes:POR`
      -
      -
      - ✅
      -
-   * - PTGIS
+   * - :ref:`genes:PTGIS`
      -
      -
      - ✅
@@ -272,7 +272,7 @@ Below is a summary table:
      -
      -
      -
-   * - TBXAS1
+   * - :ref:`genes:TBXAS1`
      -
      -
      - ✅
@@ -859,6 +859,78 @@ Resources for CYP3A5
 
 - `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
 
+CYP3A7
+======
+
+Resources for CYP3A7
+--------------------
+
+- `PharmVar CYP3A7 page <https://www.pharmvar.org/gene/CYP3A7>`__
+
+CYP3A43
+=======
+
+Resources for CYP3A43
+---------------------
+
+- `PharmVar CYP3A43 page <https://www.pharmvar.org/gene/CYP3A43>`__
+
+CYP4A11
+=======
+
+Resources for CYP4A11
+---------------------
+
+- `PharmVar CYP4A11 page <https://www.pharmvar.org/gene/CYP4A11>`__
+
+CYP4A22
+=======
+
+Resources for CYP4A22
+---------------------
+
+- `PharmVar CYP4A22 page <https://www.pharmvar.org/gene/CYP4A22>`__
+
+CYP4B1
+======
+
+Resources for CYP4B1
+--------------------
+
+- `PharmVar CYP4B1 page <https://www.pharmvar.org/gene/CYP4B1>`__
+
+CYP4F2
+======
+
+Resources for CYP4F2
+--------------------
+
+- `PharmVar CYP4F2 page <https://www.pharmvar.org/gene/CYP4F2>`__
+
+CYP17A1
+=======
+
+Resources for CYP17A1
+---------------------
+
+- `PharmVar CYP17A1 page <https://www.pharmvar.org/gene/CYP17A1>`__
+
+CYP19A1
+=======
+
+Resources for CYP19A1
+---------------------
+
+- `PharmVar CYP19A1 page <https://www.pharmvar.org/gene/CYP19A1>`__
+
+CYP26A1
+=======
+
+Resources for CYP26A1
+---------------------
+
+- `PharmVar CYP26A1 page <https://www.pharmvar.org/gene/CYP26A1>`__
+
 DPYD
 ====
 
@@ -1066,6 +1138,22 @@ Resources for NUDT15
 
 - `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
 
+POR
+===
+
+Resources for POR
+-----------------
+
+- `PharmVar POR page <https://www.pharmvar.org/gene/POR>`__
+
+PTGIS
+=====
+
+Resources for PTGIS
+-------------------
+
+- `PharmVar PTGIS page <https://www.pharmvar.org/gene/PTGIS>`__
+
 RYR1
 ====
 
@@ -1161,6 +1249,14 @@ Resources for SLCO1B1
 ---------------------
 
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
+
+TBXAS1
+======
+
+Resources for TBXAS1
+--------------------
+
+- `PharmVar TBXAS1 page <https://www.pharmvar.org/gene/TBXAS1>`__
 
 TPMT
 ====
