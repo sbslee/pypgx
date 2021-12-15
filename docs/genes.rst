@@ -20,13 +20,15 @@ Below is a summary table:
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 10 15 60
+   :widths: 15 10 15 15 60
 
    * - Gene
      - SV
      - Phenotype
+     - PharmVar
      - Note
    * - ABCB1
+     -
      -
      -
      -
@@ -34,127 +36,159 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:CFTR`
      -
      - ✅
      -
-   * - CYP1A1
+     -
+   * - :ref:`genes:CYP1A1`
      -
      -
+     - ✅
      -
-   * - CYP1A2
-     -
-     -
-     -
-   * - CYP1B1
+   * - :ref:`genes:CYP1A2`
      -
      -
+     - ✅
+     -
+   * - :ref:`genes:CYP1B1`
+     -
+     -
+     - ✅
      -
    * - :ref:`genes:CYP2A6`
      - ✅
      -
+     - ✅
      - Has pseudogene (CYP2A7).
-   * - CYP2A13
+   * - :ref:`genes:CYP2A13`
      -
      -
+     - ✅
      -
    * - :ref:`genes:CYP2B6`
      - ✅
      - ✅
+     - ✅
      - Has pseudogene (CYP2B7).
-   * - CYP2C8
+   * - :ref:`genes:CYP2C8`
      -
      -
+     - ✅
      -
    * - :ref:`genes:CYP2C9`
      -
+     - ✅
      - ✅
      -
    * - :ref:`genes:CYP2C19`
      -
      - ✅
+     - ✅
      -
    * - :ref:`genes:CYP2D6`
+     - ✅
      - ✅
      - ✅
      - Has pseudogene (CYP2D7).
    * - :ref:`genes:CYP2E1`
      - ✅
      -
+     - ✅
      -
-   * - CYP2F1
-     -
-     -
-     -
-   * - CYP2J2
+   * - :ref:`genes:CYP2F1`
      -
      -
+     - ✅
      -
-   * - CYP2R1
-     -
-     -
-     -
-   * - CYP2S1
+   * - :ref:`genes:CYP2J2`
      -
      -
+     - ✅
      -
-   * - CYP2W1
-     -
-     -
-     -
-   * - CYP3A4
+   * - :ref:`genes:CYP2R1`
      -
      -
+     - ✅
+     -
+   * - :ref:`genes:CYP2S1`
+     -
+     -
+     - ✅
+     -
+   * - :ref:`genes:CYP2W1`
+     -
+     -
+     - ✅
+     -
+   * - :ref:`genes:CYP3A4`
+     -
+     -
+     - ✅
      -
    * - :ref:`genes:CYP3A5`
      -
+     - ✅
      - ✅
      -
    * - CYP3A7
      -
      -
+     - ✅
      -
    * - CYP3A43
      -
      -
+     - ✅
      -
    * - CYP4A11
      -
      -
+     - ✅
      -
    * - CYP4A22
      -
      -
+     - ✅
      -
    * - CYP4B1
      -
      -
+     - ✅
      -
    * - CYP4F2
      -
      -
+     - ✅
      -
    * - CYP17A1
      -
      -
+     - ✅
      -
    * - CYP19A1
      -
      -
+     - ✅
      -
    * - CYP26A1
      -
      -
+     - ✅
      -
    * - :ref:`genes:DPYD`
      -
+     - ✅
      - ✅
      -
    * - :ref:`genes:F5`
      -
      - ✅
      -
+     -
    * - G6PD
+     -
      -
      -
      -
@@ -162,19 +196,24 @@ Below is a summary table:
      - ✅
      -
      -
+     -
    * - GSTP1
+     -
      -
      -
      -
    * - :ref:`genes:GSTT1`
      - ✅
      -
+     -
      - Contig differs between GRCh37 and GRCh38.
    * - :ref:`genes:IFNL3`
      -
      - ✅
      -
+     -
    * - NAT1
+     -
      -
      -
      -
@@ -182,23 +221,29 @@ Below is a summary table:
      -
      -
      -
+     -
    * - :ref:`genes:NUDT15`
      -
+     - ✅
      - ✅
      -
    * - POR
      -
      -
+     - ✅
      -
    * - PTGIS
      -
      -
+     - ✅
      -
    * - :ref:`genes:RYR1`
      -
      - ✅
      -
+     -
    * - SLC15A2
+     -
      -
      -
      -
@@ -206,11 +251,14 @@ Below is a summary table:
      - ✅
      -
      -
+     -
    * - :ref:`genes:SLCO1B1`
      -
      - ✅
+     - ✅
      -
    * - SLCO1B3
+     -
      -
      -
      -
@@ -218,27 +266,34 @@ Below is a summary table:
      -
      -
      -
+     -
    * - SULT1A1
+     -
      -
      -
      -
    * - TBXAS1
      -
      -
+     - ✅
      -
    * - :ref:`genes:TPMT`
      -
      - ✅
      -
+     -
    * - :ref:`genes:UGT1A1`
      -
      - ✅
+     -
      -
    * - :ref:`genes:UGT1A4`
      - ✅
      -
      -
+     -
    * - UGT2B7
+     -
      -
      -
      -
@@ -246,15 +301,19 @@ Below is a summary table:
      - ✅
      -
      -
+     -
    * - :ref:`genes:UGT2B17`
      - ✅
+     -
      -
      -
    * - VKORC1
      -
      -
      -
+     -
    * - XPC
+     -
      -
      -
      -
@@ -308,6 +367,30 @@ Resources for CFTR
 
 - `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
 - `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
+
+CYP1A1
+======
+
+Resources for CYP1A1
+--------------------
+
+- `PharmVar CYP1A1 page <https://www.pharmvar.org/gene/CYP1A1>`__
+
+CYP1A2
+======
+
+Resources for CYP1A2
+--------------------
+
+- `PharmVar CYP1A2 page <https://www.pharmvar.org/gene/CYP1A2>`__
+
+CYP1B1
+======
+
+Resources for CYP1B1
+--------------------
+
+- `PharmVar CYP1B1 page <https://www.pharmvar.org/gene/CYP1B1>`__
 
 CYP2A6
 ======
@@ -384,6 +467,14 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
 
+CYP2A13
+=======
+
+Resources for CYP2A13
+---------------------
+
+- `PharmVar CYP2A13 page <https://www.pharmvar.org/gene/CYP2A13>`__
+
 CYP2B6
 ======
 
@@ -441,6 +532,14 @@ Resources for CYP2B6
 --------------------
 
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
+
+CYP2C8
+======
+
+Resources for CYP2C8
+--------------------
+
+- `PharmVar CYP2C8 page <https://www.pharmvar.org/gene/CYP2C8>`__
 
 CYP2C9
 ======
@@ -682,6 +781,54 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
+
+CYP2F1
+======
+
+Resources for CYP2F1
+--------------------
+
+- `PharmVar CYP2F1 page <https://www.pharmvar.org/gene/CYP2F1>`__
+
+CYP2J2
+======
+
+Resources for CYP2J2
+--------------------
+
+- `PharmVar CYP2J2 page <https://www.pharmvar.org/gene/CYP2J2>`__
+
+CYP2R1
+======
+
+Resources for CYP2R1
+--------------------
+
+- `PharmVar CYP2R1 page <https://www.pharmvar.org/gene/CYP2R1>`__
+
+CYP2S1
+======
+
+Resources for CYP2S1
+--------------------
+
+- `PharmVar CYP2S1 page <https://www.pharmvar.org/gene/CYP2S1>`__
+
+CYP2W1
+======
+
+Resources for CYP2W1
+--------------------
+
+- `PharmVar CYP2W1 page <https://www.pharmvar.org/gene/CYP2W1>`__
+
+CYP3A4
+======
+
+Resources for CYP3A4
+--------------------
+
+- `PharmVar CYP3A4 page <https://www.pharmvar.org/gene/CYP3A4>`__
 
 CYP3A5
 ======
