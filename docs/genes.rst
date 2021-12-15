@@ -37,7 +37,7 @@ Below is a summary table:
    * - :ref:`genes:CFTR`
      -
      - ✅
-     - 
+     -
    * - CYP1A1
      -
      -
@@ -153,7 +153,7 @@ Below is a summary table:
    * - :ref:`genes:F5`
      -
      - ✅
-     - 
+     -
    * - G6PD
      -
      -
@@ -284,7 +284,7 @@ Resources for CACNA1S
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 
 CFTR
-=====
+====
 
 Phenotype summary for CFTR
 --------------------------
@@ -304,7 +304,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
       - Reference/F508del
 
 Resources for CFTR
----------------------
+------------------
 
 - `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
 - `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
@@ -437,6 +437,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Indeterminate
       - \*1/\*3
 
+Resources for CYP2B6
+--------------------
+
+- `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
+
 CYP2C9
 ======
 
@@ -460,6 +465,11 @@ Activity score is used for phenotype prediction.
    * - Poor Metabolizer
      - 0 <= score < 1
      - \*2/\*3
+
+Resources for CYP2C9
+--------------------
+
+- `CPIC® Guideline for NSAIDs based on CYP2C9 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/>`__
 
 CYP2C19
 =======
@@ -490,6 +500,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*2/\*2
    * - Indeterminate
      - \*1/\*12
+
+Resources for CYP2C19
+---------------------
+
+- `CPIC® Guideline for Voriconazole and CYP2C19 <https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/>`__
 
 CYP2D6
 ======
@@ -615,6 +630,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42524327-A-G <https://gnomad.broadinstitute.org/variant/22-42524327-A-G?dataset=gnomad_r2_1>`__
      - `22-42128325-A-G <https://gnomad.broadinstitute.org/variant/22-42128325-A-G?dataset=gnomad_r3>`__
 
+Resources for CYP2D6
+--------------------
+
+- `CPIC® Guideline for Tamoxifen based on CYP2D6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/>`__
+
 CYP2E1
 ======
 
@@ -687,6 +707,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*2/\*2
 
+Resources for CYP3A5
+--------------------
+
+- `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
+
 DPYD
 ====
 
@@ -710,6 +735,11 @@ Activity score is used for phenotype prediction.
    * - Poor Metabolizer
      - 0 <= score < 1
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
+
+Resources for DPYD
+------------------
+
+- `CPIC® Guideline for Fluoropyrimidines and DPYD <https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/>`__
 
 F5
 ==
@@ -884,6 +914,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*4
 
+Resources for NUDT15
+--------------------
+
+- `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
+
 RYR1
 ====
 
@@ -975,6 +1010,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1A/\*7
 
+Resources for SLCO1B1
+---------------------
+
+- `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
+
 TPMT
 ====
 
@@ -999,6 +1039,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*18
 
+Resources for TPMT
+------------------
+
+- `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
+
 UGT1A1
 ======
 
@@ -1020,6 +1065,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*6/\*27
    * - Indeterminate
      - \*28/\*80
+
+Resources for UGT1A1
+--------------------
+
+- `CPIC® Guideline for Atazanavir and UGT1A1 <https://cpicpgx.org/guidelines/guideline-for-atazanavir-and-ugt1a1/>`__
 
 UGT1A4
 ======
