@@ -7,11 +7,11 @@ Changelog
 * :issue:`32`: Update :command:`import-variants` command to accept phased VCF as input. It will output VcfFrame[Consolidated] if the input VCF is fully phased or otherwise VcfFrame[Imported] as usual.
 * Add new property ``sdk.utils.Archive.type`` to quickly access the archive's semantic type.
 * Update :meth:`sdk.utils.Archive.check_type` method to be able to test more than one semantic type at once.
-* Update :meth:`api.plot.plot_vcf_allele_fraction` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated]
+* Update :meth:`api.plot.plot_vcf_allele_fraction` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated].
 * :issue:`32`: Update :command:`run-ngs-pipeline` method to accept phased VCF as input. In this case, the method will skip statistical haplotype phasing.
 * :issue:`34`: Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to load large VCF files significantly faster by allowing random access. This also means, from now on, input VCF files must be BGZF compressed (.gz) and indexed (.tbi).
-* :issue:`36`: Update phenotype data for CACNA1S, CFTR, IFNL3, RYR1 (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
-* :pr:`39`: Add new gene F5 (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
+* :issue:`36`: Update phenotype data for CACNA1S, CFTR, IFNL3, RYR1 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
+* :pr:`39`: Add new gene F5 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 
 0.9.0 (2021-12-05)
 ------------------
@@ -31,7 +31,7 @@ Changelog
 * Add new method :meth:`api.core.get_strand`.
 * Add new method :meth:`api.core.get_exon_starts`.
 * Add new method :meth:`api.core.get_exon_ends`.
-* :pr:`31`: Fix minor bug in commands :command:`run-ngs-pipeline` and :command:`import-read-depth` (thanks to `@NTNguyen13 <https://github.com/NTNguyen13>`__).
+* :pr:`31`: Fix minor bug in commands :command:`run-ngs-pipeline` and :command:`import-read-depth` (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 * Fix minor bug in :meth:`api.core.predict_score` method.
 * Update variant information for following alleles: CYP2D6\*27, CYP2D6\*32, CYP2D6\*131, CYP2D6\*141.
 
