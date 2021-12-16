@@ -20,14 +20,16 @@ Below is a summary table:
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 10 15 15 60
+   :widths: 15 10 15 15 15 60
 
    * - Gene
      - SV
      - Phenotype
      - PharmVar
+     - CPIC
      - Note
    * - ABCB1
+     -
      -
      -
      -
@@ -36,38 +38,46 @@ Below is a summary table:
      -
      - ✅
      -
+     - ✅
      -
    * - :ref:`genes:CFTR`
      -
      - ✅
      -
+     - ✅
      -
    * - :ref:`genes:CYP1A1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP1A2`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP1B1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2A6`
      - ✅
      -
      - ✅
+     -
      - Has pseudogene (CYP2A7).
    * - :ref:`genes:CYP2A13`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2B6`
+     - ✅
      - ✅
      - ✅
      - ✅
@@ -77,8 +87,10 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2C9`
      -
+     - ✅
      - ✅
      - ✅
      -
@@ -86,8 +98,10 @@ Below is a summary table:
      -
      - ✅
      - ✅
+     - ✅
      -
    * - :ref:`genes:CYP2D6`
+     - ✅
      - ✅
      - ✅
      - ✅
@@ -97,38 +111,46 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2F1`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP2J2`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2R1`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP2S1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP2W1`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP3A4`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP3A5`
      -
+     - ✅
      - ✅
      - ✅
      -
@@ -137,48 +159,58 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP3A43`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP4A11`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP4A22`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP4B1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP4F2`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP17A1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:CYP19A1`
      -
      -
      - ✅
+     -
      -
    * - :ref:`genes:CYP26A1`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:DPYD`
      -
+     - ✅
      - ✅
      - ✅
      -
@@ -187,7 +219,9 @@ Below is a summary table:
      - ✅
      -
      -
+     -
    * - G6PD
+     -
      -
      -
      -
@@ -197,7 +231,9 @@ Below is a summary table:
      -
      -
      -
+     -
    * - GSTP1
+     -
      -
      -
      -
@@ -206,13 +242,16 @@ Below is a summary table:
      - ✅
      -
      -
+     -
      - Contig differs between GRCh37 and GRCh38.
    * - :ref:`genes:IFNL3`
      -
      - ✅
      -
      -
+     -
    * - NAT1
+     -
      -
      -
      -
@@ -222,8 +261,10 @@ Below is a summary table:
      -
      -
      -
+     -
    * - :ref:`genes:NUDT15`
      -
+     - ✅
      - ✅
      - ✅
      -
@@ -232,17 +273,21 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:PTGIS`
      -
      -
      - ✅
      -
+     -
    * - :ref:`genes:RYR1`
      -
+     - ✅
      - ✅
      -
      -
    * - SLC15A2
+     -
      -
      -
      -
@@ -252,12 +297,15 @@ Below is a summary table:
      -
      -
      -
+     -
    * - :ref:`genes:SLCO1B1`
      -
      - ✅
      - ✅
+     - ✅
      -
    * - SLCO1B3
+     -
      -
      -
      -
@@ -267,7 +315,9 @@ Below is a summary table:
      -
      -
      -
+     -
    * - SULT1A1
+     -
      -
      -
      -
@@ -277,22 +327,27 @@ Below is a summary table:
      -
      - ✅
      -
+     -
    * - :ref:`genes:TPMT`
      -
      - ✅
      -
+     - ✅
      -
    * - :ref:`genes:UGT1A1`
      -
      - ✅
      -
+     - ✅
      -
    * - :ref:`genes:UGT1A4`
      - ✅
      -
      -
      -
+     -
    * - UGT2B7
+     -
      -
      -
      -
@@ -302,8 +357,10 @@ Below is a summary table:
      -
      -
      -
+     -
    * - :ref:`genes:UGT2B17`
      - ✅
+     -
      -
      -
      -
@@ -311,8 +368,10 @@ Below is a summary table:
      -
      -
      -
+     - ✅
      -
    * - XPC
+     -
      -
      -
      -
