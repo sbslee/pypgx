@@ -315,28 +315,30 @@ currently defined semantic types:
 Phenotype prediction
 ====================
 
-Many of the genes in PyPGx have a diplotype-phenotype table available from
-the Clinical Pharmacogenetics Implementation Consortium (CPIC). PyPGx will
-use this information to perform phenotype prediction. Note that there two
-types of phenotype prediction:
+Many genes in PyPGx have a genotype-phenotype table available from the
+Clinical Pharmacogenetics Implementation Consortium (CPIC) or
+the Pharmacogenomics Knowledge Base (PharmGKB). PyPGx uses these tables to
+perform phenotype prediction using one of the two methods:
 
-- Method 1. Diplotype-phenotype mapping: This method directly uses the
-  diplotype-phenotype mapping as defined by CPIC. Using the CYP2B6 gene as an
-  example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2, \*1/\*4, and \*4/\*4
-  correspond to Poor Metabolizer, Intermediate Metabolizer, Normal
-  Metabolizer, Rapid Metabolizer, and Ultrarapid Metabolizer.
-- Method 2. Activity score: This method uses a standard unit of enzyme
-  activity known as an activity score. Using the CYP2D6 gene as an example,
-  the fully functional reference \*1 allele is assigned a value of 1,
-  decreased-function alleles such as \*9 and \*17 receive a value of
-  0.5, and nonfunctional alleles including \*4 and \*5 have a value of
-  0. The sum of values assigned to both alleles constitutes the activity
-  score of a diplotype. Consequently, subjects with \*1/\*1, \*1/\*4,
-  and \*4/\*5 diplotypes have an activity score of 2 (Normal Metabolizer),
-  1 (Intermediate Metabolizer), and 0 (Poor Metabolizer), respectively.
+- Method 1. Simple diplotype-phenotype mapping: This method directly uses the
+  diplotype-phenotype mapping as defined by CPIC or PharmGKB. Using the
+  CYP2B6 gene as an example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2,
+  \*1/\*4, and \*4/\*4 correspond to Poor Metabolizer, Intermediate
+  Metabolizer, Normal Metabolizer, Rapid Metabolizer, and Ultrarapid
+  Metabolizer.
+- Method 2. Summation of haplotype activity scores: This method uses a
+  standard unit of enzyme activity known as an activity score. Using the
+  CYP2D6 gene as an example, the fully functional reference \*1 allele is
+  assigned a value of 1, decreased-function alleles such as \*9 and \*17
+  receive a value of 0.5, and nonfunctional alleles including \*4 and \*5
+  have a value of 0. The sum of values assigned to both alleles constitutes
+  the activity score of a diplotype. Consequently, subjects with \*1/\*1,
+  \*1/\*4, and \*4/\*5 diplotypes have an activity score of 2 (Normal
+  Metabolizer), 1 (Intermediate Metabolizer), and 0 (Poor Metabolizer),
+  respectively.
 
 Please visit the `Genes <https://pypgx.readthedocs.io/en/latest/
-genes.html>`__ page to see the list of genes with a CPIC diplotype-phenotype
+genes.html>`__ page to see the list of genes with a genotype-phenotype
 table and each of their prediction method.
 
 Getting help

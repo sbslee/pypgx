@@ -55,3 +55,13 @@ PharmGKB annotates PGx-based drug dosing guidelines published by CPIC, DPWG,
 CPNDS, and other professional societies. PharmGKB annotations present a brief
 summary of the genotype-based dosing recommendations and links to the source
 publications/documents.
+
+Structural variation (SV)
+=========================
+
+Structural variation (SV) is generally defined as a region of DNA
+approximately 1 kb and larger in size and can include inversions and balanced
+translocations or genomic imbalances (duplications and deletions), commonly
+referred to as copy number variants (CNVs). Additionally, for pharmacogenes
+that are known to have one or more pseudogenes (e.g. CYP2D6), SV can be often
+found in the form of hybrid genes (e.g. CYP2D6/CYP2D7).

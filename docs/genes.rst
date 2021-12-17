@@ -5,16 +5,16 @@ Introduction
 ============
 
 This page describes gene-specific information. PyPGx currently supports a
-total of 57 pharmacogenes.
+total of 58 pharmacogenes.
 
-Many of the genes are known to have structural variation (SV) including
-gene deletions, duplications, and hybrids.
+Many of the genes are known to have :ref:`structural variation (SV)
+<glossary:Structural variation (SV)>` including gene deletions, duplications,
+and hybrids.
 
-Some genes have a diplotype-phenotype table available from the Clinical
-Pharmacogenetics Implementation Consortium (CPIC). PyPGx will use this
-information to perform phenotype prediction with one of the two methods:
-diplotype-phenotype mapping or activity score. Please read the
-:ref:`readme:Phenotype prediction` page for more details.
+Some genes have a genotype-phenotype table available from the
+:ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
+the :ref:`glossary:Pharmacogenomics Knowledge Base (PharmGKB)`. Please read
+the :ref:`readme:Phenotype prediction` page for more details.
 
 Below is a summary table:
 
