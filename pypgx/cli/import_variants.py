@@ -48,7 +48,7 @@ def create_parser(subparsers):
         metavar='TEXT',
         default='WGS',
         choices=['WGS', 'Targeted', 'Chip'],
-        help="NGS platform (default: 'WGS') (choices: 'WGS', \n"
+        help="Genotyping platform (default: 'WGS') (choices: 'WGS', \n"
              "'Targeted', 'Chip')."
     )
 
