@@ -31,9 +31,22 @@ def create_parser(subparsers):
         metavar='read-depth',
         help='Archive file with the semantic type CovFrame[ReadDepth].'
     )
+    parser.add_argument(
+        '--samples',
+        metavar='PATH',
+        help='Subset the VCF for specified samples. You can specify \n'
+             'samples by providing a text file containing one sample \n'
+             'per line.'
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help='Exclude specified samples.'
+    )
 
 def main(args):
     archive = utils.import_read_depth(
-        args.gene, args.depth_of_coverage
+        args.gene, args.depth_of_coverage, samples=args.samples,
+        exclude=args.exclude
     )
     archive.to_file(args.read_depth)

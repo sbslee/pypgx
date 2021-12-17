@@ -748,7 +748,7 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
     return sdk.Archive(archive.copy_metadata(), data)
 
 def import_read_depth(
-    gene, depth_of_coverage
+    gene, depth_of_coverage, samples=None, exclude=False
 ):
     """
     Import read depth data for target gene.
@@ -760,6 +760,12 @@ def import_read_depth(
     depth_of_coverage : str or pypgx.Archive
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].
+    samples : str or list
+        Subset the VCF for specified samples. This can be a text file
+        containing one sample per line. Alternatively, you can provide a list
+        of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
 
     Returns
     -------
@@ -772,12 +778,25 @@ def import_read_depth(
     depth_of_coverage.check_type('CovFrame[DepthOfCoverage]')
 
     metadata = depth_of_coverage.copy_metadata()
-    region = core.get_region(gene, assembly=metadata['Assembly'])
-    data = depth_of_coverage.data.update_chr_prefix(mode='remove').slice(region)
     metadata['Gene'] = gene
     metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
-    return sdk.Archive(metadata, data)
+    region = core.get_region(gene, assembly=metadata['Assembly'])
+
+    cf = depth_of_coverage.data.update_chr_prefix(mode='remove')
+    cf = cf.slice(region)
+
+    if samples is not None:
+        if isinstance(samples, str):
+            samples = common.convert_file2list(samples)
+        elif isinstance(samples, list):
+            pass
+        else:
+            raise TypeError('The samples argument must be str or '
+                f'list, not {type(samples).__name__}')
+        cf = cf.subset(samples, exclude=exclude)
+
+    return sdk.Archive(metadata, cf)
 
 def import_variants(
     gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False

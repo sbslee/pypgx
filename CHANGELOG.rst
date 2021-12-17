@@ -13,6 +13,7 @@ Changelog
 * :issue:`36`: Update phenotype data for CACNA1S, CFTR, IFNL3, RYR1 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 * :pr:`39`: Add new gene F5 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 * Update :command:`import-variants` command to be able to subset/exclude specified samples.
+* Update :command:`import-read-depth` command to be able to subset/exclude specified samples.
 
 0.9.0 (2021-12-05)
 ------------------
