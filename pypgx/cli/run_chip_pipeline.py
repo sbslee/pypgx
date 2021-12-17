@@ -56,9 +56,22 @@ def create_parser(subparsers):
         action='store_true',
         help='Overwrite output directory if it already exists.'
     )
+    parser.add_argument(
+        '--samples',
+        metavar='PATH',
+        help='Subset the VCF for specified samples. You can specify \n'
+             'samples by providing a text file containing one sample \n'
+             'per line.'
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help='Exclude specified samples.'
+    )
 
 def main(args):
     pipeline.run_chip_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        impute=args.impute, force=args.force
+        impute=args.impute, force=args.force, samples=samples,
+        exclude=exclude
     )

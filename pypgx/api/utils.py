@@ -763,7 +763,7 @@ def import_read_depth(
     depth_of_coverage : str or pypgx.Archive
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].
-    samples : str or list
+    samples : str or list, optional
         Subset the VCF for specified samples. This can be a text file
         containing one sample per line. Alternatively, you can provide a list
         of samples.
@@ -825,7 +825,7 @@ def import_variants(
         Reference genome assembly.
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
         Genotyping platform.
-    samples : str or list
+    samples : str or list, optional
         Subset the VCF for specified samples. This can be a text file
         containing one sample per line. Alternatively, you can provide a list
         of samples.

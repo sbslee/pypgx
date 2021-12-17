@@ -13,7 +13,7 @@ from . import utils, plot, genotype, core
 
 def run_chip_pipeline(
     gene, output, variants, panel=None, assembly='GRCh37', impute=False,
-    force=False
+    force=False, samples=None, exclude=exclude
 ):
     """
     Run PyPGx's genotyping pipeline for chip data.
@@ -34,6 +34,12 @@ def run_chip_pipeline(
         If True, perform imputation of missing genotypes.
     force : bool, default : False
         Overwrite output directory if it already exists.
+    samples : str or list, optional
+        Subset the VCF for specified samples. This can be a text file
+        containing one sample per line. Alternatively, you can provide a list
+        of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
     """
     if not core.is_target_gene(gene):
         raise core.NotTargetGeneError(gene)
@@ -44,7 +50,7 @@ def run_chip_pipeline(
     os.mkdir(output)
 
     imported_variants = utils.import_variants(gene, variants,
-        assembly=assembly, platform='Chip')
+        assembly=assembly, platform='Chip', samples=samples, exclude=exclude)
     imported_variants.to_file(f'{output}/imported-variants.zip')
 
     # Skip statistical phasing if input VCF is already fully phased.
@@ -73,8 +79,8 @@ def run_chip_pipeline(
 def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
     control_statistics=None, platform='WGS', assembly='GRCh37', panel=None,
-    force=False, samples_without_sv=None, do_not_plot_copy_number=False,
-    do_not_plot_allele_fraction=False
+    force=False, samples=None, exclude=False, samples_without_sv=None,
+    do_not_plot_copy_number=False, do_not_plot_allele_fraction=False
 ):
     """
     Run PyPGx's genotyping pipeline for NGS data.
@@ -108,6 +114,12 @@ def run_ngs_pipeline(
         unzipped). By default, the 1KGP panel is used.
     force : bool, default : False
         Overwrite output directory if it already exists.
+    samples : str or list, optional
+        Subset the VCF for specified samples. This can be a text file
+        containing one sample per line. Alternatively, you can provide a list
+        of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
     samples_without_sv : list, optional
         List of known samples without SV.
     do_not_plot_copy_number : bool, default: False
@@ -156,7 +168,8 @@ def run_ngs_pipeline(
 
     if small_var and variants is not None:
         imported_variants = utils.import_variants(gene, variants,
-            assembly=assembly, platform=platform)
+            assembly=assembly, platform=platform, samples=samples,
+            exclude=exclude)
         imported_variants.to_file(f'{output}/imported-variants.zip')
 
         # Skip statistical phasing if input VCF is already fully phased.
@@ -198,7 +211,8 @@ def run_ngs_pipeline(
         control_statistics.check_metadata('Platform', platform)
         control_statistics.check_metadata('Assembly', assembly)
 
-        read_depth = utils.import_read_depth(gene, depth_of_coverage)
+        read_depth = utils.import_read_depth(gene, depth_of_coverage,
+            samples=samples, exclude=exclude)
         read_depth.to_file(f'{output}/read-depth.zip')
         copy_number = utils.compute_copy_number(read_depth,
             control_statistics, samples_without_sv=samples_without_sv)

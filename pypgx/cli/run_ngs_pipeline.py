@@ -101,6 +101,18 @@ def create_parser(subparsers):
         help='Overwrite output directory if it already exists.'
     )
     parser.add_argument(
+        '--samples',
+        metavar='PATH',
+        help='Subset the VCF for specified samples. You can specify \n'
+             'samples by providing a text file containing one sample \n'
+             'per line.'
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help='Exclude specified samples.'
+    )
+    parser.add_argument(
         '--samples-without-sv',
         metavar='TEXT',
         nargs='+',
@@ -122,7 +134,8 @@ def main(args):
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
         control_statistics=args.control_statistics, assembly=args.assembly,
-        panel=args.panel, force=args.force, samples=args.samples_without_sv,
+        panel=args.panel, force=args.force, samples=samples, exclude=exclude,
+        samples_without_sv=args.samples_without_sv,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,
         platform=args.platform
