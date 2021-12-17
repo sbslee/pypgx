@@ -284,7 +284,9 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(read_depth, control_statistics, samples=None):
+def compute_copy_number(
+    read_depth, control_statistics, samples_without_sv=None
+):
     """
     Compute copy number from read depth for the target gene.
 
@@ -302,8 +304,9 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
     read_depth : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[ReadDepth].
     control_statistcs : str or pypgx.Archive
-        Archive file or object with the semandtic type SampleTable[Statistics].
-    samples : list, optional
+        Archive file or object with the semandtic type
+        SampleTable[Statistics].
+    samples_without_sv : list, optional
         List of known samples without SV.
 
     Returns
@@ -331,10 +334,10 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
 
     # Apply inter-sample normalization.
     if read_depth.metadata['Platform'] == 'Targeted':
-        if samples is None:
+        if samples_without_sv is None:
             medians = df.iloc[:, 2:].median(axis=1).replace(0, np.nan)
         else:
-            medians = df[samples].median(axis=1).replace(0, np.nan)
+            medians = df[samples_without_sv].median(axis=1).replace(0, np.nan)
         df.iloc[:, 2:] = df.iloc[:, 2:].div(medians, axis=0) * 2
 
     cf = pycov.CovFrame(df)
@@ -344,7 +347,7 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
     if samples is None:
         metadata['Samples'] = 'None'
     else:
-        metadata['Samples'] = ','.join(samples)
+        metadata['Samples'] = ','.join(samples_without_sv)
 
     return sdk.Archive(metadata, cf)
 

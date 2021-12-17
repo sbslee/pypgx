@@ -204,7 +204,7 @@ compute-copy-number
 .. code-block:: text
 
    $ pypgx compute-copy-number -h
-   usage: pypgx compute-copy-number [-h] [--samples TEXT [TEXT ...]]
+   usage: pypgx compute-copy-number [-h] [--samples-without-sv TEXT [TEXT ...]]
                                     read-depth control-statistcs output
    
    Compute copy number from read depth for the target gene.
@@ -215,7 +215,7 @@ compute-copy-number
    During copy number analysis, if the input data is targeted sequencing, the
    command will apply inter-sample normalization using summary statistics across
    all samples. For best results, it is recommended to specify known samples
-   without SV using --samples.
+   without SV using --samples-without-sv.
    
    Positional arguments:
      read-depth            Archive file with the semantic type 
@@ -227,7 +227,7 @@ compute-copy-number
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --samples TEXT [TEXT ...]
+     --samples-without-sv TEXT [TEXT ...]
                            List of known samples with no SV.
 
 compute-target-depth
@@ -369,7 +369,8 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] gene depth-of-coverage read-depth
+   usage: pypgx import-read-depth [-h] [--samples PATH] [--exclude]
+                                  gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
    
@@ -381,6 +382,10 @@ import-read-depth
    
    Optional arguments:
      -h, --help         Show this help message and exit.
+     --samples PATH     Subset the VCF for specified samples. You can specify 
+                        samples by providing a text file containing one sample 
+                        per line.
+     --exclude          Exclude specified samples.
 
 import-variants
 ===============
@@ -688,7 +693,7 @@ run-ngs-pipeline
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--platform TEXT]
                                  [--assembly TEXT] [--panel PATH] [--force]
-                                 [--samples TEXT [TEXT ...]]
+                                 [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
@@ -698,7 +703,7 @@ run-ngs-pipeline
    During copy number analysis, if the input data is targeted sequencing, the
    command will apply inter-sample normalization using summary statistics across
    all samples. For best results, it is recommended to specify known samples
-   without SV using --samples.
+   without SV using --samples-without-sv.
    
    Positional arguments:
      gene                  Target gene.
@@ -723,7 +728,7 @@ run-ngs-pipeline
                            (compressed or uncompressed). By default, the 1KGP 
                            panel is used.
      --force               Overwrite output directory if it already exists.
-     --samples TEXT [TEXT ...]
+     --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.
      --do-not-plot-copy-number
                            Do not plot copy number profile.

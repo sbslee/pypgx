@@ -73,7 +73,7 @@ def run_chip_pipeline(
 def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
     control_statistics=None, platform='WGS', assembly='GRCh37', panel=None,
-    force=False, samples=None, do_not_plot_copy_number=False,
+    force=False, samples_without_sv=None, do_not_plot_copy_number=False,
     do_not_plot_allele_fraction=False
 ):
     """
@@ -82,7 +82,7 @@ def run_ngs_pipeline(
     During copy number analysis, if the input data is targeted sequencing,
     the method will apply inter-sample normalization using summary statistics
     across all samples. For best results, it is recommended to specify known
-    samples without SV using ``samples``.
+    samples without SV using ``samples_without_sv``.
 
     Parameters
     ----------
@@ -108,7 +108,7 @@ def run_ngs_pipeline(
         unzipped). By default, the 1KGP panel is used.
     force : bool, default : False
         Overwrite output directory if it already exists.
-    samples : list, optional
+    samples_without_sv : list, optional
         List of known samples without SV.
     do_not_plot_copy_number : bool, default: False
         Do not plot copy number profile.
@@ -200,7 +200,8 @@ def run_ngs_pipeline(
 
         read_depth = utils.import_read_depth(gene, depth_of_coverage)
         read_depth.to_file(f'{output}/read-depth.zip')
-        copy_number = utils.compute_copy_number(read_depth, control_statistics, samples=samples)
+        copy_number = utils.compute_copy_number(read_depth,
+            control_statistics, samples_without_sv=samples_without_sv)
         copy_number.to_file(f'{output}/copy-number.zip')
         cnv_calls = utils.predict_cnv(copy_number)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')

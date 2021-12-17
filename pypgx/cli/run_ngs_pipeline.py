@@ -10,7 +10,7 @@ Run PyPGx's genotyping pipeline for NGS data.
 During copy number analysis, if the input data is targeted sequencing, the
 command will apply inter-sample normalization using summary statistics across
 all samples. For best results, it is recommended to specify known samples
-without SV using --samples.
+without SV using --samples-without-sv.
 """
 
 epilog = f"""
@@ -101,7 +101,7 @@ def create_parser(subparsers):
         help='Overwrite output directory if it already exists.'
     )
     parser.add_argument(
-        '--samples',
+        '--samples-without-sv',
         metavar='TEXT',
         nargs='+',
         help="List of known samples without SV."
@@ -122,7 +122,7 @@ def main(args):
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
         control_statistics=args.control_statistics, assembly=args.assembly,
-        panel=args.panel, force=args.force, samples=args.samples,
+        panel=args.panel, force=args.force, samples=args.samples_without_sv,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,
         platform=args.platform

@@ -8,12 +8,14 @@ Changelog
 * Add new property ``sdk.utils.Archive.type`` to quickly access the archive's semantic type.
 * Update :meth:`sdk.utils.Archive.check_type` method to be able to test more than one semantic type at once.
 * Update :meth:`api.plot.plot_vcf_allele_fraction` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated].
-* :issue:`32`: Update :command:`run-ngs-pipeline` method to accept phased VCF as input. In this case, the method will skip statistical haplotype phasing.
+* :issue:`32`: Update :command:`run-ngs-pipeline` command to accept phased VCF as input. In this case, the command will skip statistical haplotype phasing.
 * :issue:`34`: Update commands :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` to load large VCF files significantly faster by allowing random access. This also means, from now on, input VCF files must be BGZF compressed (.gz) and indexed (.tbi).
 * :issue:`36`: Update phenotype data for CACNA1S, CFTR, IFNL3, RYR1 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 * :pr:`39`: Add new gene F5 (thanks `@NTNguyen13 <https://github.com/NTNguyen13>`__).
 * Update :command:`import-variants` command to be able to subset/exclude specified samples.
 * Update :command:`import-read-depth` command to be able to subset/exclude specified samples.
+* Rename ``--samples`` argument from :command:`compute-copy-number` command to ``--samples-without-sv``.
+* Rename ``--samples`` argument from :command:`run-ngs-pipeline` command to ``--samples-without-sv``.
 
 0.9.0 (2021-12-05)
 ------------------
