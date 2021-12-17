@@ -344,24 +344,20 @@ filter-samples
 .. code-block:: text
 
    $ pypgx filter-samples -h
-   usage: pypgx filter-samples [-h] [--samples TEXT [TEXT ...]] [--fn PATH]
-                               [--exclude]
-                               input output
+   usage: pypgx filter-samples [-h] [--exclude] input output samples
    
    Filter Archive file for specified samples.
    
    Positional arguments:
-     input                 Input archive file.
-     output                Output archive file.
+     input       Input archive file.
+     output      Output archive file.
+     samples     Text file (.txt, .tsv, .csv, or .list) containing one 
+                 sample per line. Alternatively, you can provide a list 
+                 of samples.
    
    Optional arguments:
-     -h, --help            Show this help message and exit.
-     --samples TEXT [TEXT ...]
-                           List of samples names (the order matters). Cannot be 
-                           used with --fn.
-     --fn PATH             File containing one sample name per line. Cannot be 
-                           used with --samples.
-     --exclude             Exclude specified samples.
+     -h, --help  Show this help message and exit.
+     --exclude   Exclude specified samples.
 
 import-read-depth
 =================

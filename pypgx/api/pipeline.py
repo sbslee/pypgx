@@ -35,9 +35,9 @@ def run_chip_pipeline(
     force : bool, default : False
         Overwrite output directory if it already exists.
     samples : str or list, optional
-        Subset the VCF for specified samples. This can be a text file
-        containing one sample per line. Alternatively, you can provide a list
-        of samples.
+        Subset the VCF for specified samples. This can be a text file (.txt,
+        .tsv, .csv, or .list) containing one sample per line. Alternatively,
+        you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
     """
@@ -115,9 +115,9 @@ def run_ngs_pipeline(
     force : bool, default : False
         Overwrite output directory if it already exists.
     samples : str or list, optional
-        Subset the VCF for specified samples. This can be a text file
-        containing one sample per line. Alternatively, you can provide a list
-        of samples.
+        Subset the VCF for specified samples. This can be a text file (.txt,
+        .tsv, .csv, or .list) containing one sample per line. Alternatively,
+        you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
     samples_without_sv : list, optional

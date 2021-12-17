@@ -713,9 +713,8 @@ def filter_samples(archive, samples, exclude=False):
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Subset the archive file for specified samples. This can be a text
-        file containing one sample per line. Alternatively, you can provide a
-        list of samples.
+        Text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
 
@@ -727,13 +726,7 @@ def filter_samples(archive, samples, exclude=False):
     if isinstance(archive, str):
         archive = sdk.Archive.from_file(archive)
 
-    if isinstance(samples, str):
-        samples = common.convert_file2list(samples)
-    elif isinstance(samples, list):
-        pass
-    else:
-        raise TypeError('The samples argument must be str or '
-            f'list, not {type(samples).__name__}')
+    samples = common.parse_list_or_file(samples)
 
     if ('VcfFrame' in archive.metadata['SemanticType'] or
         'CovFrame' in archive.metadata['SemanticType']):
@@ -785,13 +778,7 @@ def import_read_depth(
     cf = cf.slice(region)
 
     if samples is not None:
-        if isinstance(samples, str):
-            samples = common.convert_file2list(samples)
-        elif isinstance(samples, list):
-            pass
-        else:
-            raise TypeError('The samples argument must be str or '
-                f'list, not {type(samples).__name__}')
+        samples = common.parse_list_or_file(samples)
         cf = cf.subset(samples, exclude=exclude)
 
     return sdk.Archive(metadata, cf)
@@ -845,13 +832,7 @@ def import_variants(
     vf = vf.add_af()
 
     if samples is not None:
-        if isinstance(samples, str):
-            samples = common.convert_file2list(samples)
-        elif isinstance(samples, list):
-            pass
-        else:
-            raise TypeError('The samples argument must be str or '
-                f'list, not {type(samples).__name__}')
+        samples = common.parse_list_or_file(samples)
         vf = vf.subset(samples, exclude=exclude)
 
     if vf.phased:

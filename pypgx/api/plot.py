@@ -220,7 +220,8 @@ def plot_cn_af(
     copy_number : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[CopyNumber].
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
     samples : list, optional
@@ -240,7 +241,8 @@ def plot_cn_af(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check_type('VcfFrame[Imported]')
+    imported_variants.check_type(
+        ['VcfFrame[Imported]', 'VcfFrame[Consolidated]'])
 
     if samples is None:
         samples = copy_number.data.samples
