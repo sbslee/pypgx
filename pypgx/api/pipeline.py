@@ -13,7 +13,7 @@ from . import utils, plot, genotype, core
 
 def run_chip_pipeline(
     gene, output, variants, panel=None, assembly='GRCh37', impute=False,
-    force=False, samples=None, exclude=exclude
+    force=False, samples=None, exclude=False
 ):
     """
     Run PyPGx's genotyping pipeline for chip data.

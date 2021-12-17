@@ -72,6 +72,6 @@ def create_parser(subparsers):
 def main(args):
     pipeline.run_chip_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        impute=args.impute, force=args.force, samples=samples,
-        exclude=exclude
+        impute=args.impute, force=args.force, samples=args.samples,
+        exclude=args.exclude
     )

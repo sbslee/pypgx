@@ -344,7 +344,7 @@ def compute_copy_number(
     metadata = read_depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
     metadata['Control'] = control_statistics.metadata['Control']
-    if samples is None:
+    if samples_without_sv is None:
         metadata['Samples'] = 'None'
     else:
         metadata['Samples'] = ','.join(samples_without_sv)

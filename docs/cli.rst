@@ -658,6 +658,7 @@ run-chip-pipeline
 
    $ pypgx run-chip-pipeline -h
    usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
+                                  [--samples PATH] [--exclude]
                                   gene output variants
    
    Run PyPGx's genotyping pipeline for chip data.
@@ -676,6 +677,10 @@ run-chip-pipeline
                       'GRCh37', 'GRCh38').
      --impute         Perform imputation of missing genotypes.
      --force          Overwrite output directory if it already exists.
+     --samples PATH   Subset the VCF for specified samples. You can specify 
+                      samples by providing a text file containing one sample 
+                      per line.
+     --exclude        Exclude specified samples.
    
    [Example] To genotype the CYP3A5 gene from chip data:
      $ pypgx run-chip-pipeline \
@@ -693,6 +698,7 @@ run-ngs-pipeline
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--platform TEXT]
                                  [--assembly TEXT] [--panel PATH] [--force]
+                                 [--samples PATH] [--exclude]
                                  [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
@@ -728,6 +734,10 @@ run-ngs-pipeline
                            (compressed or uncompressed). By default, the 1KGP 
                            panel is used.
      --force               Overwrite output directory if it already exists.
+     --samples PATH        Subset the VCF for specified samples. You can specify 
+                           samples by providing a text file containing one sample 
+                           per line.
+     --exclude             Exclude specified samples.
      --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.
      --do-not-plot-copy-number

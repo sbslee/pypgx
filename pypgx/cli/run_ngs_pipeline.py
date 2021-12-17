@@ -134,8 +134,8 @@ def main(args):
         args.gene, args.output, variants=args.variants,
         depth_of_coverage=args.depth_of_coverage,
         control_statistics=args.control_statistics, assembly=args.assembly,
-        panel=args.panel, force=args.force, samples=samples, exclude=exclude,
-        samples_without_sv=args.samples_without_sv,
+        panel=args.panel, force=args.force, samples=args.samples,
+        exclude=args.exclude, samples_without_sv=args.samples_without_sv,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,
         platform=args.platform
