@@ -18,6 +18,7 @@ Changelog
 * Rename ``--samples`` argument from :command:`run-ngs-pipeline` command to ``--samples-without-sv``.
 * Update :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` commands to be able to subset/exclude specified samples.
 * Remove ``--fn`` argument from :command:`filter-samples` command.
+* Update CNV caller for CYP2D6.
 
 0.9.0 (2021-12-05)
 ------------------

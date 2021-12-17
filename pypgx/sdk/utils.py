@@ -6,6 +6,7 @@ import copy
 import pickle
 
 import pandas as pd
+import numpy as np
 from fuc import pyvcf, pycov, common, pybam
 
 class IncorrectMetadataError(Exception):
@@ -297,3 +298,51 @@ def parse_input_bams(bam=None, fn=None):
         chr_prefix = ''
 
     return bam_files, chr_prefix
+
+def simulate_copy_number(
+    target, source, sample, sv, n=3, mu=0, sigma=0.05
+):
+    """
+    Simuluate copy number by adding noise to the data of an existing sample.
+
+    The method will generate simulated samples by introducing noise to an
+    existing sample in the source archive and then append those to the target
+    archive.
+
+    Parameters
+    ----------
+    target : str
+        Target archive file with the semantic type CovFrame[CopyNumber].
+    source : str
+        Source archive file with the semantic type CovFrame[CopyNumber].
+    sample : str
+        Name of the sample.
+    sv : str
+        Name of the SV.
+    n : int, default: 1
+        Number of samples to simulate. Must be non-negative.
+    mu : float, default: 0
+        Mean ("centre") of the distribution.
+    sigma : float, default: 0.05
+        Standard deviation (spread or "width") of the distribution.
+        Must be non-negative.
+
+    Returns
+    -------
+    pypgx.Archive
+        Target archive with simultated samples appended.
+    """
+    target = Archive.from_file(target)
+    source = Archive.from_file(source)
+    data = source.data.df[sample]
+
+    target.data.df[sample] = data
+
+    for i in range(n):
+        noise = np.random.normal(mu, sigma, len(data))
+        s = data - noise
+        s[data == 0] = 0
+        s[s < 0] = 0
+        target.data.df[f'{sv}_{i+1}'] = s
+
+    return target
