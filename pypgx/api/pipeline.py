@@ -207,6 +207,10 @@ def run_ngs_pipeline(
         if isinstance(control_statistics, str):
             control_statistics = sdk.Archive.from_file(control_statistics)
 
+        if samples is not None:
+            control_statistics = utils.filter_samples(control_statistics,
+                samples=samples, exclude=exclude)
+
         control_statistics.check_type('SampleTable[Statistics]')
         control_statistics.check_metadata('Platform', platform)
         control_statistics.check_metadata('Assembly', assembly)

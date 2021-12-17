@@ -25,17 +25,8 @@ def create_parser(subparsers):
         help='Output archive file.'
     )
     parser.add_argument(
-        '--samples',
-        metavar='TEXT',
-        nargs='+',
-        help='List of samples names (the order matters). Cannot be \n'
-             'used with --fn.'
-    )
-    parser.add_argument(
-        '--fn',
-        metavar='PATH',
-        help='File containing one sample name per line. Cannot be \n'
-             'used with --samples.'
+        'samples',
+        help='Text file containing one sample per line.'
     )
     parser.add_argument(
         '--exclude',
@@ -45,6 +36,6 @@ def create_parser(subparsers):
 
 def main(args):
     archive = utils.filter_samples(
-        args.input, samples=args.samples, fn=args.fn, exclude=args.exclude
+        args.input, args.samples, exclude=args.exclude
     )
     archive.to_file(args.output)

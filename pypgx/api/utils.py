@@ -704,7 +704,7 @@ def estimate_phase_beagle(
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
-def filter_samples(archive, samples=None, fn=None, exclude=False):
+def filter_samples(archive, samples, exclude=False):
     """
     Filter Archive for specified samples.
 
@@ -713,11 +713,9 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Sample name or list of names (the order matters). Cannot be used with
-        ``fn``.
-    fn : str
-        File containing one filename per line. Cannot be used with
-        ``samples``.
+        Subset the archive file for specified samples. This can be a text
+        file containing one sample per line. Alternatively, you can provide a
+        list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
 
@@ -730,18 +728,15 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
         archive = sdk.Archive.from_file(archive)
 
     if isinstance(samples, str):
-        samples = [samples]
-
-    if samples is not None and fn is None:
+        samples = common.convert_file2list(samples)
+    elif isinstance(samples, list):
         pass
-    elif samples is None and fn is not None:
-        samples = common.convert_file2list(fn)
-    elif samples is not None and fn is not None:
-        raise ValueError('Found two sets of samples')
     else:
-        raise ValueError('Samples not found')
+        raise TypeError('The samples argument must be str or '
+            f'list, not {type(samples).__name__}')
 
-    if 'CovFrame' in archive.metadata['SemanticType']:
+    if ('VcfFrame' in archive.metadata['SemanticType'] or
+        'CovFrame' in archive.metadata['SemanticType']):
         data = archive.data.subset(samples, exclude=exclude)
     elif 'SampleTable' in archive.metadata['SemanticType']:
         data = archive.data.loc[samples]
