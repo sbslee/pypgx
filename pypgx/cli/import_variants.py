@@ -51,9 +51,22 @@ def create_parser(subparsers):
         help="Genotyping platform (default: 'WGS') (choices: 'WGS', \n"
              "'Targeted', 'Chip')."
     )
+    parser.add_argument(
+        '--samples',
+        metavar='PATH',
+        help='Subset the VCF for specified samples. You can specify \n'
+             'samples by providing a text file containing one sample \n'
+             'per line.'
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help='Exclude specified samples.'
+    )
 
 def main(args):
     archive = utils.import_variants(
-        args.gene, args.vcf, assembly=args.assembly, platform=args.platform
+        args.gene, args.vcf, assembly=args.assembly, platform=args.platform,
+        samples=args.samples, exclude=args.exclude
     )
     archive.to_file(args.imported_variants)

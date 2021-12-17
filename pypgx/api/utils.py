@@ -779,7 +779,9 @@ def import_read_depth(
 
     return sdk.Archive(metadata, data)
 
-def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
+def import_variants(
+    gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False
+):
     """
     Import variant (SNV/indel) data for the target gene.
 
@@ -801,6 +803,12 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
         Reference genome assembly.
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
         Genotyping platform.
+    samples : str or list
+        Subset the VCF for specified samples. This can be a text file
+        containing one sample per line. Alternatively, you can provide a list
+        of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
 
     Returns
     -------
@@ -818,6 +826,16 @@ def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
     vf = vf.update_chr_prefix(mode='remove')
     vf = vf.strip('GT:AD:DP')
     vf = vf.add_af()
+
+    if samples is not None:
+        if isinstance(samples, str):
+            samples = common.convert_file2list(samples)
+        elif isinstance(samples, list):
+            pass
+        else:
+            raise TypeError('The samples argument must be str or '
+                f'list, not {type(samples).__name__}')
+        vf = vf.subset(samples, exclude=exclude)
 
     if vf.phased:
         semantic_type = 'VcfFrame[Consolidated]'

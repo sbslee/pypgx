@@ -389,6 +389,7 @@ import-variants
 
    $ pypgx import-variants -h
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
+                                [--samples PATH] [--exclude]
                                 gene vcf imported-variants
    
    Import variant (SNV/indel) data for the target gene.
@@ -409,8 +410,12 @@ import-variants
      -h, --help         Show this help message and exit.
      --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
                         'GRCh37', 'GRCh38').
-     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 
+     --platform TEXT    Genotyping platform (default: 'WGS') (choices: 'WGS', 
                         'Targeted', 'Chip').
+     --samples PATH     Subset the VCF for specified samples. You can specify 
+                        samples by providing a text file containing one sample 
+                        per line.
+     --exclude          Exclude specified samples.
 
 plot-bam-copy-number
 ====================
