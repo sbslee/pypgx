@@ -206,7 +206,7 @@ the presence of ALT contigs reduces the sensitivity of variant calling
 and many other analyses including SV detection. Therefore, if you have
 sequencing data in GRCh38, make sure it's aligned to the main contigs only.
 
-The only exception to above rule is the *GSTT1* gene, which is located on
+The only exception to above rule is the GSTT1 gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
 known to have an extremely high rate of gene deletion polymorphism in the
 population and thus requires SV analysis. Therefore, if you are interested in

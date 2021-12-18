@@ -493,7 +493,9 @@ plot-cn-af
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Create plots only for these samples. This can be a text 
+                           file containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
      --ymin FLOAT          Y-axis bottom (default: -0.3).
      --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).

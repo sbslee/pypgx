@@ -738,6 +738,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
+   * - \*36x3+\*10
+     - Tandem2C
+     - \*1/\*36x3+\*10
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-7.png>`
+     - WGS
+     -
+     -
 
 Phenotype summary for CYP2D6
 ----------------------------
