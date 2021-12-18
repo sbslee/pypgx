@@ -344,7 +344,8 @@ filter-samples
 .. code-block:: text
 
    $ pypgx filter-samples -h
-   usage: pypgx filter-samples [-h] [--exclude] input output samples
+   usage: pypgx filter-samples [-h] [--exclude]
+                               input output samples [samples ...]
    
    Filter Archive file for specified samples.
    

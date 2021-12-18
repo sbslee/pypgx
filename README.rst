@@ -291,7 +291,7 @@ Phenotype prediction
 Many genes in PyPGx have a genotype-phenotype table available from the
 Clinical Pharmacogenetics Implementation Consortium (CPIC) or
 the Pharmacogenomics Knowledge Base (PharmGKB). PyPGx uses these tables to
-perform phenotype prediction using one of the two methods:
+perform phenotype prediction with one of the two methods:
 
 - Method 1. Simple diplotype-phenotype mapping: This method directly uses the
   diplotype-phenotype mapping as defined by CPIC or PharmGKB. Using the

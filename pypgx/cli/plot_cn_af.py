@@ -38,7 +38,9 @@ def create_parser(subparsers):
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='Create plots only for these samples.'
+        help='Create plots only for these samples. This can be a text \n'
+             'file containing one sample per line. Alternatively, you \n'
+             'can provide a list of samples.'
     )
     parser.add_argument(
         '--ymin',

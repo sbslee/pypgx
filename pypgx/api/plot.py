@@ -224,8 +224,10 @@ def plot_cn_af(
         VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Create plots only for these samples. This can be a text file
+        containing one sample per line. Alternatively, you can provide a list
+        of samples.
     ymin : float, default: -0.3
         Y-axis bottom.
     ymax : float, default: 6.3
@@ -247,6 +249,7 @@ def plot_cn_af(
     if samples is None:
         samples = copy_number.data.samples
     else:
+        samples = common.parse_list_or_file(samples)
         copy_number = utils.filter_samples(copy_number, samples=samples)
 
     processed_copy_number = utils._process_copy_number(copy_number)
