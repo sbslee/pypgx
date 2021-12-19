@@ -27,9 +27,10 @@ def create_parser(subparsers):
     parser.add_argument(
         'samples',
         nargs='+',
-        help='Text file (.txt, .tsv, .csv, or .list) containing one \n'
-             'sample per line. Alternatively, you can provide a list \n'
-             'of samples.'
+        help='Specify which samples should be included for analysis \n'
+             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
+             'containing one sample per line. Alternatively, you can \n'
+             'provide a list of samples.'
     )
     parser.add_argument(
         '--exclude',

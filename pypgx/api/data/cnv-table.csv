@@ -31,7 +31,8 @@ SLC22A2,Normal,0
 SLC22A2,Exon11Deletion,1
 SLC22A2,Intron9Deletion,2
 UGT1A4,Normal,0
-UGT1A4,Intron1Deletion,1
+UGT1A4,Intron1DeletionA,1
+UGT1A4,Intron1DeletionB,2
 UGT2B15,Normal,0
 UGT2B15,PartialDeletion,1
 UGT2B17,Normal,0

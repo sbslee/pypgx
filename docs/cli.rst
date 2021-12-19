@@ -352,9 +352,10 @@ filter-samples
    Positional arguments:
      input       Input archive file.
      output      Output archive file.
-     samples     Text file (.txt, .tsv, .csv, or .list) containing one 
-                 sample per line. Alternatively, you can provide a list 
-                 of samples.
+     samples     Specify which samples should be included for analysis 
+                 by providing a text file (.txt, .tsv, .csv, or .list) 
+                 containing one sample per line. Alternatively, you can 
+                 provide a list of samples.
    
    Optional arguments:
      -h, --help  Show this help message and exit.
@@ -366,23 +367,25 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] [--samples PATH] [--exclude]
+   usage: pypgx import-read-depth [-h] [--samples PATH [PATH ...]] [--exclude]
                                   gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
    
    Positional arguments:
-     gene               Target gene.
-     depth-of-coverage  Archive file with the semantic type 
-                        CovFrame[DepthOfCoverage].
-     read-depth         Archive file with the semantic type CovFrame[ReadDepth].
+     gene                  Target gene.
+     depth-of-coverage     Archive file with the semantic type 
+                           CovFrame[DepthOfCoverage].
+     read-depth            Archive file with the semantic type CovFrame[ReadDepth].
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
-     --samples PATH     Subset the VCF for specified samples. You can specify 
-                        samples by providing a text file containing one sample 
-                        per line.
-     --exclude          Exclude specified samples.
+     -h, --help            Show this help message and exit.
+     --samples PATH [PATH ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
 
 import-variants
 ===============
@@ -391,7 +394,7 @@ import-variants
 
    $ pypgx import-variants -h
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
-                                [--samples PATH] [--exclude]
+                                [--samples PATH [PATH ...]] [--exclude]
                                 gene vcf imported-variants
    
    Import variant (SNV/indel) data for the target gene.
@@ -402,22 +405,24 @@ import-variants
    VCF is fully phased or otherwise VcfFrame[Imported].
    
    Positional arguments:
-     gene               Target gene.
-     vcf                Input VCF file must be already BGZF compressed (.gz) and 
-                        indexed (.tbi) to allow random access.
-     imported-variants  Archive file with the semantic type VcfFrame[Imported] 
-                        or VcfFrame[Consolidated].
+     gene                  Target gene.
+     vcf                   Input VCF file must be already BGZF compressed (.gz) and 
+                           indexed (.tbi) to allow random access.
+     imported-variants     Archive file with the semantic type VcfFrame[Imported] 
+                           or VcfFrame[Consolidated].
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
-                        'GRCh37', 'GRCh38').
-     --platform TEXT    Genotyping platform (default: 'WGS') (choices: 'WGS', 
-                        'Targeted', 'Chip').
-     --samples PATH     Subset the VCF for specified samples. You can specify 
-                        samples by providing a text file containing one sample 
-                        per line.
-     --exclude          Exclude specified samples.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
+     --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
+                           'Targeted', 'Chip').
+     --samples PATH [PATH ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
 
 plot-bam-copy-number
 ====================
@@ -441,7 +446,10 @@ plot-bam-copy-number
      --fitted              Show the fitted line as well.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom (default: -0.3).
      --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
@@ -467,7 +475,10 @@ plot-bam-read-depth
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
 
@@ -493,9 +504,10 @@ plot-cn-af
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples. This can be a text 
-                           file containing one sample per line. Alternatively, you 
-                           can provide a list of samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom (default: -0.3).
      --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
@@ -521,7 +533,10 @@ plot-vcf-allele-fraction
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-vcf-read-depth
@@ -547,7 +562,10 @@ plot-vcf-read-depth
                            (choices: 'GRCh37', 'GRCh38').
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
 
@@ -657,29 +675,31 @@ run-chip-pipeline
 
    $ pypgx run-chip-pipeline -h
    usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
-                                  [--samples PATH] [--exclude]
+                                  [--samples TEXT [TEXT ...]] [--exclude]
                                   gene output variants
    
    Run PyPGx's genotyping pipeline for chip data.
    
    Positional arguments:
-     gene             Target gene.
-     output           Output directory.
-     variants         Input VCF file must be already BGZF compressed (.gz) 
-                      and indexed (.tbi) to allow random access. Statistical 
-                      haplotype phasing will be skipped if input VCF is 
-                      already fully phased.
+     gene                  Target gene.
+     output                Output directory.
+     variants              Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access. Statistical 
+                           haplotype phasing will be skipped if input VCF is 
+                           already fully phased.
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 
-                      'GRCh37', 'GRCh38').
-     --impute         Perform imputation of missing genotypes.
-     --force          Overwrite output directory if it already exists.
-     --samples PATH   Subset the VCF for specified samples. You can specify 
-                      samples by providing a text file containing one sample 
-                      per line.
-     --exclude        Exclude specified samples.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
+     --impute              Perform imputation of missing genotypes.
+     --force               Overwrite output directory if it already exists.
+     --samples TEXT [TEXT ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
    
    [Example] To genotype the CYP3A5 gene from chip data:
      $ pypgx run-chip-pipeline \
@@ -697,7 +717,7 @@ run-ngs-pipeline
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--platform TEXT]
                                  [--assembly TEXT] [--panel PATH] [--force]
-                                 [--samples PATH] [--exclude]
+                                 [--samples TEXT [TEXT ...]] [--exclude]
                                  [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
@@ -733,9 +753,11 @@ run-ngs-pipeline
                            (compressed or uncompressed). By default, the 1KGP 
                            panel is used.
      --force               Overwrite output directory if it already exists.
-     --samples PATH        Subset the VCF for specified samples. You can specify 
-                           samples by providing a text file containing one sample 
-                           per line.
+     --samples TEXT [TEXT ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --exclude             Exclude specified samples.
      --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.

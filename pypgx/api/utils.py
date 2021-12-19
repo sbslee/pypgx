@@ -713,7 +713,8 @@ def filter_samples(archive, samples, exclude=False):
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Text file (.txt, .tsv, .csv, or .list) containing one sample per
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
         line. Alternatively, you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
@@ -752,9 +753,9 @@ def import_read_depth(
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].
     samples : str or list, optional
-        Subset the VCF for specified samples. This can be a text file
-        containing one sample per line. Alternatively, you can provide a list
-        of samples.
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
 
@@ -808,9 +809,9 @@ def import_variants(
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
         Genotyping platform.
     samples : str or list, optional
-        Subset the VCF for specified samples. This can be a text file
-        containing one sample per line. Alternatively, you can provide a list
-        of samples.
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
 

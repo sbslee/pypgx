@@ -1412,7 +1412,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Source
     - Coriell ID
   * - \*S1
-    - Intron1Deletion
+    - Intron1DeletionA
     - \*1/\*S1
     -
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-1.png>`
@@ -1420,6 +1420,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+  * - \*S2
+    - Intron1DeletionB
+    - \*1/\*S2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT1A4-2.png>`
+    - WGS
+    -
+    -
 
 UGT2B15
 =======

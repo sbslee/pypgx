@@ -34,9 +34,11 @@ def create_parser(subparsers):
     parser.add_argument(
         '--samples',
         metavar='PATH',
-        help='Subset the VCF for specified samples. You can specify \n'
-             'samples by providing a text file containing one sample \n'
-             'per line.'
+        nargs='+',
+        help='Specify which samples should be included for analysis \n'
+             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
+             'containing one sample per line. Alternatively, you can \n'
+             'provide a list of samples.'
     )
     parser.add_argument(
         '--exclude',

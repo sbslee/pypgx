@@ -107,8 +107,10 @@ def plot_bam_copy_number(
         If True, show the fitted line as well.
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, default: -0.3
         Y-axis bottom.
     ymax : float, default: 6.3
@@ -166,8 +168,10 @@ def plot_bam_read_depth(
         Archive file or object with the semantic type CovFrame[ReadDepth].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, optional
         Y-axis bottom.
     ymax : float, optional
@@ -225,9 +229,9 @@ def plot_cn_af(
     path : str, optional
         Create plots in this directory.
     samples : str or list, optional
-        Create plots only for these samples. This can be a text file
-        containing one sample per line. Alternatively, you can provide a list
-        of samples.
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, default: -0.3
         Y-axis bottom.
     ymax : float, default: 6.3
@@ -294,8 +298,10 @@ def plot_vcf_allele_fraction(
         VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     fontsize : float, default: 25
         Text fontsize.
     """
@@ -346,8 +352,10 @@ def plot_vcf_read_depth(
         Reference genome assembly.
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, optional
         Y-axis bottom.
     ymax : float, optional
