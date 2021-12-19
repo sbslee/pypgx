@@ -840,6 +840,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
+   * - \*1x2
+     - Duplication
+     - \*1/\*1x2
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-4.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-4.png>`
+     - WGS
+     -
+     -
    * - \*7x2
      - Duplication
      - \*1/\*7x2
