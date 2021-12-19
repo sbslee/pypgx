@@ -1,4 +1,9 @@
 Gene,Phenotype,Priority
+CACNA1S,Uncertain Susceptibility,Normal Risk
+CACNA1S,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
+CFTR,Favorable Response,None
+CFTR,Unfavorable Response,None
+CFTR,Indeterminate,None
 CYP2B6,Intermediate Metabolizer,Abnormal/Priority/High Risk
 CYP2B6,Normal Metabolizer,Normal/Routine/Low Risk
 CYP2B6,Poor Metabolizer,Abnormal/Priority/High Risk
@@ -31,11 +36,18 @@ DPYD,Normal Metabolizer,Normal/Routine/Low Risk
 DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
+F5,Favorable Response,None
+F5,Unfavorable Response,None
+IFNL3,Favorable Response,None
+IFNL3,Unfavorable Response,None
+IFNL3,Indeterminate,None
 NUDT15,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Poor Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Normal Metabolizer,Normal/Routine/Low risk
 NUDT15,Intermediate Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Indeterminate,Abnormal/Priority/High Risk
+RYR1,Uncertain Susceptibility,Normal Risk
+RYR1,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
 SLCO1B1,Normal Function,Normal/Routine/Low Risk
 SLCO1B1,Decreased Function,Abnormal/Priority/High Risk
 SLCO1B1,Poor Function,Abnormal/Priority/High Risk

@@ -7,6 +7,7 @@ Welcome to PyPGx's documentation!
 
    readme
    genes
+   glossary
    tutorials
    cli
    api

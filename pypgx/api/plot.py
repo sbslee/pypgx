@@ -107,8 +107,10 @@ def plot_bam_copy_number(
         If True, show the fitted line as well.
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, default: -0.3
         Y-axis bottom.
     ymax : float, default: 6.3
@@ -166,8 +168,10 @@ def plot_bam_read_depth(
         Archive file or object with the semantic type CovFrame[ReadDepth].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, optional
         Y-axis bottom.
     ymax : float, optional
@@ -220,11 +224,14 @@ def plot_cn_af(
     copy_number : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[CopyNumber].
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, default: -0.3
         Y-axis bottom.
     ymax : float, default: 6.3
@@ -240,11 +247,13 @@ def plot_cn_af(
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check_type('VcfFrame[Imported]')
+    imported_variants.check_type(
+        ['VcfFrame[Imported]', 'VcfFrame[Consolidated]'])
 
     if samples is None:
         samples = copy_number.data.samples
     else:
+        samples = common.parse_list_or_file(samples)
         copy_number = utils.filter_samples(copy_number, samples=samples)
 
     processed_copy_number = utils._process_copy_number(copy_number)
@@ -280,23 +289,27 @@ def plot_vcf_allele_fraction(
     imported_variants, path=None, samples=None, fontsize=25
 ):
     """
-    Plot allele fraction profile from VcfFrame[Imported].
+    Plot allele fraction profile with VCF data.
 
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     fontsize : float, default: 25
         Text fontsize.
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
 
-    imported_variants.check_type('VcfFrame[Imported]')
+    imported_variants.check_type(
+        ['VcfFrame[Imported]', 'VcfFrame[Consolidated]'])
 
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']
@@ -339,8 +352,10 @@ def plot_vcf_read_depth(
         Reference genome assembly.
     path : str, optional
         Create plots in this directory.
-    samples : list, optional
-        Create plots only for these samples.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     ymin : float, optional
         Y-axis bottom.
     ymax : float, optional

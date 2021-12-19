@@ -22,9 +22,12 @@ FUNCTION_ORDER = [
     'Class I (Deficient with CNSHA)',
     'Class II (Deficient)',
     'Class III (Deficient)',
+    'Unfavorable Response',
+    'Malignant Hyperthermia Associated',
     'Uncertain Function',
     'Unknown Function',
     'Normal Function',
+    'Favorable Response',
     'Class IV (Normal)',
 ]
 
@@ -60,7 +63,7 @@ def build_definition_table(gene, assembly='GRCh37'):
 
     Returns
     -------
-    fuc.pyvcf.VcfFrame
+    fuc.api.pyvcf.VcfFrame
         Definition table.
 
     Examples

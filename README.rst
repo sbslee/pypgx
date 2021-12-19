@@ -36,7 +36,7 @@ available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
-There are currently 57 pharmacogenes in PyPGx:
+There are currently 58 pharmacogenes in PyPGx:
 
 .. list-table::
 
@@ -71,33 +71,33 @@ There are currently 57 pharmacogenes in PyPGx:
      - CYP19A1
      - CYP26A1
    * - DPYD
+     - F5
      - G6PD
      - GSTM1
      - GSTP1
-     - GSTT1
-   * - IFNL3
+   * - GSTT1
+     - IFNL3
      - NAT1
      - NAT2
      - NUDT15
-     - POR
-   * - PTGIS
+   * - POR
+     - PTGIS
      - RYR1
      - SLC15A2
      - SLC22A2
-     - SLCO1B1
-   * - SLCO1B3
+   * - SLCO1B1
+     - SLCO1B3
      - SLCO2B1
      - SULT1A1
      - TBXAS1
-     - TPMT
-   * - UGT1A1
+   * - TPMT
+     - UGT1A1
      - UGT1A4
      - UGT2B7
      - UGT2B15
-     - UGT2B17
-   * - VKORC1
+   * - UGT2B17
+     - VKORC1
      - XPC
-     -
      -
      -
 
@@ -179,7 +179,7 @@ the presence of ALT contigs reduces the sensitivity of variant calling
 and many other analyses including SV detection. Therefore, if you have
 sequencing data in GRCh38, make sure it's aligned to the main contigs only.
 
-The only exception to above rule is the *GSTT1* gene, which is located on
+The only exception to above rule is the GSTT1 gene, which is located on
 ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt`` for GRCh38. This gene is
 known to have an extremely high rate of gene deletion polymorphism in the
 population and thus requires SV analysis. Therefore, if you are interested in
@@ -288,28 +288,30 @@ currently defined semantic types:
 Phenotype prediction
 ====================
 
-Many of the genes in PyPGx have a diplotype-phenotype table available from
-the Clinical Pharmacogenetics Implementation Consortium (CPIC). PyPGx will
-use this information to perform phenotype prediction. Note that there two
-types of phenotype prediction:
+Many genes in PyPGx have a genotype-phenotype table available from the
+Clinical Pharmacogenetics Implementation Consortium (CPIC) or
+the Pharmacogenomics Knowledge Base (PharmGKB). PyPGx uses these tables to
+perform phenotype prediction with one of the two methods:
 
-- Method 1. Diplotype-phenotype mapping: This method directly uses the
-  diplotype-phenotype mapping as defined by CPIC. Using the CYP2B6 gene as an
-  example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2, \*1/\*4, and \*4/\*4
-  correspond to Poor Metabolizer, Intermediate Metabolizer, Normal
-  Metabolizer, Rapid Metabolizer, and Ultrarapid Metabolizer.
-- Method 2. Activity score: This method uses a standard unit of enzyme
-  activity known as an activity score. Using the CYP2D6 gene as an example,
-  the fully functional reference \*1 allele is assigned a value of 1,
-  decreased-function alleles such as \*9 and \*17 receive a value of
-  0.5, and nonfunctional alleles including \*4 and \*5 have a value of
-  0. The sum of values assigned to both alleles constitutes the activity
-  score of a diplotype. Consequently, subjects with \*1/\*1, \*1/\*4,
-  and \*4/\*5 diplotypes have an activity score of 2 (Normal Metabolizer),
-  1 (Intermediate Metabolizer), and 0 (Poor Metabolizer), respectively.
+- Method 1. Simple diplotype-phenotype mapping: This method directly uses the
+  diplotype-phenotype mapping as defined by CPIC or PharmGKB. Using the
+  CYP2B6 gene as an example, the diplotypes \*6/\*6, \*1/\*29, \*1/\*2,
+  \*1/\*4, and \*4/\*4 correspond to Poor Metabolizer, Intermediate
+  Metabolizer, Normal Metabolizer, Rapid Metabolizer, and Ultrarapid
+  Metabolizer.
+- Method 2. Summation of haplotype activity scores: This method uses a
+  standard unit of enzyme activity known as an activity score. Using the
+  CYP2D6 gene as an example, the fully functional reference \*1 allele is
+  assigned a value of 1, decreased-function alleles such as \*9 and \*17
+  receive a value of 0.5, and nonfunctional alleles including \*4 and \*5
+  have a value of 0. The sum of values assigned to both alleles constitutes
+  the activity score of a diplotype. Consequently, subjects with \*1/\*1,
+  \*1/\*4, and \*4/\*5 diplotypes have an activity score of 2 (Normal
+  Metabolizer), 1 (Intermediate Metabolizer), and 0 (Poor Metabolizer),
+  respectively.
 
 Please visit the `Genes <https://pypgx.readthedocs.io/en/latest/
-genes.html>`__ page to see the list of genes with a CPIC diplotype-phenotype
+genes.html>`__ page to see the list of genes with a genotype-phenotype
 table and each of their prediction method.
 
 Getting help
@@ -345,7 +347,7 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
-       import-variants     Import variant data for the target gene.
+       import-variants     Import variant (SNV/indel) data for the target gene
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
@@ -382,7 +384,6 @@ Below is the list of submodules available in the API:
 - **pipeline** : The pipeline submodule is used to provide convenient methods that combine multiple PyPGx actions and automatically handle semantic types.
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.
-
 
 For getting help on a specific submodule (e.g. utils):
 

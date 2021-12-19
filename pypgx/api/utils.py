@@ -284,7 +284,9 @@ def compute_control_statistics(
 
     return result
 
-def compute_copy_number(read_depth, control_statistics, samples=None):
+def compute_copy_number(
+    read_depth, control_statistics, samples_without_sv=None
+):
     """
     Compute copy number from read depth for the target gene.
 
@@ -302,8 +304,9 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
     read_depth : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[ReadDepth].
     control_statistcs : str or pypgx.Archive
-        Archive file or object with the semandtic type SampleTable[Statistics].
-    samples : list, optional
+        Archive file or object with the semandtic type
+        SampleTable[Statistics].
+    samples_without_sv : list, optional
         List of known samples without SV.
 
     Returns
@@ -331,20 +334,20 @@ def compute_copy_number(read_depth, control_statistics, samples=None):
 
     # Apply inter-sample normalization.
     if read_depth.metadata['Platform'] == 'Targeted':
-        if samples is None:
+        if samples_without_sv is None:
             medians = df.iloc[:, 2:].median(axis=1).replace(0, np.nan)
         else:
-            medians = df[samples].median(axis=1).replace(0, np.nan)
+            medians = df[samples_without_sv].median(axis=1).replace(0, np.nan)
         df.iloc[:, 2:] = df.iloc[:, 2:].div(medians, axis=0) * 2
 
     cf = pycov.CovFrame(df)
     metadata = read_depth.copy_metadata()
     metadata['SemanticType'] = 'CovFrame[CopyNumber]'
     metadata['Control'] = control_statistics.metadata['Control']
-    if samples is None:
+    if samples_without_sv is None:
         metadata['Samples'] = 'None'
     else:
-        metadata['Samples'] = ','.join(samples)
+        metadata['Samples'] = ','.join(samples_without_sv)
 
     return sdk.Archive(metadata, cf)
 
@@ -627,7 +630,7 @@ def create_regions_bed(
 
     Returns
     -------
-    fuc.pybed.BedFrame
+    fuc.api.pybed.BedFrame
         BED file.
     """
     df = core.load_gene_table()
@@ -701,7 +704,7 @@ def estimate_phase_beagle(
         data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
     return sdk.Archive(metadata, data)
 
-def filter_samples(archive, samples=None, fn=None, exclude=False):
+def filter_samples(archive, samples, exclude=False):
     """
     Filter Archive for specified samples.
 
@@ -710,11 +713,9 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
     archive : str or pypgx.archive
         Archive file or object.
     samples : str or list
-        Sample name or list of names (the order matters). Cannot be used with
-        ``fn``.
-    fn : str
-        File containing one filename per line. Cannot be used with
-        ``samples``.
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
     exclude : bool, default: False
         If True, exclude specified samples.
 
@@ -726,19 +727,10 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
     if isinstance(archive, str):
         archive = sdk.Archive.from_file(archive)
 
-    if isinstance(samples, str):
-        samples = [samples]
+    samples = common.parse_list_or_file(samples)
 
-    if samples is not None and fn is None:
-        pass
-    elif samples is None and fn is not None:
-        samples = common.convert_file2list(fn)
-    elif samples is not None and fn is not None:
-        raise ValueError('Found two sets of samples')
-    else:
-        raise ValueError('Samples not found')
-
-    if 'CovFrame' in archive.metadata['SemanticType']:
+    if ('VcfFrame' in archive.metadata['SemanticType'] or
+        'CovFrame' in archive.metadata['SemanticType']):
         data = archive.data.subset(samples, exclude=exclude)
     elif 'SampleTable' in archive.metadata['SemanticType']:
         data = archive.data.loc[samples]
@@ -748,7 +740,7 @@ def filter_samples(archive, samples=None, fn=None, exclude=False):
     return sdk.Archive(archive.copy_metadata(), data)
 
 def import_read_depth(
-    gene, depth_of_coverage
+    gene, depth_of_coverage, samples=None, exclude=False
 ):
     """
     Import read depth data for target gene.
@@ -760,6 +752,12 @@ def import_read_depth(
     depth_of_coverage : str or pypgx.Archive
         Archive file or object with the semantic type
         CovFrame[DepthOfCoverage].
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
 
     Returns
     -------
@@ -772,51 +770,86 @@ def import_read_depth(
     depth_of_coverage.check_type('CovFrame[DepthOfCoverage]')
 
     metadata = depth_of_coverage.copy_metadata()
-    region = core.get_region(gene, assembly=metadata['Assembly'])
-    data = depth_of_coverage.data.update_chr_prefix(mode='remove').slice(region)
     metadata['Gene'] = gene
     metadata['SemanticType'] = 'CovFrame[ReadDepth]'
 
-    return sdk.Archive(metadata, data)
+    region = core.get_region(gene, assembly=metadata['Assembly'])
 
-def import_variants(gene, vcf, assembly='GRCh37', platform='WGS'):
+    cf = depth_of_coverage.data.update_chr_prefix(mode='remove')
+    cf = cf.slice(region)
+
+    if samples is not None:
+        samples = common.parse_list_or_file(samples)
+        cf = cf.subset(samples, exclude=exclude)
+
+    return sdk.Archive(metadata, cf)
+
+def import_variants(
+    gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False
+):
     """
-    Import variant data for the target gene.
+    Import variant (SNV/indel) data for the target gene.
+
+    The method will first slice input VCF for the target gene and then assess
+    whether every genotype call in the sliced VCF is haplotype phased. It
+    will return an archive object with the semantic type
+    VcfFrame[Consolidated] if the VCF is fully phased or otherwise
+    VcfFrame[Imported].
 
     Parameters
     ----------
     gene : str
         Target gene.
-    vcf : fuc.pyvcf.VcfFrame or str
-        VCF file (zipped or unzipped).
+    vcf : str or fuc.api.pyvcf.VcfFrame
+        Input VCF file must be already BGZF compressed (.gz) and indexed
+        (.tbi) to allow random access. Alternatively, you can provide a
+        VcfFrame object.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
         Genotyping platform.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
 
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type VcfFrame[Imported].
+        Archive object with the semantic type VcfFrame[Imported] or
+        VcfFrame[Consolidated].
     """
-    if isinstance(vcf, str):
-        vf = pyvcf.VcfFrame.from_file(vcf)
-    else:
-        vf = vcf
-
     region = core.get_region(gene, assembly=assembly)
 
-    data = vf.update_chr_prefix(mode='remove').slice(region).strip('GT:AD:DP')
-    data = data.add_af().unphase()
+    if isinstance(vcf, str):
+        vf = pyvcf.VcfFrame.from_file(vcf, regions=region)
+    else:
+        vf = vcf.slice(region)
+
+    vf = vf.update_chr_prefix(mode='remove')
+    vf = vf.strip('GT:AD:DP')
+    vf = vf.add_af()
+
+    if samples is not None:
+        samples = common.parse_list_or_file(samples)
+        vf = vf.subset(samples, exclude=exclude)
+
+    if vf.phased:
+        semantic_type = 'VcfFrame[Consolidated]'
+    else:
+        vf = vf.unphase()
+        semantic_type = 'VcfFrame[Imported]'
 
     metadata = {
         'Platform': platform,
         'Gene': gene,
         'Assembly': assembly,
-        'SemanticType': 'VcfFrame[Imported]',
+        'SemanticType': semantic_type,
     }
 
-    return sdk.Archive(metadata, data)
+    return sdk.Archive(metadata, vf)
 
 def predict_alleles(consolidated_variants):
     """
@@ -830,7 +863,7 @@ def predict_alleles(consolidated_variants):
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type VcfFrame SampleTable[Alleles].
+        Archive object with the semantic type SampleTable[Alleles].
     """
     if isinstance(consolidated_variants, str):
         consolidated_variants = sdk.Archive.from_file(consolidated_variants)

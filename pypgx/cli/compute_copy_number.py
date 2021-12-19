@@ -14,7 +14,7 @@ normalization using summary statistics from the control gene.
 During copy number analysis, if the input data is targeted sequencing, the
 command will apply inter-sample normalization using summary statistics across
 all samples. For best results, it is recommended to specify known samples
-without SV using --samples.
+without SV using --samples-without-sv.
 """
 
 def create_parser(subparsers):
@@ -42,7 +42,7 @@ def create_parser(subparsers):
              'CovFrame[CopyNumber].'
     )
     parser.add_argument(
-        '--samples',
+        '--samples-without-sv',
         metavar='TEXT',
         nargs='+',
         help='List of known samples with no SV.'
@@ -50,6 +50,7 @@ def create_parser(subparsers):
 
 def main(args):
     result = utils.compute_copy_number(
-        args.read_depth, args.control_statistcs, samples=args.samples
+        args.read_depth, args.control_statistcs,
+        samples=args.samples_without_sv
     )
     result.to_file(args.output)

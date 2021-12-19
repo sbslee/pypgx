@@ -6,6 +6,7 @@ import copy
 import pickle
 
 import pandas as pd
+import numpy as np
 from fuc import pyvcf, pycov, common, pybam
 
 class IncorrectMetadataError(Exception):
@@ -32,6 +33,11 @@ class Archive:
     def __init__(self, metadata, data):
         self.metadata = metadata
         self.data = data
+
+    @property
+    def type(self):
+        """str : Semantic type."""
+        return self.metadata['SemanticType']
 
     def copy_metadata(self):
         """dict : Copy of the metadata."""
@@ -107,15 +113,29 @@ class Archive:
             raise SemanticTypeNotFoundError(metadata['SemanticType'])
         return cls(metadata, data)
 
-    def check_type(self, semantic_type):
+    def check_type(self, semantic_types):
         """
         Raise IncorrectSemanticTypeError if the archive does not have
-        specified semantic type.
+        specified semantic type(s).
+
+        Parameters
+        ----------
+        semantic_types : str or list
+            One or more semantic types.
         """
-        actual_type = self.metadata['SemanticType']
-        if actual_type != semantic_type:
-            raise IncorrectSemanticTypeError(
-                f"Expected '{semantic_type}' but found '{actual_type}'")
+        if isinstance(semantic_types, str):
+            semantic_types = [semantic_types]
+        elif isinstance(semantic_types, list):
+            pass
+        else:
+            message = ('Semantic types must be str or list, '
+                f'not {type(semantic_types).__name__}')
+            raise TypeError(message)
+
+        if self.type not in semantic_types:
+            message = (f"Expected {'/'.join(semantic_types)}, but"
+                f" instead found {self.type}")
+            raise IncorrectSemanticTypeError(message)
 
     def check_metadata(self, key, value):
         """
@@ -278,3 +298,51 @@ def parse_input_bams(bam=None, fn=None):
         chr_prefix = ''
 
     return bam_files, chr_prefix
+
+def simulate_copy_number(
+    target, source, sample, sv, n=3, mu=0, sigma=0.05
+):
+    """
+    Simuluate copy number by adding noise to the data of an existing sample.
+
+    The method will generate simulated samples by introducing noise to an
+    existing sample in the source archive and then append those to the target
+    archive.
+
+    Parameters
+    ----------
+    target : str
+        Target archive file with the semantic type CovFrame[CopyNumber].
+    source : str
+        Source archive file with the semantic type CovFrame[CopyNumber].
+    sample : str
+        Name of the sample.
+    sv : str
+        Name of the SV.
+    n : int, default: 1
+        Number of samples to simulate. Must be non-negative.
+    mu : float, default: 0
+        Mean ("centre") of the distribution.
+    sigma : float, default: 0.05
+        Standard deviation (spread or "width") of the distribution.
+        Must be non-negative.
+
+    Returns
+    -------
+    pypgx.Archive
+        Target archive with simultated samples appended.
+    """
+    target = Archive.from_file(target)
+    source = Archive.from_file(source)
+    data = source.data.df[sample]
+
+    target.data.df[sample] = data
+
+    for i in range(n):
+        noise = np.random.normal(mu, sigma, len(data))
+        s = data - noise
+        s[data == 0] = 0
+        s[s < 0] = 0
+        target.data.df[f'{sv}_{i+1}'] = s
+
+    return target

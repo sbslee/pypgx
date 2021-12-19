@@ -5,152 +5,224 @@ Introduction
 ============
 
 This page describes gene-specific information. PyPGx currently supports a
-total of 57 pharmacogenes.
+total of 58 pharmacogenes.
 
-Many of the genes are known to have structural variation (SV) including
-gene deletions, duplications, and hybrids.
+Many of the genes are known to have :ref:`structural variation (SV)
+<glossary:Structural variation (SV)>` including gene deletions, duplications,
+and hybrids.
 
-Some genes have a diplotype-phenotype table available from the Clinical
-Pharmacogenetics Implementation Consortium (CPIC). PyPGx will use this
-information to perform phenotype prediction with one of the two methods:
-diplotype-phenotype mapping or activity score. Please read the
-:ref:`readme:Phenotype prediction` page for more details.
+Some genes have a genotype-phenotype table available from the
+:ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
+the :ref:`glossary:Pharmacogenomics Knowledge Base (PharmGKB)`. Please read
+the :ref:`readme:Phenotype prediction` page for more details.
 
 Below is a summary table:
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 10 15 60
+   :widths: 15 10 15 15 15 60
 
    * - Gene
      - SV
      - Phenotype
+     - PharmVar
+     - CPIC
      - Note
    * - ABCB1
      -
      -
      -
-   * - CACNA1S
      -
      -
+   * - :ref:`genes:CACNA1S`
      -
-   * - CFTR
+     - ✅
+     -
+     - ✅
+     -
+   * - :ref:`genes:CFTR`
+     -
+     - ✅
+     -
+     - ✅
+     -
+   * - :ref:`genes:CYP1A1`
      -
      -
-     -
-   * - CYP1A1
-     -
+     - ✅
      -
      -
-   * - CYP1A2
+   * - :ref:`genes:CYP1A2`
      -
      -
+     - ✅
      -
-   * - CYP1B1
      -
+   * - :ref:`genes:CYP1B1`
+     -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:CYP2A6`
      - ✅
      -
-     - Has pseudogene (CYP2A7).
-   * - CYP2A13
+     - ✅
      -
+     - Has pseudogene (CYP2A7).
+   * - :ref:`genes:CYP2A13`
+     -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:CYP2B6`
      - ✅
      - ✅
+     - ✅
+     - ✅
      - Has pseudogene (CYP2B7).
-   * - CYP2C8
+   * - :ref:`genes:CYP2C8`
      -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:CYP2C9`
      -
      - ✅
+     - ✅
+     - ✅
      -
    * - :ref:`genes:CYP2C19`
      -
      - ✅
+     - ✅
+     - ✅
      -
    * - :ref:`genes:CYP2D6`
+     - ✅
+     - ✅
      - ✅
      - ✅
      - Has pseudogene (CYP2D7).
    * - :ref:`genes:CYP2E1`
      - ✅
      -
-     -
-   * - CYP2F1
-     -
+     - ✅
      -
      -
-   * - CYP2J2
+   * - :ref:`genes:CYP2F1`
      -
      -
-     -
-   * - CYP2R1
-     -
+     - ✅
      -
      -
-   * - CYP2S1
+   * - :ref:`genes:CYP2J2`
      -
      -
-     -
-   * - CYP2W1
-     -
+     - ✅
      -
      -
-   * - CYP3A4
+   * - :ref:`genes:CYP2R1`
      -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP2S1`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP2W1`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP3A4`
+     -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:CYP3A5`
      -
      - ✅
+     - ✅
+     - ✅
      -
-   * - CYP3A7
-     -
-     -
-     -
-   * - CYP3A43
+   * - :ref:`genes:CYP3A7`
      -
      -
-     -
-   * - CYP4A11
-     -
+     - ✅
      -
      -
-   * - CYP4A22
+   * - :ref:`genes:CYP3A43`
      -
      -
-     -
-   * - CYP4B1
-     -
+     - ✅
      -
      -
-   * - CYP4F2
+   * - :ref:`genes:CYP4A11`
      -
      -
-     -
-   * - CYP17A1
-     -
+     - ✅
      -
      -
-   * - CYP19A1
+   * - :ref:`genes:CYP4A22`
      -
      -
+     - ✅
      -
-   * - CYP26A1
      -
+   * - :ref:`genes:CYP4B1`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP4F2`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP17A1`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP19A1`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:CYP26A1`
+     -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:DPYD`
      -
      - ✅
+     - ✅
+     - ✅
+     -
+   * - :ref:`genes:F5`
+     -
+     - ✅
+     -
+     -
      -
    * - G6PD
+     -
+     -
      -
      -
      -
@@ -158,15 +230,23 @@ Below is a summary table:
      - ✅
      -
      -
+     -
+     -
    * - GSTP1
+     -
+     -
      -
      -
      -
    * - :ref:`genes:GSTT1`
      - ✅
      -
+     -
+     -
      - Contig differs between GRCh37 and GRCh38.
-   * - IFNL3
+   * - :ref:`genes:IFNL3`
+     -
+     - ✅
      -
      -
      -
@@ -174,27 +254,41 @@ Below is a summary table:
      -
      -
      -
+     -
+     -
    * - NAT2
+     -
+     -
      -
      -
      -
    * - :ref:`genes:NUDT15`
      -
      - ✅
+     - ✅
+     - ✅
      -
-   * - POR
-     -
-     -
-     -
-   * - PTGIS
+   * - :ref:`genes:POR`
      -
      -
+     - ✅
      -
-   * - RYR1
      -
+   * - :ref:`genes:PTGIS`
+     -
+     -
+     - ✅
+     -
+     -
+   * - :ref:`genes:RYR1`
+     -
+     - ✅
+     - ✅
      -
      -
    * - SLC15A2
+     -
+     -
      -
      -
      -
@@ -202,11 +296,17 @@ Below is a summary table:
      - ✅
      -
      -
+     -
+     -
    * - :ref:`genes:SLCO1B1`
      -
      - ✅
+     - ✅
+     - ✅
      -
    * - SLCO1B3
+     -
+     -
      -
      -
      -
@@ -214,15 +314,23 @@ Below is a summary table:
      -
      -
      -
+     -
+     -
    * - SULT1A1
      -
      -
      -
-   * - TBXAS1
      -
+     -
+   * - :ref:`genes:TBXAS1`
+     -
+     -
+     - ✅
      -
      -
    * - :ref:`genes:TPMT`
+     -
+     - ✅
      -
      - ✅
      -
@@ -230,11 +338,17 @@ Below is a summary table:
      -
      - ✅
      -
+     - ✅
+     -
    * - :ref:`genes:UGT1A4`
      - ✅
      -
      -
+     -
+     -
    * - UGT2B7
+     -
+     -
      -
      -
      -
@@ -242,18 +356,100 @@ Below is a summary table:
      - ✅
      -
      -
+     -
+     -
    * - :ref:`genes:UGT2B17`
      - ✅
+     -
+     -
      -
      -
    * - VKORC1
      -
      -
      -
+     - ✅
+     -
    * - XPC
      -
      -
      -
+     -
+     -
+
+CACNA1S
+=======
+
+Phenotype summary for CACNA1S
+-----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Uncertain Susceptibility
+      - Reference/Reference
+    * - Malignant Hyperthermia Susceptibility
+      - Reference/c.520C>T
+
+Resources for CACNA1S
+---------------------
+
+- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
+
+CFTR
+====
+
+Phenotype summary for CFTR
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Favorable Response
+      - Reference/G551D
+    * - Unfavorable Response
+      - F508del/F508del
+    * - Indeterminate
+      - Reference/F508del
+
+Resources for CFTR
+------------------
+
+- `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
+- `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
+
+CYP1A1
+======
+
+Resources for CYP1A1
+--------------------
+
+- `PharmVar CYP1A1 page <https://www.pharmvar.org/gene/CYP1A1>`__
+
+CYP1A2
+======
+
+Resources for CYP1A2
+--------------------
+
+- `PharmVar CYP1A2 page <https://www.pharmvar.org/gene/CYP1A2>`__
+
+CYP1B1
+======
+
+Resources for CYP1B1
+--------------------
+
+- `PharmVar CYP1B1 page <https://www.pharmvar.org/gene/CYP1B1>`__
 
 CYP2A6
 ======
@@ -330,6 +526,14 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
 
+CYP2A13
+=======
+
+Resources for CYP2A13
+---------------------
+
+- `PharmVar CYP2A13 page <https://www.pharmvar.org/gene/CYP2A13>`__
+
 CYP2B6
 ======
 
@@ -383,6 +587,19 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Indeterminate
       - \*1/\*3
 
+Resources for CYP2B6
+--------------------
+
+- `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
+
+CYP2C8
+======
+
+Resources for CYP2C8
+--------------------
+
+- `PharmVar CYP2C8 page <https://www.pharmvar.org/gene/CYP2C8>`__
+
 CYP2C9
 ======
 
@@ -406,6 +623,11 @@ Activity score is used for phenotype prediction.
    * - Poor Metabolizer
      - 0 <= score < 1
      - \*2/\*3
+
+Resources for CYP2C9
+--------------------
+
+- `CPIC® Guideline for NSAIDs based on CYP2C9 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/>`__
 
 CYP2C19
 =======
@@ -437,6 +659,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*12
 
+Resources for CYP2C19
+---------------------
+
+- `CPIC® Guideline for Voriconazole and CYP2C19 <https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/>`__
+
 CYP2D6
 ======
 
@@ -458,7 +685,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Source
      - Coriell ID
    * - \*5
-     - Deletion
+     - DeletionHet
      - \*5/\*29
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png>`
@@ -466,6 +693,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
+   * - \*5
+     - DeletionHom
+     - \*5/\*5
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-6.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-6.png>`
+     - WGS
+     -
+     -
    * - \*4x2
      - Duplication
      - \*2/\*4x2
@@ -502,6 +738,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
+   * - \*36x3+\*10
+     - Tandem2C
+     - \*1/\*36x3+\*10
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-7.png>`
+     - WGS
+     -
+     -
 
 Phenotype summary for CYP2D6
 ----------------------------
@@ -561,6 +806,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42524327-A-G <https://gnomad.broadinstitute.org/variant/22-42524327-A-G?dataset=gnomad_r2_1>`__
      - `22-42128325-A-G <https://gnomad.broadinstitute.org/variant/22-42128325-A-G?dataset=gnomad_r3>`__
 
+Resources for CYP2D6
+--------------------
+
+- `CPIC® Guideline for Tamoxifen based on CYP2D6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/>`__
+
 CYP2E1
 ======
 
@@ -590,6 +840,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
+   * - \*1x2
+     - Duplication
+     - \*1/\*1x2
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-4.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-4.png>`
+     - WGS
+     -
+     -
    * - \*7x2
      - Duplication
      - \*1/\*7x2
@@ -608,6 +867,54 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
+
+CYP2F1
+======
+
+Resources for CYP2F1
+--------------------
+
+- `PharmVar CYP2F1 page <https://www.pharmvar.org/gene/CYP2F1>`__
+
+CYP2J2
+======
+
+Resources for CYP2J2
+--------------------
+
+- `PharmVar CYP2J2 page <https://www.pharmvar.org/gene/CYP2J2>`__
+
+CYP2R1
+======
+
+Resources for CYP2R1
+--------------------
+
+- `PharmVar CYP2R1 page <https://www.pharmvar.org/gene/CYP2R1>`__
+
+CYP2S1
+======
+
+Resources for CYP2S1
+--------------------
+
+- `PharmVar CYP2S1 page <https://www.pharmvar.org/gene/CYP2S1>`__
+
+CYP2W1
+======
+
+Resources for CYP2W1
+--------------------
+
+- `PharmVar CYP2W1 page <https://www.pharmvar.org/gene/CYP2W1>`__
+
+CYP3A4
+======
+
+Resources for CYP3A4
+--------------------
+
+- `PharmVar CYP3A4 page <https://www.pharmvar.org/gene/CYP3A4>`__
 
 CYP3A5
 ======
@@ -633,6 +940,83 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*2/\*2
 
+Resources for CYP3A5
+--------------------
+
+- `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
+
+CYP3A7
+======
+
+Resources for CYP3A7
+--------------------
+
+- `PharmVar CYP3A7 page <https://www.pharmvar.org/gene/CYP3A7>`__
+
+CYP3A43
+=======
+
+Resources for CYP3A43
+---------------------
+
+- `PharmVar CYP3A43 page <https://www.pharmvar.org/gene/CYP3A43>`__
+
+CYP4A11
+=======
+
+Resources for CYP4A11
+---------------------
+
+- `PharmVar CYP4A11 page <https://www.pharmvar.org/gene/CYP4A11>`__
+
+CYP4A22
+=======
+
+Resources for CYP4A22
+---------------------
+
+- `PharmVar CYP4A22 page <https://www.pharmvar.org/gene/CYP4A22>`__
+
+CYP4B1
+======
+
+Resources for CYP4B1
+--------------------
+
+- `PharmVar CYP4B1 page <https://www.pharmvar.org/gene/CYP4B1>`__
+
+CYP4F2
+======
+
+Resources for CYP4F2
+--------------------
+
+- `PharmVar CYP4F2 page <https://www.pharmvar.org/gene/CYP4F2>`__
+
+CYP17A1
+=======
+
+Resources for CYP17A1
+---------------------
+
+- `PharmVar CYP17A1 page <https://www.pharmvar.org/gene/CYP17A1>`__
+
+CYP19A1
+=======
+
+Resources for CYP19A1
+---------------------
+
+- `PharmVar CYP19A1 page <https://www.pharmvar.org/gene/CYP19A1>`__
+
+CYP26A1
+=======
+
+Resources for CYP26A1
+---------------------
+
+- `PharmVar CYP26A1 page <https://www.pharmvar.org/gene/CYP26A1>`__
+
 DPYD
 ====
 
@@ -656,6 +1040,34 @@ Activity score is used for phenotype prediction.
    * - Poor Metabolizer
      - 0 <= score < 1
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
+
+Resources for DPYD
+------------------
+
+- `CPIC® Guideline for Fluoropyrimidines and DPYD <https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/>`__
+
+F5
+==
+
+Phenotype summary for F5
+------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+    * - Favorable Response
+      - Reference/Reference
+    * - Unfavorable Response
+      - Reference/Leiden
+
+Resources for F5
+----------------
+
+- `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
 
 GSTM1
 =====
@@ -707,6 +1119,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+  * - \*Bx2
+    - Duplication
+    - \*A/\*Bx2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-4.png>`
+    - WGS
+    -
+    -
 
 GSTT1
 =====
@@ -758,6 +1179,31 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
 
+IFNL3
+=====
+
+Phenotype summary for IFNL3
+---------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - Favorable Response
+     - Reference/Reference
+   * - Unfavorable Response
+     - Reference/rs12979860
+   * - Indeterminate
+     - Reference/rs8099917
+
+Resources for IFNL3
+-------------------
+
+- `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
+
 NUDT15
 ======
 
@@ -781,6 +1227,51 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*2/\*3
    * - Indeterminate
      - \*1/\*4
+
+Resources for NUDT15
+--------------------
+
+- `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
+
+POR
+===
+
+Resources for POR
+-----------------
+
+- `PharmVar POR page <https://www.pharmvar.org/gene/POR>`__
+
+PTGIS
+=====
+
+Resources for PTGIS
+-------------------
+
+- `PharmVar PTGIS page <https://www.pharmvar.org/gene/PTGIS>`__
+
+RYR1
+====
+
+Phenotype summary for RYR1
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+  :header-rows: 1
+
+  * - Phenotype
+    - Example
+  * - Uncertain Susceptibility
+    - Reference/Reference
+  * - Malignant Hyperthermia Susceptibility
+    - Reference/c.103T>C
+
+Resources for RYR1
+------------------
+
+- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 
 SLC22A2
 =======
@@ -849,6 +1340,19 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1A/\*7
 
+Resources for SLCO1B1
+---------------------
+
+- `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
+
+TBXAS1
+======
+
+Resources for TBXAS1
+--------------------
+
+- `PharmVar TBXAS1 page <https://www.pharmvar.org/gene/TBXAS1>`__
+
 TPMT
 ====
 
@@ -873,6 +1377,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*18
 
+Resources for TPMT
+------------------
+
+- `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
+
 UGT1A1
 ======
 
@@ -895,6 +1404,11 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*28/\*80
 
+Resources for UGT1A1
+--------------------
+
+- `CPIC® Guideline for Atazanavir and UGT1A1 <https://cpicpgx.org/guidelines/guideline-for-atazanavir-and-ugt1a1/>`__
+
 UGT1A4
 ======
 
@@ -916,7 +1430,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Source
     - Coriell ID
   * - \*S1
-    - Intron1Deletion
+    - Intron1DeletionA
     - \*1/\*S1
     -
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-1.png>`
@@ -924,6 +1438,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+  * - \*S2
+    - Intron1DeletionB
+    - \*1/\*S2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT1A4-2.png>`
+    - WGS
+    -
+    -
 
 UGT2B15
 =======

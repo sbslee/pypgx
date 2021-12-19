@@ -37,7 +37,7 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
-       import-variants     Import variant data for the target gene.
+       import-variants     Import variant (SNV/indel) data for the target gene
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
@@ -204,7 +204,7 @@ compute-copy-number
 .. code-block:: text
 
    $ pypgx compute-copy-number -h
-   usage: pypgx compute-copy-number [-h] [--samples TEXT [TEXT ...]]
+   usage: pypgx compute-copy-number [-h] [--samples-without-sv TEXT [TEXT ...]]
                                     read-depth control-statistcs output
    
    Compute copy number from read depth for the target gene.
@@ -215,7 +215,7 @@ compute-copy-number
    During copy number analysis, if the input data is targeted sequencing, the
    command will apply inter-sample normalization using summary statistics across
    all samples. For best results, it is recommended to specify known samples
-   without SV using --samples.
+   without SV using --samples-without-sv.
    
    Positional arguments:
      read-depth            Archive file with the semantic type 
@@ -227,7 +227,7 @@ compute-copy-number
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --samples TEXT [TEXT ...]
+     --samples-without-sv TEXT [TEXT ...]
                            List of known samples with no SV.
 
 compute-target-depth
@@ -334,8 +334,8 @@ estimate-phase-beagle
    Optional arguments:
      -h, --help         Show this help message and exit.
      --panel PATH       VCF file corresponding to a reference haplotype panel 
-                        (zipped or unzipped). By default, the 1KGP panel is 
-                        used.
+                        (compressed or uncompressed). By default, the 1KGP panel 
+                        is used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -344,24 +344,22 @@ filter-samples
 .. code-block:: text
 
    $ pypgx filter-samples -h
-   usage: pypgx filter-samples [-h] [--samples TEXT [TEXT ...]] [--fn PATH]
-                               [--exclude]
-                               input output
+   usage: pypgx filter-samples [-h] [--exclude]
+                               input output samples [samples ...]
    
    Filter Archive file for specified samples.
    
    Positional arguments:
-     input                 Input archive file.
-     output                Output archive file.
+     input       Input archive file.
+     output      Output archive file.
+     samples     Specify which samples should be included for analysis 
+                 by providing a text file (.txt, .tsv, .csv, or .list) 
+                 containing one sample per line. Alternatively, you can 
+                 provide a list of samples.
    
    Optional arguments:
-     -h, --help            Show this help message and exit.
-     --samples TEXT [TEXT ...]
-                           List of samples names (the order matters). Cannot be 
-                           used with --fn.
-     --fn PATH             File containing one sample name per line. Cannot be 
-                           used with --samples.
-     --exclude             Exclude specified samples.
+     -h, --help  Show this help message and exit.
+     --exclude   Exclude specified samples.
 
 import-read-depth
 =================
@@ -369,18 +367,25 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] gene depth-of-coverage read-depth
+   usage: pypgx import-read-depth [-h] [--samples PATH [PATH ...]] [--exclude]
+                                  gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
    
    Positional arguments:
-     gene               Target gene.
-     depth-of-coverage  Archive file with the semantic type 
-                        CovFrame[DepthOfCoverage].
-     read-depth         Archive file with the semantic type CovFrame[ReadDepth].
+     gene                  Target gene.
+     depth-of-coverage     Archive file with the semantic type 
+                           CovFrame[DepthOfCoverage].
+     read-depth            Archive file with the semantic type CovFrame[ReadDepth].
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
+     -h, --help            Show this help message and exit.
+     --samples PATH [PATH ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
 
 import-variants
 ===============
@@ -389,21 +394,35 @@ import-variants
 
    $ pypgx import-variants -h
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
+                                [--samples PATH [PATH ...]] [--exclude]
                                 gene vcf imported-variants
    
-   Import variant data for the target gene.
+   Import variant (SNV/indel) data for the target gene.
+   
+   The command will first slice input VCF for the target gene and then assess
+   whether every genotype call in the sliced VCF is haplotype phased. It will
+   return an archive file with the semantic type VcfFrame[Consolidated] if the
+   VCF is fully phased or otherwise VcfFrame[Imported].
    
    Positional arguments:
-     gene               Target gene.
-     vcf                VCF file (zipped or unzipped).
-     imported-variants  Archive file with the semantic type VcfFrame[Imported].
+     gene                  Target gene.
+     vcf                   Input VCF file must be already BGZF compressed (.gz) and 
+                           indexed (.tbi) to allow random access.
+     imported-variants     Archive file with the semantic type VcfFrame[Imported] 
+                           or VcfFrame[Consolidated].
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37') (choices: 
-                        'GRCh37', 'GRCh38').
-     --platform TEXT    NGS platform (default: 'WGS') (choices: 'WGS', 
-                        'Targeted', 'Chip').
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
+     --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
+                           'Targeted', 'Chip').
+     --samples PATH [PATH ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
 
 plot-bam-copy-number
 ====================
@@ -427,7 +446,10 @@ plot-bam-copy-number
      --fitted              Show the fitted line as well.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom (default: -0.3).
      --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
@@ -453,7 +475,10 @@ plot-bam-read-depth
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
 
@@ -479,7 +504,10 @@ plot-cn-af
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom (default: -0.3).
      --ymax FLOAT          Y-axis top (default: 6.3).
      --fontsize FLOAT      Text fontsize (default: 25).
@@ -505,7 +533,10 @@ plot-vcf-allele-fraction
      -h, --help            Show this help message and exit.
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-vcf-read-depth
@@ -531,7 +562,10 @@ plot-vcf-read-depth
                            (choices: 'GRCh37', 'GRCh38').
      --path PATH           Create plots in this directory.
      --samples TEXT [TEXT ...]
-                           Create plots only for these samples.
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
 
@@ -641,27 +675,37 @@ run-chip-pipeline
 
    $ pypgx run-chip-pipeline -h
    usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
+                                  [--samples TEXT [TEXT ...]] [--exclude]
                                   gene output variants
    
    Run PyPGx's genotyping pipeline for chip data.
    
    Positional arguments:
-     gene             Target gene.
-     output           Output directory.
-     variants         VCF file (zipped or unzipped).
+     gene                  Target gene.
+     output                Output directory.
+     variants              Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access. Statistical 
+                           haplotype phasing will be skipped if input VCF is 
+                           already fully phased.
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37') (choices: 
-                      'GRCh37', 'GRCh38').
-     --impute         Perform imputation of missing genotypes.
-     --force          Overwrite output directory if it already exists.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
+                           'GRCh37', 'GRCh38').
+     --impute              Perform imputation of missing genotypes.
+     --force               Overwrite output directory if it already exists.
+     --samples TEXT [TEXT ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
    
    [Example] To genotype the CYP3A5 gene from chip data:
      $ pypgx run-chip-pipeline \
      CYP3A5 \
      CYP3A5-pipeline \
-     variants.vcf
+     variants.vcf.gz
 
 run-ngs-pipeline
 ================
@@ -673,7 +717,8 @@ run-ngs-pipeline
                                  [--depth-of-coverage PATH]
                                  [--control-statistics PATH] [--platform TEXT]
                                  [--assembly TEXT] [--panel PATH] [--force]
-                                 [--samples TEXT [TEXT ...]]
+                                 [--samples TEXT [TEXT ...]] [--exclude]
+                                 [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
                                  gene output
@@ -683,7 +728,7 @@ run-ngs-pipeline
    During copy number analysis, if the input data is targeted sequencing, the
    command will apply inter-sample normalization using summary statistics across
    all samples. For best results, it is recommended to specify known samples
-   without SV using --samples.
+   without SV using --samples-without-sv.
    
    Positional arguments:
      gene                  Target gene.
@@ -691,21 +736,30 @@ run-ngs-pipeline
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --variants PATH       VCF file (zipped or unzipped).
+     --variants PATH       Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access. Statistical 
+                           haplotype phasing will be skipped if input VCF is 
+                           already fully phased.
      --depth-of-coverage PATH
-                           Depth of coverage file (zipped or unzipped).
+                           Depth of coverage file (compressed or uncompressed).
      --control-statistics PATH
                            Archive file with the semandtic type 
                            SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
-                           'GRCh37', 'GRCh38').
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (zipped or unzipped). By default, the 1KGP panel is 
-                           used.
+                           (compressed or uncompressed). By default, the 1KGP 
+                           panel is used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you can 
+                           provide a list of samples.
+     --exclude             Exclude specified samples.
+     --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.
      --do-not-plot-copy-number
                            Do not plot copy number profile.
@@ -716,13 +770,13 @@ run-ngs-pipeline
      $ pypgx run-ngs-pipeline \
      CYP3A5 \
      CYP3A5-pipeline \
-     --variants variants.vcf
+     --variants variants.vcf.gz
    
    [Example] To genotype the CYP2D6 gene, which does have SV, from WGS data:
      $ pypgx run-ngs-pipeline \
      CYP2D6 \
      CYP2D6-pipeline \
-     --variants variants.vcf \
+     --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
      --control-statistcs control-statistics-VDR.zip
    
@@ -730,7 +784,7 @@ run-ngs-pipeline
      $ pypgx run-ngs-pipeline \
      CYP2D6 \
      CYP2D6-pipeline \
-     --variants variants.vcf \
+     --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
      --control-statistcs control-statistics-VDR.zip \
      --platform Targeted

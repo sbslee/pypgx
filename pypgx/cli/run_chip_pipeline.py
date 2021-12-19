@@ -13,7 +13,7 @@ epilog = f"""
   $ pypgx {fuc.api.common._script_name()} \\
   CYP3A5 \\
   CYP3A5-pipeline \\
-  variants.vcf
+  variants.vcf.gz
 """
 
 def create_parser(subparsers):
@@ -34,7 +34,10 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         'variants',
-        help='VCF file (zipped or unzipped).'
+        help='Input VCF file must be already BGZF compressed (.gz) \n'
+             'and indexed (.tbi) to allow random access. Statistical \n'
+             'haplotype phasing will be skipped if input VCF is \n'
+             'already fully phased.'
     )
     parser.add_argument(
         '--assembly',
@@ -53,9 +56,24 @@ def create_parser(subparsers):
         action='store_true',
         help='Overwrite output directory if it already exists.'
     )
+    parser.add_argument(
+        '--samples',
+        metavar='TEXT',
+        nargs='+',
+        help='Specify which samples should be included for analysis \n'
+             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
+             'containing one sample per line. Alternatively, you can \n'
+             'provide a list of samples.'
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help='Exclude specified samples.'
+    )
 
 def main(args):
     pipeline.run_chip_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        impute=args.impute, force=args.force
+        impute=args.impute, force=args.force, samples=args.samples,
+        exclude=args.exclude
     )

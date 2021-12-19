@@ -31,8 +31,8 @@ def create_parser(subparsers):
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
-             '(zipped or unzipped). By default, the 1KGP panel is \n'
-             'used.'
+             '(compressed or uncompressed). By default, the 1KGP panel \n'
+             'is used.'
     )
     parser.add_argument(
         '--impute',

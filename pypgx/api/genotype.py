@@ -182,6 +182,17 @@ class CYP2D6Genotyper:
                 result = [a1, '*36x2+*10']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'Tandem2C':
+            h1 = '*10' in r.Haplotype1
+            h2 = '*10' in r.Haplotype2
+            if h1 and h2:
+                result = ['*36+*10', '*36x2+*10']
+            elif h1 and not h2:
+                result = [a2, '*36x3+*10']
+            elif not h1 and h2:
+                result = [a1, '*36x3+*10']
+            else:
+                result = ['Indeterminate']
         elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']
@@ -256,10 +267,7 @@ class GSTM1Genotyper:
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
-            if a1 == a2:
-                result = [a1, a2 + 'x2']
-            else:
-                result = ['Indeterminate']
+            result = _call_duplication(r)
         elif r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         else:
@@ -341,9 +349,20 @@ class UGT1A4Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'Intron1Deletion':
+        elif r.CNV == 'Intron1DeletionA':
             if a1 == a2:
                 result = [a1, '*S1']
+            else:
+                result = ['Indeterminate']
+        elif r.CNV == 'Intron1DeletionB':
+            h1 = '*1'in r.Haplotype1
+            h2 = '*1'in r.Haplotype2
+            if h1 and h2:
+                result = [a1, '*S2']
+            elif h1 and not h2:
+                result = [a2, '*S2']
+            elif not h1 and h2:
+                result = [a1, '*S2']
             else:
                 result = ['Indeterminate']
         else:

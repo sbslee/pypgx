@@ -1,4 +1,871 @@
 Gene,Diplotype,Phenotype
+CACNA1S,Reference/Reference,Uncertain Susceptibility
+CACNA1S,Reference/c.520C>T,Malignant Hyperthermia Susceptibility
+CACNA1S,Reference/c.3257G>A,Malignant Hyperthermia Susceptibility
+CACNA1S,c.520C>T/c.520C>T,Malignant Hyperthermia Susceptibility
+CACNA1S,c.520C>T/c.3257G>A,Malignant Hyperthermia Susceptibility
+CACNA1S,c.3257G>A/c.3257G>A,Malignant Hyperthermia Susceptibility
+CFTR,Reference/F508del,Indeterminate
+CFTR,G1069R/G1244E,Favorable Response
+CFTR,G1069R/G1349D,Favorable Response
+CFTR,G1069R/G178R,Favorable Response
+CFTR,G1069R/G551D,Favorable Response
+CFTR,G1069R/G551S,Favorable Response
+CFTR,G1069R/K1060T,Favorable Response
+CFTR,G1069R/L206W,Favorable Response
+CFTR,G1069R/P67L,Favorable Response
+CFTR,G1069R/R1070Q,Favorable Response
+CFTR,G1069R/R1070W,Favorable Response
+CFTR,F1074L/S977F,Favorable Response
+CFTR,G1069R/R117C,Favorable Response
+CFTR,G1069R/R347H,Favorable Response
+CFTR,G1069R/R352Q,Favorable Response
+CFTR,G1069R/R74W,Favorable Response
+CFTR,G1069R/S1251N,Favorable Response
+CFTR,G1069R/S1255P,Favorable Response
+CFTR,G1069R/S549N,Favorable Response
+CFTR,G1069R/S549R(A>C),Favorable Response
+CFTR,G1069R/S549R(T>G),Favorable Response
+CFTR,G1069R/S945L,Favorable Response
+CFTR,G1069R/S977F,Favorable Response
+CFTR,G1069R/R117H,Favorable Response
+CFTR,F1074L/S945L,Favorable Response
+CFTR,F1074L/S549R(T>G),Favorable Response
+CFTR,F1074L/S549R(A>C),Favorable Response
+CFTR,F1052V/S549R(A>C),Favorable Response
+CFTR,F1052V/S549R(T>G),Favorable Response
+CFTR,F1052V/S945L,Favorable Response
+CFTR,F1052V/S977F,Favorable Response
+CFTR,F1074L/G1069R,Favorable Response
+CFTR,F1074L/G1244E,Favorable Response
+CFTR,F1074L/G1349D,Favorable Response
+CFTR,F1074L/G178R,Favorable Response
+CFTR,F1074L/G551D,Favorable Response
+CFTR,F1074L/G551S,Favorable Response
+CFTR,F1074L/K1060T,Favorable Response
+CFTR,F1074L/L206W,Favorable Response
+CFTR,F1074L/P67L,Favorable Response
+CFTR,F1074L/R1070Q,Favorable Response
+CFTR,F1074L/R1070W,Favorable Response
+CFTR,F1074L/R117C,Favorable Response
+CFTR,F1074L/R117H,Favorable Response
+CFTR,F1074L/R347H,Favorable Response
+CFTR,F1074L/R352Q,Favorable Response
+CFTR,F1074L/R74W,Favorable Response
+CFTR,F1074L/S1251N,Favorable Response
+CFTR,F1074L/S1255P,Favorable Response
+CFTR,F1074L/S549N,Favorable Response
+CFTR,G1244E/G1349D,Favorable Response
+CFTR,G1244E/G178R,Favorable Response
+CFTR,G1244E/G551D,Favorable Response
+CFTR,G1244E/G551S,Favorable Response
+CFTR,G1349D/R347H,Favorable Response
+CFTR,G1349D/R352Q,Favorable Response
+CFTR,G1349D/R74W,Favorable Response
+CFTR,G1349D/S1251N,Favorable Response
+CFTR,G1349D/S1255P,Favorable Response
+CFTR,G1349D/S549N,Favorable Response
+CFTR,G1349D/S549R(A>C),Favorable Response
+CFTR,G1349D/S549R(T>G),Favorable Response
+CFTR,G1349D/S945L,Favorable Response
+CFTR,G1349D/S977F,Favorable Response
+CFTR,G178R/G551D,Favorable Response
+CFTR,G178R/G551S,Favorable Response
+CFTR,G178R/K1060T,Favorable Response
+CFTR,G178R/L206W,Favorable Response
+CFTR,G178R/P67L,Favorable Response
+CFTR,G178R/R1070Q,Favorable Response
+CFTR,G178R/R1070W,Favorable Response
+CFTR,G178R/R117C,Favorable Response
+CFTR,G178R/R117H,Favorable Response
+CFTR,G178R/R347H,Favorable Response
+CFTR,G178R/R352Q,Favorable Response
+CFTR,G178R/R74W,Favorable Response
+CFTR,G178R/S1251N,Favorable Response
+CFTR,G1349D/R117H,Favorable Response
+CFTR,F1052V/S549N,Favorable Response
+CFTR,G1349D/R117C,Favorable Response
+CFTR,G1349D/R1070Q,Favorable Response
+CFTR,G1244E/K1060T,Favorable Response
+CFTR,G1244E/L206W,Favorable Response
+CFTR,G1244E/P67L,Favorable Response
+CFTR,G1244E/R1070Q,Favorable Response
+CFTR,G1244E/R1070W,Favorable Response
+CFTR,G1244E/R117C,Favorable Response
+CFTR,G1244E/R117H,Favorable Response
+CFTR,G1244E/R347H,Favorable Response
+CFTR,G1244E/R352Q,Favorable Response
+CFTR,G1244E/R74W,Favorable Response
+CFTR,G1244E/S1251N,Favorable Response
+CFTR,G1244E/S1255P,Favorable Response
+CFTR,G1244E/S549N,Favorable Response
+CFTR,G1244E/S549R(A>C),Favorable Response
+CFTR,G1244E/S549R(T>G),Favorable Response
+CFTR,G1244E/S945L,Favorable Response
+CFTR,G1244E/S977F,Favorable Response
+CFTR,G1349D/G178R,Favorable Response
+CFTR,G1349D/G551D,Favorable Response
+CFTR,G1349D/G551S,Favorable Response
+CFTR,G1349D/K1060T,Favorable Response
+CFTR,G1349D/L206W,Favorable Response
+CFTR,G1349D/P67L,Favorable Response
+CFTR,G1349D/R1070W,Favorable Response
+CFTR,F1052V/S1255P,Favorable Response
+CFTR,F1052V/S1251N,Favorable Response
+CFTR,F1052V/R74W,Favorable Response
+CFTR,E193K/R347H,Favorable Response
+CFTR,E193K/R352Q,Favorable Response
+CFTR,E193K/R74W,Favorable Response
+CFTR,E193K/S1251N,Favorable Response
+CFTR,E193K/S1255P,Favorable Response
+CFTR,E193K/S549N,Favorable Response
+CFTR,E193K/S549R(A>C),Favorable Response
+CFTR,E193K/S549R(T>G),Favorable Response
+CFTR,E193K/S945L,Favorable Response
+CFTR,E193K/S977F,Favorable Response
+CFTR,E56K/E831X,Favorable Response
+CFTR,E56K/F1052V,Favorable Response
+CFTR,E56K/F1074L,Favorable Response
+CFTR,E56K/G1069R,Favorable Response
+CFTR,E56K/G1244E,Favorable Response
+CFTR,E56K/G1349D,Favorable Response
+CFTR,E56K/G178R,Favorable Response
+CFTR,E56K/G551D,Favorable Response
+CFTR,E56K/G551S,Favorable Response
+CFTR,E56K/K1060T,Favorable Response
+CFTR,E56K/L206W,Favorable Response
+CFTR,E56K/P67L,Favorable Response
+CFTR,E56K/R1070Q,Favorable Response
+CFTR,E193K/R117H,Favorable Response
+CFTR,E56K/R1070W,Favorable Response
+CFTR,E193K/R117C,Favorable Response
+CFTR,E193K/R1070Q,Favorable Response
+CFTR,D579G/R347H,Favorable Response
+CFTR,D579G/R352Q,Favorable Response
+CFTR,D579G/R74W,Favorable Response
+CFTR,D579G/S1251N,Favorable Response
+CFTR,D579G/S1255P,Favorable Response
+CFTR,D579G/S549N,Favorable Response
+CFTR,D579G/S549R(A>C),Favorable Response
+CFTR,D579G/S549R(T>G),Favorable Response
+CFTR,D579G/S945L,Favorable Response
+CFTR,D579G/S977F,Favorable Response
+CFTR,E193K/E56K,Favorable Response
+CFTR,E193K/E831X,Favorable Response
+CFTR,E193K/F1052V,Favorable Response
+CFTR,E193K/F1074L,Favorable Response
+CFTR,E193K/G1069R,Favorable Response
+CFTR,E193K/G1244E,Favorable Response
+CFTR,E193K/G1349D,Favorable Response
+CFTR,E193K/G178R,Favorable Response
+CFTR,E193K/G551D,Favorable Response
+CFTR,E193K/G551S,Favorable Response
+CFTR,E193K/K1060T,Favorable Response
+CFTR,E193K/L206W,Favorable Response
+CFTR,E193K/P67L,Favorable Response
+CFTR,E193K/R1070W,Favorable Response
+CFTR,G178R/S1255P,Favorable Response
+CFTR,E56K/R117C,Favorable Response
+CFTR,E56K/R347H,Favorable Response
+CFTR,E831X/S1251N,Favorable Response
+CFTR,E831X/S1255P,Favorable Response
+CFTR,E831X/S549N,Favorable Response
+CFTR,E831X/S549R(A>C),Favorable Response
+CFTR,E831X/S549R(T>G),Favorable Response
+CFTR,E831X/S945L,Favorable Response
+CFTR,E831X/S977F,Favorable Response
+CFTR,F1052V/F1074L,Favorable Response
+CFTR,F1052V/G1069R,Favorable Response
+CFTR,F1052V/G1244E,Favorable Response
+CFTR,F1052V/G1349D,Favorable Response
+CFTR,F1052V/G178R,Favorable Response
+CFTR,F1052V/G551D,Favorable Response
+CFTR,F1052V/G551S,Favorable Response
+CFTR,F1052V/K1060T,Favorable Response
+CFTR,F1052V/L206W,Favorable Response
+CFTR,F1052V/P67L,Favorable Response
+CFTR,F1052V/R1070Q,Favorable Response
+CFTR,F1052V/R1070W,Favorable Response
+CFTR,F1052V/R117C,Favorable Response
+CFTR,F1052V/R117H,Favorable Response
+CFTR,F1052V/R347H,Favorable Response
+CFTR,F1052V/R352Q,Favorable Response
+CFTR,E831X/R74W,Favorable Response
+CFTR,E56K/R117H,Favorable Response
+CFTR,E831X/R352Q,Favorable Response
+CFTR,E831X/R117H,Favorable Response
+CFTR,E56K/R352Q,Favorable Response
+CFTR,E56K/R74W,Favorable Response
+CFTR,E56K/S1251N,Favorable Response
+CFTR,E56K/S1255P,Favorable Response
+CFTR,E56K/S549N,Favorable Response
+CFTR,E56K/S549R(A>C),Favorable Response
+CFTR,E56K/S549R(T>G),Favorable Response
+CFTR,E56K/S945L,Favorable Response
+CFTR,E56K/S977F,Favorable Response
+CFTR,E831X/F1052V,Favorable Response
+CFTR,E831X/F1074L,Favorable Response
+CFTR,E831X/G1069R,Favorable Response
+CFTR,E831X/G1244E,Favorable Response
+CFTR,E831X/G1349D,Favorable Response
+CFTR,E831X/G178R,Favorable Response
+CFTR,E831X/G551D,Favorable Response
+CFTR,E831X/G551S,Favorable Response
+CFTR,E831X/K1060T,Favorable Response
+CFTR,E831X/L206W,Favorable Response
+CFTR,E831X/P67L,Favorable Response
+CFTR,E831X/R1070Q,Favorable Response
+CFTR,E831X/R1070W,Favorable Response
+CFTR,E831X/R117C,Favorable Response
+CFTR,E831X/R347H,Favorable Response
+CFTR,G178R/S549N,Favorable Response
+CFTR,G178R/S549R(A>C),Favorable Response
+CFTR,G178R/S549R(T>G),Favorable Response
+CFTR,R347H/S945L,Favorable Response
+CFTR,R347H/S977F,Favorable Response
+CFTR,R352Q/R74W,Favorable Response
+CFTR,R352Q/S1251N,Favorable Response
+CFTR,R352Q/S1255P,Favorable Response
+CFTR,R352Q/S549N,Favorable Response
+CFTR,R352Q/S549R(A>C),Favorable Response
+CFTR,R352Q/S549R(T>G),Favorable Response
+CFTR,R352Q/S945L,Favorable Response
+CFTR,R352Q/S977F,Favorable Response
+CFTR,R74W/S1251N,Favorable Response
+CFTR,R74W/S1255P,Favorable Response
+CFTR,R74W/S549N,Favorable Response
+CFTR,R74W/S549R(A>C),Favorable Response
+CFTR,R74W/S549R(T>G),Favorable Response
+CFTR,R74W/S945L,Favorable Response
+CFTR,R74W/S977F,Favorable Response
+CFTR,S1251N/S1255P,Favorable Response
+CFTR,S1251N/S549N,Favorable Response
+CFTR,S1251N/S549R(A>C),Favorable Response
+CFTR,S1251N/S549R(T>G),Favorable Response
+CFTR,S1251N/S945L,Favorable Response
+CFTR,S1251N/S977F,Favorable Response
+CFTR,R347H/S549R(T>G),Favorable Response
+CFTR,S1255P/S549N,Favorable Response
+CFTR,R347H/S549R(A>C),Favorable Response
+CFTR,R347H/S1255P,Favorable Response
+CFTR,R117C/R347H,Favorable Response
+CFTR,R117C/R352Q,Favorable Response
+CFTR,R117C/R74W,Favorable Response
+CFTR,R117C/S1251N,Favorable Response
+CFTR,R117C/S1255P,Favorable Response
+CFTR,R117C/S549N,Favorable Response
+CFTR,R117C/S549R(A>C),Favorable Response
+CFTR,R117C/S549R(T>G),Favorable Response
+CFTR,R117C/S945L,Favorable Response
+CFTR,R117C/S977F,Favorable Response
+CFTR,R117H/R347H,Favorable Response
+CFTR,R117H/R352Q,Favorable Response
+CFTR,R117H/R74W,Favorable Response
+CFTR,R117H/S1251N,Favorable Response
+CFTR,R117H/S1255P,Favorable Response
+CFTR,R117H/S549N,Favorable Response
+CFTR,R117H/S549R(A>C),Favorable Response
+CFTR,R117H/S549R(T>G),Favorable Response
+CFTR,R117H/S945L,Favorable Response
+CFTR,R117H/S977F,Favorable Response
+CFTR,R347H/R352Q,Favorable Response
+CFTR,R347H/R74W,Favorable Response
+CFTR,R347H/S1251N,Favorable Response
+CFTR,R347H/S549N,Favorable Response
+CFTR,R117C/R117H,Favorable Response
+CFTR,S1255P/S549R(A>C),Favorable Response
+CFTR,S1255P/S945L,Favorable Response
+CFTR,F1052V/F1052V,Favorable Response
+CFTR,F1074L/F1074L,Favorable Response
+CFTR,G1069R/G1069R,Favorable Response
+CFTR,G1244E/G1244E,Favorable Response
+CFTR,G1349D/G1349D,Favorable Response
+CFTR,G178R/G178R,Favorable Response
+CFTR,G551D/G551D,Favorable Response
+CFTR,G551S/G551S,Favorable Response
+CFTR,K1060T/K1060T,Favorable Response
+CFTR,L206W/L206W,Favorable Response
+CFTR,P67L/P67L,Favorable Response
+CFTR,R1070Q/R1070Q,Favorable Response
+CFTR,R1070W/R1070W,Favorable Response
+CFTR,R117C/R117C,Favorable Response
+CFTR,R117H/R117H,Favorable Response
+CFTR,R347H/R347H,Favorable Response
+CFTR,R352Q/R352Q,Favorable Response
+CFTR,R74W/R74W,Favorable Response
+CFTR,S1251N/S1251N,Favorable Response
+CFTR,S1255P/S1255P,Favorable Response
+CFTR,S549N/S549N,Favorable Response
+CFTR,S549R(A>C)/S549R(A>C),Favorable Response
+CFTR,S549R(T>G)/S549R(T>G),Favorable Response
+CFTR,E831X/E831X,Favorable Response
+CFTR,S1255P/S549R(T>G),Favorable Response
+CFTR,E56K/E56K,Favorable Response
+CFTR,D579G/D579G,Favorable Response
+CFTR,S1255P/S977F,Favorable Response
+CFTR,S549N/S549R(A>C),Favorable Response
+CFTR,S549N/S549R(T>G),Favorable Response
+CFTR,S549N/S945L,Favorable Response
+CFTR,S549N/S977F,Favorable Response
+CFTR,S549R(A>C)/S549R(T>G),Favorable Response
+CFTR,S549R(A>C)/S945L,Favorable Response
+CFTR,S549R(A>C)/S977F,Favorable Response
+CFTR,S549R(T>G)/S945L,Favorable Response
+CFTR,S549R(T>G)/S977F,Favorable Response
+CFTR,S945L/S977F,Favorable Response
+CFTR,Reference/Reference,Indeterminate
+CFTR,F508del/F508del,Unfavorable Response
+CFTR,2789+5G->A/2789+5G->A,Favorable Response
+CFTR,3272-26A->G/3272-26A->G,Favorable Response
+CFTR,3849+10kbC->T/3849+10kbC->T,Favorable Response
+CFTR,711+3A->G/711+3A->G,Favorable Response
+CFTR,A1067T/A1067T,Favorable Response
+CFTR,A455E/A455E,Favorable Response
+CFTR,D110E/D110E,Favorable Response
+CFTR,D110H/D110H,Favorable Response
+CFTR,D1152H/D1152H,Favorable Response
+CFTR,D1270N/D1270N,Favorable Response
+CFTR,E193K/E193K,Favorable Response
+CFTR,D579G/R117H,Favorable Response
+CFTR,R1070W/S977F,Favorable Response
+CFTR,R1070W/S549R(T>G),Favorable Response
+CFTR,G551S/R347H,Favorable Response
+CFTR,G551S/R352Q,Favorable Response
+CFTR,G551S/R74W,Favorable Response
+CFTR,G551S/S1251N,Favorable Response
+CFTR,G551S/S1255P,Favorable Response
+CFTR,G551S/S549N,Favorable Response
+CFTR,G551S/S549R(A>C),Favorable Response
+CFTR,G551S/S549R(T>G),Favorable Response
+CFTR,G551S/S945L,Favorable Response
+CFTR,G551S/S977F,Favorable Response
+CFTR,K1060T/L206W,Favorable Response
+CFTR,K1060T/P67L,Favorable Response
+CFTR,K1060T/R1070Q,Favorable Response
+CFTR,K1060T/R1070W,Favorable Response
+CFTR,K1060T/R117C,Favorable Response
+CFTR,K1060T/R117H,Favorable Response
+CFTR,K1060T/R347H,Favorable Response
+CFTR,K1060T/R352Q,Favorable Response
+CFTR,K1060T/R74W,Favorable Response
+CFTR,K1060T/S1251N,Favorable Response
+CFTR,K1060T/S1255P,Favorable Response
+CFTR,K1060T/S549N,Favorable Response
+CFTR,K1060T/S549R(A>C),Favorable Response
+CFTR,G551S/R117H,Favorable Response
+CFTR,K1060T/S549R(T>G),Favorable Response
+CFTR,G551S/R117C,Favorable Response
+CFTR,G551S/R1070Q,Favorable Response
+CFTR,G178R/S945L,Favorable Response
+CFTR,G178R/S977F,Favorable Response
+CFTR,G551D/G551S,Favorable Response
+CFTR,G551D/K1060T,Favorable Response
+CFTR,G551D/L206W,Favorable Response
+CFTR,G551D/P67L,Favorable Response
+CFTR,G551D/R1070Q,Favorable Response
+CFTR,G551D/R1070W,Favorable Response
+CFTR,G551D/R117C,Favorable Response
+CFTR,G551D/R117H,Favorable Response
+CFTR,G551D/R347H,Favorable Response
+CFTR,G551D/R352Q,Favorable Response
+CFTR,G551D/R74W,Favorable Response
+CFTR,G551D/S1251N,Favorable Response
+CFTR,G551D/S1255P,Favorable Response
+CFTR,G551D/S549N,Favorable Response
+CFTR,G551D/S549R(A>C),Favorable Response
+CFTR,G551D/S549R(T>G),Favorable Response
+CFTR,G551D/S945L,Favorable Response
+CFTR,G551D/S977F,Favorable Response
+CFTR,G551S/K1060T,Favorable Response
+CFTR,G551S/L206W,Favorable Response
+CFTR,G551S/P67L,Favorable Response
+CFTR,G551S/R1070W,Favorable Response
+CFTR,R1070W/S945L,Favorable Response
+CFTR,K1060T/S945L,Favorable Response
+CFTR,L206W/P67L,Favorable Response
+CFTR,P67L/S977F,Favorable Response
+CFTR,R1070Q/R1070W,Favorable Response
+CFTR,R1070Q/R117C,Favorable Response
+CFTR,R1070Q/R117H,Favorable Response
+CFTR,R1070Q/R347H,Favorable Response
+CFTR,R1070Q/R352Q,Favorable Response
+CFTR,R1070Q/R74W,Favorable Response
+CFTR,R1070Q/S1251N,Favorable Response
+CFTR,R1070Q/S1255P,Favorable Response
+CFTR,R1070Q/S549N,Favorable Response
+CFTR,R1070Q/S549R(A>C),Favorable Response
+CFTR,R1070Q/S549R(T>G),Favorable Response
+CFTR,R1070Q/S945L,Favorable Response
+CFTR,R1070Q/S977F,Favorable Response
+CFTR,R1070W/R117C,Favorable Response
+CFTR,R1070W/R117H,Favorable Response
+CFTR,R1070W/R347H,Favorable Response
+CFTR,R1070W/R352Q,Favorable Response
+CFTR,R1070W/R74W,Favorable Response
+CFTR,R1070W/S1251N,Favorable Response
+CFTR,R1070W/S1255P,Favorable Response
+CFTR,R1070W/S549N,Favorable Response
+CFTR,R1070W/S549R(A>C),Favorable Response
+CFTR,P67L/S945L,Favorable Response
+CFTR,K1060T/S977F,Favorable Response
+CFTR,P67L/S549R(T>G),Favorable Response
+CFTR,P67L/S549N,Favorable Response
+CFTR,L206W/R1070Q,Favorable Response
+CFTR,L206W/R1070W,Favorable Response
+CFTR,L206W/R117C,Favorable Response
+CFTR,L206W/R117H,Favorable Response
+CFTR,L206W/R347H,Favorable Response
+CFTR,L206W/R352Q,Favorable Response
+CFTR,L206W/R74W,Favorable Response
+CFTR,L206W/S1251N,Favorable Response
+CFTR,L206W/S1255P,Favorable Response
+CFTR,L206W/S549N,Favorable Response
+CFTR,L206W/S549R(A>C),Favorable Response
+CFTR,L206W/S549R(T>G),Favorable Response
+CFTR,L206W/S945L,Favorable Response
+CFTR,L206W/S977F,Favorable Response
+CFTR,P67L/R1070Q,Favorable Response
+CFTR,P67L/R1070W,Favorable Response
+CFTR,P67L/R117C,Favorable Response
+CFTR,P67L/R117H,Favorable Response
+CFTR,P67L/R347H,Favorable Response
+CFTR,P67L/R352Q,Favorable Response
+CFTR,P67L/R74W,Favorable Response
+CFTR,P67L/S1251N,Favorable Response
+CFTR,P67L/S1255P,Favorable Response
+CFTR,P67L/S549R(A>C),Favorable Response
+CFTR,S945L/S945L,Favorable Response
+CFTR,D579G/R117C,Favorable Response
+CFTR,D579G/R1070Q,Favorable Response
+CFTR,3272-26A->G/G551S,Favorable Response
+CFTR,3272-26A->G/K1060T,Favorable Response
+CFTR,3272-26A->G/L206W,Favorable Response
+CFTR,3272-26A->G/P67L,Favorable Response
+CFTR,3272-26A->G/R1070Q,Favorable Response
+CFTR,3272-26A->G/R1070W,Favorable Response
+CFTR,3272-26A->G/R117C,Favorable Response
+CFTR,3272-26A->G/R117H,Favorable Response
+CFTR,3272-26A->G/R347H,Favorable Response
+CFTR,3272-26A->G/R352Q,Favorable Response
+CFTR,3272-26A->G/G551D,Favorable Response
+CFTR,3272-26A->G/R74W,Favorable Response
+CFTR,3272-26A->G/S1255P,Favorable Response
+CFTR,3272-26A->G/S549N,Favorable Response
+CFTR,3272-26A->G/S549R(A>C),Favorable Response
+CFTR,3272-26A->G/S549R(T>G),Favorable Response
+CFTR,3272-26A->G/S945L,Favorable Response
+CFTR,3272-26A->G/S977F,Favorable Response
+CFTR,3849+10kbC->T/711+3A->G,Favorable Response
+CFTR,3849+10kbC->T/A1067T,Favorable Response
+CFTR,3849+10kbC->T/A455E,Favorable Response
+CFTR,3849+10kbC->T/D110E,Favorable Response
+CFTR,3272-26A->G/S1251N,Favorable Response
+CFTR,3272-26A->G/G178R,Favorable Response
+CFTR,3272-26A->G/G1349D,Favorable Response
+CFTR,3272-26A->G/G1244E,Favorable Response
+CFTR,2789+5G->A/R74W,Favorable Response
+CFTR,2789+5G->A/S1251N,Favorable Response
+CFTR,2789+5G->A/S1255P,Favorable Response
+CFTR,2789+5G->A/S549N,Favorable Response
+CFTR,2789+5G->A/S549R(A>C),Favorable Response
+CFTR,2789+5G->A/S549R(T>G),Favorable Response
+CFTR,2789+5G->A/S945L,Favorable Response
+CFTR,2789+5G->A/S977F,Favorable Response
+CFTR,3272-26A->G/3849+10kbC->T,Favorable Response
+CFTR,3272-26A->G/711+3A->G,Favorable Response
+CFTR,3272-26A->G/A1067T,Favorable Response
+CFTR,3272-26A->G/A455E,Favorable Response
+CFTR,3272-26A->G/D110E,Favorable Response
+CFTR,3272-26A->G/D110H,Favorable Response
+CFTR,3272-26A->G/D1152H,Favorable Response
+CFTR,3272-26A->G/D1270N,Favorable Response
+CFTR,3272-26A->G/D579G,Favorable Response
+CFTR,3272-26A->G/E193K,Favorable Response
+CFTR,3272-26A->G/E56K,Favorable Response
+CFTR,3272-26A->G/E831X,Favorable Response
+CFTR,3272-26A->G/F1052V,Favorable Response
+CFTR,3272-26A->G/F1074L,Favorable Response
+CFTR,3272-26A->G/G1069R,Favorable Response
+CFTR,3849+10kbC->T/D110H,Favorable Response
+CFTR,3849+10kbC->T/D1152H,Favorable Response
+CFTR,3849+10kbC->T/D1270N,Favorable Response
+CFTR,3849+10kbC->T/D579G,Favorable Response
+CFTR,3849+10kbC->T/S977F,Favorable Response
+CFTR,711+3A->G/A1067T,Favorable Response
+CFTR,711+3A->G/A455E,Favorable Response
+CFTR,711+3A->G/D110E,Favorable Response
+CFTR,711+3A->G/D110H,Favorable Response
+CFTR,711+3A->G/D1152H,Favorable Response
+CFTR,711+3A->G/D1270N,Favorable Response
+CFTR,711+3A->G/D579G,Favorable Response
+CFTR,711+3A->G/E193K,Favorable Response
+CFTR,711+3A->G/E56K,Favorable Response
+CFTR,711+3A->G/E831X,Favorable Response
+CFTR,711+3A->G/F1052V,Favorable Response
+CFTR,711+3A->G/F1074L,Favorable Response
+CFTR,711+3A->G/G1069R,Favorable Response
+CFTR,711+3A->G/G1244E,Favorable Response
+CFTR,711+3A->G/G1349D,Favorable Response
+CFTR,711+3A->G/G178R,Favorable Response
+CFTR,711+3A->G/G551D,Favorable Response
+CFTR,711+3A->G/G551S,Favorable Response
+CFTR,711+3A->G/K1060T,Favorable Response
+CFTR,711+3A->G/L206W,Favorable Response
+CFTR,711+3A->G/P67L,Favorable Response
+CFTR,711+3A->G/R1070Q,Favorable Response
+CFTR,3849+10kbC->T/S945L,Favorable Response
+CFTR,2789+5G->A/R352Q,Favorable Response
+CFTR,3849+10kbC->T/S549R(T>G),Favorable Response
+CFTR,3849+10kbC->T/S549N,Favorable Response
+CFTR,3849+10kbC->T/E193K,Favorable Response
+CFTR,3849+10kbC->T/E56K,Favorable Response
+CFTR,3849+10kbC->T/E831X,Favorable Response
+CFTR,3849+10kbC->T/F1052V,Favorable Response
+CFTR,3849+10kbC->T/F1074L,Favorable Response
+CFTR,3849+10kbC->T/G1069R,Favorable Response
+CFTR,3849+10kbC->T/G1244E,Favorable Response
+CFTR,3849+10kbC->T/G1349D,Favorable Response
+CFTR,3849+10kbC->T/G178R,Favorable Response
+CFTR,3849+10kbC->T/G551D,Favorable Response
+CFTR,3849+10kbC->T/G551S,Favorable Response
+CFTR,3849+10kbC->T/K1060T,Favorable Response
+CFTR,3849+10kbC->T/L206W,Favorable Response
+CFTR,3849+10kbC->T/P67L,Favorable Response
+CFTR,3849+10kbC->T/R1070Q,Favorable Response
+CFTR,3849+10kbC->T/R1070W,Favorable Response
+CFTR,3849+10kbC->T/R117C,Favorable Response
+CFTR,3849+10kbC->T/R117H,Favorable Response
+CFTR,3849+10kbC->T/R347H,Favorable Response
+CFTR,3849+10kbC->T/R352Q,Favorable Response
+CFTR,3849+10kbC->T/R74W,Favorable Response
+CFTR,3849+10kbC->T/S1251N,Favorable Response
+CFTR,3849+10kbC->T/S1255P,Favorable Response
+CFTR,3849+10kbC->T/S549R(A>C),Favorable Response
+CFTR,2789+5G->A/R347H,Favorable Response
+CFTR,2789+5G->A/R117H,Favorable Response
+CFTR,2789+5G->A/R117C,Favorable Response
+CFTR,Reference/R117C,Favorable Response
+CFTR,Reference/R117H,Favorable Response
+CFTR,Reference/R347H,Favorable Response
+CFTR,Reference/R352Q,Favorable Response
+CFTR,Reference/R74W,Favorable Response
+CFTR,Reference/S1251N,Favorable Response
+CFTR,Reference/S1255P,Favorable Response
+CFTR,Reference/S549N,Favorable Response
+CFTR,Reference/S549R(A>C),Favorable Response
+CFTR,Reference/S549R(T>G),Favorable Response
+CFTR,Reference/S945L,Favorable Response
+CFTR,Reference/S977F,Favorable Response
+CFTR,F508del/2789+5G->A,Favorable Response
+CFTR,F508del/3272-26A->G,Favorable Response
+CFTR,F508del/3849+10kbC->T,Favorable Response
+CFTR,F508del/711+3A->G,Favorable Response
+CFTR,F508del/A1067T,Favorable Response
+CFTR,F508del/A455E,Favorable Response
+CFTR,F508del/D110E,Favorable Response
+CFTR,F508del/D110H,Favorable Response
+CFTR,F508del/D1152H,Favorable Response
+CFTR,F508del/D1270N,Favorable Response
+CFTR,F508del/D579G,Favorable Response
+CFTR,Reference/R1070W,Favorable Response
+CFTR,F508del/E193K,Favorable Response
+CFTR,Reference/R1070Q,Favorable Response
+CFTR,Reference/L206W,Favorable Response
+CFTR,Reference/2789+5G->A,Favorable Response
+CFTR,Reference/3272-26A->G,Favorable Response
+CFTR,Reference/3849+10kbC->T,Favorable Response
+CFTR,Reference/711+3A->G,Favorable Response
+CFTR,Reference/A1067T,Favorable Response
+CFTR,Reference/A455E,Favorable Response
+CFTR,Reference/D110E,Favorable Response
+CFTR,Reference/D110H,Favorable Response
+CFTR,Reference/D1152H,Favorable Response
+CFTR,Reference/D1270N,Favorable Response
+CFTR,Reference/D579G,Favorable Response
+CFTR,Reference/E193K,Favorable Response
+CFTR,Reference/E56K,Favorable Response
+CFTR,Reference/E831X,Favorable Response
+CFTR,Reference/F1052V,Favorable Response
+CFTR,Reference/F1074L,Favorable Response
+CFTR,Reference/G1069R,Favorable Response
+CFTR,Reference/G1244E,Favorable Response
+CFTR,Reference/G1349D,Favorable Response
+CFTR,Reference/G178R,Favorable Response
+CFTR,Reference/G551D,Favorable Response
+CFTR,Reference/G551S,Favorable Response
+CFTR,Reference/K1060T,Favorable Response
+CFTR,Reference/P67L,Favorable Response
+CFTR,711+3A->G/R1070W,Favorable Response
+CFTR,F508del/E56K,Favorable Response
+CFTR,F508del/F1052V,Favorable Response
+CFTR,2789+5G->A/A1067T,Favorable Response
+CFTR,2789+5G->A/A455E,Favorable Response
+CFTR,2789+5G->A/D110E,Favorable Response
+CFTR,2789+5G->A/D110H,Favorable Response
+CFTR,2789+5G->A/D1152H,Favorable Response
+CFTR,2789+5G->A/D1270N,Favorable Response
+CFTR,2789+5G->A/D579G,Favorable Response
+CFTR,2789+5G->A/E193K,Favorable Response
+CFTR,2789+5G->A/E56K,Favorable Response
+CFTR,2789+5G->A/E831X,Favorable Response
+CFTR,2789+5G->A/F1052V,Favorable Response
+CFTR,2789+5G->A/F1074L,Favorable Response
+CFTR,2789+5G->A/G1069R,Favorable Response
+CFTR,2789+5G->A/G1244E,Favorable Response
+CFTR,2789+5G->A/G1349D,Favorable Response
+CFTR,2789+5G->A/G178R,Favorable Response
+CFTR,2789+5G->A/G551D,Favorable Response
+CFTR,2789+5G->A/G551S,Favorable Response
+CFTR,2789+5G->A/K1060T,Favorable Response
+CFTR,2789+5G->A/L206W,Favorable Response
+CFTR,2789+5G->A/P67L,Favorable Response
+CFTR,2789+5G->A/R1070Q,Favorable Response
+CFTR,2789+5G->A/R1070W,Favorable Response
+CFTR,2789+5G->A/711+3A->G,Favorable Response
+CFTR,F508del/E831X,Favorable Response
+CFTR,2789+5G->A/3849+10kbC->T,Favorable Response
+CFTR,F508del/S977F,Favorable Response
+CFTR,F508del/F1074L,Favorable Response
+CFTR,F508del/G1069R,Favorable Response
+CFTR,F508del/G1244E,Favorable Response
+CFTR,F508del/G1349D,Favorable Response
+CFTR,F508del/G178R,Favorable Response
+CFTR,F508del/G551D,Favorable Response
+CFTR,F508del/G551S,Favorable Response
+CFTR,F508del/K1060T,Favorable Response
+CFTR,F508del/L206W,Favorable Response
+CFTR,F508del/P67L,Favorable Response
+CFTR,F508del/R1070Q,Favorable Response
+CFTR,F508del/R1070W,Favorable Response
+CFTR,F508del/R117C,Favorable Response
+CFTR,F508del/R117H,Favorable Response
+CFTR,F508del/R347H,Favorable Response
+CFTR,F508del/R352Q,Favorable Response
+CFTR,F508del/R74W,Favorable Response
+CFTR,F508del/S1251N,Favorable Response
+CFTR,F508del/S1255P,Favorable Response
+CFTR,F508del/S549N,Favorable Response
+CFTR,F508del/S549R(A>C),Favorable Response
+CFTR,F508del/S549R(T>G),Favorable Response
+CFTR,F508del/S945L,Favorable Response
+CFTR,2789+5G->A/3272-26A->G,Favorable Response
+CFTR,711+3A->G/R117C,Favorable Response
+CFTR,711+3A->G/R117H,Favorable Response
+CFTR,711+3A->G/R347H,Favorable Response
+CFTR,D110H/S549R(A>C),Favorable Response
+CFTR,D110H/S549R(T>G),Favorable Response
+CFTR,D110H/S945L,Favorable Response
+CFTR,D110H/S977F,Favorable Response
+CFTR,D1152H/D1270N,Favorable Response
+CFTR,D1152H/D579G,Favorable Response
+CFTR,D1152H/E193K,Favorable Response
+CFTR,D1152H/E56K,Favorable Response
+CFTR,D1152H/E831X,Favorable Response
+CFTR,D1152H/F1052V,Favorable Response
+CFTR,D1152H/F1074L,Favorable Response
+CFTR,D1152H/G1069R,Favorable Response
+CFTR,D1152H/G1244E,Favorable Response
+CFTR,D1152H/G1349D,Favorable Response
+CFTR,D1152H/G178R,Favorable Response
+CFTR,D1152H/G551D,Favorable Response
+CFTR,D1152H/G551S,Favorable Response
+CFTR,D1152H/K1060T,Favorable Response
+CFTR,D1152H/L206W,Favorable Response
+CFTR,D1152H/P67L,Favorable Response
+CFTR,D1152H/R1070Q,Favorable Response
+CFTR,D1152H/R1070W,Favorable Response
+CFTR,D1152H/R117C,Favorable Response
+CFTR,D110H/S549N,Favorable Response
+CFTR,D1152H/R117H,Favorable Response
+CFTR,D110H/S1255P,Favorable Response
+CFTR,D110H/R74W,Favorable Response
+CFTR,D110H/D1152H,Favorable Response
+CFTR,D110H/D1270N,Favorable Response
+CFTR,D110H/D579G,Favorable Response
+CFTR,D110H/E193K,Favorable Response
+CFTR,D110H/E56K,Favorable Response
+CFTR,D110H/E831X,Favorable Response
+CFTR,D110H/F1052V,Favorable Response
+CFTR,D110H/F1074L,Favorable Response
+CFTR,D110H/G1069R,Favorable Response
+CFTR,D110H/G1244E,Favorable Response
+CFTR,D110H/G1349D,Favorable Response
+CFTR,D110H/G178R,Favorable Response
+CFTR,D110H/G551D,Favorable Response
+CFTR,D110H/G551S,Favorable Response
+CFTR,D110H/K1060T,Favorable Response
+CFTR,D110H/L206W,Favorable Response
+CFTR,D110H/P67L,Favorable Response
+CFTR,D110H/R1070Q,Favorable Response
+CFTR,D110H/R1070W,Favorable Response
+CFTR,D110H/R117C,Favorable Response
+CFTR,D110H/R117H,Favorable Response
+CFTR,D110H/R347H,Favorable Response
+CFTR,D110H/R352Q,Favorable Response
+CFTR,D110H/S1251N,Favorable Response
+CFTR,D110E/S977F,Favorable Response
+CFTR,D1152H/R347H,Favorable Response
+CFTR,D1152H/R74W,Favorable Response
+CFTR,D1270N/R352Q,Favorable Response
+CFTR,D1270N/R74W,Favorable Response
+CFTR,D1270N/S1251N,Favorable Response
+CFTR,D1270N/S1255P,Favorable Response
+CFTR,D1270N/S549N,Favorable Response
+CFTR,D1270N/S549R(A>C),Favorable Response
+CFTR,D1270N/S549R(T>G),Favorable Response
+CFTR,D1270N/S945L,Favorable Response
+CFTR,D1270N/S977F,Favorable Response
+CFTR,D579G/E193K,Favorable Response
+CFTR,D579G/E56K,Favorable Response
+CFTR,D579G/E831X,Favorable Response
+CFTR,D579G/F1052V,Favorable Response
+CFTR,D579G/F1074L,Favorable Response
+CFTR,D579G/G1069R,Favorable Response
+CFTR,D579G/G1244E,Favorable Response
+CFTR,D579G/G1349D,Favorable Response
+CFTR,D579G/G178R,Favorable Response
+CFTR,D579G/G551D,Favorable Response
+CFTR,D579G/G551S,Favorable Response
+CFTR,D579G/K1060T,Favorable Response
+CFTR,D579G/L206W,Favorable Response
+CFTR,D579G/P67L,Favorable Response
+CFTR,D1270N/R347H,Favorable Response
+CFTR,D1152H/R352Q,Favorable Response
+CFTR,D1270N/R117H,Favorable Response
+CFTR,D1270N/R1070W,Favorable Response
+CFTR,D1152H/S1251N,Favorable Response
+CFTR,D1152H/S1255P,Favorable Response
+CFTR,D1152H/S549N,Favorable Response
+CFTR,D1152H/S549R(A>C),Favorable Response
+CFTR,D1152H/S549R(T>G),Favorable Response
+CFTR,D1152H/S945L,Favorable Response
+CFTR,D1152H/S977F,Favorable Response
+CFTR,D1270N/D579G,Favorable Response
+CFTR,D1270N/E193K,Favorable Response
+CFTR,D1270N/E56K,Favorable Response
+CFTR,D1270N/E831X,Favorable Response
+CFTR,D1270N/F1052V,Favorable Response
+CFTR,D1270N/F1074L,Favorable Response
+CFTR,D1270N/G1069R,Favorable Response
+CFTR,D1270N/G1244E,Favorable Response
+CFTR,D1270N/G1349D,Favorable Response
+CFTR,D1270N/G178R,Favorable Response
+CFTR,D1270N/G551D,Favorable Response
+CFTR,D1270N/G551S,Favorable Response
+CFTR,D1270N/K1060T,Favorable Response
+CFTR,D1270N/L206W,Favorable Response
+CFTR,D1270N/P67L,Favorable Response
+CFTR,D1270N/R1070Q,Favorable Response
+CFTR,D1270N/R117C,Favorable Response
+CFTR,D579G/R1070W,Favorable Response
+CFTR,D110E/S945L,Favorable Response
+CFTR,D110E/S549R(A>C),Favorable Response
+CFTR,A1067T/L206W,Favorable Response
+CFTR,A1067T/P67L,Favorable Response
+CFTR,A1067T/R1070Q,Favorable Response
+CFTR,A1067T/R1070W,Favorable Response
+CFTR,A1067T/R117C,Favorable Response
+CFTR,A1067T/R117H,Favorable Response
+CFTR,A1067T/R347H,Favorable Response
+CFTR,A1067T/R352Q,Favorable Response
+CFTR,A1067T/R74W,Favorable Response
+CFTR,A1067T/S1251N,Favorable Response
+CFTR,A1067T/S1255P,Favorable Response
+CFTR,A1067T/S549N,Favorable Response
+CFTR,A1067T/S549R(A>C),Favorable Response
+CFTR,A1067T/S549R(T>G),Favorable Response
+CFTR,A1067T/S945L,Favorable Response
+CFTR,A1067T/S977F,Favorable Response
+CFTR,A455E/D110E,Favorable Response
+CFTR,A455E/D110H,Favorable Response
+CFTR,A455E/D1152H,Favorable Response
+CFTR,A455E/D1270N,Favorable Response
+CFTR,A455E/D579G,Favorable Response
+CFTR,A455E/E193K,Favorable Response
+CFTR,A455E/E56K,Favorable Response
+CFTR,A1067T/K1060T,Favorable Response
+CFTR,A455E/E831X,Favorable Response
+CFTR,A1067T/G551S,Favorable Response
+CFTR,A1067T/G178R,Favorable Response
+CFTR,711+3A->G/R352Q,Favorable Response
+CFTR,711+3A->G/R74W,Favorable Response
+CFTR,711+3A->G/S1251N,Favorable Response
+CFTR,711+3A->G/S1255P,Favorable Response
+CFTR,711+3A->G/S549N,Favorable Response
+CFTR,711+3A->G/S549R(A>C),Favorable Response
+CFTR,711+3A->G/S549R(T>G),Favorable Response
+CFTR,711+3A->G/S945L,Favorable Response
+CFTR,711+3A->G/S977F,Favorable Response
+CFTR,A1067T/A455E,Favorable Response
+CFTR,A1067T/D110E,Favorable Response
+CFTR,A1067T/D110H,Favorable Response
+CFTR,A1067T/D1152H,Favorable Response
+CFTR,A1067T/D1270N,Favorable Response
+CFTR,A1067T/D579G,Favorable Response
+CFTR,A1067T/E193K,Favorable Response
+CFTR,A1067T/E56K,Favorable Response
+CFTR,A1067T/E831X,Favorable Response
+CFTR,A1067T/F1052V,Favorable Response
+CFTR,A1067T/F1074L,Favorable Response
+CFTR,A1067T/G1069R,Favorable Response
+CFTR,A1067T/G1244E,Favorable Response
+CFTR,A1067T/G1349D,Favorable Response
+CFTR,A1067T/G551D,Favorable Response
+CFTR,D110E/S549R(T>G),Favorable Response
+CFTR,A455E/F1052V,Favorable Response
+CFTR,A455E/G1069R,Favorable Response
+CFTR,D110E/E56K,Favorable Response
+CFTR,D110E/E831X,Favorable Response
+CFTR,D110E/F1052V,Favorable Response
+CFTR,D110E/F1074L,Favorable Response
+CFTR,D110E/G1069R,Favorable Response
+CFTR,D110E/G1244E,Favorable Response
+CFTR,D110E/G1349D,Favorable Response
+CFTR,D110E/G178R,Favorable Response
+CFTR,D110E/G551D,Favorable Response
+CFTR,D110E/G551S,Favorable Response
+CFTR,D110E/K1060T,Favorable Response
+CFTR,D110E/L206W,Favorable Response
+CFTR,D110E/P67L,Favorable Response
+CFTR,D110E/R1070Q,Favorable Response
+CFTR,D110E/R1070W,Favorable Response
+CFTR,D110E/R117C,Favorable Response
+CFTR,D110E/R117H,Favorable Response
+CFTR,D110E/R347H,Favorable Response
+CFTR,D110E/R352Q,Favorable Response
+CFTR,D110E/R74W,Favorable Response
+CFTR,D110E/S1251N,Favorable Response
+CFTR,D110E/S1255P,Favorable Response
+CFTR,D110E/S549N,Favorable Response
+CFTR,D110E/E193K,Favorable Response
+CFTR,A455E/F1074L,Favorable Response
+CFTR,D110E/D579G,Favorable Response
+CFTR,D110E/D1152H,Favorable Response
+CFTR,A455E/G1244E,Favorable Response
+CFTR,A455E/G1349D,Favorable Response
+CFTR,A455E/G178R,Favorable Response
+CFTR,A455E/G551D,Favorable Response
+CFTR,A455E/G551S,Favorable Response
+CFTR,A455E/K1060T,Favorable Response
+CFTR,A455E/L206W,Favorable Response
+CFTR,A455E/P67L,Favorable Response
+CFTR,A455E/R1070Q,Favorable Response
+CFTR,A455E/R1070W,Favorable Response
+CFTR,A455E/R117C,Favorable Response
+CFTR,A455E/R117H,Favorable Response
+CFTR,A455E/R347H,Favorable Response
+CFTR,A455E/R352Q,Favorable Response
+CFTR,A455E/R74W,Favorable Response
+CFTR,A455E/S1251N,Favorable Response
+CFTR,A455E/S1255P,Favorable Response
+CFTR,A455E/S549N,Favorable Response
+CFTR,A455E/S549R(A>C),Favorable Response
+CFTR,A455E/S549R(T>G),Favorable Response
+CFTR,A455E/S945L,Favorable Response
+CFTR,A455E/S977F,Favorable Response
+CFTR,D110E/D110H,Favorable Response
+CFTR,D110E/D1270N,Favorable Response
+CFTR,S977F/S977F,Favorable Response
 CYP2B6,*1/*1,Normal Metabolizer
 CYP2B6,*1/*2,Normal Metabolizer
 CYP2B6,*1/*3,Indeterminate
@@ -1377,6 +2244,19 @@ CYP3A5,*7/*9,Indeterminate
 CYP3A5,*8/*8,Indeterminate
 CYP3A5,*8/*9,Indeterminate
 CYP3A5,*9/*9,Indeterminate
+F5,Reference/Reference,Favorable Response
+F5,Reference/Leiden,Unfavorable Response
+F5,Leiden/Leiden,Unfavorable Response
+IFNL3,Reference/Reference,Favorable Response
+IFNL3,Reference/rs12979860,Unfavorable Response
+IFNL3,Reference/rs8099917,Indeterminate
+IFNL3,Reference/rs12980275,Indeterminate
+IFNL3,rs12979860/rs12979860,Unfavorable Response
+IFNL3,rs12979860/rs8099917,Unfavorable Response
+IFNL3,rs12979860/rs12980275,Unfavorable Response
+IFNL3,rs8099917/rs8099917,Indeterminate
+IFNL3,rs8099917/rs12980275,Indeterminate
+IFNL3,rs12980275/rs12980275,Indeterminate
 NUDT15,*1/*4,Indeterminate
 NUDT15,*1/*5,Indeterminate
 NUDT15,*1/*6,Indeterminate
@@ -1422,6 +2302,1231 @@ NUDT15,*5/*9,Possible Intermediate Metabolizer
 NUDT15,*6/*9,Possible Intermediate Metabolizer
 NUDT15,*7/*9,Possible Intermediate Metabolizer
 NUDT15,*8/*9,Possible Intermediate Metabolizer
+RYR1,Reference/c.103T>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.130C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.487C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.488G>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1589G>A,Uncertain Susceptibility
+RYR1,Reference/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1598G>A,Uncertain Susceptibility
+RYR1,Reference/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,Reference/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.130C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.488G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.103T>C/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.488G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.488G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1589G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.1598G>A,Uncertain Susceptibility
+RYR1,c.1589G>A/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.1598G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1597C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1654C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14497C>T/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.14497C>T/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14497C>T/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14497C>T/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14512C>G/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14512C>G/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14512C>G/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14545G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14545G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.14582G>A/c.14693T>C,Malignant Hyperthermia Susceptibility
+RYR1,Reference/Reference,Uncertain Susceptibility
+RYR1,c.103T>C/c.103T>C,Malignant Hyperthermia Susceptibility
+RYR1,c.130C>T/c.130C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.487C>T/c.487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.488G>T/c.488G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>A/c.742G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.742G>C/c.742G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.982C>T/c.982C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>A/c.1021G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.1021G>C/c.1021G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1201C>T/c.1201C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1209C>G/c.1209C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.1565A>C/c.1565A>C,Malignant Hyperthermia Susceptibility
+RYR1,c.1589G>A/c.1589G>A,Uncertain Susceptibility
+RYR1,c.1597C>T/c.1597C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1598G>A/c.1598G>A,Uncertain Susceptibility
+RYR1,c.1654C>T/c.1654C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1840C>T/c.1840C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.1841G>T/c.1841G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6487C>T/c.6487C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.6488G>A/c.6488G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6502G>A/c.6502G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>G/c.6617C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.6617C>T/c.6617C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7007G>A/c.7007G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7039_7041delGAG/c.7039_7041delGAG,Malignant Hyperthermia Susceptibility
+RYR1,c.7048G>A/c.7048G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7063C>T/c.7063C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7124G>C/c.7124G>C,Malignant Hyperthermia Susceptibility
+RYR1,c.7282G>A/c.7282G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7300G>A/c.7300G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7304G>A/c.7304G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7354C>T/c.7354C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7360C>T/c.7360C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7361G>A/c.7361G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7372C>T/c.7372C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7373G>A/c.7373G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>G/c.7522C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.7522C>T/c.7522C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.7523G>A/c.7523G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.9310G>A/c.9310G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.11969G>T/c.11969G>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14387A>G/c.14387A>G,Malignant Hyperthermia Susceptibility
+RYR1,c.14477C>T/c.14477C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14497C>T/c.14497C>T,Malignant Hyperthermia Susceptibility
+RYR1,c.14512C>G/c.14512C>G,Malignant Hyperthermia Susceptibility
+RYR1,c.14545G>A/c.14545G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14582G>A/c.14582G>A,Malignant Hyperthermia Susceptibility
+RYR1,c.14693T>C/c.14693T>C,Malignant Hyperthermia Susceptibility
 SLCO1B1,*1A/*1A,Normal Function
 SLCO1B1,*1A/*1B,Normal Function
 SLCO1B1,*1A/*2,Possible Decreased Function
