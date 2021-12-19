@@ -385,7 +385,6 @@ Below is the list of submodules available in the API:
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.
 
-
 For getting help on a specific submodule (e.g. utils):
 
 .. code:: python3

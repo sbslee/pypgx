@@ -62,7 +62,7 @@ Let's look at the metadata for some of these files:
 Genotyping genes with SV
 ------------------------
 
-The first gene we are going to genotype is *CYP2D6*, which has almost 150
+The first gene we are going to genotype is CYP2D6, which has almost 150
 star alleles including those with SV (e.g. gene deletions, duplications, and
 hybrids). To this end, we will run PyPGx's next-generation sequencing (NGS)
 pipeline:
@@ -94,12 +94,22 @@ Above will create a number of archive files:
 In addition to these files, PyPGx will have also created two directories
 called ``copy-number-profile`` and ``allele-fraction-profile``.
 
-Now that's it, you have successfully genotyped *CYP2D6* with WGS data!
+Now let's make sure the genotype results are correct by comparing them with the validation data:
+
+.. code-block:: text
+
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-CYP2D6-results.zip
+    $ pypgx compare-genotypes grch37-CYP2D6-pipeline/results.zip grch37-CYP2D6-results.zip
+    Total: 70
+    Compared: 70
+    Concordance: 1.000 (70/70)
+
+That's it, you have successfully genotyped CYP2D6 with WGS data!
 
 Genotyping genes without SV
 ---------------------------
 
-The next gene we're going to genotype is *CYP3A5*. Unlike *CYP2D6*, this gene
+The next gene we're going to genotype is CYP3A5. Unlike CYP2D6, this gene
 does not have any star alleles with SV. Therefore, we only need to provide
 ``grch37-variants.vcf.gz`` to the NGS pipeline:
 
@@ -124,7 +134,7 @@ Above will create a number of archive files:
 
 Plus the ``allele-fraction-profile`` directory.
 
-Now you have successfully genotyped *CYP3A5* as well!
+Now you have successfully genotyped CYP3A5 as well!
 
 .. note::
     Note that if you provide ``grch37-depth-of-coverage.zip`` and
@@ -138,7 +148,7 @@ Genotyping with GRCh38 data
 ---------------------------
 
 Thus far, we have only considered GRCh37 data. But we can also run the
-genotyping pipeline for GRCh38 data by changing the ``--assembly`` option:
+pipeline for GRCh38 data by changing the ``--assembly`` option:
 
 .. code-block:: text
 
@@ -165,7 +175,7 @@ Congratulations, you have completed this tutorial!
 Coriell Affy tutorial
 =====================
 
-In this tutorial I will show you how to genotype the *CYP3A5* gene with chip data.
+In this tutorial I will show you how to genotype the CYP3A5 gene with chip data.
 
 Coriell Institute has carried out Affy 6.0 genotyping on many of the 1000 Genomes Project (1KGP) samples whose data are available on 1KGP's `FTP site <http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/hd_genotype_chip/>`__. For this tutorial we will be using the file ``ALL.wgs.nhgri_coriell_affy_6.20140825.genotypes_no_ped.vcf.gz`` which contains variant data for 355 samples.
 
@@ -199,4 +209,4 @@ Above will create a number of archive files:
   Saved SampleTable[Phenotypes] to: CYP3A5-pipeline/phenotypes.zip
   Saved SampleTable[Results] to: CYP3A5-pipeline/results.zip
 
-Now that’s it! You have successfully genotyped *CYP3A5* with chip data.
+Now that’s it! You have successfully genotyped CYP3A5 with chip data.

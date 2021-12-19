@@ -364,7 +364,6 @@ For getting help on a specific command (e.g. call-genotypes):
 Below is the list of submodules available in the API:
 
 {submodule_help}
-
 For getting help on a specific submodule (e.g. utils):
 
 .. code:: python3
