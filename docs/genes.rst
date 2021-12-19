@@ -1119,6 +1119,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+  * - \*Bx2
+    - Duplication
+    - \*A/\*Bx2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-4.png>`
+    - WGS
+    -
+    -
 
 GSTT1
 =====

@@ -267,10 +267,7 @@ class GSTM1Genotyper:
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
-            if a1 == a2:
-                result = [a1, a2 + 'x2']
-            else:
-                result = ['Indeterminate']
+            result = _call_duplication(r)
         elif r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         else:
