@@ -1,6 +1,11 @@
 Changelog
 *********
 
+0.10.1 (2021-12-20)
+-------------------
+
+* Fix major bug where CNV callers are not packaged properly.
+
 0.10.0 (2021-12-19)
 -------------------
 
