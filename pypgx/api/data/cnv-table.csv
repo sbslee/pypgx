@@ -30,6 +30,11 @@ GSTT1,DeletionHom,2
 SLC22A2,Normal,0
 SLC22A2,Exon11Deletion,1
 SLC22A2,Intron9Deletion,2
+SULT1A1,Normal,0
+SULT1A1,DeletionHet,1
+SULT1A1,Duplication,2
+SULT1A1,Multiplication1,3
+SULT1A1,Multiplication2,4
 UGT1A4,Normal,0
 UGT1A4,Intron1DeletionA,1
 UGT1A4,Intron1DeletionB,2

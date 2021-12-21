@@ -4,6 +4,8 @@ Changelog
 0.11.0 (in development)
 -----------------------
 
+* Add CNV caller for SULT1A1.
+
 0.10.1 (2021-12-20)
 -------------------
 

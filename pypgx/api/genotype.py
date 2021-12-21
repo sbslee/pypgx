@@ -16,7 +16,7 @@ import pandas as pd
 
 def _call_duplication(r):
     """
-    Call whole gene duplication.
+    Call whole gene duplication (3 gene copies total).
     """
     a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
 
@@ -50,12 +50,33 @@ def _call_duplication(r):
 
 def _call_multiplication(r):
     """
-    Call whole gene multiplication.
+    Call whole gene multiplication (4 gene copies total).
     """
     a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
 
-    if a1 == a2:
+    if r.VariantData[a1]:
+        h1 = all([x > 0.6 for x in r.VariantData[a1][1]])
+    else:
+        h1 = True
+
+    if r.VariantData[a2]:
+        h2 = all([x > 0.6 for x in r.VariantData[a2][1]])
+    else:
+        h2 = True
+
+    if h1 and h2:
+        if a1 == a2:
+            result = [a2, a1+'x3']
+        elif r.VariantData[a1] and not r.VariantData[a2]:
+            result = [a2, a1+'x3']
+        elif not r.VariantData[a1] and r.VariantData[a2]:
+            result = [a1, a2+'x3']
+        else:
+            result = ['Indeterminate']
+    elif h1 and not h2:
         result = [a2, a1+'x3']
+    elif not h1 and h2:
+        result = [a1, a2+'x3']
     else:
         result = ['Indeterminate']
 
@@ -340,6 +361,33 @@ class SLC22A2Genotyper:
         self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
+class SULT1A1Genotyper:
+    """
+    Genotyper for SULT1A1.
+    """
+
+    def one_row(self, r):
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Normal', 'AssumeNormal']:
+            result = [a1, a2]
+        elif r.CNV == 'DeletionHet':
+            result = [s1, '*DEL']
+        elif r.CNV == 'Duplication':
+            result = _call_duplication(r)
+        elif r.CNV == 'Multiplication1':
+            result = _call_multiplication(r)
+        elif r.CNV == 'Multiplication2':
+            result = ['Indeterminate']
+        else:
+            result = ['Indeterminate']
+        return '/'.join(core.sort_alleles(result, by='name'))
+
+    def __init__(self, df, assembly):
+        self.gene = 'SULT1A1'
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class UGT1A4Genotyper:
     """
     Genotyper for UGT1A4.
@@ -442,6 +490,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,
+        'SULT1A1': SULT1A1Genotyper,
         'UGT1A4': UGT1A4Genotyper,
         'UGT2B15': UGT2B15Genotyper,
         'UGT2B17': UGT2B17Genotyper,
