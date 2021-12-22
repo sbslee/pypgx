@@ -20,6 +20,8 @@ CYP2E1,Normal,0
 CYP2E1,Duplication,1
 CYP2E1,PartialDuplication,2
 CYP2E1,Multiplication,3
+CYP4F2,Normal,0
+CYP4F2,DeletionHet,1
 GSTM1,Normal,0
 GSTM1,DeletionHet,1
 GSTM1,DeletionHom,2

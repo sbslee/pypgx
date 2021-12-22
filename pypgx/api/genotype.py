@@ -273,6 +273,27 @@ class CYP2E1Genotyper:
         self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
+class CYP4F2Genotyper:
+    """
+    Genotyper for CYP4F2.
+    """
+
+    def one_row(self, r):
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Normal', 'AssumeNormal']:
+            result = [a1, a2]
+        elif r.CNV == 'DeletionHet':
+            result = [s1, '*DEL']
+        else:
+            result = ['Indeterminate']
+        return '/'.join(core.sort_alleles(result, by='name'))
+
+    def __init__(self, df, assembly):
+        self.gene = 'CYP4F2'
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class GSTM1Genotyper:
     """
     Genotyper for GSTM1.
@@ -487,6 +508,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'CYP2B6': CYP2B6Genotyper,
         'CYP2D6': CYP2D6Genotyper,
         'CYP2E1': CYP2E1Genotyper,
+        'CYP4F2': CYP4F2Genotyper,
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,

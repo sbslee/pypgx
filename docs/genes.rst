@@ -185,7 +185,7 @@ Below is a summary table:
      -
      -
    * - :ref:`genes:CYP4F2`
-     -
+     - ✅
      -
      - ✅
      -
@@ -987,6 +987,33 @@ Resources for CYP4B1
 
 CYP4F2
 ======
+
+SV summary for CYP4F2
+---------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - GRCh37
+    - GRCh38
+    - Data Type
+    - Source
+    - Coriell ID
+  * - \*DEL
+    - DeletionHet
+    - \*1/\*DEL
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP4F2-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP4F2-1.png>`
+    - WGS
+    - 
+    -
 
 Resources for CYP4F2
 --------------------
