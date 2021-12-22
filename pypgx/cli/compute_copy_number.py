@@ -51,6 +51,6 @@ def create_parser(subparsers):
 def main(args):
     result = utils.compute_copy_number(
         args.read_depth, args.control_statistcs,
-        samples=args.samples_without_sv
+        samples_without_sv=args.samples_without_sv
     )
     result.to_file(args.output)

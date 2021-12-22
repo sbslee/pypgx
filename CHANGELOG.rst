@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * Add CNV caller for CYP4F2 and SULT1A1.
+* Fix minor bug in :command:`compute-copy-number` command.
 
 0.10.1 (2021-12-20)
 -------------------
