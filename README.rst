@@ -170,6 +170,15 @@ do this). The good news is, PyPGx supports both of the builds!
 In many of the PyPGx actions, you can simply indicate which human genome
 build to use. For example, you can use ``assembly`` for the API and
 ``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
+Below is an example of using the API:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.list_variants('CYP2D6', alleles=['*4'], assembly='GRCh37')
+    ['22-42524947-C-T']
+    >>> pypgx.list_variants('CYP2D6', alleles=['*4'], assembly='GRCh38')
+    ['22-42128945-C-T']
 
 However, there is one important caveat to consider if your sequencing data is
 GRCh38. That is, sequence reads must be aligned only to the main contigs
@@ -313,6 +322,29 @@ perform phenotype prediction with one of the two methods:
 Please visit the `Genes <https://pypgx.readthedocs.io/en/latest/
 genes.html>`__ page to see the list of genes with a genotype-phenotype
 table and each of their prediction method.
+
+To perform phenotype prediction with the API, you can use the
+``pypgx.predict_phenotype`` method:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.predict_phenotype('CYP2D6', '*4', '*5')   # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22')  # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
+    'Ultrarapid Metabolizer'
+
+To perform phenotype prediction with the CLI, you can use the
+``call-phenotypes`` command. It takes a ``SampleTable[Genotypes]`` file as
+input and outputs a ``SampleTable[Phenotypes]`` file:
+
+.. code-block:: text
+
+   $ pypgx call-phenotypes genotypes.zip phenotypes.zip
 
 Getting help
 ============
