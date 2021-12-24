@@ -1216,7 +1216,7 @@ GSTT1
 GRCh38 data for GSTT1
 ---------------------
 
-*GSTT1* is located on ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt``
+GSTT1 is located on ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt``
 for GRCh38. Therefore, if you are interested in genotyping this gene with
 GRCh38 data, then you must have sequence reads mapped to the ALT contig.
 For more details, please read the :ref:`readme:GRCh37 vs. GRCh38` page.

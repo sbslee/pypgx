@@ -44,6 +44,17 @@ is-the-difference-between-pharmacogenetics-and-pharmacogenomics>`__:
   influence responses to drugs. However, these terms are often used
   interchangeably.
 
+Pharmacogene Variation Consortium (PhamVar)
+===========================================
+
+The `Pharmacogene Variation Consortium (PhamVar)
+<https://www.pharmvar.org/>`__ is an international group of experts that
+maintains a systematic nomenclature system for allelic variations of genes
+that affect the metabolism of drugs. The database is focused on cytochrome
+P450 enzymes, but is being expanded into other classes of enzymes. The
+original nomenclature was maintained by the Human CYP Allele Nomenclature
+Database. However PhamVar took over this function in 2017.
+
 Pharmacogenomics Knowledge Base (PharmGKB)
 ==========================================
 
