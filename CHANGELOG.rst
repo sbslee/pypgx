@@ -8,6 +8,7 @@ Changelog
 * Fix minor bug in :command:`compute-copy-number` command.
 * Update :command:`plot-cn-af` command to check input files more rigorously.
 * Improve CNV caller for CYP2D6.
+* Add new method :meth:`sdk.utils.add_cn_samples` method.
 
 0.10.1 (2021-12-20)
 -------------------
