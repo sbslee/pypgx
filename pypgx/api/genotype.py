@@ -214,6 +214,17 @@ class CYP2D6Genotyper:
                 result = [a1, '*36x3+*10']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'Tandem3':
+            h1 = '*1' in r.Haplotype1
+            h2 = '*1' in r.Haplotype2
+            if h1 and h2:
+                result = ['*1', '*13+*1']
+            elif h1 and not h2:
+                result = [a2, '*13+*1']
+            elif not h1 and h2:
+                result = [a1, '*13+*1']
+            else:
+                result = ['Indeterminate']
         elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']

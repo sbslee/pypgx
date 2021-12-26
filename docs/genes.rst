@@ -774,6 +774,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+   * - \*13+\*1
+     - Tandem3
+     - \*1/\*13+\*1
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-9.png>`
+     - WGS
+     -
+     -
 
 Phenotype summary for CYP2D6
 ----------------------------
