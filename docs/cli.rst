@@ -23,7 +23,7 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
-       compare-genotypes   Calculate concordance rate between two genotype results.
+       compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for the control gene from BAM files.
        compute-copy-number
@@ -137,9 +137,10 @@ compare-genotypes
    $ pypgx compare-genotypes -h
    usage: pypgx compare-genotypes [-h] [--verbose] first second
    
-   Calculate concordance rate between two genotype results.
+   Calculate concordance between two genotype results.
    
-   The command will only use samples that appear in both genotype results.
+   Only samples that appear in both genotype results will be used to calculate
+   concordance for genotype calls as well as CNV calls.
    
    Positional arguments:
      first       First archive file with the semantic type 
@@ -149,7 +150,8 @@ compare-genotypes
    
    Optional arguments:
      -h, --help  Show this help message and exit.
-     --verbose   Whether to print the verbose version of output.
+     --verbose   Whether to print the verbose version of output, including 
+                 discordant calls.
 
 compute-control-statistics
 ==========================

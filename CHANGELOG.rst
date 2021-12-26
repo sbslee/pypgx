@@ -9,6 +9,7 @@ Changelog
 * Update :command:`plot-cn-af` command to check input files more rigorously.
 * Improve CNV caller for CYP2A6 and CYP2D6.
 * Add new method :meth:`sdk.utils.add_cn_samples` method.
+* Update :command:`compare-genotypes` command to output CNV comparison results as well.
 
 0.10.1 (2021-12-20)
 -------------------

@@ -365,7 +365,7 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
-       compare-genotypes   Calculate concordance rate between two genotype results.
+       compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for the control gene from BAM files.
        compute-copy-number

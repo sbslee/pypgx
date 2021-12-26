@@ -100,6 +100,11 @@ Now let's make sure the genotype results are correct by comparing them with the 
 
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-CYP2D6-results.zip
     $ pypgx compare-genotypes grch37-CYP2D6-pipeline/results.zip grch37-CYP2D6-results.zip
+    # Genotype
+    Total: 70
+    Compared: 70
+    Concordance: 1.000 (70/70)
+    # CNV
     Total: 70
     Compared: 70
     Concordance: 1.000 (70/70)
