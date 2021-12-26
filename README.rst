@@ -170,10 +170,13 @@ list of genes with SV.
 Some of the SV events can be quite challenging to detect accurately with
 next-generation sequencing (NGS) data due to misalignment of sequence reads
 caused by sequence homology with other gene family members (e.g. CYP2D6 and
-CYP2D7). PyPGx attempts to address this issue by training a support vector
-machine-based multiclass classifier using the one-vs-rest strategy for each
-gene for each GRCh build. Each classifier is trained using copy number
-profiles of real NGS samples as well as simulated ones.
+CYP2D7). PyPGx attempts to address this issue by training a `support vector
+machine (SVM) <https://scikit-learn.org/stable/modules/generated/sk
+learn.svm.SVC.html>`__-based multiclass classifier using the `one-vs-rest
+strategy <https://scikit-learn.org/stable/modules/generated/sklearn.multi
+class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
+classifier is trained using copy number profiles of real NGS samples as well
+as simulated ones.
 
 You can plot copy number profile and allele fraction profile with PyPGX to
 visually inspect SV calls. Below are CYP2D6 examples:
