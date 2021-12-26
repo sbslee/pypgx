@@ -184,14 +184,16 @@ visually inspect SV calls. Below are CYP2D6 examples:
 
    * - SV Name
      - Profile
-   * - CYP2D6 deletion
+   * - Normal
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
+   * - DeletionHet
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
-   * - CYP2D6 duplication
+   * - Duplication
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
-   * - CYP2D7/CYP2D6 hybrid
+   * - Tandem3
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png
-   * - CYP2D6/CYP2D7 hybrid
-     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-3.png
+   * - Tandem2C
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png
 
 GRCh37 vs. GRCh38
 =================
