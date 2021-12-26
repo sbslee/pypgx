@@ -185,6 +185,41 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+Structural variation detection
+==============================
+
+Many pharmacogenes are known to have `structural variation (SV)
+<https://pypgx.readthedocs.io/en/latest/glossary.html#structural-variation-
+sv>`__ such as gene deletions, duplications, and hybrids. You can visit the
+`Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page to see the
+list of genes with SV.
+
+Some of the SV events can be quite challenging to detect accurately with
+next-generation sequencing (NGS) data due to misalignment of sequence reads
+caused by sequence homology with other gene family members (e.g. CYP2D6 and
+CYP2D7). PyPGx attempts to address this issue by training a support vector
+machine-based multiclass classifier using the one-vs-rest strategy for each
+gene for each GRCh build. Each classifier is trained using copy number
+profiles of real NGS samples as well as simulated ones.
+
+You can plot copy number profile and allele fraction profile with PyPGX to
+visually inspect SV calls. Below are CYP2D6 examples:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - SV Name
+     - Profile
+   * - CYP2D6 deletion
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
+   * - CYP2D6 duplication
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
+   * - CYP2D7/CYP2D6 hybrid
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png
+   * - CYP2D6/CYP2D7 hybrid
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-3.png
+
 GRCh37 vs. GRCh38
 =================
 
