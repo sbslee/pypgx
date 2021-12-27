@@ -7,7 +7,7 @@ Changelog
 * Add CNV caller for CYP4F2 and SULT1A1.
 * Fix minor bug in :command:`compute-copy-number` command.
 * Update :command:`plot-cn-af` command to check input files more rigorously.
-* Improve CNV caller for CYP2A6 and CYP2D6.
+* Improve CNV caller for CYP2A6, CYP2D6, and SULT1A1.
 * Add new method :meth:`sdk.utils.add_cn_samples` method.
 * Update :command:`compare-genotypes` command to output CNV comparison results as well.
 
