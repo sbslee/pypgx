@@ -680,7 +680,8 @@ run-chip-pipeline
 .. code-block:: text
 
    $ pypgx run-chip-pipeline -h
-   usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
+   usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--panel PATH]
+                                  [--impute] [--force]
                                   [--samples TEXT [TEXT ...]] [--exclude]
                                   gene output variants
    
@@ -698,6 +699,9 @@ run-chip-pipeline
      -h, --help            Show this help message and exit.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
                            'GRCh37', 'GRCh38').
+     --panel PATH          VCF file corresponding to a reference haplotype panel 
+                           (compressed or uncompressed). By default, the 1KGP 
+                           panel is used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]

@@ -47,6 +47,13 @@ def create_parser(subparsers):
              "'GRCh37', 'GRCh38')."
     )
     parser.add_argument(
+        '--panel',
+        metavar='PATH',
+        help='VCF file corresponding to a reference haplotype panel \n'
+             '(compressed or uncompressed). By default, the 1KGP \n'
+             'panel is used.'
+    )
+    parser.add_argument(
         '--impute',
         action='store_true',
         help='Perform imputation of missing genotypes.'
@@ -74,6 +81,6 @@ def create_parser(subparsers):
 def main(args):
     pipeline.run_chip_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        impute=args.impute, force=args.force, samples=args.samples,
-        exclude=args.exclude
+        panel=args.panel, impute=args.impute, force=args.force,
+        samples=args.samples, exclude=args.exclude
     )

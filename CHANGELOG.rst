@@ -12,6 +12,7 @@ Changelog
 * Update :command:`compare-genotypes` command to output CNV comparison results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
 * Add index files for 1KGP reference haplotype panels.
+* Add new argument ``--panel`` to :command:`run-chip-pipeline`.
 
 0.10.1 (2021-12-20)
 -------------------
@@ -84,7 +85,7 @@ Changelog
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have any star alleles defined by SVs.
-* Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
+* Add new argument ``--fontsize`` to :command:`plot-bam-copy-number` command.
 * Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
 * Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
 * Add new command :command:`plot-cn-af`.
