@@ -13,6 +13,7 @@ Changelog
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
 * Add index files for 1KGP reference haplotype panels.
 * Add new argument ``--panel`` to :command:`run-chip-pipeline`.
+* Remove 1KGP reference haplotype panels for GSTT1 and UGT2B17 because these genes only have star alleles defined with SV.
 
 0.10.1 (2021-12-20)
 -------------------
