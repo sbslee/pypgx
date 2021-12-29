@@ -457,19 +457,22 @@ Below is the list of submodules available in the API:
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.
 
-For getting help on a specific submodule (e.g. utils):
+For getting help on a specific submodule (e.g. ``utils``):
 
 .. code:: python3
 
    >>> from pypgx.api import utils
    >>> help(utils)
 
-For getting help on a specific method (e.g. predict_phenotype):
+For getting help on a specific method (e.g. ``predict_phenotype``):
 
 .. code:: python3
 
    >>> import pypgx
    >>> help(pypgx.predict_phenotype)
+
+In Jupyter Notebook and Lab, you can see the documentation for a python
+function by hitting ``SHIFT + TAB``. Hit it twice to expand the view.
 
 CLI examples
 ============

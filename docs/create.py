@@ -436,19 +436,22 @@ For getting help on a specific command (e.g. call-genotypes):
 Below is the list of submodules available in the API:
 
 {submodule_help}
-For getting help on a specific submodule (e.g. utils):
+For getting help on a specific submodule (e.g. ``utils``):
 
 .. code:: python3
 
    >>> from pypgx.api import utils
    >>> help(utils)
 
-For getting help on a specific method (e.g. predict_phenotype):
+For getting help on a specific method (e.g. ``predict_phenotype``):
 
 .. code:: python3
 
    >>> import pypgx
    >>> help(pypgx.predict_phenotype)
+
+In Jupyter Notebook and Lab, you can see the documentation for a python
+function by hitting ``SHIFT + TAB``. Hit it twice to expand the view.
 
 CLI examples
 ============
