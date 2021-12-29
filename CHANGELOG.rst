@@ -11,6 +11,7 @@ Changelog
 * Add new method :meth:`sdk.utils.add_cn_samples` method.
 * Update :command:`compare-genotypes` command to output CNV comparison results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
+* Add index files for 1KGP reference haplotype panels.
 
 0.10.1 (2021-12-20)
 -------------------
