@@ -666,6 +666,10 @@ def estimate_phase_beagle(
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
+    Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+    automatically added or removed as necessary to match the reference VCF’s
+    contig names.
+
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
@@ -690,17 +694,27 @@ def estimate_phase_beagle(
     assembly = imported_variants.metadata['Assembly']
     region = core.get_region(gene, assembly=assembly)
     beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
-    if panel is None:
-        panel = f'{core.PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
 
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
 
-    if imported_variants.data.empty:
-        return sdk.Archive(metadata, imported_variants.data.copy())
+    if panel is None:
+        panel = f'{core.PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
+
+    has_chr_prefix = pyvcf.has_chr_prefix(panel)
+
+    if has_chr_prefix:
+        vf1 = imported_variants.data.update_chr_prefix('add')
+        region = common.update_chr_prefix(region, 'add')
+    else:
+        vf1 = imported_variants.data.copy()
+
+    if vf1.empty:
+        return sdk.Archive(metadata, vf1)
+        
     with tempfile.TemporaryDirectory() as t:
-        imported_variants.data.to_file(f'{t}/input.vcf')
+        vf1.to_file(f'{t}/input.vcf')
         command = [
             'java', '-Xmx2g', '-jar', beagle,
             f'gt={t}/input.vcf',
@@ -710,8 +724,12 @@ def estimate_phase_beagle(
             f'impute={str(impute).lower()}'
         ]
         subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
-        data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-    return sdk.Archive(metadata, data)
+        vf2 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+
+    if has_chr_prefix:
+        vf2 = vf2.update_chr_prefix('remove')
+
+    return sdk.Archive(metadata, vf2)
 
 def filter_samples(archive, samples, exclude=False):
     """

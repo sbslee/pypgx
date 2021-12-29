@@ -7,6 +7,10 @@ import pysam
 
 description = f"""
 Estimate haplotype phase of observed variants with the Beagle program.
+
+Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+automatically added or removed as necessary to match the reference VCF’s
+contig names.
 """
 
 def create_parser(subparsers):
