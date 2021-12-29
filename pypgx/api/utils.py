@@ -212,7 +212,10 @@ def compare_genotypes(first, second, verbose=False):
         df = df.dropna()
         print(f'Compared: {df.shape[0]}')
         df['Concordant'] = df.First == df.Second
-        print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
+        if len(df.Concordant):
+            print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
+        else:
+            print('Concordance: N/A')
         if verbose:
             print('Discordant:')
             if df.Concordant.all():
@@ -712,7 +715,7 @@ def estimate_phase_beagle(
 
     if vf1.empty:
         return sdk.Archive(metadata, vf1)
-        
+
     with tempfile.TemporaryDirectory() as t:
         vf1.to_file(f'{t}/input.vcf')
         command = [

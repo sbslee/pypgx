@@ -14,6 +14,7 @@ Changelog
 * Add index files for 1KGP reference haplotype panels.
 * Add new argument ``--panel`` to :command:`run-chip-pipeline`.
 * Remove 1KGP reference haplotype panels for GSTT1 and UGT2B17 because these genes only have star alleles defined with SV.
+* Change 1KGP reference haplotype panels for GRCh38. Previously, PyPGx was using the panels from `Lowy-Gallego et al., 2019 <https://wellcomeopenresearch.org/articles/4-50>`__ where the authors aligned sequence reads against the full GRCh38 reference, including ALT contigs, decoy, and EBV/IMGT/HLA sequences. This resulted in poor phasing/imputation performance for many PGx genes (e.g. CYP2D6) because those panels were missing haplotype information for lots of SNVs/indels as sequence reads with those variants were mapped to ALT contigs. However, those panels were still the best option at the time. Fortunately, a new, better set of panels has been recently released by `Byrska-Bishop et al., 2021 <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__ which does not have this problem.
 
 0.10.1 (2021-12-20)
 -------------------
