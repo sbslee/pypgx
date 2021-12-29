@@ -9,7 +9,8 @@ total of 58 pharmacogenes.
 
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
-and hybrids.
+and hybrids. Please read the :ref:`readme:Structural variation detection`
+page for more details.
 
 Some genes have a genotype-phenotype table available from the
 :ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
