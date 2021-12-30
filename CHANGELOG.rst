@@ -16,6 +16,7 @@ Changelog
 * Remove 1KGP reference haplotype panels for GSTT1 and UGT2B17 because these genes only have star alleles defined with SV.
 * Change 1KGP reference haplotype panels for GRCh38. Previously, PyPGx was using the panels from `Lowy-Gallego et al., 2019 <https://wellcomeopenresearch.org/articles/4-50>`__ where the authors had aligned sequence reads against the full GRCh38 reference, including ALT contigs, decoy, and EBV/IMGT/HLA sequences. This resulted in poor phasing/imputation performance for highly polymorphic PGx genes (e.g. CYP2D6) because the panels were missing haplotype information for lots of SNVs/indels as sequence reads with those variants were mapped to ALT contigs; however, the panels were still the best option at the time (definitely better than lifting over GRCh37 panels). Fortunately, `Byrska-Bishop et al., 2021 <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__ from New York Genome Center has recently published a new set of GRCh38 panels which does not have this problem. When empirically tested, these panels showed a significant increase in phasing/imputation performance. Therefore, from now on, PyPGx will use these panels for GRCh38 data.
 * Update GRCh38 variant information for following alleles: CYP2D6\*35, CYP2D6\*45, CYP2D6\*46.
+* Update gene region for SLC22A2 to match GRCh37 and GRCh38.
 
 0.10.1 (2021-12-20)
 -------------------
