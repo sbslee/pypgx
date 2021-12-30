@@ -175,6 +175,21 @@ Which will create:
     Saved SampleTable[Phenotypes] to: grch38-CYP3A5-pipeline/phenotypes.zip
     Saved SampleTable[Results] to: grch38-CYP3A5-pipeline/results.zip
 
+Now let’s make sure the genotype results are correct by comparing them with
+the GRCh37 results:
+
+.. code-block:: text
+
+    $ pypgx compare-genotypes grch37-CYP3A5-pipeline/results.zip grch38-CYP3A5-pipeline/results.zip
+    # Genotype
+    Total: 70
+    Compared: 70
+    Concordance: 1.000 (70/70)
+    # CNV
+    Total: 70
+    Compared: 0
+    Concordance: N/A
+
 Congratulations, you have completed this tutorial!
 
 Coriell Affy tutorial
