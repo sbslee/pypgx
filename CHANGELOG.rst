@@ -1,6 +1,23 @@
 Changelog
 *********
 
+0.11.0 (2022-01-01)
+-------------------
+
+* Add CNV caller for CYP4F2 and SULT1A1.
+* Fix minor bug in :command:`compute-copy-number` command.
+* Update :command:`plot-cn-af` command to check input files more rigorously.
+* Improve CNV caller for CYP2A6, CYP2D6, SLC22A2, and SULT1A1.
+* Add new method :meth:`sdk.utils.add_cn_samples` method.
+* Update :command:`compare-genotypes` command to output CNV comparison results as well.
+* Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
+* Add index files for 1KGP reference haplotype panels.
+* Add new argument ``--panel`` to :command:`run-chip-pipeline` command.
+* Remove 1KGP reference haplotype panels for GSTT1 and UGT2B17 because these genes only have star alleles defined with SV.
+* Change 1KGP reference haplotype panels for GRCh38. Previously, PyPGx was using the panels from `Lowy-Gallego et al., 2019 <https://wellcomeopenresearch.org/articles/4-50>`__ where the authors had aligned sequence reads against the full GRCh38 reference, including ALT contigs, decoy, and EBV/IMGT/HLA sequences. This resulted in poor phasing/imputation performance for highly polymorphic PGx genes (e.g. CYP2D6) presumably because the panels were missing haplotype information for lots of SNVs/indels as sequence reads with those variants were mapped to ALT contigs; however, the panels were still the best option at the time (definitely better than lifting over GRCh37 panels). Fortunately, `Byrska-Bishop et al., 2021 <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__ from New York Genome Center has recently published a new set of GRCh38 panels which apparently has less of this problem despite still having sequence reads aligned in the presence of ALT contigs, etc. When empirically tested, these panels showed a significant increase in phasing/imputation performance. Therefore, from now on, PyPGx will use these panels for GRCh38 data.
+* Update GRCh38 variant information for following alleles: CYP2D6\*35, CYP2D6\*45, CYP2D6\*46.
+* Update gene region for SLC22A2 to match GRCh37 and GRCh38.
+
 0.10.1 (2021-12-20)
 -------------------
 
@@ -72,7 +89,7 @@ Changelog
 * Fix minor bug in :command:`estimate-phase-beagle` command on not properly exiting the program even though there was an error raised by Beagle.
 * Update :meth:`api.utils.create_consolidated_vcf` method to check synonymous variants as well when performing phase-extension algorithm.
 * Update :command:`run-ngs-pipeline` command to output a warning when user provides CovFrame[DepthOfCoverage] even though target gene does not have any star alleles defined by SVs.
-* Add new argument ``--fontsize`` argument to :command:`plot-bam-copy-number` command.
+* Add new argument ``--fontsize`` to :command:`plot-bam-copy-number` command.
 * Remove ``--ymin`` and ``--ymax`` arguments from :command:`plot-vcf-allele-fraction` command.
 * Update ``--ymin`` and ``--ymax`` arguments of :command:`plot-bam-copy-number` command to have a default value.
 * Add new command :command:`plot-cn-af`.

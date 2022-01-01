@@ -158,6 +158,46 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+Structural variation detection
+==============================
+
+Many pharmacogenes are known to have `structural variation (SV)
+<https://pypgx.readthedocs.io/en/latest/glossary.html#structural-variation-
+sv>`__ such as gene deletions, duplications, and hybrids. You can visit the
+`Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page to see the
+list of genes with SV.
+
+Some of the SV events can be quite challenging to detect accurately with
+next-generation sequencing (NGS) data due to misalignment of sequence reads
+caused by sequence homology with other gene family members (e.g. CYP2D6 and
+CYP2D7). PyPGx attempts to address this issue by training a `support vector
+machine (SVM) <https://scikit-learn.org/stable/modules/generated/sk
+learn.svm.SVC.html>`__-based multiclass classifier using the `one-vs-rest
+strategy <https://scikit-learn.org/stable/modules/generated/sklearn.multi
+class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
+classifier is trained using copy number profiles of real NGS samples as well
+as simulated ones.
+
+You can plot copy number profile and allele fraction profile with PyPGX to
+visually inspect SV calls. Below are CYP2D6 examples:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - SV Name
+     - Profile
+   * - Normal
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
+   * - DeletionHet
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
+   * - Duplication
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
+   * - Tandem3
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png
+   * - Tandem2C
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png
+
 GRCh37 vs. GRCh38
 =================
 
@@ -170,6 +210,15 @@ do this). The good news is, PyPGx supports both of the builds!
 In many of the PyPGx actions, you can simply indicate which human genome
 build to use. For example, you can use ``assembly`` for the API and
 ``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
+Below is an example of using the API:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.list_variants('CYP2D6', alleles=['*4'], assembly='GRCh37')
+    ['22-42524947-C-T']
+    >>> pypgx.list_variants('CYP2D6', alleles=['*4'], assembly='GRCh38')
+    ['22-42128945-C-T']
 
 However, there is one important caveat to consider if your sequencing data is
 GRCh38. That is, sequence reads must be aligned only to the main contigs
@@ -314,6 +363,29 @@ Please visit the `Genes <https://pypgx.readthedocs.io/en/latest/
 genes.html>`__ page to see the list of genes with a genotype-phenotype
 table and each of their prediction method.
 
+To perform phenotype prediction with the API, you can use the
+``pypgx.predict_phenotype`` method:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> pypgx.predict_phenotype('CYP2D6', '*4', '*5')   # Both alleles have no function
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*5', '*4')   # The order of alleles does not matter
+    'Poor Metabolizer'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*22')  # *22 has uncertain function
+    'Indeterminate'
+    >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
+    'Ultrarapid Metabolizer'
+
+To perform phenotype prediction with the CLI, you can use the
+``call-phenotypes`` command. It takes a ``SampleTable[Genotypes]`` file as
+input and outputs a ``SampleTable[Phenotypes]`` file:
+
+.. code-block:: text
+
+   $ pypgx call-phenotypes genotypes.zip phenotypes.zip
+
 Getting help
 ============
 
@@ -333,7 +405,7 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
-       compare-genotypes   Calculate concordance rate between two genotype results.
+       compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for the control gene from BAM files.
        compute-copy-number
@@ -385,19 +457,22 @@ Below is the list of submodules available in the API:
 - **plot** : The plot submodule is used to plot various kinds of profiles such as read depth, copy number, and allele fraction.
 - **utils** : The utils submodule contains main actions of PyPGx.
 
-For getting help on a specific submodule (e.g. utils):
+For getting help on a specific submodule (e.g. ``utils``):
 
 .. code:: python3
 
    >>> from pypgx.api import utils
    >>> help(utils)
 
-For getting help on a specific method (e.g. predict_phenotype):
+For getting help on a specific method (e.g. ``predict_phenotype``):
 
 .. code:: python3
 
    >>> import pypgx
    >>> help(pypgx.predict_phenotype)
+
+In Jupyter Notebook and Lab, you can see the documentation for a python
+function by hitting ``SHIFT + TAB``. Hit it twice to expand the view.
 
 CLI examples
 ============

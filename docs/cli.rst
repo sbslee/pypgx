@@ -23,7 +23,7 @@ For getting help on the CLI:
        call-genotypes      Call genotypes for the target gene.
        call-phenotypes     Call phenotypes for the target gene.
        combine-results     Combine various results for the target gene.
-       compare-genotypes   Calculate concordance rate between two genotype results.
+       compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for the control gene from BAM files.
        compute-copy-number
@@ -137,9 +137,10 @@ compare-genotypes
    $ pypgx compare-genotypes -h
    usage: pypgx compare-genotypes [-h] [--verbose] first second
    
-   Calculate concordance rate between two genotype results.
+   Calculate concordance between two genotype results.
    
-   The command will only use samples that appear in both genotype results.
+   Only samples that appear in both genotype results will be used to calculate
+   concordance for genotype calls as well as CNV calls.
    
    Positional arguments:
      first       First archive file with the semantic type 
@@ -149,7 +150,8 @@ compare-genotypes
    
    Optional arguments:
      -h, --help  Show this help message and exit.
-     --verbose   Whether to print the verbose version of output.
+     --verbose   Whether to print the verbose version of output, including 
+                 discordant calls.
 
 compute-control-statistics
 ==========================
@@ -326,6 +328,10 @@ estimate-phase-beagle
                                       imported-variants phased-variants
    
    Estimate haplotype phase of observed variants with the Beagle program.
+   
+   Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+   automatically added or removed as necessary to match the reference VCF’s
+   contig names.
    
    Positional arguments:
      imported-variants  Archive file with the semantic type VcfFrame[Imported].
@@ -674,7 +680,8 @@ run-chip-pipeline
 .. code-block:: text
 
    $ pypgx run-chip-pipeline -h
-   usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--impute] [--force]
+   usage: pypgx run-chip-pipeline [-h] [--assembly TEXT] [--panel PATH]
+                                  [--impute] [--force]
                                   [--samples TEXT [TEXT ...]] [--exclude]
                                   gene output variants
    
@@ -692,6 +699,9 @@ run-chip-pipeline
      -h, --help            Show this help message and exit.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
                            'GRCh37', 'GRCh38').
+     --panel PATH          VCF file corresponding to a reference haplotype panel 
+                           (compressed or uncompressed). By default, the 1KGP 
+                           panel is used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]

@@ -330,7 +330,8 @@ def simulate_copy_number(
     Returns
     -------
     pypgx.Archive
-        Target archive with simultated samples appended.
+        Target archive the semantic type CovFrame[CopyNumber] with simultated
+        samples appended.
     """
     target = Archive.from_file(target)
     source = Archive.from_file(source)
@@ -345,4 +346,30 @@ def simulate_copy_number(
         s[s < 0] = 0
         target.data.df[f'{sv}_{i+1}'] = s
 
+    return target
+
+def add_cn_samples(target, source, samples):
+    """
+    Add the copy number data of specified samples.
+
+    Parameters
+    ----------
+    target : str
+        Target archive file with the semantic type CovFrame[CopyNumber].
+    source : str
+        Source archive file with the semantic type CovFrame[CopyNumber].
+    samples : str
+        File containing one sample per line.
+
+    Returns
+    -------
+    pypgx.Archive
+        Target archive the semantic type CovFrame[CopyNumber] with new
+        samples appended.
+    """
+    target = Archive.from_file(target)
+    source = Archive.from_file(source)
+    samples = common.convert_file2list(samples)
+    df = source.data.df[samples]
+    target.data.df = pd.concat([target.data.df, df], axis=1)
     return target

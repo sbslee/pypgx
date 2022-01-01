@@ -9,7 +9,8 @@ total of 58 pharmacogenes.
 
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
-and hybrids.
+and hybrids. Please read the :ref:`readme:Structural variation detection`
+page for more details.
 
 Some genes have a genotype-phenotype table available from the
 :ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
@@ -185,7 +186,7 @@ Below is a summary table:
      -
      -
    * - :ref:`genes:CYP4F2`
-     -
+     - ✅
      -
      - ✅
      -
@@ -316,8 +317,8 @@ Below is a summary table:
      -
      -
      -
-   * - SULT1A1
-     -
+   * - :ref:`genes:SULT1A1`
+     - ✅
      -
      -
      -
@@ -471,6 +472,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+   * -
+     - Normal
+     - \*1/\*2
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-5.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA10831
    * - \*4
      - DeletionHet
      - \*1/\*4
@@ -554,6 +564,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+   * -
+     - Normal
+     - \*1/\*2
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-2.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-2.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA12813
    * - \*29
      - Hybrid
      - \*6/\*29
@@ -684,6 +703,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+   * -
+     - Normal
+     - \*1/\*2
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-8.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA11839
    * - \*5
      - DeletionHet
      - \*5/\*29
@@ -744,6 +772,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png>`
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-7.png>`
+     - WGS
+     -
+     -
+   * - \*13+\*1
+     - Tandem3
+     - \*1/\*13+\*1
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-9.png>`
      - WGS
      -
      -
@@ -831,6 +868,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+   * -
+     - Normal
+     - \*1/\*7
+     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-5.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA10831
    * - \*S1
      - PartialDuplication
      - \*1/\*S1
@@ -988,6 +1034,42 @@ Resources for CYP4B1
 CYP4F2
 ======
 
+SV summary for CYP4F2
+---------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - GRCh37
+    - GRCh38
+    - Data Type
+    - Source
+    - Coriell ID
+  * -
+    - Normal
+    - \*1/\*3
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP4F2-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP4F2-2.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG01190
+  * - \*DEL
+    - DeletionHet
+    - \*1/\*DEL
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP4F2-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP4F2-1.png>`
+    - WGS
+    -
+    -
+
 Resources for CYP4F2
 --------------------
 
@@ -1092,6 +1174,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*A/\*B
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-5.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA06991
   * - \*0
     - DeletionHet
     - \*0/\*A
@@ -1135,7 +1226,7 @@ GSTT1
 GRCh38 data for GSTT1
 ---------------------
 
-*GSTT1* is located on ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt``
+GSTT1 is located on ``chr22`` for GRCh37 but on ``chr22_KI270879v1_alt``
 for GRCh38. Therefore, if you are interested in genotyping this gene with
 GRCh38 data, then you must have sequence reads mapped to the ALT contig.
 For more details, please read the :ref:`readme:GRCh37 vs. GRCh38` page.
@@ -1160,6 +1251,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*A/\*A
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTT1-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTT1-3.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA07055
   * - \*0
     - DeletionHet
     - \*0/\*A
@@ -1293,12 +1393,21 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*1/\*3
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-1.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG01190
   * - \*S1
     - Intron9Deletion
     - \*1/\*S1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-1.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-2.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
@@ -1306,8 +1415,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Exon11Deletion
     - \*1/\*S2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-3.png>`
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19819
@@ -1344,6 +1453,81 @@ Resources for SLCO1B1
 ---------------------
 
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
+
+SULT1A1
+=======
+
+SV summary for SULT1A1
+----------------------
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - GRCh37
+    - GRCh38
+    - Data Type
+    - Source
+    - Coriell ID
+  * -
+    - Normal
+    - \*1/\*2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-6.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA06991
+  * - \*DEL
+    - DeletionHet
+    - \*1/\*DEL
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-1.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18942
+  * - \*1x2
+    - Duplication
+    - \*1x2/\*2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-2.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18509
+  * - \*1x3
+    - Multiplication1
+    - \*1x3/\*2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-3.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18868
+  * - \*1x4
+    - Multiplication2
+    - \*1x4/\*2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-4.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA18484
+  * - \*1x3, \*2x2
+    - Multiplication2
+    - \*1x3/\*2x2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-5.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19143
 
 TBXAS1
 ======
@@ -1429,6 +1613,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*1/\*2
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT1A4-3.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA11993
   * - \*S1
     - Intron1DeletionA
     - \*1/\*S1
@@ -1468,6 +1661,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*1/\*2
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-2.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG00589
   * - \*S1
     - PartialDeletion
     - \*4/\*S1
@@ -1501,6 +1703,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+  * -
+    - Normal
+    - \*1/\*1
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-3.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA19178
   * - \*2
     - DeletionHet
     - \*1/\*2

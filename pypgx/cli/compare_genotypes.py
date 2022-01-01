@@ -5,16 +5,17 @@ from ..api import utils
 import fuc
 
 description = f"""
-Calculate concordance rate between two genotype results.
+Calculate concordance between two genotype results.
 
-The command will only use samples that appear in both genotype results.
+Only samples that appear in both genotype results will be used to calculate
+concordance for genotype calls as well as CNV calls.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Calculate concordance rate between two genotype results.',
+        help='Calculate concordance between two genotype results.',
         description=description,
     )
     parser.add_argument(
@@ -31,7 +32,8 @@ def create_parser(subparsers):
     parser.add_argument(
         '--verbose',
         action='store_true',
-        help='Whether to print the verbose version of output.'
+        help='Whether to print the verbose version of output, including \n'
+             'discordant calls.'
     )
 
 def main(args):

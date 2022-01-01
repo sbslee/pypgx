@@ -250,6 +250,9 @@ def plot_cn_af(
     imported_variants.check_type(
         ['VcfFrame[Imported]', 'VcfFrame[Consolidated]'])
 
+    sdk.compare_metadata('Gene', copy_number, imported_variants)
+    sdk.compare_metadata('Assembly', copy_number, imported_variants)
+
     if samples is None:
         samples = copy_number.data.samples
     else:

@@ -164,9 +164,10 @@ def combine_results(
 
 def compare_genotypes(first, second, verbose=False):
     """
-    Calculate concordance rate between two genotype results.
+    Calculate concordance between two genotype results.
 
-    The method will only use samples that appear in both genotype results.
+    Only samples that appear in both genotype results will be used to
+    calculate concordance for genotype calls as well as CNV calls.
 
     Parameters
     ----------
@@ -177,15 +178,21 @@ def compare_genotypes(first, second, verbose=False):
         Second archive file or object with the semantic type
         SampleTable[Results].
     verbose : bool, default: False
-        If True, print the verbose version of output.
+        If True, print the verbose version of output, including discordant
+        calls.
 
     Examples
     --------
     >>> import pypgx
-    >>> pypgx.compare_genotypes('first-results.zip', 'second-results.zip')
-    Total: 32
-    Compared: 32
-    Concordance: 1.000 (32/32)
+    >>> pypgx.compare_genotypes('results-1.zip', 'results-2.zip')
+    # Genotype
+    Total: 100
+    Compared: 100
+    Concordance: 1.000 (100/100)
+    # CNV
+    Total: 100
+    Compared: 100
+    Concordance: 1.000 (100/100)
     """
     if isinstance(first, str):
         first = sdk.Archive.from_file(first)
@@ -197,22 +204,27 @@ def compare_genotypes(first, second, verbose=False):
 
     second.check_type('SampleTable[Results]')
 
-    df = pd.concat([first.data.Genotype, second.data.Genotype], axis=1)
+    def show_comparison(col):
+        df = pd.concat([first.data[col], second.data[col]], axis=1)
+        print(f'# {col}')
+        print(f'Total: {df.shape[0]}')
+        df.columns = ['First', 'Second']
+        df = df.dropna()
+        print(f'Compared: {df.shape[0]}')
+        df['Concordant'] = df.First == df.Second
+        if len(df.Concordant):
+            print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
+        else:
+            print('Concordance: N/A')
+        if verbose:
+            print('Discordant:')
+            if df.Concordant.all():
+                print('None')
+            else:
+                print(df[~df.Concordant])
 
-    print(f'Total: {df.shape[0]}')
-
-    df.columns = ['First', 'Second']
-    df = df.dropna()
-
-    print(f'Compared: {df.shape[0]}')
-
-    df['Concordant'] = df.First == df.Second
-
-    print(f'Concordance: {sum(df.Concordant)/len(df.Concordant):.3f} ({sum(df.Concordant)}/{len(df.Concordant)})')
-
-    if verbose:
-        print('Discordant genotypes:')
-        print(df[~df.Concordant])
+    for col in ['Genotype', 'CNV']:
+        show_comparison(col)
 
 def compute_control_statistics(
     bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
@@ -657,6 +669,10 @@ def estimate_phase_beagle(
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
+    Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+    automatically added or removed as necessary to match the reference VCF’s
+    contig names.
+
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
@@ -681,17 +697,27 @@ def estimate_phase_beagle(
     assembly = imported_variants.metadata['Assembly']
     region = core.get_region(gene, assembly=assembly)
     beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
-    if panel is None:
-        panel = f'{core.PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
 
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
     metadata['Program'] = 'Beagle'
 
-    if imported_variants.data.empty:
-        return sdk.Archive(metadata, imported_variants.data.copy())
+    if panel is None:
+        panel = f'{core.PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
+
+    has_chr_prefix = pyvcf.has_chr_prefix(panel)
+
+    if has_chr_prefix:
+        vf1 = imported_variants.data.update_chr_prefix('add')
+        region = common.update_chr_prefix(region, 'add')
+    else:
+        vf1 = imported_variants.data.copy()
+
+    if vf1.empty:
+        return sdk.Archive(metadata, vf1)
+
     with tempfile.TemporaryDirectory() as t:
-        imported_variants.data.to_file(f'{t}/input.vcf')
+        vf1.to_file(f'{t}/input.vcf')
         command = [
             'java', '-Xmx2g', '-jar', beagle,
             f'gt={t}/input.vcf',
@@ -701,8 +727,12 @@ def estimate_phase_beagle(
             f'impute={str(impute).lower()}'
         ]
         subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
-        data = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-    return sdk.Archive(metadata, data)
+        vf2 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+
+    if has_chr_prefix:
+        vf2 = vf2.update_chr_prefix('remove')
+
+    return sdk.Archive(metadata, vf2)
 
 def filter_samples(archive, samples, exclude=False):
     """

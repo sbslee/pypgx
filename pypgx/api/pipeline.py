@@ -30,6 +30,9 @@ def run_chip_pipeline(
         skipped if input VCF is already fully phased.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    panel : str, optional
+        VCF file corresponding to a reference haplotype panel (zipped or
+        unzipped). By default, the 1KGP panel is used.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
     force : bool, default : False
