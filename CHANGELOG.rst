@@ -1,7 +1,7 @@
 Changelog
 *********
 
-0.11.0 (in development)
+0.12.0 (in development)
 -----------------------
 
 0.11.0 (2022-01-01)

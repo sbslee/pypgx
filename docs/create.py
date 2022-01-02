@@ -205,7 +205,7 @@ class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
 classifier is trained using copy number profiles of real NGS samples as well
 as simulated ones.
 
-You can plot copy number profile and allele fraction profile with PyPGX to
+You can plot copy number profile and allele fraction profile with PyPGx to
 visually inspect SV calls. Below are CYP2D6 examples:
 
 .. list-table::
