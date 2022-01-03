@@ -4,6 +4,8 @@ Changelog
 0.12.0 (in development)
 -----------------------
 
+* Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
+
 0.11.0 (2022-01-01)
 -------------------
 
