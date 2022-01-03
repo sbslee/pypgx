@@ -226,7 +226,7 @@ Below is a summary table:
      -
      -
      -
-     -
+     - Located on X chromosome.
    * - :ref:`genes:GSTM1`
      - ✅
      -

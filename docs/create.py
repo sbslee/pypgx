@@ -53,8 +53,8 @@ README
 Introduction
 ============
 
-The main purpose of the PyPGx package is to provide a unified platform for
-pharmacogenomics (PGx) research.
+The main purpose of the PyPGx package, which is completely free and open
+source, is to provide a unified platform for pharmacogenomics (PGx) research.
 
 The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
