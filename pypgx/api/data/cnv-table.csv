@@ -23,6 +23,8 @@ CYP2E1,PartialDuplication,2
 CYP2E1,Multiplication,3
 CYP4F2,Normal,0
 CYP4F2,DeletionHet,1
+G6PD,Female,0
+G6PD,Male,1
 GSTM1,Normal,0
 GSTM1,DeletionHet,1
 GSTM1,DeletionHom,2

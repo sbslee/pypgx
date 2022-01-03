@@ -305,6 +305,27 @@ class CYP4F2Genotyper:
         self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
+class G6PDGenotyper:
+    """
+    Genotyper for G6PD.
+    """
+
+    def one_row(self, r):
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Female', 'AssumeNormal']:
+            result = [a1, a2]
+        elif r.CNV == 'Male':
+            result = [s1, '*MALE']
+        else:
+            result = ['Indeterminate']
+        return '/'.join(core.sort_alleles(result, by='name'))
+
+    def __init__(self, df, assembly):
+        self.gene = 'G6PD'
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class GSTM1Genotyper:
     """
     Genotyper for GSTM1.
@@ -520,6 +541,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'CYP2D6': CYP2D6Genotyper,
         'CYP2E1': CYP2E1Genotyper,
         'CYP4F2': CYP4F2Genotyper,
+        'G6PD': G6PDGenotyper,
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,

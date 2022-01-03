@@ -221,8 +221,8 @@ Below is a summary table:
      -
      -
      -
-   * - G6PD
-     -
+   * - :ref:`genes:G6PD`
+     - ✅
      -
      -
      -
@@ -1150,6 +1150,50 @@ Resources for F5
 ----------------
 
 - `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
+
+G6PD
+====
+
+SV summary for G6PD
+-------------------
+
+Since the gene is located on X chromosome, its copy number differs between
+females (N=2) and males (N=1). Technically speaking, this difference is not a
+SV event, but it is treated as such by PyPGx for genotyping purposes (i.e.
+sex determination).
+
+Below is comprehensive summary of SV described from real NGS studies:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Star Allele
+    - SV Name
+    - Genotype
+    - Reference
+    - GRCh37
+    - GRCh38
+    - Data Type
+    - Source
+    - Coriell ID
+  * -
+    - Female
+    - \*B/\*B
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-G6PD-1.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG00276
+  * - \*MALE
+    - Male
+    - \*B/\*MALE
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-G6PD-2.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG00436
 
 GSTM1
 =====
