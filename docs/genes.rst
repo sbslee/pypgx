@@ -131,8 +131,8 @@ Below is a summary table:
      - ✅
      - ✅
      - ✅
-     - `22:42512500-42551883 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42512500%2D42551883&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
-     - `22:42116498-42155810 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42116498%2D42155810&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr22:42512500-42551883 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42512500%2D42551883&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr22:42116498-42155810 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42116498%2D42155810&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2D6 has pseudogene (CYP2D7).
    * - :ref:`genes:CYP2E1`
      - ✅
