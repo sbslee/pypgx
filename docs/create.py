@@ -470,7 +470,7 @@ Above will print:
     SemanticType=CovFrame[DepthOfCoverage]
     Platform=WGS
 
-We can run the NGS pipeline for the *CYP2D6* gene:
+We can run the NGS pipeline for the CYP2D6 gene:
 
 .. code-block:: text
 
@@ -499,7 +499,7 @@ Above will create a number of archive files:
 API examples
 ============
 
-We can obtain allele function for the *CYP2D6* gene:
+We can obtain allele function for the CYP2D6 gene:
 
 .. code:: python3
 
@@ -513,7 +513,7 @@ We can obtain allele function for the *CYP2D6* gene:
     >>> pypgx.get_function('CYP2D6', '*140')
     'Unknown Function'
 
-We can predict phenotype for the *CYP2D6* gene based on two haplotype calls:
+We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
 
 .. code:: python3
 
