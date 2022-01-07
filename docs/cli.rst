@@ -183,9 +183,12 @@ compute-control-statistics
                            ('chrom:start-end'). Cannot be used with --gene.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it 
-                           is targeted sequencing, you must provide a BED file to 
-                           indicate probed regions.
+     --bed PATH            By default, the input data is assumed to be WGS. If 
+                           it's targeted sequencing, you must provide a BED file 
+                           to indicate probed regions. Note that the 'chr' 
+                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
+                           be automatically added or removed as necessary to 
+                           match the BAM contig names.
    
    [Example] To compute summary statistics for the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
@@ -643,9 +646,12 @@ prepare-depth-of-coverage
                            with --bam.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it 
-                           is targeted sequencing, you must provide a BED file to 
-                           indicate probed regions.
+     --bed PATH            By default, the input data is assumed to be WGS. If 
+                           it's targeted sequencing, you must provide a BED file 
+                           to indicate probed regions. Note that the 'chr' 
+                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
+                           be automatically added or removed as necessary to 
+                           match the BAM contig names.
    
    [Example] When the input data is WGS:
      $ pypgx prepare-depth-of-coverage \

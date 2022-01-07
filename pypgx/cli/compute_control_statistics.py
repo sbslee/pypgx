@@ -73,9 +73,12 @@ def create_parser(subparsers):
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help="By default, the input data is assumed to be WGS. If it \n"
-             "is targeted sequencing, you must provide a BED file to \n"
-             "indicate probed regions."
+        help="By default, the input data is assumed to be WGS. If \n"
+             "it's targeted sequencing, you must provide a BED file \n"
+             "to indicate probed regions. Note that the 'chr' \n"
+             "prefix in BED contig names (e.g. 'chr1' vs. '1') will \n"
+             "be automatically added or removed as necessary to \n"
+             "match the BAM contig names."
     )
 
 def main(args):

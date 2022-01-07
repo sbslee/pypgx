@@ -247,8 +247,11 @@ def compute_control_statistics(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        By default, the input data is assumed to be WGS. If it targeted
+        By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
+        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
+        will be automatically added or removed as necessary to match the BAM
+        contig names.
 
     Returns
     -------
@@ -1055,10 +1058,6 @@ def prepare_depth_of_coverage(
     """
     Prepare a depth of coverage file for all target genes with SV.
 
-    By default, the input data is assumed to be WGS. If it's targeted
-    sequencing, you must provide a BED file with ``bed`` to indicate
-    probed regions.
-
     Parameters
     ----------
     bam : list, optional
@@ -1068,7 +1067,11 @@ def prepare_depth_of_coverage(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        BED file.
+        By default, the input data is assumed to be WGS. If it's targeted
+        sequencing, you must provide a BED file to indicate probed regions.
+        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
+        will be automatically added or removed as necessary to match the BAM
+        contig names.
 
     Returns
     -------
