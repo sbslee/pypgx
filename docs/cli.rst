@@ -737,6 +737,7 @@ run-ngs-pipeline
                                  [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
+                                 [--cnv-caller PATH]
                                  gene output
    
    Run PyPGx's genotyping pipeline for NGS data.
@@ -753,13 +754,14 @@ run-ngs-pipeline
    Optional arguments:
      -h, --help            Show this help message and exit.
      --variants PATH       Input VCF file must be already BGZF compressed (.gz) 
-                           and indexed (.tbi) to allow random access. Statistical 
-                           haplotype phasing will be skipped if input VCF is 
-                           already fully phased.
+                           and indexed (.tbi) to allow random access. 
+                           Statistical haplotype phasing will be skipped if 
+                           input VCF is already fully phased.
      --depth-of-coverage PATH
-                           Depth of coverage file (compressed or uncompressed).
+                           Archive file with the semantic type 
+                           CovFrame[DepthOfCoverage].
      --control-statistics PATH
-                           Archive file with the semandtic type 
+                           Archive file with the semantic type 
                            SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
@@ -772,8 +774,8 @@ run-ngs-pipeline
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
-                           containing one sample per line. Alternatively, you can 
-                           provide a list of samples.
+                           containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
      --exclude             Exclude specified samples.
      --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.
@@ -781,6 +783,8 @@ run-ngs-pipeline
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
+     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By 
+                           default, a pre-trained CNV caller will be used.
    
    [Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:
      $ pypgx run-ngs-pipeline \
