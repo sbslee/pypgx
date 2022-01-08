@@ -16,10 +16,9 @@ from .. import sdk
 import numpy as np
 import pandas as pd
 from fuc import pybam, pyvcf, pycov, common, pybed
-from sklearn import model_selection, metrics
+from sklearn import metrics
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
-from sklearn.impute import SimpleImputer
 from scipy.ndimage import median_filter
 
 ###################

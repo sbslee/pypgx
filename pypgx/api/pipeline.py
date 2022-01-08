@@ -83,7 +83,8 @@ def run_ngs_pipeline(
     gene, output, variants=None, depth_of_coverage=None,
     control_statistics=None, platform='WGS', assembly='GRCh37', panel=None,
     force=False, samples=None, exclude=False, samples_without_sv=None,
-    do_not_plot_copy_number=False, do_not_plot_allele_fraction=False
+    do_not_plot_copy_number=False, do_not_plot_allele_fraction=False,
+    cnv_caller=None
 ):
     """
     Run PyPGx's genotyping pipeline for NGS data.
@@ -129,6 +130,9 @@ def run_ngs_pipeline(
         Do not plot copy number profile.
     do_not_plot_allele_fraction : bool, default: False
         Do not plot allele fraction profile.
+    cnv_caller : str or pypgx.Archive, optional
+        Archive file or object with the semantic type Model[CNV]. By default,
+        a pre-trained CNV caller will be used.
     """
     if not core.is_target_gene(gene):
         raise core.NotTargetGeneError(gene)
@@ -224,7 +228,7 @@ def run_ngs_pipeline(
         copy_number = utils.compute_copy_number(read_depth,
             control_statistics, samples_without_sv=samples_without_sv)
         copy_number.to_file(f'{output}/copy-number.zip')
-        cnv_calls = utils.predict_cnv(copy_number)
+        cnv_calls = utils.predict_cnv(copy_number, cnv_caller=cnv_caller)
         cnv_calls.to_file(f'{output}/cnv-calls.zip')
         if not do_not_plot_copy_number:
             os.mkdir(f'{output}/copy-number-profile')
