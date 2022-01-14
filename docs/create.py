@@ -413,6 +413,11 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 
    $ pypgx call-phenotypes genotypes.zip phenotypes.zip
 
+Pipeline
+========
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-ngs-pipeline.png
+
 Getting help
 ============
 
