@@ -5,7 +5,7 @@ Changelog
 -----------------------
 
 * Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
-* Improve CNV caller for CYP2D6.
+* Improve CNV caller for CYP2B6 and CYP2D6.
 * Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
 
 0.11.0 (2022-01-01)

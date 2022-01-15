@@ -145,6 +145,8 @@ class CYP2B6Genotyper:
             result = [a1, a2]
         elif r.CNV == 'Hybrid':
             result = [p, '*29']
+        elif r.CNV == 'Duplication':
+            result = _call_duplication(r)
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
