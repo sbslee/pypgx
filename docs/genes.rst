@@ -599,7 +599,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA10831
    * - \*4
-     - DeletionHet
+     - Deletion1Het
      - \*1/\*4
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-1.png>`
@@ -608,7 +608,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18617
    * - \*4
-     - DeletionHom
+     - Deletion1Hom
      - \*4/\*4
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-2.png>`
@@ -616,6 +616,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18952
+   * - \*4
+     - Deletion2Het
+     - \*1/\*4
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-6.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-6.png>`
+     - WGS
+     -
+     -
    * - \*1x2
      - Duplication
      - \*1x2/\*25

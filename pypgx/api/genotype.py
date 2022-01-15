@@ -110,9 +110,9 @@ class CYP2A6Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV == 'Deletion1Hom':
             result = ['*4', '*4']
-        elif r.CNV == 'DeletionHet':
+        elif r.CNV in ['Deletion1Het', 'Deletion2Het']:
             if a1 == a2:
                 result = [a1, '*4']
             elif a1 == '*1':
