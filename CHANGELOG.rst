@@ -7,6 +7,7 @@ Changelog
 * Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
 * Improve CNV caller for CYP2B6 and CYP2D6.
 * Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
+* Update :meth:`api.core.predict_phenotype` method to not raise an error when a given star allele does not exist in the allele table. From now on, the method will output a warning about it but still produce an ``Indeterminate`` call.
 
 0.11.0 (2022-01-01)
 -------------------

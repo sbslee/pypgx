@@ -5,6 +5,7 @@ The core submodule is the main suite of tools for PGx research.
 import pkgutil
 import pathlib
 from io import BytesIO
+import warnings
 
 import numpy as np
 import pandas as pd
@@ -1055,9 +1056,9 @@ def predict_phenotype(gene, a, b):
         df = load_diplotype_table()
         df = df[df.Gene == gene]
         if not is_legit_allele(gene, a):
-            raise AlleleNotFoundError(gene, a)
+            warnings.warn(f"{a} not found in the allele table for {gene}")
         if not is_legit_allele(gene, b):
-            raise AlleleNotFoundError(gene, b)
+            warnings.warn(f"{b} not found in the allele table for {gene}")
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         try:
