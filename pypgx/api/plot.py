@@ -129,6 +129,7 @@ def plot_bam_copy_number(
     if samples is None:
         samples = copy_number.data.samples
     else:
+        samples = common.parse_list_or_file(samples)
         copy_number = utils.filter_samples(copy_number, samples=samples)
 
     if fitted:
@@ -187,6 +188,8 @@ def plot_bam_read_depth(
 
     if samples is None:
         samples = read_depth.data.samples
+    else:
+        samples = common.parse_list_or_file(samples)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
@@ -319,6 +322,8 @@ def plot_vcf_allele_fraction(
 
     if samples is None:
         samples = imported_variants.data.samples
+    else:
+        samples = common.parse_list_or_file(samples)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
@@ -371,6 +376,8 @@ def plot_vcf_read_depth(
 
     if samples is None:
         samples = cf.samples
+    else:
+        samples = common.parse_list_or_file(samples)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:

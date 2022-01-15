@@ -8,6 +8,7 @@ Changelog
 * Improve CNV caller for CYP2B6 and CYP2D6.
 * Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
 * Update :meth:`api.core.predict_phenotype` method to not raise an error when a given star allele does not exist in the allele table. From now on, the method will output a warning about it but still produce an ``Indeterminate`` call.
+* Fix minor bug with ``--samples`` argument in commands :command:`plot-bam-copy-number`, :command:`plot-bam-read-depth`, :command:`plot-vcf-allele-fraction`, and :command:`plot-vcf-read-depth`.
 
 0.11.0 (2022-01-01)
 -------------------
