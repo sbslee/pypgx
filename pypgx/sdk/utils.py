@@ -358,8 +358,10 @@ def add_cn_samples(target, source, samples):
         Target archive file with the semantic type CovFrame[CopyNumber].
     source : str
         Source archive file with the semantic type CovFrame[CopyNumber].
-    samples : str
-        File containing one sample per line.
+    samples : str or list, optional
+        Specify which samples should be included for analysis by providing a
+        text file (.txt, .tsv, .csv, or .list) containing one sample per
+        line. Alternatively, you can provide a list of samples.
 
     Returns
     -------
@@ -369,7 +371,7 @@ def add_cn_samples(target, source, samples):
     """
     target = Archive.from_file(target)
     source = Archive.from_file(source)
-    samples = common.convert_file2list(samples)
+    samples = common.parse_list_or_file(samples)
     df = source.data.df[samples]
     target.data.df = pd.concat([target.data.df, df], axis=1)
     return target

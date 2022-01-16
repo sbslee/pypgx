@@ -9,6 +9,7 @@ Changelog
 * Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
 * Update :meth:`api.core.predict_phenotype` method to not raise an error when a given star allele does not exist in the allele table. From now on, the method will output a warning about it but still produce an ``Indeterminate`` call.
 * Fix minor bug with ``--samples`` argument in commands :command:`plot-bam-copy-number`, :command:`plot-bam-read-depth`, :command:`plot-vcf-allele-fraction`, and :command:`plot-vcf-read-depth`.
+* Update :meth:`sdk.utils.add_cn_samples` method to accept a list of samples in addition to a file.
 
 0.11.0 (2022-01-01)
 -------------------
