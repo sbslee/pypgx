@@ -109,7 +109,7 @@ class CYP2A6Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV in ['Normal', 'AssumeNormal']:
+        if r.CNV in ['Normal', 'AssumeNormal', 'PseudogeneDuplication']:
             result = [a1, a2]
         elif r.CNV == 'Deletion1Hom':
             result = ['*4', '*4']
@@ -119,7 +119,7 @@ class CYP2A6Genotyper:
             result = [s1, '*12']
         elif r.CNV == 'Hybrid3':
             result = [s1, '*34']
-        elif r.CNV == 'Duplication':
+        elif r.CNV in ['Duplication1', 'Duplication2', 'Duplication3']:
             result = _call_duplication(r)
         else:
             result = ['Indeterminate']
