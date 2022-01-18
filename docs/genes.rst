@@ -1106,7 +1106,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19920
      -
    * - \*1x2
-     - Duplication
+     - Duplication1
      - \*1/\*1x2
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-4.png>`
@@ -1116,7 +1116,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
    * - \*7x2
-     - Duplication
+     - Duplication1
      - \*1/\*7x2
      - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-2.png>`
