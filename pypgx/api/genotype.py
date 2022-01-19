@@ -271,7 +271,7 @@ class CYP2E1Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'Duplication1':
+        elif r.CNV in ['Duplication1', 'Duplication2']:
             result = _call_duplication(r)
         elif r.CNV == 'Multiplication':
             result = _call_multiplication(r)

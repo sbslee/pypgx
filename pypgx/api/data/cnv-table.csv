@@ -27,8 +27,9 @@ CYP2D6,Tandem2C,9
 CYP2D6,Tandem3,10
 CYP2E1,Normal,0
 CYP2E1,Duplication1,1
-CYP2E1,PartialDuplication,2
-CYP2E1,Multiplication,3
+CYP2E1,Duplication2,2
+CYP2E1,PartialDuplication,3
+CYP2E1,Multiplication,4
 CYP4F2,Normal,0
 CYP4F2,DeletionHet,1
 G6PD,Female,0
