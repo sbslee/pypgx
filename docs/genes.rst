@@ -1126,7 +1126,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19095
      -
    * - \*1x2
-     - Duplication1
+     - Duplication2
      - \*1x2/\*7
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-6.png>`
