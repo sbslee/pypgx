@@ -170,7 +170,9 @@ class CYP2D6Genotyper:
             result = [s1, '*5']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
-        elif r.CNV == 'Tandem1':
+        elif r.CNV == 'Multiplication':
+            result = _call_multiplication(r)
+        elif r.CNV == 'Tandem1A':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
@@ -179,6 +181,17 @@ class CYP2D6Genotyper:
                 result = [a2, '*68+*4']
             elif not h1 and h2:
                 result = [a1, '*68+*4']
+            else:
+                result = ['Indeterminate']
+        elif r.CNV == 'Tandem1B':
+            h1 = '*4' in r.Haplotype1
+            h2 = '*4' in r.Haplotype2
+            if h1 and h2:
+                result = ['*68+*4', '*68+*4']
+            elif h1 and not h2:
+                result = [a2, '*68x2+*4']
+            elif not h1 and h2:
+                result = [a1, '*68x2+*4']
             else:
                 result = ['Indeterminate']
         elif r.CNV == 'Tandem2A':
@@ -225,12 +238,12 @@ class CYP2D6Genotyper:
                 result = [a1, '*13+*1']
             else:
                 result = ['Indeterminate']
-        elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
+        elif 'DeletionHet' in r.CNV and 'Tandem1A' in r.CNV:
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']
             else:
                 result = ['Indeterminate']
-        elif 'Duplication' in r.CNV and 'Tandem1' in r.CNV:
+        elif 'Duplication' in r.CNV and 'Tandem1A' in r.CNV:
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
