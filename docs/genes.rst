@@ -1000,6 +1000,26 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
      -
+   * - \*2x2, \*68+\*4
+     - Duplication,Tandem1
+     - \*2x2/\*68+\*4
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-10.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA21781
+     -
+   * - \*5, \*68+\*4
+     - DeletionHet,Tandem1
+     - \*5/\*68+\*4
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-11.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-11.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - HG01190
+     -
 
 Phenotype summary for CYP2D6
 ----------------------------
