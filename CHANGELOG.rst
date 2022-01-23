@@ -19,7 +19,7 @@ Changelog
 * Update :command:`plot-cn-af` command to check input files more rigorously.
 * Improve CNV caller for CYP2A6, CYP2D6, and SLC22A2.
 * Add new method :meth:`sdk.utils.add_cn_samples` method.
-* Update :command:`compare-genotypes` command to output CNV comparison results as well.
+* Update :command:`compare-genotypes` command to output CNV comparisonw results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
 * Add index files for 1KGP reference haplotype panels.
 * Add new argument ``--panel`` to :command:`run-chip-pipeline` command.
