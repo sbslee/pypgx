@@ -386,10 +386,18 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 
    $ pypgx call-phenotypes genotypes.zip phenotypes.zip
 
-Pipeline
-========
+Pipelines
+=========
+
+PyPGx provides two pipelines for performing PGx genotype analysis: NGS pipeline and chip pipeline.
+
+**NGS pipeline**
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-ngs-pipeline.png
+
+**Chip pipeline**
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-chip-pipeline.png
 
 Getting help
 ============

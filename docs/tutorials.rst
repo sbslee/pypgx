@@ -45,7 +45,7 @@ those from:
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
 
-Please visit the :ref:`readme:Pipeline` page for details on how to generate
+Please visit the :ref:`readme:Pipelines` page for details on how to generate
 the input files.
 
 Let's look at the metadata for some of these files:
