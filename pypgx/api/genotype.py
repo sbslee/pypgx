@@ -495,13 +495,13 @@ class UGT2B15Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'PartialDeletion':
-            if a1 == a2:
-                result = [a1, '*S1']
-            else:
-                result = ['Indeterminate']
+        elif r.CNV == 'PartialDeletion1':
+            result = [a1, '*S1']
+        elif r.CNV == 'PartialDeletion2':
+            result = [a1, '*S2']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
