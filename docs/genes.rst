@@ -1557,6 +1557,26 @@ Below is comprehensive summary of SV described from real NGS studies:
     -
     -
     -
+  * -
+    - UpstreamDeletionHet
+    - \*A/\*B
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19005
+    -
+  * - \*0
+    - DeletionHet,UpstreamDeletionHet
+    - \*0/\*A
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA06984
+    -
 
 GSTT1
 =====

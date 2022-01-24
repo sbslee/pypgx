@@ -346,17 +346,16 @@ class GSTM1Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'DeletionHet':
-            if a1 == a2:
-                result = [a1, '*0']
-            else:
-                result = ['Indeterminate']
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Normal', 'AssumeNormal', 'UpstreamDeletionHet']:
+            result = [a1, a2]
+        elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet']:
+            result = [s1, '*0']
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
-        elif r.CNV in ['Normal', 'AssumeNormal']:
-            result = [a1, a2]
+
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
