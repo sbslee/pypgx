@@ -11,6 +11,7 @@ Changelog
 * Fix minor bug with ``--samples`` argument in commands :command:`plot-bam-copy-number`, :command:`plot-bam-read-depth`, :command:`plot-vcf-allele-fraction`, and :command:`plot-vcf-read-depth`.
 * Update :meth:`sdk.utils.add_cn_samples` method to accept a list of samples in addition to a file.
 * Add new argument ``--fontsize`` to :command:`plot-bam-read-depth` command.
+* Fix minor bug in :command:`plot-bam-read-depth` command.
 
 0.11.0 (2022-01-01)
 -------------------
