@@ -522,6 +522,8 @@ class UGT2B17Genotyper:
             result = ['*2', '*2']
         elif r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*1', '*1']
+        elif r.CNV == 'PartialDeletionHet':
+            result = ['*2', '*S1']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
