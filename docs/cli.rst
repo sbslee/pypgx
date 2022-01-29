@@ -384,7 +384,7 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] [--samples PATH [PATH ...]] [--exclude]
+   usage: pypgx import-read-depth [-h] [--samples TEXT [TEXT ...]] [--exclude]
                                   gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
@@ -397,7 +397,7 @@ import-read-depth
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --samples PATH [PATH ...]
+     --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
                            containing one sample per line. Alternatively, you can 
@@ -411,7 +411,7 @@ import-variants
 
    $ pypgx import-variants -h
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
-                                [--samples PATH [PATH ...]] [--exclude]
+                                [--samples TEXT [TEXT ...]] [--exclude]
                                 gene vcf imported-variants
    
    Import variant (SNV/indel) data for the target gene.
@@ -434,7 +434,7 @@ import-variants
                            'GRCh37', 'GRCh38').
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted', 'Chip').
-     --samples PATH [PATH ...]
+     --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
                            containing one sample per line. Alternatively, you can 
@@ -716,8 +716,8 @@ run-chip-pipeline
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
                            'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP 
-                           panel is used.
+                           (compressed or uncompressed). By default, the 1KGP panel 
+                           in the ~/pypgx-data directory will be used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
@@ -778,8 +778,8 @@ run-ngs-pipeline
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP 
-                           panel is used.
+                           (compressed or uncompressed). By default, the 1KGP panel 
+                           in the ~/pypgx-data directory will be used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 

@@ -31,8 +31,9 @@ def run_chip_pipeline(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     panel : str, optional
-        VCF file corresponding to a reference haplotype panel (zipped or
-        unzipped). By default, the 1KGP panel is used.
+        VCF file corresponding to a reference haplotype panel (compressed or
+        uncompressed). By default, the 1KGP panel in the ``~/pypgx-data``
+        directory will be used.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
     force : bool, default : False
@@ -114,8 +115,9 @@ def run_ngs_pipeline(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     panel : str, optional
-        VCF file corresponding to a reference haplotype panel (zipped or
-        unzipped). By default, the 1KGP panel is used.
+        VCF file corresponding to a reference haplotype panel (compressed or
+        uncompressed). By default, the 1KGP panel in the ``~/pypgx-data``
+        directory will be used.
     force : bool, default : False
         Overwrite output directory if it already exists.
     samples : str or list, optional

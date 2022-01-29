@@ -93,8 +93,8 @@ def create_parser(subparsers):
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
-             '(compressed or uncompressed). By default, the 1KGP \n'
-             'panel is used.'
+             '(compressed or uncompressed). By default, the 1KGP panel \n'
+             'in the ~/pypgx-data directory will be used.'
     )
     parser.add_argument(
         '--force',
