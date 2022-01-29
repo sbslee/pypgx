@@ -51,7 +51,7 @@ def create_parser(subparsers):
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
              '(compressed or uncompressed). By default, the 1KGP panel \n'
-             'in the ~/pypgx-data directory will be used.'
+             'in the ~/pypgx-bundle directory will be used.'
     )
     parser.add_argument(
         '--impute',

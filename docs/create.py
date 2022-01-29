@@ -185,20 +185,21 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
-Data download
-=============
+Resource bundle
+===============
 
 Starting with the 0.12.0 version, reference haplotype panel files and
-structural variant classifier files in PyPGx are moved to the  ``pypgx-data``
-`repository <https://github.com/sbslee/pypgx-data>`__ (only those files were
-moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are
-intact). Therefore, the user must clone the ``pypgx-data`` repository to
-their home directory in order for PyPGx to correctly access the moved files:
+structural variant classifier files in PyPGx are moved to the
+``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__
+(only those files are moved; other files such as ``allele-table.csv`` and
+``variant-table.csv`` are intact). Therefore, the user must clone the
+``pypgx-bundle`` repository to their home directory in order for PyPGx to
+correctly access the moved files:
 
 .. code-block:: text
 
    $ cd ~
-   $ git clone https://github.com/sbslee/pypgx-data
+   $ git clone https://github.com/sbslee/pypgx-bundle --depth 1
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the

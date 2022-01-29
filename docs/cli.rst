@@ -352,7 +352,7 @@ estimate-phase-beagle
      -h, --help         Show this help message and exit.
      --panel PATH       VCF file corresponding to a reference haplotype panel 
                         (compressed or uncompressed). By default, the 1KGP panel 
-                        in the ~/pypgx-data directory will be used.
+                        in the ~/pypgx-bundle directory will be used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -628,7 +628,7 @@ predict-cnv
    Optional arguments:
      -h, --help         Show this help message and exit.
      --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By 
-                        default, a pre-trained CNV caller in the ~/pypgx-data 
+                        default, a pre-trained CNV caller in the ~/pypgx-bundle 
                         directory will be used.
 
 prepare-depth-of-coverage
@@ -717,7 +717,7 @@ run-chip-pipeline
                            'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
                            (compressed or uncompressed). By default, the 1KGP panel 
-                           in the ~/pypgx-data directory will be used.
+                           in the ~/pypgx-bundle directory will be used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
@@ -779,7 +779,7 @@ run-ngs-pipeline
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
                            (compressed or uncompressed). By default, the 1KGP panel 
-                           in the ~/pypgx-data directory will be used.
+                           in the ~/pypgx-bundle directory will be used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
