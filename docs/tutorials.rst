@@ -1,6 +1,15 @@
 Tutorials
 *********
 
+Introduction
+============
+
+This page provides useful tutorials for running PyPGx. Throughout the page,
+it's assumed that you have installed the latest version of PyPGx and also
+downloaded the appropriate resource bundle (i.e. matching version). For more
+details, please see :ref:`readme:Installation` and :ref:`readme:Resource
+bundle`.
+
 GeT-RM WGS tutorial
 ===================
 

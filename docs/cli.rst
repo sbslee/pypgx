@@ -794,7 +794,8 @@ run-ngs-pipeline
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
      --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By 
-                           default, a pre-trained CNV caller will be used.
+                           default, a pre-trained CNV caller in the ~/pypgx-bundle 
+                           directory will be used.
    
    [Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:
      $ pypgx run-ngs-pipeline \

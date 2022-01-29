@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.12.0 (in development)
------------------------
+0.12.0 (2022-01-29)
+-------------------
 
 * Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SULT1A1, UGT2B15, and UGT2B17.
@@ -12,7 +12,7 @@ Changelog
 * Update :meth:`sdk.utils.add_cn_samples` method to accept a list of samples in addition to a file.
 * Add new argument ``--fontsize`` to :command:`plot-bam-read-depth` command.
 * Fix minor bug in :command:`plot-bam-read-depth` command.
-* Moved 1KGP reference haplotype panels and CNV callers to the ``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__ (only those files were moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are intact). From now on, the user needs to clone the ``pypgx-bundle`` repository to their home directory in order for PyPGx to correctly access the moved files. This is undoubtedly annoying, but absolutely necessary for portability reasons because PyPGx has been growing exponentially in file size due to the increasing number of genes supported and their CNV complexity, to the point where it now exceeds upload size limit for PyPI (100 Mb). After removal of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+* Moved 1KGP reference haplotype panels and CNV callers to the ``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__ (only those files were moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are intact). From now on, the user needs to clone the ``pypgx-bundle`` repository with matching PyPGx version to their home directory in order for PyPGx to correctly access the moved files. This is undoubtedly annoying, but absolutely necessary for portability reasons because PyPGx has been growing exponentially in file size due to the increasing number of genes supported and their CNV complexity, to the point where it now exceeds upload size limit for PyPI (100 Mb). After removal of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
 
 0.11.0 (2022-01-01)
 -------------------

@@ -1021,7 +1021,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
    * - \*2x2, \*68+\*4
-     - Duplication,Tandem1
+     - Duplication,Tandem1A
      - \*2x2/\*68+\*4
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
@@ -1031,7 +1031,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA21781
      -
    * - \*5, \*68+\*4
-     - DeletionHet,Tandem1
+     - DeletionHet,Tandem1A
      - \*5/\*68+\*4
      -
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-11.png>`

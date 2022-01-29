@@ -134,7 +134,8 @@ def run_ngs_pipeline(
         Do not plot allele fraction profile.
     cnv_caller : str or pypgx.Archive, optional
         Archive file or object with the semantic type Model[CNV]. By default,
-        a pre-trained CNV caller will be used.
+        a pre-trained CNV caller in the ``~/pypgx-bundle`` directory will be
+        used.
     """
     if not core.is_target_gene(gene):
         raise core.NotTargetGeneError(gene)

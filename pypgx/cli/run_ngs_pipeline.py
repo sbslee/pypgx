@@ -135,7 +135,8 @@ def create_parser(subparsers):
         '--cnv-caller',
         metavar='PATH',
         help='Archive file with the semantic type Model[CNV]. By \n'
-             'default, a pre-trained CNV caller will be used.'
+             'default, a pre-trained CNV caller in the ~/pypgx-bundle \n'
+             'directory will be used.'
     )
 
 def main(args):
