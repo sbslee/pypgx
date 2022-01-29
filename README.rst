@@ -161,9 +161,12 @@ dependencies installed.
 Data download
 =============
 
-Starting with the 0.12.0 version, the user must download the ``pypgx-data``
-repository in their home directory in order for PyPGx to correctly access
-required files (e.g. reference haplotype panels):
+Starting with the 0.12.0 version, reference haplotype panel files and
+structural variant classifier files in PyPGx are moved to the  ``pypgx-data``
+`repository <https://github.com/sbslee/pypgx-data>`__ (only those files were
+moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are
+intact). Therefore, the user must clone the ``pypgx-data`` repository to
+their home directory in order for PyPGx to correctly access the moved files:
 
 .. code-block:: text
 
@@ -172,9 +175,9 @@ required files (e.g. reference haplotype panels):
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the
-increasing number of genes supported and their CNV complexity, to the point
-where it now exceeds upload size limit for PyPI (100 Mb). After removal of
-those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+increasing number of genes supported and their variation complexity, to the
+point where it now exceeds upload size limit for PyPI (100 Mb). After removal
+of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
 
 Structural variation detection
 ==============================
