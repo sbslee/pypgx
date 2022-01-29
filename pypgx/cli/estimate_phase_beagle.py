@@ -8,9 +8,9 @@ import pysam
 description = f"""
 Estimate haplotype phase of observed variants with the Beagle program.
 
-Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
-automatically added or removed as necessary to match the reference VCF’s
-contig names.
+The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF will
+be automatically added or removed as necessary to match that of the reference
+VCF.
 """
 
 def create_parser(subparsers):
@@ -18,8 +18,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Estimate haplotype phase of observed variants with the '
-             'Beagle program.',
+        help='Estimate haplotype phase of observed variants with \n'
+             'the Beagle program.',
     )
     parser.add_argument(
         'imported_variants',
@@ -36,7 +36,7 @@ def create_parser(subparsers):
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
              '(compressed or uncompressed). By default, the 1KGP panel \n'
-             'is used.'
+             'in the ~/pypgx-data directory will be used.'
     )
     parser.add_argument(
         '--impute',

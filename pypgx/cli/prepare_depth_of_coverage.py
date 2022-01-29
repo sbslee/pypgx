@@ -28,7 +28,8 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help='Prepare a depth of coverage file for all target genes with SV.',
+        help='Prepare a depth of coverage file for all target \n'
+             'genes with SV.',
     )
     parser.add_argument(
         'depth_of_coverage',

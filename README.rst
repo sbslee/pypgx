@@ -158,6 +158,24 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+Data download
+=============
+
+Starting with the 0.12.0 version, the user must download the ``pypgx-data``
+repository in their home directory in order for PyPGx to correctly access
+required files (e.g. reference haplotype panels):
+
+.. code-block:: text
+
+   $ cd ~
+   $ git clone https://github.com/sbslee/pypgx-data
+
+This is undoubtedly annoying, but absolutely necessary for portability
+reasons because PyPGx has been growing exponentially in file size due to the
+increasing number of genes supported and their CNV complexity, to the point
+where it now exceeds upload size limit for PyPI (100 Mb). After removal of
+those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+
 Structural variation detection
 ==============================
 
@@ -420,16 +438,20 @@ For getting help on the CLI:
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
-                           Compute summary statistics for the control gene from BAM files.
+                           Compute summary statistics for the control gene from 
+                           BAM files.
        compute-copy-number
-                           Compute copy number from read depth for the target gene.
+                           Compute copy number from read depth for the target 
+                           gene.
        compute-target-depth
                            Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
-       create-regions-bed  Create a BED file which contains all regions used by PyPGx.
+       create-regions-bed  Create a BED file which contains all regions used by 
+                           PyPGx.
        estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with the Beagle program.
+                           Estimate haplotype phase of observed variants with 
+                           the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
        import-variants     Import variant (SNV/indel) data for the target gene
@@ -437,15 +459,19 @@ For getting help on the CLI:
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
-       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
+       plot-cn-af          Plot both copy number profile and allele fraction 
+                           profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
-       predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for the target gene based on copy number data.
+       predict-alleles     Predict candidate star alleles based on observed 
+                           variants.
+       predict-cnv         Predict CNV for the target gene based on copy number 
+                           data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for all target genes with SV.
+                           Prepare a depth of coverage file for all target 
+                           genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
        run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.

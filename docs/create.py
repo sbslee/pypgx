@@ -185,6 +185,24 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+Data download
+=============
+
+Starting with the 0.12.0 version, the user must download the ``pypgx-data``
+repository in their home directory in order for PyPGx to correctly access
+required files (e.g. reference haplotype panels):
+
+.. code-block:: text
+
+   $ cd ~
+   $ git clone https://github.com/sbslee/pypgx-data
+
+This is undoubtedly annoying, but absolutely necessary for portability
+reasons because PyPGx has been growing exponentially in file size due to the
+increasing number of genes supported and their CNV complexity, to the point
+where it now exceeds upload size limit for PyPI (100 Mb). After removal of
+those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+
 Structural variation detection
 ==============================
 

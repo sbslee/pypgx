@@ -30,7 +30,7 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help='Compute summary statistics for the control gene from '
+        help='Compute summary statistics for the control gene from \n'
              'BAM files.',
     )
     parser.add_argument(
