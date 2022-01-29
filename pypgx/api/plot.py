@@ -129,6 +129,7 @@ def plot_bam_copy_number(
     if samples is None:
         samples = copy_number.data.samples
     else:
+        samples = common.parse_list_or_file(samples)
         copy_number = utils.filter_samples(copy_number, samples=samples)
 
     if fitted:
@@ -187,16 +188,24 @@ def plot_bam_read_depth(
 
     if samples is None:
         samples = read_depth.data.samples
+    else:
+        samples = common.parse_list_or_file(samples)
+
+    gene = read_depth.metadata['Gene']
+    assembly = read_depth.metadata['Assembly']
+    region = core.get_region(gene, assembly=assembly)
+    chrom, start, end = common.parse_region(region)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
             fig, [ax1, ax2] = plt.subplots(2, 1, figsize=(18, 12), gridspec_kw={'height_ratios': [1, 10]})
 
-            _plot_exons(read_depth.metadata['Gene'], read_depth.metadata['Assembly'], ax1)
+            _plot_exons(gene, assembly, ax1)
 
             read_depth.data.plot_region(sample, ax=ax2, legend=False)
 
+            ax2.set_xlim([start, end])
             ax2.set_ylim([ymin, ymax])
             ax2.set_xlabel('Coordinate (Mb)', fontsize=fontsize)
             ax2.set_ylabel('Read depth', fontsize=fontsize)
@@ -319,6 +328,8 @@ def plot_vcf_allele_fraction(
 
     if samples is None:
         samples = imported_variants.data.samples
+    else:
+        samples = common.parse_list_or_file(samples)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
@@ -371,6 +382,8 @@ def plot_vcf_read_depth(
 
     if samples is None:
         samples = cf.samples
+    else:
+        samples = common.parse_list_or_file(samples)
 
     with sns.axes_style('darkgrid'):
         for sample in samples:

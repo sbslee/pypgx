@@ -108,20 +108,18 @@ class CYP2A6Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV in ['Normal', 'AssumeNormal']:
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Normal', 'AssumeNormal', 'PseudogeneDuplication']:
             result = [a1, a2]
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV == 'Deletion1Hom':
             result = ['*4', '*4']
-        elif r.CNV == 'DeletionHet':
-            if a1 == a2:
-                result = [a1, '*4']
-            elif a1 == '*1':
-                result = [a2, '*4']
-            elif a2 == '*1':
-                result = [a1, '*4']
-            else:
-                result = ['Indeterminate']
-        elif r.CNV == 'Duplication':
+        elif r.CNV in ['Deletion1Het', 'Deletion2Het', 'Deletion3Het']:
+            result = [s1, '*4']
+        elif r.CNV == 'Hybrid2':
+            result = [s1, '*12']
+        elif r.CNV == 'Hybrid3':
+            result = [s1, '*34']
+        elif r.CNV in ['Duplication1', 'Duplication2', 'Duplication3']:
             result = _call_duplication(r)
         else:
             result = ['Indeterminate']
@@ -145,6 +143,8 @@ class CYP2B6Genotyper:
             result = [a1, a2]
         elif r.CNV == 'Hybrid':
             result = [p, '*29']
+        elif r.CNV == 'Duplication':
+            result = _call_duplication(r)
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -170,7 +170,9 @@ class CYP2D6Genotyper:
             result = [s1, '*5']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
-        elif r.CNV == 'Tandem1':
+        elif r.CNV == 'Multiplication':
+            result = _call_multiplication(r)
+        elif r.CNV == 'Tandem1A':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
@@ -179,6 +181,17 @@ class CYP2D6Genotyper:
                 result = [a2, '*68+*4']
             elif not h1 and h2:
                 result = [a1, '*68+*4']
+            else:
+                result = ['Indeterminate']
+        elif r.CNV == 'Tandem1B':
+            h1 = '*4' in r.Haplotype1
+            h2 = '*4' in r.Haplotype2
+            if h1 and h2:
+                result = ['*68+*4', '*68+*4']
+            elif h1 and not h2:
+                result = [a2, '*68x2+*4']
+            elif not h1 and h2:
+                result = [a1, '*68x2+*4']
             else:
                 result = ['Indeterminate']
         elif r.CNV == 'Tandem2A':
@@ -225,12 +238,12 @@ class CYP2D6Genotyper:
                 result = [a1, '*13+*1']
             else:
                 result = ['Indeterminate']
-        elif 'DeletionHet' in r.CNV and 'Tandem1' in r.CNV:
+        elif 'DeletionHet' in r.CNV and 'Tandem1A' in r.CNV:
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']
             else:
                 result = ['Indeterminate']
-        elif 'Duplication' in r.CNV and 'Tandem1' in r.CNV:
+        elif 'Duplication' in r.CNV and 'Tandem1A' in r.CNV:
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
@@ -271,7 +284,7 @@ class CYP2E1Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'Duplication':
+        elif r.CNV in ['Duplication1', 'Duplication2']:
             result = _call_duplication(r)
         elif r.CNV == 'Multiplication':
             result = _call_multiplication(r)
@@ -305,6 +318,27 @@ class CYP4F2Genotyper:
         self.assembly = assembly
         self.results = df.apply(self.one_row, axis=1)
 
+class G6PDGenotyper:
+    """
+    Genotyper for G6PD.
+    """
+
+    def one_row(self, r):
+        a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Female', 'AssumeNormal']:
+            result = [a1, a2]
+        elif r.CNV == 'Male':
+            result = [s1, '*MALE']
+        else:
+            result = ['Indeterminate']
+        return '/'.join(core.sort_alleles(result, by='name'))
+
+    def __init__(self, df, assembly):
+        self.gene = 'G6PD'
+        self.assembly = assembly
+        self.results = df.apply(self.one_row, axis=1)
+
 class GSTM1Genotyper:
     """
     Genotyper for GSTM1.
@@ -312,17 +346,16 @@ class GSTM1Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
-        if r.CNV == 'DeletionHet':
-            if a1 == a2:
-                result = [a1, '*0']
-            else:
-                result = ['Indeterminate']
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
+        if r.CNV in ['Normal', 'AssumeNormal', 'UpstreamDeletionHet']:
+            result = [a1, a2]
+        elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet']:
+            result = [s1, '*0']
         elif r.CNV == 'DeletionHom':
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
-        elif r.CNV in ['Normal', 'AssumeNormal']:
-            result = [a1, a2]
+
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -461,13 +494,13 @@ class UGT2B15Genotyper:
 
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+        s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'PartialDeletion':
-            if a1 == a2:
-                result = [a1, '*S1']
-            else:
-                result = ['Indeterminate']
+        elif r.CNV == 'PartialDeletion1':
+            result = [a1, '*S1']
+        elif r.CNV == 'PartialDeletion2':
+            result = [a1, '*S2']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -489,6 +522,8 @@ class UGT2B17Genotyper:
             result = ['*2', '*2']
         elif r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*1', '*1']
+        elif r.CNV == 'PartialDeletionHet':
+            result = ['*2', '*S1']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -520,6 +555,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
         'CYP2D6': CYP2D6Genotyper,
         'CYP2E1': CYP2E1Genotyper,
         'CYP4F2': CYP4F2Genotyper,
+        'G6PD': G6PDGenotyper,
         'GSTM1': GSTM1Genotyper,
         'GSTT1': GSTT1Genotyper,
         'SLC22A2': SLC22A2Genotyper,

@@ -1,6 +1,11 @@
 Glossary
 ********
 
+Introduction
+============
+
+This page describes glossaries for PyPGx.
+
 Clinical Pharmacogenetics Implementation Consortium (CPIC)
 ==========================================================
 

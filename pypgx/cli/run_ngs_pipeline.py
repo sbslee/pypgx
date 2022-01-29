@@ -58,19 +58,20 @@ def create_parser(subparsers):
         '--variants',
         metavar='PATH',
         help='Input VCF file must be already BGZF compressed (.gz) \n'
-             'and indexed (.tbi) to allow random access. Statistical \n'
-             'haplotype phasing will be skipped if input VCF is \n'
-             'already fully phased.'
+             'and indexed (.tbi) to allow random access. \n'
+             'Statistical haplotype phasing will be skipped if \n'
+             'input VCF is already fully phased.'
     )
     parser.add_argument(
         '--depth-of-coverage',
         metavar='PATH',
-        help='Depth of coverage file (compressed or uncompressed).'
+        help='Archive file with the semantic type \n'
+             'CovFrame[DepthOfCoverage].'
     )
     parser.add_argument(
         '--control-statistics',
         metavar='PATH',
-        help='Archive file with the semandtic type \n'
+        help='Archive file with the semantic type \n'
              'SampleTable[Statistcs].'
     )
     parser.add_argument(
@@ -92,8 +93,8 @@ def create_parser(subparsers):
         '--panel',
         metavar='PATH',
         help='VCF file corresponding to a reference haplotype panel \n'
-             '(compressed or uncompressed). By default, the 1KGP \n'
-             'panel is used.'
+             '(compressed or uncompressed). By default, the 1KGP panel \n'
+             'in the ~/pypgx-bundle directory will be used.'
     )
     parser.add_argument(
         '--force',
@@ -106,8 +107,8 @@ def create_parser(subparsers):
         nargs='+',
         help='Specify which samples should be included for analysis \n'
              'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you can \n'
-             'provide a list of samples.'
+             'containing one sample per line. Alternatively, you \n'
+             'can provide a list of samples.'
     )
     parser.add_argument(
         '--exclude',
@@ -130,6 +131,13 @@ def create_parser(subparsers):
         action='store_true',
         help='Do not plot allele fraction profile.'
     )
+    parser.add_argument(
+        '--cnv-caller',
+        metavar='PATH',
+        help='Archive file with the semantic type Model[CNV]. By \n'
+             'default, a pre-trained CNV caller in the ~/pypgx-bundle \n'
+             'directory will be used.'
+    )
 
 def main(args):
     pipeline.run_ngs_pipeline(
@@ -140,5 +148,5 @@ def main(args):
         exclude=args.exclude, samples_without_sv=args.samples_without_sv,
         do_not_plot_copy_number=args.do_not_plot_copy_number,
         do_not_plot_allele_fraction=args.do_not_plot_allele_fraction,
-        platform=args.platform
+        platform=args.platform, cnv_caller=args.cnv_caller
     )

@@ -1,15 +1,28 @@
 Changelog
 *********
 
+0.12.0 (2022-01-29)
+-------------------
+
+* Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SULT1A1, UGT2B15, and UGT2B17.
+* Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
+* Update :meth:`api.core.predict_phenotype` method to not raise an error when a given star allele does not exist in the allele table. From now on, the method will output a warning about it but still produce an ``Indeterminate`` call.
+* Fix minor bug with ``--samples`` argument in commands :command:`plot-bam-copy-number`, :command:`plot-bam-read-depth`, :command:`plot-vcf-allele-fraction`, and :command:`plot-vcf-read-depth`.
+* Update :meth:`sdk.utils.add_cn_samples` method to accept a list of samples in addition to a file.
+* Add new argument ``--fontsize`` to :command:`plot-bam-read-depth` command.
+* Fix minor bug in :command:`plot-bam-read-depth` command.
+* Moved 1KGP reference haplotype panels and CNV callers to the ``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__ (only those files were moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are intact). From now on, the user needs to clone the ``pypgx-bundle`` repository with matching PyPGx version to their home directory in order for PyPGx to correctly access the moved files. This is undoubtedly annoying, but absolutely necessary for portability reasons because PyPGx has been growing exponentially in file size due to the increasing number of genes supported and their CNV complexity, to the point where it now exceeds upload size limit for PyPI (100 Mb). After removal of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+
 0.11.0 (2022-01-01)
 -------------------
 
 * Add CNV caller for CYP4F2 and SULT1A1.
 * Fix minor bug in :command:`compute-copy-number` command.
 * Update :command:`plot-cn-af` command to check input files more rigorously.
-* Improve CNV caller for CYP2A6, CYP2D6, SLC22A2, and SULT1A1.
+* Improve CNV caller for CYP2A6, CYP2D6, and SLC22A2.
 * Add new method :meth:`sdk.utils.add_cn_samples` method.
-* Update :command:`compare-genotypes` command to output CNV comparison results as well.
+* Update :command:`compare-genotypes` command to output CNV comparisonw results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
 * Add index files for 1KGP reference haplotype panels.
 * Add new argument ``--panel`` to :command:`run-chip-pipeline` command.

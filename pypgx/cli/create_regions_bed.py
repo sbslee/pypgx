@@ -14,7 +14,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Create a BED file which contains all regions used by PyPGx.',
+        help='Create a BED file which contains all regions used by \n'
+             'PyPGx.',
     )
     parser.add_argument(
         '--assembly',

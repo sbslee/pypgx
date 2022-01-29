@@ -16,10 +16,9 @@ from .. import sdk
 import numpy as np
 import pandas as pd
 from fuc import pybam, pyvcf, pycov, common, pybed
-from sklearn import model_selection, metrics
+from sklearn import metrics
 from sklearn.multiclass import OneVsRestClassifier
 from sklearn.svm import SVC
-from sklearn.impute import SimpleImputer
 from scipy.ndimage import median_filter
 
 ###################
@@ -247,8 +246,11 @@ def compute_control_statistics(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        By default, the input data is assumed to be WGS. If it targeted
+        By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
+        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
+        will be automatically added or removed as necessary to match the BAM
+        contig names.
 
     Returns
     -------
@@ -669,17 +671,18 @@ def estimate_phase_beagle(
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
-    Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
-    automatically added or removed as necessary to match the reference VCF’s
-    contig names.
+    The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF
+    will be automatically added or removed as necessary to match that of the
+    reference VCF.
 
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
         Archive file or object with the semantic type VcfFrame[Imported].
     panel : str, optional
-        VCF file corresponding to a reference haplotype panel (zipped or
-        unzipped). By default, the 1KGP panel is used.
+        VCF file corresponding to a reference haplotype panel (compressed or
+        uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
+        directory will be used.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
 
@@ -703,7 +706,8 @@ def estimate_phase_beagle(
     metadata['Program'] = 'Beagle'
 
     if panel is None:
-        panel = f'{core.PROGRAM_PATH}/pypgx/api/1kgp/{assembly}/{gene}.vcf.gz'
+        home = os.path.expanduser('~')
+        panel = f'{home}/pypgx-bundle/1kgp/{assembly}/{gene}.vcf.gz'
 
     has_chr_prefix = pyvcf.has_chr_prefix(panel)
 
@@ -1001,8 +1005,8 @@ def predict_cnv(copy_number, cnv_caller=None):
     """
     Predict CNV for the target gene based on copy number data.
 
-    Genomic positions that are missing copy number, because for example the
-    input data is targeted sequencing, will be imputed with forward filling.
+    Genomic positions that are missing copy number because, for example, the
+    input data is targeted sequencing will be imputed with forward filling.
 
     Parameters
     ----------
@@ -1010,7 +1014,8 @@ def predict_cnv(copy_number, cnv_caller=None):
         Archive file or object with the semantic type CovFrame[CopyNumber].
     cnv_caller : str or pypgx.Archive, optional
         Archive file or object with the semantic type Model[CNV]. By default,
-        a pre-trained CNV caller will be used.
+        a pre-trained CNV caller in the ``~/pypgx-bundle`` directory will be
+        used.
 
     Returns
     -------
@@ -1024,7 +1029,8 @@ def predict_cnv(copy_number, cnv_caller=None):
 
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
-    model_file = f'{core.PROGRAM_PATH}/pypgx/api/cnv/{assembly}/{gene}.zip'
+    home = os.path.expanduser('~')
+    model_file = f'{home}/pypgx-bundle/cnv/{assembly}/{gene}.zip'
 
     if cnv_caller is None:
         cnv_caller = sdk.Archive.from_file(model_file)
@@ -1055,10 +1061,6 @@ def prepare_depth_of_coverage(
     """
     Prepare a depth of coverage file for all target genes with SV.
 
-    By default, the input data is assumed to be WGS. If it's targeted
-    sequencing, you must provide a BED file with ``bed`` to indicate
-    probed regions.
-
     Parameters
     ----------
     bam : list, optional
@@ -1068,7 +1070,11 @@ def prepare_depth_of_coverage(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
-        BED file.
+        By default, the input data is assumed to be WGS. If it's targeted
+        sequencing, you must provide a BED file to indicate probed regions.
+        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
+        will be automatically added or removed as necessary to match the BAM
+        contig names.
 
     Returns
     -------

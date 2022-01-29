@@ -5,6 +5,7 @@ The core submodule is the main suite of tools for PGx research.
 import pkgutil
 import pathlib
 from io import BytesIO
+import warnings
 
 import numpy as np
 import pandas as pd
@@ -1055,9 +1056,9 @@ def predict_phenotype(gene, a, b):
         df = load_diplotype_table()
         df = df[df.Gene == gene]
         if not is_legit_allele(gene, a):
-            raise AlleleNotFoundError(gene, a)
+            warnings.warn(f"{a} not found in the allele table for {gene}")
         if not is_legit_allele(gene, b):
-            raise AlleleNotFoundError(gene, b)
+            warnings.warn(f"{b} not found in the allele table for {gene}")
         l = [f'{a}/{b}', f'{b}/{a}']
         i = df.Diplotype.isin(l)
         try:
@@ -1176,11 +1177,12 @@ def sort_alleles(
     variants (e.g. three SNVs > one SNV), 3. number of core variants that
     impact protein coding (e.g. two misssense variants > one missense variant
     plus one intron variant), and 4. reference allele status (e.g.
-    non-reference allele with one SNV > reference allele with one SNV).
-    Note that the priority of allele function decreases in the following
-    order: 'No Function', 'Decreased Function', 'Possible Decreased
-    Function', 'Increased Function', 'Possible Increased Function',
-    'Uncertain Function', 'Unknown Function', 'Normal Function'.
+    non-reference allele with two SNVs > reference allele with two SNVs such
+    that CYP2D6\*46 > CYP2D6\*1 in GRCh37). Note that the priority of allele
+    function decreases in the following order: 'No Function', 'Decreased
+    Function', 'Possible Decreased Function', 'Increased Function', 'Possible
+    Increased Function', 'Uncertain Function', 'Unknown Function', 'Normal
+    Function'.
 
     When ``by='name'`` the method will report alleles with a smaller
     number first. This means, for example, '\*4' will come before '\*10'

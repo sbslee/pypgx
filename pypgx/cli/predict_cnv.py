@@ -8,8 +8,8 @@ import pysam
 description = f"""
 Predict CNV for the target gene based on copy number data.
 
-Genomic positions that are missing copy number, because for example the input
-data is targeted sequencing, will be imputed with forward filling.
+Genomic positions that are missing copy number because, for example, the
+input data is targeted sequencing will be imputed with forward filling.
 """
 
 def create_parser(subparsers):
@@ -17,7 +17,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Predict CNV for the target gene based on copy number data.',
+        help='Predict CNV for the target gene based on copy number \n'
+             'data.',
     )
     parser.add_argument(
         'copy_number',
@@ -34,7 +35,8 @@ def create_parser(subparsers):
         '--cnv-caller',
         metavar='PATH',
         help='Archive file with the semantic type Model[CNV]. By \n'
-             'default, a pre-trained CNV caller will be used.'
+             'default, a pre-trained CNV caller in the ~/pypgx-bundle \n'
+             'directory will be used.'
     )
 
 def main(args):

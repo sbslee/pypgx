@@ -14,8 +14,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Plot both copy number profile and allele fraction profile in '
-             'one figure.',
+        help='Plot both copy number profile and allele fraction \n'
+             'profile in one figure.',
     )
     parser.add_argument(
         'copy_number',

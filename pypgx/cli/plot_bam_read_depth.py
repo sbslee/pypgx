@@ -47,9 +47,16 @@ def create_parser(subparsers):
         type=float,
         help='Y-axis top.'
     )
+    parser.add_argument(
+        '--fontsize',
+        metavar='FLOAT',
+        type=float,
+        default=25,
+        help='Text fontsize (default: 25).'
+    )
 
 def main(args):
     plot.plot_bam_read_depth(
         args.read_depth, path=args.path, samples=args.samples,
-        ymin=args.ymin, ymax=args.ymax
+        ymin=args.ymin, ymax=args.ymax, fontsize=args.fontsize
     )

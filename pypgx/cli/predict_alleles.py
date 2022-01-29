@@ -14,7 +14,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Predict candidate star alleles based on observed variants.',
+        help='Predict candidate star alleles based on observed \n'
+             'variants.',
     )
     parser.add_argument(
         'consolidated_variants',

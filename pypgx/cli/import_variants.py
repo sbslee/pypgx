@@ -53,7 +53,7 @@ def create_parser(subparsers):
     )
     parser.add_argument(
         '--samples',
-        metavar='PATH',
+        metavar='TEXT',
         nargs='+',
         help='Specify which samples should be included for analysis \n'
              'by providing a text file (.txt, .tsv, .csv, or .list) \n'

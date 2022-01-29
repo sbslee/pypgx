@@ -26,8 +26,8 @@ README
 Introduction
 ============
 
-The main purpose of the PyPGx package is to provide a unified platform for
-pharmacogenomics (PGx) research.
+The main purpose of the PyPGx package, which is completely free and open
+source, is to provide a unified platform for pharmacogenomics (PGx) research.
 
 The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
@@ -158,6 +158,28 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+Resource bundle
+===============
+
+Starting with the 0.12.0 version, reference haplotype panel files and
+structural variant classifier files in PyPGx are moved to the
+``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__
+(only those files are moved; other files such as ``allele-table.csv`` and
+``variant-table.csv`` are intact). Therefore, the user must clone the
+``pypgx-bundle`` repository with matching PyPGx version to their home
+directory in order for PyPGx to correctly access the moved files:
+
+.. code-block:: text
+
+   $ cd ~
+   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+
+This is undoubtedly annoying, but absolutely necessary for portability
+reasons because PyPGx has been growing exponentially in file size due to the
+increasing number of genes supported and their variation complexity, to the
+point where it now exceeds upload size limit for PyPI (100 Mb). After removal
+of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+
 Structural variation detection
 ==============================
 
@@ -178,7 +200,7 @@ class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
 classifier is trained using copy number profiles of real NGS samples as well
 as simulated ones.
 
-You can plot copy number profile and allele fraction profile with PyPGX to
+You can plot copy number profile and allele fraction profile with PyPGx to
 visually inspect SV calls. Below are CYP2D6 examples:
 
 .. list-table::
@@ -386,6 +408,19 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 
    $ pypgx call-phenotypes genotypes.zip phenotypes.zip
 
+Pipelines
+=========
+
+PyPGx provides two pipelines for performing PGx genotype analysis: NGS pipeline and chip pipeline.
+
+**NGS pipeline**
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-ngs-pipeline.png
+
+**Chip pipeline**
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-chip-pipeline.png
+
 Getting help
 ============
 
@@ -407,16 +442,20 @@ For getting help on the CLI:
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
-                           Compute summary statistics for the control gene from BAM files.
+                           Compute summary statistics for the control gene from 
+                           BAM files.
        compute-copy-number
-                           Compute copy number from read depth for the target gene.
+                           Compute copy number from read depth for the target 
+                           gene.
        compute-target-depth
                            Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
-       create-regions-bed  Create a BED file which contains all regions used by PyPGx.
+       create-regions-bed  Create a BED file which contains all regions used by 
+                           PyPGx.
        estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with the Beagle program.
+                           Estimate haplotype phase of observed variants with 
+                           the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
        import-variants     Import variant (SNV/indel) data for the target gene
@@ -424,15 +463,19 @@ For getting help on the CLI:
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
-       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
+       plot-cn-af          Plot both copy number profile and allele fraction 
+                           profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
-       predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for the target gene based on copy number data.
+       predict-alleles     Predict candidate star alleles based on observed 
+                           variants.
+       predict-cnv         Predict CNV for the target gene based on copy number 
+                           data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for all target genes with SV.
+                           Prepare a depth of coverage file for all target 
+                           genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
        run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
@@ -491,7 +534,7 @@ Above will print:
     SemanticType=CovFrame[DepthOfCoverage]
     Platform=WGS
 
-We can run the NGS pipeline for the *CYP2D6* gene:
+We can run the NGS pipeline for the CYP2D6 gene:
 
 .. code-block:: text
 
@@ -520,7 +563,7 @@ Above will create a number of archive files:
 API examples
 ============
 
-We can obtain allele function for the *CYP2D6* gene:
+We can obtain allele function for the CYP2D6 gene:
 
 .. code:: python3
 
@@ -534,7 +577,7 @@ We can obtain allele function for the *CYP2D6* gene:
     >>> pypgx.get_function('CYP2D6', '*140')
     'Unknown Function'
 
-We can predict phenotype for the *CYP2D6* gene based on two haplotype calls:
+We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
 
 .. code:: python3
 

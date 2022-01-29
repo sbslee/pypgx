@@ -22,7 +22,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Compute copy number from read depth for the target gene.',
+        help='Compute copy number from read depth for the target \n'
+             'gene.',
     )
     parser.add_argument(
         'read_depth',

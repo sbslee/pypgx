@@ -25,16 +25,20 @@ For getting help on the CLI:
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
-                           Compute summary statistics for the control gene from BAM files.
+                           Compute summary statistics for the control gene from 
+                           BAM files.
        compute-copy-number
-                           Compute copy number from read depth for the target gene.
+                           Compute copy number from read depth for the target 
+                           gene.
        compute-target-depth
                            Compute read depth for the target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
-       create-regions-bed  Create a BED file which contains all regions used by PyPGx.
+       create-regions-bed  Create a BED file which contains all regions used by 
+                           PyPGx.
        estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with the Beagle program.
+                           Estimate haplotype phase of observed variants with 
+                           the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for the target gene.
        import-variants     Import variant (SNV/indel) data for the target gene
@@ -42,15 +46,19 @@ For getting help on the CLI:
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
-       plot-cn-af          Plot both copy number profile and allele fraction profile in one figure.
+       plot-cn-af          Plot both copy number profile and allele fraction 
+                           profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
-       predict-alleles     Predict candidate star alleles based on observed variants.
-       predict-cnv         Predict CNV for the target gene based on copy number data.
+       predict-alleles     Predict candidate star alleles based on observed 
+                           variants.
+       predict-cnv         Predict CNV for the target gene based on copy number 
+                           data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for all target genes with SV.
+                           Prepare a depth of coverage file for all target 
+                           genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
        run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
@@ -183,9 +191,12 @@ compute-control-statistics
                            ('chrom:start-end'). Cannot be used with --gene.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it 
-                           is targeted sequencing, you must provide a BED file to 
-                           indicate probed regions.
+     --bed PATH            By default, the input data is assumed to be WGS. If 
+                           it's targeted sequencing, you must provide a BED file 
+                           to indicate probed regions. Note that the 'chr' 
+                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
+                           be automatically added or removed as necessary to 
+                           match the BAM contig names.
    
    [Example] To compute summary statistics for the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
@@ -329,9 +340,9 @@ estimate-phase-beagle
    
    Estimate haplotype phase of observed variants with the Beagle program.
    
-   Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
-   automatically added or removed as necessary to match the reference VCF’s
-   contig names.
+   The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF will
+   be automatically added or removed as necessary to match that of the reference
+   VCF.
    
    Positional arguments:
      imported-variants  Archive file with the semantic type VcfFrame[Imported].
@@ -341,7 +352,7 @@ estimate-phase-beagle
      -h, --help         Show this help message and exit.
      --panel PATH       VCF file corresponding to a reference haplotype panel 
                         (compressed or uncompressed). By default, the 1KGP panel 
-                        is used.
+                        in the ~/pypgx-bundle directory will be used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -373,7 +384,7 @@ import-read-depth
 .. code-block:: text
 
    $ pypgx import-read-depth -h
-   usage: pypgx import-read-depth [-h] [--samples PATH [PATH ...]] [--exclude]
+   usage: pypgx import-read-depth [-h] [--samples TEXT [TEXT ...]] [--exclude]
                                   gene depth-of-coverage read-depth
    
    Import read depth data for the target gene.
@@ -386,7 +397,7 @@ import-read-depth
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --samples PATH [PATH ...]
+     --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
                            containing one sample per line. Alternatively, you can 
@@ -400,7 +411,7 @@ import-variants
 
    $ pypgx import-variants -h
    usage: pypgx import-variants [-h] [--assembly TEXT] [--platform TEXT]
-                                [--samples PATH [PATH ...]] [--exclude]
+                                [--samples TEXT [TEXT ...]] [--exclude]
                                 gene vcf imported-variants
    
    Import variant (SNV/indel) data for the target gene.
@@ -423,7 +434,7 @@ import-variants
                            'GRCh37', 'GRCh38').
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted', 'Chip').
-     --samples PATH [PATH ...]
+     --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
                            containing one sample per line. Alternatively, you can 
@@ -468,7 +479,7 @@ plot-bam-read-depth
    $ pypgx plot-bam-read-depth -h
    usage: pypgx plot-bam-read-depth [-h] [--path PATH]
                                     [--samples TEXT [TEXT ...]] [--ymin FLOAT]
-                                    [--ymax FLOAT]
+                                    [--ymax FLOAT] [--fontsize FLOAT]
                                     read_depth
    
    Plot read depth profile with BAM data.
@@ -487,6 +498,7 @@ plot-bam-read-depth
                            provide a list of samples.
      --ymin FLOAT          Y-axis bottom.
      --ymax FLOAT          Y-axis top.
+     --fontsize FLOAT      Text fontsize (default: 25).
 
 plot-cn-af
 ==========
@@ -605,8 +617,8 @@ predict-cnv
    
    Predict CNV for the target gene based on copy number data.
    
-   Genomic positions that are missing copy number, because for example the input
-   data is targeted sequencing, will be imputed with forward filling.
+   Genomic positions that are missing copy number because, for example, the
+   input data is targeted sequencing will be imputed with forward filling.
    
    Positional arguments:
      copy-number        Archive file with the semantic type CovFrame[CopyNumber].
@@ -616,7 +628,8 @@ predict-cnv
    Optional arguments:
      -h, --help         Show this help message and exit.
      --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By 
-                        default, a pre-trained CNV caller will be used.
+                        default, a pre-trained CNV caller in the ~/pypgx-bundle 
+                        directory will be used.
 
 prepare-depth-of-coverage
 =========================
@@ -643,9 +656,12 @@ prepare-depth-of-coverage
                            with --bam.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it 
-                           is targeted sequencing, you must provide a BED file to 
-                           indicate probed regions.
+     --bed PATH            By default, the input data is assumed to be WGS. If 
+                           it's targeted sequencing, you must provide a BED file 
+                           to indicate probed regions. Note that the 'chr' 
+                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
+                           be automatically added or removed as necessary to 
+                           match the BAM contig names.
    
    [Example] When the input data is WGS:
      $ pypgx prepare-depth-of-coverage \
@@ -700,8 +716,8 @@ run-chip-pipeline
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
                            'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP 
-                           panel is used.
+                           (compressed or uncompressed). By default, the 1KGP panel 
+                           in the ~/pypgx-bundle directory will be used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
@@ -731,6 +747,7 @@ run-ngs-pipeline
                                  [--samples-without-sv TEXT [TEXT ...]]
                                  [--do-not-plot-copy-number]
                                  [--do-not-plot-allele-fraction]
+                                 [--cnv-caller PATH]
                                  gene output
    
    Run PyPGx's genotyping pipeline for NGS data.
@@ -747,27 +764,28 @@ run-ngs-pipeline
    Optional arguments:
      -h, --help            Show this help message and exit.
      --variants PATH       Input VCF file must be already BGZF compressed (.gz) 
-                           and indexed (.tbi) to allow random access. Statistical 
-                           haplotype phasing will be skipped if input VCF is 
-                           already fully phased.
+                           and indexed (.tbi) to allow random access. 
+                           Statistical haplotype phasing will be skipped if 
+                           input VCF is already fully phased.
      --depth-of-coverage PATH
-                           Depth of coverage file (compressed or uncompressed).
+                           Archive file with the semantic type 
+                           CovFrame[DepthOfCoverage].
      --control-statistics PATH
-                           Archive file with the semandtic type 
+                           Archive file with the semantic type 
                            SampleTable[Statistcs].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
                            'Targeted')
      --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP 
-                           panel is used.
+                           (compressed or uncompressed). By default, the 1KGP panel 
+                           in the ~/pypgx-bundle directory will be used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
-                           containing one sample per line. Alternatively, you can 
-                           provide a list of samples.
+                           containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
      --exclude             Exclude specified samples.
      --samples-without-sv TEXT [TEXT ...]
                            List of known samples without SV.
@@ -775,6 +793,9 @@ run-ngs-pipeline
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
+     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By 
+                           default, a pre-trained CNV caller in the ~/pypgx-bundle 
+                           directory will be used.
    
    [Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:
      $ pypgx run-ngs-pipeline \

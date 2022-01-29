@@ -1,6 +1,15 @@
 Tutorials
 *********
 
+Introduction
+============
+
+This page provides useful tutorials for running PyPGx. Throughout the page,
+it's assumed that you have installed the latest version of PyPGx and also
+downloaded the appropriate resource bundle (i.e. matching version). For more
+details, please see :ref:`readme:Installation` and :ref:`readme:Resource
+bundle`.
+
 GeT-RM WGS tutorial
 ===================
 
@@ -44,6 +53,9 @@ those from:
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-variants.vcf.gz.tbi
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
+
+Please visit the :ref:`readme:Pipelines` page for details on how to generate
+the input files.
 
 Let's look at the metadata for some of these files:
 
