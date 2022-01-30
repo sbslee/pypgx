@@ -327,7 +327,7 @@ as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
       - ``CYP2D6``, ``GSTT1``
     * - ``Platform``
       - Genotyping platform.
-      - ``WGS``, ``Targeted``, ``Chip``
+      - ``WGS``, ``Targeted``, ``Chip``, ``LongRead``
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``, ``SHAPEIT``

@@ -25,6 +25,116 @@ from scipy.ndimage import median_filter
 # Private methods #
 ###################
 
+def _phase_extension(vf, gene, assembly):
+    """
+    Apply the phase-extension algorithm.
+
+    Anchor variants are those variants that have been haplotype phased
+    using a reliable method (e.g. statistical haplotype phasing and
+    read-backed phasing) and are later used by the phase-extension
+    algorithm (PE). Basically, PE determines the most likely haplotype
+    phase of the remaining unphased variants using anchor variants.
+    For each unphased variant, PE first finds all star alleles carrying the
+    variant and then counts how many anchor variants per haplotype are
+    overlapped to each of the star alleles. For example, if the second
+    haplotype's anchor variants (i.e. variants with '0|1') were found to
+    have the most overlapping with the *2 allele, then PE will assign the
+    phase of the variant of interest to '0|1'.
+    """
+    anchors = {}
+
+    for i, r in vf.df.iterrows():
+        for allele in r.ALT.split(','):
+            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
+            for sample in vf.samples:
+                if sample not in anchors:
+                    anchors[sample] = [[], []]
+                gt = r[sample].split(':')[0]
+                if '|' not in gt:
+                    continue
+                gt = gt.split('|')
+                if gt[0] != '0':
+                    anchors[sample][0].append(variant)
+                if gt[1] != '0':
+                    anchors[sample][1].append(variant)
+
+    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
+
+    def one_row(r):
+        if pyvcf.row_phased(r):
+            return r
+
+        r.FORMAT += ':PE'
+
+        for sample in vf.samples:
+            if not pyvcf.gt_het(r[sample]):
+                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
+                continue
+
+            scores = [[0, 0], [0, 0]]
+
+            gt = r[sample].split(':')[0].split('/')
+
+            for i in [0, 1]:
+                if gt[i] == '0':
+                    continue
+
+                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
+
+                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                if variant in variant_synonyms:
+                    variant = variant_synonyms[variant]
+
+                star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
+
+                for j in [0, 1]:
+                    for star_allele in star_alleles:
+                        score = 0
+                        for x in anchors[sample][j]:
+                            if x in core.list_variants(gene, alleles=star_allele, assembly=assembly, mode='all'):
+                                score += 1
+                        if score > scores[i][j]:
+                            scores[i][j] = score
+
+            a = scores[0][0]
+            b = scores[0][1]
+            c = scores[1][0]
+            d = scores[1][1]
+
+            if max([a, b]) == max([c, d]):
+                if a < b and c > d:
+                    flip = True
+                elif a == b and c > d:
+                    flip = True
+                elif a < b and c == d:
+                    flip = True
+                else:
+                    flip = False
+            else:
+                if max([a, b]) > max([c, d]):
+                    if a > b:
+                        flip = False
+                    else:
+                        flip = True
+                else:
+                    if c > d:
+                        flip = True
+                    else:
+                        flip = False
+
+            if flip:
+                result = f'{gt[1]}|{gt[0]}'
+            else:
+                result = f'{gt[0]}|{gt[1]}'
+
+            result = result + ':' + ':'.join(r[sample].split(':')[1:])
+            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
+
+        return r
+
+    return pyvcf.VcfFrame([], vf.df.apply(one_row, axis=1))
+
 def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
     region = core.get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
@@ -527,114 +637,12 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
 
-    # Anchor variants are those variants that have been haplotype phased
-    # using a reliable method (e.g. statistical haplotype phasing and
-    # read-backed phasing) and are later used by the phase-extension
-    # algorithm (PE). Basically, PE determines the most likely haplotype
-    # phase of the remaining unphased variants using anchor variants.
-    # For each unphased variant, PE first finds all star alleles carrying the
-    # variant and then counts how many anchor variants per haplotype are
-    # overlapped to each of the star alleles. For example, if the second
-    # haplotype's anchor variants (i.e. variants with '0|1') were found to
-    # have the most overlapping with the *2 allele, then PE will assign the
-    # phase of the variant of interest to '0|1'.
-    anchors = {}
-
-    for i, r in vf2.df.iterrows():
-        for allele in r.ALT.split(','):
-            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
-            for sample in vf2.samples:
-                if sample not in anchors:
-                    anchors[sample] = [[], []]
-                gt = r[sample].split(':')[0].split('|')
-                if gt[0] != '0':
-                    anchors[sample][0].append(variant)
-                if gt[1] != '0':
-                    anchors[sample][1].append(variant)
-
-    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
-
-    def one_row(r):
-        if 'Phased' in r.INFO:
-            return r
-
-        r.FORMAT += ':PE'
-
-        for sample in vf5.samples:
-            if not pyvcf.gt_het(r[sample]):
-                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
-                continue
-
-            scores = [[0, 0], [0, 0]]
-
-            gt = r[sample].split(':')[0].split('/')
-
-            for i in [0, 1]:
-                if gt[i] == '0':
-                    continue
-
-                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
-
-                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
-
-                if variant in variant_synonyms:
-                    variant = variant_synonyms[variant]
-
-                star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
-
-                for j in [0, 1]:
-                    for star_allele in star_alleles:
-                        score = 0
-                        for x in anchors[sample][j]:
-                            if x in core.list_variants(gene, alleles=star_allele, assembly=assembly, mode='all'):
-                                score += 1
-                        if score > scores[i][j]:
-                            scores[i][j] = score
-
-            a = scores[0][0]
-            b = scores[0][1]
-            c = scores[1][0]
-            d = scores[1][1]
-
-            if max([a, b]) == max([c, d]):
-                if a < b and c > d:
-                    flip = True
-                elif a == b and c > d:
-                    flip = True
-                elif a < b and c == d:
-                    flip = True
-                else:
-                    flip = False
-            else:
-                if max([a, b]) > max([c, d]):
-                    if a > b:
-                        flip = False
-                    else:
-                        flip = True
-                else:
-                    if c > d:
-                        flip = True
-                    else:
-                        flip = False
-
-            if flip:
-                result = f'{gt[1]}|{gt[0]}'
-            else:
-                result = f'{gt[0]}|{gt[1]}'
-
-            result = result + ':' + ':'.join(r[sample].split(':')[1:])
-            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
-
-        return r
-
-    vf5.df = vf5.df.apply(one_row, axis=1)
+    vf6 = _phase_extension(vf5, gene, assembly)
 
     metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
-    result = sdk.Archive(metadata, vf5)
-
-    return result
+    return sdk.Archive(metadata, vf6)
 
 def create_regions_bed(
     assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False
@@ -836,11 +844,9 @@ def import_variants(
     """
     Import variant (SNV/indel) data for the target gene.
 
-    The method will first slice the input VCF for the target gene and then
-    assess whether every genotype call in the resulting VCF is haplotype
-    phased. If the sliced VCF is fully phased, the method will return an
-    archive object with the semantic type VcfFrame[Consolidated] or otherwise
-    VcfFrame[Imported].
+    The method will slice the input VCF for the target gene to create an
+    archive object with the semantic type VcfFrame[Imported] or
+    VcfFrame[Consolidated].
 
     Parameters
     ----------
@@ -852,8 +858,15 @@ def import_variants(
         VcfFrame object.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
-    platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
-        Genotyping platform.
+    platform : {'WGS', 'Targeted', 'Chip', 'LongRead'}, default: 'WGS'
+        Genotyping platform used. When the platform is 'WGS', 'Targeted', or
+        'Chip', the method will assess whether every genotype call in the
+        sliced VCF is haplotype phased (e.g. '0|1'). If the sliced VCF is
+        fully phased, the method will return VcfFrame[Consolidated] or
+        otherwise VcfFrame[Imported]. When the platform is 'LongRead', the
+        method will return VcfFrame[Consolidated] after applying the
+        phase-extension algorithm to estimate haplotype phase of any variants
+        that could not be resolved by read-backed phasing.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -882,11 +895,15 @@ def import_variants(
         samples = common.parse_list_or_file(samples)
         vf = vf.subset(samples, exclude=exclude)
 
-    if vf.phased:
+    if platform == 'LongRead':
+        vf = _phase_extension(vf, gene, assembly)
         semantic_type = 'VcfFrame[Consolidated]'
     else:
-        vf = vf.unphase()
-        semantic_type = 'VcfFrame[Imported]'
+        if vf.phased:
+            semantic_type = 'VcfFrame[Consolidated]'
+        else:
+            vf = vf.unphase()
+            semantic_type = 'VcfFrame[Imported]'
 
     metadata = {
         'Platform': platform,

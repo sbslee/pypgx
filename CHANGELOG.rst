@@ -4,6 +4,8 @@ Changelog
 0.13.0 (in development)
 -----------------------
 
+* Add a new genotyping platform, ``LongRead``, to the :command:`import-variants` command.
+
 0.12.0 (2022-01-29)
 -------------------
 

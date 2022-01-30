@@ -416,29 +416,37 @@ import-variants
    
    Import variant (SNV/indel) data for the target gene.
    
-   The command will first slice the input VCF for the target gene and then
-   assess whether every genotype call in the resulting VCF is haplotype phased.
-   If the sliced VCF is fully phased, the command will return an archive object
-   with the semantic type VcfFrame[Consolidated] or otherwise VcfFrame[Imported].
+   The command will slice the input VCF for the target gene to create an archive
+   file with the semantic type VcfFrame[Imported] or VcfFrame[Consolidated].
    
    Positional arguments:
      gene                  Target gene.
-     vcf                   Input VCF file must be already BGZF compressed (.gz) and 
-                           indexed (.tbi) to allow random access.
-     imported-variants     Archive file with the semantic type VcfFrame[Imported] 
-                           or VcfFrame[Consolidated].
+     vcf                   Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access.
+     imported-variants     Archive file with the semantic type 
+                           VcfFrame[Imported] or VcfFrame[Consolidated].
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
-                           'GRCh37', 'GRCh38').
-     --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS', 
-                           'Targeted', 'Chip').
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
+     --platform TEXT       Genotyping platform used (default: 'WGS') (choices: 
+                           'WGS', 'Targeted', 'Chip', 'LongRead'). When the 
+                           platform is 'WGS', 'Targeted', or 'Chip', the command 
+                           will assess whether every genotype call in the sliced 
+                           VCF is haplotype phased (e.g. '0|1'). If the sliced 
+                           VCF is fully phased, the command will return 
+                           VcfFrame[Consolidated] or otherwise 
+                           VcfFrame[Imported]. When the platform is 'LongRead', 
+                           the command will return VcfFrame[Consolidated] after 
+                           applying the phase-extension algorithm to estimate 
+                           haplotype phase of any variants that could not be 
+                           resolved by read-backed phasing.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
-                           containing one sample per line. Alternatively, you can 
-                           provide a list of samples.
+                           containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
      --exclude             Exclude specified samples.
 
 plot-bam-copy-number
