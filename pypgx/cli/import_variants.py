@@ -8,10 +8,10 @@ import pysam
 description = f"""
 Import variant (SNV/indel) data for the target gene.
 
-The command will first slice input VCF for the target gene and then assess
-whether every genotype call in the sliced VCF is haplotype phased. It will
-return an archive file with the semantic type VcfFrame[Consolidated] if the
-VCF is fully phased or otherwise VcfFrame[Imported].
+The command will first slice the input VCF for the target gene and then
+assess whether every genotype call in the resulting VCF is haplotype phased.
+If the sliced VCF is fully phased, the command will return an archive object
+with the semantic type VcfFrame[Consolidated] or otherwise VcfFrame[Imported].
 """
 
 def create_parser(subparsers):
