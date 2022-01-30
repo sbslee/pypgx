@@ -504,28 +504,40 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     vf1 = imported_variants.data.strip(format)
     vf2 = phased_variants.data.strip('GT')
 
+    # For every variant in VcfFrame[Phased] (e.g. '0|1'), find and append its
+    # accompanying data from VcfFrame[Imported] (e.g. '0|1:15,15:30:0.5').
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
         s = vf1.fetch(variant)
-
         if s.empty:
             return r
-
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
-
         s[9:] = s[9:].apply(one_gt)
         r[9:] = r[9:].str.cat(s[9:], sep=':')
-
         return r
 
     vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
     vf3.df.INFO = 'Phased'
     vf3.df.FORMAT = format
 
+    # Remove variants that are in both VcfFrame[Imported] and
+    # VcfFrame[Phased]. Append remaining unphased variants to
+    # VcfFrame[Phased].
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
 
+    # Anchor variants are those variants that have been haplotype phased
+    # using a reliable method (e.g. statistical haplotype phasing and
+    # read-backed phasing) and are later used by the phase-extension
+    # algorithm (PE). Basically, PE determines the most likely haplotype
+    # phase of the remaining unphased variants using anchor variants.
+    # For each unphased variant, PE first finds all star alleles carrying the
+    # variant and then counts how many anchor variants per haplotype are
+    # overlapped to each of the star alleles. For example, if the second
+    # haplotype's anchor variants (i.e. variants with '0|1') were found to
+    # have the most overlapping with the *2 allele, then PE will assign the
+    # phase of the variant of interest to '0|1'.
     anchors = {}
 
     for i, r in vf2.df.iterrows():
