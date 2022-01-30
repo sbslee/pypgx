@@ -69,6 +69,8 @@ from .api.genotype import (
 )
 
 from .api.pipeline import (
+    run_chip_pipeline,
+    run_long_read_pipeline,
     run_ngs_pipeline,
 )
 

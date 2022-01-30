@@ -61,6 +61,8 @@ For getting help on the CLI:
                            genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-long-read-pipeline
+                           Run PyPGx's genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.
@@ -715,28 +717,64 @@ run-chip-pipeline
      gene                  Target gene.
      output                Output directory.
      variants              Input VCF file must be already BGZF compressed (.gz) 
-                           and indexed (.tbi) to allow random access. Statistical 
-                           haplotype phasing will be skipped if input VCF is 
-                           already fully phased.
+                           and indexed (.tbi) to allow random access. 
+                           Statistical haplotype phasing will be skipped if 
+                           input VCF is already fully phased.
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') (choices: 
-                           'GRCh37', 'GRCh38').
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel 
-                           (compressed or uncompressed). By default, the 1KGP panel 
-                           in the ~/pypgx-bundle directory will be used.
+                           (compressed or uncompressed). By default, the 1KGP 
+                           panel in the ~/pypgx-bundle directory will be used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis 
                            by providing a text file (.txt, .tsv, .csv, or .list) 
-                           containing one sample per line. Alternatively, you can 
-                           provide a list of samples.
+                           containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
      --exclude             Exclude specified samples.
    
    [Example] To genotype the CYP3A5 gene from chip data:
      $ pypgx run-chip-pipeline \
+     CYP3A5 \
+     CYP3A5-pipeline \
+     variants.vcf.gz
+
+run-long-read-pipeline
+======================
+
+.. code-block:: text
+
+   $ pypgx run-long-read-pipeline -h
+   usage: pypgx run-long-read-pipeline [-h] [--assembly TEXT] [--force]
+                                       [--samples TEXT [TEXT ...]] [--exclude]
+                                       gene output variants
+   
+   Run PyPGx's genotyping pipeline for long-read sequencing data.
+   
+   Positional arguments:
+     gene                  Target gene.
+     output                Output directory.
+     variants              Input VCF file must be already BGZF compressed (.gz) 
+                           and indexed (.tbi) to allow random access. 
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
+                           (choices: 'GRCh37', 'GRCh38').
+     --force               Overwrite output directory if it already exists.
+     --samples TEXT [TEXT ...]
+                           Specify which samples should be included for analysis 
+                           by providing a text file (.txt, .tsv, .csv, or .list) 
+                           containing one sample per line. Alternatively, you 
+                           can provide a list of samples.
+     --exclude             Exclude specified samples.
+   
+   [Example] To genotype the CYP3A5 gene from long-read sequencing data:
+     $ pypgx run-long-read-pipeline \
      CYP3A5 \
      CYP3A5-pipeline \
      variants.vcf.gz

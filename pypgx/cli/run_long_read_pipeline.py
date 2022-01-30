@@ -5,11 +5,11 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-Run PyPGx's genotyping pipeline for chip data.
+Run PyPGx's genotyping pipeline for long-read sequencing data.
 """
 
 epilog = f"""
-[Example] To genotype the CYP3A5 gene from chip data:
+[Example] To genotype the CYP3A5 gene from long-read sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   CYP3A5 \\
   CYP3A5-pipeline \\
@@ -22,7 +22,7 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help="Run PyPGx's genotyping pipeline for chip data.",
+        help="Run PyPGx's genotyping pipeline for long-read sequencing data.",
     )
     parser.add_argument(
         'gene',
@@ -36,8 +36,6 @@ def create_parser(subparsers):
         'variants',
         help='Input VCF file must be already BGZF compressed (.gz) \n'
              'and indexed (.tbi) to allow random access. \n'
-             'Statistical haplotype phasing will be skipped if \n'
-             'input VCF is already fully phased.'
     )
     parser.add_argument(
         '--assembly',
@@ -45,18 +43,6 @@ def create_parser(subparsers):
         default='GRCh37',
         help="Reference genome assembly (default: 'GRCh37') \n"
              "(choices: 'GRCh37', 'GRCh38')."
-    )
-    parser.add_argument(
-        '--panel',
-        metavar='PATH',
-        help='VCF file corresponding to a reference haplotype panel \n'
-             '(compressed or uncompressed). By default, the 1KGP \n'
-             'panel in the ~/pypgx-bundle directory will be used.'
-    )
-    parser.add_argument(
-        '--impute',
-        action='store_true',
-        help='Perform imputation of missing genotypes.'
     )
     parser.add_argument(
         '--force',
@@ -79,8 +65,7 @@ def create_parser(subparsers):
     )
 
 def main(args):
-    pipeline.run_chip_pipeline(
+    pipeline.run_long_read_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        panel=args.panel, impute=args.impute, force=args.force,
-        samples=args.samples, exclude=args.exclude
+        force=args.force, samples=args.samples, exclude=args.exclude
     )

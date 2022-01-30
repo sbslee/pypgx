@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * Add a new genotyping platform, ``LongRead``, to the :command:`import-variants` command.
+* Add new command :command:`run-long-read-pipeline`.
 
 0.12.0 (2022-01-29)
 -------------------

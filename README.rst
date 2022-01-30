@@ -478,6 +478,8 @@ For getting help on the CLI:
                            genes with SV.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-long-read-pipeline
+                           Run PyPGx's genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
        test-cnv-caller     Test a CNV caller for the target gene.
        train-cnv-caller    Train a CNV caller for the target gene.

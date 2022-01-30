@@ -12,7 +12,7 @@ from .. import sdk
 from . import utils, plot, genotype, core
 
 def run_chip_pipeline(
-    gene, output, variants, panel=None, assembly='GRCh37', impute=False,
+    gene, output, variants, assembly='GRCh37', panel=None, impute=False,
     force=False, samples=None, exclude=False
 ):
     """
@@ -24,7 +24,7 @@ def run_chip_pipeline(
         Target gene.
     output : str
         Output directory.
-    variants : str, optional
+    variants : str
         Input VCF file must be already BGZF compressed (.gz) and indexed
         (.tbi) to allow random access. Statistical haplotype phasing will be
         skipped if input VCF is already fully phased.
@@ -69,6 +69,57 @@ def run_chip_pipeline(
         consolidated_variants.to_file(
             f'{output}/consolidated-variants.zip')
 
+    alleles = utils.predict_alleles(consolidated_variants)
+    alleles.to_file(f'{output}/alleles.zip')
+    genotypes = genotype.call_genotypes(alleles=alleles)
+    genotypes.to_file(f'{output}/genotypes.zip')
+    phenotypes = utils.call_phenotypes(genotypes)
+    phenotypes.to_file(f'{output}/phenotypes.zip')
+    results = utils.combine_results(
+        genotypes=genotypes, phenotypes=phenotypes, alleles=alleles
+    )
+    results.to_file(f'{output}/results.zip')
+
+def run_long_read_pipeline(
+    gene, output, variants, assembly='GRCh37', force=False, samples=None,
+    exclude=False
+):
+    """
+    Run PyPGx's genotyping pipeline for long-read sequencing data.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    output : str
+        Output directory.
+    variants : str
+        Input VCF file must be already BGZF compressed (.gz) and indexed
+        (.tbi) to allow random access. Statistical haplotype phasing will be
+        skipped if input VCF is already fully phased.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    force : bool, default : False
+        Overwrite output directory if it already exists.
+    samples : str or list, optional
+        Subset the VCF for specified samples. This can be a text file (.txt,
+        .tsv, .csv, or .list) containing one sample per line. Alternatively,
+        you can provide a list of samples.
+    exclude : bool, default: False
+        If True, exclude specified samples.
+    """
+    if not core.is_target_gene(gene):
+        raise core.NotTargetGeneError(gene)
+
+    if os.path.exists(output) and force:
+        shutil.rmtree(output)
+
+    os.mkdir(output)
+
+    consolidated_variants = utils.import_variants(gene, variants,
+        assembly=assembly, platform='LongRead', samples=samples,
+        exclude=exclude)
+    consolidated_variants.to_file(f'{output}/consolidated-variants.zip')
     alleles = utils.predict_alleles(consolidated_variants)
     alleles.to_file(f'{output}/alleles.zip')
     genotypes = genotype.call_genotypes(alleles=alleles)
