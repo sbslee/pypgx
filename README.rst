@@ -35,7 +35,7 @@ available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
 PyPGx can be used to predict PGx genotypes and phenotypes using various
 genomic data, including data from next-generation sequencing (NGS), single
-nucleotide polymorphism (SNP) array, or long-read sequencing. Importantly,
+nucleotide polymorphism (SNP) array, and long-read sequencing. Importantly,
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
@@ -422,7 +422,7 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 Pipelines
 =========
 
-PyPGx provides two pipelines for performing PGx genotype analysis: NGS pipeline and chip pipeline.
+PyPGx provides three pipelines for performing PGx genotype analysis: NGS, chip, and long-read.
 
 **NGS pipeline**
 
@@ -431,6 +431,10 @@ PyPGx provides two pipelines for performing PGx genotype analysis: NGS pipeline 
 **Chip pipeline**
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-chip-pipeline.png
+
+**Long-read pipeline**
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-long-read-pipeline.png
 
 Getting help
 ============

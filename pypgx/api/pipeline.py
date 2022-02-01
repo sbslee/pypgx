@@ -95,8 +95,7 @@ def run_long_read_pipeline(
         Output directory.
     variants : str
         Input VCF file must be already BGZF compressed (.gz) and indexed
-        (.tbi) to allow random access. Statistical haplotype phasing will be
-        skipped if input VCF is already fully phased.
+        (.tbi) to allow random access.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     force : bool, default : False
