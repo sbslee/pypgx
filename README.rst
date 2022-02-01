@@ -33,6 +33,9 @@ The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
 available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
+PyPGx can be used to predict PGx genotypes and phenotypes using various
+genomic data, including data from next-generation sequencing (NGS), single
+nucleotide polymorphism (SNP) array, or long-read sequencing. Importantly,
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
@@ -189,35 +192,43 @@ sv>`__ such as gene deletions, duplications, and hybrids. You can visit the
 `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page to see the
 list of genes with SV.
 
-Some of the SV events can be quite challenging to detect accurately with
-next-generation sequencing (NGS) data due to misalignment of sequence reads
-caused by sequence homology with other gene family members (e.g. CYP2D6 and
-CYP2D7). PyPGx attempts to address this issue by training a `support vector
-machine (SVM) <https://scikit-learn.org/stable/modules/generated/sk
-learn.svm.SVC.html>`__-based multiclass classifier using the `one-vs-rest
-strategy <https://scikit-learn.org/stable/modules/generated/sklearn.multi
-class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
-classifier is trained using copy number profiles of real NGS samples as well
-as simulated ones.
+Some of the SV events can be quite challenging to detect accurately with NGS
+data due to misalignment of sequence reads caused by sequence homology with
+other gene family members (e.g. CYP2D6 and CYP2D7). PyPGx attempts to address
+this issue by training a `support vector machine (SVM) <https://scikit-
+learn.org/stable/modules/generated/sklearn.svm.SVC.html>`__-based multiclass
+classifier using the `one-vs-rest strategy <https://scikit-learn.org/stable
+/modules/generated/sklearn.multiclass.OneVsRestClassifier.html>`__ for each
+gene for each GRCh build. Each classifier is trained using copy number
+profiles of real NGS samples as well as simulated ones.
 
 You can plot copy number profile and allele fraction profile with PyPGx to
 visually inspect SV calls. Below are CYP2D6 examples:
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 80
+   :widths: 10 30 60
 
    * - SV Name
+     - Gene Model
      - Profile
    * - Normal
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
    * - DeletionHet
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
+   * - DeletionHom
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-6.png
    * - Duplication
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
    * - Tandem3
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-11.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png
    * - Tandem2C
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-10.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png
 
 GRCh37 vs. GRCh38
