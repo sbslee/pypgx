@@ -1070,18 +1070,18 @@ def predict_cnv(copy_number, cnv_caller=None):
         cnv_caller.check_type('Model[CNV]')
 
     copy_number = _process_copy_number(copy_number)
-
     df = copy_number.data.df.iloc[:, 2:]
     X = df.T.to_numpy()
     predictions = cnv_caller.data.predict(X)
-    df = core.load_cnv_table()
-    df = df[df.Gene == copy_number.metadata['Gene']]
-    cnvs = dict(zip(df.Code, df.Name))
-    predictions = [cnvs[x] for x in predictions]
+    cnv_table = core.load_cnv_table()
+    cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
+    code2name = dict(zip(list(range(len(cnv_table.Name))), cnv_table.Name))
+    predictions = [code2name[x] for x in predictions]
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[CNVCalls]'
     data = pd.DataFrame({'CNV': predictions})
     data.index = copy_number.data.samples
+
     return sdk.Archive(metadata, data)
 
 def prepare_depth_of_coverage(
@@ -1207,9 +1207,9 @@ def test_cnv_caller(
 
     cnv_table = core.load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
-    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
-    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
-
+    code = list(range(len(cnv_table.Name)))
+    code2name = dict(zip(code, cnv_table.Name))
+    name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
     copy_number.data.df = copy_number.data.df[columns]
@@ -1266,8 +1266,9 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
 
     cnv_table = core.load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
-    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
-    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
+    code = list(range(len(cnv_table.Name)))
+    code2name = dict(zip(code, cnv_table.Name))
+    name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
     copy_number.data.df = copy_number.data.df[columns]

@@ -6,6 +6,7 @@ Changelog
 
 * Add a new genotyping platform, ``LongRead``, to the :command:`import-variants` command.
 * Add new command :command:`run-long-read-pipeline`.
+* Remove the ``Code`` column from the ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
 
 0.12.0 (2022-01-29)
 -------------------
