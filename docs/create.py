@@ -449,19 +449,56 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 Pipelines
 =========
 
-PyPGx provides three pipelines for performing PGx genotype analysis: NGS, chip, and long-read.
+PyPGx currently provides three pipelines for performing PGx genotype analysis
+for single gene: NGS, chip, and long-read. In additional to genotyping, each
+pipeline will perform phenotype prediction based on genotype results.
 
-**NGS pipeline**
+NGS pipeline
+------------
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-ngs-pipeline.png
 
-**Chip pipeline**
+Implemented as ``pypgx run-ngs-pipeline`` in CLI and
+``pypgx.pipeline.run_ngs_pipeline`` in API, this pipeline is designed for
+processing short-read data (e.g. Illumina). Users must specify whether the
+input data is from whole genome sequencing (WGS) or targeted sequencing (e.g.
+whole exome sequencing).
+
+This pipeline currently supports SV detection based on copy number analysis.
+For details, please see the `Structural variation detection <https://pypgx.
+readthedocs.io/en/latest/readme.html#structural-variation-detection>`__
+section.
+
+Chip pipeline
+-------------
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-chip-pipeline.png
 
-**Long-read pipeline**
+Implemented as ``pypgx run-chip-pipeline`` in CLI and
+``pypgx.pipeline.run_chip_pipeline`` in API, this pipeline is designed for
+DNA chip data (e.g. Global Screening Array from Illumina). It's recommended
+to perform variant imputation on the input VCF prior to feeding it to the
+pipeline using a large reference haplotype panel (e.g. `TOPMed Imputation
+Server <https://imputation.biodatacatalyst.nhlbi.nih.gov/>`__).
+
+The pipeline currently does not support SV detection. Please post a GitHub
+issue if you want to contribute your development skills and/or data for
+devising an SV detection algorithm.
+
+Long-read pipeline
+------------------
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-long-read-pipeline.png
+
+Implemented as ``pypgx run-long-read-pipeline`` in CLI and
+``pypgx.pipeline.run_long_read_pipeline`` in API, this pipeline is designed
+for long-read data (e.g. Pacific Biosciences and Oxford Nanopore
+Technologies). The input VCF must be phased using a read-backed haplotype
+phasing tool such as `WhatsHap <https://github.com/whatshap/whatshap>`__.
+
+The pipeline currently does not support SV detection. Please post a GitHub
+issue if you want to contribute your development skills and/or data for
+devising an SV detection algorithm.
 
 Getting help
 ============

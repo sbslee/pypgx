@@ -96,3 +96,9 @@ translocations or genomic imbalances (duplications and deletions), commonly
 referred to as copy number variants (CNVs). Additionally, for pharmacogenes
 that are known to have one or more pseudogenes (e.g. CYP2D6), SV can be often
 found in the form of hybrid genes (e.g. CYP2D6/CYP2D7).
+
+Whole genome sequencing (WGS)
+=============================
+
+WGS is a comprehensive method for analyzing entire genomes, as opposed to
+selectively sequencing targeted regions (e.g. whole exome sequencing).
