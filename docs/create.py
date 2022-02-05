@@ -267,10 +267,10 @@ may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
 vice versa, but deep down you know it's going to be a mess (and please don't
 do this). The good news is, PyPGx supports both of the builds!
 
-In many of the PyPGx actions, you can simply indicate which human genome
-build to use. For example, you can use ``assembly`` for the API and
-``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
-Below is an example of using the API:
+In many PyPGx actions, you can simply indicate which genome build to use. For
+example, for GRCh38 data you can use ``--assembly GRCh38`` in CLI and
+``assembly='GRCh38'`` in API. **Note that GRCh37 will always be the
+default.** Below is an example of using the API:
 
 .. code:: python3
 
@@ -450,8 +450,11 @@ Pipelines
 =========
 
 PyPGx currently provides three pipelines for performing PGx genotype analysis
-for single gene: NGS, chip, and long-read. In additional to genotyping, each
-pipeline will perform phenotype prediction based on genotype results.
+of single gene for one or multiple samples: NGS pipeline, chip pipeline, and
+long-read pipeline. In additional to genotyping, each pipeline will perform
+phenotype prediction based on genotype results. All pipelines are compatible
+with both GRCh37 and GRCh38 (e.g. for GRCh38 use ``--assembly GRCh38`` in CLI
+and ``assembly='GRCh38'`` in API).
 
 NGS pipeline
 ------------
@@ -461,13 +464,19 @@ NGS pipeline
 Implemented as ``pypgx run-ngs-pipeline`` in CLI and
 ``pypgx.pipeline.run_ngs_pipeline`` in API, this pipeline is designed for
 processing short-read data (e.g. Illumina). Users must specify whether the
-input data is from whole genome sequencing (WGS) or targeted sequencing (e.g.
-whole exome sequencing).
+input data is from whole genome sequencing (WGS) or targeted sequencing
+(custome targeted panel sequencing or whole exome sequencing).
 
-This pipeline currently supports SV detection based on copy number analysis.
-For details, please see the `Structural variation detection <https://pypgx.
-readthedocs.io/en/latest/readme.html#structural-variation-detection>`__
-section.
+This pipeline supports SV detection based on copy number analysis for genes
+that are known to have SV. Therefore, if the target gene is associated with
+SV (e.g. CYP2D6) it's strongly recommended to provide a
+``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistcs]`` file in
+addtion to a VCF file containing SNVs/indels. If the target gene is not
+associated with SV (e.g. CYP3A5) providing a VCF file alone is enough. You can
+visit the `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page
+to see the full list of genes with SV. For details on SV detection algorithm,
+please see the `Structural variation detection <https://pypgx.readthedocs.io/
+en/latest/readme.html#structural-variation-detection>`__ section.
 
 Chip pipeline
 -------------
@@ -480,6 +489,9 @@ DNA chip data (e.g. Global Screening Array from Illumina). It's recommended
 to perform variant imputation on the input VCF prior to feeding it to the
 pipeline using a large reference haplotype panel (e.g. `TOPMed Imputation
 Server <https://imputation.biodatacatalyst.nhlbi.nih.gov/>`__).
+Alternatively, it's possible to perform variant imputation with the 1000
+Genomes Project (1KGP) data as reference within PyPGx using ``--impute`` in
+CLI and ``impute=True`` in API.
 
 The pipeline currently does not support SV detection. Please post a GitHub
 issue if you want to contribute your development skills and/or data for
