@@ -24,6 +24,7 @@ from .api.core import (
     list_variants,
     load_allele_table,
     load_cnv_table,
+    load_cpic_table,
     load_diplotype_table,
     load_equation_table,
     load_gene_table,
