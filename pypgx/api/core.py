@@ -7,6 +7,8 @@ import pathlib
 from io import BytesIO
 import warnings
 
+from .. import sdk
+
 import numpy as np
 import pandas as pd
 from fuc import pyvcf, common
@@ -31,21 +33,6 @@ FUNCTION_ORDER = [
     'Favorable Response',
     'Class IV (Normal)',
 ]
-
-class AlleleNotFoundError(Exception):
-    """Raise if specified allele is not present in the allele table."""
-
-class GeneNotFoundError(Exception):
-    """Raise if specified gene is not present in the gene table."""
-
-class NotTargetGeneError(Exception):
-    """Raise if specified gene is not one of the target genes."""
-
-class PhenotypeNotFoundError(Exception):
-    """Raise if specified phenotype is not present in the phenotype table."""
-
-class VariantNotFoundError(Exception):
-    """Raise if specified variant is not present in the variant table."""
 
 def build_definition_table(gene, assembly='GRCh37'):
     """
@@ -83,7 +70,7 @@ def build_definition_table(gene, assembly='GRCh37'):
     1    19  15897578  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
 
@@ -175,7 +162,7 @@ def has_phenotype(gene):
     False
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -205,7 +192,7 @@ def has_score(gene):
     False
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -300,7 +287,7 @@ def get_exon_ends(gene, assembly='GRCh37'):
         List of end positions.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
     df = load_gene_table()
     df = df[df.Gene == gene]
     s = df[f'{assembly}ExonEnds'].values[0]
@@ -323,7 +310,7 @@ def get_exon_starts(gene, assembly='GRCh37'):
         List of start positions.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
     df = load_gene_table()
     df = df[df.Gene == gene]
     s = df[f'{assembly}ExonStarts'].values[0]
@@ -361,13 +348,13 @@ def get_function(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_allele_table()
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene, allele)
+        raise sdk.utils.AlleleNotFoundError(gene, allele)
 
     return df.Function.values[0]
 
@@ -431,10 +418,10 @@ def get_priority(gene, phenotype):
     'Normal/Routine/Low Risk'
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if phenotype not in list_phenotypes():
-        raise PhenotypeNotFoundError(phenotype)
+        raise sdk.utils.PhenotypeNotFoundError(phenotype)
 
     df = load_phenotype_table()
     i = (df.Gene == gene) & (df.Phenotype == phenotype)
@@ -487,7 +474,7 @@ def get_region(gene, assembly='GRCh37'):
         Requested region.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
 
     df = load_gene_table()
     df = df[df.Gene == gene]
@@ -529,7 +516,7 @@ def get_score(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -538,7 +525,7 @@ def get_score(gene, allele):
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene, allele)
+        raise sdk.utils.AlleleNotFoundError(gene, allele)
 
     return df.ActivityScore.values[0]
 
@@ -557,7 +544,7 @@ def get_strand(gene):
         '+' or '-'.
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
     df = df[df.Gene == gene]
@@ -588,17 +575,17 @@ def get_variant_impact(variant):
     'Splice Defect'
     >>> pypgx.get_variant_impact('22-42524435-T-A') # Intron variant
     ''
-    >>> pypgx.get_variant_impact('22-42524435-T-C') # Does not exist
+    >>> pypgx.get_variant_impact('22-42524435-T-C')
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 489, in get_variant_impact
-        raise VariantNotFoundError(variant)
-    pypgx.api.core.VariantNotFoundError: 22-42524435-T-C
+      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 588, in get_variant_impact
+        raise sdk.utils.VariantNotFoundError(variant)
+    pypgx.sdk.utils.VariantNotFoundError: 22-42524435-T-C
     """
     df = load_variant_table()
     df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
     if df.empty:
-        raise VariantNotFoundError(variant)
+        raise sdk.utils.VariantNotFoundError(variant)
     impact = df.Impact.values[0]
     if pd.isna(impact):
         impact = ''
@@ -783,7 +770,7 @@ def list_phenotypes(gene=None):
 
     if gene is not None:
         if not is_target_gene(gene):
-            raise NotTargetGeneError(gene)
+            raise sdk.utils.NotTargetGeneError(gene)
         df = df[df.Gene == gene]
 
     return sorted(list(df.Phenotype.unique()))
@@ -834,7 +821,7 @@ def list_variants(gene, alleles=None, mode='all', assembly='GRCh37'):
     ['19-41495755-T-C', '19-41496461-T-C']
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     allele_table = load_allele_table()
     allele_table = allele_table[allele_table.Gene == gene]
@@ -852,7 +839,7 @@ def list_variants(gene, alleles=None, mode='all', assembly='GRCh37'):
         df = allele_table[allele_table.StarAllele == allele]
 
         if df.empty:
-            raise AlleleNotFoundError(gene, allele)
+            raise sdk.utils.AlleleNotFoundError(gene, allele)
 
         c = df[f'{assembly}Core'].values[0]
         t = df[f'{assembly}Tag'].values[0]
@@ -1111,7 +1098,7 @@ def predict_phenotype(gene, a, b):
     'Rapid Metabolizer'
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
     phenotype_method = df[df.Gene == gene].PhenotypeMethod.values[0]
@@ -1214,7 +1201,7 @@ def predict_score(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -1315,7 +1302,7 @@ def sort_alleles(
         if gene is None:
             raise ValueError('Gene is required when sorting by priority')
         if not is_target_gene(gene):
-            raise NotTargetGeneError(gene)
+            raise sdk.utils.NotTargetGeneError(gene)
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
         core_variants = list_variants(gene, alleles=allele, assembly=assembly, mode='core')

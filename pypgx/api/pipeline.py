@@ -46,7 +46,7 @@ def run_chip_pipeline(
         If True, exclude specified samples.
     """
     if not core.is_target_gene(gene):
-        raise core.NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if os.path.exists(output) and force:
         shutil.rmtree(output)
@@ -108,7 +108,7 @@ def run_long_read_pipeline(
         If True, exclude specified samples.
     """
     if not core.is_target_gene(gene):
-        raise core.NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if os.path.exists(output) and force:
         shutil.rmtree(output)
@@ -188,7 +188,7 @@ def run_ngs_pipeline(
         used.
     """
     if not core.is_target_gene(gene):
-        raise core.NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     gene_table = core.load_gene_table()
     small_var = gene_table[gene_table.Gene == gene].Variants.values[0]

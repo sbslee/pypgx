@@ -8,6 +8,7 @@ Changelog
 * Add new command :command:`run-long-read-pipeline`.
 * Remove the ``Code`` column from the ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
 * Add new method :meth:`api.core.load_cpic_table`.
+* Move following errors from ``api.core`` submodule to ``sdk.utils`` submodule: :class:`AlleleNotFoundError`, :class:`GeneNotFoundError`, :class:`NotTargetGeneError`, :class:`PhenotypeNotFoundError`, :class:`VariantNotFoundError`.
 
 0.12.0 (2022-01-29)
 -------------------

@@ -9,14 +9,29 @@ import pandas as pd
 import numpy as np
 from fuc import pyvcf, pycov, common, pybam
 
+class AlleleNotFoundError(Exception):
+    """Raise if specified allele is not present in the allele table."""
+
+class GeneNotFoundError(Exception):
+    """Raise if specified gene is not present in the gene table."""
+
 class IncorrectMetadataError(Exception):
     """Raised when specified metadata is incorrect."""
 
 class IncorrectSemanticTypeError(Exception):
     """Raised when specified semantic type is incorrect."""
 
+class NotTargetGeneError(Exception):
+    """Raise if specified gene is not one of the target genes."""
+
+class PhenotypeNotFoundError(Exception):
+    """Raise if specified phenotype is not present in the phenotype table."""
+
 class SemanticTypeNotFoundError(Exception):
     """Raised when specified semantic type is not supported."""
+
+class VariantNotFoundError(Exception):
+    """Raise if specified variant is not present in the variant table."""
 
 class Archive:
     """
