@@ -501,9 +501,9 @@ For getting help on the CLI:
    
    positional arguments:
      COMMAND
-       call-genotypes      Call genotypes for the target gene.
-       call-phenotypes     Call phenotypes for the target gene.
-       combine-results     Combine various results for the target gene.
+       call-genotypes      Call genotypes for target gene.
+       call-phenotypes     Call phenotypes for target gene.
+       combine-results     Combine various results for target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for control gene from BAM
@@ -520,8 +520,8 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with 
                            the Beagle program.
        filter-samples      Filter Archive file for specified samples.
-       import-read-depth   Import read depth data for the target gene.
-       import-variants     Import variant (SNV/indel) data for the target gene
+       import-read-depth   Import read depth data for target gene.
+       import-variants     Import SNV and indel data for target gene.
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
@@ -534,18 +534,17 @@ For getting help on the CLI:
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed 
                            variants.
-       predict-cnv         Predict CNV for the target gene based on copy number 
-                           data.
+       predict-cnv         Predict CNV from copy number data for target gene.
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
        print-metadata      Print the metadata of specified archive.
-       run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline
-                           Run PyPGx's genotyping pipeline for long-read sequencing data.
-       run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
-       test-cnv-caller     Test a CNV caller for the target gene.
-       train-cnv-caller    Train a CNV caller for the target gene.
+                           Run genotyping pipeline for long-read sequencing data.
+       run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       test-cnv-caller     Test CNV caller for target gene.
+       train-cnv-caller    Train CNV caller for target gene.
    
    optional arguments:
      -h, --help            Show this help message and exit.

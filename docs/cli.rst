@@ -20,9 +20,9 @@ For getting help on the CLI:
    
    positional arguments:
      COMMAND
-       call-genotypes      Call genotypes for the target gene.
-       call-phenotypes     Call phenotypes for the target gene.
-       combine-results     Combine various results for the target gene.
+       call-genotypes      Call genotypes for target gene.
+       call-phenotypes     Call phenotypes for target gene.
+       combine-results     Combine various results for target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
                            Compute summary statistics for control gene from BAM
@@ -39,8 +39,8 @@ For getting help on the CLI:
                            Estimate haplotype phase of observed variants with 
                            the Beagle program.
        filter-samples      Filter Archive file for specified samples.
-       import-read-depth   Import read depth data for the target gene.
-       import-variants     Import variant (SNV/indel) data for the target gene
+       import-read-depth   Import read depth data for target gene.
+       import-variants     Import SNV and indel data for target gene.
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
@@ -53,18 +53,17 @@ For getting help on the CLI:
                            Plot read depth profile with VCF data.
        predict-alleles     Predict candidate star alleles based on observed 
                            variants.
-       predict-cnv         Predict CNV for the target gene based on copy number 
-                           data.
+       predict-cnv         Predict CNV from copy number data for target gene.
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
        print-metadata      Print the metadata of specified archive.
-       run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
+       run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline
-                           Run PyPGx's genotyping pipeline for long-read sequencing data.
-       run-ngs-pipeline    Run PyPGx's genotyping pipeline for NGS data.
-       test-cnv-caller     Test a CNV caller for the target gene.
-       train-cnv-caller    Train a CNV caller for the target gene.
+                           Run genotyping pipeline for long-read sequencing data.
+       run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       test-cnv-caller     Test CNV caller for target gene.
+       train-cnv-caller    Train CNV caller for target gene.
    
    optional arguments:
      -h, --help            Show this help message and exit.
@@ -84,7 +83,7 @@ call-genotypes
    $ pypgx call-genotypes -h
    usage: pypgx call-genotypes [-h] [--alleles PATH] [--cnv-calls PATH] genotypes
    
-   Call genotypes for the target gene.
+   Call genotypes for target gene.
    
    Positional arguments:
      genotypes         Archive file with the semantic type 
@@ -103,7 +102,7 @@ call-phenotypes
    $ pypgx call-phenotypes -h
    usage: pypgx call-phenotypes [-h] genotypes phenotypes
    
-   Call phenotypes for the target gene.
+   Call phenotypes for target gene.
    
    Positional arguments:
      genotypes   Archive file with the semantic type SampleTable[Genotypes].
@@ -122,7 +121,7 @@ combine-results
                                 [--alleles PATH] [--cnv-calls PATH]
                                 results
    
-   Combine various results for the target gene.
+   Combine various results for target gene.
    
    Positional arguments:
      results            Archive file with the semantic type SampleTable[Results].
@@ -383,7 +382,7 @@ import-read-depth
    usage: pypgx import-read-depth [-h] [--samples TEXT [TEXT ...]] [--exclude]
                                   gene depth-of-coverage read-depth
    
-   Import read depth data for the target gene.
+   Import read depth data for target gene.
    
    Positional arguments:
      gene                  Target gene.
@@ -410,7 +409,7 @@ import-variants
                                 [--samples TEXT [TEXT ...]] [--exclude]
                                 gene vcf imported-variants
    
-   Import variant (SNV/indel) data for the target gene.
+   Import SNV and indel data for target gene.
    
    The command will slice the input VCF for the target gene to create an archive
    file with the semantic type VcfFrame[Imported] or VcfFrame[Consolidated].
@@ -619,7 +618,7 @@ predict-cnv
    $ pypgx predict-cnv -h
    usage: pypgx predict-cnv [-h] [--cnv-caller PATH] copy-number cnv-calls
    
-   Predict CNV for the target gene based on copy number data.
+   Predict CNV from copy number data for target gene.
    
    Genomic positions that are missing copy number because, for example, the
    input data is targeted sequencing will be imputed with forward filling.
@@ -702,7 +701,7 @@ run-chip-pipeline
                                   [--samples TEXT [TEXT ...]] [--exclude]
                                   gene output variants
    
-   Run PyPGx's genotyping pipeline for chip data.
+   Run genotyping pipeline for chip data.
    
    Positional arguments:
      gene                  Target gene.
@@ -744,7 +743,7 @@ run-long-read-pipeline
                                        [--samples TEXT [TEXT ...]] [--exclude]
                                        gene output variants
    
-   Run PyPGx's genotyping pipeline for long-read sequencing data.
+   Run genotyping pipeline for long-read sequencing data.
    
    Positional arguments:
      gene                  Target gene.
@@ -787,7 +786,7 @@ run-ngs-pipeline
                                  [--cnv-caller PATH]
                                  gene output
    
-   Run PyPGx's genotyping pipeline for NGS data.
+   Run genotyping pipeline for NGS data.
    
    During copy number analysis, if the input data is targeted sequencing, the
    command will apply inter-sample normalization using summary statistics across
@@ -866,7 +865,7 @@ test-cnv-caller
    usage: pypgx test-cnv-caller [-h] [--confusion-matrix PATH]
                                 cnv-caller copy-number cnv-calls
    
-   Test a CNV caller for the target gene.
+   Test CNV caller for target gene.
    
    Positional arguments:
      cnv-caller            Archive file with the semantic type Model[CNV].
@@ -889,7 +888,7 @@ train-cnv-caller
    usage: pypgx train-cnv-caller [-h] [--confusion-matrix PATH]
                                  copy-number cnv-calls cnv-caller
    
-   Train a CNV caller for the target gene.
+   Train CNV caller for target gene.
    
    This command will return a SVM-based multiclass classifier that makes CNV
    calls using the one-vs-rest strategy.
