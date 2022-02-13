@@ -509,8 +509,7 @@ For getting help on the CLI:
                            Compute summary statistics for control gene from BAM
                            files.
        compute-copy-number
-                           Compute copy number from read depth for the target 
-                           gene.
+                           Compute copy number from read depth for target gene.
        compute-target-depth
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf

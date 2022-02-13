@@ -28,8 +28,7 @@ For getting help on the CLI:
                            Compute summary statistics for control gene from BAM
                            files.
        compute-copy-number
-                           Compute copy number from read depth for the target 
-                           gene.
+                           Compute copy number from read depth for target gene.
        compute-target-depth
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
@@ -217,9 +216,9 @@ compute-copy-number
 
    $ pypgx compute-copy-number -h
    usage: pypgx compute-copy-number [-h] [--samples-without-sv TEXT [TEXT ...]]
-                                    read-depth control-statistcs output
+                                    read-depth control-statistcs copy-number
    
-   Compute copy number from read depth for the target gene.
+   Compute copy number from read depth for target gene.
    
    The command will convert read depth to copy number by performing intra-sample
    normalization using summary statistics from the control gene.
@@ -230,11 +229,11 @@ compute-copy-number
    without SV using --samples-without-sv.
    
    Positional arguments:
-     read-depth            Archive file with the semantic type 
+     read-depth            Input archive file with the semantic type
                            CovFrame[ReadDepth].
-     control-statistcs     Archive file with the semantic type 
+     control-statistcs     Input archive file with the semantic type
                            SampleTable[Statistics].
-     output                Archive file with the semantic type 
+     copy-number           Output archive file with the semantic type
                            CovFrame[CopyNumber].
    
    Optional arguments:
@@ -249,13 +248,13 @@ compute-target-depth
 
    $ pypgx compute-target-depth -h
    usage: pypgx compute-target-depth [-h] [--assembly TEXT] [--bed PATH]
-                                     gene output bams [bams ...]
+                                     gene read-depth bams [bams ...]
    
    Compute read depth for target gene from BAM files.
    
    Positional arguments:
      gene             Target gene.
-     output           Output archive file with the semantic type
+     read-depth       Output archive file with the semantic type
                       CovFrame[ReadDepth].
      bams             One or more input BAM files. Alternatively, you can
                       provide a text file (.txt, .tsv, .csv, or .list)

@@ -38,7 +38,8 @@ def create_parser(subparsers):
 """Target gene."""
     )
     parser.add_argument(
-        'output',
+        'read_depth',
+        metavar='read-depth',
         help=
 """Output archive file with the semantic type
 CovFrame[ReadDepth]."""
@@ -72,4 +73,4 @@ def main(args):
     archive = utils.compute_target_depth(
         args.gene, args.bams, assembly=args.assembly, bed=args.bed
     )
-    archive.to_file(args.output)
+    archive.to_file(args.read_depth)

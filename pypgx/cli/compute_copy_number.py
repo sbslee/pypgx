@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Compute copy number from read depth for the target gene.
+Compute copy number from read depth for target gene.
 
 The command will convert read depth to copy number by performing intra-sample
 normalization using summary statistics from the control gene.
@@ -22,31 +22,36 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Compute copy number from read depth for the target \n'
-             'gene.',
+        help=
+"""Compute copy number from read depth for target gene."""
     )
     parser.add_argument(
         'read_depth',
         metavar='read-depth',
-        help='Archive file with the semantic type \n'
-             'CovFrame[ReadDepth].'
+        help=
+"""Input archive file with the semantic type
+CovFrame[ReadDepth]."""
     )
     parser.add_argument(
         'control_statistcs',
         metavar='control-statistcs',
-        help='Archive file with the semantic type \n'
-             'SampleTable[Statistics].'
+        help=
+"""Input archive file with the semantic type
+SampleTable[Statistics]."""
     )
     parser.add_argument(
-        'output',
-        help='Archive file with the semantic type \n'
-             'CovFrame[CopyNumber].'
+        'copy_number',
+        metavar='copy-number',
+        help=
+"""Output archive file with the semantic type
+CovFrame[CopyNumber]."""
     )
     parser.add_argument(
         '--samples-without-sv',
         metavar='TEXT',
         nargs='+',
-        help='List of known samples with no SV.'
+        help=
+"""List of known samples with no SV."""
     )
 
 def main(args):
@@ -54,4 +59,4 @@ def main(args):
         args.read_depth, args.control_statistcs,
         samples_without_sv=args.samples_without_sv
     )
-    result.to_file(args.output)
+    result.to_file(args.copy_number)
