@@ -9,7 +9,7 @@ Changelog
 * Remove ``Code`` column from ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
 * Add new method :meth:`api.core.load_cpic_table`.
 * Move following errors from ``api.core`` submodule to ``sdk.utils`` submodule: :class:`AlleleNotFoundError`, :class:`GeneNotFoundError`, :class:`NotTargetGeneError`, :class:`PhenotypeNotFoundError`, :class:`VariantNotFoundError`.
-* Combine optional arguments ``--bam`` and ``--fn`` into single positional argument ``--bams`` for following commands: :command:`compute-control-statistics`, :command:`compute-target-depth`, :command:`prepare-depth-of-coverage`.
+* Combine optional arguments ``--bam`` and ``--fn`` into single positional argument ``bams`` for following commands: :command:`compute-control-statistics`, :command:`compute-target-depth`, :command:`prepare-depth-of-coverage`.
 * Rename ``output`` argument to ``copy-number`` for :command:`compute-copy-number` command.
 * Rename ``output`` argument to ``read-depth`` for :command:`compute-read-depth` command.
 * Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
