@@ -25,13 +25,13 @@ For getting help on the CLI:
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
-                           Compute summary statistics for the control gene from 
-                           BAM files.
+                           Compute summary statistics for control gene from BAM
+                           files.
        compute-copy-number
                            Compute copy number from read depth for the target 
                            gene.
        compute-target-depth
-                           Compute read depth for the target gene from BAM files.
+                           Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
        create-regions-bed  Create a BED file which contains all regions used by 
@@ -57,8 +57,8 @@ For getting help on the CLI:
        predict-cnv         Predict CNV for the target gene based on copy number 
                            data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for all target 
-                           genes with SV.
+                           Prepare a depth of coverage file for all target
+                           genes with SV from BAM files.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
        run-long-read-pipeline
@@ -169,48 +169,45 @@ compute-control-statistics
 .. code-block:: text
 
    $ pypgx compute-control-statistics -h
-   usage: pypgx compute-control-statistics [-h] [--bam PATH [PATH ...]]
-                                           [--fn PATH] [--gene TEXT]
-                                           [--region TEXT] [--assembly TEXT]
-                                           [--bed PATH]
-                                           control-statistics
+   usage: pypgx compute-control-statistics [-h] [--gene TEXT] [--region TEXT]
+                                           [--assembly TEXT] [--bed PATH]
+                                           control-statistics bams [bams ...]
    
-   Compute summary statistics for the control gene from BAM files.
+   Compute summary statistics for control gene from BAM files.
    
    Positional arguments:
-     control-statistics    Archive file with the semantic type 
-                           SampleTable[Statistics].
+     control-statistics  Output archive file with the semantic type
+                         SampleTable[Statistics].
+     bams                One or more input BAM files. Alternatively, you can
+                         provide a text file (.txt, .tsv, .csv, or .list)
+                         containing one BAM file per line.
    
    Optional arguments:
-     -h, --help            Show this help message and exit.
-     --bam PATH [PATH ...]
-                           One or more BAM files. Cannot be used with --fn.
-     --fn PATH             File containing one BAM file per line. Cannot be 
-                           used with --bam.
-     --gene TEXT           Control gene (recommended choices: 'EGFR', 'RYR1', 
-                           'VDR'). Cannot be used with --region.
-     --region TEXT         Custom region to use as control gene 
-                           ('chrom:start-end'). Cannot be used with --gene.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
-                           (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If 
-                           it's targeted sequencing, you must provide a BED file 
-                           to indicate probed regions. Note that the 'chr' 
-                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
-                           be automatically added or removed as necessary to 
-                           match the BAM contig names.
+     -h, --help          Show this help message and exit.
+     --gene TEXT         Control gene (recommended choices: 'EGFR', 'RYR1',
+                         'VDR'). Cannot be used with --region.
+     --region TEXT       Custom region to use as control gene
+                         ('chrom:start-end'). Cannot be used with --gene.
+     --assembly TEXT     Reference genome assembly (default: 'GRCh37')
+                         (choices: 'GRCh37', 'GRCh38').
+     --bed PATH          By default, the input data is assumed to be WGS. If
+                         it's targeted sequencing, you must provide a BED file
+                         to indicate probed regions. Note that the 'chr'
+                         prefix in BED contig names (e.g. 'chr1' vs. '1') will
+                         be automatically added or removed as necessary to
+                         match the BAM contig names.
    
-   [Example] To compute summary statistics for the VDR gene from WGS data:
+   [Example] For the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
-     control-statistcs-VDR.zip \
-     --gene VDR \
-     --bam A.bam B.bam
+     control-statistcs.zip \
+     1.bam 2.bam \
+     --gene VDR
    
    [Example] For a custom region from targeted sequencing data:
      $ pypgx compute-control-statistics \
-     control-statistcs-VDR.zip \
-     --gene chr1:100-200 \
-     --fn bam.list \
+     control-statistcs.zip \
+     bam.list \
+     --region chr1:100-200 \
      --bed probes.bed
 
 compute-copy-number
@@ -251,40 +248,38 @@ compute-target-depth
 .. code-block:: text
 
    $ pypgx compute-target-depth -h
-   usage: pypgx compute-target-depth [-h] [--bam PATH [PATH ...]] [--fn PATH]
-                                     [--assembly TEXT] [--bed PATH]
-                                     gene output
+   usage: pypgx compute-target-depth [-h] [--assembly TEXT] [--bed PATH]
+                                     gene output bams [bams ...]
    
-   Compute read depth for the target gene from BAM files.
+   Compute read depth for target gene from BAM files.
    
    Positional arguments:
-     gene                  Target gene.
-     output                Archive file with the semantic type 
-                           CovFrame[ReadDepth].
+     gene             Target gene.
+     output           Output archive file with the semantic type
+                      CovFrame[ReadDepth].
+     bams             One or more input BAM files. Alternatively, you can
+                      provide a text file (.txt, .tsv, .csv, or .list)
+                      containing one BAM file per line.
    
    Optional arguments:
-     -h, --help            Show this help message and exit.
-     --bam PATH [PATH ...]
-                           One or more BAM files. Cannot be used with --fn.
-     --fn PATH             File containing one BAM file per line. Cannot be 
-                           used with --bam.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
-                           (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If it 
-                           is targeted sequencing, you must provide a BED file to 
-                           indicate probed regions.
+     -h, --help       Show this help message and exit.
+     --assembly TEXT  Reference genome assembly (default: 'GRCh37')
+                      (choices: 'GRCh37', 'GRCh38').
+     --bed PATH       By default, the input data is assumed to be WGS. If it
+                      is targeted sequencing, you must provide a BED file to
+                      indicate probed regions.
    
    [Example] For the CYP2D6 gene from WGS data:
      $ pypgx compute-target-depth \
      CYP2D6 \
      read-depth.zip \
-     --bam A.bam B.bam
+     1.bam 2.bam
    
    [Example] For the CYP2D6 gene from targeted sequencing data:
      $ pypgx compute-target-depth \
      CYP2D6 \
      read-depth.zip \
-     --fn bam.txt \
+     bam.list \
      --bed probes.bed
 
 create-consolidated-vcf
@@ -647,41 +642,38 @@ prepare-depth-of-coverage
 .. code-block:: text
 
    $ pypgx prepare-depth-of-coverage -h
-   usage: pypgx prepare-depth-of-coverage [-h] [--bam PATH [PATH ...]]
-                                          [--fn PATH] [--assembly TEXT]
-                                          [--bed PATH]
-                                          depth-of-coverage
+   usage: pypgx prepare-depth-of-coverage [-h] [--assembly TEXT] [--bed PATH]
+                                          depth-of-coverage bams [bams ...]
    
-   Prepare a depth of coverage file for all target genes with SV.
+   Prepare a depth of coverage file for all target genes with SV from BAM files.
    
    Positional arguments:
-     depth-of-coverage     Archive file with the semantic type 
-                           CovFrame[DepthOfCoverage].
+     depth-of-coverage  Output archive file with the semantic type
+                        CovFrame[DepthOfCoverage].
+     bams               One or more input BAM files. Alternatively, you can
+                        provide a text file (.txt, .tsv, .csv, or .list)
+                        containing one BAM file per line.
    
    Optional arguments:
-     -h, --help            Show this help message and exit.
-     --bam PATH [PATH ...]
-                           One or more BAM files. Cannot be used with --fn.
-     --fn PATH             File containing one BAM file per line. Cannot be used 
-                           with --bam.
-     --assembly TEXT       Reference genome assembly (default: 'GRCh37') 
-                           (choices: 'GRCh37', 'GRCh38').
-     --bed PATH            By default, the input data is assumed to be WGS. If 
-                           it's targeted sequencing, you must provide a BED file 
-                           to indicate probed regions. Note that the 'chr' 
-                           prefix in BED contig names (e.g. 'chr1' vs. '1') will 
-                           be automatically added or removed as necessary to 
-                           match the BAM contig names.
+     -h, --help         Show this help message and exit.
+     --assembly TEXT    Reference genome assembly (default: 'GRCh37')
+                        (choices: 'GRCh37', 'GRCh38').
+     --bed PATH         By default, the input data is assumed to be WGS. If
+                        it's targeted sequencing, you must provide a BED file
+                        to indicate probed regions. Note that the 'chr'
+                        prefix in BED contig names (e.g. 'chr1' vs. '1') will
+                        be automatically added or removed as necessary to
+                        match the BAM contig names.
    
-   [Example] When the input data is WGS:
+   [Example] From WGS data:
      $ pypgx prepare-depth-of-coverage \
      depth-of-coverage.zip \
-     --bam A.bam B.bam
+     1.bam 2.bam
    
-   [Example] When the input data is targeted sequencing:
+   [Example] From targeted sequencing data:
      $ pypgx prepare-depth-of-coverage \
      depth-of-coverage.zip \
-     --fn bam.txt \
+     bam.txt \
      --bed probes.bed
 
 print-metadata

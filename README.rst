@@ -506,13 +506,13 @@ For getting help on the CLI:
        combine-results     Combine various results for the target gene.
        compare-genotypes   Calculate concordance between two genotype results.
        compute-control-statistics
-                           Compute summary statistics for the control gene from 
-                           BAM files.
+                           Compute summary statistics for control gene from BAM
+                           files.
        compute-copy-number
                            Compute copy number from read depth for the target 
                            gene.
        compute-target-depth
-                           Compute read depth for the target gene from BAM files.
+                           Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
        create-regions-bed  Create a BED file which contains all regions used by 
@@ -538,8 +538,8 @@ For getting help on the CLI:
        predict-cnv         Predict CNV for the target gene based on copy number 
                            data.
        prepare-depth-of-coverage
-                           Prepare a depth of coverage file for all target 
-                           genes with SV.
+                           Prepare a depth of coverage file for all target
+                           genes with SV from BAM files.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run PyPGx's genotyping pipeline for chip data.
        run-long-read-pipeline

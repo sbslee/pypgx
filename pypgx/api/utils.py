@@ -336,17 +336,16 @@ def compare_genotypes(first, second, verbose=False):
         show_comparison(col)
 
 def compute_control_statistics(
-    bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
+    bams, gene=None, region=None, assembly='GRCh37', bed=None
 ):
     """
-    Compute summary statistics for the control gene from BAM files.
+    Compute summary statistics for control gene from BAM files.
 
     Parameters
     ----------
-    bam : list, optional
-        One or more BAM files. Cannot be used with ``fn``.
-    fn : str, optional
-        File containing one BAM file per line. Cannot be used with ``bam``.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     gene : str, optional
         Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR'). Cannot be
         used with ``region``.
@@ -367,16 +366,11 @@ def compute_control_statistics(
     pypgx.Archive
         Archive object with the semantic type SampleTable[Statistcs].
     """
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
-    df = core.load_gene_table()
-
+    gene_table = core.load_gene_table()
     if gene is not None:
-        region = df[df.Gene == gene][f'{assembly}Region'].values[0]
+        region = gene_table[gene_table.Gene == gene][f'{assembly}Region'].values[0]
 
-    cf = pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{bam_prefix}{region}', zero=False
-    )
+    cf = pycov.CovFrame.from_bam(bams, regions=region, zero=False)
 
     metadata = {
         'Control': gene,
@@ -476,13 +470,10 @@ def compute_copy_number(
     return sdk.Archive(metadata, cf)
 
 def compute_target_depth(
-    gene, bam=None, fn=None, assembly='GRCh37', bed=None
+    gene, bams, assembly='GRCh37', bed=None
 ):
     """
-    Compute read depth for the target gene from BAM files.
-
-    Input BAM files must be specified with either ``bam`` or ``fn``, but
-    it's an error to use both.
+    Compute read depth for target gene from BAM files.
 
     By default, the input data is assumed to be WGS. If it's targeted
     sequencing, you must provide a BED file with ``bed`` to indicate
@@ -492,10 +483,9 @@ def compute_target_depth(
     ----------
     gene : str
         Target gene.
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
@@ -512,13 +502,9 @@ def compute_target_depth(
         'SemanticType': 'CovFrame[ReadDepth]',
     }
 
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
     region = core.get_region(gene, assembly=assembly)
 
-    data = pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{bam_prefix}{region}', zero=True
-    )
+    data = pycov.CovFrame.from_bam(bams, regions=region, zero=True)
 
     if bed:
         metadata['Platform'] = 'Targeted'
@@ -1085,17 +1071,17 @@ def predict_cnv(copy_number, cnv_caller=None):
     return sdk.Archive(metadata, data)
 
 def prepare_depth_of_coverage(
-    bam=None, fn=None, assembly='GRCh37', bed=None
+    bams, assembly='GRCh37', bed=None
 ):
     """
-    Prepare a depth of coverage file for all target genes with SV.
+    Prepare a depth of coverage file for all target genes with SV from BAM
+    files.
 
     Parameters
     ----------
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
@@ -1115,23 +1101,11 @@ def prepare_depth_of_coverage(
         'SemanticType': 'CovFrame[DepthOfCoverage]',
     }
 
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
     regions = create_regions_bed(
         merge=True, sv_genes=True, assembly=assembly,
-    ).gr.df.apply(
-        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
-    ).to_list()
+    ).to_regions()
 
-    cfs = []
-
-    for region in regions:
-        cf = pycov.CovFrame.from_bam(
-            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
-        )
-        cfs.append(cf)
-
-    cf = pycov.concat(cfs)
+    cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)
 
     if bed:
         metadata['Platform'] = 'Targeted'

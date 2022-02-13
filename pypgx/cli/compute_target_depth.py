@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Compute read depth for the target gene from BAM files.
+Compute read depth for target gene from BAM files.
 """
 
 epilog = f"""
@@ -14,13 +14,13 @@ epilog = f"""
   $ pypgx {fuc.api.common._script_name()} \\
   CYP2D6 \\
   read-depth.zip \\
-  --bam A.bam B.bam
+  1.bam 2.bam
 
 [Example] For the CYP2D6 gene from targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   CYP2D6 \\
   read-depth.zip \\
-  --fn bam.txt \\
+  bam.list \\
   --bed probes.bed
 """
 
@@ -30,47 +30,46 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help='Compute read depth for the target gene from BAM files.',
+        help='Compute read depth for target gene from BAM files.',
     )
     parser.add_argument(
         'gene',
-        help='Target gene.'
+        help=
+"""Target gene."""
     )
     parser.add_argument(
         'output',
-        help='Archive file with the semantic type \n'
-             'CovFrame[ReadDepth].'
+        help=
+"""Output archive file with the semantic type
+CovFrame[ReadDepth]."""
     )
     parser.add_argument(
-        '--bam',
-        metavar='PATH',
+        'bams',
         nargs='+',
-        help='One or more BAM files. Cannot be used with --fn.'
-    )
-    parser.add_argument(
-        '--fn',
-        metavar='PATH',
-        help='File containing one BAM file per line. Cannot be \n'
-             'used with --bam.'
+        help=
+"""One or more input BAM files. Alternatively, you can
+provide a text file (.txt, .tsv, .csv, or .list)
+containing one BAM file per line."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help="By default, the input data is assumed to be WGS. If it \n"
-             "is targeted sequencing, you must provide a BED file to \n"
-             "indicate probed regions."
+        help=
+"""By default, the input data is assumed to be WGS. If it
+is targeted sequencing, you must provide a BED file to
+indicate probed regions."""
     )
 
 def main(args):
     archive = utils.compute_target_depth(
-        args.gene, bam=args.bam, fn=args.fn, assembly=args.assembly,
-        bed=args.bed
+        args.gene, args.bams, assembly=args.assembly, bed=args.bed
     )
     archive.to_file(args.output)
