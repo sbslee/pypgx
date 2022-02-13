@@ -13,6 +13,7 @@ Changelog
 * Rename ``output`` argument to ``copy-number`` for :command:`compute-copy-number` command.
 * Rename ``output`` argument to ``read-depth`` for :command:`compute-read-depth` command.
 * Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
+* Deprecate :meth:`sdk.utils.parse_input_bams` method.
 
 0.12.0 (2022-01-29)
 -------------------
