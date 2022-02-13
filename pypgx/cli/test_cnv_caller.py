@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Test a CNV caller for the target gene.
+Test CNV caller for target gene.
 """
 
 def create_parser(subparsers):
@@ -14,7 +14,7 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Test a CNV caller for the target gene.',
+        help='Test CNV caller for target gene.',
     )
     parser.add_argument(
         'cnv_caller',

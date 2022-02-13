@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Import variant (SNV/indel) data for the target gene.
+Import SNV and indel data for target gene.
 
 The command will slice the input VCF for the target gene to create an archive
 file with the semantic type VcfFrame[Imported] or VcfFrame[Consolidated].
@@ -17,7 +17,7 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Import variant (SNV/indel) data for the target gene',
+        help='Import SNV and indel data for target gene.',
     )
     parser.add_argument(
         'gene',

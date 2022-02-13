@@ -16,7 +16,7 @@ def run_chip_pipeline(
     force=False, samples=None, exclude=False
 ):
     """
-    Run PyPGx's genotyping pipeline for chip data.
+    Run genotyping pipeline for chip data.
 
     Parameters
     ----------
@@ -85,7 +85,7 @@ def run_long_read_pipeline(
     exclude=False
 ):
     """
-    Run PyPGx's genotyping pipeline for long-read sequencing data.
+    Run genotyping pipeline for long-read sequencing data.
 
     Parameters
     ----------
@@ -138,7 +138,7 @@ def run_ngs_pipeline(
     cnv_caller=None
 ):
     """
-    Run PyPGx's genotyping pipeline for NGS data.
+    Run genotyping pipeline for NGS data.
 
     During copy number analysis, if the input data is targeted sequencing,
     the method will apply inter-sample normalization using summary statistics

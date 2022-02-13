@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Train a CNV caller for the target gene.
+Train CNV caller for target gene.
 
 This command will return a SVM-based multiclass classifier that makes CNV
 calls using the one-vs-rest strategy.
@@ -17,7 +17,7 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Train a CNV caller for the target gene.',
+        help='Train CNV caller for target gene.',
     )
     parser.add_argument(
         'copy_number',

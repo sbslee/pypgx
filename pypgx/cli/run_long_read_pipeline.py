@@ -5,7 +5,7 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-Run PyPGx's genotyping pipeline for long-read sequencing data.
+Run genotyping pipeline for long-read sequencing data.
 """
 
 epilog = f"""
@@ -22,7 +22,7 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help="Run PyPGx's genotyping pipeline for long-read sequencing data.",
+        help="Run genotyping pipeline for long-read sequencing data.",
     )
     parser.add_argument(
         'gene',

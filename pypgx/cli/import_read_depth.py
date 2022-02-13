@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Import read depth data for the target gene.
+Import read depth data for target gene.
 """
 
 def create_parser(subparsers):
@@ -14,7 +14,7 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Import read depth data for the target gene.',
+        help='Import read depth data for target gene.',
     )
     parser.add_argument(
         'gene',

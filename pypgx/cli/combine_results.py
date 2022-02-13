@@ -5,14 +5,14 @@ from ..api import utils
 import fuc
 
 description = f"""
-Combine various results for the target gene.
+Combine various results for target gene.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Combine various results for the target gene.',
+        help='Combine various results for target gene.',
         description=description,
     )
     parser.add_argument(

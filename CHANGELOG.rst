@@ -4,9 +4,9 @@ Changelog
 0.13.0 (in development)
 -----------------------
 
-* Add a new genotyping platform, ``LongRead``, to :command:`import-variants` command.
+* Add new genotyping platform, ``LongRead``, to :command:`import-variants` command.
 * Add new command :command:`run-long-read-pipeline`.
-* Remove the ``Code`` column from the ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
+* Remove ``Code`` column from ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
 * Add new method :meth:`api.core.load_cpic_table`.
 * Move following errors from ``api.core`` submodule to ``sdk.utils`` submodule: :class:`AlleleNotFoundError`, :class:`GeneNotFoundError`, :class:`NotTargetGeneError`, :class:`PhenotypeNotFoundError`, :class:`VariantNotFoundError`.
 * Combine optional arguments ``--bam`` and ``--fn`` into single positional argument ``--bams`` for following commands: :command:`compute-control-statistics`, :command:`compute-target-depth`, :command:`prepare-depth-of-coverage`.

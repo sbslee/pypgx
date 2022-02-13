@@ -161,7 +161,7 @@ def _process_copy_number(copy_number):
 
 def call_phenotypes(genotypes):
     """
-    Call phenotypes for the target gene.
+    Call phenotypes for target gene.
 
     Parameters
     ----------
@@ -828,7 +828,7 @@ def import_variants(
     gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False
 ):
     """
-    Import variant (SNV/indel) data for the target gene.
+    Import SNV and indel data for target gene.
 
     The method will slice the input VCF for the target gene to create an
     archive object with the semantic type VcfFrame[Imported] or
@@ -1018,7 +1018,7 @@ def predict_alleles(consolidated_variants):
 
 def predict_cnv(copy_number, cnv_caller=None):
     """
-    Predict CNV for the target gene based on copy number data.
+    Predict CNV from copy number data for target gene.
 
     Genomic positions that are missing copy number because, for example, the
     input data is targeted sequencing will be imputed with forward filling.

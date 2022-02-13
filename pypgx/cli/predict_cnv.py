@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Predict CNV for the target gene based on copy number data.
+Predict CNV from copy number data for target gene.
 
 Genomic positions that are missing copy number because, for example, the
 input data is targeted sequencing will be imputed with forward filling.
@@ -17,8 +17,8 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Predict CNV for the target gene based on copy number \n'
-             'data.',
+        help=
+"""Predict CNV from copy number data for target gene."""
     )
     parser.add_argument(
         'copy_number',

@@ -5,14 +5,14 @@ from ..api import utils
 import fuc
 
 description = f"""
-Call phenotypes for the target gene.
+Call phenotypes for target gene.
 """
 
 def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Call phenotypes for the target gene.',
+        help='Call phenotypes for target gene.',
         description=description,
     )
     parser.add_argument(

@@ -5,7 +5,7 @@ from ..api import pipeline
 import fuc
 
 description = """
-Run PyPGx's genotyping pipeline for NGS data.
+Run genotyping pipeline for NGS data.
 
 During copy number analysis, if the input data is targeted sequencing, the
 command will apply inter-sample normalization using summary statistics across
@@ -44,7 +44,7 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help="Run PyPGx's genotyping pipeline for NGS data.",
+        help="Run genotyping pipeline for NGS data.",
     )
     parser.add_argument(
         'gene',
