@@ -12,15 +12,15 @@ Compute summary statistics for control gene from BAM files.
 epilog = f"""
 [Example] For the VDR gene from WGS data:
   $ pypgx {fuc.api.common._script_name()} \\
+  VDR \\
   control-statistcs.zip \\
-  1.bam 2.bam \\
-  --gene VDR
+  1.bam 2.bam
 
 [Example] For a custom region from targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
+  chr1:100-200 \\
   control-statistcs.zip \\
   bam.list \\
-  --region chr1:100-200 \\
   --bed probes.bed
 """
 
@@ -33,6 +33,13 @@ def create_parser(subparsers):
         help=
 """Compute summary statistics for control gene from BAM
 files."""
+    )
+    parser.add_argument(
+        'gene',
+        help=
+"""Control gene (recommended choices: 'EGFR', 'RYR1',
+'VDR'). Alternatively, you can provide a custom region
+(format: chrom:start-end)."""
     )
     parser.add_argument(
         'control_statistics',
@@ -48,20 +55,6 @@ SampleTable[Statistics]."""
 """One or more input BAM files. Alternatively, you can
 provide a text file (.txt, .tsv, .csv, or .list)
 containing one BAM file per line."""
-    )
-    parser.add_argument(
-        '--gene',
-        metavar='TEXT',
-        help=
-"""Control gene (recommended choices: 'EGFR', 'RYR1',
-'VDR'). Cannot be used with --region."""
-    )
-    parser.add_argument(
-        '--region',
-        metavar='TEXT',
-        help=
-"""Custom region to use as control gene
-('chrom:start-end'). Cannot be used with --gene."""
     )
     parser.add_argument(
         '--assembly',
@@ -85,7 +78,6 @@ match the BAM contig names."""
 
 def main(args):
     result = utils.compute_control_statistics(
-        args.bams, gene=args.gene, region=args.region,
-        assembly=args.assembly, bed=args.bed
+        args.gene, args.bams, assembly=args.assembly, bed=args.bed
     )
     result.to_file(args.control_statistics)

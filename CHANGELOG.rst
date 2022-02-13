@@ -12,6 +12,7 @@ Changelog
 * Combine optional arguments ``--bam`` and ``--fn`` into single positional argument ``--bams`` for following commands: :command:`compute-control-statistics`, :command:`compute-target-depth`, :command:`prepare-depth-of-coverage`.
 * Rename ``output`` argument to ``copy-number`` for :command:`compute-copy-number` command.
 * Rename ``output`` argument to ``read-depth`` for :command:`compute-read-depth` command.
+* Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
 
 0.12.0 (2022-01-29)
 -------------------

@@ -336,22 +336,20 @@ def compare_genotypes(first, second, verbose=False):
         show_comparison(col)
 
 def compute_control_statistics(
-    bams, gene=None, region=None, assembly='GRCh37', bed=None
+    gene, bams, assembly='GRCh37', bed=None
 ):
     """
     Compute summary statistics for control gene from BAM files.
 
     Parameters
     ----------
+    gene : str
+        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
+        Alternatively, you can provide a custom region (format:
+        chrom:start-end).
     bams : str or list
         One or more input BAM files. Alternatively, you can provide a text
         file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
-    gene : str, optional
-        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR'). Cannot be
-        used with ``region``.
-    region : str, optional
-        Custom region to use as control gene ('chrom:start-end'). Cannot be
-        used with ``gene``.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
@@ -367,8 +365,11 @@ def compute_control_statistics(
         Archive object with the semantic type SampleTable[Statistcs].
     """
     gene_table = core.load_gene_table()
-    if gene is not None:
+
+    if gene in core.list_genes(mode='all'):
         region = gene_table[gene_table.Gene == gene][f'{assembly}Region'].values[0]
+    else:
+        region = gene
 
     cf = pycov.CovFrame.from_bam(bams, regions=region, zero=False)
 

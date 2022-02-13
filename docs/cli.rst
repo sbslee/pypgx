@@ -167,13 +167,16 @@ compute-control-statistics
 .. code-block:: text
 
    $ pypgx compute-control-statistics -h
-   usage: pypgx compute-control-statistics [-h] [--gene TEXT] [--region TEXT]
-                                           [--assembly TEXT] [--bed PATH]
-                                           control-statistics bams [bams ...]
+   usage: pypgx compute-control-statistics [-h] [--assembly TEXT] [--bed PATH]
+                                           gene control-statistics bams
+                                           [bams ...]
    
    Compute summary statistics for control gene from BAM files.
    
    Positional arguments:
+     gene                Control gene (recommended choices: 'EGFR', 'RYR1',
+                         'VDR'). Alternatively, you can provide a custom region
+                         (format: chrom:start-end).
      control-statistics  Output archive file with the semantic type
                          SampleTable[Statistics].
      bams                One or more input BAM files. Alternatively, you can
@@ -182,10 +185,6 @@ compute-control-statistics
    
    Optional arguments:
      -h, --help          Show this help message and exit.
-     --gene TEXT         Control gene (recommended choices: 'EGFR', 'RYR1',
-                         'VDR'). Cannot be used with --region.
-     --region TEXT       Custom region to use as control gene
-                         ('chrom:start-end'). Cannot be used with --gene.
      --assembly TEXT     Reference genome assembly (default: 'GRCh37')
                          (choices: 'GRCh37', 'GRCh38').
      --bed PATH          By default, the input data is assumed to be WGS. If
@@ -197,15 +196,15 @@ compute-control-statistics
    
    [Example] For the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
+     VDR \
      control-statistcs.zip \
-     1.bam 2.bam \
-     --gene VDR
+     1.bam 2.bam
    
    [Example] For a custom region from targeted sequencing data:
      $ pypgx compute-control-statistics \
+     chr1:100-200 \
      control-statistcs.zip \
      bam.list \
-     --region chr1:100-200 \
      --bed probes.bed
 
 compute-copy-number
