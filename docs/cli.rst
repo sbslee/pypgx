@@ -36,7 +36,7 @@ For getting help on the CLI:
        create-regions-bed  Create a BED file which contains all regions used by 
                            PyPGx.
        estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with 
+                           Estimate haplotype phase of observed variants with
                            the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for target gene.
@@ -189,10 +189,10 @@ compute-control-statistics
                          (choices: 'GRCh37', 'GRCh38').
      --bed PATH          By default, the input data is assumed to be WGS. If
                          it's targeted sequencing, you must provide a BED file
-                         to indicate probed regions. Note that the 'chr'
-                         prefix in BED contig names (e.g. 'chr1' vs. '1') will
-                         be automatically added or removed as necessary to
-                         match the BAM contig names.
+                         to indicate probed regions. Note that the 'chr' prefix
+                         in contig names (e.g. 'chr1' vs. '1') will be
+                         automatically added or removed as necessary to match
+                         the input BAM's contig names.
    
    [Example] For the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
@@ -334,19 +334,20 @@ estimate-phase-beagle
    
    Estimate haplotype phase of observed variants with the Beagle program.
    
-   The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF will
-   be automatically added or removed as necessary to match that of the reference
-   VCF.
-   
    Positional arguments:
-     imported-variants  Archive file with the semantic type VcfFrame[Imported].
-     phased-variants    Archive file with the semantic type VcfFrame[Phased].
+     imported-variants  Input archive file with the semantic type
+                        VcfFrame[Imported]. The 'chr' prefix in contig names
+                        (e.g. 'chr1' vs. '1') will be automatically added or
+                        removed as necessary to match the reference VCF's contig
+                        names.
+     phased-variants    Output archive file with the semantic type
+                        VcfFrame[Phased].
    
    Optional arguments:
      -h, --help         Show this help message and exit.
-     --panel PATH       VCF file corresponding to a reference haplotype panel 
-                        (compressed or uncompressed). By default, the 1KGP panel 
-                        in the ~/pypgx-bundle directory will be used.
+     --panel PATH       VCF file (compressed or uncompressed) corresponding to a
+                        reference haplotype panel. By default, the 1KGP panel in
+                        the ~/pypgx-bundle directory will be used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -657,10 +658,10 @@ prepare-depth-of-coverage
                         (choices: 'GRCh37', 'GRCh38').
      --bed PATH         By default, the input data is assumed to be WGS. If
                         it's targeted sequencing, you must provide a BED file
-                        to indicate probed regions. Note that the 'chr'
-                        prefix in BED contig names (e.g. 'chr1' vs. '1') will
-                        be automatically added or removed as necessary to
-                        match the BAM contig names.
+                        to indicate probed regions. Note that the 'chr' prefix
+                        in contig names (e.g. 'chr1' vs. '1') will be
+                        automatically added or removed as necessary to match
+                        the input BAM's contig names.
    
    [Example] From WGS data:
      $ pypgx prepare-depth-of-coverage \

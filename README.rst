@@ -517,7 +517,7 @@ For getting help on the CLI:
        create-regions-bed  Create a BED file which contains all regions used by 
                            PyPGx.
        estimate-phase-beagle
-                           Estimate haplotype phase of observed variants with 
+                           Estimate haplotype phase of observed variants with
                            the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for target gene.

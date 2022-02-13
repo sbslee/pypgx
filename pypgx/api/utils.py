@@ -355,9 +355,9 @@ def compute_control_statistics(
     bed : str, optional
         By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
-        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
-        will be automatically added or removed as necessary to match the BAM
-        contig names.
+        Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will
+        be automatically added or removed as necessary to match the input
+        BAM's contig names.
 
     Returns
     -------
@@ -678,14 +678,13 @@ def estimate_phase_beagle(
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
-    The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF
-    will be automatically added or removed as necessary to match that of the
-    reference VCF.
-
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported]. The
+        'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+        automatically added or removed as necessary to match the reference
+        VCF's contig names.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (compressed or
         uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
@@ -1088,9 +1087,9 @@ def prepare_depth_of_coverage(
     bed : str, optional
         By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
-        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
-        will be automatically added or removed as necessary to match the BAM
-        contig names.
+        Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will
+        be automatically added or removed as necessary to match the input
+        BAM's contig names.
 
     Returns
     -------
