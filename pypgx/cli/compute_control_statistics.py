@@ -7,6 +7,10 @@ import pysam
 
 description = """
 Compute summary statistics for control gene from BAM files.
+
+Note that for the arguments gene and --bed, the 'chr' prefix in contig names
+(e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to
+match the input BAM's contig names.
 """
 
 epilog = f"""
@@ -70,10 +74,7 @@ containing one BAM file per line."""
         help=
 """By default, the input data is assumed to be WGS. If
 it's targeted sequencing, you must provide a BED file
-to indicate probed regions. Note that the 'chr' prefix
-in contig names (e.g. 'chr1' vs. '1') will be
-automatically added or removed as necessary to match
-the input BAM's contig names."""
+to indicate probed regions."""
     )
 
 def main(args):
