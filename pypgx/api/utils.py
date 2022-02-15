@@ -931,7 +931,7 @@ def predict_alleles(consolidated_variants):
 
     reformatted_variants = {}
 
-    for x in consolidated_variants.data.variants():
+    for x in consolidated_variants.data.to_variants():
         if x in variant_synonyms:
             y = variant_synonyms[x]
             if y in reformatted_variants:

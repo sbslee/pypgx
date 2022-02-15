@@ -14,6 +14,7 @@ Changelog
 * Rename ``output`` argument to ``read-depth`` for :command:`compute-read-depth` command.
 * Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
 * Deprecate :meth:`sdk.utils.parse_input_bams` method.
+* Update :meth:`api.utils.predict_alleles` method to match `0.31.0` version of `fuc` package.
 
 0.12.0 (2022-01-29)
 -------------------
