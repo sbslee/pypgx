@@ -672,7 +672,7 @@ prepare-depth-of-coverage
    [Example] From targeted sequencing data:
      $ pypgx prepare-depth-of-coverage \
      depth-of-coverage.zip \
-     bam.txt \
+     bam.list \
      --bed probes.bed
 
 print-metadata

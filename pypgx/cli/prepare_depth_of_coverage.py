@@ -18,7 +18,7 @@ epilog = f"""
 [Example] From targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   depth-of-coverage.zip \\
-  bam.txt \\
+  bam.list \\
   --bed probes.bed
 """
 
