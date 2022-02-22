@@ -774,6 +774,9 @@ def filter_samples(archive, samples, exclude=False):
         'CovFrame' in archive.metadata['SemanticType']):
         data = archive.data.subset(samples, exclude=exclude)
     elif 'SampleTable' in archive.metadata['SemanticType']:
+        if exclude:
+            samples = [x for x in archive.data.index.to_list()
+                if x not in samples]
         data = archive.data.loc[samples]
     else:
         pass

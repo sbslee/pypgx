@@ -15,6 +15,7 @@ Changelog
 * Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
 * Deprecate :meth:`sdk.utils.parse_input_bams` method.
 * Update :meth:`api.utils.predict_alleles` method to match ``0.31.0`` version of ``fuc`` package.
+* Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
 
 0.12.0 (2022-01-29)
 -------------------
