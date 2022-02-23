@@ -436,8 +436,6 @@ def get_ref_allele(gene, assembly='GRCh37'):
     ----------
     gene : str
         Target gene.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
 
     Returns
     -------

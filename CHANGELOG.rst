@@ -16,6 +16,7 @@ Changelog
 * Deprecate :meth:`sdk.utils.parse_input_bams` method.
 * Update :meth:`api.utils.predict_alleles` method to match ``0.31.0`` version of ``fuc`` package.
 * Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
+* Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
 
 0.12.0 (2022-01-29)
 -------------------
