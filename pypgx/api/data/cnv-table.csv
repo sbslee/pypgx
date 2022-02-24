@@ -31,7 +31,8 @@ CYP2D6,Unknown1
 CYP2E1,Normal
 CYP2E1,Duplication1
 CYP2E1,Duplication2
-CYP2E1,PartialDuplication
+CYP2E1,PartialDuplicationHet
+CYP2E1,PartialDuplicationHom
 CYP2E1,Multiplication
 CYP4F2,Normal
 CYP4F2,DeletionHet

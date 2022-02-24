@@ -1180,7 +1180,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA10831
      -
    * - \*S1
-     - PartialDuplication
+     - PartialDuplicationHet
      - \*1/\*S1
      - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-2.png>`
@@ -1190,6 +1190,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
      - \*S1 is linked to \*7.
+   * - \*S1
+     - PartialDuplicationHom
+     - \*S1/\*S1
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-7.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19309
+     -
    * - \*1x2
      - Duplication1
      - \*1/\*1x2
