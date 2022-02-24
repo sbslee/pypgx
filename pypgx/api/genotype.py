@@ -419,6 +419,12 @@ class SLC22A2Genotyper:
                 result = [a1, '*S2']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'Intron9Deletion,Exon11Deletion':
+            if (('*3' in r.Haplotype1 or '*3' in r.Haplotype2) and
+                ('*K432Q' in r.Haplotype1 or '*K432Q' in r.Haplotype2)):
+                result = ['*S1', '*S2']
+            else:
+                result = ['Indeterminate']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

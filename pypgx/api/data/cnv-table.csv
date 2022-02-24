@@ -50,6 +50,7 @@ GSTT1,DeletionHom
 SLC22A2,Normal
 SLC22A2,Exon11Deletion
 SLC22A2,Intron9Deletion
+SLC22A2,"Intron9Deletion,Exon11Deletion"
 SULT1A1,Normal
 SULT1A1,DeletionHet
 SULT1A1,Duplication
