@@ -878,7 +878,9 @@ test-cnv-caller
    Optional arguments:
      -h, --help            Show this help message and exit.
      --confusion-matrix PATH
-                           Write the confusion matrix as a CSV file.
+                           Write the confusion matrix as a CSV file where rows 
+                           indicate actual class and columns indicate prediction 
+                           class.
 
 train-cnv-caller
 ================
@@ -904,5 +906,7 @@ train-cnv-caller
    Optional arguments:
      -h, --help            Show this help message and exit.
      --confusion-matrix PATH
-                           Write the confusion matrix as a CSV file.
+                           Write the confusion matrix as a CSV file where rows 
+                           indicate actual class and columns indicate prediction 
+                           class.
 

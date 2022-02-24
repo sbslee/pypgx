@@ -36,7 +36,9 @@ def create_parser(subparsers):
     parser.add_argument(
         '--confusion-matrix',
         metavar='PATH',
-        help='Write the confusion matrix as a CSV file.'
+        help='Write the confusion matrix as a CSV file where rows \n'
+             'indicate actual class and columns indicate prediction \n'
+             'class.'
     )
 
 def main(args):

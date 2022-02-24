@@ -1161,7 +1161,8 @@ def test_cnv_caller(
     cnv_calls : str or pypgx.Archive
         Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
-        Write the confusion matrix as a CSV file.
+        Write the confusion matrix as a CSV file where rows indicate actual
+        class and columns indicate prediction class.
     """
     if isinstance(cnv_caller, str):
         cnv_caller = sdk.Archive.from_file(cnv_caller)
@@ -1220,7 +1221,8 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     cnv_calls : str or pypgx.Archive
         Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
-        Write the confusion matrix as a CSV file.
+        Write the confusion matrix as a CSV file where rows indicate actual
+        class and columns indicate prediction class.
 
     Returns
     -------
