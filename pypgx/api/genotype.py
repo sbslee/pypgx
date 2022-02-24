@@ -274,8 +274,8 @@ class CYP2E1Genotyper:
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'PartialDuplication':
-            h1 = '*4'in r.Haplotype1 and '*7' in r.Haplotype1
-            h2 = '*4'in r.Haplotype2 and '*7' in r.Haplotype2
+            h1 = '*7' in r.Haplotype1
+            h2 = '*7' in r.Haplotype2
             if h1 and h2:
                 result = [a1, '*S1']
             elif h1 and not h2:

@@ -18,6 +18,7 @@ Changelog
 * Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
 * Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
 * Improve CNV caller for CYP2A6 and CYP2B6.
+* Update calling algorithm for CYP2E1\*S1 allele (see **SV summary for CYP2E1** section). When partial duplication is present, from now on the algorithm requires only \*7 to call \*S1 instead of both \*7 and \*4.
 
 0.12.0 (2022-01-29)
 -------------------

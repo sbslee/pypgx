@@ -1189,7 +1189,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
-     -
+     - \*S1 is linked to \*7.
    * - \*1x2
      - Duplication1
      - \*1/\*1x2
