@@ -82,6 +82,23 @@ def _call_multiplication(r):
 
     return result
 
+def _call_linked_allele(r, linked, target):
+    """
+    Call linked star allele.
+    """
+    a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+    h1 = linked in r.Haplotype1
+    h2 = linked in r.Haplotype2
+    if h1 and h2:
+        result = [a1, target]
+    elif h1 and not h2:
+        result = [a2, target]
+    elif not h1 and h2:
+        result = [a1, target]
+    else:
+        result = ['Indeterminate']
+    return result
+
 ###############################
 # Public classes and methods  #
 ###############################
@@ -471,21 +488,11 @@ class UGT1A4Genotyper:
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Intron1DeletionA':
-            if a1 == a2:
-                result = [a1, '*S1']
-            else:
-                result = ['Indeterminate']
+            result = _call_linked_allele(r, '*1', '*S1')
         elif r.CNV == 'Intron1DeletionB':
-            h1 = '*1'in r.Haplotype1
-            h2 = '*1'in r.Haplotype2
-            if h1 and h2:
-                result = [a1, '*S2']
-            elif h1 and not h2:
-                result = [a2, '*S2']
-            elif not h1 and h2:
-                result = [a1, '*S2']
-            else:
-                result = ['Indeterminate']
+            result = _call_linked_allele(r, '*1', '*S2')
+        elif r.CNV == 'Intron1PartialDup':
+            result = _call_linked_allele(r, '*1', '*S3')
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
