@@ -535,14 +535,16 @@ class UGT2B17Genotyper:
     """
 
     def one_row(self, r):
-        if r.CNV == 'DeletionHet':
+        if r.CNV == 'Normal,Deletion':
             result = ['*1', '*2']
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV == 'Deletion,Deletion':
             result = ['*2', '*2']
-        elif r.CNV in ['Normal', 'AssumeNormal']:
+        elif r.CNV in ['Normal,Normal', 'AssumeNormal']:
             result = ['*1', '*1']
-        elif r.CNV == 'PartialDeletionHet':
+        elif r.CNV == 'Deletion,PartialDeletion1':
             result = ['*2', '*S1']
+        elif r.CNV == 'Deletion,PartialDeletion2':
+            result = ['*2', '*S2']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

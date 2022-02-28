@@ -23,6 +23,7 @@ Changelog
 * Add a new CNV call for SLC22A2: ``Intron9Deletion,Exon11Deletion``.
 * Add a new CNV call for UGT1A4: ``Intron1PartialDup``.
 * Add new CNV calls for UGT2B15: ``PartialDeletion3`` and ``Deletion``.
+* Add a new CNV call for UGT2B17: ``Deletion,PartialDeletion2``. Additionally, several CNV calls have been renamed: ``Normal`` → ``Normal,Normal``; ``DeletionHet`` → ``Normal,Deletion``; ``DeletionHom`` → ``Deletion,Deletion``; ``PartialDeletionHet`` → ``Deletion,PartialDeletion1``.
 
 0.12.0 (2022-01-29)
 -------------------

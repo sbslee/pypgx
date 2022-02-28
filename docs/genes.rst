@@ -2227,7 +2227,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Coriell ID
     - Description
   * -
-    - Normal
+    - Normal,Normal
     - \*1/\*1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-1.png>`
@@ -2238,7 +2238,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19178
     -
   * - \*2
-    - DeletionHet
+    - Normal,Deletion
     - \*1/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-2.png>`
@@ -2249,7 +2249,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18855
     -
   * - \*2
-    - DeletionHom
+    - Deletion,Deletion
     - \*2/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-3.png>`
@@ -2260,7 +2260,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18617
     -
   * - \*2, \*S1
-    - PartialDeletionHet
+    - Deletion,PartialDeletion1
     - \*2/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
@@ -2269,4 +2269,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19160
+    -
+  * - \*2, \*S2
+    - Deletion,PartialDeletion2
+    - \*2/\*S2
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-5.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19189
     -
