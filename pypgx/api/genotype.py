@@ -516,6 +516,10 @@ class UGT2B15Genotyper:
             result = [a1, '*S1']
         elif r.CNV == 'PartialDeletion2':
             result = [a1, '*S2']
+        elif r.CNV == 'PartialDeletion3':
+            result = [a1, '*S3']
+        elif r.CNV == 'Deletion':
+            result = [a1, '*S4']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

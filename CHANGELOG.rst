@@ -22,6 +22,7 @@ Changelog
 * In CYP2E1 CNV nomenclature, ``PartialDuplication`` has been renamed to ``PartialDuplicationHet`` and a new CNV call ``PartialDuplicationHom`` has been added.
 * Add a new CNV call for SLC22A2: ``Intron9Deletion,Exon11Deletion``.
 * Add a new CNV call for UGT1A4: ``Intron1PartialDup``.
+* Add new CNV calls for UGT2B15: ``PartialDeletion3`` and ``Deletion``.
 
 0.12.0 (2022-01-29)
 -------------------
