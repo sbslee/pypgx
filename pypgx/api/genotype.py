@@ -179,7 +179,7 @@ class CYP2D6Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV in ['Normal', 'AssumeNormal']:
+        if r.CNV in ['Normal', 'AssumeNormal', 'PseudogeneDeletion']:
             result = [a1, a2]
         elif r.CNV == 'DeletionHom':
             result = ['*5', '*5']

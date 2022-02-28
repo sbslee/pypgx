@@ -28,6 +28,7 @@ CYP2D6,Tandem3
 CYP2D6,"DeletionHet,Tandem1A"
 CYP2D6,"Duplication,Tandem1A"
 CYP2D6,Unknown1
+CYP2D6,PseudogeneDeletion
 CYP2E1,Normal
 CYP2E1,Duplication1
 CYP2E1,Duplication2
