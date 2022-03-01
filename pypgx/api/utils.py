@@ -832,7 +832,7 @@ def import_variants(
     gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False
 ):
     """
-    Import SNV and indel data for target gene.
+    Import SNV/indel data for target gene.
 
     The method will slice the input VCF for the target gene to create an
     archive object with the semantic type VcfFrame[Imported] or

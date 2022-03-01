@@ -22,46 +22,54 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help="Run genotyping pipeline for long-read sequencing data.",
+        help=
+"""Run genotyping pipeline for long-read sequencing data."""
     )
     parser.add_argument(
         'gene',
-        help='Target gene.'
+        help=
+"""Target gene."""
     )
     parser.add_argument(
         'output',
-        help='Output directory.'
+        help=
+"""Output directory."""
     )
     parser.add_argument(
         'variants',
-        help='Input VCF file must be already BGZF compressed (.gz) \n'
-             'and indexed (.tbi) to allow random access. \n'
+        help=
+"""Input VCF file must be already BGZF compressed (.gz)
+and indexed (.tbi) to allow random access."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--force',
         action='store_true',
-        help='Overwrite output directory if it already exists.'
+        help=
+"""Overwrite output directory if it already exists."""
     )
     parser.add_argument(
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='Specify which samples should be included for analysis \n'
-             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you \n'
-             'can provide a list of samples.'
+        help=
+"""Specify which samples should be included for analysis
+by providing a text file (.txt, .tsv, .csv, or .list)
+containing one sample per line. Alternatively, you
+can provide a list of samples."""
     )
     parser.add_argument(
         '--exclude',
         action='store_true',
-        help='Exclude specified samples.'
+        help=
+"""Exclude specified samples."""
     )
 
 def main(args):

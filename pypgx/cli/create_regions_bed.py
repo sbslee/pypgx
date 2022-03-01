@@ -14,31 +14,36 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Create a BED file which contains all regions used by \n'
-             'PyPGx.',
+        help=
+"""Create a BED file which contains all regions used by
+PyPGx."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--add-chr-prefix',
         action='store_true',
-        help="Whether to add the 'chr' string in contig names."
+        help=
+"""Whether to add the 'chr' string in contig names."""
     )
     parser.add_argument(
         '--merge',
         action='store_true',
-        help='Whether to merge overlapping intervals (gene names will \n'
-             'be removed too).'
+        help=
+"""Whether to merge overlapping intervals (gene names will
+be removed too)."""
     )
     parser.add_argument(
         '--sv-genes',
         action='store_true',
-        help='Whether to only return genes with SV.'
+        help=
+"""Whether to only return genes with SV."""
     )
 
 def main(args):

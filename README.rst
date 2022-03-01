@@ -175,7 +175,7 @@ directory in order for PyPGx to correctly access the moved files:
 .. code-block:: text
 
    $ cd ~
-   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+   $ git clone --branch 0.13.0 --depth 1 https://github.com/sbslee/pypgx-bundle
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the
@@ -514,25 +514,25 @@ For getting help on the CLI:
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
-       create-regions-bed  Create a BED file which contains all regions used by 
+       create-regions-bed  Create a BED file which contains all regions used by
                            PyPGx.
        estimate-phase-beagle
                            Estimate haplotype phase of observed variants with
                            the Beagle program.
        filter-samples      Filter Archive file for specified samples.
        import-read-depth   Import read depth data for target gene.
-       import-variants     Import SNV and indel data for target gene.
+       import-variants     Import SNV/indel data for target gene.
        plot-bam-copy-number
                            Plot copy number profile from CovFrame[CopyNumber].
        plot-bam-read-depth
                            Plot read depth profile with BAM data.
-       plot-cn-af          Plot both copy number profile and allele fraction 
+       plot-cn-af          Plot both copy number profile and allele fraction
                            profile in one figure.
        plot-vcf-allele-fraction
                            Plot allele fraction profile with VCF data.
        plot-vcf-read-depth
                            Plot read depth profile with VCF data.
-       predict-alleles     Predict candidate star alleles based on observed 
+       predict-alleles     Predict candidate star alleles based on observed
                            variants.
        predict-cnv         Predict CNV from copy number data for target gene.
        prepare-depth-of-coverage

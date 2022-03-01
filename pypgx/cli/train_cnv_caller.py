@@ -17,31 +17,36 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Train CNV caller for target gene.',
+        help=
+"""Train CNV caller for target gene."""
     )
     parser.add_argument(
         'copy_number',
         metavar='copy-number',
-        help='Archive file with the semantic type \n'
-             'CovFrame[CopyNumber].'
+        help=
+"""Input archive file with the semantic type
+CovFrame[CopyNumber]."""
     )
     parser.add_argument(
         'cnv_calls',
         metavar='cnv-calls',
-        help='Archive file with the semantic type \n'
-             'SampleTable[CNVCalls].'
+        help=
+"""Input archive file with the semantic type
+SampleTable[CNVCalls]."""
     )
     parser.add_argument(
         'cnv_caller',
         metavar='cnv-caller',
-        help='Archive file with the semantic type Model[CNV].'
+        help=
+"""Output archive file with the semantic type Model[CNV]."""
     )
     parser.add_argument(
         '--confusion-matrix',
         metavar='PATH',
-        help='Write the confusion matrix as a CSV file where rows \n'
-             'indicate actual class and columns indicate prediction \n'
-             'class.'
+        help=
+"""Write the confusion matrix as a CSV file where rows
+indicate actual class and columns indicate prediction
+class."""
     )
 
 def main(args):

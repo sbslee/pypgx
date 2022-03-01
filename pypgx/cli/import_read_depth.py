@@ -14,36 +14,43 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Import read depth data for target gene.',
+        help=
+"""Import read depth data for target gene."""
     )
     parser.add_argument(
         'gene',
-        help='Target gene.'
+        help=
+"""Target gene."""
     )
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Archive file with the semantic type \n'
-             'CovFrame[DepthOfCoverage].'
+        help=
+"""Input archive file with the semantic type
+CovFrame[DepthOfCoverage]."""
     )
     parser.add_argument(
         'read_depth',
         metavar='read-depth',
-        help='Archive file with the semantic type CovFrame[ReadDepth].'
+        help=
+"""Output archive file with the semantic type
+CovFrame[ReadDepth]."""
     )
     parser.add_argument(
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='Specify which samples should be included for analysis \n'
-             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you can \n'
-             'provide a list of samples.'
+        help=
+"""Specify which samples should be included for analysis
+by providing a text file (.txt, .tsv, .csv, or .list)
+containing one sample per line. Alternatively, you can
+provide a list of samples."""
     )
     parser.add_argument(
         '--exclude',
         action='store_true',
-        help='Exclude specified samples.'
+        help=
+"""Exclude specified samples."""
     )
 
 def main(args):

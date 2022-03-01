@@ -44,99 +44,115 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help="Run genotyping pipeline for NGS data.",
+        help=
+"""Run genotyping pipeline for NGS data."""
     )
     parser.add_argument(
         'gene',
-        help='Target gene.'
+        help=
+"""Target gene."""
     )
     parser.add_argument(
         'output',
-        help='Output directory.'
+        help=
+"""Output directory."""
     )
     parser.add_argument(
         '--variants',
         metavar='PATH',
-        help='Input VCF file must be already BGZF compressed (.gz) \n'
-             'and indexed (.tbi) to allow random access. \n'
-             'Statistical haplotype phasing will be skipped if \n'
-             'input VCF is already fully phased.'
+        help=
+"""Input VCF file must be already BGZF compressed (.gz)
+and indexed (.tbi) to allow random access.
+Statistical haplotype phasing will be skipped if
+input VCF is already fully phased."""
     )
     parser.add_argument(
         '--depth-of-coverage',
         metavar='PATH',
-        help='Archive file with the semantic type \n'
-             'CovFrame[DepthOfCoverage].'
+        help=
+"""Archive file with the semantic type
+CovFrame[DepthOfCoverage]."""
     )
     parser.add_argument(
         '--control-statistics',
         metavar='PATH',
-        help='Archive file with the semantic type \n'
-             'SampleTable[Statistcs].'
+        help=
+"""Archive file with the semantic type
+SampleTable[Statistcs]."""
     )
     parser.add_argument(
         '--platform',
         metavar='TEXT',
         default='WGS',
         choices=['WGS', 'Targeted'],
-        help="Genotyping platform (default: 'WGS') (choices: 'WGS', \n"
-             "'Targeted')"
+        help=
+"""Genotyping platform (default: 'WGS') (choices: 'WGS',
+'Targeted')"""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--panel',
         metavar='PATH',
-        help='VCF file corresponding to a reference haplotype panel \n'
-             '(compressed or uncompressed). By default, the 1KGP panel \n'
-             'in the ~/pypgx-bundle directory will be used.'
+        help=
+"""VCF file corresponding to a reference haplotype panel
+(compressed or uncompressed). By default, the 1KGP panel
+in the ~/pypgx-bundle directory will be used."""
     )
     parser.add_argument(
         '--force',
         action='store_true',
-        help='Overwrite output directory if it already exists.'
+        help=
+"""Overwrite output directory if it already exists."""
     )
     parser.add_argument(
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='Specify which samples should be included for analysis \n'
-             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you \n'
-             'can provide a list of samples.'
+        help=
+"""Specify which samples should be included for analysis
+by providing a text file (.txt, .tsv, .csv, or .list)
+containing one sample per line. Alternatively, you
+can provide a list of samples."""
     )
     parser.add_argument(
         '--exclude',
         action='store_true',
-        help='Exclude specified samples.'
+        help=
+"""Exclude specified samples."""
     )
     parser.add_argument(
         '--samples-without-sv',
         metavar='TEXT',
         nargs='+',
-        help="List of known samples without SV."
+        help=
+"""List of known samples without SV."""
     )
     parser.add_argument(
         '--do-not-plot-copy-number',
         action='store_true',
-        help='Do not plot copy number profile.'
+        help=
+"""Do not plot copy number profile."""
     )
     parser.add_argument(
         '--do-not-plot-allele-fraction',
         action='store_true',
-        help='Do not plot allele fraction profile.'
+        help=
+"""Do not plot allele fraction profile."""
     )
     parser.add_argument(
         '--cnv-caller',
         metavar='PATH',
-        help='Archive file with the semantic type Model[CNV]. By \n'
-             'default, a pre-trained CNV caller in the ~/pypgx-bundle \n'
-             'directory will be used.'
+        help=
+"""Archive file with the semantic type Model[CNV]. By 
+default, a pre-trained CNV caller in the ~/pypgx-bundle
+directory will be used."""
     )
 
 def main(args):

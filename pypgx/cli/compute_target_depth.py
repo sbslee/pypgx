@@ -30,7 +30,8 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help='Compute read depth for target gene from BAM files.',
+        help=
+"""Compute read depth for target gene from BAM files."""
     )
     parser.add_argument(
         'gene',

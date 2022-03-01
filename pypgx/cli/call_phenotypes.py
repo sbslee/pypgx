@@ -12,16 +12,21 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Call phenotypes for target gene.',
         description=description,
+        help=
+"""Call phenotypes for target gene."""
     )
     parser.add_argument(
         'genotypes',
-        help='Archive file with the semantic type SampleTable[Genotypes].'
+        help=
+"""Input archive file with the semantic type
+SampleTable[Genotypes]."""
     )
     parser.add_argument(
         'phenotypes',
-        help='Archive file with the semantic type SampleTable[Phenotypes].'
+        help=
+"""Output archive file with the semantic type
+SampleTable[Phenotypes]."""
     )
 
 def main(args):

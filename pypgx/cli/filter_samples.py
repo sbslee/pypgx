@@ -14,28 +14,33 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Filter Archive file for specified samples.',
+        help=
+"""Filter Archive file for specified samples."""
     )
     parser.add_argument(
         'input',
-        help='Input archive file.'
+        help=
+"""Input archive file."""
     )
     parser.add_argument(
         'output',
-        help='Output archive file.'
+        help=
+"""Output archive file."""
     )
     parser.add_argument(
         'samples',
         nargs='+',
-        help='Specify which samples should be included for analysis \n'
-             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you can \n'
-             'provide a list of samples.'
+        help=
+"""Specify which samples should be included for analysis
+by providing a text file (.txt, .tsv, .csv, or .list)
+containing one sample per line. Alternatively, you can
+provide a list of samples."""
     )
     parser.add_argument(
         '--exclude',
         action='store_true',
-        help='Exclude specified samples.'
+        help=
+"""Exclude specified samples."""
     )
 
 def main(args):

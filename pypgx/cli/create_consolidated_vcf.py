@@ -13,26 +13,30 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Create a consolidated VCF file.',
         description=description,
+        help=
+"""Create a consolidated VCF file."""
     )
     parser.add_argument(
         'imported_variants',
         metavar='imported-variants',
-        help='Archive file with the semantic type \n'
-             'VcfFrame[Imported].'
+        help=
+"""Input archive file with the semantic type
+VcfFrame[Imported]."""
     )
     parser.add_argument(
         'phased_variants',
         metavar='phased-variants',
-        help='Archive file with the semantic type \n'
-             'VcfFrame[Phased].'
+        help=
+"""Input archive file with the semantic type
+VcfFrame[Phased]."""
     )
     parser.add_argument(
         'consolidated_variants',
         metavar='consolidated-variants',
-        help='Archive file with the semantic type \n'
-             'VcfFrame[Consolidated].'
+        help=
+"""Output archive file with the semantic type
+VcfFrame[Consolidated]."""
     )
 
 def main(args):

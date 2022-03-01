@@ -14,48 +14,56 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Plot read depth profile with VCF data.',
+        help=
+"""Plot read depth profile with VCF data."""
     )
     parser.add_argument(
         'gene',
-        help='Target gene.'
+        help=
+"""Target gene."""
     )
     parser.add_argument(
         'vcf',
-        help='VCF file.'
+        help=
+"""Input VCF file."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--path',
         metavar='PATH',
-        help='Create plots in this directory.'
+        help=
+"""Create plots in this directory."""
     )
     parser.add_argument(
         '--samples',
         metavar='TEXT',
         nargs='+',
-        help='Specify which samples should be included for analysis \n'
-             'by providing a text file (.txt, .tsv, .csv, or .list) \n'
-             'containing one sample per line. Alternatively, you can \n'
-             'provide a list of samples.'
+        help=
+"""Specify which samples should be included for analysis
+by providing a text file (.txt, .tsv, .csv, or .list)
+containing one sample per line. Alternatively, you can
+provide a list of samples."""
     )
     parser.add_argument(
         '--ymin',
         metavar='FLOAT',
         type=float,
-        help='Y-axis bottom.'
+        help=
+"""Y-axis bottom."""
     )
     parser.add_argument(
         '--ymax',
         metavar='FLOAT',
         type=float,
-        help='Y-axis top.'
+        help=
+"""Y-axis top."""
     )
 
 def main(args):

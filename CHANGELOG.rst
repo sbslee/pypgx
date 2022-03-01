@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.13.0 (in development)
------------------------
+0.13.0 (2022-03-01)
+-------------------
 
 * Add new genotyping platform, ``LongRead``, to :command:`import-variants` command.
 * Add new command :command:`run-long-read-pipeline`.
@@ -18,9 +18,8 @@ Changelog
 * Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
 * Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, CYP4F2, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, and UGT2B17.
-* Update calling algorithm for CYP2E1\*S1 allele (see **SV summary for CYP2E1** section). When partial duplication is present, from now on the algorithm requires only \*7 to call \*S1 instead of both \*7 and \*4.
 * Add a new CNV call for CYP2D6: ``PseudogeneDeletion``.
-* In CYP2E1 CNV nomenclature, ``PartialDuplication`` has been renamed to ``PartialDuplicationHet`` and a new CNV call ``PartialDuplicationHom`` has been added.
+* In CYP2E1 CNV nomenclature, ``PartialDuplication`` has been renamed to ``PartialDuplicationHet`` and a new CNV call ``PartialDuplicationHom`` has been added. Furthermore, calling algorithm for CYP2E1\*S1 allele has been updated. When partial duplication is present, from now on the algorithm requires only \*7 to call \*S1 instead of both \*7 and \*4.
 * Add a new CNV call for SLC22A2: ``Intron9Deletion,Exon11Deletion``.
 * Add a new CNV call for UGT1A4: ``Intron1PartialDup``.
 * Add new CNV calls for UGT2B15: ``PartialDeletion3`` and ``Deletion``.
