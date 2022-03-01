@@ -14,19 +14,22 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Predict candidate star alleles based on observed \n'
-             'variants.',
+        help=
+"""Predict candidate star alleles based on observed
+variants."""
     )
     parser.add_argument(
         'consolidated_variants',
         metavar='consolidated-variants',
-        help='Archive file with the semantic type \n'
-             'VcfFrame[Consolidated].'
+        help=
+"""Input archive file with the semantic type
+VcfFrame[Consolidated]."""
     )
     parser.add_argument(
         'alleles',
-        help='Archive file with the semantic type \n'
-             'SampleTable[Alleles].'
+        help=
+"""Output archive file with the semantic type
+SampleTable[Alleles]."""
     )
 
 def main(args):

@@ -60,6 +60,9 @@ The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
 available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
+PyPGx can be used to predict PGx genotypes and phenotypes using various
+genomic data, including data from next-generation sequencing (NGS), single
+nucleotide polymorphism (SNP) array, and long-read sequencing. Importantly,
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
@@ -199,7 +202,7 @@ directory in order for PyPGx to correctly access the moved files:
 .. code-block:: text
 
    $ cd ~
-   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+   $ git clone --branch 0.13.0 --depth 1 https://github.com/sbslee/pypgx-bundle
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the
@@ -216,35 +219,43 @@ sv>`__ such as gene deletions, duplications, and hybrids. You can visit the
 `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page to see the
 list of genes with SV.
 
-Some of the SV events can be quite challenging to detect accurately with
-next-generation sequencing (NGS) data due to misalignment of sequence reads
-caused by sequence homology with other gene family members (e.g. CYP2D6 and
-CYP2D7). PyPGx attempts to address this issue by training a `support vector
-machine (SVM) <https://scikit-learn.org/stable/modules/generated/sk
-learn.svm.SVC.html>`__-based multiclass classifier using the `one-vs-rest
-strategy <https://scikit-learn.org/stable/modules/generated/sklearn.multi
-class.OneVsRestClassifier.html>`__ for each gene for each GRCh build. Each
-classifier is trained using copy number profiles of real NGS samples as well
-as simulated ones.
+Some of the SV events can be quite challenging to detect accurately with NGS
+data due to misalignment of sequence reads caused by sequence homology with
+other gene family members (e.g. CYP2D6 and CYP2D7). PyPGx attempts to address
+this issue by training a `support vector machine (SVM) <https://scikit-
+learn.org/stable/modules/generated/sklearn.svm.SVC.html>`__-based multiclass
+classifier using the `one-vs-rest strategy <https://scikit-learn.org/stable
+/modules/generated/sklearn.multiclass.OneVsRestClassifier.html>`__ for each
+gene for each GRCh build. Each classifier is trained using copy number
+profiles of real NGS samples as well as simulated ones.
 
 You can plot copy number profile and allele fraction profile with PyPGx to
 visually inspect SV calls. Below are CYP2D6 examples:
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 80
+   :widths: 10 30 60
 
    * - SV Name
+     - Gene Model
      - Profile
    * - Normal
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
    * - DeletionHet
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
+   * - DeletionHom
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-6.png
    * - Duplication
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
    * - Tandem3
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-11.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-9.png
    * - Tandem2C
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-10.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png
 
 GRCh37 vs. GRCh38
@@ -256,10 +267,10 @@ may be tempted to use tools like ``LiftOver`` to convert GRCh37 to GRCh38, or
 vice versa, but deep down you know it's going to be a mess (and please don't
 do this). The good news is, PyPGx supports both of the builds!
 
-In many of the PyPGx actions, you can simply indicate which human genome
-build to use. For example, you can use ``assembly`` for the API and
-``--assembly`` for the CLI. **Note that GRCh37 will always be the default.**
-Below is an example of using the API:
+In many PyPGx actions, you can simply indicate which genome build to use. For
+example, for GRCh38 data you can use ``--assembly GRCh38`` in CLI and
+``assembly='GRCh38'`` in API. **Note that GRCh37 will always be the
+default.** Below is an example of using the API:
 
 .. code:: python3
 
@@ -327,7 +338,7 @@ as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
       - ``CYP2D6``, ``GSTT1``
     * - ``Platform``
       - Genotyping platform.
-      - ``WGS``, ``Targeted``, ``Chip``
+      - ``WGS``, ``Targeted``, ``Chip``, ``LongRead``
     * - ``Program``
       - Name of the phasing program.
       - ``Beagle``, ``SHAPEIT``
@@ -438,15 +449,68 @@ input and outputs a ``SampleTable[Phenotypes]`` file:
 Pipelines
 =========
 
-PyPGx provides two pipelines for performing PGx genotype analysis: NGS pipeline and chip pipeline.
+PyPGx currently provides three pipelines for performing PGx genotype analysis
+of single gene for one or multiple samples: NGS pipeline, chip pipeline, and
+long-read pipeline. In additional to genotyping, each pipeline will perform
+phenotype prediction based on genotype results. All pipelines are compatible
+with both GRCh37 and GRCh38 (e.g. for GRCh38 use ``--assembly GRCh38`` in CLI
+and ``assembly='GRCh38'`` in API).
 
-**NGS pipeline**
+NGS pipeline
+------------
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-ngs-pipeline.png
 
-**Chip pipeline**
+Implemented as ``pypgx run-ngs-pipeline`` in CLI and
+``pypgx.pipeline.run_ngs_pipeline`` in API, this pipeline is designed for
+processing short-read data (e.g. Illumina). Users must specify whether the
+input data is from whole genome sequencing (WGS) or targeted sequencing
+(custome targeted panel sequencing or whole exome sequencing).
+
+This pipeline supports SV detection based on copy number analysis for genes
+that are known to have SV. Therefore, if the target gene is associated with
+SV (e.g. CYP2D6) it's strongly recommended to provide a
+``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistcs]`` file in
+addtion to a VCF file containing SNVs/indels. If the target gene is not
+associated with SV (e.g. CYP3A5) providing a VCF file alone is enough. You can
+visit the `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page
+to see the full list of genes with SV. For details on SV detection algorithm,
+please see the `Structural variation detection <https://pypgx.readthedocs.io/
+en/latest/readme.html#structural-variation-detection>`__ section.
+
+Chip pipeline
+-------------
 
 .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-chip-pipeline.png
+
+Implemented as ``pypgx run-chip-pipeline`` in CLI and
+``pypgx.pipeline.run_chip_pipeline`` in API, this pipeline is designed for
+DNA chip data (e.g. Global Screening Array from Illumina). It's recommended
+to perform variant imputation on the input VCF prior to feeding it to the
+pipeline using a large reference haplotype panel (e.g. `TOPMed Imputation
+Server <https://imputation.biodatacatalyst.nhlbi.nih.gov/>`__).
+Alternatively, it's possible to perform variant imputation with the 1000
+Genomes Project (1KGP) data as reference within PyPGx using ``--impute`` in
+CLI and ``impute=True`` in API.
+
+The pipeline currently does not support SV detection. Please post a GitHub
+issue if you want to contribute your development skills and/or data for
+devising an SV detection algorithm.
+
+Long-read pipeline
+------------------
+
+.. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/flowchart-long-read-pipeline.png
+
+Implemented as ``pypgx run-long-read-pipeline`` in CLI and
+``pypgx.pipeline.run_long_read_pipeline`` in API, this pipeline is designed
+for long-read data (e.g. Pacific Biosciences and Oxford Nanopore
+Technologies). The input VCF must be phased using a read-backed haplotype
+phasing tool such as `WhatsHap <https://github.com/whatshap/whatshap>`__.
+
+The pipeline currently does not support SV detection. Please post a GitHub
+issue if you want to contribute your development skills and/or data for
+devising an SV detection algorithm.
 
 Getting help
 ============

@@ -13,12 +13,14 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Print the metadata of specified archive.',
         description=description,
+        help=
+"""Print the metadata of specified archive."""
     )
     parser.add_argument(
         'input',
-        help='Archive file.'
+        help=
+"""Input archive file."""
     )
 
 def main(args):

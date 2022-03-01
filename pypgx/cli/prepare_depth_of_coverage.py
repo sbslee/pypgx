@@ -6,19 +6,19 @@ import fuc
 import pysam
 
 description = """
-Prepare a depth of coverage file for all target genes with SV.
+Prepare a depth of coverage file for all target genes with SV from BAM files.
 """
 
 epilog = f"""
-[Example] When the input data is WGS:
+[Example] From WGS data:
   $ pypgx {fuc.api.common._script_name()} \\
   depth-of-coverage.zip \\
-  --bam A.bam B.bam
+  1.bam 2.bam
 
-[Example] When the input data is targeted sequencing:
+[Example] From targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   depth-of-coverage.zip \\
-  --fn bam.txt \\
+  bam.list \\
   --bed probes.bed
 """
 
@@ -28,47 +28,47 @@ def create_parser(subparsers):
         fuc.api.common._script_name(),
         description=description,
         epilog=epilog,
-        help='Prepare a depth of coverage file for all target \n'
-             'genes with SV.',
+        help=
+"""Prepare a depth of coverage file for all target
+genes with SV from BAM files."""
     )
     parser.add_argument(
         'depth_of_coverage',
         metavar='depth-of-coverage',
-        help='Archive file with the semantic type \n'
-             'CovFrame[DepthOfCoverage].'
+        help=
+"""Output archive file with the semantic type
+CovFrame[DepthOfCoverage]."""
     )
     parser.add_argument(
-        '--bam',
-        metavar='PATH',
+        'bams',
         nargs='+',
-        help='One or more BAM files. Cannot be used with --fn.'
-    )
-    parser.add_argument(
-        '--fn',
-        metavar='PATH',
-        help='File containing one BAM file per line. Cannot be used \n'
-             'with --bam.'
+        help=
+"""One or more input BAM files. Alternatively, you can
+provide a text file (.txt, .tsv, .csv, or .list)
+containing one BAM file per line."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="Reference genome assembly (default: 'GRCh37') \n"
-             "(choices: 'GRCh37', 'GRCh38')."
+        help=
+"""Reference genome assembly (default: 'GRCh37')
+(choices: 'GRCh37', 'GRCh38')."""
     )
     parser.add_argument(
         '--bed',
         metavar='PATH',
-        help="By default, the input data is assumed to be WGS. If \n"
-             "it's targeted sequencing, you must provide a BED file \n"
-             "to indicate probed regions. Note that the 'chr' \n"
-             "prefix in BED contig names (e.g. 'chr1' vs. '1') will \n"
-             "be automatically added or removed as necessary to \n"
-             "match the BAM contig names."
+        help=
+"""By default, the input data is assumed to be WGS. If
+it's targeted sequencing, you must provide a BED file
+to indicate probed regions. Note that the 'chr' prefix
+in contig names (e.g. 'chr1' vs. '1') will be
+automatically added or removed as necessary to match
+the input BAM's contig names."""
     )
 
 def main(args):
     archive = utils.prepare_depth_of_coverage(
-        bam=args.bam, fn=args.fn, assembly=args.assembly, bed=args.bed
+        args.bams, assembly=args.assembly, bed=args.bed
     )
     archive.to_file(args.depth_of_coverage)

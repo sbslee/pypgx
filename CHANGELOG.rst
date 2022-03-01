@@ -1,6 +1,30 @@
 Changelog
 *********
 
+0.13.0 (2022-03-01)
+-------------------
+
+* Add new genotyping platform, ``LongRead``, to :command:`import-variants` command.
+* Add new command :command:`run-long-read-pipeline`.
+* Remove ``Code`` column from ``cnv-table.csv`` file. From now on, CNV codes will be generated on the fly.
+* Add new method :meth:`api.core.load_cpic_table`.
+* Move following errors from ``api.core`` submodule to ``sdk.utils`` submodule: :class:`AlleleNotFoundError`, :class:`GeneNotFoundError`, :class:`NotTargetGeneError`, :class:`PhenotypeNotFoundError`, :class:`VariantNotFoundError`.
+* Combine optional arguments ``--bam`` and ``--fn`` into single positional argument ``bams`` for following commands: :command:`compute-control-statistics`, :command:`compute-target-depth`, :command:`prepare-depth-of-coverage`.
+* Rename ``output`` argument to ``copy-number`` for :command:`compute-copy-number` command.
+* Rename ``output`` argument to ``read-depth`` for :command:`compute-read-depth` command.
+* Combine optional arguments ``--gene`` and ``--region`` into single positional argument ``gene`` for :command:`compute-control-statistics` command.
+* Deprecate :meth:`sdk.utils.parse_input_bams` method.
+* Update :meth:`api.utils.predict_alleles` method to match ``0.31.0`` version of ``fuc`` package.
+* Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
+* Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, CYP4F2, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, and UGT2B17.
+* Add a new CNV call for CYP2D6: ``PseudogeneDeletion``.
+* In CYP2E1 CNV nomenclature, ``PartialDuplication`` has been renamed to ``PartialDuplicationHet`` and a new CNV call ``PartialDuplicationHom`` has been added. Furthermore, calling algorithm for CYP2E1\*S1 allele has been updated. When partial duplication is present, from now on the algorithm requires only \*7 to call \*S1 instead of both \*7 and \*4.
+* Add a new CNV call for SLC22A2: ``Intron9Deletion,Exon11Deletion``.
+* Add a new CNV call for UGT1A4: ``Intron1PartialDup``.
+* Add new CNV calls for UGT2B15: ``PartialDeletion3`` and ``Deletion``.
+* Add a new CNV call for UGT2B17: ``Deletion,PartialDeletion2``. Additionally, several CNV calls have been renamed: ``Normal`` → ``Normal,Normal``; ``DeletionHet`` → ``Normal,Deletion``; ``DeletionHom`` → ``Deletion,Deletion``; ``PartialDeletionHet`` → ``Deletion,PartialDeletion1``.
+
 0.12.0 (2022-01-29)
 -------------------
 
@@ -21,7 +45,7 @@ Changelog
 * Fix minor bug in :command:`compute-copy-number` command.
 * Update :command:`plot-cn-af` command to check input files more rigorously.
 * Improve CNV caller for CYP2A6, CYP2D6, and SLC22A2.
-* Add new method :meth:`sdk.utils.add_cn_samples` method.
+* Add new method :meth:`sdk.utils.add_cn_samples`.
 * Update :command:`compare-genotypes` command to output CNV comparisonw results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
 * Add index files for 1KGP reference haplotype panels.

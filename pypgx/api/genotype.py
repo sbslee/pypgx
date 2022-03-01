@@ -82,6 +82,23 @@ def _call_multiplication(r):
 
     return result
 
+def _call_linked_allele(r, linked, target):
+    """
+    Call linked star allele.
+    """
+    a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
+    h1 = linked in r.Haplotype1
+    h2 = linked in r.Haplotype2
+    if h1 and h2:
+        result = [a1, target]
+    elif h1 and not h2:
+        result = [a2, target]
+    elif not h1 and h2:
+        result = [a1, target]
+    else:
+        result = ['Indeterminate']
+    return result
+
 ###############################
 # Public classes and methods  #
 ###############################
@@ -162,7 +179,7 @@ class CYP2D6Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV in ['Normal', 'AssumeNormal']:
+        if r.CNV in ['Normal', 'AssumeNormal', 'PseudogeneDeletion']:
             result = [a1, a2]
         elif r.CNV == 'DeletionHom':
             result = ['*5', '*5']
@@ -273,9 +290,9 @@ class CYP2E1Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'PartialDuplication':
-            h1 = '*4'in r.Haplotype1 and '*7' in r.Haplotype1
-            h2 = '*4'in r.Haplotype2 and '*7' in r.Haplotype2
+        elif r.CNV == 'PartialDuplicationHet':
+            h1 = '*7' in r.Haplotype1
+            h2 = '*7' in r.Haplotype2
             if h1 and h2:
                 result = [a1, '*S1']
             elif h1 and not h2:
@@ -284,6 +301,8 @@ class CYP2E1Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'PartialDuplicationHom':
+            result = ['*S1', '*S1']
         elif r.CNV in ['Duplication1', 'Duplication2']:
             result = _call_duplication(r)
         elif r.CNV == 'Multiplication':
@@ -417,6 +436,12 @@ class SLC22A2Genotyper:
                 result = [a1, '*S2']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'Intron9Deletion,Exon11Deletion':
+            if (('*3' in r.Haplotype1 or '*3' in r.Haplotype2) and
+                ('*K432Q' in r.Haplotype1 or '*K432Q' in r.Haplotype2)):
+                result = ['*S1', '*S2']
+            else:
+                result = ['Indeterminate']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -463,21 +488,11 @@ class UGT1A4Genotyper:
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Intron1DeletionA':
-            if a1 == a2:
-                result = [a1, '*S1']
-            else:
-                result = ['Indeterminate']
+            result = _call_linked_allele(r, '*1', '*S1')
         elif r.CNV == 'Intron1DeletionB':
-            h1 = '*1'in r.Haplotype1
-            h2 = '*1'in r.Haplotype2
-            if h1 and h2:
-                result = [a1, '*S2']
-            elif h1 and not h2:
-                result = [a2, '*S2']
-            elif not h1 and h2:
-                result = [a1, '*S2']
-            else:
-                result = ['Indeterminate']
+            result = _call_linked_allele(r, '*1', '*S2')
+        elif r.CNV == 'Intron1PartialDup':
+            result = _call_linked_allele(r, '*1', '*S3')
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -501,6 +516,10 @@ class UGT2B15Genotyper:
             result = [a1, '*S1']
         elif r.CNV == 'PartialDeletion2':
             result = [a1, '*S2']
+        elif r.CNV == 'PartialDeletion3':
+            result = [a1, '*S3']
+        elif r.CNV == 'Deletion':
+            result = [a1, '*S4']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
@@ -516,14 +535,16 @@ class UGT2B17Genotyper:
     """
 
     def one_row(self, r):
-        if r.CNV == 'DeletionHet':
+        if r.CNV == 'Normal,Deletion':
             result = ['*1', '*2']
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV == 'Deletion,Deletion':
             result = ['*2', '*2']
-        elif r.CNV in ['Normal', 'AssumeNormal']:
+        elif r.CNV in ['Normal,Normal', 'AssumeNormal']:
             result = ['*1', '*1']
-        elif r.CNV == 'PartialDeletionHet':
+        elif r.CNV == 'Deletion,PartialDeletion1':
             result = ['*2', '*S1']
+        elif r.CNV == 'Deletion,PartialDeletion2':
+            result = ['*2', '*S2']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

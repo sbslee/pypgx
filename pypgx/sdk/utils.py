@@ -9,14 +9,29 @@ import pandas as pd
 import numpy as np
 from fuc import pyvcf, pycov, common, pybam
 
+class AlleleNotFoundError(Exception):
+    """Raise if specified allele is not present in the allele table."""
+
+class GeneNotFoundError(Exception):
+    """Raise if specified gene is not present in the gene table."""
+
 class IncorrectMetadataError(Exception):
     """Raised when specified metadata is incorrect."""
 
 class IncorrectSemanticTypeError(Exception):
     """Raised when specified semantic type is incorrect."""
 
+class NotTargetGeneError(Exception):
+    """Raise if specified gene is not one of the target genes."""
+
+class PhenotypeNotFoundError(Exception):
+    """Raise if specified phenotype is not present in the phenotype table."""
+
 class SemanticTypeNotFoundError(Exception):
     """Raised when specified semantic type is not supported."""
+
+class VariantNotFoundError(Exception):
+    """Raise if specified variant is not present in the variant table."""
 
 class Archive:
     """
@@ -253,51 +268,6 @@ def parse_pharmvar(fn):
         df2['Alleles'] = df2.apply(lambda r: ','.join(variants[assembly][r.Name]), axis=1)
         df2['rsID'] = df2.apply(lambda r: rs_dict[r.Name], axis=1)
         df2.to_csv(f'{gene}-{assembly}.csv')
-
-def parse_input_bams(bam=None, fn=None):
-    """
-    Parse input BAM files for downstream analyses.
-
-    Many of the PyPGx actions accept BAM files as input and users have a
-    choice between manually specifying individual BAM files (``bam``) and
-    simply provding a BAM list (``fn``). This method will parse a user's
-    choice and then return a list of input BAM files. As a bonus, it will
-    also determine whether the 'chr' string is found in the contig names.
-
-    Parameters
-    ----------
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
-
-    Returns
-    -------
-    list
-        List of BAM files.
-    str
-        Either '' or 'chr' depending on the contig names.
-    """
-    bam_files = []
-
-    if bam is None and fn is None:
-        raise ValueError("Must provide either 'bam' or 'fn'")
-    elif bam is not None and fn is not None:
-        raise ValueError("Cannot use 'bam' and 'fn' together")
-    elif bam is not None and fn is None:
-        if isinstance(bam, str):
-            bam_files.append(bam)
-        else:
-            bam_files += bam
-    else:
-        bam_files += common.convert_file2list(fn)
-
-    if all([pybam.has_chr_prefix(x) for x in bam_files]):
-        chr_prefix = 'chr'
-    else:
-        chr_prefix = ''
-
-    return bam_files, chr_prefix
 
 def simulate_copy_number(
     target, source, sample, sv, n=3, mu=0, sigma=0.05

@@ -5,11 +5,11 @@ from ..api import pipeline
 import fuc
 
 description = f"""
-Run genotyping pipeline for chip data.
+Run genotyping pipeline for long-read sequencing data.
 """
 
 epilog = f"""
-[Example] To genotype the CYP3A5 gene from chip data:
+[Example] To genotype the CYP3A5 gene from long-read sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   CYP3A5 \\
   CYP3A5-pipeline \\
@@ -23,7 +23,7 @@ def create_parser(subparsers):
         description=description,
         epilog=epilog,
         help=
-"""Run genotyping pipeline for chip data."""
+"""Run genotyping pipeline for long-read sequencing data."""
     )
     parser.add_argument(
         'gene',
@@ -39,31 +39,15 @@ def create_parser(subparsers):
         'variants',
         help=
 """Input VCF file must be already BGZF compressed (.gz)
-and indexed (.tbi) to allow random access.
-Statistical haplotype phasing will be skipped if
-input VCF is already fully phased."""
+and indexed (.tbi) to allow random access."""
     )
     parser.add_argument(
         '--assembly',
         metavar='TEXT',
         default='GRCh37',
-        help="""
-Reference genome assembly (default: 'GRCh37')
+        help=
+"""Reference genome assembly (default: 'GRCh37')
 (choices: 'GRCh37', 'GRCh38')."""
-    )
-    parser.add_argument(
-        '--panel',
-        metavar='PATH',
-        help=
-"""VCF file corresponding to a reference haplotype panel
-(compressed or uncompressed). By default, the 1KGP
-panel in the ~/pypgx-bundle directory will be used."""
-    )
-    parser.add_argument(
-        '--impute',
-        action='store_true',
-        help=
-"""Perform imputation of missing genotypes."""
     )
     parser.add_argument(
         '--force',
@@ -89,8 +73,7 @@ can provide a list of samples."""
     )
 
 def main(args):
-    pipeline.run_chip_pipeline(
+    pipeline.run_long_read_pipeline(
         args.gene, args.output, args.variants, assembly=args.assembly,
-        panel=args.panel, impute=args.impute, force=args.force,
-        samples=args.samples, exclude=args.exclude
+        force=args.force, samples=args.samples, exclude=args.exclude
     )

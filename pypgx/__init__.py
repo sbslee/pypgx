@@ -24,6 +24,7 @@ from .api.core import (
     list_variants,
     load_allele_table,
     load_cnv_table,
+    load_cpic_table,
     load_diplotype_table,
     load_equation_table,
     load_gene_table,
@@ -69,6 +70,8 @@ from .api.genotype import (
 )
 
 from .api.pipeline import (
+    run_chip_pipeline,
+    run_long_read_pipeline,
     run_ngs_pipeline,
 )
 

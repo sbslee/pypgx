@@ -7,6 +7,8 @@ import pathlib
 from io import BytesIO
 import warnings
 
+from .. import sdk
+
 import numpy as np
 import pandas as pd
 from fuc import pyvcf, common
@@ -31,21 +33,6 @@ FUNCTION_ORDER = [
     'Favorable Response',
     'Class IV (Normal)',
 ]
-
-class AlleleNotFoundError(Exception):
-    """Raise if specified allele is not present in the allele table."""
-
-class GeneNotFoundError(Exception):
-    """Raise if specified gene is not present in the gene table."""
-
-class NotTargetGeneError(Exception):
-    """Raise if specified gene is not one of the target genes."""
-
-class PhenotypeNotFoundError(Exception):
-    """Raise if specified phenotype is not present in the phenotype table."""
-
-class VariantNotFoundError(Exception):
-    """Raise if specified variant is not present in the variant table."""
 
 def build_definition_table(gene, assembly='GRCh37'):
     """
@@ -83,7 +70,7 @@ def build_definition_table(gene, assembly='GRCh37'):
     1    19  15897578  rs3093105   A   C    .      .   VI=W12G     GT  1  0
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
 
@@ -175,7 +162,7 @@ def has_phenotype(gene):
     False
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -205,7 +192,7 @@ def has_score(gene):
     False
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
 
@@ -300,7 +287,7 @@ def get_exon_ends(gene, assembly='GRCh37'):
         List of end positions.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
     df = load_gene_table()
     df = df[df.Gene == gene]
     s = df[f'{assembly}ExonEnds'].values[0]
@@ -323,7 +310,7 @@ def get_exon_starts(gene, assembly='GRCh37'):
         List of start positions.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
     df = load_gene_table()
     df = df[df.Gene == gene]
     s = df[f'{assembly}ExonStarts'].values[0]
@@ -361,13 +348,13 @@ def get_function(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_allele_table()
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene, allele)
+        raise sdk.utils.AlleleNotFoundError(gene, allele)
 
     return df.Function.values[0]
 
@@ -431,10 +418,10 @@ def get_priority(gene, phenotype):
     'Normal/Routine/Low Risk'
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if phenotype not in list_phenotypes():
-        raise PhenotypeNotFoundError(phenotype)
+        raise sdk.utils.PhenotypeNotFoundError(phenotype)
 
     df = load_phenotype_table()
     i = (df.Gene == gene) & (df.Phenotype == phenotype)
@@ -449,8 +436,6 @@ def get_ref_allele(gene, assembly='GRCh37'):
     ----------
     gene : str
         Target gene.
-    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
-        Reference genome assembly.
 
     Returns
     -------
@@ -487,7 +472,7 @@ def get_region(gene, assembly='GRCh37'):
         Requested region.
     """
     if gene not in list_genes(mode='all'):
-        raise GeneNotFoundError(gene)
+        raise sdk.utils.GeneNotFoundError(gene)
 
     df = load_gene_table()
     df = df[df.Gene == gene]
@@ -529,7 +514,7 @@ def get_score(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -538,7 +523,7 @@ def get_score(gene, allele):
     df = df[(df.Gene == gene) & (df.StarAllele == allele)]
 
     if df.empty:
-        raise AlleleNotFoundError(gene, allele)
+        raise sdk.utils.AlleleNotFoundError(gene, allele)
 
     return df.ActivityScore.values[0]
 
@@ -557,7 +542,7 @@ def get_strand(gene):
         '+' or '-'.
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
     df = df[df.Gene == gene]
@@ -588,17 +573,17 @@ def get_variant_impact(variant):
     'Splice Defect'
     >>> pypgx.get_variant_impact('22-42524435-T-A') # Intron variant
     ''
-    >>> pypgx.get_variant_impact('22-42524435-T-C') # Does not exist
+    >>> pypgx.get_variant_impact('22-42524435-T-C')
     Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 489, in get_variant_impact
-        raise VariantNotFoundError(variant)
-    pypgx.api.core.VariantNotFoundError: 22-42524435-T-C
+      File "/Users/sbslee/Desktop/pypgx/pypgx/api/core.py", line 588, in get_variant_impact
+        raise sdk.utils.VariantNotFoundError(variant)
+    pypgx.sdk.utils.VariantNotFoundError: 22-42524435-T-C
     """
     df = load_variant_table()
     df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
     if df.empty:
-        raise VariantNotFoundError(variant)
+        raise sdk.utils.VariantNotFoundError(variant)
     impact = df.Impact.values[0]
     if pd.isna(impact):
         impact = ''
@@ -783,7 +768,7 @@ def list_phenotypes(gene=None):
 
     if gene is not None:
         if not is_target_gene(gene):
-            raise NotTargetGeneError(gene)
+            raise sdk.utils.NotTargetGeneError(gene)
         df = df[df.Gene == gene]
 
     return sorted(list(df.Phenotype.unique()))
@@ -834,7 +819,7 @@ def list_variants(gene, alleles=None, mode='all', assembly='GRCh37'):
     ['19-41495755-T-C', '19-41496461-T-C']
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     allele_table = load_allele_table()
     allele_table = allele_table[allele_table.Gene == gene]
@@ -852,7 +837,7 @@ def list_variants(gene, alleles=None, mode='all', assembly='GRCh37'):
         df = allele_table[allele_table.StarAllele == allele]
 
         if df.empty:
-            raise AlleleNotFoundError(gene, allele)
+            raise sdk.utils.AlleleNotFoundError(gene, allele)
 
         c = df[f'{assembly}Core'].values[0]
         t = df[f'{assembly}Tag'].values[0]
@@ -888,6 +873,13 @@ def load_allele_table():
 
     >>> import pypgx
     >>> df = pypgx.load_allele_table()
+    >>> df.head()
+          Gene StarAllele  ActivityScore                           Function                                    GRCh37Core GRCh37Tag                                    GRCh38Core GRCh38Tag     SV
+    0    ABCB1         *1            NaN                    Normal Function  7-87138645-A-G,7-87160618-A-C,7-87179601-A-G       NaN  7-87509329-A-G,7-87531302-A-C,7-87550285-A-G       NaN  False
+    1    ABCB1         *2            NaN                 Increased Function                                           NaN       NaN                                           NaN       NaN  False
+    2  CACNA1S  Reference            NaN                    Normal Function                                           NaN       NaN                                           NaN       NaN  False
+    3  CACNA1S   c.520C>T            NaN  Malignant Hyperthermia Associated                               1-201061121-G-A       NaN                               1-201091993-G-A       NaN  False
+    4  CACNA1S  c.3257G>A            NaN  Malignant Hyperthermia Associated                               1-201029943-C-T       NaN                               1-201060815-C-T       NaN  False
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/allele-table.csv'))
     return pd.read_csv(b)
@@ -906,8 +898,40 @@ def load_cnv_table():
 
     >>> import pypgx
     >>> df = pypgx.load_cnv_table()
+    >>> df.head()
+         Gene          Name
+    0  CYP2A6        Normal
+    1  CYP2A6  Deletion1Het
+    2  CYP2A6  Deletion1Hom
+    3  CYP2A6  Deletion2Het
+    4  CYP2A6  Deletion3Het
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/cnv-table.csv'))
+    return pd.read_csv(b)
+
+def load_cpic_table():
+    """
+    Load the CPIC table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requested table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_cpic_table()
+    >>> df.head()
+          Gene           Drug                                          Guideline CPICLevel CPICLevelStatus PharmGKBLevel             FDALabel               PMID
+    0    HLA-B       abacavir  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A     Testing required  24561393;22378157
+    1    HLA-B    allopurinol  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A  Testing recommended  23232549;26094938
+    2  MT-RNR1       amikacin  https://cpicpgx.org/guidelines/cpic-guideline-...         A           Final             3                  NaN           34032273
+    3  CYP2C19  amitriptyline  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A                  NaN  23486447;27997040
+    4   CYP2D6  amitriptyline  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A       Actionable PGx  23486447;27997040
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/cpic-table.csv'))
     return pd.read_csv(b)
 
 def load_diplotype_table():
@@ -924,6 +948,13 @@ def load_diplotype_table():
 
     >>> import pypgx
     >>> df = pypgx.load_diplotype_table()
+    >>> df.head()
+          Gene            Diplotype                              Phenotype
+    0  CACNA1S  Reference/Reference               Uncertain Susceptibility
+    1  CACNA1S   Reference/c.520C>T  Malignant Hyperthermia Susceptibility
+    2  CACNA1S  Reference/c.3257G>A  Malignant Hyperthermia Susceptibility
+    3  CACNA1S    c.520C>T/c.520C>T  Malignant Hyperthermia Susceptibility
+    4  CACNA1S   c.520C>T/c.3257G>A  Malignant Hyperthermia Susceptibility
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/diplotype-table.csv'))
     return pd.read_csv(b)
@@ -942,6 +973,13 @@ def load_equation_table():
 
     >>> import pypgx
     >>> df = pypgx.load_equation_table()
+    >>> df.head()
+         Gene                 Phenotype              Equation
+    0  CYP2C9          Poor Metabolizer        0 <= score < 1
+    1  CYP2C9  Intermediate Metabolizer        1 <= score < 2
+    2  CYP2C9        Normal Metabolizer            2 == score
+    3  CYP2D6          Poor Metabolizer     0 <= score < 0.25
+    4  CYP2D6  Intermediate Metabolizer  0.25 <= score < 1.25
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/equation-table.csv'))
     return pd.read_csv(b)
@@ -960,6 +998,13 @@ def load_gene_table():
 
     >>> import pypgx
     >>> df = pypgx.load_gene_table()
+    >>> df.head()
+          Gene  Target  Control Paralog  Variants     SV PhenotypeMethod  RefAllele GRCh37Default GRCh38Default Strand           GRCh37Region           GRCh38Region                                   GRCh37ExonStarts                                     GRCh37ExonEnds                                   GRCh38ExonStarts                                     GRCh38ExonEnds
+    0    ABCB1    True    False     NaN      True  False             NaN         *1            *2            *2      -    7:87130178-87345639    7:87500862-87716323  87133178,87135212,87138590,87144546,87145824,8...  87133765,87135359,87138797,87144744,87145981,8...  87503862,87505896,87509274,87515230,87516508,8...  87504449,87506043,87509481,87515428,87516665,8...
+    1  CACNA1S    True    False     NaN      True  False       Diplotype  Reference     Reference     Reference      -  1:201005639-201084694  1:201036511-201115426  201008639,201009358,201009749,201010631,201012...  201009210,201009502,201009841,201010717,201012...  201039511,201040230,201040621,201041503,201043...  201040082,201040374,201040713,201041589,201043...
+    2     CFTR    True    False     NaN      True  False       Diplotype  Reference     Reference     Reference      +  7:117117016-117311719  7:117477024-117671665  117120016,117144306,117149087,117170952,117174...  117120201,117144417,117149196,117171168,117174...  117480024,117504252,117509033,117530898,117534...  117480147,117504363,117509142,117531114,117534...
+    3   CYP1A1    True    False     NaN      True  False             NaN         *1            *1            *1      -   15:75008882-75020951   15:74716541-74728528  75011882,75013307,75013539,75013754,75013931,7...  75013115,75013394,75013663,75013844,75014058,7...  74719541,74720966,74721198,74721413,74721590,7...  74720774,74721053,74721322,74721503,74721717,7...
+    4   CYP1A2    True    False     NaN      True  False             NaN        *1A           *1A           *1A      +   15:75038183-75051941   15:74745844-74759607  75041183,75042070,75043529,75044105,75044464,7...  75041238,75042910,75043650,75044195,75044588,7...  74748844,74749729,74751188,74751764,74752123,7...  74748897,74750569,74751309,74751854,74752247,7...
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/gene-table.csv'))
     return pd.read_csv(b)
@@ -978,6 +1023,13 @@ def load_phenotype_table():
 
     >>> import pypgx
     >>> df = pypgx.load_phenotype_table()
+    >>> df.head()
+          Gene                              Phenotype                     Priority
+    0  CACNA1S               Uncertain Susceptibility                  Normal Risk
+    1  CACNA1S  Malignant Hyperthermia Susceptibility  Abnormal/Priority/High Risk
+    2     CFTR                     Favorable Response                         None
+    3     CFTR                   Unfavorable Response                         None
+    4     CFTR                          Indeterminate                         None
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/phenotype-table.csv'))
     return pd.read_csv(b)
@@ -996,6 +1048,13 @@ def load_variant_table():
 
     >>> import pypgx
     >>> df = pypgx.load_phenotype_table()
+    >>> df.head()
+          Gene                              Phenotype                     Priority
+    0  CACNA1S               Uncertain Susceptibility                  Normal Risk
+    1  CACNA1S  Malignant Hyperthermia Susceptibility  Abnormal/Priority/High Risk
+    2     CFTR                     Favorable Response                         None
+    3     CFTR                   Unfavorable Response                         None
+    4     CFTR                          Indeterminate                         None
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/variant-table.csv'))
     df = pd.read_csv(b)
@@ -1037,7 +1096,7 @@ def predict_phenotype(gene, a, b):
     'Rapid Metabolizer'
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     df = load_gene_table()
     phenotype_method = df[df.Gene == gene].PhenotypeMethod.values[0]
@@ -1140,7 +1199,7 @@ def predict_score(gene, allele):
     nan
     """
     if not is_target_gene(gene):
-        raise NotTargetGeneError(gene)
+        raise sdk.utils.NotTargetGeneError(gene)
 
     if not has_score(gene):
         return np.nan
@@ -1241,7 +1300,7 @@ def sort_alleles(
         if gene is None:
             raise ValueError('Gene is required when sorting by priority')
         if not is_target_gene(gene):
-            raise NotTargetGeneError(gene)
+            raise sdk.utils.NotTargetGeneError(gene)
         function = get_function(gene, allele)
         a = FUNCTION_ORDER.index(function)
         core_variants = list_variants(gene, alleles=allele, assembly=assembly, mode='core')

@@ -6,7 +6,7 @@ import fuc
 import pysam
 
 description = f"""
-Predict CNV for the target gene based on copy number data.
+Predict CNV from copy number data for target gene.
 
 Genomic positions that are missing copy number because, for example, the
 input data is targeted sequencing will be imputed with forward filling.
@@ -17,26 +17,30 @@ def create_parser(subparsers):
         subparsers,
         fuc.api.common._script_name(),
         description=description,
-        help='Predict CNV for the target gene based on copy number \n'
-             'data.',
+        help=
+"""Predict CNV from copy number data for target gene."""
     )
     parser.add_argument(
         'copy_number',
         metavar='copy-number',
-        help='Archive file with the semantic type CovFrame[CopyNumber].'
+        help=
+"""Input archive file with the semantic type
+CovFrame[CopyNumber]."""
     )
     parser.add_argument(
         'cnv_calls',
         metavar='cnv-calls',
-        help='Archive file with the semantic type \n'
-             'SampleTable[CNVCalls].'
+        help=
+"""Output archive file with the semantic type
+SampleTable[CNVCalls]."""
     )
     parser.add_argument(
         '--cnv-caller',
         metavar='PATH',
-        help='Archive file with the semantic type Model[CNV]. By \n'
-             'default, a pre-trained CNV caller in the ~/pypgx-bundle \n'
-             'directory will be used.'
+        help=
+"""Archive file with the semantic type Model[CNV]. By
+default, a pre-trained CNV caller in the ~/pypgx-bundle
+directory will be used."""
     )
 
 def main(args):

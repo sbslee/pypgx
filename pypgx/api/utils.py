@@ -25,6 +25,116 @@ from scipy.ndimage import median_filter
 # Private methods #
 ###################
 
+def _phase_extension(vf, gene, assembly):
+    """
+    Apply the phase-extension algorithm.
+
+    Anchor variants are those variants that have been haplotype phased
+    using a reliable method (e.g. statistical haplotype phasing and
+    read-backed phasing) and are later used by the phase-extension
+    algorithm (PE). Basically, PE determines the most likely haplotype
+    phase of the remaining unphased variants using anchor variants.
+    For each unphased variant, PE first finds all star alleles carrying the
+    variant and then counts how many anchor variants per haplotype are
+    overlapped to each of the star alleles. For example, if the second
+    haplotype's anchor variants (i.e. variants with '0|1') were found to
+    have the most overlapping with the *2 allele, then PE will assign the
+    phase of the variant of interest to '0|1'.
+    """
+    anchors = {}
+
+    for i, r in vf.df.iterrows():
+        for allele in r.ALT.split(','):
+            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
+            for sample in vf.samples:
+                if sample not in anchors:
+                    anchors[sample] = [[], []]
+                gt = r[sample].split(':')[0]
+                if '|' not in gt:
+                    continue
+                gt = gt.split('|')
+                if gt[0] != '0':
+                    anchors[sample][0].append(variant)
+                if gt[1] != '0':
+                    anchors[sample][1].append(variant)
+
+    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
+
+    def one_row(r):
+        if pyvcf.row_phased(r):
+            return r
+
+        r.FORMAT += ':PE'
+
+        for sample in vf.samples:
+            if not pyvcf.gt_het(r[sample]):
+                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
+                continue
+
+            scores = [[0, 0], [0, 0]]
+
+            gt = r[sample].split(':')[0].split('/')
+
+            for i in [0, 1]:
+                if gt[i] == '0':
+                    continue
+
+                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
+
+                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
+
+                if variant in variant_synonyms:
+                    variant = variant_synonyms[variant]
+
+                star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
+
+                for j in [0, 1]:
+                    for star_allele in star_alleles:
+                        score = 0
+                        for x in anchors[sample][j]:
+                            if x in core.list_variants(gene, alleles=star_allele, assembly=assembly, mode='all'):
+                                score += 1
+                        if score > scores[i][j]:
+                            scores[i][j] = score
+
+            a = scores[0][0]
+            b = scores[0][1]
+            c = scores[1][0]
+            d = scores[1][1]
+
+            if max([a, b]) == max([c, d]):
+                if a < b and c > d:
+                    flip = True
+                elif a == b and c > d:
+                    flip = True
+                elif a < b and c == d:
+                    flip = True
+                else:
+                    flip = False
+            else:
+                if max([a, b]) > max([c, d]):
+                    if a > b:
+                        flip = False
+                    else:
+                        flip = True
+                else:
+                    if c > d:
+                        flip = True
+                    else:
+                        flip = False
+
+            if flip:
+                result = f'{gt[1]}|{gt[0]}'
+            else:
+                result = f'{gt[0]}|{gt[1]}'
+
+            result = result + ':' + ':'.join(r[sample].split(':')[1:])
+            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
+
+        return r
+
+    return pyvcf.VcfFrame([], vf.df.apply(one_row, axis=1))
+
 def _process_copy_number(copy_number):
     df = copy_number.data.copy_df()
     region = core.get_region(copy_number.metadata['Gene'], assembly=copy_number.metadata['Assembly'])
@@ -51,7 +161,7 @@ def _process_copy_number(copy_number):
 
 def call_phenotypes(genotypes):
     """
-    Call phenotypes for the target gene.
+    Call phenotypes for target gene.
 
     Parameters
     ----------
@@ -226,47 +336,43 @@ def compare_genotypes(first, second, verbose=False):
         show_comparison(col)
 
 def compute_control_statistics(
-    bam=None, fn=None, gene=None, region=None, assembly='GRCh37', bed=None
+    gene, bams, assembly='GRCh37', bed=None
 ):
     """
-    Compute summary statistics for the control gene from BAM files.
+    Compute summary statistics for control gene from BAM files.
+
+    Note that for the arguments ``gene`` and ``bed``, the 'chr' prefix in
+    contig names (e.g. 'chr1' vs. '1') will be automatically added or removed
+    as necessary to match the input BAM's contig names.
 
     Parameters
     ----------
-    bam : list, optional
-        One or more BAM files. Cannot be used with ``fn``.
-    fn : str, optional
-        File containing one BAM file per line. Cannot be used with ``bam``.
-    gene : str, optional
-        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR'). Cannot be
-        used with ``region``.
-    region : str, optional
-        Custom region to use as control gene ('chrom:start-end'). Cannot be
-        used with ``gene``.
+    gene : str
+        Control gene (recommended choices: 'EGFR', 'RYR1', 'VDR').
+        Alternatively, you can provide a custom region (format:
+        chrom:start-end).
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
         By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
-        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
-        will be automatically added or removed as necessary to match the BAM
-        contig names.
 
     Returns
     -------
     pypgx.Archive
         Archive object with the semantic type SampleTable[Statistcs].
     """
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
+    gene_table = core.load_gene_table()
 
-    df = core.load_gene_table()
+    if gene in core.list_genes(mode='all'):
+        region = gene_table[gene_table.Gene == gene][f'{assembly}Region'].values[0]
+    else:
+        region = gene
 
-    if gene is not None:
-        region = df[df.Gene == gene][f'{assembly}Region'].values[0]
-
-    cf = pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{bam_prefix}{region}', zero=False
-    )
+    cf = pycov.CovFrame.from_bam(bams, regions=region, zero=False)
 
     metadata = {
         'Control': gene,
@@ -302,7 +408,7 @@ def compute_copy_number(
     read_depth, control_statistics, samples_without_sv=None
 ):
     """
-    Compute copy number from read depth for the target gene.
+    Compute copy number from read depth for target gene.
 
     The method will convert read depth from target gene to copy number by
     performing intra-sample normalization using summary statistics from
@@ -366,13 +472,10 @@ def compute_copy_number(
     return sdk.Archive(metadata, cf)
 
 def compute_target_depth(
-    gene, bam=None, fn=None, assembly='GRCh37', bed=None
+    gene, bams, assembly='GRCh37', bed=None
 ):
     """
-    Compute read depth for the target gene from BAM files.
-
-    Input BAM files must be specified with either ``bam`` or ``fn``, but
-    it's an error to use both.
+    Compute read depth for target gene from BAM files.
 
     By default, the input data is assumed to be WGS. If it's targeted
     sequencing, you must provide a BED file with ``bed`` to indicate
@@ -382,10 +485,9 @@ def compute_target_depth(
     ----------
     gene : str
         Target gene.
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
@@ -402,13 +504,9 @@ def compute_target_depth(
         'SemanticType': 'CovFrame[ReadDepth]',
     }
 
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
     region = core.get_region(gene, assembly=assembly)
 
-    data = pycov.CovFrame.from_bam(
-        bam=bam_files, region=f'{bam_prefix}{region}', zero=True
-    )
+    data = pycov.CovFrame.from_bam(bams, regions=region, zero=True)
 
     if bed:
         metadata['Platform'] = 'Targeted'
@@ -504,125 +602,35 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     vf1 = imported_variants.data.strip(format)
     vf2 = phased_variants.data.strip('GT')
 
+    # For every variant in VcfFrame[Phased] (e.g. '0|1'), find and append its
+    # accompanying data from VcfFrame[Imported] (e.g. '0|1:15,15:30:0.5').
     def one_row(r):
         variant = f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}'
         s = vf1.fetch(variant)
-
         if s.empty:
             return r
-
         def one_gt(g):
             return ':'.join(g.split(':')[1:])
-
         s[9:] = s[9:].apply(one_gt)
         r[9:] = r[9:].str.cat(s[9:], sep=':')
-
         return r
 
     vf3 = pyvcf.VcfFrame([], vf2.df.apply(one_row, axis=1))
     vf3.df.INFO = 'Phased'
     vf3.df.FORMAT = format
 
+    # Remove variants that are in both VcfFrame[Imported] and
+    # VcfFrame[Phased]. Append remaining unphased variants to
+    # VcfFrame[Phased].
     vf4 = vf1.filter_vcf(vf2, opposite=True)
     vf5 = pyvcf.VcfFrame([], pd.concat([vf3.df, vf4.df])).sort()
 
-    anchors = {}
-
-    for i, r in vf2.df.iterrows():
-        for allele in r.ALT.split(','):
-            variant = f'{r.CHROM}-{r.POS}-{r.REF}-{allele}'
-            for sample in vf2.samples:
-                if sample not in anchors:
-                    anchors[sample] = [[], []]
-                gt = r[sample].split(':')[0].split('|')
-                if gt[0] != '0':
-                    anchors[sample][0].append(variant)
-                if gt[1] != '0':
-                    anchors[sample][1].append(variant)
-
-    variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
-
-    def one_row(r):
-        if 'Phased' in r.INFO:
-            return r
-
-        r.FORMAT += ':PE'
-
-        for sample in vf5.samples:
-            if not pyvcf.gt_het(r[sample]):
-                r[sample] = pyvcf.gt_pseudophase(r[sample]) + ':0,0,0,0'
-                continue
-
-            scores = [[0, 0], [0, 0]]
-
-            gt = r[sample].split(':')[0].split('/')
-
-            for i in [0, 1]:
-                if gt[i] == '0':
-                    continue
-
-                alt_allele = r.ALT.split(',')[int(gt[i]) - 1]
-
-                variant = f'{r.CHROM}-{r.POS}-{r.REF}-{alt_allele}'
-
-                if variant in variant_synonyms:
-                    variant = variant_synonyms[variant]
-
-                star_alleles = core.list_alleles(gene, variants=variant, assembly=assembly)
-
-                for j in [0, 1]:
-                    for star_allele in star_alleles:
-                        score = 0
-                        for x in anchors[sample][j]:
-                            if x in core.list_variants(gene, alleles=star_allele, assembly=assembly, mode='all'):
-                                score += 1
-                        if score > scores[i][j]:
-                            scores[i][j] = score
-
-            a = scores[0][0]
-            b = scores[0][1]
-            c = scores[1][0]
-            d = scores[1][1]
-
-            if max([a, b]) == max([c, d]):
-                if a < b and c > d:
-                    flip = True
-                elif a == b and c > d:
-                    flip = True
-                elif a < b and c == d:
-                    flip = True
-                else:
-                    flip = False
-            else:
-                if max([a, b]) > max([c, d]):
-                    if a > b:
-                        flip = False
-                    else:
-                        flip = True
-                else:
-                    if c > d:
-                        flip = True
-                    else:
-                        flip = False
-
-            if flip:
-                result = f'{gt[1]}|{gt[0]}'
-            else:
-                result = f'{gt[0]}|{gt[1]}'
-
-            result = result + ':' + ':'.join(r[sample].split(':')[1:])
-            r[sample] = result + ':' + ','.join([str(x) for x in scores[0] + scores[1]])
-
-        return r
-
-    vf5.df = vf5.df.apply(one_row, axis=1)
+    vf6 = _phase_extension(vf5, gene, assembly)
 
     metadata = phased_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
-    result = sdk.Archive(metadata, vf5)
-
-    return result
+    return sdk.Archive(metadata, vf6)
 
 def create_regions_bed(
     assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False
@@ -671,14 +679,13 @@ def estimate_phase_beagle(
     """
     Estimate haplotype phase of observed variants with the Beagle program.
 
-    The 'chr' prefix in contig names (e.g. 'chr1' vs. '1') in the input VCF
-    will be automatically added or removed as necessary to match that of the
-    reference VCF.
-
     Parameters
     ----------
     imported_variants : str or pypgx.Archive
-        Archive file or object with the semantic type VcfFrame[Imported].
+        Archive file or object with the semantic type VcfFrame[Imported]. The
+        'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be
+        automatically added or removed as necessary to match the reference
+        VCF's contig names.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (compressed or
         uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
@@ -767,6 +774,9 @@ def filter_samples(archive, samples, exclude=False):
         'CovFrame' in archive.metadata['SemanticType']):
         data = archive.data.subset(samples, exclude=exclude)
     elif 'SampleTable' in archive.metadata['SemanticType']:
+        if exclude:
+            samples = [x for x in archive.data.index.to_list()
+                if x not in samples]
         data = archive.data.loc[samples]
     else:
         pass
@@ -822,13 +832,11 @@ def import_variants(
     gene, vcf, assembly='GRCh37', platform='WGS', samples=None, exclude=False
 ):
     """
-    Import variant (SNV/indel) data for the target gene.
+    Import SNV/indel data for target gene.
 
-    The method will first slice input VCF for the target gene and then assess
-    whether every genotype call in the sliced VCF is haplotype phased. It
-    will return an archive object with the semantic type
-    VcfFrame[Consolidated] if the VCF is fully phased or otherwise
-    VcfFrame[Imported].
+    The method will slice the input VCF for the target gene to create an
+    archive object with the semantic type VcfFrame[Imported] or
+    VcfFrame[Consolidated].
 
     Parameters
     ----------
@@ -840,8 +848,15 @@ def import_variants(
         VcfFrame object.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
-    platform : {'WGS', 'Targeted', 'Chrip'}, default: 'WGS'
-        Genotyping platform.
+    platform : {'WGS', 'Targeted', 'Chip', 'LongRead'}, default: 'WGS'
+        Genotyping platform used. When the platform is 'WGS', 'Targeted', or
+        'Chip', the method will assess whether every genotype call in the
+        sliced VCF is haplotype phased (e.g. '0|1'). If the sliced VCF is
+        fully phased, the method will return VcfFrame[Consolidated] or
+        otherwise VcfFrame[Imported]. When the platform is 'LongRead', the
+        method will return VcfFrame[Consolidated] after applying the
+        phase-extension algorithm to estimate haplotype phase of any variants
+        that could not be resolved by read-backed phasing.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -870,11 +885,15 @@ def import_variants(
         samples = common.parse_list_or_file(samples)
         vf = vf.subset(samples, exclude=exclude)
 
-    if vf.phased:
+    if platform == 'LongRead':
+        vf = _phase_extension(vf, gene, assembly)
         semantic_type = 'VcfFrame[Consolidated]'
     else:
-        vf = vf.unphase()
-        semantic_type = 'VcfFrame[Imported]'
+        if vf.phased:
+            semantic_type = 'VcfFrame[Consolidated]'
+        else:
+            vf = vf.unphase()
+            semantic_type = 'VcfFrame[Imported]'
 
     metadata = {
         'Platform': platform,
@@ -915,7 +934,7 @@ def predict_alleles(consolidated_variants):
 
     reformatted_variants = {}
 
-    for x in consolidated_variants.data.variants():
+    for x in consolidated_variants.data.to_variants():
         if x in variant_synonyms:
             y = variant_synonyms[x]
             if y in reformatted_variants:
@@ -1003,7 +1022,7 @@ def predict_alleles(consolidated_variants):
 
 def predict_cnv(copy_number, cnv_caller=None):
     """
-    Predict CNV for the target gene based on copy number data.
+    Predict CNV from copy number data for target gene.
 
     Genomic positions that are missing copy number because, for example, the
     input data is targeted sequencing will be imputed with forward filling.
@@ -1041,40 +1060,40 @@ def predict_cnv(copy_number, cnv_caller=None):
         cnv_caller.check_type('Model[CNV]')
 
     copy_number = _process_copy_number(copy_number)
-
     df = copy_number.data.df.iloc[:, 2:]
     X = df.T.to_numpy()
     predictions = cnv_caller.data.predict(X)
-    df = core.load_cnv_table()
-    df = df[df.Gene == copy_number.metadata['Gene']]
-    cnvs = dict(zip(df.Code, df.Name))
-    predictions = [cnvs[x] for x in predictions]
+    cnv_table = core.load_cnv_table()
+    cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
+    code2name = dict(zip(list(range(len(cnv_table.Name))), cnv_table.Name))
+    predictions = [code2name[x] for x in predictions]
     metadata = copy_number.copy_metadata()
     metadata['SemanticType'] = 'SampleTable[CNVCalls]'
     data = pd.DataFrame({'CNV': predictions})
     data.index = copy_number.data.samples
+
     return sdk.Archive(metadata, data)
 
 def prepare_depth_of_coverage(
-    bam=None, fn=None, assembly='GRCh37', bed=None
+    bams, assembly='GRCh37', bed=None
 ):
     """
-    Prepare a depth of coverage file for all target genes with SV.
+    Prepare a depth of coverage file for all target genes with SV from BAM
+    files.
 
     Parameters
     ----------
-    bam : list, optional
-        One or more BAM files.
-    fn : str, optional
-        File containing one BAM file per line.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     bed : str, optional
         By default, the input data is assumed to be WGS. If it's targeted
         sequencing, you must provide a BED file to indicate probed regions.
-        Note that the 'chr' prefix in BED contig names (e.g. 'chr1' vs. '1')
-        will be automatically added or removed as necessary to match the BAM
-        contig names.
+        Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will
+        be automatically added or removed as necessary to match the input
+        BAM's contig names.
 
     Returns
     -------
@@ -1086,23 +1105,11 @@ def prepare_depth_of_coverage(
         'SemanticType': 'CovFrame[DepthOfCoverage]',
     }
 
-    bam_files, bam_prefix = sdk.parse_input_bams(bam=bam, fn=fn)
-
     regions = create_regions_bed(
         merge=True, sv_genes=True, assembly=assembly,
-    ).gr.df.apply(
-        lambda r: f'{r.Chromosome}:{r.Start}-{r.End}', axis=1
-    ).to_list()
+    ).to_regions()
 
-    cfs = []
-
-    for region in regions:
-        cf = pycov.CovFrame.from_bam(
-            bam=bam_files, region=f'{bam_prefix}{region}', zero=True
-        )
-        cfs.append(cf)
-
-    cf = pycov.concat(cfs)
+    cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)
 
     if bed:
         metadata['Platform'] = 'Targeted'
@@ -1154,7 +1161,8 @@ def test_cnv_caller(
     cnv_calls : str or pypgx.Archive
         Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
-        Write the confusion matrix as a CSV file.
+        Write the confusion matrix as a CSV file where rows indicate actual
+        class and columns indicate prediction class.
     """
     if isinstance(cnv_caller, str):
         cnv_caller = sdk.Archive.from_file(cnv_caller)
@@ -1178,9 +1186,9 @@ def test_cnv_caller(
 
     cnv_table = core.load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
-    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
-    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
-
+    code = list(range(len(cnv_table.Name)))
+    code2name = dict(zip(code, cnv_table.Name))
+    name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
     copy_number.data.df = copy_number.data.df[columns]
@@ -1213,7 +1221,8 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     cnv_calls : str or pypgx.Archive
         Archive file or object with the semantic type SampleTable[CNVCalls].
     confusion_matrix : str, optional
-        Write the confusion matrix as a CSV file.
+        Write the confusion matrix as a CSV file where rows indicate actual
+        class and columns indicate prediction class.
 
     Returns
     -------
@@ -1237,8 +1246,9 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
 
     cnv_table = core.load_cnv_table()
     cnv_table = cnv_table[cnv_table.Gene == copy_number.metadata['Gene']]
-    name2code = dict(zip(cnv_table.Name, cnv_table.Code))
-    code2name = dict(zip(cnv_table.Code, cnv_table.Name))
+    code = list(range(len(cnv_table.Name)))
+    code2name = dict(zip(code, cnv_table.Name))
+    name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
     columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
     copy_number.data.df = copy_number.data.df[columns]

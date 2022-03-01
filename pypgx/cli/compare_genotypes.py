@@ -15,25 +15,29 @@ def create_parser(subparsers):
     parser = fuc.api.common._add_parser(
         subparsers,
         fuc.api.common._script_name(),
-        help='Calculate concordance between two genotype results.',
         description=description,
+        help=
+"""Calculate concordance between two genotype results."""
     )
     parser.add_argument(
         'first',
-        help='First archive file with the semantic type \n'
-             'SampleTable[Results].'
+        help=
+"""First archive file with the semantic type
+SampleTable[Results]."""
     )
 
     parser.add_argument(
         'second',
-        help='Second archive file with the semantic type \n'
-             'SampleTable[Results].'
+        help=
+"""Second archive file with the semantic type
+SampleTable[Results]."""
     )
     parser.add_argument(
         '--verbose',
         action='store_true',
-        help='Whether to print the verbose version of output, including \n'
-             'discordant calls.'
+        help=
+"""Whether to print the verbose version of output, including
+discordant calls."""
     )
 
 def main(args):
