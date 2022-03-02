@@ -72,8 +72,6 @@ def build_definition_table(gene, assembly='GRCh37'):
     if not is_target_gene(gene):
         raise sdk.utils.NotTargetGeneError(gene)
 
-    other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
-
     df1 = load_allele_table()
     df1 = df1[df1.Gene == gene]
     variants = []
