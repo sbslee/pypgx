@@ -5,7 +5,7 @@ Introduction
 ============
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 58 pharmacogenes.
+genotyping of a total of 59 pharmacogenes.
 
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
@@ -37,6 +37,14 @@ Below is a summary table:
      -
      - `chr7:87130178-87345639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A87130178%2D87345639&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr7:87500862-87716323 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A87500862%2D87716323&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     -
+   * - :ref:`genes:ABCG2`
+     -
+     - ✅
+     -
+     - ✅
+     - `chr4:89008420-89082791 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A89008420%2D89082791&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
+     - `chr4:88087268-88161639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A88087268%2D88161639&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      -
    * - :ref:`genes:CACNA1S`
      -
@@ -494,6 +502,31 @@ Below is a summary table:
      - `chr3:14183646-14223172 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A14183646%2D14223172&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr3:14142146-14181672 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A14142146%2D14181672&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+
+ABCG2
+=====
+
+Phenotype summary for ABCG2
+---------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - Normal Function
+     - Reference/Reference
+   * - Decreased Function
+     - Reference/rs2231142
+   * - Poor Function
+     - rs2231142/rs2231142
+
+Resources for ABCG2
+-------------------
+
+- `CPIC® guideline for statins and SLCO1B1, ABCG2, and CYP2C9 <https://cpicpgx.org/guidelines/cpic-guideline-for-statins/>`__
 
 CACNA1S
 =======

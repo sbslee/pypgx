@@ -4,6 +4,8 @@ Changelog
 0.14.0 (in development)
 -----------------------
 
+* :issue:`49`: Add new gene ABCG2.
+
 0.13.0 (2022-03-01)
 -------------------
 
