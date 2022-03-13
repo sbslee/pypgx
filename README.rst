@@ -485,6 +485,67 @@ The pipeline currently does not support SV detection. Please post a GitHub
 issue if you want to contribute your development skills and/or data for
 devising an SV detection algorithm.
 
+Results interpretation
+======================
+
+PyPGx outputs per-sample genotype results in a table, which is stored in an
+archive file with the semantic type ``SampleTable[Results]``. Below, we will
+use the CYP2D6 gene with GRCh37 as an example to illustrate how to interpret
+genotype results from PyPGx.
+
+.. list-table::
+   :header-rows: 1
+
+   * -
+     - Genotype
+     - Phenotype
+     - Haplotype1
+     - Haplotype2
+     - AlternativePhase
+     - VariantData
+     - CNV
+   * - NA11839
+     - \*1/\*2
+     - Normal Metabolizer
+     - \*1;
+     - \*2;
+     - ;
+     - \*1:22-42522613-G-C,22-42523943-A-G:0.5,0.488;\*2:default
+     - Normal
+   * - NA12006
+     - \*4/\*41
+     - Intermediate Metabolizer
+     - \*41;\*2;
+     - \*4;\*10;\*2;
+     - \*69;
+     - \*69:22-42526694-G-A,22-42523805-C-T:0.5,0.551;\*4:22-42524947-C-T:0.444;\*10:22-42523943-A-G,22-42526694-G-A:0.55,0.5;\*41:22-42523805-C-T:0.551;\*2:default;
+     - Normal
+   * - HG00276
+     - \*4/\*5
+     - Poor Metabolizer
+     - \*4;\*10;\*74;\*2;
+     - \*10;\*74;\*2;
+     - ;
+     - \*4:22-42524947-C-T:0.913;\*10:22-42523943-A-G,22-42526694-G-A:1.0,1.0;\*74:22-42525821-G-T:1.0;\*2:default;
+     - DeletionHet
+   * - NA19207
+     - \*2x2/\*10
+     - Normal Metabolizer
+     - \*10;\*2;
+     - \*2;
+     - ;
+     - \*10:22-42523943-A-G,22-42526694-G-A:0.361,0.25;\*2:default;
+     - Duplication
+
+This list explains each of the columns in the example results.
+
+- **Genotype**: Diplotype call. This simply combines the two top-ranked star alleles from **Haplotype1** and **Haplotype2** with '/'.
+- **Phenotype**: Phenotype call.
+- **Haplotype1**, **Haplotype2**: List of candidate star alleles for each haplotype. For example, if a given haplotype contains three variants 22-42523943-A-G, 22-42524947-C-T, and 22-42526694-G-A, then it will get assigned ``*4;*10;`` because the haplotype pattern can fit both \*4 (22-42524947-C-T) and \*10 (22-42523943-A-G and 22-42526694-G-A). Note that \*4 comes first before \*10 because it has higher priority for reporting purposes (see the ``pypgx.sort_alleles`` `method <https://pypgx.readthedocs.io/en/latest/api.html#pypgx.api.core.sort_alleles>`__ for detailed implementation).
+- **AlternativePhase**: List of star alleles that could be missed due to potentially incorrect statistical phasing. For example, let's assume that statistical phasing has put 22-42526694-G-A for **Haplotype1** and 22-42523805-C-T for **Haplotype2**. Even though the two variants are in trans orientation, PyPGx will also consider alternative phase in case the two variants are actually in cis orientation, resulting in ``*69;`` as **AlternativePhase** because \*69 is defined by 22-42526694-G-A and 22-42523805-C-T.
+- **VariantData**: Information for SNVs/indels used to define observed star alleles, including allele fraction which is important for allelic decomposition after identifying CNV (e.g. the sample NA19207). In some situations, there will not be any variants for a given star allele because the allele itself is "default" allele for the selected reference assembly (e.g. GRCh37 has \*2 as default while GRCh38 has \*1).
+- **CNV**: Structural variation call. See the `Structural variation detection <https://pypgx.readthedocs.io/en/latest/readme.html#structural-variation-detection>`__ section for more details.
+
 Getting help
 ============
 
@@ -571,7 +632,7 @@ For getting help on a specific submodule (e.g. ``utils``):
    >>> from pypgx.api import utils
    >>> help(utils)
 
-For getting help on a specific method (e.g. ``predict_phenotype``):
+For getting help on a specific method (e.g. ``pypgx.predict_phenotype``):
 
 .. code:: python3
 

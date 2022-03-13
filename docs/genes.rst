@@ -775,6 +775,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
 
+Resources for CYP2A6
+--------------------
+
+- `PharmVar CYP2A6 page <https://www.pharmvar.org/gene/CYP2A6>`__
+
 CYP2A13
 =======
 
@@ -865,6 +870,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP2B6
 --------------------
 
+- `PharmVar CYP2B6 page <https://www.pharmvar.org/gene/CYP2B6>`__
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
 
 CYP2C8
@@ -902,6 +908,7 @@ Activity score is used for phenotype prediction.
 Resources for CYP2C9
 --------------------
 
+- `PharmVar CYP2C9 page <https://www.pharmvar.org/gene/CYP2C9>`__
 - `CPIC® Guideline for NSAIDs based on CYP2C9 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/>`__
 
 CYP2C19
@@ -937,6 +944,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP2C19
 ---------------------
 
+- `PharmVar CYP2C19 page <https://www.pharmvar.org/gene/CYP2C19>`__
 - `CPIC® Guideline for Voriconazole and CYP2C19 <https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/>`__
 
 CYP2D6
@@ -1188,6 +1196,7 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
 Resources for CYP2D6
 --------------------
 
+- `PharmVar CYP2D6 page <https://www.pharmvar.org/gene/CYP2D6>`__
 - `CPIC® Guideline for Tamoxifen based on CYP2D6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/>`__
 
 CYP2E1
@@ -1290,6 +1299,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19908
      -
 
+Resources for CYP2E1
+--------------------
+
+- `PharmVar CYP2E1 page <https://www.pharmvar.org/gene/CYP2E1>`__
+
 CYP2F1
 ======
 
@@ -1365,6 +1379,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP3A5
 --------------------
 
+- `PharmVar CYP3A5 page <https://www.pharmvar.org/gene/CYP3A5>`__
 - `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
 
 CYP3A7
@@ -1508,6 +1523,7 @@ Activity score is used for phenotype prediction.
 Resources for DPYD
 ------------------
 
+- `PharmVar DPYD page <https://www.pharmvar.org/gene/DPYD>`__
 - `CPIC® Guideline for Fluoropyrimidines and DPYD <https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/>`__
 
 F5
@@ -1805,6 +1821,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for NUDT15
 --------------------
 
+- `PharmVar NUDT15 page <https://www.pharmvar.org/gene/NUDT15>`__
 - `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
 
 POR
@@ -1945,6 +1962,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for SLCO1B1
 ---------------------
 
+- `PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
 
 SULT1A1
