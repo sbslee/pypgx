@@ -119,7 +119,34 @@ def build_definition_table(gene, assembly='GRCh37'):
 
 def collapse_alleles(gene, alleles, assembly='GRCh37'):
     """
-    Collapse redundant candidate alleles.
+    Collapse redundant candidate star alleles.
+
+    Note that this method only considers core variants for collapsing.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    alleles : list
+        List of alleles.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        Collapsed list of alleles.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_variants('CYP2B6', alleles='*6', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', alleles='*7', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G', '19-41522715-C-T']
+    >>> pypgx.collapse_alleles('CYP2B6', ['*6', '*7'])
+    ['*7']
     """
     results = []
     for a in alleles:
@@ -283,6 +310,20 @@ def get_exon_ends(gene, assembly='GRCh37'):
     -------
     list
         List of end positions.
+
+    See Also
+    --------
+    get_exon_starts
+        Get exon starts for specified gene.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_exon_ends('CYP2D6')
+    [42522754, 42522994, 42523636, 42523985, 42524352, 42524946, 42525187, 42525911, 42526883]
+    >>> pypgx.get_exon_ends('CYP2D6', assembly='GRCh38')
+    [42126752, 42126992, 42127634, 42127983, 42128350, 42128944, 42129185, 42129909, 42130810]
     """
     if gene not in list_genes(mode='all'):
         raise sdk.utils.GeneNotFoundError(gene)
@@ -306,6 +347,20 @@ def get_exon_starts(gene, assembly='GRCh37'):
     -------
     list
         List of start positions.
+
+    See Also
+    --------
+    get_exon_ends
+        Get exon ends for specified gene.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_exon_starts('CYP2D6')
+    [42522500, 42522852, 42523448, 42523843, 42524175, 42524785, 42525034, 42525739, 42526613]
+    >>> pypgx.get_exon_starts('CYP2D6', assembly='GRCh38')
+    [42126498, 42126850, 42127446, 42127841, 42128173, 42128783, 42129032, 42129737, 42130611]
     """
     if gene not in list_genes(mode='all'):
         raise sdk.utils.GeneNotFoundError(gene)
