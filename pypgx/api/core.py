@@ -1066,6 +1066,10 @@ def predict_phenotype(gene, a, b):
     The method can handle star alleles with structural variation including
     gene deletion, duplication, and tandem arrangement.
 
+    For detailed implementation, please see the `Phenotype prediction
+    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    readme.html#phenotype-prediction>`__ section.
+
     Parameters
     ----------
     gene : str
@@ -1138,6 +1142,10 @@ def predict_score(gene, allele):
     function as well as for alleles from a gene that does not use the
     activity score system.
 
+    For detailed implementation, please see the `Phenotype prediction
+    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    readme.html#phenotype-prediction>`__ section.
+
     Parameters
     ----------
     gene : str
@@ -1180,14 +1188,16 @@ def predict_score(gene, allele):
     >>> pypgx.predict_score('CYP2D6', '*1x2+*4x2+*10') # Complex event
     2.25
 
-    We can also predict phenotypes for the DPYD gene:
+    We can also predict activity score for the DPYD gene:
 
-    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'Reference')
-    'Normal Metabolizer'
-    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'c.1905+1G>A (*2A)')
-    'Intermediate Metabolizer'
-    >>> pypgx.predict_phenotype('DPYD', 'c.295_298delTCAT (*7)', 'c.703C>T (*8)')
-    'Poor Metabolizer'
+    >>> pypgx.predict_score('DPYD', 'Reference')
+    1.0
+    >>> pypgx.predict_score('DPYD', 'c.1905+1G>A (*2A)')
+    0.0
+    >>> pypgx.predict_score('DPYD', 'c.295_298delTCAT (*7)')
+    0.0
+    >>> pypgx.predict_score('DPYD', 'c.703C>T (*8)')
+    0.0
 
     All of the CYP2B6 alleles will return ``NaN`` because it does not have activity score:
 
