@@ -5,7 +5,7 @@ Changelog
 -----------------------
 
 * :issue:`49`: Add new gene ABCG2.
-* Improve CNV caller for CYP2A6.
+* Improve CNV caller for CYP2A6 and CYP2B6.
 * Add new CNV calls for CYP2A6: ``Hybrid2Hom``, ``Hybrid4``, ``Tandem``.
 * :issue:`50`: Improve algorithm for whole gene duplication detection. This minor update will handle some rare edge cases.
 
