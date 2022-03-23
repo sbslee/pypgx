@@ -37,6 +37,10 @@ def _call_duplication(r):
             result = [a2, a1+'x2']
         elif not r.VariantData[a1] and r.VariantData[a2]:
             result = [a1, a2+'x2']
+        elif a1 in r.Haplotype2:
+            result = [a1, a2+'x2']
+        elif a2 in r.Haplotype1:
+            result = [a2, a1+'x2']
         else:
             result = ['Indeterminate']
     elif h1 and not h2:
@@ -134,6 +138,8 @@ class CYP2A6Genotyper:
             result = [s1, '*4']
         elif r.CNV == 'Hybrid2':
             result = [s1, '*12']
+        elif r.CNV == 'Hybrid2Hom':
+            result = ['*12', '*12']
         elif r.CNV == 'Hybrid3':
             result = [s1, '*34']
         elif r.CNV in ['Duplication1', 'Duplication2', 'Duplication3']:
