@@ -322,6 +322,9 @@ as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
 
+Semantic types
+--------------
+
 Notably, all archive files have defined semantic types, which allows us to
 ensure that the data that is passed to a PyPGx command (CLI) or method (API)
 is meaningful for the operation that will be performed. Below is a list of
@@ -366,6 +369,60 @@ currently defined semantic types:
 - ``VcfFrame[Phased]``
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+
+Wroking with archive files
+--------------------------
+
+To demonstrate how easy it is to work with PyPGx archive files, below we will
+show some examples. First, download an archive:
+
+.. code-block:: text
+
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-CYP2D6-results.zip
+
+Let's print its metadata:
+
+.. code-block:: text
+
+    $ pypgx print-metadata grch37-CYP2D6-results.zip
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
+
+We can unzip it to extract files inside (note that ``tmpcty4c_cr`` is the
+original folder name):
+
+.. code-block:: text
+
+    $ unzip grch37-CYP2D6-results.zip
+    Archive:  grch37-CYP2D6-results.zip
+      inflating: tmpcty4c_cr/metadata.txt
+      inflating: tmpcty4c_cr/data.tsv
+
+We can now directly interact with the files:
+
+.. code-block:: text
+
+    $ cat tmpcty4c_cr/metadata.txt
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
+    $ head -n 2 tmpcty4c_cr/data.tsv
+    	Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00276_PyPGx	*4/*5	Poor Metabolizer	*4;*10;*74;*2;	*10;*74;*2;	;	*4:22-42524947-C-T:0.913;*10:22-42526694-G-A,22-42523943-A-G:1.0,1.0;*74:22-42525821-G-T:1.0;*2:default;	DeletionHet
+
+We can easily create a new archive:
+
+.. code-block:: text
+
+    $ zip -r grch37-CYP2D6-results-new.zip tmpcty4c_cr
+      adding: tmpcty4c_cr/ (stored 0%)
+      adding: tmpcty4c_cr/metadata.txt (stored 0%)
+      adding: tmpcty4c_cr/data.tsv (deflated 84%)
+    $ pypgx print-metadata grch37-CYP2D6-results-new.zip
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
 
 Phenotype prediction
 ====================
