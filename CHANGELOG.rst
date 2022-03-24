@@ -8,7 +8,7 @@ Changelog
 * :issue:`50`: Improve algorithm for whole gene duplication detection. This minor update will handle some rare edge cases.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2E1.
 * Add new CNV calls for CYP2A6: ``Hybrid2Hom``, ``Hybrid4``, ``Tandem``.
-* Add new CNV call for CYP2E1: ``Multiplication``.
+* Add new CNV call for CYP2E1: ``Multiplication2``.
 
 0.13.0 (2022-03-01)
 -------------------
