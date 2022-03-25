@@ -49,6 +49,8 @@ GSTM1,DeletionHom
 GSTM1,Duplication
 GSTM1,UpstreamDeletionHet
 GSTM1,"DeletionHet,UpstreamDeletionHet"
+GSTM1,PartialDuplication
+GSTM1,"DeletionHet,Deletion2"
 GSTT1,Normal
 GSTT1,DeletionHet
 GSTT1,DeletionHom

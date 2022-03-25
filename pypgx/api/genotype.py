@@ -376,11 +376,10 @@ class GSTM1Genotyper:
             result = [a1, a2]
         elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet']:
             result = [s1, '*0']
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV in ['DeletionHom', 'DeletionHet,Deletion2']:
             result = ['*0', '*0']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
-
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
