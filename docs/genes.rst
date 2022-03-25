@@ -2064,6 +2064,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18942
     -
+  * - \*DEL
+    - DeletionHom
+    - \*DEL/\*DEL
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20874
+    -
   * - \*1x2
     - Duplication
     - \*1x2/\*2

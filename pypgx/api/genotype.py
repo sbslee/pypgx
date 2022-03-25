@@ -469,6 +469,8 @@ class SULT1A1Genotyper:
             result = [a1, a2]
         elif r.CNV == 'DeletionHet':
             result = [s1, '*DEL']
+        elif r.CNV == 'DeletionHom':
+            result = ['*DEL', '*DEL']
         elif r.CNV == 'Duplication':
             result = _call_duplication(r)
         elif r.CNV == 'Multiplication1':
