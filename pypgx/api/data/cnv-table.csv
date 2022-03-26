@@ -74,6 +74,9 @@ UGT2B15,PartialDeletion1
 UGT2B15,PartialDeletion2
 UGT2B15,PartialDeletion3
 UGT2B15,Deletion
+UGT2B15,Deletion2
+UGT2B15,Duplication
+UGT2B15,PartialDuplication
 UGT2B17,"Normal,Normal"
 UGT2B17,"Normal,Deletion"
 UGT2B17,"Deletion,Deletion"
