@@ -28,10 +28,13 @@ CYP2D6,Tandem2A
 CYP2D6,Tandem2B
 CYP2D6,Tandem2C
 CYP2D6,Tandem3
+CYP2D6,Tandem4
 CYP2D6,"DeletionHet,Tandem1A"
 CYP2D6,"Duplication,Tandem1A"
 CYP2D6,Unknown1
+CYP2D6,Unknown2
 CYP2D6,PseudogeneDeletion
+CYP2D6,PseudogeneDownstreamDel
 CYP2E1,Normal
 CYP2E1,Duplication1
 CYP2E1,Duplication2

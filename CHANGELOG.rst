@@ -6,8 +6,9 @@ Changelog
 
 * :issue:`49`: Add new gene ABCG2.
 * :issue:`50`: Improve algorithm for whole gene duplication detection. This minor update will handle some rare edge cases.
-* Improve CNV caller for CYP2A6, CYP2B6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
 * Add new CNV calls for CYP2A6: ``Hybrid2Hom``, ``Hybrid4``, ``Tandem``.
+* Add new CNV calls for CYP2D6: ``Tandem4``, ``PseudogeneDownstreamDel``, ``Unknown2``.
 * Add a new CNV call for CYP2E1: ``Multiplication2``.
 * Add new CNV calls for GSTM1: ``PartialDuplication`` and ``DeletionHet,Deletion2``.
 * Add a new CNV call for SLC22A2: ``PartialDuplication``.
