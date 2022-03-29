@@ -5,9 +5,6 @@
 CLI
 ***
 
-Introduction
-============
-
 This page describes the command line interface (CLI) for PyPGx.
 
 For getting help on the CLI:

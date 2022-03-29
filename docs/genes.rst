@@ -1,9 +1,6 @@
 Genes
 *****
 
-Introduction
-============
-
 This page describes gene-specific information. PyPGx currently supports
 genotyping of a total of 59 pharmacogenes.
 

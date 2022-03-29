@@ -758,9 +758,6 @@ cli = """
 CLI
 ***
 
-Introduction
-============
-
 This page describes the command line interface (CLI) for PyPGx.
 
 For getting help on the CLI:
@@ -804,9 +801,6 @@ api = """
 API
 ***
 
-Introduction
-============
-
 This page describes the application programming interface (API) for PyPGx.
 
 Below is the list of submodules available in the API:
@@ -840,9 +834,6 @@ sdk = """
 {credit}
 SDK
 ***
-
-Introduction
-============
 
 This page describes the software development kit (SDK) for PyPGx.
 
