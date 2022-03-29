@@ -12,6 +12,7 @@ Welcome to PyPGx's documentation!
    cli
    api
    sdk
+   faq
    changelog
 
 Indices and tables
