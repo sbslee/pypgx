@@ -18,6 +18,7 @@ Changelog
 * Fix minor error in ``gene-table.csv``. Two control genes EGFR and VDR incorrectly had ``TRUE`` for ``Variants`` column. They were changed to ``FALSE``.
 * Change the three paralogs in ``gene-table.csv`` (CYP2A7, CYP2B7, and CYP2D7) to have ``FALSE`` for ``SV`` column.
 * Add new optional arguments ``--target-genes`` and ``--var-genes`` to :command:`create-regions-bed` command.
+* Add new command :command:`create-input-vcf`.
 
 0.13.0 (2022-03-01)
 -------------------

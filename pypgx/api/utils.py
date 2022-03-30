@@ -15,6 +15,7 @@ from .. import sdk
 
 import numpy as np
 import pandas as pd
+import pysam
 from fuc import pybam, pyvcf, pycov, common, pybed
 from sklearn import metrics
 from sklearn.multiclass import OneVsRestClassifier
@@ -632,6 +633,29 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     metadata['SemanticType'] = 'VcfFrame[Consolidated]'
 
     return sdk.Archive(metadata, vf6)
+
+def create_input_vcf(vcf, fasta, bams, assembly='GRCh37'):
+    """
+    Call SNVs/indels from BAM files for all target genes.
+
+    Parameters
+    ----------
+    vcf : str
+        Output VCF file with .vcf.gz as suffix.
+    fasta : str
+        Reference FASTA file.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    """
+    if not vcf.endswith('.vcf.gz'):
+        raise ValueError(f"VCF file must have .vcf.gz as suffix: {vcf}")
+    vcf = vcf.replace('.vcf.gz', '.vcf')
+    bf = create_regions_bed(merge=True, assembly=assembly, var_genes=True)
+    pyvcf.call(fasta=fasta, bams=bams, regions=bf, path=vcf, gap_frac=0)
+    pysam.tabix_index(vcf, preset='vcf', force=True)
 
 def create_regions_bed(
     assembly='GRCh37', add_chr_prefix=False, merge=False, target_genes=False,

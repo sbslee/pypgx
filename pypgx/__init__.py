@@ -44,6 +44,7 @@ from .api.utils import (
     compute_target_depth,
     count_alleles,
     create_consolidated_vcf,
+    create_input_vcf,
     create_regions_bed,
     estimate_phase_beagle,
     filter_samples,

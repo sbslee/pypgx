@@ -30,6 +30,7 @@ For getting help on the CLI:
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
+       create-input-vcf    Call SNVs/indels from BAM files for all target genes.
        create-regions-bed  Create a BED file which contains all regions used by
                            PyPGx.
        estimate-phase-beagle
@@ -305,6 +306,28 @@ create-consolidated-vcf
    
    Optional arguments:
      -h, --help            Show this help message and exit.
+
+create-input-vcf
+================
+
+.. code-block:: text
+
+   $ pypgx create-input-vcf -h
+   usage: pypgx create-input-vcf [-h] [--assembly TEXT] vcf fasta bams [bams ...]
+   
+   Call SNVs/indels from BAM files for all target genes.
+   
+   Positional arguments:
+     vcf              Output VCF file with .vcf.gz as suffix.
+     fasta            Reference FASTA file.
+     bams             One or more input BAM files. Alternatively, you can
+                      provide a text file (.txt, .tsv, .csv, or .list)
+                      containing one BAM file per line.
+   
+   Optional arguments:
+     -h, --help       Show this help message and exit.
+     --assembly TEXT  Reference genome assembly (default: 'GRCh37')
+                      (choices: 'GRCh37', 'GRCh38').
 
 create-regions-bed
 ==================

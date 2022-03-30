@@ -632,6 +632,7 @@ For getting help on the CLI:
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
+       create-input-vcf    Call SNVs/indels from BAM files for all target genes.
        create-regions-bed  Create a BED file which contains all regions used by
                            PyPGx.
        estimate-phase-beagle
