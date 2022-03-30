@@ -16,6 +16,7 @@ Changelog
 * Add new CNV calls for UGT2B15: ``Deletion2``, ``Duplication``, ``PartialDuplication``.
 * Add a new CNV call for UGT2B17: ``Normal,PartialDeletion3``.
 * Fix minor error in ``gene-table.csv``. Two control genes EGFR and VDR incorrectly had ``TRUE`` for ``Variants`` column. They were changed to ``FALSE``.
+* Add new optional arguments ``--target-genes`` and ``--var-genes`` to :command:`create-regions-bed` command.
 
 0.13.0 (2022-03-01)
 -------------------

@@ -313,7 +313,8 @@ create-regions-bed
 
    $ pypgx create-regions-bed -h
    usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--add-chr-prefix]
-                                   [--merge] [--sv-genes]
+                                   [--merge] [--target-genes] [--sv-genes]
+                                   [--var-genes]
    
    Create a BED file which contains all regions used by PyPGx.
    
@@ -324,7 +325,12 @@ create-regions-bed
      --add-chr-prefix  Whether to add the 'chr' string in contig names.
      --merge           Whether to merge overlapping intervals (gene names will
                        be removed too).
-     --sv-genes        Whether to only return genes with SV.
+     --target-genes    Whether to only return target genes, excluding control genes and
+                       paralogs.
+     --sv-genes        Whether to only return target genes whose at least one star allele is
+                       defined by structural variation
+     --var-genes       Whether to only return target genes whose at least one star allele is
+                       defined by SNVs/indels.
 
 estimate-phase-beagle
 =====================

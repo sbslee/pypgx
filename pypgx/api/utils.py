@@ -634,8 +634,8 @@ def create_consolidated_vcf(imported_variants, phased_variants):
     return sdk.Archive(metadata, vf6)
 
 def create_regions_bed(
-    assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False,
-    target_genes=False
+    assembly='GRCh37', add_chr_prefix=False, merge=False, target_genes=False,
+    sv_genes=False, var_genes=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -649,11 +649,15 @@ def create_regions_bed(
     merge : bool, default: False
         Whether to merge overlapping intervals (gene names will be removed
         too).
-    sv_genes : bool, default: False
-        Whether to only return genes with SV.
     target_genes : bool, default: False
         Whether to only return target genes, excluding control genes and
         paralogs.
+    sv_genes : bool, default: False
+        Whether to only return target genes whose at least one star allele is
+        defined by structural variation.
+    var_genes : bool, default: False
+        Whether to only return target genes whose at least one star allele is
+        defined by SNVs/indels.
 
     Returns
     -------
@@ -699,10 +703,12 @@ def create_regions_bed(
 
     """
     df = core.load_gene_table()
-    if sv_genes:
-        df = df[df.SV]
     if target_genes:
         df = df[df.Target]
+    if sv_genes:
+        df = df[df.SV]
+    if var_genes:
+        df = df[df.Variants]
     data = []
     for i, r in df.iterrows():
         region = r[f'{assembly}Region']
