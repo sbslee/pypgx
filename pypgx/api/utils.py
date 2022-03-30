@@ -292,6 +292,7 @@ def compare_genotypes(first, second, verbose=False):
 
     Examples
     --------
+
     >>> import pypgx
     >>> pypgx.compare_genotypes('results-1.zip', 'results-2.zip')
     # Genotype
@@ -654,6 +655,44 @@ def create_regions_bed(
     -------
     fuc.api.pybed.BedFrame
         BED file.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> bf = pypgx.create_regions_bed()
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0          1  201005639  201084694  CACNA1S
+    1          1   60355979   60395470   CYP2J2
+    2          1   47391859   47410148  CYP4A11
+    3          1   47600112   47618399  CYP4A22
+    4          1   47261669   47288021   CYP4B1
+    >>> bf = pypgx.create_regions_bed(assembly='GRCh38')
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0          1  201036511  201115426  CACNA1S
+    1          1   59890307   59929773   CYP2J2
+    2          1   46926187   46944476  CYP4A11
+    3          1   47134440   47152727  CYP4A22
+    4          1   46796045   46822413   CYP4B1
+    >>> bf = pypgx.create_regions_bed(add_chr_prefix=True)
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0       chr1  201005639  201084694  CACNA1S
+    1       chr1   60355979   60395470   CYP2J2
+    2       chr1   47391859   47410148  CYP4A11
+    3       chr1   47600112   47618399  CYP4A22
+    4       chr1   47261669   47288021   CYP4B1
+    >>> bf = pypgx.create_regions_bed(merge=True)
+    >>> bf.gr.df.head()
+      Chromosome     Start       End
+    0          1  47261669  47288021
+    1          1  47391859  47410148
+    2          1  47600112  47618399
+    3          1  60355979  60395470
+    4          1  97540298  98389615
+
     """
     df = core.load_gene_table()
     if sv_genes:
