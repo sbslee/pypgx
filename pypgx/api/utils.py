@@ -635,7 +635,10 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     return sdk.Archive(metadata, vf6)
 
-def create_input_vcf(vcf, fasta, bams, assembly='GRCh37'):
+def create_input_vcf(
+    vcf, fasta, bams, assembly='GRCh37', genes=None, exclude=False,
+    dir_path=None
+):
     """
     Call SNVs/indels from BAM files for all target genes.
 
@@ -655,17 +658,28 @@ def create_input_vcf(vcf, fasta, bams, assembly='GRCh37'):
         file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
+    dir_path : str, optional
+        By default, intermediate files (likelihoods.bcf, calls.bcf, and
+        calls.normalized.bcf) will be stored in a temporary directory, which
+        is automatically deleted after creating final VCF. If you provide a
+        directory path, intermediate files will be stored there.
     """
     if not vcf.endswith('.vcf.gz'):
         raise ValueError(f"VCF file must have .vcf.gz as suffix: {vcf}")
     vcf = vcf.replace('.vcf.gz', '.vcf')
-    bf = create_regions_bed(merge=True, assembly=assembly, var_genes=True)
-    pyvcf.call(fasta=fasta, bams=bams, regions=bf, path=vcf, gap_frac=0)
+    bf = create_regions_bed(merge=True, assembly=assembly, var_genes=True,
+        genes=genes, exclude=exclude)
+    pyvcf.call(fasta=fasta, bams=bams, regions=bf, path=vcf, gap_frac=0,
+        dir_path=dir_path, group_samples='-')
     pysam.tabix_index(vcf, preset='vcf', force=True)
 
 def create_regions_bed(
     assembly='GRCh37', add_chr_prefix=False, merge=False, target_genes=False,
-    sv_genes=False, var_genes=False
+    sv_genes=False, var_genes=False, genes=None, exclude=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -688,6 +702,10 @@ def create_regions_bed(
     var_genes : bool, default: False
         Whether to only return target genes whose at least one star allele is
         defined by SNVs/indels.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
 
     Returns
     -------
@@ -733,6 +751,11 @@ def create_regions_bed(
 
     """
     df = core.load_gene_table()
+    if genes is not None:
+        if exclude:
+            df = df[~df.Gene.isin(genes)]
+        else:
+            df = df[df.Gene.isin(genes)]
     if target_genes:
         df = df[df.Target]
     if sv_genes:

@@ -313,7 +313,9 @@ create-input-vcf
 .. code-block:: text
 
    $ pypgx create-input-vcf -h
-   usage: pypgx create-input-vcf [-h] [--assembly TEXT] vcf fasta bams [bams ...]
+   usage: pypgx create-input-vcf [-h] [--assembly TEXT] [--genes TEXT [TEXT ...]]
+                                 [--exclude] [--dir-path PATH]
+                                 vcf fasta bams [bams ...]
    
    Call SNVs/indels from BAM files for all target genes.
    
@@ -323,16 +325,26 @@ create-input-vcf
    only by structural variation (e.g. UGT2B17).
    
    Positional arguments:
-     vcf              Output VCF file. It must have .vcf.gz as suffix.
-     fasta            Reference FASTA file.
-     bams             One or more input BAM files. Alternatively, you can
-                      provide a text file (.txt, .tsv, .csv, or .list)
-                      containing one BAM file per line.
+     vcf                   Output VCF file. It must have .vcf.gz as suffix.
+     fasta                 Reference FASTA file.
+     bams                  One or more input BAM files. Alternatively, you can
+                           provide a text file (.txt, .tsv, .csv, or .list)
+                           containing one BAM file per line.
    
    Optional arguments:
-     -h, --help       Show this help message and exit.
-     --assembly TEXT  Reference genome assembly (default: 'GRCh37')
-                      (choices: 'GRCh37', 'GRCh38').
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
+     --dir-path PATH       By default, intermediate files (likelihoods.bcf,
+                           calls.bcf, and calls.normalized.bcf) will be stored
+                           in a temporary directory, which is automatically
+                           deleted after creating final VCF. If you provide a
+                           directory path, intermediate files will be stored
+                           there.
 
 create-regions-bed
 ==================
@@ -342,23 +354,28 @@ create-regions-bed
    $ pypgx create-regions-bed -h
    usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--add-chr-prefix]
                                    [--merge] [--target-genes] [--sv-genes]
-                                   [--var-genes]
+                                   [--var-genes] [--genes TEXT [TEXT ...]]
+                                   [--exclude]
    
    Create a BED file which contains all regions used by PyPGx.
    
    Optional arguments:
-     -h, --help        Show this help message and exit.
-     --assembly TEXT   Reference genome assembly (default: 'GRCh37')
-                       (choices: 'GRCh37', 'GRCh38').
-     --add-chr-prefix  Whether to add the 'chr' string in contig names.
-     --merge           Whether to merge overlapping intervals (gene names will
-                       be removed too).
-     --target-genes    Whether to only return target genes, excluding control genes and
-                       paralogs.
-     --sv-genes        Whether to only return target genes whose at least one star allele is
-                       defined by structural variation
-     --var-genes       Whether to only return target genes whose at least one star allele is
-                       defined by SNVs/indels.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --add-chr-prefix      Whether to add the 'chr' string in contig names.
+     --merge               Whether to merge overlapping intervals (gene names
+                           will be removed too).
+     --target-genes        Whether to only return target genes, excluding
+                           control genes and paralogs.
+     --sv-genes            Whether to only return target genes whose at least
+                           one star allele is defined by structural variation
+     --var-genes           Whether to only return target genes whose at least
+                           one star allele is defined by SNVs/indels.
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
 
 estimate-phase-beagle
 =====================

@@ -47,8 +47,34 @@ containing one BAM file per line."""
 """Reference genome assembly (default: 'GRCh37')
 (choices: 'GRCh37', 'GRCh38')."""
     )
+    parser.add_argument(
+        '--genes',
+        metavar='TEXT',
+        nargs='+',
+        help=
+"""List of genes to include."""
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help=
+"""Exclude specified genes. Ignored when --genes is not
+used."""
+    )
+    parser.add_argument(
+        '--dir-path',
+        metavar='PATH',
+        help=
+"""By default, intermediate files (likelihoods.bcf,
+calls.bcf, and calls.normalized.bcf) will be stored
+in a temporary directory, which is automatically
+deleted after creating final VCF. If you provide a
+directory path, intermediate files will be stored
+there."""
+    )
 
 def main(args):
     utils.create_input_vcf(
-        args.vcf, args.fasta, args.bams, assembly=args.assembly
+        args.vcf, args.fasta, args.bams, assembly=args.assembly,
+        genes=args.genes, exclude=args.exclude, dir_path=args.dir_path
     )
