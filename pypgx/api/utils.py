@@ -9,6 +9,7 @@ import zipfile
 import subprocess
 import os
 import pickle
+import warnings
 
 from . import core
 from .. import sdk
@@ -1018,9 +1019,8 @@ def predict_alleles(consolidated_variants):
         if x in variant_synonyms:
             y = variant_synonyms[x]
             if y in reformatted_variants:
-                raise ValueError('Multiple variant synonyms detected')
+                warnings.warn(f"Multiple variant synonyms detected for {y}: PyPGx will report information for {x}")
             reformatted_variants[y] = x
-
     star_alleles = {}
 
     for allele in definition_table.samples:

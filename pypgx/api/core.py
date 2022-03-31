@@ -673,7 +673,8 @@ def get_variant_synonyms(gene, assembly='GRCh37'):
     for i, r in df.iterrows():
         if pd.isna(r[f'{assembly}Synonym']):
             continue
-        synonyms[r[f'{assembly}Synonym']] = r[f'{assembly}Name']
+        for variant in r[f'{assembly}Synonym'].split(','):
+            synonyms[variant] = r[f'{assembly}Name']
     return synonyms
 
 def list_alleles(gene, variants=None, assembly='GRCh37'):
