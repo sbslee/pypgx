@@ -20,6 +20,7 @@ Below is a summary table:
    :header-rows: 1
 
    * - Gene
+     - Variants
      - SV
      - Phenotype
      - PharmVar
@@ -28,6 +29,7 @@ Below is a summary table:
      - GRCh38
      - Notes
    * - ABCB1
+     - ✅
      -
      -
      -
@@ -36,6 +38,7 @@ Below is a summary table:
      - `chr7:87500862-87716323 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A87500862%2D87716323&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:ABCG2`
+     - ✅
      -
      - ✅
      -
@@ -44,6 +47,7 @@ Below is a summary table:
      - `chr4:88087268-88161639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A88087268%2D88161639&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      -
    * - :ref:`genes:CACNA1S`
+     - ✅
      -
      - ✅
      -
@@ -52,6 +56,7 @@ Below is a summary table:
      - `chr1:201036511-201115426 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A201036511%2D201115426&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CFTR`
+     - ✅
      -
      - ✅
      -
@@ -60,6 +65,7 @@ Below is a summary table:
      - `chr7:117477024-117671665 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A117477024%2D117671665&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1A1`
+     - ✅
      -
      -
      - ✅
@@ -68,6 +74,7 @@ Below is a summary table:
      - `chr15:74716541-74728528 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A74716541%2D74728528&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1A2`
+     - ✅
      -
      -
      - ✅
@@ -76,6 +83,7 @@ Below is a summary table:
      - `chr15:74745844-74759607 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A74745844%2D74759607&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1B1`
+     - ✅
      -
      -
      - ✅
@@ -85,6 +93,7 @@ Below is a summary table:
      -
    * - :ref:`genes:CYP2A6`
      - ✅
+     - ✅
      -
      - ✅
      -
@@ -92,6 +101,7 @@ Below is a summary table:
      - `chr19:40833540-40890447 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A40833540%2D40890447&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2A6 has pseudogene (CYP2A7).
    * - :ref:`genes:CYP2A13`
+     - ✅
      -
      -
      - ✅
@@ -104,10 +114,12 @@ Below is a summary table:
      - ✅
      - ✅
      - ✅
+     - ✅
      - `chr19:41427203-41534301 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41427203%2D41534301&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr19:40921281-41028398 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A40921281%2D41028398&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2B6 has pseudogene (CYP2B7).
    * - :ref:`genes:CYP2C8`
+     - ✅
      -
      -
      - ✅
@@ -116,6 +128,7 @@ Below is a summary table:
      - `chr10:95033771-95072497 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A95033771%2D95072497&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2C9`
+     - ✅
      -
      - ✅
      - ✅
@@ -124,6 +137,7 @@ Below is a summary table:
      - `chr10:94935657-94993091 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A94935657%2D94993091&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2C19`
+     - ✅
      -
      - ✅
      - ✅
@@ -136,10 +150,12 @@ Below is a summary table:
      - ✅
      - ✅
      - ✅
+     - ✅
      - `chr22:42512500-42551883 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42512500%2D42551883&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr22:42116498-42155810 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42116498%2D42155810&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2D6 has pseudogene (CYP2D7).
    * - :ref:`genes:CYP2E1`
+     - ✅
      - ✅
      -
      - ✅
@@ -148,6 +164,7 @@ Below is a summary table:
      - `chr10:133517362-133549123 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A133517362%2D133549123&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2F1`
+     - ✅
      -
      -
      - ✅
@@ -156,6 +173,7 @@ Below is a summary table:
      - `chr19:41111431-41131381 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41111431%2D41131381&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2J2`
+     - ✅
      -
      -
      - ✅
@@ -164,6 +182,7 @@ Below is a summary table:
      - `chr1:59890307-59929773 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A59890307%2D59929773&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2R1`
+     - ✅
      -
      -
      - ✅
@@ -172,6 +191,7 @@ Below is a summary table:
      - `chr11:14875008-14895205 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A14875008%2D14895205&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2S1`
+     - ✅
      -
      -
      - ✅
@@ -180,6 +200,7 @@ Below is a summary table:
      - `chr19:41190218-41210539 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41190218%2D41210539&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2W1`
+     - ✅
      -
      -
      - ✅
@@ -188,6 +209,7 @@ Below is a summary table:
      - `chr7:980180-992640 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A980180%2D992640&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A4`
+     - ✅
      -
      -
      - ✅
@@ -196,6 +218,7 @@ Below is a summary table:
      - `chr7:99753966-99787184 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99753966%2D99787184&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A5`
+     - ✅
      -
      - ✅
      - ✅
@@ -204,6 +227,7 @@ Below is a summary table:
      - `chr7:99645193-99682996 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99645193%2D99682996&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A7`
+     - ✅
      -
      -
      - ✅
@@ -212,6 +236,7 @@ Below is a summary table:
      - `chr7:99702035-99738196 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99702035%2D99738196&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A43`
+     - ✅
      -
      -
      - ✅
@@ -220,6 +245,7 @@ Below is a summary table:
      - `chr7:99825012-99869093 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99825012%2D99869093&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4A11`
+     - ✅
      -
      -
      - ✅
@@ -228,6 +254,7 @@ Below is a summary table:
      - `chr1:46926187-46944476 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A46926187%2D46944476&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4A22`
+     - ✅
      -
      -
      - ✅
@@ -236,6 +263,7 @@ Below is a summary table:
      - `chr1:47134440-47152727 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A47134440%2D47152727&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4B1`
+     - ✅
      -
      -
      - ✅
@@ -245,6 +273,7 @@ Below is a summary table:
      -
    * - :ref:`genes:CYP4F2`
      - ✅
+     - ✅
      -
      - ✅
      -
@@ -252,6 +281,7 @@ Below is a summary table:
      - `chr19:15863022-15913074 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A15863022%2D15913074&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP17A1`
+     - ✅
      -
      -
      - ✅
@@ -260,6 +290,7 @@ Below is a summary table:
      - `chr10:102827530-102840413 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A102827530%2D102840413&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP19A1`
+     - ✅
      -
      -
      - ✅
@@ -268,6 +299,7 @@ Below is a summary table:
      - `chr15:51205056-51341596 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A51205056%2D51341596&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP26A1`
+     - ✅
      -
      -
      - ✅
@@ -276,6 +308,7 @@ Below is a summary table:
      - `chr10:93070892-93080885 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A93070892%2D93080885&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:DPYD`
+     - ✅
      -
      - ✅
      - ✅
@@ -284,6 +317,7 @@ Below is a summary table:
      - `chr1:97074742-97924034 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97074742%2D97924034&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:F5`
+     - ✅
      -
      - ✅
      -
@@ -293,6 +327,7 @@ Below is a summary table:
      -
    * - :ref:`genes:G6PD`
      - ✅
+     - ✅
      -
      -
      -
@@ -301,6 +336,7 @@ Below is a summary table:
      - G6PD is located on X chromosome.
    * - :ref:`genes:GSTM1`
      - ✅
+     - ✅
      -
      -
      -
@@ -308,6 +344,7 @@ Below is a summary table:
      - `chr1:109684816-109696745 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A109684816%2D109696745&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - GSTP1
+     - ✅
      -
      -
      -
@@ -316,6 +353,7 @@ Below is a summary table:
      - `chr11:67580811-67589653 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A67580811%2D67589653&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:GSTT1`
+     -
      - ✅
      -
      -
@@ -324,6 +362,7 @@ Below is a summary table:
      - `chr22_KI270879v1_alt:267307-281486 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22_KI270879v1_alt%3A267307%2D281486&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - GSTT1 is located on different contigs between GRCh37 and GRCh38.
    * - :ref:`genes:IFNL3`
+     - ✅
      -
      - ✅
      -
@@ -332,6 +371,7 @@ Below is a summary table:
      - `chr19:39240552-39248006 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39248006&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT1
+     - ✅
      -
      -
      -
@@ -340,6 +380,7 @@ Below is a summary table:
      - `chr8:18207108-18226689 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A18207108%2D18226689&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT2
+     - ✅
      -
      -
      -
@@ -348,6 +389,7 @@ Below is a summary table:
      - `chr8:18388281-18404218 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A18388281%2D18404218&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:NUDT15`
+     - ✅
      -
      - ✅
      - ✅
@@ -356,6 +398,7 @@ Below is a summary table:
      - `chr13:48034725-48050221 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A48034725%2D48050221&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:POR`
+     - ✅
      -
      -
      - ✅
@@ -364,6 +407,7 @@ Below is a summary table:
      - `chr7:75912154-75989855 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A75912154%2D75989855&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:PTGIS`
+     - ✅
      -
      -
      - ✅
@@ -372,6 +416,7 @@ Below is a summary table:
      - `chr20:49500873-49571137 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A49500873%2D49571137&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:RYR1`
+     - ✅
      -
      - ✅
      - ✅
@@ -380,6 +425,7 @@ Below is a summary table:
      - `chr19:38430690-38590564 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A38430690%2D38590564&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLC15A2
+     - ✅
      -
      -
      -
@@ -389,6 +435,7 @@ Below is a summary table:
      -
    * - :ref:`genes:SLC22A2`
      - ✅
+     - ✅
      -
      -
      -
@@ -396,6 +443,7 @@ Below is a summary table:
      - `chr6:160206754-160268821 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A160206754%2D160268821&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:SLCO1B1`
+     - ✅
      -
      - ✅
      - ✅
@@ -404,6 +452,7 @@ Below is a summary table:
      - `chr12:21128193-21242796 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A21128193%2D21242796&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLCO1B3
+     - ✅
      -
      -
      -
@@ -412,6 +461,7 @@ Below is a summary table:
      - `chr12:20807704-20919911 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A20807704%2D20919911&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLCO2B1
+     - ✅
      -
      -
      -
@@ -421,6 +471,7 @@ Below is a summary table:
      -
    * - :ref:`genes:SULT1A1`
      - ✅
+     - ✅
      -
      -
      -
@@ -428,6 +479,7 @@ Below is a summary table:
      - `chr16:28590586-28625044 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr16%3A28590586%2D28625044&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:TBXAS1`
+     - ✅
      -
      -
      - ✅
@@ -436,6 +488,7 @@ Below is a summary table:
      - `chr7:139826263-140023321 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A139826263%2D140023321&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:TPMT`
+     - ✅
      -
      - ✅
      -
@@ -444,6 +497,7 @@ Below is a summary table:
      - `chr6:18125310-18158169 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A18125310%2D18158169&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:UGT1A1`
+     - ✅
      -
      - ✅
      -
@@ -453,6 +507,7 @@ Below is a summary table:
      -
    * - :ref:`genes:UGT1A4`
      - ✅
+     - ✅
      -
      -
      -
@@ -460,6 +515,7 @@ Below is a summary table:
      - `chr2:233715735-233776300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A233715735%2D233776300&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - UGT2B7
+     - ✅
      -
      -
      -
@@ -469,6 +525,7 @@ Below is a summary table:
      -
    * - :ref:`genes:UGT2B15`
      - ✅
+     - ✅
      -
      -
      -
@@ -476,6 +533,7 @@ Below is a summary table:
      - `chr4:68640596-68676652 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A68640596%2D68676652&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:UGT2B17`
+     - 
      - ✅
      -
      -
@@ -484,6 +542,7 @@ Below is a summary table:
      - `chr4:68534183-68571527 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A68534183%2D68571527&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - VKORC1
+     - ✅
      -
      -
      -
@@ -492,6 +551,7 @@ Below is a summary table:
      - `chr16:31087853-31097797 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr16%3A31087853%2D31097797&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - XPC
+     - ✅
      -
      -
      -

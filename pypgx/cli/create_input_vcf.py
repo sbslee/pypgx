@@ -6,6 +6,11 @@ import fuc
 
 description = f"""
 Call SNVs/indels from BAM files for all target genes.
+
+To save computing resources, this method will call variants only for target
+genes whose at least one star allele is defined by SNVs/indels. Therefore,
+variants will not be called for target genes that have star alleles defined
+only by structural variation (e.g. UGT2B17).
 """
 
 def create_parser(subparsers):
@@ -19,7 +24,7 @@ def create_parser(subparsers):
     parser.add_argument(
         'vcf',
         help=
-"""Output VCF file with .vcf.gz as suffix."""
+"""Output VCF file. It must have .vcf.gz as suffix."""
     )
     parser.add_argument(
         'fasta',

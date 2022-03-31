@@ -317,8 +317,13 @@ create-input-vcf
    
    Call SNVs/indels from BAM files for all target genes.
    
+   To save computing resources, this method will call variants only for target
+   genes whose at least one star allele is defined by SNVs/indels. Therefore,
+   variants will not be called for target genes that have star alleles defined
+   only by structural variation (e.g. UGT2B17).
+   
    Positional arguments:
-     vcf              Output VCF file with .vcf.gz as suffix.
+     vcf              Output VCF file. It must have .vcf.gz as suffix.
      fasta            Reference FASTA file.
      bams             One or more input BAM files. Alternatively, you can
                       provide a text file (.txt, .tsv, .csv, or .list)
@@ -678,6 +683,11 @@ prepare-depth-of-coverage
                                           depth-of-coverage bams [bams ...]
    
    Prepare a depth of coverage file for all target genes with SV from BAM files.
+   
+   To save computing resources, this method will count read depth only for
+   target genes whose at least one star allele is defined by structural
+   variation. Therefore, read depth will not be computed for target genes that
+   have star alleles defined only by SNVs/indels (e.g. CYP3A5).
    
    Positional arguments:
      depth-of-coverage  Output archive file with the semantic type
