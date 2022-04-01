@@ -46,3 +46,34 @@ determine the final allele for reporting purposes. Basically, PyPGx picks the
 allele with the highest "priority" using the :meth:`pypgx.sort_alleles`
 method (`documentation <https://pypgx.readthedocs.io/en/latest/api.html#pypgx
 .api.core.sort_alleles>`__).
+
+Variant caller choice
+=====================
+
+Starting with the 0.14.0 version, it is strongly recommended to use the
+:command:`create-input-vcf` command for creating a VCF file (containing
+SNVs/indels) from BAM files before running the `NGS pipeline <https://pypgx.
+readthedocs.io/en/latest/readme.html#ngs-pipeline>`__. Prior to this command,
+users had been instructed to create input VCF file from BAM files on their
+own using a variant caller of their choice (e.g. GATK4, bcftools, DRAGEN,
+DeepVariant). This can raise several potential problems such as decreased
+reproducibility of PyPGx results and users providing incorrectly formatted
+VCF to PyPGx. Another problem is the assumption that users are already
+familiar with the ins and outs of variant calling (e.g. know how to control
+the balance between sensitivity vs. specificity). PyPGx strongly recommends
+producing input VCF that contains all possible SNVs/indels to achieve maximum
+sensitivity because it will only use known variants for genotyping purposes
+anyways (i.e. variants used to define star alleles); therefore, PyPGx is
+actually quite robust against false positives. By introducing
+:command:`create-input-vcf`, the main goal was to help standardize the NGS
+pipeline even further. Related GitHub issues: :issue:`54`.
+
+Disclaimer: There will be cases where more sophisticated variant callers are
+preferred, or even suitable, to generate input VCF for PyPGx. For example, if
+your samples are ancient DNA then you would probably want to use callers like
+ATLAS to correct for ancient DNA damage. Also, if you've already created
+input VCF for purposes other than running PyPGx and you want/need to be
+consistent with the other variant-level analyses you may also just use the
+same VCF for PyPGx. The bottom line is, if you are going to create your own
+input VCF, then you need to know what you are doing. Otherwise, it's probably
+safer to use :command:`create-input-vcf`.

@@ -508,6 +508,13 @@ to see the full list of genes with SV. For details on SV detection algorithm,
 please see the `Structural variation detection <https://pypgx.readthedocs.io/
 en/latest/readme.html#structural-variation-detection>`__ section.
 
+When creating a VCF file (containing SNVs/indels) from BAM files, users have
+a choice to either use the ``pypgx create-input-vcf`` command (strongly
+recommended) or a variant caller of their choice (e.g. GATK4
+HaplotypeCaller). See the `Variant caller choice <https://pypgx.readthedocs.
+io/en/latest/faq.html#variant-caller-choice>`__ section for detailed
+discussion on when to use either option.
+
 Chip pipeline
 -------------
 
