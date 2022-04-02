@@ -314,7 +314,7 @@ create-input-vcf
 
    $ pypgx create-input-vcf -h
    usage: pypgx create-input-vcf [-h] [--assembly TEXT] [--genes TEXT [TEXT ...]]
-                                 [--exclude] [--dir-path PATH]
+                                 [--exclude] [--dir-path PATH] [--max-depth INT]
                                  vcf fasta bams [bams ...]
    
    Call SNVs/indels from BAM files for all target genes.
@@ -345,6 +345,12 @@ create-input-vcf
                            deleted after creating final VCF. If you provide a
                            directory path, intermediate files will be stored
                            there.
+     --max-depth INT       At a position, read maximally this number of reads
+                           per input file (default: 250). If your input data is
+                           from WGS (e.g. 30X), you don't need to change this
+                           option. However, if it's from targeted sequencing
+                           with ultra-deep coverage (e.g. 500X), then you need
+                           to increase the maximum depth.
 
 create-regions-bed
 ==================

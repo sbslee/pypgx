@@ -72,9 +72,23 @@ deleted after creating final VCF. If you provide a
 directory path, intermediate files will be stored
 there."""
     )
+    parser.add_argument(
+        '--max-depth',
+        metavar='INT',
+        type=int,
+        default=250,
+        help=
+"""At a position, read maximally this number of reads
+per input file (default: 250). If your input data is
+from WGS (e.g. 30X), you don't need to change this
+option. However, if it's from targeted sequencing
+with ultra-deep coverage (e.g. 500X), then you need
+to increase the maximum depth."""
+    )
 
 def main(args):
     utils.create_input_vcf(
         args.vcf, args.fasta, args.bams, assembly=args.assembly,
-        genes=args.genes, exclude=args.exclude, dir_path=args.dir_path
+        genes=args.genes, exclude=args.exclude, dir_path=args.dir_path,
+        max_depth=args.max_depth
     )

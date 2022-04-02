@@ -637,7 +637,7 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
 def create_input_vcf(
     vcf, fasta, bams, assembly='GRCh37', genes=None, exclude=False,
-    dir_path=None
+    dir_path=None, max_depth=250
 ):
     """
     Call SNVs/indels from BAM files for all target genes.
@@ -667,6 +667,12 @@ def create_input_vcf(
         calls.normalized.bcf) will be stored in a temporary directory, which
         is automatically deleted after creating final VCF. If you provide a
         directory path, intermediate files will be stored there.
+    max_depth : int, default: 250
+        At a position, read maximally this number of reads per input file.
+        If your input data is from WGS (e.g. 30X), you don't need to change
+        this option. However, if it's from targeted sequencing with
+        ultra-deep coverage (e.g. 500X), then you need to increase the
+        maximum depth.
     """
     if not vcf.endswith('.vcf.gz'):
         raise ValueError(f"VCF file must have .vcf.gz as suffix: {vcf}")
@@ -674,7 +680,7 @@ def create_input_vcf(
     bf = create_regions_bed(merge=True, assembly=assembly, var_genes=True,
         genes=genes, exclude=exclude)
     pyvcf.call(fasta=fasta, bams=bams, regions=bf, path=vcf, gap_frac=0,
-        dir_path=dir_path, group_samples='-')
+        dir_path=dir_path, group_samples='-', max_depth=max_depth)
     pysam.tabix_index(vcf, preset='vcf', force=True)
 
 def create_regions_bed(

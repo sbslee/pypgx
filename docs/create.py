@@ -202,7 +202,7 @@ directory in order for PyPGx to correctly access the moved files:
 .. code-block:: text
 
    $ cd ~
-   $ git clone --branch 0.13.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the

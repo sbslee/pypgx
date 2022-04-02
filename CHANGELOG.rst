@@ -8,6 +8,9 @@ Changelog
 * :issue:`50`: Improve algorithm for whole gene duplication detection. This minor update will handle some rare edge cases.
 * :issue:`53`: Update CYP2B6\*17 variants to have synonyms. Update :meth:`api.core.get_variant_synonyms` and :meth:`api.utils.predict_alleles` methods to allow mapping of single variant to multiple synonyms.
 * :issue:`54`: Add new command :command:`create-input-vcf`.
+* Fix minor error in ``gene-table.csv``. Two control genes EGFR and VDR incorrectly had ``TRUE`` for ``Variants`` column. They were changed to ``FALSE``.
+* Change the three paralogs in ``gene-table.csv`` (CYP2A7, CYP2B7, and CYP2D7) to have ``FALSE`` for ``SV`` column.
+* Add new optional arguments to :command:`create-regions-bed` command: ``--target-genes``, ``--var-genes``, ``--genes``, ``--exclude``.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
 * Add new CNV calls for CYP2A6: ``Hybrid2Hom``, ``Hybrid4``, ``Tandem``.
 * Add new CNV calls for CYP2D6: ``Tandem4``, ``PseudogeneDownstreamDel``, ``Unknown2``.
@@ -17,9 +20,6 @@ Changelog
 * Add a new CNV call for SULT1A1: ``DeletionHom``.
 * Add new CNV calls for UGT2B15: ``Deletion2``, ``Duplication``, ``PartialDuplication``.
 * Add a new CNV call for UGT2B17: ``Normal,PartialDeletion3``.
-* Fix minor error in ``gene-table.csv``. Two control genes EGFR and VDR incorrectly had ``TRUE`` for ``Variants`` column. They were changed to ``FALSE``.
-* Change the three paralogs in ``gene-table.csv`` (CYP2A7, CYP2B7, and CYP2D7) to have ``FALSE`` for ``SV`` column.
-* Add new optional arguments to :command:`create-regions-bed` command: ``--target-genes``, ``--var-genes``, ``--genes``, ``--exclude``.
 
 0.13.0 (2022-03-01)
 -------------------
