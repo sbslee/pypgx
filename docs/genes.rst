@@ -1,11 +1,8 @@
 Genes
 *****
 
-Introduction
-============
-
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 58 pharmacogenes.
+genotyping of a total of 59 pharmacogenes.
 
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
@@ -23,6 +20,7 @@ Below is a summary table:
    :header-rows: 1
 
    * - Gene
+     - Variants
      - SV
      - Phenotype
      - PharmVar
@@ -31,6 +29,7 @@ Below is a summary table:
      - GRCh38
      - Notes
    * - ABCB1
+     - ✅
      -
      -
      -
@@ -38,7 +37,17 @@ Below is a summary table:
      - `chr7:87130178-87345639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A87130178%2D87345639&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr7:87500862-87716323 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A87500862%2D87716323&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - :ref:`genes:ABCG2`
+     - ✅
+     -
+     - ✅
+     -
+     - ✅
+     - `chr4:89008420-89082791 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A89008420%2D89082791&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
+     - `chr4:88087268-88161639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A88087268%2D88161639&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
+     -
    * - :ref:`genes:CACNA1S`
+     - ✅
      -
      - ✅
      -
@@ -47,6 +56,7 @@ Below is a summary table:
      - `chr1:201036511-201115426 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A201036511%2D201115426&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CFTR`
+     - ✅
      -
      - ✅
      -
@@ -55,6 +65,7 @@ Below is a summary table:
      - `chr7:117477024-117671665 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A117477024%2D117671665&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1A1`
+     - ✅
      -
      -
      - ✅
@@ -63,6 +74,7 @@ Below is a summary table:
      - `chr15:74716541-74728528 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A74716541%2D74728528&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1A2`
+     - ✅
      -
      -
      - ✅
@@ -71,6 +83,7 @@ Below is a summary table:
      - `chr15:74745844-74759607 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A74745844%2D74759607&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1B1`
+     - ✅
      -
      -
      - ✅
@@ -80,6 +93,7 @@ Below is a summary table:
      -
    * - :ref:`genes:CYP2A6`
      - ✅
+     - ✅
      -
      - ✅
      -
@@ -87,6 +101,7 @@ Below is a summary table:
      - `chr19:40833540-40890447 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A40833540%2D40890447&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2A6 has pseudogene (CYP2A7).
    * - :ref:`genes:CYP2A13`
+     - ✅
      -
      -
      - ✅
@@ -99,10 +114,12 @@ Below is a summary table:
      - ✅
      - ✅
      - ✅
+     - ✅
      - `chr19:41427203-41534301 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41427203%2D41534301&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr19:40921281-41028398 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A40921281%2D41028398&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2B6 has pseudogene (CYP2B7).
    * - :ref:`genes:CYP2C8`
+     - ✅
      -
      -
      - ✅
@@ -111,6 +128,7 @@ Below is a summary table:
      - `chr10:95033771-95072497 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A95033771%2D95072497&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2C9`
+     - ✅
      -
      - ✅
      - ✅
@@ -119,6 +137,7 @@ Below is a summary table:
      - `chr10:94935657-94993091 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A94935657%2D94993091&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2C19`
+     - ✅
      -
      - ✅
      - ✅
@@ -131,10 +150,12 @@ Below is a summary table:
      - ✅
      - ✅
      - ✅
+     - ✅
      - `chr22:42512500-42551883 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42512500%2D42551883&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr22:42116498-42155810 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A42116498%2D42155810&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - CYP2D6 has pseudogene (CYP2D7).
    * - :ref:`genes:CYP2E1`
+     - ✅
      - ✅
      -
      - ✅
@@ -143,6 +164,7 @@ Below is a summary table:
      - `chr10:133517362-133549123 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A133517362%2D133549123&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2F1`
+     - ✅
      -
      -
      - ✅
@@ -151,6 +173,7 @@ Below is a summary table:
      - `chr19:41111431-41131381 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41111431%2D41131381&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2J2`
+     - ✅
      -
      -
      - ✅
@@ -159,6 +182,7 @@ Below is a summary table:
      - `chr1:59890307-59929773 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A59890307%2D59929773&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2R1`
+     - ✅
      -
      -
      - ✅
@@ -167,6 +191,7 @@ Below is a summary table:
      - `chr11:14875008-14895205 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A14875008%2D14895205&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2S1`
+     - ✅
      -
      -
      - ✅
@@ -175,6 +200,7 @@ Below is a summary table:
      - `chr19:41190218-41210539 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A41190218%2D41210539&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP2W1`
+     - ✅
      -
      -
      - ✅
@@ -183,6 +209,7 @@ Below is a summary table:
      - `chr7:980180-992640 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A980180%2D992640&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A4`
+     - ✅
      -
      -
      - ✅
@@ -191,6 +218,7 @@ Below is a summary table:
      - `chr7:99753966-99787184 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99753966%2D99787184&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A5`
+     - ✅
      -
      - ✅
      - ✅
@@ -199,6 +227,7 @@ Below is a summary table:
      - `chr7:99645193-99682996 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99645193%2D99682996&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A7`
+     - ✅
      -
      -
      - ✅
@@ -207,6 +236,7 @@ Below is a summary table:
      - `chr7:99702035-99738196 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99702035%2D99738196&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP3A43`
+     - ✅
      -
      -
      - ✅
@@ -215,6 +245,7 @@ Below is a summary table:
      - `chr7:99825012-99869093 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A99825012%2D99869093&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4A11`
+     - ✅
      -
      -
      - ✅
@@ -223,6 +254,7 @@ Below is a summary table:
      - `chr1:46926187-46944476 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A46926187%2D46944476&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4A22`
+     - ✅
      -
      -
      - ✅
@@ -231,6 +263,7 @@ Below is a summary table:
      - `chr1:47134440-47152727 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A47134440%2D47152727&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP4B1`
+     - ✅
      -
      -
      - ✅
@@ -240,6 +273,7 @@ Below is a summary table:
      -
    * - :ref:`genes:CYP4F2`
      - ✅
+     - ✅
      -
      - ✅
      -
@@ -247,6 +281,7 @@ Below is a summary table:
      - `chr19:15863022-15913074 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A15863022%2D15913074&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP17A1`
+     - ✅
      -
      -
      - ✅
@@ -255,6 +290,7 @@ Below is a summary table:
      - `chr10:102827530-102840413 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A102827530%2D102840413&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP19A1`
+     - ✅
      -
      -
      - ✅
@@ -263,6 +299,7 @@ Below is a summary table:
      - `chr15:51205056-51341596 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr15%3A51205056%2D51341596&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP26A1`
+     - ✅
      -
      -
      - ✅
@@ -271,6 +308,7 @@ Below is a summary table:
      - `chr10:93070892-93080885 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A93070892%2D93080885&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:DPYD`
+     - ✅
      -
      - ✅
      - ✅
@@ -279,6 +317,7 @@ Below is a summary table:
      - `chr1:97074742-97924034 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97074742%2D97924034&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:F5`
+     - ✅
      -
      - ✅
      -
@@ -288,6 +327,7 @@ Below is a summary table:
      -
    * - :ref:`genes:G6PD`
      - ✅
+     - ✅
      -
      -
      -
@@ -296,6 +336,7 @@ Below is a summary table:
      - G6PD is located on X chromosome.
    * - :ref:`genes:GSTM1`
      - ✅
+     - ✅
      -
      -
      -
@@ -303,6 +344,7 @@ Below is a summary table:
      - `chr1:109684816-109696745 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A109684816%2D109696745&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - GSTP1
+     - ✅
      -
      -
      -
@@ -311,6 +353,7 @@ Below is a summary table:
      - `chr11:67580811-67589653 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A67580811%2D67589653&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:GSTT1`
+     -
      - ✅
      -
      -
@@ -319,6 +362,7 @@ Below is a summary table:
      - `chr22_KI270879v1_alt:267307-281486 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22_KI270879v1_alt%3A267307%2D281486&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - GSTT1 is located on different contigs between GRCh37 and GRCh38.
    * - :ref:`genes:IFNL3`
+     - ✅
      -
      - ✅
      -
@@ -327,6 +371,7 @@ Below is a summary table:
      - `chr19:39240552-39248006 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39248006&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT1
+     - ✅
      -
      -
      -
@@ -335,6 +380,7 @@ Below is a summary table:
      - `chr8:18207108-18226689 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A18207108%2D18226689&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT2
+     - ✅
      -
      -
      -
@@ -343,6 +389,7 @@ Below is a summary table:
      - `chr8:18388281-18404218 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A18388281%2D18404218&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:NUDT15`
+     - ✅
      -
      - ✅
      - ✅
@@ -351,6 +398,7 @@ Below is a summary table:
      - `chr13:48034725-48050221 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A48034725%2D48050221&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:POR`
+     - ✅
      -
      -
      - ✅
@@ -359,6 +407,7 @@ Below is a summary table:
      - `chr7:75912154-75989855 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A75912154%2D75989855&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:PTGIS`
+     - ✅
      -
      -
      - ✅
@@ -367,6 +416,7 @@ Below is a summary table:
      - `chr20:49500873-49571137 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A49500873%2D49571137&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:RYR1`
+     - ✅
      -
      - ✅
      - ✅
@@ -375,6 +425,7 @@ Below is a summary table:
      - `chr19:38430690-38590564 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A38430690%2D38590564&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLC15A2
+     - ✅
      -
      -
      -
@@ -384,6 +435,7 @@ Below is a summary table:
      -
    * - :ref:`genes:SLC22A2`
      - ✅
+     - ✅
      -
      -
      -
@@ -391,6 +443,7 @@ Below is a summary table:
      - `chr6:160206754-160268821 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A160206754%2D160268821&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:SLCO1B1`
+     - ✅
      -
      - ✅
      - ✅
@@ -399,6 +452,7 @@ Below is a summary table:
      - `chr12:21128193-21242796 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A21128193%2D21242796&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLCO1B3
+     - ✅
      -
      -
      -
@@ -407,6 +461,7 @@ Below is a summary table:
      - `chr12:20807704-20919911 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A20807704%2D20919911&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - SLCO2B1
+     - ✅
      -
      -
      -
@@ -416,6 +471,7 @@ Below is a summary table:
      -
    * - :ref:`genes:SULT1A1`
      - ✅
+     - ✅
      -
      -
      -
@@ -423,6 +479,7 @@ Below is a summary table:
      - `chr16:28590586-28625044 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr16%3A28590586%2D28625044&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:TBXAS1`
+     - ✅
      -
      -
      - ✅
@@ -431,6 +488,7 @@ Below is a summary table:
      - `chr7:139826263-140023321 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A139826263%2D140023321&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:TPMT`
+     - ✅
      -
      - ✅
      -
@@ -439,6 +497,7 @@ Below is a summary table:
      - `chr6:18125310-18158169 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A18125310%2D18158169&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:UGT1A1`
+     - ✅
      -
      - ✅
      -
@@ -448,6 +507,7 @@ Below is a summary table:
      -
    * - :ref:`genes:UGT1A4`
      - ✅
+     - ✅
      -
      -
      -
@@ -455,6 +515,7 @@ Below is a summary table:
      - `chr2:233715735-233776300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A233715735%2D233776300&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - UGT2B7
+     - ✅
      -
      -
      -
@@ -464,6 +525,7 @@ Below is a summary table:
      -
    * - :ref:`genes:UGT2B15`
      - ✅
+     - ✅
      -
      -
      -
@@ -471,6 +533,7 @@ Below is a summary table:
      - `chr4:68640596-68676652 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A68640596%2D68676652&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:UGT2B17`
+     - 
      - ✅
      -
      -
@@ -479,6 +542,7 @@ Below is a summary table:
      - `chr4:68534183-68571527 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A68534183%2D68571527&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - VKORC1
+     - ✅
      -
      -
      -
@@ -487,6 +551,7 @@ Below is a summary table:
      - `chr16:31087853-31097797 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr16%3A31087853%2D31097797&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - XPC
+     - ✅
      -
      -
      -
@@ -494,6 +559,31 @@ Below is a summary table:
      - `chr3:14183646-14223172 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A14183646%2D14223172&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr3:14142146-14181672 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A14142146%2D14181672&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+
+ABCG2
+=====
+
+Phenotype summary for ABCG2
+---------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+   * - Normal Function
+     - Reference/Reference
+   * - Decreased Function
+     - Reference/rs2231142
+   * - Poor Function
+     - rs2231142/rs2231142
+
+Resources for ABCG2
+-------------------
+
+- `CPIC® guideline for statins and SLCO1B1, ABCG2, and CYP2C9 <https://cpicpgx.org/guidelines/cpic-guideline-for-statins/>`__
 
 CACNA1S
 =======
@@ -679,11 +769,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19129
      -
-   * - Indeterminate
+   * -
      - Hybrid1
      - Indeterminate
      -
-     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-11.png>`
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-4.png>`
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-4.png>`
      - WGS
@@ -701,6 +791,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA11829
      - \*12 has exons 1-2 of CYP2A7 origin and exons 3-9 of CYP2A6 origin (breakpoint in intron 2).
+   * - \*12
+     - Hybrid2Hom
+     - \*12/\*12
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-14.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-14.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19780
+     -
    * - \*34
      - Hybrid3
      - \*1/\*34
@@ -711,7 +812,18 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18516
-     - \*34 has axons 1-4 of CYP2A7 origin and axons 5-9 of CYP2A6 origin (breakpoint in intron 4)
+     - \*34 has axons 1-4 of CYP2A7 origin and axons 5-9 of CYP2A6 origin (breakpoint in intron 4).
+   * -
+     - Hybrid4
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-15.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-15.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA20515
+     -
    * -
      - PseudogeneDuplication
      - \*1/\*18
@@ -722,6 +834,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA06985
+     -
+   * -
+     - Tandem
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-8.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-13.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-13.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA20828
      -
 
 Filtered alleles for CYP2A6
@@ -741,6 +864,11 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
      - \*35
      - `22-42523514-C-T <https://gnomad.broadinstitute.org/variant/19-41349874-T-A?dataset=gnomad_r2_1>`__
      - `22-42127512-C-T <https://gnomad.broadinstitute.org/variant/19-40843969-T-A?dataset=gnomad_r3>`__
+
+Resources for CYP2A6
+--------------------
+
+- `PharmVar CYP2A6 page <https://www.pharmvar.org/gene/CYP2A6>`__
 
 CYP2A13
 =======
@@ -832,6 +960,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP2B6
 --------------------
 
+- `PharmVar CYP2B6 page <https://www.pharmvar.org/gene/CYP2B6>`__
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
 
 CYP2C8
@@ -869,6 +998,7 @@ Activity score is used for phenotype prediction.
 Resources for CYP2C9
 --------------------
 
+- `PharmVar CYP2C9 page <https://www.pharmvar.org/gene/CYP2C9>`__
 - `CPIC® Guideline for NSAIDs based on CYP2C9 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/>`__
 
 CYP2C19
@@ -904,6 +1034,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP2C19
 ---------------------
 
+- `PharmVar CYP2C19 page <https://www.pharmvar.org/gene/CYP2C19>`__
 - `CPIC® Guideline for Voriconazole and CYP2C19 <https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/>`__
 
 CYP2D6
@@ -1049,6 +1180,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
      -
+   * -
+     - Tandem4
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-15.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-16.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-16.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19719
+     -
    * - \*2x2, \*68+\*4
      - Duplication,Tandem1A
      - \*2x2/\*68+\*4
@@ -1072,6 +1214,28 @@ Below is comprehensive summary of SV described from real NGS studies:
      - HG01190
      -
    * -
+     - PseudogeneDeletion
+     - \*2/\*41
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-14.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-15.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-15.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19316
+     -
+   * -
+     - PseudogeneDownstreamDel
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-17.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-17.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA20847
+     -
+   * -
      - Unknown1
      - Indeterminate
      -
@@ -1083,15 +1247,15 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA18555
      -
    * -
-     - PseudogeneDeletion
-     - \*2/\*41
+     - Unknown2
+     - Indeterminate
      -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-14.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-15.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-15.png>`
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-18.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-18.png>`
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA19316
+     - NA19982
      -
 
 Phenotype summary for CYP2D6
@@ -1155,6 +1319,7 @@ Some alleles in PharmVar will not be called by PyPGx because one or more of thei
 Resources for CYP2D6
 --------------------
 
+- `PharmVar CYP2D6 page <https://www.pharmvar.org/gene/CYP2D6>`__
 - `CPIC® Guideline for Tamoxifen based on CYP2D6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/>`__
 
 CYP2E1
@@ -1256,6 +1421,22 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
      -
+   * -
+     - Multiplication2
+     -
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-6.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-8.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-8.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA20291
+     -
+
+Resources for CYP2E1
+--------------------
+
+- `PharmVar CYP2E1 page <https://www.pharmvar.org/gene/CYP2E1>`__
 
 CYP2F1
 ======
@@ -1332,6 +1513,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for CYP3A5
 --------------------
 
+- `PharmVar CYP3A5 page <https://www.pharmvar.org/gene/CYP3A5>`__
 - `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
 
 CYP3A7
@@ -1475,6 +1657,7 @@ Activity score is used for phenotype prediction.
 Resources for DPYD
 ------------------
 
+- `PharmVar DPYD page <https://www.pharmvar.org/gene/DPYD>`__
 - `CPIC® Guideline for Fluoropyrimidines and DPYD <https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/>`__
 
 F5
@@ -1652,6 +1835,28 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA06984
     -
+  * -
+    - PartialDuplication
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-8.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19908
+    -
+  * -
+    - DeletionHet,Deletion2
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-9.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-9.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20506
+    -
 
 GSTT1
 =====
@@ -1772,6 +1977,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for NUDT15
 --------------------
 
+- `PharmVar NUDT15 page <https://www.pharmvar.org/gene/NUDT15>`__
 - `CPIC® Guideline for Thiopurines and TPMT and NUDT15 <https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/>`__
 
 POR
@@ -1880,6 +2086,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19030
     -
+  * -
+    - PartialDuplication
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-5.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20813
+    -
 
 SLCO1B1
 =======
@@ -1912,6 +2129,7 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Resources for SLCO1B1
 ---------------------
 
+- `PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
 
 SULT1A1
@@ -1957,6 +2175,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18942
+    -
+  * - \*DEL
+    - DeletionHom
+    - \*DEL/\*DEL
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20874
     -
   * - \*1x2
     - Duplication
@@ -2211,6 +2440,39 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19024
     -
+  * -
+    - Deletion2
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19786
+    -
+  * -
+    - Duplication
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19776
+    -
+  * -
+    - PartialDuplication
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-8.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20821
+    -
 
 UGT2B17
 =======
@@ -2291,4 +2553,15 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
+    -
+  * -
+    - Normal,PartialDeletion3
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20886
     -

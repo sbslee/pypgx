@@ -39,69 +39,69 @@ nucleotide polymorphism (SNP) array, and long-read sequencing. Importantly,
 PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
 builds, GRCh37 (hg19) and GRCh38 (hg38).
 
-There are currently 58 pharmacogenes in PyPGx:
+There are currently 59 pharmacogenes in PyPGx:
 
 .. list-table::
 
    * - ABCB1
+     - ABCG2
      - CACNA1S
      - CFTR
      - CYP1A1
-     - CYP1A2
-   * - CYP1B1
+   * - CYP1A2
+     - CYP1B1
      - CYP2A6/CYP2A7
      - CYP2A13
      - CYP2B6/CYP2B7
-     - CYP2C8
-   * - CYP2C9
+   * - CYP2C8
+     - CYP2C9
      - CYP2C19
      - CYP2D6/CYP2D7
      - CYP2E1
-     - CYP2F1
-   * - CYP2J2
+   * - CYP2F1
+     - CYP2J2
      - CYP2R1
      - CYP2S1
      - CYP2W1
-     - CYP3A4
-   * - CYP3A5
+   * - CYP3A4
+     - CYP3A5
      - CYP3A7
      - CYP3A43
      - CYP4A11
-     - CYP4A22
-   * - CYP4B1
+   * - CYP4A22
+     - CYP4B1
      - CYP4F2
      - CYP17A1
      - CYP19A1
-     - CYP26A1
-   * - DPYD
+   * - CYP26A1
+     - DPYD
      - F5
      - G6PD
      - GSTM1
-     - GSTP1
-   * - GSTT1
+   * - GSTP1
+     - GSTT1
      - IFNL3
      - NAT1
      - NAT2
-     - NUDT15
-   * - POR
+   * - NUDT15
+     - POR
      - PTGIS
      - RYR1
      - SLC15A2
-     - SLC22A2
-   * - SLCO1B1
+   * - SLC22A2
+     - SLCO1B1
      - SLCO1B3
      - SLCO2B1
      - SULT1A1
-     - TBXAS1
-   * - TPMT
+   * - TBXAS1
+     - TPMT
      - UGT1A1
      - UGT1A4
      - UGT2B7
-     - UGT2B15
-   * - UGT2B17
+   * - UGT2B15
+     - UGT2B17
      - VKORC1
      - XPC
-     -
      -
 
 Your contributions (e.g. feature ideas, pull requests) are most welcome.
@@ -175,7 +175,7 @@ directory in order for PyPGx to correctly access the moved files:
 .. code-block:: text
 
    $ cd ~
-   $ git clone --branch 0.13.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the
@@ -322,6 +322,9 @@ as pairs of ``=``-separated keys and values (e.g. ``Assembly=GRCh37``):
       - Semantic type of the archive.
       - ``CovFrame[CopyNumber]``, ``Model[CNV]``
 
+Semantic types
+--------------
+
 Notably, all archive files have defined semantic types, which allows us to
 ensure that the data that is passed to a PyPGx command (CLI) or method (API)
 is meaningful for the operation that will be performed. Below is a list of
@@ -366,6 +369,60 @@ currently defined semantic types:
 - ``VcfFrame[Phased]``
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
+
+Wroking with archive files
+--------------------------
+
+To demonstrate how easy it is to work with PyPGx archive files, below we will
+show some examples. First, download an archive:
+
+.. code-block:: text
+
+    $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch37-CYP2D6-results.zip
+
+Let's print its metadata:
+
+.. code-block:: text
+
+    $ pypgx print-metadata grch37-CYP2D6-results.zip
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
+
+We can unzip it to extract files inside (note that ``tmpcty4c_cr`` is the
+original folder name):
+
+.. code-block:: text
+
+    $ unzip grch37-CYP2D6-results.zip
+    Archive:  grch37-CYP2D6-results.zip
+      inflating: tmpcty4c_cr/metadata.txt
+      inflating: tmpcty4c_cr/data.tsv
+
+We can now directly interact with the files:
+
+.. code-block:: text
+
+    $ cat tmpcty4c_cr/metadata.txt
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
+    $ head -n 2 tmpcty4c_cr/data.tsv
+    	Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00276_PyPGx	*4/*5	Poor Metabolizer	*4;*10;*74;*2;	*10;*74;*2;	;	*4:22-42524947-C-T:0.913;*10:22-42526694-G-A,22-42523943-A-G:1.0,1.0;*74:22-42525821-G-T:1.0;*2:default;	DeletionHet
+
+We can easily create a new archive:
+
+.. code-block:: text
+
+    $ zip -r grch37-CYP2D6-results-new.zip tmpcty4c_cr
+      adding: tmpcty4c_cr/ (stored 0%)
+      adding: tmpcty4c_cr/metadata.txt (stored 0%)
+      adding: tmpcty4c_cr/data.tsv (deflated 84%)
+    $ pypgx print-metadata grch37-CYP2D6-results-new.zip
+    Gene=CYP2D6
+    Assembly=GRCh37
+    SemanticType=SampleTable[Results]
 
 Phenotype prediction
 ====================
@@ -451,6 +508,13 @@ to see the full list of genes with SV. For details on SV detection algorithm,
 please see the `Structural variation detection <https://pypgx.readthedocs.io/
 en/latest/readme.html#structural-variation-detection>`__ section.
 
+When creating a VCF file (containing SNVs/indels) from BAM files, users have
+a choice to either use the ``pypgx create-input-vcf`` command (strongly
+recommended) or a variant caller of their choice (e.g. GATK4
+HaplotypeCaller). See the `Variant caller choice <https://pypgx.readthedocs.
+io/en/latest/faq.html#variant-caller-choice>`__ section for detailed
+discussion on when to use either option.
+
 Chip pipeline
 -------------
 
@@ -485,6 +549,67 @@ The pipeline currently does not support SV detection. Please post a GitHub
 issue if you want to contribute your development skills and/or data for
 devising an SV detection algorithm.
 
+Results interpretation
+======================
+
+PyPGx outputs per-sample genotype results in a table, which is stored in an
+archive file with the semantic type ``SampleTable[Results]``. Below, we will
+use the CYP2D6 gene with GRCh37 as an example to illustrate how to interpret
+genotype results from PyPGx.
+
+.. list-table::
+   :header-rows: 1
+
+   * -
+     - Genotype
+     - Phenotype
+     - Haplotype1
+     - Haplotype2
+     - AlternativePhase
+     - VariantData
+     - CNV
+   * - NA11839
+     - \*1/\*2
+     - Normal Metabolizer
+     - \*1;
+     - \*2;
+     - ;
+     - \*1:22-42522613-G-C,22-42523943-A-G:0.5,0.488;\*2:default
+     - Normal
+   * - NA12006
+     - \*4/\*41
+     - Intermediate Metabolizer
+     - \*41;\*2;
+     - \*4;\*10;\*2;
+     - \*69;
+     - \*69:22-42526694-G-A,22-42523805-C-T:0.5,0.551;\*4:22-42524947-C-T:0.444;\*10:22-42523943-A-G,22-42526694-G-A:0.55,0.5;\*41:22-42523805-C-T:0.551;\*2:default;
+     - Normal
+   * - HG00276
+     - \*4/\*5
+     - Poor Metabolizer
+     - \*4;\*10;\*74;\*2;
+     - \*10;\*74;\*2;
+     - ;
+     - \*4:22-42524947-C-T:0.913;\*10:22-42523943-A-G,22-42526694-G-A:1.0,1.0;\*74:22-42525821-G-T:1.0;\*2:default;
+     - DeletionHet
+   * - NA19207
+     - \*2x2/\*10
+     - Normal Metabolizer
+     - \*10;\*2;
+     - \*2;
+     - ;
+     - \*10:22-42523943-A-G,22-42526694-G-A:0.361,0.25;\*2:default;
+     - Duplication
+
+This list explains each of the columns in the example results.
+
+- **Genotype**: Diplotype call. This simply combines the two top-ranked star alleles from **Haplotype1** and **Haplotype2** with '/'.
+- **Phenotype**: Phenotype call.
+- **Haplotype1**, **Haplotype2**: List of candidate star alleles for each haplotype. For example, if a given haplotype contains three variants 22-42523943-A-G, 22-42524947-C-T, and 22-42526694-G-A, then it will get assigned ``*4;*10;`` because the haplotype pattern can fit both \*4 (22-42524947-C-T) and \*10 (22-42523943-A-G and 22-42526694-G-A). Note that \*4 comes first before \*10 because it has higher priority for reporting purposes (see the ``pypgx.sort_alleles`` `method <https://pypgx.readthedocs.io/en/latest/api.html#pypgx.api.core.sort_alleles>`__ for detailed implementation).
+- **AlternativePhase**: List of star alleles that could be missed due to potentially incorrect statistical phasing. For example, let's assume that statistical phasing has put 22-42526694-G-A for **Haplotype1** and 22-42523805-C-T for **Haplotype2**. Even though the two variants are in trans orientation, PyPGx will also consider alternative phase in case the two variants are actually in cis orientation, resulting in ``*69;`` as **AlternativePhase** because \*69 is defined by 22-42526694-G-A and 22-42523805-C-T.
+- **VariantData**: Information for SNVs/indels used to define observed star alleles, including allele fraction which is important for allelic decomposition after identifying CNV (e.g. the sample NA19207). In some situations, there will not be any variants for a given star allele because the allele itself is "default" allele for the selected reference assembly (e.g. GRCh37 has \*2 as default while GRCh38 has \*1).
+- **CNV**: Structural variation call. See the `Structural variation detection <https://pypgx.readthedocs.io/en/latest/readme.html#structural-variation-detection>`__ section for more details.
+
 Getting help
 ============
 
@@ -514,6 +639,7 @@ For getting help on the CLI:
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
+       create-input-vcf    Call SNVs/indels from BAM files for all target genes.
        create-regions-bed  Create a BED file which contains all regions used by
                            PyPGx.
        estimate-phase-beagle
@@ -571,7 +697,7 @@ For getting help on a specific submodule (e.g. ``utils``):
    >>> from pypgx.api import utils
    >>> help(utils)
 
-For getting help on a specific method (e.g. ``predict_phenotype``):
+For getting help on a specific method (e.g. ``pypgx.predict_phenotype``):
 
 .. code:: python3
 

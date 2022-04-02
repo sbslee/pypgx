@@ -9,12 +9,14 @@ import zipfile
 import subprocess
 import os
 import pickle
+import warnings
 
 from . import core
 from .. import sdk
 
 import numpy as np
 import pandas as pd
+import pysam
 from fuc import pybam, pyvcf, pycov, common, pybed
 from sklearn import metrics
 from sklearn.multiclass import OneVsRestClassifier
@@ -292,6 +294,7 @@ def compare_genotypes(first, second, verbose=False):
 
     Examples
     --------
+
     >>> import pypgx
     >>> pypgx.compare_genotypes('results-1.zip', 'results-2.zip')
     # Genotype
@@ -632,8 +635,57 @@ def create_consolidated_vcf(imported_variants, phased_variants):
 
     return sdk.Archive(metadata, vf6)
 
+def create_input_vcf(
+    vcf, fasta, bams, assembly='GRCh37', genes=None, exclude=False,
+    dir_path=None, max_depth=250
+):
+    """
+    Call SNVs/indels from BAM files for all target genes.
+
+    To save computing resources, this method will call variants only for
+    target genes whose at least one star allele is defined by SNVs/indels.
+    Therefore, variants will not be called for target genes that have star
+    alleles defined only by structural variation (e.g. UGT2B17).
+
+    Parameters
+    ----------
+    vcf : str
+        Output VCF file. It must have .vcf.gz as suffix.
+    fasta : str
+        Reference FASTA file.
+    bams : str or list
+        One or more input BAM files. Alternatively, you can provide a text
+        file (.txt, .tsv, .csv, or .list) containing one BAM file per line.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
+    dir_path : str, optional
+        By default, intermediate files (likelihoods.bcf, calls.bcf, and
+        calls.normalized.bcf) will be stored in a temporary directory, which
+        is automatically deleted after creating final VCF. If you provide a
+        directory path, intermediate files will be stored there.
+    max_depth : int, default: 250
+        At a position, read maximally this number of reads per input file.
+        If your input data is from WGS (e.g. 30X), you don't need to change
+        this option. However, if it's from targeted sequencing with
+        ultra-deep coverage (e.g. 500X), then you need to increase the
+        maximum depth.
+    """
+    if not vcf.endswith('.vcf.gz'):
+        raise ValueError(f"VCF file must have .vcf.gz as suffix: {vcf}")
+    vcf = vcf.replace('.vcf.gz', '.vcf')
+    bf = create_regions_bed(merge=True, assembly=assembly, var_genes=True,
+        genes=genes, exclude=exclude)
+    pyvcf.call(fasta=fasta, bams=bams, regions=bf, path=vcf, gap_frac=0,
+        dir_path=dir_path, group_samples='-', max_depth=max_depth)
+    pysam.tabix_index(vcf, preset='vcf', force=True)
+
 def create_regions_bed(
-    assembly='GRCh37', add_chr_prefix=False, merge=False, sv_genes=False
+    assembly='GRCh37', add_chr_prefix=False, merge=False, target_genes=False,
+    sv_genes=False, var_genes=False, genes=None, exclude=False
 ):
     """
     Create a BED file which contains all regions used by PyPGx.
@@ -647,17 +699,75 @@ def create_regions_bed(
     merge : bool, default: False
         Whether to merge overlapping intervals (gene names will be removed
         too).
+    target_genes : bool, default: False
+        Whether to only return target genes, excluding control genes and
+        paralogs.
     sv_genes : bool, default: False
-        Whether to only return genes with SV.
+        Whether to only return target genes whose at least one star allele is
+        defined by structural variation.
+    var_genes : bool, default: False
+        Whether to only return target genes whose at least one star allele is
+        defined by SNVs/indels.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
 
     Returns
     -------
     fuc.api.pybed.BedFrame
         BED file.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> bf = pypgx.create_regions_bed()
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0          1  201005639  201084694  CACNA1S
+    1          1   60355979   60395470   CYP2J2
+    2          1   47391859   47410148  CYP4A11
+    3          1   47600112   47618399  CYP4A22
+    4          1   47261669   47288021   CYP4B1
+    >>> bf = pypgx.create_regions_bed(assembly='GRCh38')
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0          1  201036511  201115426  CACNA1S
+    1          1   59890307   59929773   CYP2J2
+    2          1   46926187   46944476  CYP4A11
+    3          1   47134440   47152727  CYP4A22
+    4          1   46796045   46822413   CYP4B1
+    >>> bf = pypgx.create_regions_bed(add_chr_prefix=True)
+    >>> bf.gr.df.head()
+      Chromosome      Start        End     Name
+    0       chr1  201005639  201084694  CACNA1S
+    1       chr1   60355979   60395470   CYP2J2
+    2       chr1   47391859   47410148  CYP4A11
+    3       chr1   47600112   47618399  CYP4A22
+    4       chr1   47261669   47288021   CYP4B1
+    >>> bf = pypgx.create_regions_bed(merge=True)
+    >>> bf.gr.df.head()
+      Chromosome     Start       End
+    0          1  47261669  47288021
+    1          1  47391859  47410148
+    2          1  47600112  47618399
+    3          1  60355979  60395470
+    4          1  97540298  98389615
+
     """
     df = core.load_gene_table()
+    if genes is not None:
+        if exclude:
+            df = df[~df.Gene.isin(genes)]
+        else:
+            df = df[df.Gene.isin(genes)]
+    if target_genes:
+        df = df[df.Target]
     if sv_genes:
         df = df[df.SV]
+    if var_genes:
+        df = df[df.Variants]
     data = []
     for i, r in df.iterrows():
         region = r[f'{assembly}Region']
@@ -938,9 +1048,8 @@ def predict_alleles(consolidated_variants):
         if x in variant_synonyms:
             y = variant_synonyms[x]
             if y in reformatted_variants:
-                raise ValueError('Multiple variant synonyms detected')
+                warnings.warn(f"Multiple variant synonyms detected for {y}: PyPGx will report information for {x}")
             reformatted_variants[y] = x
-
     star_alleles = {}
 
     for allele in definition_table.samples:
@@ -1080,6 +1189,11 @@ def prepare_depth_of_coverage(
     """
     Prepare a depth of coverage file for all target genes with SV from BAM
     files.
+
+    To save computing resources, this method will count read depth only for
+    target genes whose at least one star allele is defined by structural
+    variation. Therefore, read depth will not be computed for target genes
+    that have star alleles defined only by SNVs/indels (e.g. CYP3A5).
 
     Parameters
     ----------

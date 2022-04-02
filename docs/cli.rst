@@ -5,9 +5,6 @@
 CLI
 ***
 
-Introduction
-============
-
 This page describes the command line interface (CLI) for PyPGx.
 
 For getting help on the CLI:
@@ -33,6 +30,7 @@ For getting help on the CLI:
                            Compute read depth for target gene from BAM files.
        create-consolidated-vcf
                            Create a consolidated VCF file.
+       create-input-vcf    Call SNVs/indels from BAM files for all target genes.
        create-regions-bed  Create a BED file which contains all regions used by
                            PyPGx.
        estimate-phase-beagle
@@ -309,6 +307,51 @@ create-consolidated-vcf
    Optional arguments:
      -h, --help            Show this help message and exit.
 
+create-input-vcf
+================
+
+.. code-block:: text
+
+   $ pypgx create-input-vcf -h
+   usage: pypgx create-input-vcf [-h] [--assembly TEXT] [--genes TEXT [TEXT ...]]
+                                 [--exclude] [--dir-path PATH] [--max-depth INT]
+                                 vcf fasta bams [bams ...]
+   
+   Call SNVs/indels from BAM files for all target genes.
+   
+   To save computing resources, this method will call variants only for target
+   genes whose at least one star allele is defined by SNVs/indels. Therefore,
+   variants will not be called for target genes that have star alleles defined
+   only by structural variation (e.g. UGT2B17).
+   
+   Positional arguments:
+     vcf                   Output VCF file. It must have .vcf.gz as suffix.
+     fasta                 Reference FASTA file.
+     bams                  One or more input BAM files. Alternatively, you can
+                           provide a text file (.txt, .tsv, .csv, or .list)
+                           containing one BAM file per line.
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
+     --dir-path PATH       By default, intermediate files (likelihoods.bcf,
+                           calls.bcf, and calls.normalized.bcf) will be stored
+                           in a temporary directory, which is automatically
+                           deleted after creating final VCF. If you provide a
+                           directory path, intermediate files will be stored
+                           there.
+     --max-depth INT       At a position, read maximally this number of reads
+                           per input file (default: 250). If your input data is
+                           from WGS (e.g. 30X), you don't need to change this
+                           option. However, if it's from targeted sequencing
+                           with ultra-deep coverage (e.g. 500X), then you need
+                           to increase the maximum depth.
+
 create-regions-bed
 ==================
 
@@ -316,18 +359,29 @@ create-regions-bed
 
    $ pypgx create-regions-bed -h
    usage: pypgx create-regions-bed [-h] [--assembly TEXT] [--add-chr-prefix]
-                                   [--merge] [--sv-genes]
+                                   [--merge] [--target-genes] [--sv-genes]
+                                   [--var-genes] [--genes TEXT [TEXT ...]]
+                                   [--exclude]
    
    Create a BED file which contains all regions used by PyPGx.
    
    Optional arguments:
-     -h, --help        Show this help message and exit.
-     --assembly TEXT   Reference genome assembly (default: 'GRCh37')
-                       (choices: 'GRCh37', 'GRCh38').
-     --add-chr-prefix  Whether to add the 'chr' string in contig names.
-     --merge           Whether to merge overlapping intervals (gene names will
-                       be removed too).
-     --sv-genes        Whether to only return genes with SV.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --add-chr-prefix      Whether to add the 'chr' string in contig names.
+     --merge               Whether to merge overlapping intervals (gene names
+                           will be removed too).
+     --target-genes        Whether to only return target genes, excluding
+                           control genes and paralogs.
+     --sv-genes            Whether to only return target genes whose at least
+                           one star allele is defined by structural variation
+     --var-genes           Whether to only return target genes whose at least
+                           one star allele is defined by SNVs/indels.
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
 
 estimate-phase-beagle
 =====================
@@ -652,6 +706,11 @@ prepare-depth-of-coverage
                                           depth-of-coverage bams [bams ...]
    
    Prepare a depth of coverage file for all target genes with SV from BAM files.
+   
+   To save computing resources, this method will count read depth only for
+   target genes whose at least one star allele is defined by structural
+   variation. Therefore, read depth will not be computed for target genes that
+   have star alleles defined only by SNVs/indels (e.g. CYP3A5).
    
    Positional arguments:
      depth-of-coverage  Output archive file with the semantic type

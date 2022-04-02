@@ -7,6 +7,11 @@ import pysam
 
 description = """
 Prepare a depth of coverage file for all target genes with SV from BAM files.
+
+To save computing resources, this method will count read depth only for
+target genes whose at least one star allele is defined by structural
+variation. Therefore, read depth will not be computed for target genes that
+have star alleles defined only by SNVs/indels (e.g. CYP3A5).
 """
 
 epilog = f"""

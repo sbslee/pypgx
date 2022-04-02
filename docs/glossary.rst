@@ -1,9 +1,6 @@
 Glossary
 ********
 
-Introduction
-============
-
 This page describes glossaries for PyPGx.
 
 1000 Genomes Project (1KGP)

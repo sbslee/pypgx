@@ -1,4 +1,7 @@
 Gene,Diplotype,Phenotype
+ABCG2,Reference/Reference,Normal Function
+ABCG2,Reference/rs2231142,Decreased Function
+ABCG2,rs2231142/rs2231142,Poor Function
 CACNA1S,Reference/Reference,Uncertain Susceptibility
 CACNA1S,Reference/c.520C>T,Malignant Hyperthermia Susceptibility
 CACNA1S,Reference/c.3257G>A,Malignant Hyperthermia Susceptibility

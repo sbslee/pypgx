@@ -72,8 +72,6 @@ def build_definition_table(gene, assembly='GRCh37'):
     if not is_target_gene(gene):
         raise sdk.utils.NotTargetGeneError(gene)
 
-    other = 'GRCh38' if assembly == 'GRCh37' else 'GRCh37'
-
     df1 = load_allele_table()
     df1 = df1[df1.Gene == gene]
     variants = []
@@ -121,7 +119,34 @@ def build_definition_table(gene, assembly='GRCh37'):
 
 def collapse_alleles(gene, alleles, assembly='GRCh37'):
     """
-    Collapse redundant candidate alleles.
+    Collapse redundant candidate star alleles.
+
+    Note that this method only considers core variants for collapsing.
+
+    Parameters
+    ----------
+    gene : str
+        Gene name.
+    alleles : list
+        List of alleles.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+
+    Returns
+    -------
+    list
+        Collapsed list of alleles.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.list_variants('CYP2B6', alleles='*6', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G']
+    >>> pypgx.list_variants('CYP2B6', alleles='*7', mode='core')
+    ['19-41512841-G-T', '19-41515263-A-G', '19-41522715-C-T']
+    >>> pypgx.collapse_alleles('CYP2B6', ['*6', '*7'])
+    ['*7']
     """
     results = []
     for a in alleles:
@@ -285,6 +310,20 @@ def get_exon_ends(gene, assembly='GRCh37'):
     -------
     list
         List of end positions.
+
+    See Also
+    --------
+    get_exon_starts
+        Get exon starts for specified gene.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_exon_ends('CYP2D6')
+    [42522754, 42522994, 42523636, 42523985, 42524352, 42524946, 42525187, 42525911, 42526883]
+    >>> pypgx.get_exon_ends('CYP2D6', assembly='GRCh38')
+    [42126752, 42126992, 42127634, 42127983, 42128350, 42128944, 42129185, 42129909, 42130810]
     """
     if gene not in list_genes(mode='all'):
         raise sdk.utils.GeneNotFoundError(gene)
@@ -308,6 +347,20 @@ def get_exon_starts(gene, assembly='GRCh37'):
     -------
     list
         List of start positions.
+
+    See Also
+    --------
+    get_exon_ends
+        Get exon ends for specified gene.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.get_exon_starts('CYP2D6')
+    [42522500, 42522852, 42523448, 42523843, 42524175, 42524785, 42525034, 42525739, 42526613]
+    >>> pypgx.get_exon_starts('CYP2D6', assembly='GRCh38')
+    [42126498, 42126850, 42127446, 42127841, 42128173, 42128783, 42129032, 42129737, 42130611]
     """
     if gene not in list_genes(mode='all'):
         raise sdk.utils.GeneNotFoundError(gene)
@@ -620,7 +673,8 @@ def get_variant_synonyms(gene, assembly='GRCh37'):
     for i, r in df.iterrows():
         if pd.isna(r[f'{assembly}Synonym']):
             continue
-        synonyms[r[f'{assembly}Synonym']] = r[f'{assembly}Name']
+        for variant in r[f'{assembly}Synonym'].split(','):
+            synonyms[variant] = r[f'{assembly}Name']
     return synonyms
 
 def list_alleles(gene, variants=None, assembly='GRCh37'):
@@ -1068,6 +1122,10 @@ def predict_phenotype(gene, a, b):
     The method can handle star alleles with structural variation including
     gene deletion, duplication, and tandem arrangement.
 
+    For detailed implementation, please see the `Phenotype prediction
+    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    readme.html#phenotype-prediction>`__ section.
+
     Parameters
     ----------
     gene : str
@@ -1140,6 +1198,10 @@ def predict_score(gene, allele):
     function as well as for alleles from a gene that does not use the
     activity score system.
 
+    For detailed implementation, please see the `Phenotype prediction
+    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    readme.html#phenotype-prediction>`__ section.
+
     Parameters
     ----------
     gene : str
@@ -1182,14 +1244,16 @@ def predict_score(gene, allele):
     >>> pypgx.predict_score('CYP2D6', '*1x2+*4x2+*10') # Complex event
     2.25
 
-    We can also predict phenotypes for the DPYD gene:
+    We can also predict activity score for the DPYD gene:
 
-    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'Reference')
-    'Normal Metabolizer'
-    >>> pypgx.predict_phenotype('DPYD', 'Reference', 'c.1905+1G>A (*2A)')
-    'Intermediate Metabolizer'
-    >>> pypgx.predict_phenotype('DPYD', 'c.295_298delTCAT (*7)', 'c.703C>T (*8)')
-    'Poor Metabolizer'
+    >>> pypgx.predict_score('DPYD', 'Reference')
+    1.0
+    >>> pypgx.predict_score('DPYD', 'c.1905+1G>A (*2A)')
+    0.0
+    >>> pypgx.predict_score('DPYD', 'c.295_298delTCAT (*7)')
+    0.0
+    >>> pypgx.predict_score('DPYD', 'c.703C>T (*8)')
+    0.0
 
     All of the CYP2B6 alleles will return ``NaN`` because it does not have activity score:
 

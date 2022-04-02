@@ -1,4 +1,7 @@
 Gene,Phenotype,Priority
+ABCG2,Normal Function,Normal/Routine/Low Risk
+ABCG2,Decreased Function,Abnormal/Priority/High Risk
+ABCG2,Poor Function,Abnormal/Priority/High Risk
 CACNA1S,Uncertain Susceptibility,Normal Risk
 CACNA1S,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
 CFTR,Favorable Response,None
