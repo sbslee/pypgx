@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.14.0 (in development)
------------------------
+0.14.0 (2022-04-03)
+-------------------
 
 * :issue:`49`: Add new gene ABCG2.
 * :issue:`50`: Improve algorithm for whole gene duplication detection. This minor update will handle some rare edge cases.
