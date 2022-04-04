@@ -1184,7 +1184,7 @@ def predict_cnv(copy_number, cnv_caller=None):
     return sdk.Archive(metadata, data)
 
 def prepare_depth_of_coverage(
-    bams, assembly='GRCh37', bed=None
+    bams, assembly='GRCh37', bed=None, genes=None, exclude=False
 ):
     """
     Prepare a depth of coverage file for all target genes with SV from BAM
@@ -1208,6 +1208,10 @@ def prepare_depth_of_coverage(
         Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will
         be automatically added or removed as necessary to match the input
         BAM's contig names.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
 
     Returns
     -------
@@ -1220,7 +1224,8 @@ def prepare_depth_of_coverage(
     }
 
     regions = create_regions_bed(
-        merge=True, sv_genes=True, assembly=assembly,
+        merge=True, sv_genes=True, assembly=assembly, genes=genes,
+        exclude=exclude
     ).to_regions()
 
     cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)

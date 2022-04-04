@@ -71,9 +71,24 @@ in contig names (e.g. 'chr1' vs. '1') will be
 automatically added or removed as necessary to match
 the input BAM's contig names."""
     )
+    parser.add_argument(
+        '--genes',
+        metavar='TEXT',
+        nargs='+',
+        help=
+"""List of genes to include."""
+    )
+    parser.add_argument(
+        '--exclude',
+        action='store_true',
+        help=
+"""Exclude specified genes. Ignored when --genes is not
+used."""
+    )
 
 def main(args):
     archive = utils.prepare_depth_of_coverage(
-        args.bams, assembly=args.assembly, bed=args.bed
+        args.bams, assembly=args.assembly, bed=args.bed, genes=args.genes,
+        exclude=args.exclude
     )
     archive.to_file(args.depth_of_coverage)

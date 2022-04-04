@@ -703,6 +703,7 @@ prepare-depth-of-coverage
 
    $ pypgx prepare-depth-of-coverage -h
    usage: pypgx prepare-depth-of-coverage [-h] [--assembly TEXT] [--bed PATH]
+                                          [--genes TEXT [TEXT ...]] [--exclude]
                                           depth-of-coverage bams [bams ...]
    
    Prepare a depth of coverage file for all target genes with SV from BAM files.
@@ -713,22 +714,26 @@ prepare-depth-of-coverage
    have star alleles defined only by SNVs/indels (e.g. CYP3A5).
    
    Positional arguments:
-     depth-of-coverage  Output archive file with the semantic type
-                        CovFrame[DepthOfCoverage].
-     bams               One or more input BAM files. Alternatively, you can
-                        provide a text file (.txt, .tsv, .csv, or .list)
-                        containing one BAM file per line.
+     depth-of-coverage     Output archive file with the semantic type
+                           CovFrame[DepthOfCoverage].
+     bams                  One or more input BAM files. Alternatively, you can
+                           provide a text file (.txt, .tsv, .csv, or .list)
+                           containing one BAM file per line.
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37')
-                        (choices: 'GRCh37', 'GRCh38').
-     --bed PATH         By default, the input data is assumed to be WGS. If
-                        it's targeted sequencing, you must provide a BED file
-                        to indicate probed regions. Note that the 'chr' prefix
-                        in contig names (e.g. 'chr1' vs. '1') will be
-                        automatically added or removed as necessary to match
-                        the input BAM's contig names.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If
+                           it's targeted sequencing, you must provide a BED file
+                           to indicate probed regions. Note that the 'chr' prefix
+                           in contig names (e.g. 'chr1' vs. '1') will be
+                           automatically added or removed as necessary to match
+                           the input BAM's contig names.
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
    
    [Example] From WGS data:
      $ pypgx prepare-depth-of-coverage \
