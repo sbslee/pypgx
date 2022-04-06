@@ -1265,6 +1265,29 @@ def print_metadata(input):
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
 
+def slice_bam(
+    input, output, assembly='GRCh37', genes=None, exclude=False
+):
+    """
+    Slice BAM file for all genes used by PyPGx.
+
+    Parameters
+    ----------
+    input
+        Input BAM file. It must be already indexed to allow random access.
+    output : str
+        Output BAM file.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
+    """
+    bf = create_regions_bed(merge=True, assembly=assembly,
+        genes=genes, exclude=exclude)
+    pybam.slice(input, bf, path=output)
+
 def test_cnv_caller(
     cnv_caller, copy_number, cnv_calls, confusion_matrix=None
 ):

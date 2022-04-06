@@ -669,6 +669,7 @@ For getting help on the CLI:
        run-long-read-pipeline
                            Run genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       slice-bam           Slice BAM file for all genes used by PyPGx.
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    

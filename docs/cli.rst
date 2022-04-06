@@ -60,6 +60,7 @@ For getting help on the CLI:
        run-long-read-pipeline
                            Run genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       slice-bam           Slice BAM file for all genes used by PyPGx.
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    
@@ -928,6 +929,32 @@ run-ngs-pipeline
      --depth-of-coverage depth-of-coverage.tsv \
      --control-statistcs control-statistics-VDR.zip \
      --platform Targeted
+
+slice-bam
+=========
+
+.. code-block:: text
+
+   $ pypgx slice-bam -h
+   usage: pypgx slice-bam [-h] [--assembly TEXT] [--genes TEXT [TEXT ...]]
+                          [--exclude]
+                          input output
+   
+   Slice BAM file for all genes used by PyPGx.
+   
+   Positional arguments:
+     input                 Input BAM file. It must be already indexed to allow
+                           random access.
+     output                Output BAM file.
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
 
 test-cnv-caller
 ===============
