@@ -401,7 +401,8 @@ Wroking with archive files
 --------------------------
 
 To demonstrate how easy it is to work with PyPGx archive files, below we will
-show some examples. First, download an archive:
+show some examples. First, download an archive to play with, which has
+``SampleTable[Results]`` as semantic type:
 
 .. code-block:: text
 
@@ -415,6 +416,14 @@ Let's print its metadata:
     Gene=CYP2D6
     Assembly=GRCh37
     SemanticType=SampleTable[Results]
+
+Now print its main data (but display first sample only):
+
+.. code-block:: text
+
+    $ pypgx print-data grch37-CYP2D6-results.zip | head -n 2
+    	Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00276_PyPGx	*4/*5	Poor Metabolizer	*4;*10;*74;*2;	*10;*74;*2;	;	*4:22-42524947-C-T:0.913;*10:22-42526694-G-A,22-42523943-A-G:1.0,1.0;*74:22-42525821-G-T:1.0;*2:default;	DeletionHet
 
 We can unzip it to extract files inside (note that ``tmpcty4c_cr`` is the
 original folder name):
