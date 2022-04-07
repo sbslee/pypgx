@@ -6,6 +6,7 @@ Changelog
 
 * Add new optional arguments ``--genes`` and ``--exclude`` to :command:`prepare-depth-of-coverage` command.
 * Add new command :command:`slice-bam`.
+* Add new command :command:`print-data`.
 
 0.14.0 (2022-04-03)
 -------------------

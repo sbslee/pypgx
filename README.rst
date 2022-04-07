@@ -664,6 +664,7 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
+       print-data          Print the main data of specified archive.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline

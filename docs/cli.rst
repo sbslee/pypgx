@@ -55,6 +55,7 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
+       print-data          Print the main data of specified archive.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline
@@ -746,6 +747,22 @@ prepare-depth-of-coverage
      depth-of-coverage.zip \
      bam.list \
      --bed probes.bed
+
+print-data
+==========
+
+.. code-block:: text
+
+   $ pypgx print-data -h
+   usage: pypgx print-data [-h] input
+   
+   Print the main data of specified archive.
+   
+   Positional arguments:
+     input       Input archive file.
+   
+   Optional arguments:
+     -h, --help  Show this help message and exit.
 
 print-metadata
 ==============

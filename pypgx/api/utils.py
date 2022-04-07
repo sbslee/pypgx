@@ -1251,6 +1251,26 @@ def prepare_depth_of_coverage(
 
     return sdk.Archive(metadata, cf)
 
+def print_data(input):
+    """
+    Print the main data of specified archive.
+
+    Parameters
+    ----------
+    input : pypgx.Archive
+        Archive file.
+    """
+    archive = sdk.Archive.from_file(input)
+    if 'SampleTable' in archive.type:
+        data = archive.data.to_csv(sep='\t')
+    elif 'CovFrame' in archive.type:
+        data = archive.data.to_string()
+    elif 'VcfFrame' in archive.type:
+        data = archive.data.to_string()
+    else:
+        raise ValueError(f"Data cannot be printed for {archive.type}")
+    print(data, end='')
+
 def print_metadata(input):
     """
     Print the metadata of specified archive.
