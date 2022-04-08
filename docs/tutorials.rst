@@ -54,6 +54,11 @@ those from:
 Please visit the :ref:`readme:Pipelines` page for details on how to generate
 the input files.
 
+In case you are interested in creating above input files on your own, I have
+also prepared "mini" BAM files where the original BAM files from GeT-RM have
+been sliced to only contain genes used by PyPGx. You can download them `here
+<https://1drv.ms/u/s!Apgoq3uQ2gCqgrovIFKJSi-ECXY9pw?e=uP5EeU>`__.
+
 Let's look at the metadata for some of these files:
 
 .. code-block:: text
