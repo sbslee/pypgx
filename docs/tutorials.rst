@@ -35,10 +35,13 @@ available for download and use from the `European Nucleotide Archive
 <https://www.ebi.ac.uk/ena/browser/view/PRJEB19931>`__. We will be using this
 WGS dataset throughout the tutorial.
 
-Because downloading the entire WGS dataset is not feasible for most users due
-to its file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared input files
-ranging from 2 KB to 17.6 MB, for both GRCh37 and GRCh38. You can download
-those from:
+Obtaining input files
+---------------------
+
+Because downloading the entire WGS dataset is probably not feasible for most
+users due to large file size (i.e. a 30x WGS sample ≈ 90 GB), I have prepared
+input files ranging from 2 KB to 25.5 MB, for both GRCh37 and GRCh38. You can
+easily download these with:
 
 .. code-block:: text
 
@@ -51,14 +54,6 @@ those from:
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-depth-of-coverage.zip
     $ wget https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/grch38-control-statistics-VDR.zip
 
-Please visit the :ref:`readme:Pipelines` page for details on how to generate
-the input files.
-
-In case you are interested in creating above input files on your own, I have
-also prepared "mini" BAM files where the original BAM files from GeT-RM have
-been sliced to only contain genes used by PyPGx. You can download them `here
-<https://1drv.ms/u/s!Apgoq3uQ2gCqgrovIFKJSi-ECXY9pw?e=uP5EeU>`__.
-
 Let's look at the metadata for some of these files:
 
 .. code-block:: text
@@ -67,11 +62,67 @@ Let's look at the metadata for some of these files:
     Assembly=GRCh37
     SemanticType=CovFrame[DepthOfCoverage]
     Platform=WGS
+
+.. code-block:: text
+
     $ pypgx print-metadata grch38-control-statistics-VDR.zip
     Control=VDR
     Assembly=GRCh38
     SemanticType=SampleTable[Statistics]
     Platform=WGS
+
+At this point, you are now ready to move on to the next step.
+
+Optionally, in case you are interested in creating above input files on your
+own, I have also prepared "mini" BAM files for GRCh37 where the original
+sequencing data from GeT-RM have been sliced to contain genes used by PyPGx
+only. You can download them `here <https://1drv.ms/u/
+s!Apgoq3uQ2gCqgrovIFKJSi-ECXY9pw?e=uP5EeU>`__. You will also need reference
+FASTA when creating input VCF, which can be downloaded from `here
+<https://1drv.ms/u/s!Apgoq3uQ2gCqgt4qGq9YsumpVk9xJQ?e=ZewLHu>`__.
+
+Once you are finished downloading the mini BAM files and the reference FASTA
+file, let's first create input VCF:
+
+.. code-block:: text
+
+    $ pypgx create-input-vcf \
+    grch37-variants.vcf.gz \
+    /path/to/genome.fa \
+    grch37-bam.list
+
+Note that this step can take some time to run. For example, it takes about 1
+hour to finish using my personal MacBook Air (M1, 2020) with 8 GB of memory.
+
+Next, we will compute depth of coverage for genes that are known to have SV:
+
+.. code-block:: text
+
+    $ pypgx prepare-depth-of-coverage \
+    grch37-depth-of-coverage.zip \
+    grch37-bam.list
+
+This step should be quick. It finishes in less than 30 seconds with my laptop.
+
+.. code-block:: text
+
+    $ pypgx compute-control-statistics \
+    VDR \
+    grch37-control-statistics-VDR.zip \
+    grch37-bam.list
+
+Finally, we can compute control statistics using the VDR gene as control
+locus, which will be used when converting read depth to copy number:
+
+.. code-block:: text
+
+    $ pypgx compute-control-statistics \
+    VDR \
+    grch37-control-statistics-VDR.zip \
+    grch37-bam.list
+
+This step should be quick as well. It finishes in less than 5 seconds with my
+laptop.
 
 Genotyping genes with SV
 ------------------------
@@ -79,7 +130,7 @@ Genotyping genes with SV
 The first gene we are going to genotype is CYP2D6, which has almost 150
 star alleles including those with SV (e.g. gene deletions, duplications, and
 hybrids). To this end, we will run PyPGx's next-generation sequencing (NGS)
-pipeline:
+pipeline (see :ref:`readme:NGS pipeline` for more details):
 
 .. code-block:: text
 
