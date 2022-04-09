@@ -104,15 +104,8 @@ Next, we will compute depth of coverage for genes that are known to have SV:
 
 This step should be quick. It finishes in less than 30 seconds with my laptop.
 
-.. code-block:: text
-
-    $ pypgx compute-control-statistics \
-    VDR \
-    grch37-control-statistics-VDR.zip \
-    grch37-bam.list
-
-Finally, we can compute control statistics using the VDR gene as control
-locus, which will be used when converting read depth to copy number:
+Finally, we will compute control statistics using the VDR gene as control
+locus, which is required when converting read depth to copy number:
 
 .. code-block:: text
 

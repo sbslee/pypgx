@@ -1123,7 +1123,7 @@ def predict_phenotype(gene, a, b):
     gene deletion, duplication, and tandem arrangement.
 
     For detailed implementation, please see the `Phenotype prediction
-    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    <https://pypgx.readthedocs.io/en/latest/
     readme.html#phenotype-prediction>`__ section.
 
     Parameters
@@ -1199,7 +1199,7 @@ def predict_score(gene, allele):
     activity score system.
 
     For detailed implementation, please see the `Phenotype prediction
-    <file:///Users/sbslee/Desktop/pypgx/docs/_build/html/
+    <https://pypgx.readthedocs.io/en/latest/
     readme.html#phenotype-prediction>`__ section.
 
     Parameters

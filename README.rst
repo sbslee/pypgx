@@ -524,6 +524,9 @@ HaplotypeCaller). See the `Variant caller choice <https://pypgx.readthedocs.
 io/en/latest/faq.html#variant-caller-choice>`__ section for detailed
 discussion on when to use either option.
 
+Check out the `GeT-RM WGS tutorial <https://pypgx.readthedocs.io/en/latest/
+tutorials.html#get-rm-wgs-tutorial>`__ to see this pipeline in action.
+
 Chip pipeline
 -------------
 
@@ -542,6 +545,9 @@ CLI and ``impute=True`` in API.
 The pipeline currently does not support SV detection. Please post a GitHub
 issue if you want to contribute your development skills and/or data for
 devising an SV detection algorithm.
+
+Check out the `Coriell Affy tutorial <https://pypgx.readthedocs.io/en/latest/
+tutorials.html#coriell-affy-tutorial>`__ to see this pipeline in action.
 
 Long-read pipeline
 ------------------
