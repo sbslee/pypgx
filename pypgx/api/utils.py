@@ -8,6 +8,7 @@ import tempfile
 import zipfile
 import subprocess
 import os
+import sys
 import pickle
 import warnings
 
@@ -1269,7 +1270,14 @@ def print_data(input):
         data = archive.data.to_string()
     else:
         raise ValueError(f"Data cannot be printed for {archive.type}")
-    print(data, end='')
+
+    # https://docs.python.org/3/library/signal.html#note-on-sigpipe
+    try:
+        print(data, end='')
+    except BrokenPipeError:
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        sys.exit(1)
 
 def print_metadata(input):
     """
