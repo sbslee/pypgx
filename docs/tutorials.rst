@@ -227,7 +227,71 @@ Above will create a number of archive files:
 In addition to these files, PyPGx will have also created two directories
 called ``copy-number-profile`` and ``allele-fraction-profile``.
 
-Now let's make sure the genotype results are correct by comparing them with the validation data:
+Let's take a look at the results:
+
+.. code-block:: text
+
+    $ pypgx print-data grch37-CYP2D6-pipeline/results.zip | head
+    	Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00589_PyPGx	*1/*21	Intermediate Metabolizer	*21;*2;	*1;	;	*21:22-42524213-C-CG:0.378;*1:22-42522613-G-C,22-42523943-A-G:0.645,0.625;*2:default;	Normal
+    NA07019_PyPGx	*1/*4	Intermediate Metabolizer	*1;	*4;*10;*74;*2;	;	*4:22-42524947-C-T:0.452;*10:22-42523943-A-G,22-42526694-G-A:1.0,0.448;*74:22-42525821-G-T:0.424;*1:22-42522613-G-C,22-42523943-A-G:0.361,1.0;*2:default;	Normal
+    NA10851_PyPGx	*1/*4	Intermediate Metabolizer	*1;	*4;*10;*74;*2;	;	*4:22-42524947-C-T:0.467;*10:22-42523943-A-G,22-42526694-G-A:0.95,0.421;*74:22-42525821-G-T:0.447;*1:22-42522613-G-C,22-42523943-A-G:0.486,0.95;*2:default;	Normal
+    NA18484_PyPGx	*1/*17	Normal Metabolizer	*1;	*17;*2;	;	*17:22-42525772-G-A:0.6;*1:22-42522613-G-C,22-42523943-A-G:0.625,0.391;*2:default;	Normal
+    NA12006_PyPGx	*4/*41	Intermediate Metabolizer	*41;*2;	*4;*10;*2;	*69;	*69:22-42526694-G-A,22-42523805-C-T:0.473,0.528;*4:22-42524947-C-T:0.448;*10:22-42523943-A-G,22-42526694-G-A:0.545,0.473;*41:22-42523805-C-T:0.528;*2:default;	Normal
+    HG00436_PyPGx	*2x2/*71	Indeterminate	*71;*1;	*2;	;	*71:22-42526669-C-T:0.433;*1:22-42522613-G-C,22-42523943-A-G:0.462,0.353;*2:default;	Duplication
+    NA19213_PyPGx	*1/*1	Normal Metabolizer	*1;	*1;	;	*1:22-42522613-G-C,22-42523943-A-G:1.0,1.0;	Normal
+    NA19207_PyPGx	*2x2/*10	Normal Metabolizer	*10;*2;	*2;	;	*10:22-42523943-A-G,22-42526694-G-A:0.366,0.25;*2:default;	Duplication
+    NA07029_PyPGx	*1/*35	Normal Metabolizer	*35;*2;	*1;	;	*1:22-42522613-G-C,22-42523943-A-G:0.596,0.476;*35:22-42526763-C-T:0.405;*2:default;	Normal
+
+You can read :ref:`readme:Results interpretation` for details on how to
+interpret the PyPGx results.
+
+Next, we can manually inspect SV calls by visualizing copy number and allele
+fraction for the CYP2D6 locus (read :ref:`readme:Structural variation
+detection` for details). For example, above results indicate that the samples
+``HG00589_PyPGx`` and ``HG00436_PyPGx`` have ``Normal`` and ``Duplication``
+as CNV calls, respectively:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 45 45
+
+   * - Sample
+     - Copy Number
+     - Allele Fraction
+   * - HG00589_PyPGx
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00589-copy-number.png
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00589-allele-fraction.png
+   * - HG00436_PyPGx
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00436-copy-number.png
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00436-allele-fraction.png
+
+If you want to prepare publication quality figures, it's strongly recommended
+to combine copy number and allele fraction profiles together:
+
+.. code-block:: text
+
+    $ pypgx plot-cn-af \
+    grch37-CYP2D6-pipeline/copy-number.zip \
+    grch37-CYP2D6-pipeline/imported-variants.zip \
+    --samples HG00589_PyPGx HG00436_PyPGx
+
+.. list-table::
+   :header-rows: 1
+   :widths: 10 90
+
+   * - Sample
+     - Profile
+   * - HG00589_PyPGx
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00589-combined.png
+   * - HG00436_PyPGx
+     - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/getrm-wgs-tutorial/HG00436-combined.png
+
+Note that above also adds a fitted line on top of each copy number profile to
+display what the SV classifier actually "sees".
+
+Now let's make sure the genotype results are correct by comparing them with
+the validation data:
 
 .. code-block:: text
 
