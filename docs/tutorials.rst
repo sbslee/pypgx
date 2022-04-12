@@ -134,10 +134,11 @@ At this point, you are now ready to move on to the next step.
 Optionally, in case you are interested in creating above input files on your
 own, I have also prepared "mini" BAM files for GRCh37 where the original
 sequencing data from GeT-RM have been sliced to contain genes used by PyPGx
-only. You can download them `here <https://1drv.ms/u/
-s!Apgoq3uQ2gCqgrovIFKJSi-ECXY9pw?e=uP5EeU>`__. You will also need reference
-FASTA when creating input VCF, which can be downloaded from `here
-<https://1drv.ms/u/s!Apgoq3uQ2gCqgt4qGq9YsumpVk9xJQ?e=ZewLHu>`__.
+only. You can download them from the shared OneDrive folder `sbslee-bucket
+<https://1drv.ms/u/s!Apgoq3uQ2gCqgt4s_Ucn8a_gk7kmOg?e=5BfM4K>`__. There, you
+can navigate to ``sbslee-bucket`` > ``pypgx`` > ``getrm-wgs-tutorial`` >
+``grch37-bam``. You will also need reference FASTA when creating input VCF, 
+which can be downloaded from ``sbslee-bucket`` > ``ref`` > ``grch37``.
 
 Once you are finished downloading the mini BAM files and the reference FASTA
 file, first create a text file (.txt, .tsv, .csv, or .list) containing one
