@@ -126,7 +126,8 @@ se, but we can still peek at its data:
     chr1	47261869	.	C	T	235.707	PASS	DP=1863;VDB=0.677143;SGB=5.02317;RPBZ=-2.55997;MQBZ=-8.87433;MQSBZ=3.1481;BQBZ=26.6865;SCBZ=0.647961;FS=0;MQ0F=0;AC=88;AN=140;DP4=522,174,834,311;MQ=56	GT:PL:AD	0/0:0,84,255:28,0	0/1:255,0,194:12,20	1/1:255,69,0:0,23	0/0:0,93,255:31,0	0/0:0,69,255:23,0	0/1:216,0,255:17,11	0/1:218,0,238:14,14	1/1:255,90,0:0,30	0/1:190,0,148:10,9	1/1:255,60,0:0,20	1/1:255,81,0:0,27	0/1:255,0,192:13,13	1/1:255,81,0:0,27	1/1:255,81,0:1,31	0/0:0,65,255:26,1	1/1:255,78,0:0,26	0/0:0,51,255:17,0	1/1:255,63,0:0,21	0/1:240,0,244:17,12	0/1:255,0,255:17,171/1:255,69,0:0,23	0/1:186,0,239:16,11	0/1:247,0,255:15,12	0/1:231,0,221:17,11	1/1:255,69,0:0,23	0/0:0,87,255:29,0	0/1:196,0,198:11,11	0/1:255,0,213:16,20	0/1:232,0,238:16,13	0/1:255,0,175:13,150/1:223,0,245:22,11	0/1:255,0,255:15,16	1/1:255,81,0:0,27	1/1:255,99,0:0,33	0/1:255,0,209:16,161/1:255,87,0:0,29	1/1:255,75,0:0,25	1/1:255,75,0:0,25	0/0:0,66,255:22,0	0/0:0,63,255:21,0	1/1:255,78,0:0,26	1/1:218,54,0:0,18	1/1:255,78,0:0,26	0/1:173,0,255:23,12	0/0:0,72,255:24,0	1/1:255,75,0:0,25	0/1:213,0,168:11,13	0/1:247,0,188:11,12	0/1:195,0,124:6,9	0/1:173,0,205:16,121/1:255,66,0:0,22	1/1:255,72,0:0,24	1/1:255,54,0:0,18	1/1:255,93,0:0,31	1/1:255,84,0:0,28	1/1:255,66,0:0,22	0/0:0,48,255:21,1	0/1:190,0,255:13,8	0/1:255,0,173:9,13	0/1:255,0,214:16,180/1:202,0,179:12,11	0/1:255,0,218:16,17	1/1:255,84,0:0,28	1/1:255,81,0:0,27	0/1:255,0,111:7,18	1/1:255,69,0:0,23	0/1:255,0,213:13,19	0/0:0,66,255:22,0	0/1:253,0,247:21,13	1/1:255,75,0:0,25
     chr1	47261936	.	C	T	232.857	PASS	DP=2179;VDB=0.991573;SGB=71.95;RPBZ=0.621331;MQBZ=0.919674;MQSBZ=-0.0215108;BQBZ=10.1541;SCBZ=0.212854;FS=0;MQ0F=0;AC=17;AN=140;DP4=1145,745,173,83;MQ=59	GT:PL:AD	0/0:0,87,255:29,0	0/0:0,117,255:39,0	0/0:0,72,255:24,0	0/0:0,105,255:35,0	0/1:205,0,189:10,160/1:255,0,230:10,15	0/0:0,96,255:32,0	0/0:0,96,255:32,0	0/1:225,0,222:13,12	0/0:0,69,255:23,0	0/0:0,105,255:35,0	0/0:0,78,255:26,0	0/0:0,114,255:38,0	0/0:0,123,255:41,0	0/1:210,0,255:18,100/0:0,105,255:35,0	0/0:0,78,255:26,0	0/0:0,90,255:30,0	0/0:0,96,255:32,0	0/0:0,108,255:36,0	0/0:0,84,255:28,0	0/0:0,75,255:25,0	0/1:255,0,255:15,13	0/0:0,93,255:31,0	0/0:0,84,255:28,0	0/0:0,87,255:29,0	0/0:0,81,255:27,0	0/0:0,111,255:37,0	0/1:255,0,183:10,16	0/1:255,0,251:15,170/0:0,108,255:36,0	0/0:0,99,255:33,0	0/0:0,102,255:34,0	0/0:0,99,255:33,0	0/0:0,105,255:35,0	0/0:0,117,255:39,0	0/0:0,78,255:26,0	0/0:0,102,255:34,0	1/1:255,75,0:0,25	1/1:255,99,0:0,33	0/0:0,78,255:26,0	0/0:0,66,255:22,0	0/0:0,96,255:32,0	0/0:0,87,255:29,0	0/0:0,81,255:27,0	0/0:0,93,255:31,0	0/1:224,0,252:15,13	0/0:0,96,255:32,0	0/0:0,81,255:27,0	0/0:0,102,255:34,0	0/0:0,87,255:29,0	0/0:0,108,255:36,0	0/0:0,69,255:23,0	0/0:0,96,255:32,0	0/0:0,96,255:32,0	0/0:0,93,255:31,0	1/1:255,99,0:0,33	0/0:0,81,255:27,0	0/0:0,87,255:29,0	0/0:0,102,255:34,0	0/0:0,81,255:27,0	0/1:255,0,255:20,17	0/0:0,93,255:31,0	0/0:0,84,255:28,0	0/1:100,0,255:22,6	0/0:0,87,255:29,0	0/1:255,0,255:24,19	0/0:0,78,255:26,0	0/0:0,102,255:34,0	0/0:0,66,255:22,0
 
-At this point, you are now ready to move on to the next step.
+At this point, you are now ready to move on to the next step:
+:ref:`tutorials:Genotyping genes with SV`.
 
 (Optional) Creating input files
 -------------------------------
@@ -134,38 +135,37 @@ At this point, you are now ready to move on to the next step.
 Optionally, in case you are interested in creating above input files on your
 own, I have also prepared "mini" BAM files for GRCh37 where the original
 sequencing data from GeT-RM have been sliced to contain genes used by PyPGx
-only. You can download them from the shared OneDrive folder `sbslee-bucket
-<https://1drv.ms/u/s!Apgoq3uQ2gCqgt4s_Ucn8a_gk7kmOg?e=5BfM4K>`__. There, you
-can navigate to ``sbslee-bucket`` > ``pypgx`` > ``getrm-wgs-tutorial`` >
-``grch37-bam``. You will also need reference FASTA when creating input VCF, 
-which can be downloaded from ``sbslee-bucket`` > ``ref`` > ``grch37``.
-
-Once you are finished downloading the mini BAM files and the reference FASTA
-file, first create a text file (.txt, .tsv, .csv, or .list) containing one
-BAM file per line such that:
+only:
 
 .. code-block:: text
 
-    $ cat grch37-bam.list | head
-    /path/to/grch37-bam/NA18519_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/HG01190_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA12006_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA18484_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA07055_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA18980_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA19213_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA12813_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA19003_PyPGx.sorted.markdup.recal.bam
-    /path/to/grch37-bam/NA10831_PyPGx.sorted.markdup.recal.bam
+    $ mkdir grch37-bam
+    $ wget https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam.list
+    $ head -n 6 grch37-bam.list
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00276_PyPGx.sorted.markdup.recal.bai
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00276_PyPGx.sorted.markdup.recal.bam
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00436_PyPGx.sorted.markdup.recal.bai
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00436_PyPGx.sorted.markdup.recal.bam
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00589_PyPGx.sorted.markdup.recal.bai
+    https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-bam/HG00589_PyPGx.sorted.markdup.recal.bam
+    $ wget -i grch37-bam.list -P grch37-bam
 
-Now we can create input VCF:
+You will also need reference FASTA when creating input VCF:
+
+.. code-block:: text
+
+    $ wget https://storage.googleapis.com/sbslee-bucket/ref/grch37/genome.fa
+    $ wget https://storage.googleapis.com/sbslee-bucket/ref/grch37/genome.fa.fai
+
+Once you are finished downloading the mini BAM files and the reference FASTA
+file, we can create input VCF:
 
 .. code-block:: text
 
     $ pypgx create-input-vcf \
     grch37-variants.vcf.gz \
-    /path/to/GRCh37/genome.fa \
-    grch37-bam.list
+    genome.fa \
+    grch37-bam/*.bam
 
 Note that this step can take some time to run. For example, it takes about 1
 hour to finish using my personal MacBook Air (M1, 2020) with 8 GB of memory.
@@ -176,7 +176,7 @@ Next, we will compute depth of coverage for genes that are known to have SV:
 
     $ pypgx prepare-depth-of-coverage \
     grch37-depth-of-coverage.zip \
-    grch37-bam.list
+    grch37-bam/*.bam
 
 This step should be quick. It finishes in less than 30 seconds with my laptop.
 
@@ -188,7 +188,7 @@ locus, which is required when converting read depth to copy number:
     $ pypgx compute-control-statistics \
     VDR \
     grch37-control-statistics-VDR.zip \
-    grch37-bam.list
+    grch37-bam/*.bam
 
 This step should be quick as well. It finishes in less than 5 seconds with my
 laptop.
