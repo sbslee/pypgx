@@ -847,6 +847,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - HG00155
      -
    * -
+     - Hybrid6
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-12.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-18.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-18.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00141
+     -
+   * -
      - PseudogeneDuplication
      - \*1/\*18
      -
