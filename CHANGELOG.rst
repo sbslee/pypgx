@@ -7,7 +7,7 @@ Changelog
 * Add new optional arguments ``--genes`` and ``--exclude`` to :command:`prepare-depth-of-coverage` command.
 * Add new command :command:`slice-bam`.
 * Add new command :command:`print-data`.
-* Improve CNV caller for CYP2A6 and CYP2E1.
+* Improve CNV caller for CYP2A6, CYP2E1, SULT1A1.
 * Add new CNV calls for CYP2A6: ``Deletion2Hom``, ``Hybrid5``, ``Hybrid6``.
 
 0.14.0 (2022-04-03)
