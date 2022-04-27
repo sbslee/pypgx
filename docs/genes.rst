@@ -823,7 +823,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18516
-     - \*34 has axons 1-4 of CYP2A7 origin and axons 5-9 of CYP2A6 origin (breakpoint in intron 4).
+     - \*34 has exons 1-4 of CYP2A7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * -
      - Hybrid4
      - Indeterminate
