@@ -2598,6 +2598,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
     -
+  * - \*2
+    - Deletion,PartialDeletion3
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA21090
+    -
   * -
     - Normal,PartialDeletion3
     - Indeterminate
