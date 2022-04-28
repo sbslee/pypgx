@@ -374,7 +374,7 @@ class GSTM1Genotyper:
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal', 'UpstreamDeletionHet']:
             result = [a1, a2]
-        elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet']:
+        elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet', 'Normal,Deletion2']:
             result = [s1, '*0']
         elif r.CNV in ['DeletionHom', 'DeletionHet,Deletion2']:
             result = ['*0', '*0']
