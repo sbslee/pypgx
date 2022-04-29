@@ -262,7 +262,7 @@ def run_ngs_pipeline(
         depth_of_coverage.check_metadata('Assembly', assembly)
 
         if control_statistics is None:
-            raise ValueError('SV detection requires SampleTable[Statistcs]')
+            raise ValueError('SV detection requires SampleTable[Statistics]')
 
         if isinstance(control_statistics, str):
             control_statistics = sdk.Archive.from_file(control_statistics)

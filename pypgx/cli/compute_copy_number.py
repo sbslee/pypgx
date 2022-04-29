@@ -33,8 +33,8 @@ def create_parser(subparsers):
 CovFrame[ReadDepth]."""
     )
     parser.add_argument(
-        'control_statistcs',
-        metavar='control-statistcs',
+        'control_statistics',
+        metavar='control-statistics',
         help=
 """Input archive file with the semantic type
 SampleTable[Statistics]."""
@@ -56,7 +56,7 @@ CovFrame[CopyNumber]."""
 
 def main(args):
     result = utils.compute_copy_number(
-        args.read_depth, args.control_statistcs,
+        args.read_depth, args.control_statistics,
         samples_without_sv=args.samples_without_sv
     )
     result.to_file(args.copy_number)

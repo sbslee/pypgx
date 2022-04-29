@@ -384,7 +384,7 @@ currently defined semantic types:
 - ``SampleTable[Results]``
     * TSV file for storing various results for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
-- ``SampleTable[Statistcs]``
+- ``SampleTable[Statistics]``
     * TSV file for storing control gene's various statistics on read depth for each sample. Used for converting target gene's read depth to copy number.
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
@@ -536,7 +536,7 @@ input data is from whole genome sequencing (WGS) or targeted sequencing
 This pipeline supports SV detection based on copy number analysis for genes
 that are known to have SV. Therefore, if the target gene is associated with
 SV (e.g. CYP2D6) it's strongly recommended to provide a
-``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistcs]`` file in
+``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistics]`` file in
 addtion to a VCF file containing SNVs/indels. If the target gene is not
 associated with SV (e.g. CYP3A5) providing a VCF file alone is enough. You can
 visit the `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page

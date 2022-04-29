@@ -367,7 +367,7 @@ def compute_control_statistics(
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type SampleTable[Statistcs].
+        Archive object with the semantic type SampleTable[Statistics].
     """
     gene_table = core.load_gene_table()
 
@@ -427,7 +427,7 @@ def compute_copy_number(
     ----------
     read_depth : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[ReadDepth].
-    control_statistcs : str or pypgx.Archive
+    control_statistics : str or pypgx.Archive
         Archive file or object with the semandtic type
         SampleTable[Statistics].
     samples_without_sv : list, optional

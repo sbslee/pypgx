@@ -203,13 +203,13 @@ compute-control-statistics
    [Example] For the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
      VDR \
-     control-statistcs.zip \
+     control-statistics.zip \
      1.bam 2.bam
    
    [Example] For a custom region from targeted sequencing data:
      $ pypgx compute-control-statistics \
      chr1:100-200 \
-     control-statistcs.zip \
+     control-statistics.zip \
      bam.list \
      --bed probes.bed
 
@@ -220,7 +220,7 @@ compute-copy-number
 
    $ pypgx compute-copy-number -h
    usage: pypgx compute-copy-number [-h] [--samples-without-sv TEXT [TEXT ...]]
-                                    read-depth control-statistcs copy-number
+                                    read-depth control-statistics copy-number
    
    Compute copy number from read depth for target gene.
    
@@ -235,7 +235,7 @@ compute-copy-number
    Positional arguments:
      read-depth            Input archive file with the semantic type
                            CovFrame[ReadDepth].
-     control-statistcs     Input archive file with the semantic type
+     control-statistics    Input archive file with the semantic type
                            SampleTable[Statistics].
      copy-number           Output archive file with the semantic type
                            CovFrame[CopyNumber].
@@ -899,7 +899,7 @@ run-ngs-pipeline
                            CovFrame[DepthOfCoverage].
      --control-statistics PATH
                            Archive file with the semantic type
-                           SampleTable[Statistcs].
+                           SampleTable[Statistics].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS',
                            'Targeted')
      --assembly TEXT       Reference genome assembly (default: 'GRCh37')
@@ -920,7 +920,7 @@ run-ngs-pipeline
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
-     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By 
+     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By
                            default, a pre-trained CNV caller in the ~/pypgx-bundle
                            directory will be used.
    
@@ -936,7 +936,7 @@ run-ngs-pipeline
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
-     --control-statistcs control-statistics-VDR.zip
+     --control-statistics control-statistics-VDR.zip
    
    [Example] To genotype the CYP2D6 gene from targeted sequencing data:
      $ pypgx run-ngs-pipeline \
@@ -944,7 +944,7 @@ run-ngs-pipeline
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
-     --control-statistcs control-statistics-VDR.zip \
+     --control-statistics control-statistics-VDR.zip \
      --platform Targeted
 
 slice-bam

@@ -17,13 +17,13 @@ epilog = f"""
 [Example] For the VDR gene from WGS data:
   $ pypgx {fuc.api.common._script_name()} \\
   VDR \\
-  control-statistcs.zip \\
+  control-statistics.zip \\
   1.bam 2.bam
 
 [Example] For a custom region from targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
   chr1:100-200 \\
-  control-statistcs.zip \\
+  control-statistics.zip \\
   bam.list \\
   --bed probes.bed
 """
