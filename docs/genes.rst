@@ -2286,6 +2286,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19143
     -
+  * -
+    - Unknown1
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-8.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG01085
+    -
 
 TBXAS1
 ======
