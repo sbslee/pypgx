@@ -1213,6 +1213,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
      -
+   * -
+     - Tandem2F
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-16.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-19.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-19.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00458
+     -
    * - \*13+\*1
      - Tandem3
      - \*1/\*13+\*1

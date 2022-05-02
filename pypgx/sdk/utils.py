@@ -314,7 +314,14 @@ def simulate_copy_number(
         s = data - noise
         s[data == 0] = 0
         s[s < 0] = 0
-        target.data.df[f'{sv}_{i+1}'] = s
+
+        j = 1
+        name = f'{sv}_{i+j}'
+        while name in target.data.samples:
+            j += 1
+            name = f'{sv}_{i+j}'
+
+        target.data.df[name] = s
 
     return target
 
