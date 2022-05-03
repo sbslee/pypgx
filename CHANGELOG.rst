@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.15.0 (in development)
------------------------
+0.15.0 (2022-05-03)
+-------------------
 
 * Add new optional arguments ``--genes`` and ``--exclude`` to :command:`prepare-depth-of-coverage` command.
 * Add new command :command:`slice-bam`.
