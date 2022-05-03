@@ -4,6 +4,9 @@ Changelog
 0.16.0 (in development)
 -----------------------
 
+* Improve CNV caller for CYP2B6.
+* Add new CNV call for CYP2B6: ``Tandem``.
+
 0.15.0 (2022-05-03)
 -------------------
 
