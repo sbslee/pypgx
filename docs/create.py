@@ -397,7 +397,7 @@ currently defined semantic types:
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
-Wroking with archive files
+Working with archive files
 --------------------------
 
 To demonstrate how easy it is to work with PyPGx archive files, below we will
