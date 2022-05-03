@@ -357,7 +357,7 @@ currently defined semantic types:
 - ``SampleTable[Results]``
     * TSV file for storing various results for each sample.
     * Requires following metadata: ``Gene``, ``Assembly``, ``SemanticType``.
-- ``SampleTable[Statistcs]``
+- ``SampleTable[Statistics]``
     * TSV file for storing control gene's various statistics on read depth for each sample. Used for converting target gene's read depth to copy number.
     * Requires following metadata: ``Control``, ``Assembly``, ``SemanticType``, ``Platform``.
 - ``VcfFrame[Consolidated]``
@@ -370,11 +370,12 @@ currently defined semantic types:
     * VcfFrame for storing target gene's phased variant data.
     * Requires following metadata: ``Platform``, ``Gene``, ``Assembly``, ``SemanticType``, ``Program``.
 
-Wroking with archive files
+Working with archive files
 --------------------------
 
 To demonstrate how easy it is to work with PyPGx archive files, below we will
-show some examples. First, download an archive:
+show some examples. First, download an archive to play with, which has
+``SampleTable[Results]`` as semantic type:
 
 .. code-block:: text
 
@@ -388,6 +389,14 @@ Let's print its metadata:
     Gene=CYP2D6
     Assembly=GRCh37
     SemanticType=SampleTable[Results]
+
+Now print its main data (but display first sample only):
+
+.. code-block:: text
+
+    $ pypgx print-data grch37-CYP2D6-results.zip | head -n 2
+    	Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00276_PyPGx	*4/*5	Poor Metabolizer	*4;*10;*74;*2;	*10;*74;*2;	;	*4:22-42524947-C-T:0.913;*10:22-42526694-G-A,22-42523943-A-G:1.0,1.0;*74:22-42525821-G-T:1.0;*2:default;	DeletionHet
 
 We can unzip it to extract files inside (note that ``tmpcty4c_cr`` is the
 original folder name):
@@ -500,7 +509,7 @@ input data is from whole genome sequencing (WGS) or targeted sequencing
 This pipeline supports SV detection based on copy number analysis for genes
 that are known to have SV. Therefore, if the target gene is associated with
 SV (e.g. CYP2D6) it's strongly recommended to provide a
-``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistcs]`` file in
+``CovFrame[DepthOfCoverage]`` file and a ``SampleTable[Statistics]`` file in
 addtion to a VCF file containing SNVs/indels. If the target gene is not
 associated with SV (e.g. CYP3A5) providing a VCF file alone is enough. You can
 visit the `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__ page
@@ -514,6 +523,9 @@ recommended) or a variant caller of their choice (e.g. GATK4
 HaplotypeCaller). See the `Variant caller choice <https://pypgx.readthedocs.
 io/en/latest/faq.html#variant-caller-choice>`__ section for detailed
 discussion on when to use either option.
+
+Check out the `GeT-RM WGS tutorial <https://pypgx.readthedocs.io/en/latest/
+tutorials.html#get-rm-wgs-tutorial>`__ to see this pipeline in action.
 
 Chip pipeline
 -------------
@@ -533,6 +545,9 @@ CLI and ``impute=True`` in API.
 The pipeline currently does not support SV detection. Please post a GitHub
 issue if you want to contribute your development skills and/or data for
 devising an SV detection algorithm.
+
+Check out the `Coriell Affy tutorial <https://pypgx.readthedocs.io/en/latest/
+tutorials.html#coriell-affy-tutorial>`__ to see this pipeline in action.
 
 Long-read pipeline
 ------------------
@@ -664,11 +679,13 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
+       print-data          Print the main data of specified archive.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline
                            Run genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       slice-bam           Slice BAM file for all genes used by PyPGx.
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    

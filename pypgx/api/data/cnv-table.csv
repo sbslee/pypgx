@@ -14,6 +14,10 @@ CYP2A6,Duplication1
 CYP2A6,Duplication2
 CYP2A6,Duplication3
 CYP2A6,Tandem
+CYP2A6,Deletion2Hom
+CYP2A6,Hybrid5
+CYP2A6,Hybrid6
+CYP2A6,PseudogeneDeletion
 CYP2B6,Normal
 CYP2B6,Hybrid
 CYP2B6,Duplication
@@ -35,6 +39,7 @@ CYP2D6,Unknown1
 CYP2D6,Unknown2
 CYP2D6,PseudogeneDeletion
 CYP2D6,PseudogeneDownstreamDel
+CYP2D6,Tandem2F
 CYP2E1,Normal
 CYP2E1,Duplication1
 CYP2E1,Duplication2
@@ -54,6 +59,7 @@ GSTM1,UpstreamDeletionHet
 GSTM1,"DeletionHet,UpstreamDeletionHet"
 GSTM1,PartialDuplication
 GSTM1,"DeletionHet,Deletion2"
+GSTM1,"Normal,Deletion2"
 GSTT1,Normal
 GSTT1,DeletionHet
 GSTT1,DeletionHom
@@ -68,6 +74,7 @@ SULT1A1,DeletionHom
 SULT1A1,Duplication
 SULT1A1,Multiplication1
 SULT1A1,Multiplication2
+SULT1A1,Unknown1
 UGT1A4,Normal
 UGT1A4,Intron1DeletionA
 UGT1A4,Intron1DeletionB
@@ -86,3 +93,4 @@ UGT2B17,"Deletion,Deletion"
 UGT2B17,"Deletion,PartialDeletion1"
 UGT2B17,"Deletion,PartialDeletion2"
 UGT2B17,"Normal,PartialDeletion3"
+UGT2B17,"Deletion,PartialDeletion3"

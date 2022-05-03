@@ -1,6 +1,21 @@
 Changelog
 *********
 
+0.15.0 (2022-05-03)
+-------------------
+
+* Add new optional arguments ``--genes`` and ``--exclude`` to :command:`prepare-depth-of-coverage` command.
+* Add new command :command:`slice-bam`.
+* Add new command :command:`print-data`.
+* Fix typo "statistcs" to "statistics" throughout the package.
+* Update :meth:`sdk.utils.simulate_copy_number` method to automatically handle duplicate sample names.
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
+* Add new CNV calls for CYP2A6: ``Deletion2Hom``, ``Hybrid5``, ``Hybrid6``, ``PseudogeneDeletion``.
+* Add new CNV call for CYP2D6: ``Tandem2F``.
+* Add new CNV call for GSTM1: ``Normal,Deletion2``.
+* Add new CNV call for SULT1A1: ``Unknown1``.
+* Add new CNV call for UGT2B17: ``Deletion,PartialDeletion3``.
+
 0.14.0 (2022-04-03)
 -------------------
 

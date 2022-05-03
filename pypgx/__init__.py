@@ -53,7 +53,9 @@ from .api.utils import (
     predict_alleles,
     predict_cnv,
     prepare_depth_of_coverage,
+    print_data,
     print_metadata,
+    slice_bam,
     test_cnv_caller,
     train_cnv_caller,
 )

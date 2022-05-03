@@ -26,7 +26,7 @@ epilog = f"""
   CYP2D6-pipeline \\
   --variants variants.vcf.gz \\
   --depth-of-coverage depth-of-coverage.tsv \\
-  --control-statistcs control-statistics-VDR.zip
+  --control-statistics control-statistics-VDR.zip
 
 [Example] To genotype the CYP2D6 gene from targeted sequencing data:
   $ pypgx {fuc.api.common._script_name()} \\
@@ -34,7 +34,7 @@ epilog = f"""
   CYP2D6-pipeline \\
   --variants variants.vcf.gz \\
   --depth-of-coverage depth-of-coverage.tsv \\
-  --control-statistcs control-statistics-VDR.zip \\
+  --control-statistics control-statistics-VDR.zip \\
   --platform Targeted
 """
 
@@ -78,7 +78,7 @@ CovFrame[DepthOfCoverage]."""
         metavar='PATH',
         help=
 """Archive file with the semantic type
-SampleTable[Statistcs]."""
+SampleTable[Statistics]."""
     )
     parser.add_argument(
         '--platform',
@@ -150,7 +150,7 @@ can provide a list of samples."""
         '--cnv-caller',
         metavar='PATH',
         help=
-"""Archive file with the semantic type Model[CNV]. By 
+"""Archive file with the semantic type Model[CNV]. By
 default, a pre-trained CNV caller in the ~/pypgx-bundle
 directory will be used."""
     )

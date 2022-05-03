@@ -8,6 +8,7 @@ import tempfile
 import zipfile
 import subprocess
 import os
+import sys
 import pickle
 import warnings
 
@@ -366,7 +367,7 @@ def compute_control_statistics(
     Returns
     -------
     pypgx.Archive
-        Archive object with the semantic type SampleTable[Statistcs].
+        Archive object with the semantic type SampleTable[Statistics].
     """
     gene_table = core.load_gene_table()
 
@@ -426,7 +427,7 @@ def compute_copy_number(
     ----------
     read_depth : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[ReadDepth].
-    control_statistcs : str or pypgx.Archive
+    control_statistics : str or pypgx.Archive
         Archive file or object with the semandtic type
         SampleTable[Statistics].
     samples_without_sv : list, optional
@@ -1184,7 +1185,7 @@ def predict_cnv(copy_number, cnv_caller=None):
     return sdk.Archive(metadata, data)
 
 def prepare_depth_of_coverage(
-    bams, assembly='GRCh37', bed=None
+    bams, assembly='GRCh37', bed=None, genes=None, exclude=False
 ):
     """
     Prepare a depth of coverage file for all target genes with SV from BAM
@@ -1208,6 +1209,10 @@ def prepare_depth_of_coverage(
         Note that the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will
         be automatically added or removed as necessary to match the input
         BAM's contig names.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
 
     Returns
     -------
@@ -1220,7 +1225,8 @@ def prepare_depth_of_coverage(
     }
 
     regions = create_regions_bed(
-        merge=True, sv_genes=True, assembly=assembly,
+        merge=True, sv_genes=True, assembly=assembly, genes=genes,
+        exclude=exclude
     ).to_regions()
 
     cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)
@@ -1246,6 +1252,33 @@ def prepare_depth_of_coverage(
 
     return sdk.Archive(metadata, cf)
 
+def print_data(input):
+    """
+    Print the main data of specified archive.
+
+    Parameters
+    ----------
+    input : pypgx.Archive
+        Archive file.
+    """
+    archive = sdk.Archive.from_file(input)
+    if 'SampleTable' in archive.type:
+        data = archive.data.to_csv(sep='\t')
+    elif 'CovFrame' in archive.type:
+        data = archive.data.to_string()
+    elif 'VcfFrame' in archive.type:
+        data = archive.data.to_string()
+    else:
+        raise ValueError(f"Data cannot be printed for {archive.type}")
+
+    # https://docs.python.org/3/library/signal.html#note-on-sigpipe
+    try:
+        print(data, end='')
+    except BrokenPipeError:
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stdout.fileno())
+        sys.exit(1)
+
 def print_metadata(input):
     """
     Print the metadata of specified archive.
@@ -1259,6 +1292,29 @@ def print_metadata(input):
     parent = zf.filelist[0].filename.split('/')[0]
     with zf.open(f'{parent}/metadata.txt') as f:
         print(f.read().decode('utf-8').strip())
+
+def slice_bam(
+    input, output, assembly='GRCh37', genes=None, exclude=False
+):
+    """
+    Slice BAM file for all genes used by PyPGx.
+
+    Parameters
+    ----------
+    input
+        Input BAM file. It must be already indexed to allow random access.
+    output : str
+        Output BAM file.
+    assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
+        Reference genome assembly.
+    genes : list, optional
+        List of genes to include.
+    exclude : bool, default: False
+        Exclude specified genes. Ignored when ``genes=None``.
+    """
+    bf = create_regions_bed(merge=True, assembly=assembly,
+        genes=genes, exclude=exclude)
+    pybam.slice(input, bf, path=output)
 
 def test_cnv_caller(
     cnv_caller, copy_number, cnv_calls, confusion_matrix=None

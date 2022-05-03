@@ -55,11 +55,13 @@ For getting help on the CLI:
        prepare-depth-of-coverage
                            Prepare a depth of coverage file for all target
                            genes with SV from BAM files.
+       print-data          Print the main data of specified archive.
        print-metadata      Print the metadata of specified archive.
        run-chip-pipeline   Run genotyping pipeline for chip data.
        run-long-read-pipeline
                            Run genotyping pipeline for long-read sequencing data.
        run-ngs-pipeline    Run genotyping pipeline for NGS data.
+       slice-bam           Slice BAM file for all genes used by PyPGx.
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    
@@ -201,13 +203,13 @@ compute-control-statistics
    [Example] For the VDR gene from WGS data:
      $ pypgx compute-control-statistics \
      VDR \
-     control-statistcs.zip \
+     control-statistics.zip \
      1.bam 2.bam
    
    [Example] For a custom region from targeted sequencing data:
      $ pypgx compute-control-statistics \
      chr1:100-200 \
-     control-statistcs.zip \
+     control-statistics.zip \
      bam.list \
      --bed probes.bed
 
@@ -218,7 +220,7 @@ compute-copy-number
 
    $ pypgx compute-copy-number -h
    usage: pypgx compute-copy-number [-h] [--samples-without-sv TEXT [TEXT ...]]
-                                    read-depth control-statistcs copy-number
+                                    read-depth control-statistics copy-number
    
    Compute copy number from read depth for target gene.
    
@@ -233,7 +235,7 @@ compute-copy-number
    Positional arguments:
      read-depth            Input archive file with the semantic type
                            CovFrame[ReadDepth].
-     control-statistcs     Input archive file with the semantic type
+     control-statistics    Input archive file with the semantic type
                            SampleTable[Statistics].
      copy-number           Output archive file with the semantic type
                            CovFrame[CopyNumber].
@@ -703,6 +705,7 @@ prepare-depth-of-coverage
 
    $ pypgx prepare-depth-of-coverage -h
    usage: pypgx prepare-depth-of-coverage [-h] [--assembly TEXT] [--bed PATH]
+                                          [--genes TEXT [TEXT ...]] [--exclude]
                                           depth-of-coverage bams [bams ...]
    
    Prepare a depth of coverage file for all target genes with SV from BAM files.
@@ -713,22 +716,26 @@ prepare-depth-of-coverage
    have star alleles defined only by SNVs/indels (e.g. CYP3A5).
    
    Positional arguments:
-     depth-of-coverage  Output archive file with the semantic type
-                        CovFrame[DepthOfCoverage].
-     bams               One or more input BAM files. Alternatively, you can
-                        provide a text file (.txt, .tsv, .csv, or .list)
-                        containing one BAM file per line.
+     depth-of-coverage     Output archive file with the semantic type
+                           CovFrame[DepthOfCoverage].
+     bams                  One or more input BAM files. Alternatively, you can
+                           provide a text file (.txt, .tsv, .csv, or .list)
+                           containing one BAM file per line.
    
    Optional arguments:
-     -h, --help         Show this help message and exit.
-     --assembly TEXT    Reference genome assembly (default: 'GRCh37')
-                        (choices: 'GRCh37', 'GRCh38').
-     --bed PATH         By default, the input data is assumed to be WGS. If
-                        it's targeted sequencing, you must provide a BED file
-                        to indicate probed regions. Note that the 'chr' prefix
-                        in contig names (e.g. 'chr1' vs. '1') will be
-                        automatically added or removed as necessary to match
-                        the input BAM's contig names.
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --bed PATH            By default, the input data is assumed to be WGS. If
+                           it's targeted sequencing, you must provide a BED file
+                           to indicate probed regions. Note that the 'chr' prefix
+                           in contig names (e.g. 'chr1' vs. '1') will be
+                           automatically added or removed as necessary to match
+                           the input BAM's contig names.
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
    
    [Example] From WGS data:
      $ pypgx prepare-depth-of-coverage \
@@ -740,6 +747,22 @@ prepare-depth-of-coverage
      depth-of-coverage.zip \
      bam.list \
      --bed probes.bed
+
+print-data
+==========
+
+.. code-block:: text
+
+   $ pypgx print-data -h
+   usage: pypgx print-data [-h] input
+   
+   Print the main data of specified archive.
+   
+   Positional arguments:
+     input       Input archive file.
+   
+   Optional arguments:
+     -h, --help  Show this help message and exit.
 
 print-metadata
 ==============
@@ -876,7 +899,7 @@ run-ngs-pipeline
                            CovFrame[DepthOfCoverage].
      --control-statistics PATH
                            Archive file with the semantic type
-                           SampleTable[Statistcs].
+                           SampleTable[Statistics].
      --platform TEXT       Genotyping platform (default: 'WGS') (choices: 'WGS',
                            'Targeted')
      --assembly TEXT       Reference genome assembly (default: 'GRCh37')
@@ -897,7 +920,7 @@ run-ngs-pipeline
                            Do not plot copy number profile.
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
-     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By 
+     --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By
                            default, a pre-trained CNV caller in the ~/pypgx-bundle
                            directory will be used.
    
@@ -913,7 +936,7 @@ run-ngs-pipeline
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
-     --control-statistcs control-statistics-VDR.zip
+     --control-statistics control-statistics-VDR.zip
    
    [Example] To genotype the CYP2D6 gene from targeted sequencing data:
      $ pypgx run-ngs-pipeline \
@@ -921,8 +944,34 @@ run-ngs-pipeline
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
      --depth-of-coverage depth-of-coverage.tsv \
-     --control-statistcs control-statistics-VDR.zip \
+     --control-statistics control-statistics-VDR.zip \
      --platform Targeted
+
+slice-bam
+=========
+
+.. code-block:: text
+
+   $ pypgx slice-bam -h
+   usage: pypgx slice-bam [-h] [--assembly TEXT] [--genes TEXT [TEXT ...]]
+                          [--exclude]
+                          input output
+   
+   Slice BAM file for all genes used by PyPGx.
+   
+   Positional arguments:
+     input                 Input BAM file. It must be already indexed to allow
+                           random access.
+     output                Output BAM file.
+   
+   Optional arguments:
+     -h, --help            Show this help message and exit.
+     --assembly TEXT       Reference genome assembly (default: 'GRCh37')
+                           (choices: 'GRCh37', 'GRCh38').
+     --genes TEXT [TEXT ...]
+                           List of genes to include.
+     --exclude             Exclude specified genes. Ignored when --genes is not
+                           used.
 
 test-cnv-caller
 ===============

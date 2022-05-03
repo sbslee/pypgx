@@ -533,7 +533,7 @@ Below is a summary table:
      - `chr4:68640596-68676652 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A68640596%2D68676652&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:UGT2B17`
-     - 
+     -
      - ✅
      -
      -
@@ -726,6 +726,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
      -
    * - \*4
+     - Deletion2Hom
+     - \*4/\*4
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-3.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-16.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-16.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA21093
+     -
+   * - \*4
      - Deletion3Het
      - \*4/\*9
      -
@@ -812,7 +823,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18516
-     - \*34 has axons 1-4 of CYP2A7 origin and axons 5-9 of CYP2A6 origin (breakpoint in intron 4).
+     - \*34 has exons 1-4 of CYP2A7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * -
      - Hybrid4
      - Indeterminate
@@ -823,6 +834,28 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20515
+     -
+   * -
+     - Hybrid5
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-13.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-17.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-17.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00155
+     -
+   * -
+     - Hybrid6
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-12.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-18.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-18.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00141
      -
    * -
      - PseudogeneDuplication
@@ -845,6 +878,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20828
+     -
+   * -
+     - PseudogeneDeletion
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-14.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-19.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-19.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00625
      -
 
 Filtered alleles for CYP2A6
@@ -1168,6 +1212,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     -
+   * -
+     - Tandem2F
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-16.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-19.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-19.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG00458
      -
    * - \*13+\*1
      - Tandem3
@@ -1781,6 +1836,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18855
     -
   * - \*0
+    - Normal,Deletion2
+    - \*0/\*A
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-10.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-10.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA21097
+    -
+  * - \*0
     - DeletionHom
     - \*0/\*0
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
@@ -2231,6 +2297,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19143
     -
+  * -
+    - Unknown1
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-8.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - HG01085
+    -
 
 TBXAS1
 ======
@@ -2553,6 +2630,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
+    -
+  * - \*2
+    - Deletion,PartialDeletion3
+    - Indeterminate
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-7.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-7.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA21090
     -
   * -
     - Normal,PartialDeletion3
