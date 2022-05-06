@@ -890,6 +890,17 @@ Below is comprehensive summary of SV described from real NGS studies:
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00625
      -
+   * -
+     - Unknown1
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-20.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-20.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG02081
+     -
 
 Filtered alleles for CYP2A6
 ---------------------------
