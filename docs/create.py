@@ -60,11 +60,11 @@ The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
 available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
-PyPGx can be used to predict PGx genotypes and phenotypes using various
-genomic data, including data from next-generation sequencing (NGS), single
-nucleotide polymorphism (SNP) array, and long-read sequencing. Importantly,
-PyPGx is compatible with both of the Genome Reference Consortium Human (GRCh)
-builds, GRCh37 (hg19) and GRCh38 (hg38).
+PyPGx can predict PGx genotypes and phenotypes using various genomic data,
+including data from next-generation sequencing (NGS), single nucleotide
+polymorphism (SNP) array, and long-read sequencing. Importantly, PyPGx is
+compatible with both of the Genome Reference Consortium Human (GRCh) builds, 
+GRCh37 (hg19) and GRCh38 (hg38).
 
 There are currently 59 pharmacogenes in PyPGx:
 
