@@ -4,7 +4,7 @@ Changelog
 0.16.0 (in development)
 -----------------------
 
-* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15.
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
 * Add new CNV call for CYP2A6: ``Unknown1``.
 * Add new CNV calls for CYP2B6: ``Tandem`` and ``PartialDup``.
 * Add new CNV call for SULT1A1: ``Unknown2``.
