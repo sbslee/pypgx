@@ -420,8 +420,8 @@ class SLC22A2Genotyper:
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Intron9Deletion':
-            h1 = '*K432Q'in r.Haplotype1
-            h2 = '*K432Q'in r.Haplotype2
+            h1 = '*K432Q' in r.Haplotype1
+            h2 = '*K432Q' in r.Haplotype2
             if h1 and h2:
                 result = [a1, '*S1']
             elif h1 and not h2:
@@ -429,7 +429,7 @@ class SLC22A2Genotyper:
             elif not h1 and h2:
                 result = [a1, '*S1']
             else:
-                result = 'Indeterminate'
+                result = ['Indeterminate']
         elif r.CNV == 'Exon11Deletion':
             h1 = '*3' in r.Haplotype1
             h2 = '*3' in r.Haplotype2
