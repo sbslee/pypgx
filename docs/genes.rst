@@ -1533,7 +1533,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      -
    * -
      - Multiplication2
-     -
+     - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-6.png>`
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-8.png>`
@@ -1541,6 +1541,28 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20291
+     -
+   * -
+     - Normal,Del
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-9.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG03445
+     -
+   * -
+     - Dup,PartialDup
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-10.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG03401
      -
 
 Resources for CYP2E1

@@ -52,6 +52,8 @@ CYP2E1,PartialDuplicationHet
 CYP2E1,PartialDuplicationHom
 CYP2E1,Multiplication
 CYP2E1,Multiplication2
+CYP2E1,"Normal,Del"
+CYP2E1,"Dup,PartialDup"
 CYP4F2,Normal
 CYP4F2,DeletionHet
 G6PD,Female
