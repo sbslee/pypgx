@@ -9,6 +9,7 @@ Changelog
 * Add new CNV calls for CYP2B6: ``Tandem``, ``PartialDup``, ``PartialDup2``, ``PseudogeneDel``.
 * Add new CNV calls for CYP2E1: ``Normal,Del`` and ``Dup,PartialDup``.
 * Add new CNV call for SULT1A1: ``Unknown2``.
+* Add new CNV call for UGT1A4: ``Intron1DeletionAHom``.
 
 0.15.0 (2022-05-03)
 -------------------

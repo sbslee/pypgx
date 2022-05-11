@@ -496,6 +496,8 @@ class UGT1A4Genotyper:
             result = [a1, a2]
         elif r.CNV == 'Intron1DeletionA':
             result = _call_linked_allele(r, '*1', '*S1')
+        elif r.CNV == 'Intron1DeletionAHom':
+            result = ['*S1', '*S1']
         elif r.CNV == 'Intron1DeletionB':
             result = _call_linked_allele(r, '*1', '*S2')
         elif r.CNV == 'Intron1PartialDup':
