@@ -195,6 +195,8 @@ class CYP2D6Genotyper:
             result = _call_duplication(r)
         elif r.CNV == 'Multiplication':
             result = _call_multiplication(r)
+        elif r.CNV == 'Del,Tandem3':
+            result = ['*5', '*13+*1']
         elif r.CNV == 'Tandem1A':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
