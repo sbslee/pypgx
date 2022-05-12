@@ -432,6 +432,8 @@ class SLC22A2Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
+        elif r.CNV == 'Intron9DeletionHom':
+            result = ['*S1', '*S1']
         elif r.CNV == 'Exon11Deletion':
             h1 = '*3' in r.Haplotype1
             h2 = '*3' in r.Haplotype2

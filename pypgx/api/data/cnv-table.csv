@@ -77,6 +77,7 @@ SLC22A2,Exon11Deletion
 SLC22A2,Intron9Deletion
 SLC22A2,"Intron9Deletion,Exon11Deletion"
 SLC22A2,PartialDuplication
+SLC22A2,Intron9DeletionHom
 SULT1A1,Normal
 SULT1A1,DeletionHet
 SULT1A1,DeletionHom
