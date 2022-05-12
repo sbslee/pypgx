@@ -1317,7 +1317,8 @@ def slice_bam(
     pybam.slice(input, bf, path=output)
 
 def test_cnv_caller(
-    cnv_caller, copy_number, cnv_calls, confusion_matrix=None
+    cnv_caller, copy_number, cnv_calls, confusion_matrix=None,
+    comparison_table=None
 ):
     """
     Test a CNV caller for the target gene.
@@ -1333,6 +1334,9 @@ def test_cnv_caller(
     confusion_matrix : str, optional
         Write the confusion matrix as a CSV file where rows indicate actual
         class and columns indicate prediction class.
+    comparison_table : str, optional
+        Write a CSV file comparing actual vs. predicted CNV calls for each
+        sample.
     """
     if isinstance(cnv_caller, str):
         cnv_caller = sdk.Archive.from_file(cnv_caller)
@@ -1360,7 +1364,8 @@ def test_cnv_caller(
     code2name = dict(zip(code, cnv_table.Name))
     name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
-    columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
+    samples = cnv_calls.data.Sample.to_list()
+    columns = ['Chromosome', 'Position'] + samples
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
     Y = cnv_calls.data['Code'].to_numpy()
@@ -1368,16 +1373,24 @@ def test_cnv_caller(
     results = predictions == Y
     print(f'Accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
 
+    Y = [code2name[x] for x in Y]
+    predictions = [code2name[x] for x in predictions]
+
     if confusion_matrix is not None:
-        Y = [code2name[x] for x in Y]
-        predictions = [code2name[x] for x in predictions]
         labels = cnv_table.Name.to_list()
         df = pd.DataFrame(metrics.confusion_matrix(Y, predictions, labels=labels))
         df.columns = labels
         df.index = labels
         df.to_csv(confusion_matrix)
 
-def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
+    if comparison_table is not None:
+        df = pd.DataFrame({'Sample': samples, 'Actual': Y,
+            'Predicted': predictions, 'Identical': results})
+        df.to_csv(comparison_table, index=False)
+
+def train_cnv_caller(
+    copy_number, cnv_calls, confusion_matrix=None, comparison_table=None
+):
     """
     Train a CNV caller for the target gene.
 
@@ -1393,6 +1406,9 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     confusion_matrix : str, optional
         Write the confusion matrix as a CSV file where rows indicate actual
         class and columns indicate prediction class.
+    comparison_table : str, optional
+        Write a CSV file comparing actual vs. predicted CNV calls for each
+        sample.
 
     Returns
     -------
@@ -1420,7 +1436,8 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     code2name = dict(zip(code, cnv_table.Name))
     name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
-    columns = ['Chromosome', 'Position'] + cnv_calls.data.Sample.to_list()
+    samples = cnv_calls.data.Sample.to_list()
+    columns = ['Chromosome', 'Position'] + samples
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
     Y = cnv_calls.data['Code'].to_numpy()
@@ -1431,13 +1448,19 @@ def train_cnv_caller(copy_number, cnv_calls, confusion_matrix=None):
     results = predictions == Y
     print(f'Accuracy: {sum(results)/len(Y):.3f} ({sum(results)}/{len(Y)})')
 
+    Y = [code2name[x] for x in Y]
+    predictions = [code2name[x] for x in predictions]
+
     if confusion_matrix is not None:
-        Y = [code2name[x] for x in Y]
-        predictions = [code2name[x] for x in predictions]
         labels = cnv_table.Name.to_list()
         df = pd.DataFrame(metrics.confusion_matrix(Y, predictions, labels=labels))
         df.columns = labels
         df.index = labels
         df.to_csv(confusion_matrix)
+
+    if comparison_table is not None:
+        df = pd.DataFrame({'Sample': samples, 'Actual': Y,
+            'Predicted': predictions, 'Identical': results})
+        df.to_csv(comparison_table, index=False)
 
     return sdk.Archive(metadata, model)

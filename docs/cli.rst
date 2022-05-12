@@ -980,6 +980,7 @@ test-cnv-caller
 
    $ pypgx test-cnv-caller -h
    usage: pypgx test-cnv-caller [-h] [--confusion-matrix PATH]
+                                [--comparison-table PATH]
                                 cnv-caller copy-number cnv-calls
    
    Test CNV caller for target gene.
@@ -997,6 +998,9 @@ test-cnv-caller
                            Write the confusion matrix as a CSV file where rows
                            indicate actual class and columns indicate prediction
                            class.
+     --comparison-table PATH
+                           Write a CSV file comparing actual vs. predicted CNV
+                           calls for each sample.
 
 train-cnv-caller
 ================
@@ -1005,6 +1009,7 @@ train-cnv-caller
 
    $ pypgx train-cnv-caller -h
    usage: pypgx train-cnv-caller [-h] [--confusion-matrix PATH]
+                                 [--comparison-table PATH]
                                  copy-number cnv-calls cnv-caller
    
    Train CNV caller for target gene.
@@ -1025,4 +1030,7 @@ train-cnv-caller
                            Write the confusion matrix as a CSV file where rows
                            indicate actual class and columns indicate prediction
                            class.
+     --comparison-table PATH
+                           Write a CSV file comparing actual vs. predicted CNV
+                           calls for each sample.
 

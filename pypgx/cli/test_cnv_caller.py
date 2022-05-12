@@ -45,9 +45,17 @@ SampleTable[CNVCalls]."""
 indicate actual class and columns indicate prediction
 class."""
     )
+    parser.add_argument(
+        '--comparison-table',
+        metavar='PATH',
+        help=
+"""Write a CSV file comparing actual vs. predicted CNV
+calls for each sample."""
+    )
 
 def main(args):
     utils.test_cnv_caller(
         args.cnv_caller, args.copy_number, args.cnv_calls,
-        confusion_matrix=args.confusion_matrix
+        confusion_matrix=args.confusion_matrix,
+        comparison_table=args.comparison_table
     )
