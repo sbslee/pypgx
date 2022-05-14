@@ -5,7 +5,7 @@ Changelog
 -----------------------
 
 * Add new optional argument ``--comparison-table`` to :command:`train-cnv-caller` and :command:`test-cnv-caller` commands.
-* Update :meth:`sdk.utils.add_cn_samples` method to check input files more rigorously.
+* Update :meth:`sdk.utils.add_cn_samples` and :meth:`sdk.utils.simulate_copy_number` methods to check input files more rigorously.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
 * Add new CNV call for CYP2A6: ``Unknown1``, ``Hybrid7``, ``Tandem2``.
 * Add new CNV calls for CYP2B6: ``Tandem``, ``PartialDup``, ``PartialDup2``, ``PseudogeneDel``.
