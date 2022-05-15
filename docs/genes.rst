@@ -2438,7 +2438,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-9.png>`
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - 
+    -
     -
   * -
     - Unknown3
@@ -2714,6 +2714,17 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20821
+    -
+  * -
+    - PartialDuplication2
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-9.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-9.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03082
     -
 
 UGT2B17
