@@ -15,6 +15,7 @@ Changelog
 * Add new CNV call for SULT1A1: ``Unknown2``, ``Unknown3``, ``Unknown4``.
 * Add new CNV call for UGT1A4: ``Intron1DeletionAHom``.
 * Add new CNV call for UGT2B15: ``PartialDuplication2``.
+* Add new CNV call for UGT2B17: ``Normal,PartialDeletion2``.
 
 0.15.0 (2022-05-03)
 -------------------
