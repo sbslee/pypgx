@@ -2437,8 +2437,30 @@ Below is comprehensive summary of SV described from real NGS studies:
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-9.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-9.png>`
     - WGS
-    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - HG01085
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - 
+    -
+  * -
+    - Unknown3
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-10.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-10.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03854
+    -
+  * -
+    - Unknown4
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-11.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-11.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03742
     -
 
 TBXAS1
