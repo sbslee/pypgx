@@ -1364,7 +1364,7 @@ def test_cnv_caller(
     code2name = dict(zip(code, cnv_table.Name))
     name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
-    samples = cnv_calls.data.Sample.to_list()
+    samples = cnv_calls.data.index.to_list()
     columns = ['Chromosome', 'Position'] + samples
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
@@ -1436,7 +1436,7 @@ def train_cnv_caller(
     code2name = dict(zip(code, cnv_table.Name))
     name2code = dict(zip(cnv_table.Name, code))
     cnv_calls.data['Code'] = cnv_calls.data.apply(lambda r: name2code[r.CNV], axis=1)
-    samples = cnv_calls.data.Sample.to_list()
+    samples = cnv_calls.data.index.to_list()
     columns = ['Chromosome', 'Position'] + samples
     copy_number.data.df = copy_number.data.df[columns]
     X = copy_number.data.df.iloc[:, 2:].T.to_numpy()
