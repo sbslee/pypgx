@@ -79,8 +79,6 @@ Changelog
 0.12.0 (2022-01-29)
 -------------------
 
-* Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
-* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SULT1A1, UGT2B15, and UGT2B17.
 * Update :command:`run-ngs-pipeline` command to allow users to provide a custom CNV caller.
 * Update :meth:`api.core.predict_phenotype` method to not raise an error when a given star allele does not exist in the allele table. From now on, the method will output a warning about it but still produce an ``Indeterminate`` call.
 * Fix minor bug with ``--samples`` argument in commands :command:`plot-bam-copy-number`, :command:`plot-bam-read-depth`, :command:`plot-vcf-allele-fraction`, and :command:`plot-vcf-read-depth`.
@@ -88,14 +86,21 @@ Changelog
 * Add new argument ``--fontsize`` to :command:`plot-bam-read-depth` command.
 * Fix minor bug in :command:`plot-bam-read-depth` command.
 * Moved 1KGP reference haplotype panels and CNV callers to the ``pypgx-bundle`` `repository <https://github.com/sbslee/pypgx-bundle>`__ (only those files were moved; other files such as ``allele-table.csv`` and ``variant-table.csv`` are intact). From now on, the user needs to clone the ``pypgx-bundle`` repository with matching PyPGx version to their home directory in order for PyPGx to correctly access the moved files. This is undoubtedly annoying, but absolutely necessary for portability reasons because PyPGx has been growing exponentially in file size due to the increasing number of genes supported and their CNV complexity, to the point where it now exceeds upload size limit for PyPI (100 Mb). After removal of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+* Add CNV caller for G6PD (mostly for sex determination since it's located on X chromosome).
+* Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SULT1A1, UGT2B15, and UGT2B17.
+* Add new CNV calls for CYP2A6: ``Duplication2``, ``Duplication3``, ``Deletion2Het``, ``Deletion3Het``, ``PseudogeneDuplication``, ``Hybrid2``, ``Hybrid3``. Additionally, some CNV calls have been renamed: ``Hybrid`` → ``Hybrid1``; ``Duplication`` → ``Duplication1``; ``DeletionHet`` → ``Deletion1Het``; ``DeletionHom`` → ``Deletion1Hom``.
+* Add a new CNV call for CYP2B6: ``Duplication``.
+* Add new CNV calls for CYP2D6: ``Unknown1``, ``Tandem1B``, ``Multiplication``. Additionally, some CNV calls have been renamed: ``Tandem1`` → ``Tandem1A``; ``DeletionHet,Tandem1`` → ``DeletionHet,Tandem1A``; ``Duplication,Tandem1`` → ``Duplication,Tandem1A``.
+* Add a new CNV call for CYP2E1: ``Duplication2``. Additionally, a CNV call have been renamed: ``Duplication`` → ``Duplication1``.
+* Add new CNV calls for GSTM1: ``UpstreamDeletionHet`` and ``DeletionHet,UpstreamDeletionHet``.
+* Add a new CNV call for UGT2B15: ``PartialDeletion2``. Additionally, a CNV call have been renamed: ``PartialDeletion`` → ``PartialDeletion1``.
+* Add a new CNV call for UGT2B17: ``PartialDeletionHet``.
 
 0.11.0 (2022-01-01)
 -------------------
 
-* Add CNV caller for CYP4F2 and SULT1A1.
 * Fix minor bug in :command:`compute-copy-number` command.
 * Update :command:`plot-cn-af` command to check input files more rigorously.
-* Improve CNV caller for CYP2A6, CYP2D6, and SLC22A2.
 * Add new method :meth:`sdk.utils.add_cn_samples`.
 * Update :command:`compare-genotypes` command to output CNV comparisonw results as well.
 * Update :command:`estimate-phase-beagle` command. From now on, the 'chr' prefix in contig names (e.g. 'chr1' vs. '1') will be automatically added or removed as necessary to match the reference VCF’s contig names.
@@ -105,6 +110,9 @@ Changelog
 * Change 1KGP reference haplotype panels for GRCh38. Previously, PyPGx was using the panels from `Lowy-Gallego et al., 2019 <https://wellcomeopenresearch.org/articles/4-50>`__ where the authors had aligned sequence reads against the full GRCh38 reference, including ALT contigs, decoy, and EBV/IMGT/HLA sequences. This resulted in poor phasing/imputation performance for highly polymorphic PGx genes (e.g. CYP2D6) presumably because the panels were missing haplotype information for lots of SNVs/indels as sequence reads with those variants were mapped to ALT contigs; however, the panels were still the best option at the time (definitely better than lifting over GRCh37 panels). Fortunately, `Byrska-Bishop et al., 2021 <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__ from New York Genome Center has recently published a new set of GRCh38 panels which apparently has less of this problem despite still having sequence reads aligned in the presence of ALT contigs, etc. When empirically tested, these panels showed a significant increase in phasing/imputation performance. Therefore, from now on, PyPGx will use these panels for GRCh38 data.
 * Update GRCh38 variant information for following alleles: CYP2D6\*35, CYP2D6\*45, CYP2D6\*46.
 * Update gene region for SLC22A2 to match GRCh37 and GRCh38.
+* Add CNV caller for CYP4F2 and SULT1A1.
+* Improve CNV caller for CYP2A6, CYP2D6, and SLC22A2.
+* Add a new CNV call for CYP2D6: ``Tandem3``.
 
 0.10.1 (2021-12-20)
 -------------------
@@ -128,8 +136,10 @@ Changelog
 * Rename ``--samples`` argument from :command:`run-ngs-pipeline` command to ``--samples-without-sv``.
 * Update :command:`run-ngs-pipeline` and :command:`run-chip-pipeline` commands to be able to subset/exclude specified samples.
 * Remove ``--fn`` argument from :command:`filter-samples` command.
-* Update CNV caller for CYP2D6, GSTM1, and UGT1A4.
 * Update :meth:`api.plot.plot_cn_af` method to accept both VcfFrame[Imported] and VcfFrame[Consolidated].
+* Improve CNV caller for CYP2D6, GSTM1, and UGT1A4.
+* Add a new CNV call for CYP2D6: ``Tandem2C``, ``DeletionHom``.
+* Add a new CNV call for UGT1A4: ``Intron1DeletionB``. Additionally, a CNV call have been renamed: ``Intron1Deletion`` → ``Intron1DeletionA``.
 
 0.9.0 (2021-12-05)
 ------------------

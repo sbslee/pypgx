@@ -680,6 +680,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -691,6 +692,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA10831
+     - 0.4.1
      -
    * - \*4
      - Deletion1Het
@@ -702,6 +704,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18617
+     - 0.4.1
      -
    * - \*4
      - Deletion1Hom
@@ -713,6 +716,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18952
+     - 0.4.1
      -
    * - \*4
      - Deletion2Het
@@ -724,6 +728,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.12.0
      -
    * - \*4
      - Deletion2Hom
@@ -735,6 +740,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA21093
+     - 0.15.0
      -
    * - \*4
      - Deletion3Het
@@ -746,6 +752,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18488
+     - 0.12.0
      -
    * - \*1x2
      - Duplication1
@@ -757,6 +764,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
+     - 0.4.1
      -
    * - \*1x2
      - Duplication2
@@ -768,6 +776,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA12342
+     - 0.12.0
      -
    * - \*1x2
      - Duplication3
@@ -779,6 +788,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19129
+     - 0.12.0
      -
    * -
      - Hybrid1
@@ -790,6 +800,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - HG00436
+     - 0.4.1
      -
    * - \*12
      - Hybrid2
@@ -801,6 +812,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA11829
+     - 0.12.0
      - \*12 has exons 1-2 of CYP2A7 origin and exons 3-9 of CYP2A6 origin (breakpoint in intron 2).
    * - \*12
      - Hybrid2Hom
@@ -812,6 +824,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19780
+     - 0.14.0
      -
    * - \*34
      - Hybrid3
@@ -823,6 +836,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18516
+     - 0.12.0
      - \*34 has exons 1-4 of CYP2A7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * -
      - Hybrid4
@@ -834,6 +848,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20515
+     - 0.14.0
      -
    * -
      - Hybrid5
@@ -845,6 +860,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00155
+     - 0.15.0
      -
    * -
      - Hybrid6
@@ -856,6 +872,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00141
+     - 0.15.0
      -
    * -
      - Hybrid7
@@ -867,6 +884,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG02382
+     - 0.16.0
      -
    * -
      - PseudogeneDuplication
@@ -878,6 +896,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA06985
+     - 0.12.0
      -
    * -
      - Tandem
@@ -889,6 +908,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20828
+     - 0.14.0
      -
    * -
      - Tandem2
@@ -900,6 +920,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG04214
+     - 0.16.0
      -
    * -
      - PseudogeneDeletion
@@ -911,6 +932,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00625
+     - 0.15.0
      -
    * -
      - Unknown1
@@ -922,6 +944,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG02081
+     - 0.16.0
      -
 
 Filtered alleles for CYP2A6
@@ -976,6 +999,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -987,6 +1011,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA12813
+     - 0.4.1
      -
    * - \*29
      - Hybrid
@@ -998,6 +1023,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19178
+     - 0.4.1
      - \*29 has exons 1-4 of CYP2B7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * - \*22x2
      - Duplication
@@ -1009,6 +1035,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19190
+     - 0.12.0
      -
    * -
      - Tandem
@@ -1020,6 +1047,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG01806
+     - 0.16.0
      -
    * -
      - PartialDup
@@ -1031,6 +1059,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG03784
+     - 0.16.0
      -
    * -
      - PartialDup2
@@ -1042,6 +1071,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG02790
+     - 0.16.0
      -
    * -
      - PseudogeneDel
@@ -1053,6 +1083,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG03235
+     - 0.16.0
      -
 
 Phenotype summary for CYP2B6
@@ -1179,6 +1210,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -1190,6 +1222,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA11839
+     - 0.4.1
      -
    * - \*5
      - DeletionHet
@@ -1201,6 +1234,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
+     - 0.4.1
      -
    * - \*5
      - DeletionHom
@@ -1212,6 +1246,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.10.0
      -
    * - \*4x2
      - Duplication
@@ -1223,6 +1258,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19819
+     - 0.4.1
      -
    * - \*1x3
      - Multiplication
@@ -1234,6 +1270,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19190
+     - 0.12.0
      -
    * - \*68+\*4
      - Tandem1A
@@ -1245,6 +1282,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA11832
+     - 0.4.1
      - \*68 has exon 1 of CYP2D6 origin and exons 2-9 of CYP2D7 origin (breakpoint in intron 1).
    * - \*68+\*4, \*68+\*4
      - Tandem1B
@@ -1256,6 +1294,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA12282
+     - 0.12.0
      -
    * - \*36+\*10
      - Tandem2A
@@ -1267,6 +1306,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18564
+     - 0.4.1
      - \*36 has exons 1-8 of CYP2D6 origin and exon 9 of CYP2D7 origin (breakpoint in exon 9).
    * - \*36x2+\*10
      - Tandem2B
@@ -1278,6 +1318,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
+     - 0.4.1
      -
    * - \*36x3+\*10
      - Tandem2C
@@ -1289,6 +1330,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.10.0
      -
    * -
      - Tandem2F
@@ -1300,6 +1342,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00458
+     - 0.15.0
      -
    * - \*13+\*1
      - Tandem3
@@ -1311,6 +1354,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.11.0
      -
    * -
      - Tandem4
@@ -1322,6 +1366,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19719
+     - 0.14.0
      -
    * - \*2x2, \*68+\*4
      - Duplication,Tandem1A
@@ -1333,6 +1378,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA21781
+     - 0.4.1
      -
    * - \*5, \*68+\*4
      - DeletionHet,Tandem1A
@@ -1344,6 +1390,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - HG01190
+     - 0.4.1
      -
    * -
      - PseudogeneDeletion
@@ -1355,6 +1402,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19316
+     - 0.13.0
      -
    * -
      - PseudogeneDownstreamDel
@@ -1366,6 +1414,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20847
+     - 0.14.0
      -
    * -
      - Del,Tandem3
@@ -1377,6 +1426,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG03803
+     - 0.16.0
      -
    * -
      - Unknown1
@@ -1388,6 +1438,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18555
+     - 0.12.0
      -
    * -
      - Unknown2
@@ -1399,6 +1450,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19982
+     - 0.14.0
      -
 
 Phenotype summary for CYP2D6
@@ -1486,6 +1538,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -1497,6 +1550,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA10831
+     - 0.4.1
      -
    * - \*S1
      - PartialDuplicationHet
@@ -1508,6 +1562,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19920
+     - 0.4.1
      - \*S1 is linked to \*7.
    * - \*S1
      - PartialDuplicationHom
@@ -1519,6 +1574,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19309
+     - 0.13.0
      -
    * - \*1x2
      - Duplication1
@@ -1530,6 +1586,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.4.1
      -
    * - \*7x2
      - Duplication1
@@ -1541,6 +1598,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19095
+     - 0.4.1
      -
    * - \*1x2
      - Duplication2
@@ -1552,6 +1610,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19225
+     - 0.12.0
      -
    * - \*7x3
      - Multiplication
@@ -1563,6 +1622,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
+     - 0.4.1
      -
    * -
      - Multiplication2
@@ -1574,6 +1634,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20291
+     - 0.14.0
      -
    * -
      - Normal,Del
@@ -1585,6 +1646,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG03445
+     - 0.16.0
      -
    * -
      - Dup,PartialDup
@@ -1596,6 +1658,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG03401
+     - 0.16.0
      -
 
 Resources for CYP2E1
@@ -1742,6 +1805,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -1753,6 +1817,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01190
+    - 0.11.0
     -
   * - \*DEL
     - DeletionHet
@@ -1764,6 +1829,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.11.0
     -
 
 Resources for CYP4F2
@@ -1874,6 +1940,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Female
@@ -1885,6 +1952,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00276
+    - 0.12.0
     -
   * - \*MALE
     - Male
@@ -1896,6 +1964,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00436
+    - 0.12.0
     -
 
 GSTM1
@@ -1922,6 +1991,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -1933,6 +2003,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA06991
+    - 0.4.1
     -
   * - \*0
     - DeletionHet
@@ -1944,6 +2015,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
     -
   * - \*0
     - Normal,Deletion2
@@ -1955,6 +2027,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA21097
+    - 0.15.0
     -
   * - \*0
     - DeletionHom
@@ -1966,6 +2039,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA10831
+    - 0.4.1
     -
   * - \*Ax2
     - Duplication
@@ -1977,6 +2051,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.4.1
     -
   * - \*Bx2
     - Duplication
@@ -1988,6 +2063,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.4.1
     -
   * -
     - UpstreamDeletionHet
@@ -1999,6 +2075,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19005
+    - 0.12.0
     -
   * - \*0
     - DeletionHet,UpstreamDeletionHet
@@ -2010,6 +2087,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA06984
+    - 0.12.0
     -
   * -
     - PartialDuplication
@@ -2021,6 +2099,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19908
+    - 0.14.0
     -
   * -
     - DeletionHet,Deletion2
@@ -2032,6 +2111,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20506
+    - 0.14.0
     -
 
 GSTT1
@@ -2066,6 +2146,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2077,6 +2158,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA07055
+    - 0.4.1
     -
   * - \*0
     - DeletionHet
@@ -2088,6 +2170,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.4.1
     -
   * - \*0
     - DeletionHom
@@ -2099,6 +2182,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
+    - 0.4.1
     -
 
 IFNL3
@@ -2217,6 +2301,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2228,6 +2313,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01190
+    - 0.4.1
     -
   * - \*S1
     - Intron9Deletion
@@ -2239,6 +2325,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
     -
   * - \*S1, \*S1
     - Intron9DeletionHom
@@ -2250,6 +2337,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG02337
+    - 0.16.0
     -
   * - \*S2
     - Exon11Deletion
@@ -2261,6 +2349,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19819
+    - 0.4.1
     -
   * - \*S1, \*S2
     - Intron9Deletion,Exon11Deletion
@@ -2272,6 +2361,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19030
+    - 0.13.0
     -
   * -
     - PartialDuplication
@@ -2283,6 +2373,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20813
+    - 0.14.0
     -
 
 SLCO1B1
@@ -2340,6 +2431,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2351,6 +2443,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA06991
+    - 0.11.0
     -
   * - \*DEL
     - DeletionHet
@@ -2362,6 +2455,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18942
+    - 0.11.0
     -
   * - \*DEL
     - DeletionHom
@@ -2373,6 +2467,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20874
+    - 0.14.0
     -
   * - \*1x2
     - Duplication
@@ -2384,6 +2479,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18509
+    - 0.11.0
     -
   * - \*1x3
     - Multiplication1
@@ -2395,6 +2491,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18868
+    - 0.11.0
     -
   * - \*1x4
     - Multiplication2
@@ -2406,6 +2503,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18484
+    - 0.11.0
     -
   * - \*1x3, \*2x2
     - Multiplication2
@@ -2417,6 +2515,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19143
+    - 0.11.0
     -
   * -
     - Unknown1
@@ -2428,6 +2527,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01085
+    - 0.15.0
     -
   * -
     - Unknown2
@@ -2439,6 +2539,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     -
+    - 0.16.0
     -
   * -
     - Unknown3
@@ -2450,6 +2551,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG03854
+    - 0.16.0
     -
   * -
     - Unknown4
@@ -2461,6 +2563,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG03742
+    - 0.16.0
     -
 
 TBXAS1
@@ -2548,6 +2651,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2559,6 +2663,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11993
+    - 0.9.0
     -
   * - \*S1
     - Intron1DeletionA
@@ -2570,6 +2675,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.9.0
     -
   * - \*S1, \*S1
     - Intron1DeletionAHom
@@ -2581,6 +2687,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG03479
+    - 0.16.0
     -
   * - \*S2
     - Intron1DeletionB
@@ -2592,6 +2699,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.10.0
     -
   * - \*S3
     - Intron1PartialDup
@@ -2603,6 +2711,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA18632
+    - 0.13.0
     -
 
 UGT2B15
@@ -2626,6 +2735,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2637,6 +2747,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00589
+    - 0.4.1
     -
   * - \*S1
     - PartialDeletion1
@@ -2648,6 +2759,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11993
+    - 0.4.1
     -
   * - \*S2
     - PartialDeletion2
@@ -2659,6 +2771,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19160
+    - 0.12.0
     -
   * - \*S3
     - PartialDeletion3
@@ -2670,6 +2783,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
+    - 0.13.0
     -
   * - \*S4
     - Deletion
@@ -2681,6 +2795,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19024
+    - 0.13.0
     -
   * -
     - Deletion2
@@ -2692,6 +2807,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19786
+    - 0.14.0
     -
   * -
     - Duplication
@@ -2703,6 +2819,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19776
+    - 0.14.0
     -
   * -
     - PartialDuplication
@@ -2714,6 +2831,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20821
+    - 0.14.0
     -
   * -
     - PartialDuplication2
@@ -2725,6 +2843,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG03082
+    - 0.16.0
     -
 
 UGT2B17
@@ -2751,6 +2870,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal,Normal
@@ -2762,6 +2882,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19178
+    - 0.4.1
     -
   * - \*2
     - Normal,Deletion
@@ -2773,6 +2894,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
     -
   * - \*2
     - Deletion,Deletion
@@ -2784,6 +2906,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18617
+    - 0.4.1
     -
   * - \*2, \*S1
     - Deletion,PartialDeletion1
@@ -2795,6 +2918,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19160
+    - 0.12.0
     -
   * - \*2, \*S2
     - Deletion,PartialDeletion2
@@ -2806,6 +2930,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
+    - 0.13.0
     -
   * - \*2
     - Deletion,PartialDeletion3
@@ -2817,6 +2942,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA21090
+    - 0.15.0
     -
   * -
     - Normal,PartialDeletion2
@@ -2828,6 +2954,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - HG03127
+    - 0.16.0
     -
   * -
     - Normal,PartialDeletion3
@@ -2839,4 +2966,5 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20886
+    - 0.14.0
     -
