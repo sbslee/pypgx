@@ -548,16 +548,22 @@ class UGT2B17Genotyper:
     """
 
     def one_row(self, r):
-        if r.CNV == 'Normal,Deletion':
-            result = ['*1', '*2']
-        elif r.CNV == 'Deletion,Deletion':
-            result = ['*2', '*2']
-        elif r.CNV in ['Normal,Normal', 'AssumeNormal']:
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*1', '*1']
-        elif r.CNV == 'Deletion,PartialDeletion1':
+        elif r.CNV == 'WholeDel1':
+            result = ['*1', '*2']
+        elif r.CNV == 'WholeDel1Hom':
+            result = ['*2', '*2']
+        elif r.CNV == 'PartialDel2':
+            result = ['*1', '*S2']
+        elif r.CNV == 'PartialDel3':
+            result = ['*1', '*S3']
+        elif r.CNV == 'WholeDel1+PartialDel1':
             result = ['*2', '*S1']
-        elif r.CNV == 'Deletion,PartialDeletion2':
+        elif r.CNV == 'WholeDel1+PartialDel2':
             result = ['*2', '*S2']
+        elif r.CNV == 'WholeDel1+PartialDel3':
+            result = ['*2', '*S3']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

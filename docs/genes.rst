@@ -670,7 +670,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -989,7 +989,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -1200,7 +1200,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -1284,7 +1284,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA11832
      - 0.4.1
      - \*68 has exon 1 of CYP2D6 origin and exons 2-9 of CYP2D7 origin (breakpoint in intron 1).
-   * - \*68+\*4, \*68+\*4
+   * - \*68+\*4
      - Tandem1B
      - \*68+\*4/\*68+\*4
      -
@@ -1528,7 +1528,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -1795,7 +1795,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1930,7 +1930,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1981,7 +1981,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2136,7 +2136,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2291,7 +2291,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2327,7 +2327,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18855
     - 0.4.1
     -
-  * - \*S1, \*S1
+  * - \*S1
     - Intron9DeletionHom
     - \*S1/\*S1
     -
@@ -2421,7 +2421,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2641,7 +2641,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2677,7 +2677,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19908
     - 0.9.0
     -
-  * - \*S1, \*S1
+  * - \*S1
     - Intron1DeletionAHom
     - \*S1/\*S1
     -
@@ -2725,7 +2725,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2860,7 +2860,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2873,7 +2873,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Version
     - Description
   * -
-    - Normal,Normal
+    - Normal
     - \*1/\*1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-1.png>`
@@ -2885,7 +2885,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*2
-    - Normal,Deletion
+    - WholeDel1
     - \*1/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-2.png>`
@@ -2897,7 +2897,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*2
-    - Deletion,Deletion
+    - WholeDel1Hom
     - \*2/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-3.png>`
@@ -2908,8 +2908,32 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA18617
     - 0.4.1
     -
+  * - \*S2
+    - PartialDel2
+    - \*1/\*S2
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-8.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03127
+    - 0.16.0
+    -
+  * - \*S3
+    - PartialDel3
+    - \*1/\*S3
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20886
+    - 0.14.0
+    -
   * - \*2, \*S1
-    - Deletion,PartialDeletion1
+    - WholeDel1+PartialDel1
     - \*2/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
@@ -2921,7 +2945,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.12.0
     -
   * - \*2, \*S2
-    - Deletion,PartialDeletion2
+    - WholeDel1+PartialDel2
     - \*2/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
@@ -2932,9 +2956,9 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19189
     - 0.13.0
     -
-  * - \*2
-    - Deletion,PartialDeletion3
-    - Indeterminate
+  * - \*2, \*S3
+    - WholeDel1+PartialDel3
+    - \*2/\*S3
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-6.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-7.png>`
@@ -2943,28 +2967,4 @@ Below is comprehensive summary of SV described from real NGS studies:
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA21090
     - 0.15.0
-    -
-  * -
-    - Normal,PartialDeletion2
-    - Indeterminate
-    -
-    -
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-8.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-8.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - HG03127
-    - 0.16.0
-    -
-  * -
-    - Normal,PartialDeletion3
-    - Indeterminate
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-5.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-6.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-6.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA20886
-    - 0.14.0
     -
