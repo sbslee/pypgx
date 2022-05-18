@@ -2316,7 +2316,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*S1
-    - Intron9Deletion
+    - NoncodingDel1
     - \*1/\*S1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-2.png>`
@@ -2328,7 +2328,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*S1
-    - Intron9DeletionHom
+    - NoncodingDel1Hom
     - \*S1/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-6.png>`
@@ -2340,7 +2340,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.16.0
     -
   * - \*S2
-    - Exon11Deletion
+    - PartialDel1
     - \*1/\*S2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-3.png>`
@@ -2352,7 +2352,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*S1, \*S2
-    - Intron9Deletion,Exon11Deletion
+    - NoncodingDel1+PartialDel1
     - \*S1/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-4.png>`
@@ -2364,7 +2364,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.13.0
     -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-5.png>`

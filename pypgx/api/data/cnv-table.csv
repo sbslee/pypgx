@@ -74,11 +74,11 @@ GSTT1,Normal
 GSTT1,DeletionHet
 GSTT1,DeletionHom
 SLC22A2,Normal
-SLC22A2,Exon11Deletion
-SLC22A2,Intron9Deletion
-SLC22A2,"Intron9Deletion,Exon11Deletion"
-SLC22A2,PartialDuplication
-SLC22A2,Intron9DeletionHom
+SLC22A2,NoncodingDel1
+SLC22A2,NoncodingDel1Hom
+SLC22A2,PartialDel1
+SLC22A2,NoncodingDel1+PartialDel1
+SLC22A2,PartialDup1
 SULT1A1,Normal
 SULT1A1,WholeDel1
 SULT1A1,WholeDel1Hom

@@ -12,7 +12,7 @@ Changelog
 * Add new CNV calls for CYP2B6: ``Tandem``, ``PartialDup``, ``PartialDup2``, ``PseudogeneDel``.
 * Add new CNV call for CYP2D6: ``Del,Tandem3``.
 * Add new CNV calls for CYP2E1: ``Normal,Del`` and ``Dup,PartialDup``.
-* Add new CNV call for SLC22A2: ``Intron9DeletionHom``.
+* Add new CNV call for SLC22A2: ``NoncodingDel1Hom``.
 * Add new CNV call for SULT1A1: ``Unknown2``, ``Unknown3``, ``Unknown4``.
 * Add new CNV call for UGT1A4: ``NoncodingDel1Hom``.
 * Add new CNV call for UGT2B15: ``PartialDup2``.

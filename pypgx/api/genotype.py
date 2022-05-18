@@ -421,7 +421,7 @@ class SLC22A2Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'Intron9Deletion':
+        elif r.CNV == 'NoncodingDel1':
             h1 = '*K432Q' in r.Haplotype1
             h2 = '*K432Q' in r.Haplotype2
             if h1 and h2:
@@ -432,9 +432,9 @@ class SLC22A2Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'Intron9DeletionHom':
+        elif r.CNV == 'NoncodingDel1Hom':
             result = ['*S1', '*S1']
-        elif r.CNV == 'Exon11Deletion':
+        elif r.CNV == 'PartialDel1':
             h1 = '*3' in r.Haplotype1
             h2 = '*3' in r.Haplotype2
             if h1 and h2:
@@ -445,7 +445,7 @@ class SLC22A2Genotyper:
                 result = [a1, '*S2']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'Intron9Deletion,Exon11Deletion':
+        elif r.CNV == 'NoncodingDel1+PartialDel1':
             if (('*3' in r.Haplotype1 or '*3' in r.Haplotype2) and
                 ('*K432Q' in r.Haplotype1 or '*K432Q' in r.Haplotype2)):
                 result = ['*S1', '*S2']
