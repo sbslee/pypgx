@@ -80,11 +80,11 @@ SLC22A2,"Intron9Deletion,Exon11Deletion"
 SLC22A2,PartialDuplication
 SLC22A2,Intron9DeletionHom
 SULT1A1,Normal
-SULT1A1,DeletionHet
-SULT1A1,DeletionHom
-SULT1A1,Duplication
-SULT1A1,Multiplication1
-SULT1A1,Multiplication2
+SULT1A1,WholeDel1
+SULT1A1,WholeDel1Hom
+SULT1A1,WholeDup1
+SULT1A1,WholeMultip1
+SULT1A1,WholeMultip2
 SULT1A1,Unknown1
 SULT1A1,Unknown2
 SULT1A1,Unknown3

@@ -470,15 +470,15 @@ class SULT1A1Genotyper:
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'DeletionHet':
+        elif r.CNV == 'WholeDel1':
             result = [s1, '*DEL']
-        elif r.CNV == 'DeletionHom':
+        elif r.CNV == 'WholeDel1Hom':
             result = ['*DEL', '*DEL']
-        elif r.CNV == 'Duplication':
+        elif r.CNV == 'WholeDup1':
             result = _call_duplication(r)
-        elif r.CNV == 'Multiplication1':
+        elif r.CNV == 'WholeMultip1':
             result = _call_multiplication(r)
-        elif r.CNV == 'Multiplication2':
+        elif r.CNV == 'WholeMultip2':
             result = ['Indeterminate']
         else:
             result = ['Indeterminate']

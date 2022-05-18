@@ -2446,7 +2446,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*DEL
-    - DeletionHet
+    - WholeDel1
     - \*1/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-2.png>`
@@ -2458,7 +2458,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*DEL
-    - DeletionHom
+    - WholeDel1Hom
     - \*DEL/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-7.png>`
@@ -2470,7 +2470,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.14.0
     -
   * - \*1x2
-    - Duplication
+    - WholeDup1
     - \*1x2/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-3.png>`
@@ -2482,7 +2482,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*1x3
-    - Multiplication1
+    - WholeMultip1
     - \*1x3/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-4.png>`
@@ -2494,7 +2494,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*1x4
-    - Multiplication2
+    - WholeMultip2
     - \*1x4/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-5.png>`
@@ -2506,7 +2506,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*1x3, \*2x2
-    - Multiplication2
+    - WholeMultip2
     - \*1x3/\*2x2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-6.png>`
