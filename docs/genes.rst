@@ -2749,44 +2749,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - HG00589
     - 0.4.1
     -
-  * - \*S1
-    - PartialDeletion1
-    - \*4/\*S1
-    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-1.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-1.png>`
-    - WGS
-    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - NA11993
-    - 0.4.1
-    -
-  * - \*S2
-    - PartialDeletion2
-    - \*2/\*S2
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-3.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-3.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA19160
-    - 0.12.0
-    -
-  * - \*S3
-    - PartialDeletion3
-    - \*1/\*S3
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-3.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-4.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-4.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA19189
-    - 0.13.0
-    -
   * - \*S4
-    - Deletion
+    - WholeDel1
     - \*2/\*S4
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-4.png>`
@@ -2798,7 +2762,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.13.0
     -
   * -
-    - Deletion2
+    - WholeDel2
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-4.png>`
@@ -2810,7 +2774,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.14.0
     -
   * -
-    - Duplication
+    - WholeDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
@@ -2821,8 +2785,44 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA19776
     - 0.14.0
     -
+  * - \*S1
+    - PartialDel1
+    - \*4/\*S1
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-1.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA11993
+    - 0.4.1
+    -
+  * - \*S2
+    - PartialDel2
+    - \*2/\*S2
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-3.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19160
+    - 0.12.0
+    -
+  * - \*S3
+    - PartialDel3
+    - \*1/\*S3
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-4.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19189
+    - 0.13.0
+    -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
@@ -2834,7 +2834,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.14.0
     -
   * -
-    - PartialDuplication2
+    - PartialDup2
     - Indeterminate
     -
     -

@@ -525,14 +525,14 @@ class UGT2B15Genotyper:
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'PartialDeletion1':
-            result = [a1, '*S1']
-        elif r.CNV == 'PartialDeletion2':
-            result = [a1, '*S2']
-        elif r.CNV == 'PartialDeletion3':
-            result = [a1, '*S3']
-        elif r.CNV == 'Deletion':
+        elif r.CNV == 'WholeDel1':
             result = [a1, '*S4']
+        elif r.CNV == 'PartialDel1':
+            result = [a1, '*S1']
+        elif r.CNV == 'PartialDel2':
+            result = [a1, '*S2']
+        elif r.CNV == 'PartialDel3':
+            result = [a1, '*S3']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
