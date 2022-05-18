@@ -498,13 +498,13 @@ class UGT1A4Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'Intron1DeletionA':
+        elif r.CNV == 'NoncodingDel1':
             result = _call_linked_allele(r, '*1', '*S1')
-        elif r.CNV == 'Intron1DeletionAHom':
+        elif r.CNV == 'NoncodingDel1Hom':
             result = ['*S1', '*S1']
-        elif r.CNV == 'Intron1DeletionB':
+        elif r.CNV == 'NoncodingDel2':
             result = _call_linked_allele(r, '*1', '*S2')
-        elif r.CNV == 'Intron1PartialDup':
+        elif r.CNV == 'NoncodingDup1':
             result = _call_linked_allele(r, '*1', '*S3')
         else:
             result = ['Indeterminate']

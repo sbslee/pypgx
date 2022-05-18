@@ -2666,7 +2666,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.9.0
     -
   * - \*S1
-    - Intron1DeletionA
+    - NoncodingDel1
     - \*1/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-2.png>`
@@ -2678,7 +2678,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.9.0
     -
   * - \*S1
-    - Intron1DeletionAHom
+    - NoncodingDel1Hom
     - \*S1/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-4.png>`
@@ -2690,7 +2690,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.16.0
     -
   * - \*S2
-    - Intron1DeletionB
+    - NoncodingDel2
     - \*1/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-2.png>`
@@ -2702,7 +2702,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.10.0
     -
   * - \*S3
-    - Intron1PartialDup
+    - NoncodingDup1
     - \*1/\*S3
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-3.png>`

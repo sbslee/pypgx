@@ -90,10 +90,10 @@ SULT1A1,Unknown2
 SULT1A1,Unknown3
 SULT1A1,Unknown4
 UGT1A4,Normal
-UGT1A4,Intron1DeletionA
-UGT1A4,Intron1DeletionB
-UGT1A4,Intron1PartialDup
-UGT1A4,Intron1DeletionAHom
+UGT1A4,NoncodingDel1
+UGT1A4,NoncodingDel1Hom
+UGT1A4,NoncodingDel2
+UGT1A4,NoncodingDup1
 UGT2B15,Normal
 UGT2B15,WholeDel1
 UGT2B15,WholeDel2
