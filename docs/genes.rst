@@ -1552,32 +1552,20 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA10831
      - 0.4.1
      -
-   * - \*S1
-     - PartialDuplicationHet
-     - \*1/\*S1
-     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-2.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-1.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA19920
-     - 0.4.1
-     - \*S1 is linked to \*7.
-   * - \*S1
-     - PartialDuplicationHom
-     - \*S1/\*S1
+   * -
+     - WholeDel1
+     - Indeterminate
      -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-5.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-7.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-7.png>`
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-9.png>`
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA19309
-     - 0.13.0
+     - HG03445
+     - 0.16.0
      -
    * - \*1x2
-     - Duplication1
+     - WholeDup1
      - \*1/\*1x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1589,7 +1577,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * - \*7x2
-     - Duplication1
+     - WholeDup1
      - \*1/\*7x2
      - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1601,7 +1589,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * - \*1x2
-     - Duplication2
+     - WholeDup2
      - \*1x2/\*7
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1612,8 +1600,32 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19225
      - 0.12.0
      -
+   * - \*S1
+     - PartialDup1
+     - \*1/\*S1
+     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-2.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-1.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-1.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA19920
+     - 0.4.1
+     - \*S1 is linked to \*7.
+   * - \*S1
+     - PartialDup1Hom
+     - \*S1/\*S1
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-7.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19309
+     - 0.13.0
+     -
    * - \*7x3
-     - Multiplication
+     - WholeMultip1
      - \*7/\*7x3
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-4.png>`
@@ -1625,7 +1637,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * -
-     - Multiplication2
+     - WholeMultip2
      - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-6.png>`
@@ -1637,19 +1649,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.14.0
      -
    * -
-     - Normal,Del
-     - Indeterminate
-     -
-     -
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-9.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-9.png>`
-     - WGS
-     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - HG03445
-     - 0.16.0
-     -
-   * -
-     - Dup,PartialDup
+     - WholeDup1+PartialDup1
      - Indeterminate
      -
      -

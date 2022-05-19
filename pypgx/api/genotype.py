@@ -298,7 +298,7 @@ class CYP2E1Genotyper:
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'PartialDuplicationHet':
+        elif r.CNV == 'PartialDup1':
             h1 = '*7' in r.Haplotype1
             h2 = '*7' in r.Haplotype2
             if h1 and h2:
@@ -309,11 +309,11 @@ class CYP2E1Genotyper:
                 result = [a1, '*S1']
             else:
                 result = ['Indeterminate']
-        elif r.CNV == 'PartialDuplicationHom':
+        elif r.CNV == 'PartialDup1Hom':
             result = ['*S1', '*S1']
-        elif r.CNV in ['Duplication1', 'Duplication2']:
+        elif r.CNV in ['WholeDup1', 'WholeDup2']:
             result = _call_duplication(r)
-        elif r.CNV == 'Multiplication':
+        elif r.CNV == 'WholeMultip1':
             result = _call_multiplication(r)
         else:
             result = ['Indeterminate']
