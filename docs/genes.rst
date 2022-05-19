@@ -2006,7 +2006,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*0
-    - DeletionHet
+    - WholeDel1
     - \*0/\*A
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
@@ -2018,19 +2018,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*0
-    - Normal,Deletion2
-    - \*0/\*A
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-10.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-10.png>`
-    - WGS
-    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - NA21097
-    - 0.15.0
-    -
-  * - \*0
-    - DeletionHom
+    - WholeDel1Hom
     - \*0/\*0
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-3.png>`
@@ -2041,8 +2029,20 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA10831
     - 0.4.1
     -
+  * - \*0
+    - WholeDel2
+    - \*0/\*A
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-10.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-10.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA21097
+    - 0.15.0
+    -
   * - \*Ax2
-    - Duplication
+    - WholeDup1
     - \*A/\*Ax2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -2054,7 +2054,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*Bx2
-    - Duplication
+    - WholeDup1
     - \*A/\*Bx2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -2066,7 +2066,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * -
-    - UpstreamDeletionHet
+    - NoncodingDel1
     - \*A/\*B
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-1.png>`
@@ -2078,7 +2078,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.12.0
     -
   * - \*0
-    - DeletionHet,UpstreamDeletionHet
+    - WholeDel1+NoncodingDel1
     - \*0/\*A
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
@@ -2090,7 +2090,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.12.0
     -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -2102,7 +2102,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.14.0
     -
   * -
-    - DeletionHet,Deletion2
+    - WholeDel1+WholeDel2
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-3.png>`

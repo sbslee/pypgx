@@ -374,13 +374,13 @@ class GSTM1Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV in ['Normal', 'AssumeNormal', 'UpstreamDeletionHet']:
+        if r.CNV in ['Normal', 'AssumeNormal', 'NoncodingDel1']:
             result = [a1, a2]
-        elif r.CNV in ['DeletionHet', 'DeletionHet,UpstreamDeletionHet', 'Normal,Deletion2']:
+        elif r.CNV in ['WholeDel1', 'WholeDel1+NoncodingDel1', 'WholeDel2']:
             result = [s1, '*0']
-        elif r.CNV in ['DeletionHom', 'DeletionHet,Deletion2']:
+        elif r.CNV in ['WholeDel1Hom', 'WholeDel1+WholeDel2']:
             result = ['*0', '*0']
-        elif r.CNV == 'Duplication':
+        elif r.CNV == 'WholeDup1':
             result = _call_duplication(r)
         else:
             result = ['Indeterminate']
