@@ -334,7 +334,7 @@ class CYP4F2Genotyper:
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'DeletionHet':
+        elif r.CNV == 'WholeDel1':
             result = [s1, '*DEL']
         else:
             result = ['Indeterminate']

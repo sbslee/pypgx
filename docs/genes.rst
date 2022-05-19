@@ -1820,7 +1820,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
   * - \*DEL
-    - DeletionHet
+    - WholeDel1
     - \*1/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP4F2-2.png>`
