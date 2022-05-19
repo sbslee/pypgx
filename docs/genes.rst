@@ -2161,7 +2161,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*0
-    - DeletionHet
+    - WholeDel1
     - \*0/\*A
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTT1-2.png>`
@@ -2173,7 +2173,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.4.1
     -
   * - \*0
-    - DeletionHom
+    - WholeDel1Hom
     - \*0/\*0
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTT1-3.png>`

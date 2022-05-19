@@ -397,12 +397,12 @@ class GSTT1Genotyper:
     """
 
     def one_row(self, r):
-        if r.CNV == 'DeletionHet':
-            result = ['*A', '*0']
-        elif r.CNV == 'DeletionHom':
-            result = ['*0', '*0']
-        elif r.CNV in ['Normal', 'AssumeNormal']:
+        if r.CNV in ['Normal', 'AssumeNormal']:
             result = ['*A', '*A']
+        elif r.CNV == 'WholeDel1':
+            result = ['*A', '*0']
+        elif r.CNV == 'WholeDel1Hom':
+            result = ['*0', '*0']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))

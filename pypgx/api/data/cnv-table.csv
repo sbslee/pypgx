@@ -71,8 +71,8 @@ GSTM1,PartialDuplication
 GSTM1,"DeletionHet,Deletion2"
 GSTM1,"Normal,Deletion2"
 GSTT1,Normal
-GSTT1,DeletionHet
-GSTT1,DeletionHom
+GSTT1,WholeDel1
+GSTT1,WholeDel1Hom
 SLC22A2,Normal
 SLC22A2,NoncodingDel1
 SLC22A2,NoncodingDel1Hom
