@@ -164,9 +164,9 @@ class CYP2B6Genotyper:
             gene=self.gene, assembly=self.assembly)[0]
         if r.CNV in ['Normal', 'AssumeNormal']:
             result = [a1, a2]
-        elif r.CNV == 'Hybrid':
+        elif r.CNV == 'Hybrid1':
             result = [p, '*29']
-        elif r.CNV == 'Duplication':
+        elif r.CNV == 'WholeDup1':
             result = _call_duplication(r)
         else:
             result = ['Indeterminate']

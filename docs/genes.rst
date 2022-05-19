@@ -1013,20 +1013,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA12813
      - 0.4.1
      -
-   * - \*29
-     - Hybrid
-     - \*6/\*29
-     -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-2.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-1.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA19178
-     - 0.4.1
-     - \*29 has exons 1-4 of CYP2B7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * - \*22x2
-     - Duplication
+     - WholeDup1
      - \*6/\*22x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-3.png>`
@@ -1037,8 +1025,20 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19190
      - 0.12.0
      -
+   * - \*29
+     - Hybrid1
+     - \*6/\*29
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-2.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-1.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-1.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA19178
+     - 0.4.1
+     - \*29 has exons 1-4 of CYP2B7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * -
-     - Tandem
+     - Tandem1
      - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-4.png>`
@@ -1050,7 +1050,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.16.0
      -
    * -
-     - PartialDup
+     - PartialDup1
      - Indeterminate
      -
      -
@@ -1074,7 +1074,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.16.0
      -
    * -
-     - PseudogeneDel
+     - ParalogWholeDel1
      - Indeterminate
      -
      -

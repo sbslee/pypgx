@@ -22,12 +22,12 @@ CYP2A6,Unknown1
 CYP2A6,Hybrid7
 CYP2A6,Tandem2
 CYP2B6,Normal
-CYP2B6,Hybrid
-CYP2B6,Duplication
-CYP2B6,Tandem
-CYP2B6,PartialDup
+CYP2B6,WholeDup1
+CYP2B6,Hybrid1
+CYP2B6,Tandem1
+CYP2B6,PartialDup1
 CYP2B6,PartialDup2
-CYP2B6,PseudogeneDel
+CYP2B6,ParalogWholeDel1
 CYP2D6,Normal
 CYP2D6,WholeDel1
 CYP2D6,WholeDel1Hom
