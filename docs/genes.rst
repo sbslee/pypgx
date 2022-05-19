@@ -1225,7 +1225,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * - \*5
-     - DeletionHet
+     - WholeDel1
      - \*5/\*29
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png>`
@@ -1237,7 +1237,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * - \*5
-     - DeletionHom
+     - WholeDel1Hom
      - \*5/\*5
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png>`
@@ -1249,7 +1249,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.10.0
      -
    * - \*4x2
-     - Duplication
+     - WholeDup1
      - \*2/\*4x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png>`
@@ -1261,7 +1261,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.4.1
      -
    * - \*1x3
-     - Multiplication
+     - WholeMultip1
      - \*1x3/\*10
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-5.png>`
@@ -1368,20 +1368,8 @@ Below is comprehensive summary of SV described from real NGS studies:
      - NA19719
      - 0.14.0
      -
-   * - \*2x2, \*68+\*4
-     - Duplication,Tandem1A
-     - \*2x2/\*68+\*4
-     -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-12.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-10.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA21781
-     - 0.4.1
-     -
    * - \*5, \*68+\*4
-     - DeletionHet,Tandem1A
+     - WholeDel1+Tandem1A
      - \*5/\*68+\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-13.png>`
@@ -1392,8 +1380,20 @@ Below is comprehensive summary of SV described from real NGS studies:
      - HG01190
      - 0.4.1
      -
+   * - \*2x2, \*68+\*4
+     - WholeDup1+Tandem1A
+     - \*2x2/\*68+\*4
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-12.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-10.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA21781
+     - 0.4.1
+     -
    * -
-     - PseudogeneDeletion
+     - ParalogPartialDel1
      - \*2/\*41
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-14.png>`
@@ -1405,19 +1405,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.13.0
      -
    * -
-     - PseudogeneDownstreamDel
-     - Indeterminate
-     -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-17.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-17.png>`
-     - WGS
-     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA20847
-     - 0.14.0
-     -
-   * -
-     - Del,Tandem3
+     - WholeDel1+Tandem3
      - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-17.png>`

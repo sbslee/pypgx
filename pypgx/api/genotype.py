@@ -185,17 +185,17 @@ class CYP2D6Genotyper:
     def one_row(self, r):
         a1, a2 = r.Haplotype1[0], r.Haplotype2[0]
         s1, s2 = core.sort_alleles([a1, a2], by='priority', gene=self.gene, assembly=self.assembly)
-        if r.CNV in ['Normal', 'AssumeNormal', 'PseudogeneDeletion']:
+        if r.CNV in ['Normal', 'AssumeNormal', 'ParalogPartialDel1']:
             result = [a1, a2]
-        elif r.CNV == 'DeletionHom':
-            result = ['*5', '*5']
-        elif r.CNV == 'DeletionHet':
+        elif r.CNV == 'WholeDel1':
             result = [s1, '*5']
-        elif r.CNV == 'Duplication':
+        elif r.CNV == 'WholeDel1Hom':
+            result = ['*5', '*5']
+        elif r.CNV == 'WholeDup1':
             result = _call_duplication(r)
-        elif r.CNV == 'Multiplication':
+        elif r.CNV == 'WholeMultip1':
             result = _call_multiplication(r)
-        elif r.CNV == 'Del,Tandem3':
+        elif r.CNV == 'WholeDel1+Tandem3':
             result = ['*5', '*13+*1']
         elif r.CNV == 'Tandem1A':
             h1 = '*4' in r.Haplotype1
@@ -263,12 +263,12 @@ class CYP2D6Genotyper:
                 result = [a1, '*13+*1']
             else:
                 result = ['Indeterminate']
-        elif 'DeletionHet' in r.CNV and 'Tandem1A' in r.CNV:
+        elif r.CNV == 'WholeDel1+Tandem1A':
             if '*4' in a1 or '*4' in a2:
                 result = ['*5', '*68+*4']
             else:
                 result = ['Indeterminate']
-        elif 'Duplication' in r.CNV and 'Tandem1A' in r.CNV:
+        elif r.CNV == 'WholeDup1+Tandem1A':
             h1 = '*4' in r.Haplotype1
             h2 = '*4' in r.Haplotype2
             if h1 and h2:
