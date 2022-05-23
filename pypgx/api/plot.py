@@ -106,7 +106,9 @@ def plot_bam_copy_number(
     fitted : bool, default: False
         If True, show the fitted line as well.
     path : str, optional
-        Create plots in this directory.
+        Create plots in this directory (default: current directory). Use
+        ``path='-'`` to return a list of :class:`matplotlib.figure.Figure`
+        objects instead of writing files.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -117,6 +119,11 @@ def plot_bam_copy_number(
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
+
+    Returns
+    -------
+    None or list
+        Output type depends on ``path``.
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
@@ -137,6 +144,8 @@ def plot_bam_copy_number(
     else:
         processed_copy_number = None
 
+    figs = []
+
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
@@ -148,14 +157,21 @@ def plot_bam_copy_number(
                 processed_copy_number, ymin, ymax, fontsize
             )
 
-            if path is None:
-                output = f'{sample}.png'
-            else:
-                output = f'{path}/{sample}.png'
-
             plt.tight_layout()
-            fig.savefig(output)
+
+            if path == '-':
+                figs.append(fig)
+            else:
+                if path is None:
+                    output = f'{sample}.png'
+                else:
+                    output = f'{path}/{sample}.png'
+                fig.savefig(output)
+
             plt.close()
+
+    if path == '-':
+        return figs
 
 def plot_bam_read_depth(
     read_depth, path=None, samples=None, ymin=None, ymax=None, fontsize=25
@@ -168,7 +184,9 @@ def plot_bam_read_depth(
     read_depth : str or pypgx.Archive
         Archive file or object with the semantic type CovFrame[ReadDepth].
     path : str, optional
-        Create plots in this directory.
+        Create plots in this directory (default: current directory). Use
+        ``path='-'`` to return a list of :class:`matplotlib.figure.Figure`
+        objects instead of writing files.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -179,6 +197,11 @@ def plot_bam_read_depth(
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
+
+    Returns
+    -------
+    None or list
+        Output type depends on ``path``.
     """
 
     if isinstance(read_depth, str):
@@ -196,6 +219,8 @@ def plot_bam_read_depth(
     region = core.get_region(gene, assembly=assembly)
     chrom, start, end = common.parse_region(region)
 
+    figs = []
+
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
@@ -212,14 +237,21 @@ def plot_bam_read_depth(
             ax2.tick_params(axis='both', which='major', labelsize=fontsize)
             ax2.ticklabel_format(axis='x', useOffset=False, scilimits=(6, 6))
 
-            if path is None:
-                output = f'{sample}.png'
-            else:
-                output = f'{path}/{sample}.png'
-
             plt.tight_layout()
-            fig.savefig(output)
+
+            if path == '-':
+                figs.append(fig)
+            else:
+                if path is None:
+                    output = f'{sample}.png'
+                else:
+                    output = f'{path}/{sample}.png'
+                fig.savefig(output)
+
             plt.close()
+
+    if path == '-':
+        return figs
 
 def plot_cn_af(
     copy_number, imported_variants, path=None, samples=None, ymin=-0.3,
@@ -236,7 +268,9 @@ def plot_cn_af(
         Archive file or object with the semantic type VcfFrame[Imported] or
         VcfFrame[Consolidated].
     path : str, optional
-        Create plots in this directory.
+        Create plots in this directory (default: current directory). Use
+        ``path='-'`` to return a list of :class:`matplotlib.figure.Figure`
+        objects instead of writing files.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -247,6 +281,11 @@ def plot_cn_af(
         Y-axis top.
     fontsize : float, default: 25
         Text fontsize.
+
+    Returns
+    -------
+    None or list
+        Output type depends on ``path``.
     """
     if isinstance(copy_number, str):
         copy_number = sdk.Archive.from_file(copy_number)
@@ -273,6 +312,8 @@ def plot_cn_af(
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
 
+    figs = []
+
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
@@ -288,14 +329,21 @@ def plot_cn_af(
                 ax2, ax4, sample, imported_variants, gene, assembly, fontsize
             )
 
-            if path is None:
-                output = f'{sample}.png'
-            else:
-                output = f'{path}/{sample}.png'
-
             plt.tight_layout()
-            fig.savefig(output)
+
+            if path == '-':
+                figs.append(fig)
+            else:
+                if path is None:
+                    output = f'{sample}.png'
+                else:
+                    output = f'{path}/{sample}.png'
+                fig.savefig(output)
+
             plt.close()
+
+    if path == '-':
+        return figs
 
 def plot_vcf_allele_fraction(
     imported_variants, path=None, samples=None, fontsize=25
@@ -309,13 +357,20 @@ def plot_vcf_allele_fraction(
         Archive file or object with the semantic type VcfFrame[Imported] or
         VcfFrame[Consolidated].
     path : str, optional
-        Create plots in this directory.
+        Create plots in this directory (default: current directory). Use
+        ``path='-'`` to return a list of :class:`matplotlib.figure.Figure`
+        objects instead of writing files.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
         line. Alternatively, you can provide a list of samples.
     fontsize : float, default: 25
         Text fontsize.
+
+    Returns
+    -------
+    None or list
+        Output type depends on ``path``.
     """
     if isinstance(imported_variants, str):
         imported_variants = sdk.Archive.from_file(imported_variants)
@@ -331,6 +386,8 @@ def plot_vcf_allele_fraction(
     else:
         samples = common.parse_list_or_file(samples)
 
+    figs = []
+
     with sns.axes_style('darkgrid'):
         for sample in samples:
 
@@ -340,14 +397,21 @@ def plot_vcf_allele_fraction(
                 ax1, ax2, sample, imported_variants, gene, assembly, fontsize
             )
 
-            if path is None:
-                output = f'{sample}.png'
-            else:
-                output = f'{path}/{sample}.png'
-
             plt.tight_layout()
-            fig.savefig(output)
+
+            if path == '-':
+                figs.append(fig)
+            else:
+                if path is None:
+                    output = f'{sample}.png'
+                else:
+                    output = f'{path}/{sample}.png'
+                fig.savefig(output)
+
             plt.close()
+
+    if path == '-':
+        return figs
 
 def plot_vcf_read_depth(
     gene, vcf, assembly='GRCh37', path=None, samples=None, ymin=None,
@@ -365,7 +429,9 @@ def plot_vcf_read_depth(
     assembly : {'GRCh37', 'GRCh38'}, default: 'GRCh37'
         Reference genome assembly.
     path : str, optional
-        Create plots in this directory.
+        Create plots in this directory (default: current directory). Use
+        ``path='-'`` to return a list of :class:`matplotlib.figure.Figure`
+        objects instead of writing files.
     samples : str or list, optional
         Specify which samples should be included for analysis by providing a
         text file (.txt, .tsv, .csv, or .list) containing one sample per
@@ -374,6 +440,11 @@ def plot_vcf_read_depth(
         Y-axis bottom.
     ymax : float, optional
         Y-axis top.
+
+    Returns
+    -------
+    None or list
+        Output type depends on ``path``.
     """
     vf = pyvcf.VcfFrame.from_file(vcf)
 
@@ -384,6 +455,8 @@ def plot_vcf_read_depth(
         samples = cf.samples
     else:
         samples = common.parse_list_or_file(samples)
+
+    figs = []
 
     with sns.axes_style('darkgrid'):
         for sample in samples:
@@ -405,5 +478,17 @@ def plot_vcf_read_depth(
             ax2.tick_params(axis='both', which='major', labelsize=20)
 
             plt.tight_layout()
-            fig.savefig(output)
+
+            if path == '-':
+                figs.append(fig)
+            else:
+                if path is None:
+                    output = f'{sample}.png'
+                else:
+                    output = f'{path}/{sample}.png'
+                fig.savefig(output)
+
             plt.close()
+
+    if path == '-':
+        return figs

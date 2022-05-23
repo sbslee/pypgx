@@ -527,7 +527,8 @@ plot-bam-copy-number
    Optional arguments:
      -h, --help            Show this help message and exit.
      --fitted              Show the fitted line as well.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -556,7 +557,8 @@ plot-bam-read-depth
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -586,7 +588,8 @@ plot-cn-af
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -615,7 +618,8 @@ plot-vcf-allele-fraction
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -644,7 +648,8 @@ plot-vcf-read-depth
      -h, --help            Show this help message and exit.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37')
                            (choices: 'GRCh37', 'GRCh38').
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
