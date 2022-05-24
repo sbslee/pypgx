@@ -43,6 +43,15 @@ the-g-standaard-the-medicines-standard-in-healthcare>`__ was established in
 multidisciplinary and includes clinical pharmacists, physicians, clinical
 pharmacologists, clinical chemists, epidemiologists, and toxicologists.
 
+Genetic Testing Reference Materials Coordination Program (GeT-RM)
+=================================================================
+
+The goal of the Centers for Disease Control and Prevention–based `Genetic
+Testing Reference Materials Coordination Program (GeT-RM) 
+<https://www.cdc.gov/labquality/get-rm/index.html>`__ is to coordinate a
+self-sustaining community process to improve the availability of appropriate
+and characterized reference materials.
+
 Next-generation sequencing (NGS)
 ================================
 

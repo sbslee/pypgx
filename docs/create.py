@@ -53,18 +53,34 @@ README
 Introduction
 ============
 
-The main purpose of the PyPGx package, which is completely free and open
-source, is to provide a unified platform for pharmacogenomics (PGx) research.
+The main purpose of the PyPGx package is to provide a unified platform for
+pharmacogenomics (PGx) research. PyPGx is and always will be completely free
+and open source.
 
 The package is written in Python, and supports both command line interface
 (CLI) and application programming interface (API) whose documentations are
 available at the `Read the Docs <https://pypgx.readthedocs.io/en/latest/>`_.
 
-PyPGx can predict PGx genotypes and phenotypes using various genomic data,
-including data from next-generation sequencing (NGS), single nucleotide
-polymorphism (SNP) array, and long-read sequencing. Importantly, PyPGx is
-compatible with both of the Genome Reference Consortium Human (GRCh) builds, 
-GRCh37 (hg19) and GRCh38 (hg38).
+Quick links:
+
+- `README <https://pypgx.readthedocs.io/en/latest/readme.html>`__
+- `Genes <https://pypgx.readthedocs.io/en/latest/genes.html>`__
+- `Glossary <https://pypgx.readthedocs.io/en/latest/glossary.html>`__
+- `Tutorials <https://pypgx.readthedocs.io/en/latest/tutorials.html>`__
+- `CLI <https://pypgx.readthedocs.io/en/latest/cli.html>`__
+- `API <https://pypgx.readthedocs.io/en/latest/api.html>`__
+- `SDK <https://pypgx.readthedocs.io/en/latest/sdk.html>`__
+- `FAQ <https://pypgx.readthedocs.io/en/latest/faq.html>`__
+- `Changelog <https://pypgx.readthedocs.io/en/latest/changelog.html>`__
+
+PyPGx can predict PGx genotypes (e.g. ``*4/*5``) and phenotypes (e.g.
+``Poor Metabolizer``) using various genomic data, including data from
+next-generation sequencing (NGS), single nucleotide polymorphism (SNP) array,
+and long-read sequencing. Importantly, for NGS data the package can detect
+`structural variation (SV) <https://pypgx.readthedocs.io/en/latest/
+glossary.html#structural-variation-sv>`__ using a machine learning-based
+approach. Finally, note that PyPGx is compatible with both of the Genome
+Reference Consortium Human (GRCh) builds, GRCh37 (hg19) and GRCh38 (hg38).
 
 There are currently 59 pharmacogenes in PyPGx:
 
@@ -188,6 +204,10 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+.. warning::
+    You're not done yet! Keep scrolling down to obtain the resource bundle
+    for PyPGx, which is essential for running the package.
+
 Resource bundle
 ===============
 
@@ -227,7 +247,10 @@ learn.org/stable/modules/generated/sklearn.svm.SVC.html>`__-based multiclass
 classifier using the `one-vs-rest strategy <https://scikit-learn.org/stable
 /modules/generated/sklearn.multiclass.OneVsRestClassifier.html>`__ for each
 gene for each GRCh build. Each classifier is trained using copy number
-profiles of real NGS samples as well as simulated ones.
+profiles of real NGS samples as well as simulated ones, including those from
+`1KGP <https://pypgx.readthedocs.io/en/latest/glossary.html#genomes-project-
+1kgp>`__ and `GeT-RM <https://pypgx.readthedocs.io/en/latest/
+glossary.html#genetic-testing-reference-materials-coordination-program-get-rm>`__.
 
 You can plot copy number profile and allele fraction profile with PyPGx to
 visually inspect SV calls. Below are CYP2D6 examples:
