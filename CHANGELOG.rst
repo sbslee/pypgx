@@ -8,6 +8,7 @@ Changelog
 * Update :meth:`sdk.utils.add_cn_samples` and :meth:`sdk.utils.simulate_copy_number` methods to check input files more rigorously.
 * Update :meth:`api.utils.test_cnv_caller` and :meth:`api.utils.train_cnv_caller` methods to accept the latest format of SampleTable[CNVCalls] as input.
 * Update plotting methods to optionally return a list of :class:`matplotlib.figure.Figure` objects for API users (e.g. Jupyter Notebook): :meth:`api.plot.plot_bam_copy_number`, :meth:`api.plot.plot_bam_read_depth`, :meth:`api.plot.plot_cn_af`, :meth:`api.plot.plot_vcf_allele_fraction`, :meth:`api.plot.plot_vcf_read_depth`.
+* :issue:`61`: Fix bug in commands :command:`compute-control-statistics`, :command:`compute-target-depth`, and :command:`prepare-depth-of-coverage` when a BED file is provided by user.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, UGT2B17.
 * Add new CNV call for CYP2A6: ``Unknown1``, ``Hybrid7``, ``Tandem2``.
 * Add new CNV calls for CYP2B6: ``Tandem1``, ``PartialDup1``, ``PartialDup2``, ``ParalogWholeDel1``.

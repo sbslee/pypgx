@@ -387,15 +387,11 @@ def compute_control_statistics(
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
-        if bf.has_chr_prefix:
-            bed_prefix = 'chr'
-        else:
-            bed_prefix = ''
-        if bam_prefix and bed_prefix:
+        if cf.has_chr_prefix and bf.has_chr_prefix:
             pass
-        elif not bam_prefix and not bed_prefix:
+        elif not cf.has_chr_prefix and not bf.has_chr_prefix:
             pass
-        elif bam_prefix and not bed_prefix:
+        elif cf.has_chr_prefix and not bf.has_chr_prefix:
             bf = bf.update_chr_prefix(mode='add')
         else:
             bf = bf.update_chr_prefix(mode='remove')
@@ -510,28 +506,24 @@ def compute_target_depth(
 
     region = core.get_region(gene, assembly=assembly)
 
-    data = pycov.CovFrame.from_bam(bams, regions=region, zero=True)
+    cf = pycov.CovFrame.from_bam(bams, regions=region, zero=True)
 
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
-        if any(['chr' in x for x in bf.contigs]):
-            bed_prefix = 'chr'
-        else:
-            bed_prefix = ''
-        if bam_prefix and bed_prefix:
+        if cf.has_chr_prefix and bf.has_chr_prefix:
             pass
-        elif not bam_prefix and not bed_prefix:
+        elif not cf.has_chr_prefix and not bf.has_chr_prefix:
             pass
-        elif bam_prefix and not bed_prefix:
+        elif cf.has_chr_prefix and not bf.has_chr_prefix:
             bf = bf.update_chr_prefix(mode='add')
         else:
             bf = bf.update_chr_prefix(mode='remove')
-        data = data.mask_bed(bf, opposite=True)
+        cf = cf.mask_bed(bf, opposite=True)
     else:
         metadata['Platform'] = 'WGS'
 
-    archive = sdk.Archive(metadata, data)
+    archive = sdk.Archive(metadata, cf)
 
     return archive
 
@@ -1234,15 +1226,11 @@ def prepare_depth_of_coverage(
     if bed:
         metadata['Platform'] = 'Targeted'
         bf = pybed.BedFrame.from_file(bed)
-        if any(['chr' in x for x in bf.contigs]):
-            bed_prefix = 'chr'
-        else:
-            bed_prefix = ''
-        if bam_prefix and bed_prefix:
+        if cf.has_chr_prefix and bf.has_chr_prefix:
             pass
-        elif not bam_prefix and not bed_prefix:
+        elif not cf.has_chr_prefix and not bf.has_chr_prefix:
             pass
-        elif bam_prefix and not bed_prefix:
+        elif cf.has_chr_prefix and not bf.has_chr_prefix:
             bf = bf.update_chr_prefix(mode='add')
         else:
             bf = bf.update_chr_prefix(mode='remove')
