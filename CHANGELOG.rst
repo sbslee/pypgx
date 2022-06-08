@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.16.0 (in development)
------------------------
+0.16.0 (2022-06-08)
+-------------------
 
 * Add new optional argument ``--comparison-table`` to :command:`train-cnv-caller` and :command:`test-cnv-caller` commands.
 * Update :meth:`sdk.utils.add_cn_samples` and :meth:`sdk.utils.simulate_copy_number` methods to check input files more rigorously.
