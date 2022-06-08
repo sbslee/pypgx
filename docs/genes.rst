@@ -670,7 +670,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -680,6 +680,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -691,9 +692,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA10831
+     - 0.4.1
      -
    * - \*4
-     - Deletion1Het
+     - WholeDel1
      - \*1/\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-2.png>`
@@ -702,9 +704,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18617
+     - 0.4.1
      -
    * - \*4
-     - Deletion1Hom
+     - WholeDel1Hom
      - \*4/\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-3.png>`
@@ -713,9 +716,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18952
+     - 0.4.1
      -
    * - \*4
-     - Deletion2Het
+     - WholeDel2
      - \*1/\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-2.png>`
@@ -724,9 +728,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.12.0
      -
    * - \*4
-     - Deletion2Hom
+     - WholeDel2Hom
      - \*4/\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-3.png>`
@@ -735,9 +740,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA21093
+     - 0.15.0
      -
    * - \*4
-     - Deletion3Het
+     - WholeDel3
      - \*4/\*9
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-2.png>`
@@ -746,9 +752,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18488
+     - 0.12.0
      -
    * - \*1x2
-     - Duplication1
+     - WholeDup1
      - \*1x2/\*25
      - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-4.png>`
@@ -757,9 +764,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
+     - 0.4.1
      -
    * - \*1x2
-     - Duplication2
+     - WholeDup2
      - \*1x2/\*2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-4.png>`
@@ -768,9 +776,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA12342
+     - 0.12.0
      -
    * - \*1x2
-     - Duplication3
+     - WholeDup3
      - \*1x2/\*17
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-4.png>`
@@ -779,6 +788,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19129
+     - 0.12.0
      -
    * -
      - Hybrid1
@@ -790,6 +800,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - HG00436
+     - 0.4.1
      -
    * - \*12
      - Hybrid2
@@ -801,6 +812,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA11829
+     - 0.12.0
      - \*12 has exons 1-2 of CYP2A7 origin and exons 3-9 of CYP2A6 origin (breakpoint in intron 2).
    * - \*12
      - Hybrid2Hom
@@ -812,6 +824,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19780
+     - 0.14.0
      -
    * - \*34
      - Hybrid3
@@ -823,6 +836,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18516
+     - 0.12.0
      - \*34 has exons 1-4 of CYP2A7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * -
      - Hybrid4
@@ -834,6 +848,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20515
+     - 0.14.0
      -
    * -
      - Hybrid5
@@ -845,6 +860,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00155
+     - 0.15.0
      -
    * -
      - Hybrid6
@@ -856,20 +872,22 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00141
+     - 0.15.0
      -
    * -
-     - PseudogeneDuplication
-     - \*1/\*18
+     - Hybrid7
+     - Indeterminate
      -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-7.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-12.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-12.png>`
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-21.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-21.png>`
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA06985
+     - HG02382
+     - 0.16.0
      -
    * -
-     - Tandem
+     - Tandem1
      - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-8.png>`
@@ -878,9 +896,22 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20828
+     - 0.14.0
      -
    * -
-     - PseudogeneDeletion
+     - Tandem2
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-22.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-22.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG04214
+     - 0.16.0
+     -
+   * -
+     - ParalogWholeDel1
      - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-14.png>`
@@ -889,6 +920,31 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00625
+     - 0.15.0
+     -
+   * -
+     - ParalogWholeDup1
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2A6-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-12.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-12.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA06985
+     - 0.12.0
+     -
+   * -
+     - Unknown1
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2A6-20.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2A6-20.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG02081
+     - 0.16.0
      -
 
 Filtered alleles for CYP2A6
@@ -933,7 +989,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -943,6 +999,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -954,20 +1011,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA12813
+     - 0.4.1
      -
-   * - \*29
-     - Hybrid
-     - \*6/\*29
-     -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-2.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-1.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA19178
-     - \*29 has exons 1-4 of CYP2B7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
    * - \*22x2
-     - Duplication
+     - WholeDup1
      - \*6/\*22x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-3.png>`
@@ -976,6 +1023,67 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19190
+     - 0.12.0
+     -
+   * - \*29
+     - Hybrid1
+     - \*6/\*29
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-2.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-1.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-1.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA19178
+     - 0.4.1
+     - \*29 has exons 1-4 of CYP2B7 origin and exons 5-9 of CYP2A6 origin (breakpoint in intron 4).
+   * -
+     - Tandem1
+     - Indeterminate
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2B6-4.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-4.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-4.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG01806
+     - 0.16.0
+     -
+   * -
+     - PartialDup1
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-5.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG03784
+     - 0.16.0
+     -
+   * -
+     - PartialDup2
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-6.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-6.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG02790
+     - 0.16.0
+     -
+   * -
+     - ParalogWholeDel1
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2B6-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2B6-7.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG03235
+     - 0.16.0
      -
 
 Phenotype summary for CYP2B6
@@ -1092,7 +1200,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -1102,6 +1210,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -1113,9 +1222,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA11839
+     - 0.4.1
      -
    * - \*5
-     - DeletionHet
+     - WholeDel1
      - \*5/\*29
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png>`
@@ -1124,9 +1234,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18861
+     - 0.4.1
      -
    * - \*5
-     - DeletionHom
+     - WholeDel1Hom
      - \*5/\*5
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png>`
@@ -1135,9 +1246,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.10.0
      -
    * - \*4x2
-     - Duplication
+     - WholeDup1
      - \*2/\*4x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png>`
@@ -1146,9 +1258,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19819
+     - 0.4.1
      -
    * - \*1x3
-     - Multiplication
+     - WholeMultip1
      - \*1x3/\*10
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-5.png>`
@@ -1157,6 +1270,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19190
+     - 0.12.0
      -
    * - \*68+\*4
      - Tandem1A
@@ -1168,8 +1282,9 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA11832
+     - 0.4.1
      - \*68 has exon 1 of CYP2D6 origin and exons 2-9 of CYP2D7 origin (breakpoint in intron 1).
-   * - \*68+\*4, \*68+\*4
+   * - \*68+\*4
      - Tandem1B
      - \*68+\*4/\*68+\*4
      -
@@ -1179,6 +1294,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA12282
+     - 0.12.0
      -
    * - \*36+\*10
      - Tandem2A
@@ -1190,6 +1306,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18564
+     - 0.4.1
      - \*36 has exons 1-8 of CYP2D6 origin and exon 9 of CYP2D7 origin (breakpoint in exon 9).
    * - \*36x2+\*10
      - Tandem2B
@@ -1201,6 +1318,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA18524
+     - 0.4.1
      -
    * - \*36x3+\*10
      - Tandem2C
@@ -1212,6 +1330,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.10.0
      -
    * -
      - Tandem2F
@@ -1223,6 +1342,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - HG00458
+     - 0.15.0
      -
    * - \*13+\*1
      - Tandem3
@@ -1234,6 +1354,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.11.0
      -
    * -
      - Tandem4
@@ -1245,20 +1366,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19719
-     -
-   * - \*2x2, \*68+\*4
-     - Duplication,Tandem1A
-     - \*2x2/\*68+\*4
-     -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-12.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-10.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA21781
+     - 0.14.0
      -
    * - \*5, \*68+\*4
-     - DeletionHet,Tandem1A
+     - WholeDel1+Tandem1A
      - \*5/\*68+\*4
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-13.png>`
@@ -1267,9 +1378,22 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - HG01190
+     - 0.4.1
+     -
+   * - \*2x2, \*68+\*4
+     - WholeDup1+Tandem1A
+     - \*2x2/\*68+\*4
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-12.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-10.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA21781
+     - 0.4.1
      -
    * -
-     - PseudogeneDeletion
+     - ParalogPartialDel1
      - \*2/\*41
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-14.png>`
@@ -1278,17 +1402,19 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19316
+     - 0.13.0
      -
    * -
-     - PseudogeneDownstreamDel
+     - WholeDel1+Tandem3
      - Indeterminate
      -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-17.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-17.png>`
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-17.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-20.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2D6-20.png>`
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA20847
+     - HG03803
+     - 0.16.0
      -
    * -
      - Unknown1
@@ -1300,6 +1426,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA18555
+     - 0.12.0
      -
    * -
      - Unknown2
@@ -1311,6 +1438,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19982
+     - 0.14.0
      -
 
 Phenotype summary for CYP2D6
@@ -1388,7 +1516,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
    :header-rows: 1
 
-   * - Star Allele
+   * - SV Alleles
      - SV Name
      - Genotype
      - Reference
@@ -1398,6 +1526,7 @@ Below is comprehensive summary of SV described from real NGS studies:
      - Data Type
      - Source
      - Coriell ID
+     - Version
      - Description
    * -
      - Normal
@@ -1409,31 +1538,22 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA10831
+     - 0.4.1
      -
-   * - \*S1
-     - PartialDuplicationHet
-     - \*1/\*S1
-     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-2.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-1.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-1.png>`
-     - WGS
-     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-     - NA19920
-     - \*S1 is linked to \*7.
-   * - \*S1
-     - PartialDuplicationHom
-     - \*S1/\*S1
+   * -
+     - WholeDel1
+     - Indeterminate
      -
-     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-5.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-7.png>`
-     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-7.png>`
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-9.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-9.png>`
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-     - NA19309
+     - HG03445
+     - 0.16.0
      -
    * - \*1x2
-     - Duplication1
+     - WholeDup1
      - \*1/\*1x2
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1442,9 +1562,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      -
      -
+     - 0.4.1
      -
    * - \*7x2
-     - Duplication1
+     - WholeDup1
      - \*1/\*7x2
      - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1453,9 +1574,10 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19095
+     - 0.4.1
      -
    * - \*1x2
-     - Duplication2
+     - WholeDup2
      - \*1x2/\*7
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-3.png>`
@@ -1464,9 +1586,34 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA19225
+     - 0.12.0
+     -
+   * - \*S1
+     - PartialDup1
+     - \*1/\*S1
+     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-2.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-1.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-1.png>`
+     - WGS
+     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+     - NA19920
+     - 0.4.1
+     - \*S1 is linked to \*7.
+   * - \*S1
+     - PartialDup1Hom
+     - \*S1/\*S1
+     -
+     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-5.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-7.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-7.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - NA19309
+     - 0.13.0
      -
    * - \*7x3
-     - Multiplication
+     - WholeMultip1
      - \*7/\*7x3
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-4.png>`
@@ -1475,10 +1622,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
      - NA19908
+     - 0.4.1
      -
    * -
-     - Multiplication2
-     -
+     - WholeMultip2
+     - Indeterminate
      -
      - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2E1-6.png>`
      - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-8.png>`
@@ -1486,6 +1634,19 @@ Below is comprehensive summary of SV described from real NGS studies:
      - WGS
      - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
      - NA20291
+     - 0.14.0
+     -
+   * -
+     - WholeDup1+PartialDup1
+     - Indeterminate
+     -
+     -
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2E1-10.png>`
+     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-CYP2E1-10.png>`
+     - WGS
+     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+     - HG03401
+     - 0.16.0
      -
 
 Resources for CYP2E1
@@ -1622,7 +1783,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1632,6 +1793,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -1643,9 +1805,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01190
+    - 0.11.0
     -
   * - \*DEL
-    - DeletionHet
+    - WholeDel1
     - \*1/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP4F2-2.png>`
@@ -1654,6 +1817,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.11.0
     -
 
 Resources for CYP4F2
@@ -1754,7 +1918,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1764,6 +1928,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Female
@@ -1775,6 +1940,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00276
+    - 0.12.0
     -
   * - \*MALE
     - Male
@@ -1786,6 +1952,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00436
+    - 0.12.0
     -
 
 GSTM1
@@ -1802,7 +1969,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1812,6 +1979,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -1823,9 +1991,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA06991
+    - 0.4.1
     -
   * - \*0
-    - DeletionHet
+    - WholeDel1
     - \*0/\*A
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
@@ -1834,20 +2003,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
     -
   * - \*0
-    - Normal,Deletion2
-    - \*0/\*A
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-10.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-10.png>`
-    - WGS
-    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - NA21097
-    -
-  * - \*0
-    - DeletionHom
+    - WholeDel1Hom
     - \*0/\*0
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-3.png>`
@@ -1856,9 +2015,22 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA10831
+    - 0.4.1
+    -
+  * - \*0
+    - WholeDel2
+    - \*0/\*A
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-GSTM1-10.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-GSTM1-10.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA21097
+    - 0.15.0
     -
   * - \*Ax2
-    - Duplication
+    - WholeDup1
     - \*A/\*Ax2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -1867,9 +2039,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.4.1
     -
   * - \*Bx2
-    - Duplication
+    - WholeDup1
     - \*A/\*Bx2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -1878,9 +2051,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.4.1
     -
   * -
-    - UpstreamDeletionHet
+    - NoncodingDel1
     - \*A/\*B
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-1.png>`
@@ -1889,9 +2063,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19005
+    - 0.12.0
     -
   * - \*0
-    - DeletionHet,UpstreamDeletionHet
+    - WholeDel1+NoncodingDel1
     - \*0/\*A
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-2.png>`
@@ -1900,9 +2075,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA06984
+    - 0.12.0
     -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-4.png>`
@@ -1911,9 +2087,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19908
+    - 0.14.0
     -
   * -
-    - DeletionHet,Deletion2
+    - WholeDel1+WholeDel2
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTM1-3.png>`
@@ -1922,6 +2099,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20506
+    - 0.14.0
     -
 
 GSTT1
@@ -1946,7 +2124,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -1956,6 +2134,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -1967,9 +2146,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA07055
+    - 0.4.1
     -
   * - \*0
-    - DeletionHet
+    - WholeDel1
     - \*0/\*A
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTT1-2.png>`
@@ -1978,9 +2158,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.4.1
     -
   * - \*0
-    - DeletionHom
+    - WholeDel1Hom
     - \*0/\*0
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-GSTT1-3.png>`
@@ -1989,6 +2170,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11832
+    - 0.4.1
     -
 
 IFNL3
@@ -2097,7 +2279,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2107,6 +2289,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2118,9 +2301,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01190
+    - 0.4.1
     -
   * - \*S1
-    - Intron9Deletion
+    - NoncodingDel1
     - \*1/\*S1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-2.png>`
@@ -2129,9 +2313,22 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
+    -
+  * - \*S1
+    - NoncodingDel1Hom
+    - \*S1/\*S1
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SLC22A2-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SLC22A2-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG02337
+    - 0.16.0
     -
   * - \*S2
-    - Exon11Deletion
+    - PartialDel1
     - \*1/\*S2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-3.png>`
@@ -2140,9 +2337,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19819
+    - 0.4.1
     -
   * - \*S1, \*S2
-    - Intron9Deletion,Exon11Deletion
+    - NoncodingDel1+PartialDel1
     - \*S1/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-4.png>`
@@ -2151,9 +2349,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19030
+    - 0.13.0
     -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SLC22A2-5.png>`
@@ -2162,6 +2361,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20813
+    - 0.14.0
     -
 
 SLCO1B1
@@ -2209,7 +2409,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2219,6 +2419,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2230,9 +2431,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA06991
+    - 0.11.0
     -
   * - \*DEL
-    - DeletionHet
+    - WholeDel1
     - \*1/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-2.png>`
@@ -2241,9 +2443,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18942
+    - 0.11.0
     -
   * - \*DEL
-    - DeletionHom
+    - WholeDel1Hom
     - \*DEL/\*DEL
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-7.png>`
@@ -2252,9 +2455,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20874
+    - 0.14.0
     -
   * - \*1x2
-    - Duplication
+    - WholeDup1
     - \*1x2/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-3.png>`
@@ -2263,9 +2467,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18509
+    - 0.11.0
     -
   * - \*1x3
-    - Multiplication1
+    - WholeMultip1
     - \*1x3/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-4.png>`
@@ -2274,9 +2479,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18868
+    - 0.11.0
     -
   * - \*1x4
-    - Multiplication2
+    - WholeMultip2
     - \*1x4/\*2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-5.png>`
@@ -2285,9 +2491,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18484
+    - 0.11.0
     -
   * - \*1x3, \*2x2
-    - Multiplication2
+    - WholeMultip2
     - \*1x3/\*2x2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-SULT1A1-6.png>`
@@ -2296,6 +2503,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19143
+    - 0.11.0
     -
   * -
     - Unknown1
@@ -2307,6 +2515,43 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG01085
+    - 0.15.0
+    -
+  * -
+    - Unknown2
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-9.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-9.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    -
+    - 0.16.0
+    -
+  * -
+    - Unknown3
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-10.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-10.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03854
+    - 0.16.0
+    -
+  * -
+    - Unknown4
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-SULT1A1-11.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-SULT1A1-11.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03742
+    - 0.16.0
     -
 
 TBXAS1
@@ -2384,7 +2629,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2394,6 +2639,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2405,9 +2651,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA11993
+    - 0.9.0
     -
   * - \*S1
-    - Intron1DeletionA
+    - NoncodingDel1
     - \*1/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-2.png>`
@@ -2416,9 +2663,22 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19908
+    - 0.9.0
+    -
+  * - \*S1
+    - NoncodingDel1Hom
+    - \*S1/\*S1
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT1A4-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT1A4-5.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03479
+    - 0.16.0
     -
   * - \*S2
-    - Intron1DeletionB
+    - NoncodingDel2
     - \*1/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-2.png>`
@@ -2427,9 +2687,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     -
     -
+    - 0.10.0
     -
   * - \*S3
-    - Intron1PartialDup
+    - NoncodingDup1
     - \*1/\*S3
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT1A4-3.png>`
@@ -2438,6 +2699,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA18632
+    - 0.13.0
     -
 
 UGT2B15
@@ -2451,7 +2713,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2461,6 +2723,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
     - Normal
@@ -2472,42 +2735,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - HG00589
-    -
-  * - \*S1
-    - PartialDeletion1
-    - \*4/\*S1
-    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-1.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-1.png>`
-    - WGS
-    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
-    - NA11993
-    -
-  * - \*S2
-    - PartialDeletion2
-    - \*2/\*S2
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-3.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-3.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA19160
-    -
-  * - \*S3
-    - PartialDeletion3
-    - \*1/\*S3
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-3.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-4.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-4.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA19189
+    - 0.4.1
     -
   * - \*S4
-    - Deletion
+    - WholeDel1
     - \*2/\*S4
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-4.png>`
@@ -2516,9 +2747,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19024
+    - 0.13.0
     -
   * -
-    - Deletion2
+    - WholeDel2
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-4.png>`
@@ -2527,9 +2759,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19786
+    - 0.14.0
     -
   * -
-    - Duplication
+    - WholeDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
@@ -2538,9 +2771,46 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19776
+    - 0.14.0
+    -
+  * - \*S1
+    - PartialDel1
+    - \*4/\*S1
+    - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-1.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-1.png>`
+    - WGS
+    - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
+    - NA11993
+    - 0.4.1
+    -
+  * - \*S2
+    - PartialDel2
+    - \*2/\*S2
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-2.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-3.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19160
+    - 0.12.0
+    -
+  * - \*S3
+    - PartialDel3
+    - \*1/\*S3
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-3.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-4.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-4.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA19189
+    - 0.13.0
     -
   * -
-    - PartialDuplication
+    - PartialDup1
     - Indeterminate
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B15-5.png>`
@@ -2549,6 +2819,19 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA20821
+    - 0.14.0
+    -
+  * -
+    - PartialDup2
+    - Indeterminate
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B15-9.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B15-9.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03082
+    - 0.16.0
     -
 
 UGT2B17
@@ -2565,7 +2848,7 @@ Below is comprehensive summary of SV described from real NGS studies:
 .. list-table::
   :header-rows: 1
 
-  * - Star Allele
+  * - SV Alleles
     - SV Name
     - Genotype
     - Reference
@@ -2575,9 +2858,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Data Type
     - Source
     - Coriell ID
+    - Version
     - Description
   * -
-    - Normal,Normal
+    - Normal
     - \*1/\*1
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-1.png>`
@@ -2586,9 +2870,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA19178
+    - 0.4.1
     -
   * - \*2
-    - Normal,Deletion
+    - WholeDel1
     - \*1/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-2.png>`
@@ -2597,9 +2882,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18855
+    - 0.4.1
     -
   * - \*2
-    - Deletion,Deletion
+    - WholeDel1Hom
     - \*2/\*2
     - `Lee et al., 2019 <https://pubmed.ncbi.nlm.nih.gov/31206625/>`__
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-3.png>`
@@ -2608,9 +2894,34 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `GeT-RM <https://pubmed.ncbi.nlm.nih.gov/26621101/>`__
     - NA18617
+    - 0.4.1
+    -
+  * - \*S2
+    - PartialDel2
+    - \*1/\*S2
+    -
+    -
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-8.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-8.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - HG03127
+    - 0.16.0
+    -
+  * - \*S3
+    - PartialDel3
+    - \*1/\*S3
+    -
+    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-5.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-6.png>`
+    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-6.png>`
+    - WGS
+    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
+    - NA20886
+    - 0.14.0
     -
   * - \*2, \*S1
-    - Deletion,PartialDeletion1
+    - WholeDel1+PartialDel1
     - \*2/\*S1
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
@@ -2619,9 +2930,10 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19160
+    - 0.12.0
     -
   * - \*2, \*S2
-    - Deletion,PartialDeletion2
+    - WholeDel1+PartialDel2
     - \*2/\*S2
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-4.png>`
@@ -2630,10 +2942,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA19189
+    - 0.13.0
     -
-  * - \*2
-    - Deletion,PartialDeletion3
-    - Indeterminate
+  * - \*2, \*S3
+    - WholeDel1+PartialDel3
+    - \*2/\*S3
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-6.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-7.png>`
@@ -2641,15 +2954,5 @@ Below is comprehensive summary of SV described from real NGS studies:
     - WGS
     - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
     - NA21090
-    -
-  * -
-    - Normal,PartialDeletion3
-    - Indeterminate
-    -
-    - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-UGT2B17-5.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-UGT2B17-6.png>`
-    - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh38-UGT2B17-6.png>`
-    - WGS
-    - `1KGP <https://www.biorxiv.org/content/10.1101/2021.02.06.430068v2>`__
-    - NA20886
+    - 0.15.0
     -

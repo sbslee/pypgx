@@ -39,7 +39,8 @@ def create_parser(subparsers):
         '--path',
         metavar='PATH',
         help=
-"""Create plots in this directory."""
+"""Create plots in this directory (default: current
+directory)."""
     )
     parser.add_argument(
         '--samples',

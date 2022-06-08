@@ -305,6 +305,11 @@ def simulate_copy_number(
     """
     target = Archive.from_file(target)
     source = Archive.from_file(source)
+
+    target.check_type('CovFrame[CopyNumber]')
+    source.check_type('CovFrame[CopyNumber]')
+    compare_metadata('Assembly', target, source)
+
     data = source.data.df[sample]
 
     target.data.df[sample] = data
@@ -349,6 +354,11 @@ def add_cn_samples(target, source, samples):
     target = Archive.from_file(target)
     source = Archive.from_file(source)
     samples = common.parse_list_or_file(samples)
+
+    target.check_type('CovFrame[CopyNumber]')
+    source.check_type('CovFrame[CopyNumber]')
+    compare_metadata('Assembly', target, source)
+
     df = source.data.df[samples]
     target.data.df = pd.concat([target.data.df, df], axis=1)
     return target

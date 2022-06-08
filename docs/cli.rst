@@ -527,7 +527,8 @@ plot-bam-copy-number
    Optional arguments:
      -h, --help            Show this help message and exit.
      --fitted              Show the fitted line as well.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -556,7 +557,8 @@ plot-bam-read-depth
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -586,7 +588,8 @@ plot-cn-af
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -615,7 +618,8 @@ plot-vcf-allele-fraction
    
    Optional arguments:
      -h, --help            Show this help message and exit.
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -644,7 +648,8 @@ plot-vcf-read-depth
      -h, --help            Show this help message and exit.
      --assembly TEXT       Reference genome assembly (default: 'GRCh37')
                            (choices: 'GRCh37', 'GRCh38').
-     --path PATH           Create plots in this directory.
+     --path PATH           Create plots in this directory (default: current
+                           directory).
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
                            by providing a text file (.txt, .tsv, .csv, or .list)
@@ -980,6 +985,7 @@ test-cnv-caller
 
    $ pypgx test-cnv-caller -h
    usage: pypgx test-cnv-caller [-h] [--confusion-matrix PATH]
+                                [--comparison-table PATH]
                                 cnv-caller copy-number cnv-calls
    
    Test CNV caller for target gene.
@@ -997,6 +1003,9 @@ test-cnv-caller
                            Write the confusion matrix as a CSV file where rows
                            indicate actual class and columns indicate prediction
                            class.
+     --comparison-table PATH
+                           Write a CSV file comparing actual vs. predicted CNV
+                           calls for each sample.
 
 train-cnv-caller
 ================
@@ -1005,6 +1014,7 @@ train-cnv-caller
 
    $ pypgx train-cnv-caller -h
    usage: pypgx train-cnv-caller [-h] [--confusion-matrix PATH]
+                                 [--comparison-table PATH]
                                  copy-number cnv-calls cnv-caller
    
    Train CNV caller for target gene.
@@ -1025,4 +1035,7 @@ train-cnv-caller
                            Write the confusion matrix as a CSV file where rows
                            indicate actual class and columns indicate prediction
                            class.
+     --comparison-table PATH
+                           Write a CSV file comparing actual vs. predicted CNV
+                           calls for each sample.
 
