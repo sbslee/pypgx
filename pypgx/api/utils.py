@@ -447,6 +447,9 @@ def compute_copy_number(
     if set(read_depth.data.samples) != set(control_statistics.data.index):
         raise ValueError('Different sample sets found')
 
+    # Make sure samples are in the same order.
+    control_statistics.data = control_statistics.data.loc[read_depth.data.samples]
+
     # Apply intra-sample normalization.
     df = read_depth.data.copy_df()
     medians = control_statistics.data['50%']
