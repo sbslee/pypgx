@@ -830,23 +830,37 @@ def estimate_phase_beagle(
     if vf1.empty:
         return sdk.Archive(metadata, vf1)
 
-    with tempfile.TemporaryDirectory() as t:
-        vf1.to_file(f'{t}/input.vcf')
-        command = [
-            'java', '-Xmx2g', '-jar', beagle,
-            f'gt={t}/input.vcf',
-            f'chrom={region}',
-            f'ref={panel}',
-            f'out={t}/output',
-            f'impute={str(impute).lower()}'
-        ]
-        subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
-        vf2 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+    # Beagle will throw an error if there is only one marker overlapping with
+    # the reference panel in a given window. This typically occurs when the
+    # input VCF has very few markers or only one marker. Therefore, these
+    # cases need to be handled manually.
+    vf2 = pyvcf.VcfFrame.from_file(panel)
+    variants1 = vf1.to_variants()
+    variants2 = vf2.to_variants()
+    common_variants = list(set(variants1).intersection(variants2))
 
-    if has_chr_prefix:
-        vf2 = vf2.update_chr_prefix('remove')
+    if len(common_variants) == 1:
+        (chrom, pos, ref, alt) = common.parse_variant(common_variants[0])
+        df = vf1.df[vf1.df.POS == pos]
+        vf3 = pyvcf.VcfFrame([], df)
+        vf3 = vf3.pseudophase().strip()
+    else:
+        with tempfile.TemporaryDirectory() as t:
+            vf1.to_file(f'{t}/input.vcf')
+            command = [
+                'java', '-Xmx2g', '-jar', beagle,
+                f'gt={t}/input.vcf',
+                f'chrom={region}',
+                f'ref={panel}',
+                f'out={t}/output',
+                f'impute={str(impute).lower()}'
+            ]
+            subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
+            vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+        if has_chr_prefix:
+            vf3 = vf3.update_chr_prefix('remove')
 
-    return sdk.Archive(metadata, vf2)
+    return sdk.Archive(metadata, vf3)
 
 def filter_samples(archive, samples, exclude=False):
     """

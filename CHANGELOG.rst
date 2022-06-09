@@ -4,6 +4,8 @@ Changelog
 0.17.0 (in development)
 -----------------------
 
+* :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` when there is only one variant in input VCF and Beagle throws an error.
+
 0.16.0 (2022-06-08)
 -------------------
 
