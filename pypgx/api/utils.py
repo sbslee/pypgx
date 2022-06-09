@@ -334,7 +334,7 @@ def compare_genotypes(first, second, verbose=False):
             if df.Concordant.all():
                 print('None')
             else:
-                print(df[~df.Concordant])
+                print(df[~df.Concordant].to_string())
 
     for col in ['Genotype', 'CNV']:
         show_comparison(col)
