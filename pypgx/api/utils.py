@@ -1015,6 +1015,12 @@ def import_variants(
             vf = vf.unphase()
             semantic_type = 'VcfFrame[Imported]'
 
+    # Some variant callers output haploid genotypes for males for the X
+    # chromosome. Because this can interfere with downstream analyses, we
+    # should 'diploidize' the input VCF when the gene is G6PD.
+    if gene == 'G6PD':
+        vf = vf.diploidize()
+
     metadata = {
         'Platform': platform,
         'Gene': gene,

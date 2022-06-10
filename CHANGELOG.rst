@@ -7,6 +7,7 @@ Changelog
 * :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` when there is only one variant in input VCF and Beagle throws an error.
 * Update :command:`compare-genotypes` command to print the entire discordant calls when ``--verbose`` is used.
 * Update :command:`compute-copy-number` command to ensure that the samples in CovFrame[ReadDepth] and SampleTable[Statistics] are in the same order.
+* :issue:`64`: Update :meth:`api.utils.import_variants` method to 'diploidize' the input VCF when the target gene is G6PD. This is because some variant callers output haploid genotypes for males for the X chromosome, interfering with downstream analyses.
 
 0.16.0 (2022-06-08)
 -------------------
