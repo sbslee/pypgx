@@ -238,13 +238,13 @@ visually inspect SV calls. Below are CYP2D6 examples:
    * - Normal
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
-   * - DeletionHet
+   * - WholeDel1
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
-   * - DeletionHom
+   * - WholeDel1Hom
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-6.png
-   * - Duplication
+   * - WholeDup1
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
    * - Tandem3
