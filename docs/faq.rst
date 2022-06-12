@@ -77,3 +77,36 @@ consistent with the other variant-level analyses you may also just use the
 same VCF for PyPGx. The bottom line is, if you are going to create your own
 input VCF, then you need to know what you are doing. Otherwise, it's probably
 safer to use :command:`create-input-vcf`.
+
+``chr22_KI270879v1_alt`` in GRCh38
+==================================
+
+Users may encounter an error like below when working with GRCh38 data:
+
+.. code-block:: text
+
+    $ pypgx prepare-depth-of-coverage \
+    depth-of-coverage.zip \
+    HG00276_PyPGx.sorted.markdup.recal.bam \
+    --assembly GRCh38
+    Traceback (most recent call last):
+      File "/Users/sbslee/opt/anaconda3/envs/fuc/bin/pypgx", line 33, in <module>
+        sys.exit(load_entry_point('pypgx', 'console_scripts', 'pypgx')())
+      File "/Users/sbslee/Desktop/pypgx/pypgx/__main__.py", line 33, in main
+        commands[args.command].main(args)
+      File "/Users/sbslee/Desktop/pypgx/pypgx/cli/prepare_depth_of_coverage.py", line 90, in main
+        archive = utils.prepare_depth_of_coverage(
+      File "/Users/sbslee/Desktop/pypgx/pypgx/api/utils.py", line 1247, in prepare_depth_of_coverage
+        cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)
+      File "/Users/sbslee/Desktop/fuc/fuc/api/pycov.py", line 345, in from_bam
+        results += pysam.depth(*(bams + args + ['-r', region]))
+      File "/Users/sbslee/opt/anaconda3/envs/fuc/lib/python3.9/site-packages/pysam/utils.py", line 69, in __call__
+        raise SamtoolsError(
+    pysam.utils.SamtoolsError: 'samtools returned with error 1: stdout=, stderr=samtools depth: cannot parse region "chr22_KI270879v1_alt:267307-281486"\n'
+
+This is a GRCh38-specific issue. One of the genes with SV is GSTT1 and it is
+located in the contig ``chr22_KI270879v1_alt``, which is missing in input BAM
+file. That's why the :command:`prepare-depth-of-coverage` command is
+complaining. For more details, please see the following articles:
+:ref:`readme:GRCh37 vs. GRCh38` and :ref:`genes:GRCh38 data for GSTT1`.
+Related GitHub issues: :issue:`65`.
