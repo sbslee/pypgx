@@ -87,7 +87,7 @@ Users may encounter an error like below when working with GRCh38 data:
 
     $ pypgx prepare-depth-of-coverage \
     depth-of-coverage.zip \
-    HG00276_PyPGx.sorted.markdup.recal.bam \
+    in.bam \
     --assembly GRCh38
     Traceback (most recent call last):
       File "/Users/sbslee/opt/anaconda3/envs/fuc/bin/pypgx", line 33, in <module>
@@ -107,6 +107,19 @@ Users may encounter an error like below when working with GRCh38 data:
 This is a GRCh38-specific issue. One of the genes with SV is GSTT1 and it is
 located in the contig ``chr22_KI270879v1_alt``, which is missing in input BAM
 file. That's why the :command:`prepare-depth-of-coverage` command is
-complaining. For more details, please see the following articles:
+complaining. To solve this issue, you can either re-align sequence reads in
+the presence of the contig in your FASTA reference genome or work around it
+by excluding GSTT1 from your analysis:
+
+.. code-block:: text
+
+    $ pypgx prepare-depth-of-coverage \
+    depth-of-coverage.zip \
+    in.bam \
+    --assembly GRCh38 \
+    --genes GSTT1 \
+    --exclude
+
+For more details, please see the following articles:
 :ref:`readme:GRCh37 vs. GRCh38` and :ref:`genes:GRCh38 data for GSTT1`.
 Related GitHub issues: :issue:`65`.
