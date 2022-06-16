@@ -947,6 +947,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.16.0
      -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/CYP2A6.md>`__ to see individual SV calls for CYP2A6, and
+corresponding copy number profiles and allele fraction profiles.
+
 Filtered alleles for CYP2A6
 ---------------------------
 
@@ -1085,6 +1090,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - HG03235
      - 0.16.0
      -
+
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/CYP2B6.md>`__ to see individual SV calls for CYP2B6, and
+corresponding copy number profiles and allele fraction profiles.
 
 Phenotype summary for CYP2B6
 ----------------------------
@@ -1441,6 +1451,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.14.0
      -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/CYP2D6.md>`__ to see individual SV calls for CYP2D6, and
+corresponding copy number profiles and allele fraction profiles.
+
 Phenotype summary for CYP2D6
 ----------------------------
 
@@ -1649,6 +1664,11 @@ Below is comprehensive summary of SV described from real NGS studies:
      - 0.16.0
      -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/CYP2E1.md>`__ to see individual SV calls for CYP2E1, and
+corresponding copy number profiles and allele fraction profiles.
+
 Resources for CYP2E1
 --------------------
 
@@ -1820,6 +1840,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.11.0
     -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/CYP4F2.md>`__ to see individual SV calls for CYP4F2, and
+corresponding copy number profiles and allele fraction profiles.
+
 Resources for CYP4F2
 --------------------
 
@@ -1954,6 +1979,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - HG00436
     - 0.12.0
     -
+
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/G6PD.md>`__ to see individual SV calls for G6PD, and
+corresponding copy number profiles and allele fraction profiles.
 
 GSTM1
 =====
@@ -2101,6 +2131,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA20506
     - 0.14.0
     -
+
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/GSTM1.md>`__ to see individual SV calls for GSTM1, and
+corresponding copy number profiles and allele fraction profiles.
 
 GSTT1
 =====
@@ -2364,6 +2399,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.14.0
     -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/SLC22A2.md>`__ to see individual SV calls for SLC22A2, and
+corresponding copy number profiles and allele fraction profiles.
+
 SLCO1B1
 =======
 
@@ -2554,6 +2594,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.16.0
     -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/SULT1A1.md>`__ to see individual SV calls for SULT1A1, and
+corresponding copy number profiles and allele fraction profiles.
+
 TBXAS1
 ======
 
@@ -2702,6 +2747,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.13.0
     -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/UGT1A4.md>`__ to see individual SV calls for UGT1A4, and
+corresponding copy number profiles and allele fraction profiles.
+
 UGT2B15
 =======
 
@@ -2834,6 +2884,11 @@ Below is comprehensive summary of SV described from real NGS studies:
     - 0.16.0
     -
 
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/UGT2B15.md>`__ to see individual SV calls for UGT2B15, and
+corresponding copy number profiles and allele fraction profiles.
+
 UGT2B17
 =======
 
@@ -2956,3 +3011,8 @@ Below is comprehensive summary of SV described from real NGS studies:
     - NA21090
     - 0.15.0
     -
+
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
+sv-tables/UGT2B17.md>`__ to see individual SV calls for UGT2B17, and
+corresponding copy number profiles and allele fraction profiles.
