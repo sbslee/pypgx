@@ -481,7 +481,7 @@ def get_priority(gene, phenotype):
 
     return df[i].Priority.values[0]
 
-def get_ref_allele(gene, assembly='GRCh37'):
+def get_ref_allele(gene):
     """
     Get the reference allele for target gene.
 
