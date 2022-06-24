@@ -1372,7 +1372,7 @@ def sort_alleles(
         impacts = [get_variant_impact(x) for x in core_variants]
         impacts = [x for x in impacts if x]
         c = len(impacts) * -1
-        d = allele == get_ref_allele(gene, assembly=assembly)
+        d = allele == get_ref_allele(gene)
         return (a, b, c, d)
 
     def func2(allele):

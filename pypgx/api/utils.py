@@ -1053,7 +1053,7 @@ def predict_alleles(consolidated_variants):
     assembly = consolidated_variants.metadata['Assembly']
 
     definition_table = core.build_definition_table(gene, assembly)
-    ref_allele = core.get_ref_allele(gene, assembly)
+    ref_allele = core.get_ref_allele(gene)
     default_allele = core.get_default_allele(gene, assembly)
     defining_variants = core.list_variants(gene, assembly=assembly)
     variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
