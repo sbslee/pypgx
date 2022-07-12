@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.17.0 (in development)
------------------------
+0.17.0 (2022-07-12)
+-------------------
 
 * :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` when there is only one variant in input VCF and Beagle throws an error.
 * Update :command:`compare-genotypes` command to print the entire discordant calls when ``--verbose`` is used.
