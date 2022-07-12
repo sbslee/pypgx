@@ -204,6 +204,15 @@ you can access a development branch with the ``git checkout`` command. When
 you do this, please make sure your environment already has all the
 dependencies installed.
 
+.. note::
+    `Beagle <https://faculty.washington.edu/browning/beagle/beagle.html>`__
+    is one of the default software tools used by PyPGx for haplotype phasing
+    SNVs and indels. The program is freely available and published under the
+    `GNU General Public License <https://faculty.washington.edu/browning/
+    beagle/gpl_license>`__. Users do not need to download Beagle separately
+    because a copy of the software (``beagle.28Jun21.220.jar``) is already
+    included in PyPGx.
+
 .. warning::
     You're not done yet! Keep scrolling down to obtain the resource bundle
     for PyPGx, which is essential for running the package.
@@ -265,13 +274,13 @@ visually inspect SV calls. Below are CYP2D6 examples:
    * - Normal
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-1.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-8.png
-   * - DeletionHet
+   * - WholeDel1
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-2.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-1.png
-   * - DeletionHom
+   * - WholeDel1Hom
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-3.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-6.png
-   * - Duplication
+   * - WholeDup1
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-4.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-2.png
    * - Tandem3
@@ -280,6 +289,11 @@ visually inspect SV calls. Below are CYP2D6 examples:
    * - Tandem2C
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-CYP2D6-10.png
      - .. image:: https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-CYP2D6-7.png
+
+PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
+(N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/tree/main/
+sv-tables>`__ to see individual SV calls, and corresponding copy number
+profiles and allele fraction profiles.
 
 GRCh37 vs. GRCh38
 =================

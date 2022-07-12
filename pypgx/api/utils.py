@@ -334,7 +334,7 @@ def compare_genotypes(first, second, verbose=False):
             if df.Concordant.all():
                 print('None')
             else:
-                print(df[~df.Concordant])
+                print(df[~df.Concordant].to_string())
 
     for col in ['Genotype', 'CNV']:
         show_comparison(col)
@@ -446,6 +446,9 @@ def compute_copy_number(
 
     if set(read_depth.data.samples) != set(control_statistics.data.index):
         raise ValueError('Different sample sets found')
+
+    # Make sure samples are in the same order.
+    control_statistics.data = control_statistics.data.loc[read_depth.data.samples]
 
     # Apply intra-sample normalization.
     df = read_depth.data.copy_df()
@@ -830,23 +833,37 @@ def estimate_phase_beagle(
     if vf1.empty:
         return sdk.Archive(metadata, vf1)
 
-    with tempfile.TemporaryDirectory() as t:
-        vf1.to_file(f'{t}/input.vcf')
-        command = [
-            'java', '-Xmx2g', '-jar', beagle,
-            f'gt={t}/input.vcf',
-            f'chrom={region}',
-            f'ref={panel}',
-            f'out={t}/output',
-            f'impute={str(impute).lower()}'
-        ]
-        subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
-        vf2 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+    # Beagle will throw an error if there is only one marker overlapping with
+    # the reference panel in a given window. This typically occurs when the
+    # input VCF has very few markers or only one marker. Therefore, these
+    # cases need to be handled manually.
+    vf2 = pyvcf.VcfFrame.from_file(panel)
+    variants1 = vf1.to_variants()
+    variants2 = vf2.to_variants()
+    common_variants = list(set(variants1).intersection(variants2))
 
-    if has_chr_prefix:
-        vf2 = vf2.update_chr_prefix('remove')
+    if len(common_variants) == 1:
+        (chrom, pos, ref, alt) = common.parse_variant(common_variants[0])
+        df = vf1.df[vf1.df.POS == pos]
+        vf3 = pyvcf.VcfFrame([], df)
+        vf3 = vf3.pseudophase().strip()
+    else:
+        with tempfile.TemporaryDirectory() as t:
+            vf1.to_file(f'{t}/input.vcf')
+            command = [
+                'java', '-Xmx2g', '-jar', beagle,
+                f'gt={t}/input.vcf',
+                f'chrom={region}',
+                f'ref={panel}',
+                f'out={t}/output',
+                f'impute={str(impute).lower()}'
+            ]
+            subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
+            vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+        if has_chr_prefix:
+            vf3 = vf3.update_chr_prefix('remove')
 
-    return sdk.Archive(metadata, vf2)
+    return sdk.Archive(metadata, vf3)
 
 def filter_samples(archive, samples, exclude=False):
     """
@@ -998,6 +1015,12 @@ def import_variants(
             vf = vf.unphase()
             semantic_type = 'VcfFrame[Imported]'
 
+    # Some variant callers output haploid genotypes for males for the X
+    # chromosome. Because this can interfere with downstream analyses, we
+    # should 'diploidize' the input VCF when the gene is G6PD.
+    if gene == 'G6PD':
+        vf = vf.diploidize()
+
     metadata = {
         'Platform': platform,
         'Gene': gene,
@@ -1030,7 +1053,7 @@ def predict_alleles(consolidated_variants):
     assembly = consolidated_variants.metadata['Assembly']
 
     definition_table = core.build_definition_table(gene, assembly)
-    ref_allele = core.get_ref_allele(gene, assembly)
+    ref_allele = core.get_ref_allele(gene)
     default_allele = core.get_default_allele(gene, assembly)
     defining_variants = core.list_variants(gene, assembly=assembly)
     variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)

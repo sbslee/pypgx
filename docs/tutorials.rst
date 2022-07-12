@@ -239,9 +239,9 @@ Let's take a look at the results:
     NA10851_PyPGx	*1/*4	Intermediate Metabolizer	*1;	*4;*10;*74;*2;	;	*4:22-42524947-C-T:0.467;*10:22-42523943-A-G,22-42526694-G-A:0.95,0.421;*74:22-42525821-G-T:0.447;*1:22-42522613-G-C,22-42523943-A-G:0.486,0.95;*2:default;	Normal
     NA18484_PyPGx	*1/*17	Normal Metabolizer	*1;	*17;*2;	;	*17:22-42525772-G-A:0.6;*1:22-42522613-G-C,22-42523943-A-G:0.625,0.391;*2:default;	Normal
     NA12006_PyPGx	*4/*41	Intermediate Metabolizer	*41;*2;	*4;*10;*2;	*69;	*69:22-42526694-G-A,22-42523805-C-T:0.473,0.528;*4:22-42524947-C-T:0.448;*10:22-42523943-A-G,22-42526694-G-A:0.545,0.473;*41:22-42523805-C-T:0.528;*2:default;	Normal
-    HG00436_PyPGx	*2x2/*71	Indeterminate	*71;*1;	*2;	;	*71:22-42526669-C-T:0.433;*1:22-42522613-G-C,22-42523943-A-G:0.462,0.353;*2:default;	Duplication
+    HG00436_PyPGx	*2x2/*71	Indeterminate	*71;*1;	*2;	;	*71:22-42526669-C-T:0.433;*1:22-42522613-G-C,22-42523943-A-G:0.462,0.353;*2:default;	WholeDup1
     NA19213_PyPGx	*1/*1	Normal Metabolizer	*1;	*1;	;	*1:22-42522613-G-C,22-42523943-A-G:1.0,1.0;	Normal
-    NA19207_PyPGx	*2x2/*10	Normal Metabolizer	*10;*2;	*2;	;	*10:22-42523943-A-G,22-42526694-G-A:0.366,0.25;*2:default;	Duplication
+    NA19207_PyPGx	*2x2/*10	Normal Metabolizer	*10;*2;	*2;	;	*10:22-42523943-A-G,22-42526694-G-A:0.366,0.25;*2:default;	WholeDup1
     NA07029_PyPGx	*1/*35	Normal Metabolizer	*35;*2;	*1;	;	*1:22-42522613-G-C,22-42523943-A-G:0.596,0.476;*35:22-42526763-C-T:0.405;*2:default;	Normal
 
 You can read :ref:`readme:Results interpretation` for details on how to
@@ -250,7 +250,7 @@ interpret the PyPGx results.
 Next, we can manually inspect SV calls by visualizing copy number and allele
 fraction for the CYP2D6 locus (read :ref:`readme:Structural variation
 detection` for details). For example, above results indicate that the samples
-``HG00589_PyPGx`` and ``HG00436_PyPGx`` have ``Normal`` and ``Duplication``
+``HG00589_PyPGx`` and ``HG00436_PyPGx`` have ``Normal`` and ``WholeDup1``
 as CNV calls, respectively:
 
 .. list-table::

@@ -1,6 +1,15 @@
 Changelog
 *********
 
+0.17.0 (2022-07-12)
+-------------------
+
+* :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` when there is only one variant in input VCF and Beagle throws an error.
+* Update :command:`compare-genotypes` command to print the entire discordant calls when ``--verbose`` is used.
+* Update :command:`compute-copy-number` command to ensure that the samples in CovFrame[ReadDepth] and SampleTable[Statistics] are in the same order.
+* :issue:`64`: Update :meth:`api.utils.import_variants` method to 'diploidize' the input VCF when the target gene is G6PD. This is because some variant callers output haploid genotypes for males for the X chromosome, interfering with downstream analyses.
+* Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
+
 0.16.0 (2022-06-08)
 -------------------
 
@@ -71,7 +80,6 @@ Changelog
 * Deprecate :meth:`sdk.utils.parse_input_bams` method.
 * Update :meth:`api.utils.predict_alleles` method to match ``0.31.0`` version of ``fuc`` package.
 * Fix bug in :command:`filter-samples` command when ``--exclude`` argument is used for archive files with SampleTable type.
-* Remove unnecessary optional argument ``assembly`` from :meth:`api.core.get_ref_allele`.
 * Improve CNV caller for CYP2A6, CYP2B6, CYP2D6, CYP2E1, CYP4F2, GSTM1, SLC22A2, SULT1A1, UGT1A4, UGT2B15, and UGT2B17.
 * Add a new CNV call for CYP2D6: ``PseudogeneDeletion``.
 * In CYP2E1 CNV nomenclature, ``PartialDuplication`` has been renamed to ``PartialDuplicationHet`` and a new CNV call ``PartialDuplicationHom`` has been added. Furthermore, calling algorithm for CYP2E1\*S1 allele has been updated. When partial duplication is present, from now on the algorithm requires only \*7 to call \*S1 instead of both \*7 and \*4.
