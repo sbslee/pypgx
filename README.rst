@@ -541,7 +541,7 @@ Implemented as ``pypgx run-ngs-pipeline`` in CLI and
 ``pypgx.pipeline.run_ngs_pipeline`` in API, this pipeline is designed for
 processing short-read data (e.g. Illumina). Users must specify whether the
 input data is from whole genome sequencing (WGS) or targeted sequencing
-(custome targeted panel sequencing or whole exome sequencing).
+(custom targeted panel sequencing or whole exome sequencing).
 
 This pipeline supports SV detection based on copy number analysis for genes
 that are known to have SV. Therefore, if the target gene is associated with
