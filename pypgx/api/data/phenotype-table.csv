@@ -53,9 +53,8 @@ RYR1,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
 SLCO1B1,Normal Function,Normal/Routine/Low Risk
 SLCO1B1,Decreased Function,Abnormal/Priority/High Risk
 SLCO1B1,Poor Function,Abnormal/Priority/High Risk
-SLCO1B1,Possible Poor Function,Abnormal/Priority/High Risk
 SLCO1B1,Possible Decreased Function,Abnormal/Priority/High Risk
-SLCO1B1,Possible Increased Function,None
+SLCO1B1,Increased Function,None
 SLCO1B1,Indeterminate,None
 TPMT,Intermediate Metabolizer,Abnormal/Priority/High Risk
 TPMT,Normal Metabolizer,Normal/Routine/Low Risk

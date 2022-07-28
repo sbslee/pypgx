@@ -2477,20 +2477,18 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - Possible Increased Function
-     - \*1A/\*35
+   * - Increased Function
+     - \*14/\*14
    * - Normal Function
-     - \*1A/\*1A
+     - \*1/\*1
    * - Possible Decreased Function
-     - \*1A/\*2
+     - \*2/\*15
    * - Decreased Function
-     - \*1A/\*5
-   * - Possible Poor Function
-     - \*2/\*2
+     - \*1/\*5
    * - Poor Function
      - \*5/\*5
    * - Indeterminate
-     - \*1A/\*7
+     - \*2/\*38
 
 Resources for SLCO1B1
 ---------------------
