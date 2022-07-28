@@ -38,7 +38,6 @@ CYP3A5,Indeterminate,None
 DPYD,Normal Metabolizer,Normal/Routine/Low Risk
 DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
-DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 F5,Favorable Response,None
 F5,Unfavorable Response,None
 IFNL3,Favorable Response,None
