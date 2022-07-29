@@ -153,6 +153,34 @@ Your contributions (e.g. feature ideas, pull requests) are most welcome.
 | Email: sbstevenlee@gmail.com
 | License: MIT License
 
+Citation
+========
+
+If you use PyPGx in a published analysis, please report the program version
+and cite the following article:
+
+- Lee et al., 2022. `ClinPharmSeq: A targeted sequencing panel for clinical pharmacogenetics implementation <https://doi.org/10.1371/journal.pone.0272129>`__. PLOS ONE.
+
+In this article, PyPGx was used to call star alleles for genomic DNA
+reference materials from the Centers for Disease Control and Prevention–based
+`Genetic Testing Reference Materials Coordination Program (GeT-RM)
+<https://pypgx.readthedocs.io/en/latest/glossary.html#
+genetic-testing-reference-materials-coordination-program-get-rm>`__, where it
+showed almost 100% concordance with genotype results from previous works.
+
+The development of PyPGx was heavily inspired by `Stargazer <https://
+stargazer.gs.washington.edu/stargazerweb/>`__, another star-allele calling
+tool developed by Steven when he was in his PhD program at the University of
+Washington. Therefore, please also cite the following articles:
+
+- Lee et al., 2019. `Calling star alleles with Stargazer in 28 pharmacogenes with whole genome sequences <https://doi.org/10.1002/cpt.1552>`__. Clinical Pharmacology & Therapeutics.
+- Lee et al., 2018. `Stargazer: a software tool for calling star alleles from next-generation sequencing data using CYP2D6 as a model <https://doi.org/10.1038/s41436-018-0054-0>`__. Genetics in Medicine.
+
+Below is an incomplete list of publications which have used PyPGx:
+
+- Wroblewski et al., 2022. `Pharmacogenetic variation in Neanderthals and Denisovans and implications for human health and response to medications <https://doi.org/10.1101/2021.11.27.470071>`__. bioRxiv.
+- Botton et al., 2020. `Phased Haplotype Resolution of the SLC6A4 Promoter Using Long-Read Single Molecule Real-Time (SMRT) Sequencing <https://doi.org/10.3390/genes11111333>`__. Genes.
+
 Installation
 ============
 
