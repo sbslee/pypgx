@@ -2296,6 +2296,7 @@ Resources for IFNL3
 -------------------
 
 - `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
+- `CPIC® Guideline for PEG Interferon-Alpha-Based Regimens and IFNL3 <https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/>`__
 
 NUDT15
 ======
