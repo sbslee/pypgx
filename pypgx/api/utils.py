@@ -842,7 +842,11 @@ def estimate_phase_beagle(
     variants2 = vf2.to_variants()
     common_variants = list(set(variants1).intersection(variants2))
 
-    if len(common_variants) == 1:
+    if len(common_variants) == 0:
+        warnings.warn("0 overlapping variants, skip statistical phasing")
+        vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
+    elif len(common_variants) == 1:
+        warnings.warn("Only 1 overlapping variant, skip statistical phasing")
         (chrom, pos, ref, alt) = common.parse_variant(common_variants[0])
         df = vf1.df[vf1.df.POS == pos]
         vf3 = pyvcf.VcfFrame([], df)

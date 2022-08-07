@@ -7,11 +7,13 @@ Changelog
 * Update phenotype data and star allele nomenclature for SLCO1B1 in accordance with the latest PharmVar version (v5.2.1). Note that SLCO1B1 was first formally added to PharmVar v5.1 on October 14, 2021. For more details, please refer to the publication "`PharmVar GeneFocus: SLCO1B1 <https://doi.org/10.1002/cpt.2705>`__" by Ramsey et al., 2022 (Steven is a co-author of this paper by the way) and the change log in `the PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__. The PharmVar-developed SLCO1B1 nomenclature has been incorporated by CPIC 2022 guideline on statin-associated musculoskeletal symptoms.
 * Remove duplicate DYPD entry from ``phenotype-table.csv`` file (i.e. Poor Metabolizer).
 * Fix major bug in :command:`run-chip-pipeline` command where ``--impute`` argument was essentially ignored.
+* :issue:`68`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method when there are no overlapping variants between input VCF and reference panel.
+* Update :meth:`api.utils.estimate_phase_beagle` method to warn when statistical phasing is skipped.
 
 0.17.0 (2022-07-12)
 -------------------
 
-* :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` when there is only one variant in input VCF and Beagle throws an error.
+* :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method when there is only one variant in input VCF and Beagle throws an error.
 * Update :command:`compare-genotypes` command to print the entire discordant calls when ``--verbose`` is used.
 * Update :command:`compute-copy-number` command to ensure that the samples in CovFrame[ReadDepth] and SampleTable[Statistics] are in the same order.
 * :issue:`64`: Update :meth:`api.utils.import_variants` method to 'diploidize' the input VCF when the target gene is G6PD. This is because some variant callers output haploid genotypes for males for the X chromosome, interfering with downstream analyses.
