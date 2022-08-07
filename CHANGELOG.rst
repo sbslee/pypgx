@@ -4,7 +4,7 @@ Changelog
 0.18.0 (in development)
 -----------------------
 
-* PyPGx now has a citation! Please refer to the publication "`ClinPharmSeq: A targeted sequencing panel for clinical pharmacogenetics implementation <https://doi.org/10.1371/journal.pone.0272129>`__" by Lee et al., 2022. Fore more details, see the Citation section in README.
+* PyPGx now has a citation! Please refer to the publication "`ClinPharmSeq: A targeted sequencing panel for clinical pharmacogenetics implementation <https://doi.org/10.1371/journal.pone.0272129>`__" by Lee et al., 2022 (Steven is the first author). Fore more details, see the Citation section in README.
 * Update phenotype data and star allele nomenclature for SLCO1B1 in accordance with the latest PharmVar version (v5.2.1). Note that SLCO1B1 was first formally added to PharmVar v5.1 on October 14, 2021. For more details, please refer to the publication "`PharmVar GeneFocus: SLCO1B1 <https://doi.org/10.1002/cpt.2705>`__" by Ramsey et al., 2022 (Steven is a co-author of this paper by the way) and the change log in `the PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__. The PharmVar-developed SLCO1B1 nomenclature has been incorporated by CPIC 2022 guideline on statin-associated musculoskeletal symptoms.
 * Remove duplicate DYPD entry from ``phenotype-table.csv`` file (i.e. Poor Metabolizer).
 * Fix major bug in :command:`run-chip-pipeline` command where ``--impute`` argument is essentially ignored.
