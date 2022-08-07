@@ -62,7 +62,7 @@ def run_chip_pipeline(
         consolidated_variants = imported_variants
     else:
         phased_variants = utils.estimate_phase_beagle(
-            imported_variants, panel=panel)
+            imported_variants, panel=panel, impute=impute)
         phased_variants.to_file(f'{output}/phased-variants.zip')
         consolidated_variants = utils.create_consolidated_vcf(
             imported_variants, phased_variants)
