@@ -1007,6 +1007,17 @@ def import_variants(
     else:
         vf = vcf.slice(region)
 
+    # The input VCF could contain duplicate variant records. In this case,
+    # warn the user about it and only keep the first record.
+    cols = ['CHROM', 'POS', 'REF', 'ALT']
+    if vf.duplicated(cols).any():
+        i = vf.duplicated(cols, keep=False)
+        s = vf.df[i].to_string(index=False)
+        warnings.warn("Input VCF contains duplicate variants sharing the "
+                      f"same {cols} values. Will drop duplicates except for "
+                      "the first occurrence:\n" + s)
+        vf = vf.drop_duplicates(cols)
+
     vf = vf.update_chr_prefix(mode='remove')
     vf = vf.strip('GT:AD:DP')
     vf = vf.add_af()
