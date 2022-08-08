@@ -211,7 +211,7 @@ dependencies installed.
     SNVs and indels. The program is freely available and published under the
     `GNU General Public License <https://faculty.washington.edu/browning/
     beagle/gpl_license>`__. Users do not need to download Beagle separately
-    because a copy of the software (``beagle.28Jun21.220.jar``) is already
+    because a copy of the software (``beagle.22Jul22.46e.jar``) is already
     included in PyPGx.
 
 .. warning::

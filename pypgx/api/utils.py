@@ -812,7 +812,7 @@ def estimate_phase_beagle(
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']
     region = core.get_region(gene, assembly=assembly)
-    beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
+    beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.22Jul22.46e.jar'
 
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
@@ -832,6 +832,12 @@ def estimate_phase_beagle(
 
     if vf1.empty:
         return sdk.Archive(metadata, vf1)
+
+    # When the input VCF is chip data, make sure it doesn't contain
+    # chip-specific alleles such as 'I', 'D', 'N'. Otherwise, Beagle will
+    # throw an error.
+    if metadata['Platform'] == 'Chip':
+        vf1 = vf1.filter_gsa()
 
     # Beagle will throw an error if there is only one marker overlapping with
     # the reference panel in a given window. This typically occurs when the
