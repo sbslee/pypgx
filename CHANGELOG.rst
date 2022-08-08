@@ -9,10 +9,10 @@ Changelog
 * Remove duplicate DYPD entry from ``phenotype-table.csv`` file (i.e. Poor Metabolizer).
 * Fix major bug in :command:`run-chip-pipeline` command where ``--impute`` argument is essentially ignored.
 * :issue:`68`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method when there are no overlapping variants between input VCF and reference panel.
-* Update :meth:`api.utils.estimate_phase_beagle` method to warn when statistical phasing is skipped.
-* Upgrade Beagle version from v5.2 (beagle.28Jun21.220.jar) to v5.4 (beagle.22Jul22.46e.jar) due to a bug in v5.2.
-* Update :meth:`api.utils.estimate_phase_beagle` method to filter out variants with improper allele ('I', 'D', 'N', '.'). Note that this issue is specific to chip data.
-* Update :meth:`api.utils.import_variants` method to handle input VCF with duplicate variants. Basically, it will warn the user about it and and only keep the first record. This issue seems to occur frequently with chip data.
+* :issue:`68`: Update :meth:`api.utils.estimate_phase_beagle` method to warn when statistical phasing is skipped.
+* :issue:`68`: Upgrade Beagle version from v5.2 (beagle.28Jun21.220.jar) to v5.4 (beagle.22Jul22.46e.jar) due to a bug in v5.2.
+* :issue:`68`: Update :meth:`api.utils.estimate_phase_beagle` method to filter out variants with improper allele ('I', 'D', 'N', '.'). Note that this issue is specific to chip data.
+* :issue:`68`: Update :meth:`api.utils.import_variants` method to handle input VCF with duplicate variants. Basically, it will warn the user about it and and only keep the first record. This issue seems to occur frequently with chip data.
 
 0.17.0 (2022-07-12)
 -------------------
