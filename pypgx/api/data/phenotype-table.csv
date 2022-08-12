@@ -38,7 +38,6 @@ CYP3A5,Indeterminate,None
 DPYD,Normal Metabolizer,Normal/Routine/Low Risk
 DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
-DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 F5,Favorable Response,None
 F5,Unfavorable Response,None
 IFNL3,Favorable Response,None
@@ -54,9 +53,8 @@ RYR1,Malignant Hyperthermia Susceptibility,Abnormal/Priority/High Risk
 SLCO1B1,Normal Function,Normal/Routine/Low Risk
 SLCO1B1,Decreased Function,Abnormal/Priority/High Risk
 SLCO1B1,Poor Function,Abnormal/Priority/High Risk
-SLCO1B1,Possible Poor Function,Abnormal/Priority/High Risk
 SLCO1B1,Possible Decreased Function,Abnormal/Priority/High Risk
-SLCO1B1,Possible Increased Function,None
+SLCO1B1,Increased Function,None
 SLCO1B1,Indeterminate,None
 TPMT,Intermediate Metabolizer,Abnormal/Priority/High Risk
 TPMT,Normal Metabolizer,Normal/Routine/Low Risk

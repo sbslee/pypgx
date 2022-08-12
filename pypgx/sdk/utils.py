@@ -267,7 +267,7 @@ def parse_pharmvar(fn):
         df2['Name'] = df2.apply(func, axis=1)
         df2['Alleles'] = df2.apply(lambda r: ','.join(variants[assembly][r.Name]), axis=1)
         df2['rsID'] = df2.apply(lambda r: rs_dict[r.Name], axis=1)
-        df2.to_csv(f'{gene}-{assembly}.csv')
+        df2.to_csv(f'{gene}-{assembly}.csv', index=False)
 
 def simulate_copy_number(
     target, source, sample, sv, n=3, mu=0, sigma=0.05

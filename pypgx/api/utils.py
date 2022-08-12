@@ -812,7 +812,7 @@ def estimate_phase_beagle(
     gene = imported_variants.metadata['Gene']
     assembly = imported_variants.metadata['Assembly']
     region = core.get_region(gene, assembly=assembly)
-    beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.28Jun21.220.jar'
+    beagle = f'{core.PROGRAM_PATH}/pypgx/api/beagle.22Jul22.46e.jar'
 
     metadata = imported_variants.copy_metadata()
     metadata['SemanticType'] = 'VcfFrame[Phased]'
@@ -833,6 +833,12 @@ def estimate_phase_beagle(
     if vf1.empty:
         return sdk.Archive(metadata, vf1)
 
+    # When the input VCF is chip data, make sure it doesn't contain
+    # chip-specific alleles such as 'I', 'D', 'N'. Otherwise, Beagle will
+    # throw an error.
+    if metadata['Platform'] == 'Chip':
+        vf1 = vf1.filter_gsa()
+
     # Beagle will throw an error if there is only one marker overlapping with
     # the reference panel in a given window. This typically occurs when the
     # input VCF has very few markers or only one marker. Therefore, these
@@ -842,7 +848,11 @@ def estimate_phase_beagle(
     variants2 = vf2.to_variants()
     common_variants = list(set(variants1).intersection(variants2))
 
-    if len(common_variants) == 1:
+    if len(common_variants) == 0:
+        warnings.warn("0 overlapping variants, skip statistical phasing")
+        vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
+    elif len(common_variants) == 1:
+        warnings.warn("Only 1 overlapping variant, skip statistical phasing")
         (chrom, pos, ref, alt) = common.parse_variant(common_variants[0])
         df = vf1.df[vf1.df.POS == pos]
         vf3 = pyvcf.VcfFrame([], df)
@@ -996,6 +1006,17 @@ def import_variants(
         vf = pyvcf.VcfFrame.from_file(vcf, regions=region)
     else:
         vf = vcf.slice(region)
+
+    # The input VCF could contain duplicate variant records. In this case,
+    # warn the user about it and only keep the first record.
+    cols = ['CHROM', 'POS', 'REF', 'ALT']
+    if vf.duplicated(cols).any():
+        i = vf.duplicated(cols, keep=False)
+        s = vf.df[i].to_string(index=False)
+        warnings.warn("Input VCF contains duplicate variants sharing the "
+                      f"same {cols} values. Will drop duplicates except for "
+                      "the first occurrence:\n" + s)
+        vf = vf.drop_duplicates(cols)
 
     vf = vf.update_chr_prefix(mode='remove')
     vf = vf.strip('GT:AD:DP')

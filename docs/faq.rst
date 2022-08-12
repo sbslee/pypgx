@@ -123,3 +123,23 @@ by excluding GSTT1 from your analysis:
 For more details, please see the following articles:
 :ref:`readme:GRCh37 vs. GRCh38` and :ref:`genes:GRCh38 data for GSTT1`.
 Related GitHub issues: :issue:`65`.
+
+Phase-by-extension algorithm
+============================
+
+This algorithm is used for haplotype phasing rare variants that are not
+present in the reference haplotype panel (i.e. cannot be phased
+statistically). The algorithm does not replace statistical phasing; it’s only
+supplementary. The algorithm utilizes haplotype information obtained by
+statistical phasing and a scoring system to determine which of the two
+haplotypes is more likely to carry the rare variant of interest, based on
+the total number of 'tag' SNPs related to that particular variant and also
+matching the observed haplotype, hence the algorithm’s name 'phasing by
+haplotype extension.' Take CYP2D6*21 as an example, which is defined by
+2580_2581insC (core), 2851C>T (tag), and 4181G>C (tag). Both 2851C>T and
+4181G>C are present in the 1KGP panel and thus statistically phasable, while
+2580_2581insC is not. In order to call a sample with 2580_2581insC as having
+CYP2D6*21, PyPGx will first check which of the two haplotypes contains
+2851C>T and 4181G>C and then assign 2580_2581insC to that haplotype. Note
+that the phase-by-extension algorithm can handle multiallelic sites in
+addition to biallelic sites.

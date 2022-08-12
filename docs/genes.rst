@@ -644,6 +644,7 @@ Resources for ABCG2
 -------------------
 
 - `CPIC® guideline for statins and SLCO1B1, ABCG2, and CYP2C9 <https://cpicpgx.org/guidelines/cpic-guideline-for-statins/>`__
+- `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
 
 CACNA1S
 =======
@@ -668,6 +669,7 @@ Resources for CACNA1S
 
 - `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
+- `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
 CFTR
 ====
@@ -694,6 +696,7 @@ Resources for CFTR
 
 - `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
 - `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
+- `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guidelines for Ivacaftor Therapy in the Context of CFTR Genotype <https://doi.org/10.1038/clpt.2014.54>`__
 
 CYP1A1
 ======
@@ -1222,6 +1225,7 @@ Resources for CYP2C9
 
 - `PharmVar CYP2C9 page <https://www.pharmvar.org/gene/CYP2C9>`__
 - `CPIC® Guideline for NSAIDs based on CYP2C9 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/>`__
+- `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
 
 CYP2C19
 =======
@@ -2292,6 +2296,7 @@ Resources for IFNL3
 -------------------
 
 - `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
+- `CPIC® Guideline for PEG Interferon-Alpha-Based Regimens and IFNL3 <https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/>`__
 
 NUDT15
 ======
@@ -2362,6 +2367,7 @@ Resources for RYR1
 
 - `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
+- `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
 SLC22A2
 =======
@@ -2477,26 +2483,25 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
-   * - Possible Increased Function
-     - \*1A/\*35
+   * - Increased Function
+     - \*14/\*14
    * - Normal Function
-     - \*1A/\*1A
+     - \*1/\*1
    * - Possible Decreased Function
-     - \*1A/\*2
+     - \*2/\*15
    * - Decreased Function
-     - \*1A/\*5
-   * - Possible Poor Function
-     - \*2/\*2
+     - \*1/\*5
    * - Poor Function
      - \*5/\*5
    * - Indeterminate
-     - \*1A/\*7
+     - \*2/\*38
 
 Resources for SLCO1B1
 ---------------------
 
 - `PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
+- `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
 
 SULT1A1
 =======
