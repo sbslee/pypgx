@@ -224,9 +224,9 @@ def has_score(gene):
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
 
-def has_sv(gene, allele):
+def has_sv(gene, allele=None):
     """
-    Return True if specified allele has SV.
+    Return True if specified gene or allele has SV.
 
     .. warning::
         The method will output ``False`` regardless of the specified allele
@@ -236,7 +236,7 @@ def has_sv(gene, allele):
     ----------
     gene : str
         Target gene.
-    allele : str
+    allele : str, optional
         Allele to be tested.
 
     Returns
@@ -248,7 +248,11 @@ def has_sv(gene, allele):
     --------
 
     >>> import pypgx
-    >>> pypgx.has_sv('CYP2D6', '*1')      # PyPGx has SV data for CYP2D6
+    >>> pypgx.has_sv('CYP2D6')            # PyPGx has SV data for CYP2D6
+    True
+    >>> pypgx.has_sv('CYP3A5')            # PyPGx does not have SV data for CYP3A5
+    False
+    >>> pypgx.has_sv('CYP2D6', '*1')      # No SV
     False
     >>> pypgx.has_sv('CYP2D6', '*5')      # Gene deletion
     True
@@ -256,8 +260,8 @@ def has_sv(gene, allele):
     True
     >>> pypgx.has_sv('CYP2D6', '*36+*10') # Tandem arrangement
     True
-    >>> pypgx.has_sv('CYP3A5', '*1')      # PyPGx does not have SV data for CYP3A5
-    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:282: UserWarning: PyPGx currently has no SV data available for CYP3A5. For more details, please visit the Genes section (https://pypgx.readthedocs.io/en/latest/genes.html) in the Read the Docs.
+    >>> pypgx.has_sv('CYP3A5', '*1x2+*2') # Imaginary SV
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:289: UserWarning: PyPGx currently has no SV data available for CYP3A5. For more details, please visit the Genes section (https://pypgx.readthedocs.io/en/latest/genes.html) in the Read the Docs.
       warnings.warn(f"PyPGx currently has no SV data available for {gene}. "
     False
     """
@@ -266,6 +270,9 @@ def has_sv(gene, allele):
 
     df = load_gene_table()
     is_sv_gene = df[df.Gene == gene].SV.values[0]
+
+    if allele is None:
+        return is_sv_gene
 
     if is_sv_gene:
         if '+' in allele:
