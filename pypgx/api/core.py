@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 from fuc import pyvcf, common
 
+LINK_GENES = 'https://pypgx.readthedocs.io/en/latest/genes.html'
 PROGRAM_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 FUNCTION_ORDER = [
@@ -222,6 +223,66 @@ def has_score(gene):
     df = load_gene_table()
 
     return gene in df[df.PhenotypeMethod == 'Score'].Gene.unique()
+
+def has_sv(gene, allele):
+    """
+    Return True if specified allele has SV.
+
+    .. warning::
+        The method will output ``False`` regardless of the specified allele
+        if the target gene is not in the list of genes with SV.
+
+    Parameters
+    ----------
+    gene : str
+        Target gene.
+    allele : str
+        Allele to be tested.
+
+    Returns
+    -------
+    bool
+        True if the allele has SV.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> pypgx.has_sv('CYP2D6', '*1')      # PyPGx has SV data for CYP2D6
+    False
+    >>> pypgx.has_sv('CYP2D6', '*5')      # Gene deletion
+    True
+    >>> pypgx.has_sv('CYP2D6', '*2x2')    # Gene duplication
+    True
+    >>> pypgx.has_sv('CYP2D6', '*36+*10') # Tandem arrangement
+    True
+    >>> pypgx.has_sv('CYP3A5', '*1')      # PyPGx does not have SV data for CYP3A5
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:282: UserWarning: PyPGx currently has no SV data available for CYP3A5. For more details, please visit the Genes section (https://pypgx.readthedocs.io/en/latest/genes.html) in the Read the Docs.
+      warnings.warn(f"PyPGx currently has no SV data available for {gene}. "
+    False
+    """
+    if not is_target_gene(gene):
+        raise sdk.utils.NotTargetGeneError(gene)
+
+    df = load_gene_table()
+    is_sv_gene = df[df.Gene == gene].SV.values[0]
+
+    if is_sv_gene:
+        if '+' in allele:
+            return True
+        elif 'x' in allele:
+            return True
+        else:
+            df = load_allele_table()
+            df = df[(df.Gene == gene) & (df.StarAllele == allele)]
+            if df.empty:
+                sdk.utils.AlleleNotFoundError(gene, allele)
+            return df.SV.values[0]
+    else:
+        warnings.warn(f"PyPGx currently has no SV data available for {gene}. "
+                      f"For more details, please visit the Genes section "
+                      f"({LINK_GENES}) in the Read the Docs.")
+        return False
 
 def is_legit_allele(gene, allele):
     """

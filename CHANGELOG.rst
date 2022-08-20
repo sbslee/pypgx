@@ -4,6 +4,8 @@ Changelog
 0.19.0 (in development)
 -----------------------
 
+* Add new method :meth:`api.core.has_sv`.
+
 0.18.0 (2022-08-12)
 -------------------
 
