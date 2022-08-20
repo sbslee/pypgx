@@ -1336,14 +1336,7 @@ def predict_score(gene, allele):
     if not has_score(gene):
         return np.nan
 
-    df = load_gene_table()
-    df = df[df.Gene == gene]
-    is_sv_gene = df.SV.values[0]
-
-    df = load_allele_table()
-    df = df[df.Gene == gene]
-
-    if is_sv_gene:
+    if has_sv(gene):
         def parsecnv(x):
             if 'x' in x:
                 l = x.split('x')
