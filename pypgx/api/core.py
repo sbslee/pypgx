@@ -228,9 +228,9 @@ def has_sv(gene, allele=None):
     """
     Return True if specified gene or allele has SV.
 
-    .. warning::
-        The method will output ``False`` regardless of the specified allele
-        if the target gene is not in the list of genes with SV.
+    The method will return ``False`` regardless of the specified allele if
+    the target gene is not in the list of genes with SV. Additionally, it
+    will return ``False`` if the specified allele is ``'Indeterminate'``.
 
     Parameters
     ----------
@@ -264,6 +264,8 @@ def has_sv(gene, allele=None):
     /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:289: UserWarning: PyPGx currently has no SV data available for CYP3A5. For more details, please visit the Genes section (https://pypgx.readthedocs.io/en/latest/genes.html) in the Read the Docs.
       warnings.warn(f"PyPGx currently has no SV data available for {gene}. "
     False
+    >>> pypgx.has_sv('CYP2D6', 'Indeterminate')
+    False
     """
     if not is_target_gene(gene):
         raise sdk.utils.NotTargetGeneError(gene)
@@ -273,6 +275,9 @@ def has_sv(gene, allele=None):
 
     if allele is None:
         return is_sv_gene
+
+    if allele == 'Indeterminate':
+        return False
 
     if is_sv_gene:
         if '+' in allele:
