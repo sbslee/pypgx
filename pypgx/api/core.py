@@ -283,7 +283,7 @@ def has_sv(gene, allele=None):
             df = load_allele_table()
             df = df[(df.Gene == gene) & (df.StarAllele == allele)]
             if df.empty:
-                sdk.utils.AlleleNotFoundError(gene, allele)
+                raise sdk.utils.AlleleNotFoundError(gene, allele)
             return df.SV.values[0]
     else:
         warnings.warn(f"PyPGx currently has no SV data available for {gene}. "
