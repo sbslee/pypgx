@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * Add new method :meth:`api.core.has_sv`.
+* Update :meth:`api.core.sort_alleles` method to handle ``'Indeterminate'`` haplotype call when ``by='name'``.
 
 0.18.0 (2022-08-12)
 -------------------

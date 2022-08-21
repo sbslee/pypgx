@@ -1446,6 +1446,8 @@ def sort_alleles(
         cn = 1
         if allele == 'Reference':
             n = 0
+        elif allele == 'Indeterminate':
+            n += 1
         elif 'c.' in allele: # For the DPYD gene
             n = int(''.join([x for x in allele.split('>')[0] if x.isdigit()]))
         elif '*' not in allele:
