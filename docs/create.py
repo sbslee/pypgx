@@ -181,6 +181,11 @@ Below is an incomplete list of publications which have used PyPGx:
 - Wroblewski et al., 2022. `Pharmacogenetic variation in Neanderthals and Denisovans and implications for human health and response to medications <https://doi.org/10.1101/2021.11.27.470071>`__. bioRxiv.
 - Botton et al., 2020. `Phased Haplotype Resolution of the SLC6A4 Promoter Using Long-Read Single Molecule Real-Time (SMRT) Sequencing <https://doi.org/10.3390/genes11111333>`__. Genes.
 
+Support PyPGx
+=============
+
+If you find my work useful, please consider becoming a `sponsor <https://github.com/sponsors/sbslee>`__.
+
 Installation
 ============
 
