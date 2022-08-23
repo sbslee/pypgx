@@ -858,6 +858,11 @@ def estimate_phase_beagle(
         vf3 = pyvcf.VcfFrame([], df)
         vf3 = vf3.pseudophase().strip()
     else:
+        # Beagle will throw an error if there are overlapping samples between
+        # the input VCF and the reference panel.
+        common_samples = list(set(vf1.samples) & set(vf2.samples))
+        if common_samples:
+            vf1 = vf1.rename({x: f'{x}_TEMP' for x in common_samples})
         with tempfile.TemporaryDirectory() as t:
             vf1.to_file(f'{t}/input.vcf')
             command = [
@@ -870,6 +875,8 @@ def estimate_phase_beagle(
             ]
             subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
             vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+        if common_samples:
+            vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
         if has_chr_prefix:
             vf3 = vf3.update_chr_prefix('remove')
 
