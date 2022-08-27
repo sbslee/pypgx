@@ -633,12 +633,16 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Function
      - Reference/Reference
+     - Normal/Routine/Low Risk
    * - Decreased Function
      - Reference/rs2231142
+     - Abnormal/Priority/High Risk
    * - Poor Function
      - rs2231142/rs2231142
+     - Abnormal/Priority/High Risk
 
 Resources for ABCG2
 -------------------
@@ -659,15 +663,18 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Uncertain Susceptibility
       - Reference/Reference
+      - Normal Risk
     * - Malignant Hyperthermia Susceptibility
       - Reference/c.520C>T
+      - Abnormal/Priority/High Risk
 
 Resources for CACNA1S
 ---------------------
 
-- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `PharmGKB: Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
@@ -684,17 +691,21 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Favorable Response
       - Reference/G551D
+      - None
     * - Unfavorable Response
       - F508del/F508del
+      - None
     * - Indeterminate
       - Reference/F508del
+      - None
 
 Resources for CFTR
 ------------------
 
-- `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
+- `PharmGKB: Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
 - `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guidelines for Ivacaftor Therapy in the Context of CFTR Genotype <https://doi.org/10.1038/clpt.2014.54>`__
 
@@ -1169,18 +1180,25 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Ultrarapid Metabolizer
       - \*4/\*4
+      - Normal/Routine/Low Risk
     * - Rapid Metabolizer
       - \*1/\*4
+      - Normal/Routine/Low Risk
     * - Normal Metabolizer
       - \*1/\*2
+      - Normal/Routine/Low Risk
     * - Intermediate Metabolizer
       - \*1/\*29
+      - Abnormal/Priority/High Risk
     * - Poor Metabolizer
       - \*6/\*6
+      - Abnormal/Priority/High Risk
     * - Indeterminate
       - \*1/\*3
+      - None
 
 Resources for CYP2B6
 --------------------
@@ -1210,15 +1228,23 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Normal Metabolizer
      - 2 == score
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 1 <= score < 2
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 1
      - \*2/\*3
+     - Abnormal/Priority/High Risk
+   * - Indeterminate
+     - Unknown score
+     - \*1/\*7
+     - Normal/Routine/Low Risk
 
 Resources for CYP2C9
 --------------------
@@ -1240,22 +1266,31 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Ultrarapid Metabolizer
      - \*17/\*17
+     - Abnormal/Priority/High Risk
    * - Rapid Metabolizer
      - \*1/\*17
+     - Abnormal/Priority/High Risk
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Likely Intermediate Metabolizer
      - \*1/\*10
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Likely Poor Metabolizer
      - \*10/\*22
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*2
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*12
+     - None
 
 Resources for CYP2C19
 ---------------------
@@ -1531,18 +1566,27 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Ultrarapid Metabolizer
      - 2.5 <= score
      - \*1/\*2x2
+     - Abnormal/Priority/High Risk
    * - Normal Metabolizer
      - 1.25 <= score < 2.5
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 0.25 <= score < 1.25
      - \*1/\*4
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 0.25
      - \*4/\*5
+     - Abnormal/Priority/High Risk
+   * - Indeterminate
+     - Unknown score
+     - \*1/\*22
+     - None
 
 Filtered alleles for CYP2D6
 ---------------------------
@@ -1799,22 +1843,29 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*3
+     - Abnormal/Priority/High Risk
    * - Possible Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*6/\*6
+     - Normal/Routine/Low Risk
    * - Indeterminate
      - \*2/\*2
+     - None
 
 Resources for CYP3A5
 --------------------
 
 - `PharmVar CYP3A5 page <https://www.pharmvar.org/gene/CYP3A5>`__
 - `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
+- `PharmGKB: Annotation of CPIC Guideline for tacrolimus and CYP3A5 <https://www.pharmgkb.org/guidelineAnnotation/PA166124619>`__
 
 CYP3A7
 ======
@@ -1952,15 +2003,19 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Normal Metabolizer
      - 2 == score
      - Reference/Reference
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 1 <= score < 2
      - Reference/c.1905+1G>A (\*2A)
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 1
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
+     - Abnormal/Priority/High Risk
 
 Resources for DPYD
 ------------------
@@ -1981,15 +2036,18 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Favorable Response
       - Reference/Reference
+      - None
     * - Unfavorable Response
       - Reference/Leiden
+      - None
 
 Resources for F5
 ----------------
 
-- `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
+- `PharmGKB: Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
 
 G6PD
 ====
@@ -2285,17 +2343,21 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Favorable Response
      - Reference/Reference
+     - None
    * - Unfavorable Response
      - Reference/rs12979860
+     - None
    * - Indeterminate
      - Reference/rs8099917
+     - None
 
 Resources for IFNL3
 -------------------
 
-- `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
+- `PharmGKB: Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
 - `CPIC® Guideline for PEG Interferon-Alpha-Based Regimens and IFNL3 <https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/>`__
 
 NUDT15
@@ -2311,16 +2373,22 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Possible Intermediate Metabolizer
      - \*3/\*4
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*3
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*4
+     - Abnormal/Priority/High Risk
 
 Resources for NUDT15
 --------------------
@@ -2357,15 +2425,18 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
   * - Phenotype
     - Example
+    - Priority
   * - Uncertain Susceptibility
     - Reference/Reference
+    - Normal Risk
   * - Malignant Hyperthermia Susceptibility
     - Reference/c.103T>C
+    - Abnormal/Priority/High Risk
 
 Resources for RYR1
 ------------------
 
-- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `PharmGKB: Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
@@ -2483,18 +2554,25 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Increased Function
      - \*14/\*14
+     - None
    * - Normal Function
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Possible Decreased Function
      - \*2/\*15
+     - Abnormal/Priority/High Risk
    * - Decreased Function
      - \*1/\*5
+     - Abnormal/Priority/High Risk
    * - Poor Function
      - \*5/\*5
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*2/\*38
+     - None
 
 Resources for SLCO1B1
 ---------------------
@@ -2685,16 +2763,22 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Possible Intermediate Metabolizer
      - \*3A/\*12
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*3A
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*18
+     - Abnormal/Priority/High Risk
 
 Resources for TPMT
 ------------------
@@ -2714,14 +2798,19 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - \*1/\*6
+     - Normal/Routine/Low Risk
    * - Poor Metabolizer
      - \*6/\*27
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*28/\*80
+     - None
 
 Resources for UGT1A1
 --------------------
