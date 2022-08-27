@@ -4,15 +4,22 @@ Genes
 This page describes gene-specific information. PyPGx currently supports
 genotyping of a total of 59 pharmacogenes.
 
+In order to provide the most accurate information, this page borrows heavily
+from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
+Consortium (CPIC)` and the :ref:`glossary:Pharmacogenomics Knowledge Base
+(PharmGKB)`. All curated contents published by CPIC and PharmGKB are
+available free of restriction under the `CC0 1.0 Universal (CC0 1.0) Public
+Domain Dedication <https://cpicpgx.org/license/>`__ and the `Creative Commons
+Attribution-ShareAlike 4.0 International License <https://www.pharmgkb.org/
+page/dataUsagePolicy>`__, repsectively.
+
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
 and hybrids. Please read the :ref:`readme:Structural variation detection`
 page for more details.
 
-Some genes have a genotype-phenotype table available from the
-:ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
-the :ref:`glossary:Pharmacogenomics Knowledge Base (PharmGKB)`. Please read
-the :ref:`readme:Phenotype prediction` page for more details.
+Some genes have a genotype-phenotype table available from CPIC or PharmGKB.
+Please read the :ref:`readme:Phenotype prediction` page for more details.
 
 Below is a summary table:
 
