@@ -1207,11 +1207,23 @@ Diplotype-phenotype mapping is used for phenotype prediction.
       - \*1/\*3
       - None
 
+Recommendations for CYP2B6
+--------------------------
+
+- Efavirenz
+
+  "Consider initiating efavirenz with a decreased dose of either 400 or 200
+  mg/day for patients who are CYP2B6 poor metabolizers. Consider initiating
+  efavirenz with a decreased dose of 400 mg/day for patients who are CYP2B6
+  intermediate metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166182603>`__)
+
 Resources for CYP2B6
 --------------------
 
 - `PharmVar CYP2B6 page <https://www.pharmvar.org/gene/CYP2B6>`__
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
+- `PharmGKB: Annotation of CPIC Guideline for efavirenz and CYP2B6 <https://www.pharmgkb.org/guidelineAnnotation/PA166182603>`__
 
 CYP2C8
 ======
@@ -1252,6 +1264,19 @@ Activity score is used for phenotype prediction.
      - Unknown score
      - \*1/\*7
      - Normal/Routine/Low Risk
+
+Recommendations for CYP2C9
+--------------------------
+
+- Meloxicam
+
+  "The CPIC Dosing Guideline for meloxicam recommends alternative therapy for
+  CYP2C9 poor metabolizers due to markedly prolonged half-life, and
+  initiating therapy with 50% of the lowest recommended starting dose or
+  choose an alternative therapy for CYP2C9 intermediate metabolizers with
+  activity score of 1. See full guideline for further details and supporting
+  evidence." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166192301>`__)
 
 Resources for CYP2C9
 --------------------
@@ -1866,6 +1891,18 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*2/\*2
      - None
+
+Recommendations for CYP3A5
+--------------------------
+
+- Tacrolimus
+
+  "The CPIC dosing guideline for tacrolimus recommends increasing the starting
+  dose by 1.5 to 2 times the recommended starting dose in patients who are
+  CYP3A5 intermediate or extensive metabolizers, though total starting dose
+  should not exceed 0.3 mg/kg/day. Therapeutic drug monitoring should also
+  be used to guide dose adjustments." (Source: `PharmGKB <https://
+  www.pharmgkb.org/guidelineAnnotation/PA166124619>`__)
 
 Resources for CYP3A5
 --------------------
