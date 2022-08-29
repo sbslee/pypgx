@@ -651,11 +651,26 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - rs2231142/rs2231142
      - Abnormal/Priority/High Risk
 
+Recommendations for ABCG2
+-------------------------
+
+- Rosuvastatin
+
+  "Prescribe ≤20mg as a starting dose and adjust doses of rosuvastatin based
+  on disease-specific and specific population guidelines for patients who are
+  SLCO1B1 or ABCG2 poor function phenotype. If dose >20mg needed for desired
+  efficacy, consider combination therapy (i.e. rosuvastatin plus non-statin
+  guideline directed medical therapy). Patients with both ABCG2 poor function
+  and SLCO1B1 poor/decreased function should be prescribed ≤10mg as a
+  starting dose." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262321>`__)
+
 Resources for ABCG2
 -------------------
 
 - `CPIC® guideline for statins and SLCO1B1, ABCG2, and CYP2C9 <https://cpicpgx.org/guidelines/cpic-guideline-for-statins/>`__
 - `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
+- `PharmGKB: Annotation of CPIC Guideline for rosuvastatin and ABCG2, SLCO1B1 <https://www.pharmgkb.org/guidelineAnnotation/PA166262321>`__
 
 CACNA1S
 =======
@@ -677,6 +692,79 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Malignant Hyperthermia Susceptibility
       - Reference/c.520C>T
       - Abnormal/Priority/High Risk
+
+Recommendations for CACNA1S
+---------------------------
+
+- Desflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  uch as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA164749136/guidelineAnnotation/PA166180457>`__)
+
+- Enflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449461/guidelineAnnotation/PA166180457>`__)
+
+- Halothane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449845/guidelineAnnotation/PA166180457>`__)
+
+- Isoflurane
+
+"The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+sevoflurane and the depolarizing muscle relaxants succinylcholine are
+relatively contraindicated in persons with malignant hyperthermia
+susceptibility (MHS). See full guideline for disclaimers, further details
+and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+chemical/PA450106/guidelineAnnotation/PA166180457>`__)
+
+- Methoxyflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450434/guidelineAnnotation/PA166180457>`__)
+
+- Sevoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451341/guidelineAnnotation/PA166180457>`__)
+
+- Succinylcholine
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451522/guidelineAnnotation/PA166180457>`__)
 
 Resources for CACNA1S
 ---------------------
@@ -708,6 +796,17 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Indeterminate
       - Reference/F508del
       - None
+
+Recommendations for CFTR
+------------------------
+
+- Ivacaftor
+
+  "Ivacaftor treatment is recommended only in cystic fibrosis (CF) patients
+  that are either homozygous or heterozygous for certain CFTR variants. See
+  full guideline for disclaimers, further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166114461>`__)
 
 Resources for CFTR
 ------------------
@@ -1268,6 +1367,58 @@ Activity score is used for phenotype prediction.
 Recommendations for CYP2C9
 --------------------------
 
+- Celecoxib
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA448871/guidelineAnnotation/PA166191841>`__)
+
+- Flurbiprofen
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA449683/guidelineAnnotation/PA166191841>`__)
+
+- Fluvastatin
+
+  "CYP2C9 IMs should avoid fluvastatin doses greater than 40mg while CYP2C9
+  PMs should avoid doses greater than 20mg. If higher doses are required for
+  desired efficacy, an alternative statin should be considered. Patients with
+  SLCO1B1 poor function should also avoid fluvastatin doses greater than 40mg
+  and and adjust doses of fluvastatin based on disease-specific guidelines.
+  Patients with both SLCO1B1 poor function and CYP2C9 IM/PM should be
+  prescribed an alternative statin depending on the desired potency."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166262341>`__)
+
+- Ibuprofen
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA449957/guidelineAnnotation/PA166191841>`__)
+
+- Lornoxicam
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA165958395/guidelineAnnotation/PA166191841>`__)
+
 - Meloxicam
 
   "The CPIC Dosing Guideline for meloxicam recommends alternative therapy for
@@ -1277,6 +1428,26 @@ Recommendations for CYP2C9
   activity score of 1. See full guideline for further details and supporting
   evidence." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
   /PA166192301>`__)
+
+- Piroxicam
+
+  "The CPIC Dosing Guideline for piroxicam recommends that CYP2C9 poor
+  metabolizers and intermediate metabolizers with activity score of 1 should
+  choose an alternative therapy not metabolized by CYP2C9 or not
+  significantly impacted by CYP2C9 genetic variants in vivo or choose an
+  NSAID metabolized by CYP2C9 but with a shorter half-life. See full
+  guideline for further details and supporting evidence." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166192321>`__)
+
+- Tenoxicam
+
+  "The CPIC Dosing Guideline for tenoxicam recommends that CYP2C9 poor
+  metabolizers and intermediate metabolizers with activity score of 1 should
+  choose an alternative therapy not metabolized by CYP2C9 or not
+  significantly impacted by CYP2C9 genetic variants in vivo or choose an
+  NSAID metabolized by CYP2C9 but with a shorter half-life. See full
+  guideline for further details and supporting evidence." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166192341>`__)
 
 Resources for CYP2C9
 --------------------
@@ -1323,6 +1494,113 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*12
      - None
+
+Recommendations for CYP2C19
+---------------------------
+
+- Citalopram
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
+  citalopram and escitalopram recommends an alternative drug not
+  predominantly metabolized by CYP2C19 for CYP2C19 ultrarapid metabolizers.
+  For CYP2C19 poor metabolizers, consider a 50% reduction of recommended
+  starting dose and titrate to response or select alternative drug not
+  predominantly metabolized by CYP2C19." (Source: `PharmGKB
+  <https://www.pharmgkb.org/chemical/PA449015/guidelineAnnotation/
+  PA166127638>`__)
+
+- Clopidogrel
+
+  "The CPIC Dosing Guideline for clopidogrel recommends an alternative
+  antiplatelet therapy for CYP2C19 poor or intermediate metabolizers
+  (cardiovascular indications: prasugrel or ticagrelor if no
+  contraindication; neurovascular indications: alternative P2Y12 inhibitor
+  if clinically indicated and no contraindication.)" (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166104948>`__)
+
+- Dexlansoprazole
+
+  "The CPIC Dosing Guideline recommendations for dexlansoprazole are based on
+  the similarity in its metabolism and lansoprazole and extrapolated from the
+  first-generation PPIs. The guideline recommends to increase the starting
+  daily dose and to monitor efficacy in CYP2C19 ultrarapid metabolizer. For
+  CYP2C19 rapid and normal metabolizers in the treatment of H. pylori
+  infection and erosive esophagitis increasing the dose might be considered
+  after initiation with the standard starting daily dose. The recommendations
+  for intermediate and poor metabolizers for chronic therapy (>12 weeks) and
+  efficacy achieved is to consider 50% reduction in daily dose. See full
+  guideline for further details and supporting evidence." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166219301>`__)
+
+- Escitalopram
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
+  citalopram and escitalopram recommends an alternative drug not
+  predominantly metabolized by CYP2C19 for CYP2C19 ultrarapid metabolizers.
+  For CYP2C19 poor metabolizers, consider a 50% reduction of recommended
+  starting dose and titrate to response or select alternative drug not
+  predominantly metabolized by CYP2C19." (Source: `PharmGKB
+  <https://www.pharmgkb.org/chemical/PA10074/guidelineAnnotation/
+  PA166127638>`__)
+
+- Lansoprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Omeprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Pantoprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Sertraline
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  sertraline recommends to consider a 50% reduction of recommended starting
+  dose and titrate to response or select alternative drug not predominantly
+  metabolized by CYP2C19 for CYP2C19 poor metabolizers." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166127639>`__)
+
+- Voriconazole
+
+  "The CPIC dosing guideline for voriconazole recommends selecting an
+  alternative agent that is not dependent on CYP2C19 metabolism in adults who
+  are CYP2C19 ultrarapid metabolizers, rapid metabolizers or poor
+  metabolizers. In pediatric patients, an alternative agent should be used in
+  patients who are ultrarapid metabolizers or poor metabolizers. In pediatric
+  rapid metabolizers, therapy should be initiated at recommended standard
+  case dosing, then therapeutic dosing monitoring should be used to titrate
+  dose to therapeutic trough concentrations." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166161537>`__)
 
 Resources for CYP2C19
 ---------------------
@@ -2477,6 +2755,79 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     - Reference/c.103T>C
     - Abnormal/Priority/High Risk
 
+Recommendations for RYR1
+------------------------
+
+- Desflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  uch as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA164749136/guidelineAnnotation/PA166180457>`__)
+
+- Enflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449461/guidelineAnnotation/PA166180457>`__)
+
+- Halothane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449845/guidelineAnnotation/PA166180457>`__)
+
+- Isoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450106/guidelineAnnotation/PA166180457>`__)
+
+- Methoxyflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450434/guidelineAnnotation/PA166180457>`__)
+
+- Sevoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451341/guidelineAnnotation/PA166180457>`__)
+
+- Succinylcholine
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451522/guidelineAnnotation/PA166180457>`__)
+
 Resources for RYR1
 ------------------
 
@@ -2618,12 +2969,39 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*2/\*38
      - None
 
+Recommendations for SLCO1B1
+---------------------------
+
+- Fluvastatin
+
+  "CYP2C9 IMs should avoid fluvastatin doses greater than 40mg while CYP2C9
+  PMs should avoid doses greater than 20mg. If higher doses are required for
+  desired efficacy, an alternative statin should be considered. Patients with
+  SLCO1B1 poor function should also avoid fluvastatin doses greater than 40mg
+  and and adjust doses of fluvastatin based on disease-specific guidelines.
+  Patients with both SLCO1B1 poor function and CYP2C9 IM/PM should be
+  prescribed an alternative statin depending on the desired potency."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166262341>`__)
+
+- Rosuvastatin
+
+  "Prescribe ≤20mg as a starting dose and adjust doses of rosuvastatin based
+  on disease-specific and specific population guidelines for patients who are
+  SLCO1B1 or ABCG2 poor function phenotype. If dose >20mg needed for desired
+  efficacy, consider combination therapy (i.e. rosuvastatin plus non-statin
+  guideline directed medical therapy). Patients with both ABCG2 poor function
+  and SLCO1B1 poor/decreased function should be prescribed ≤10mg as a
+  starting dose." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262321>`__)
+
 Resources for SLCO1B1
 ---------------------
 
 - `PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
 - `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
+- `PharmGKB: Annotation of CPIC Guideline for rosuvastatin and ABCG2, SLCO1B1 <https://www.pharmgkb.org/guidelineAnnotation/PA166262321>`__
 
 SULT1A1
 =======
