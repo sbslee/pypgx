@@ -2339,6 +2339,37 @@ Activity score is used for phenotype prediction.
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
      - Abnormal/Priority/High Risk
 
+Recommendations for DPYD
+------------------------
+
+- Capecitabine
+
+  "The CPIC Dosing Guideline for 5-fluorouracil and capecitabine recommends
+  an alternative drug for patients who are DPYD poor metabolizers with an
+  activity score of 0. In those who are poor metabolizers with an activity
+  score of 0.5, an alternative drug is also recommended, but if this is not
+  considered a suitable therapeutic option, 5-fluorouracil or capecitabine
+  should be administered at a strongly reduced dose with early therapeutic
+  drug monitoring. Patients who are intermediate metabolizers with an
+  activity score of 1 or 1.5 should receive a dose reduction of 50%. Patients
+  with the c.[2846A>T];[2846A>T] genotype may require a >50% dose reduction."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166109594>`__)
+
+- Fluorouracil
+
+  "The CPIC Dosing Guideline for 5-fluorouracil and capecitabine recommends
+  an alternative drug for patients who are DPYD poor metabolizers with an
+  activity score of 0. In those who are poor metabolizers with an activity
+  score of 0.5, an alternative drug is also recommended, but if this is not
+  considered a suitable therapeutic option, 5-fluorouracil or capecitabine
+  should be administered at a strongly reduced dose with early therapeutic
+  drug monitoring. Patients who are intermediate metabolizers with an
+  activity score of 1 or 1.5 should receive a dose reduction of 50%. Patients
+  with the c.[2846A>T];[2846A>T] genotype may require a >50% dose reduction."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166122686>`__)
+
 Resources for DPYD
 ------------------
 
@@ -2365,6 +2396,17 @@ Diplotype-phenotype mapping is used for phenotype prediction.
     * - Unfavorable Response
       - Reference/Leiden
       - None
+
+Recommendations for F5
+----------------------
+
+- Hormonal contraceptives
+
+  "In individuals who carry the Factor V Leiden allele (rs6025 T) and have a
+  family history of thrombotic events, estrogen-containing oral
+  contraceptives should be avoided and alternative forms of contraception
+  used." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104955>`__)
 
 Resources for F5
 ----------------
@@ -2676,6 +2718,42 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - Reference/rs8099917
      - None
 
+Recommendations for IFNL3
+-------------------------
+
+- Peginterferon alfa-2a
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA164749390/guidelineAnnotation/PA166110235>`__)
+
+- Peginterferon alfa-2b
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA164784024/guidelineAnnotation/PA166110235>`__)
+
+- Ribavirin
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA451241/guidelineAnnotation/PA166110235>`__)
+
 Resources for IFNL3
 -------------------
 
@@ -2711,6 +2789,33 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*1/\*4
      - Abnormal/Priority/High Risk
+
+Recommendations for NUDT15
+--------------------------
+
+- Azathioprine
+
+  "Consider an alternate agent or extreme dose reduction of azathioprine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104933>`__)
+
+- Mercaptopurine
+
+  "Consider an alternate agent or extreme dose reduction of mercaptopurine
+  for patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104945>`__)
+
+- Thioguanine
+
+  "Consider an alternate agent or extreme dose reduction of thioguanine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 50-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104965>`__)
 
 Resources for NUDT15
 --------------------
@@ -2972,6 +3077,15 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Recommendations for SLCO1B1
 ---------------------------
 
+- Atorvastatin
+
+  "Prescribe ≤20mg for patients with SLCO1B1 poor function phenotype and
+  ≤40mg for patients with SLCO1B1 decreased or possible decreased phenotype
+  as a starting dose. Adjust doses of atorvastatin based on disease-specific
+  guidelines. Prescriber should be aware of possible increased risk for
+  myopathy especially for 40mg dose." (Source: `PharmGKB <https://www.
+  pharmgkb.org/guidelineAnnotation/PA166262221>`__)
+
 - Fluvastatin
 
   "CYP2C9 IMs should avoid fluvastatin doses greater than 40mg while CYP2C9
@@ -2984,6 +3098,35 @@ Recommendations for SLCO1B1
   (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
   PA166262341>`__)
 
+- Lovastatin
+
+  "Prescribe an alternative statin depending on the desired potency for
+  patients with SLCO1B1 decreased function, possible decreased function or
+  poor function phenotype. If lovastatin therapy is warranted in patients
+  with SLCO1B1 decreased or possible decreased phenotype, limit dose to
+  <20mg/day." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262241>`__)
+
+- Pitavastatin
+
+  "Prescribe ≤1mg as a starting dose for patients with SLCO1B1 poor function
+  phenotype. Prescribe ≤2mg as a starting dose for patients with SLCO1B1
+  decreased or possible decreased phenotype. Adjust doses of pitavastatin
+  based on disease-specific guidelines. Consider an alternative statin or
+  combination therapy if higher doses are needed." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166262261>`__)
+
+- Pravastatin
+
+  "Prescribe ≤40mg as a starting dose and adjust doses of pravastatin based
+  on disease-specific guidelines for patients with SLCO1B1 poor function
+  phenotype. Prescribe desired starting dose and adjust doses of pravastatin
+  based on disease-specific guidelines for patients with SLCO1B1 decreased or
+  possible decreased phenotype. Prescriber should be aware of possible
+  increased risk for myopathy with pravastatin especially with doses >40mg
+  per day." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166262281>`__)
+
 - Rosuvastatin
 
   "Prescribe ≤20mg as a starting dose and adjust doses of rosuvastatin based
@@ -2994,6 +3137,15 @@ Recommendations for SLCO1B1
   and SLCO1B1 poor/decreased function should be prescribed ≤10mg as a
   starting dose." (Source: `PharmGKB <https://www.pharmgkb.org/
   guidelineAnnotation/PA166262321>`__)
+
+- Simvastatin
+
+  "Prescribe an alternative statin depending on the desired potency for
+  patients with SLCO1B1 decreased function, possible decreased function or
+  poor function phenotype. If simvastatin therapy is warranted in patients
+  with SLCO1B1 decreased or possible decreased phenotype, limit dose to
+  <20mg/day." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166105005>`__)
 
 Resources for SLCO1B1
 ---------------------
@@ -3202,6 +3354,33 @@ Diplotype-phenotype mapping is used for phenotype prediction.
      - \*1/\*18
      - Abnormal/Priority/High Risk
 
+Recommendations for TPMT
+------------------------
+
+- Azathioprine
+
+  "Consider an alternate agent or extreme dose reduction of azathioprine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104933>`__)
+
+- Mercaptopurine
+
+  "Consider an alternate agent or extreme dose reduction of mercaptopurine
+  for patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104945>`__)
+
+- Thioguanine
+
+  "Consider an alternate agent or extreme dose reduction of thioguanine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 50-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104965>`__)
+
 Resources for TPMT
 ------------------
 
@@ -3233,6 +3412,20 @@ Diplotype-phenotype mapping is used for phenotype prediction.
    * - Indeterminate
      - \*28/\*80
      - None
+
+Recommendations for UGT1A1
+--------------------------
+
+- Atazanavir
+
+  "The CPIC dosing guideline recommends considering advising individuals who
+  carry two decreased function UGT1A1 alleles about a substantial likelihood
+  of developing jaundice, which may cause non-adherence. The dosing guideline
+  recommends that alternative agents be considered if the risk of
+  non-adherence due to jaundice is high. The risk of discontinuation is low
+  and very low for individuals carrying one, or no decreased function UGT1A1
+  alleles, respectively." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166128738>`__)
 
 Resources for UGT1A1
 --------------------
