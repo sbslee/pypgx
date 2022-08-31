@@ -854,7 +854,7 @@ We can obtain allele function for the CYP2D6 gene:
     >>> pypgx.get_function('CYP2D6', '*140')
     'Unknown Function'
 
-We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
+We can predict phenotype for CYP2D6 based on two haplotype calls:
 
 .. code:: python3
 
@@ -867,3 +867,18 @@ We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
     'Indeterminate'
     >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
     'Ultrarapid Metabolizer'
+
+We can also obtain recommendation (e.g. CPIC) for certain drug-phenotype combination:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> # Codeine, an opiate and prodrug of morphine, is metabolized by CYP2D6
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Normal Metabolizer')
+    'Use codeine label recommended age- or weight-specific dosing.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Ultrarapid Metabolizer')
+    'Avoid codeine use because of potential for serious toxicity. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Poor Metabolizer')
+    'Avoid codeine use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Indeterminate')
+    'None'

@@ -554,6 +554,104 @@ def get_priority(gene, phenotype):
 
     return df[i].Priority.values[0]
 
+def get_recommendation(drug, gene1, phenotype1, gene2=None, phenotype2=None):
+    """
+    Get recommendation for specified drug-phenotype combination.
+
+    Parameters
+    ----------
+    drug : str
+        Drug name.
+    gene1 : str
+        Gene name.
+    phenotype1 : str
+        Phenotype name.
+    gene2 : str, optional
+        Second gene name.
+    phenotype2 : str, optional
+        Second phenotype name.
+
+    Returns
+    -------
+    str
+        Drug recommendation.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> # Codeine, an opiate and prodrug of morphine, is metabolized by CYP2D6
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Normal Metabolizer')
+    'Use codeine label recommended age- or weight-specific dosing.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Ultrarapid Metabolizer')
+    'Avoid codeine use because of potential for serious toxicity. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Poor Metabolizer')
+    'Avoid codeine use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Indeterminate')
+    'None'
+    >>> # It's possible to have an altered recommendation for Normal Metabolizer
+    >>> pypgx.get_recommendation('tacrolimus', 'CYP3A5', 'Normal Metabolizer')
+    'Increase starting dose 1.5 to 2 times recommended starting dose. Total starting dose should not exceed 0.3 mg/kg/day. Use therapeutic drug monitoring to guide dose adjustments.'
+    >>> # Some recommendations are determined by multiple genes (the order doesn't matter)
+    >>> pypgx.get_recommendation('fluvastatin', 'CYP2C9', 'Normal Metabolizer')
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:633: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
+      warnings.warn(message)
+    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    >>> pypgx.get_recommendation('fluvastatin', 'SLCO1B1', 'Normal Function')
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:633: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
+      warnings.warn(message)
+    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    >>> pypgx.get_recommendation('fluvastatin', 'CYP2C9', 'Normal Metabolizer', 'SLCO1B1', 'Normal Function')
+    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    >>> pypgx.get_recommendation('fluvastatin', 'SLCO1B1', 'Normal Function', 'CYP2C9', 'Normal Metabolizer')
+    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    """
+    if gene1 not in list_genes(mode='all'):
+        raise sdk.utils.GeneNotFoundError(gene1)
+
+    if gene2 is not None and gene2 not in list_genes(mode='all'):
+        raise sdk.utils.GeneNotFoundError(gene2)
+
+    if phenotype1 not in list_phenotypes(gene1):
+        l = ', '.join([f"'{x}'" for x in list_phenotypes(gene1)])
+        raise sdk.utils.PhenotypeNotFoundError(f"{phenotype1} in {gene1} (choices: {l})")
+
+    if phenotype2 is not None and phenotype2 not in list_phenotypes(gene2):
+        l = ', '.join([f"'{x}'" for x in list_phenotypes(gene2)])
+        raise sdk.utils.PhenotypeNotFoundError(f"{phenotype2} in {gene2} (choices: {l})")
+
+    df = load_recommendation_table()
+
+    if drug not in df.Drug.unique():
+        raise ValueError(f"Drug not found: {drug}")
+
+    df = df[df.Drug == drug]
+
+    target_genes = set(df.Gene1.to_list() + df.Gene2.to_list())
+
+    if gene1 not in target_genes:
+        raise ValueError(f"{gene1} does not have any recommendations for {drug}")
+
+    if gene2 is not None and gene2 not in target_genes:
+        raise ValueError(f"{gene2} does not have any recommendations for {drug}")
+
+    if df.Gene2.unique() == ['None']:
+        return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1)].Recommendation.values[0]
+
+    if gene2 is None:
+        message = (f"Recommendations for {drug} are determined by multiple genes "
+                   f"({', '.join(target_genes)}); for best results, specify phenotype for each gene")
+        warnings.warn(message)
+        if gene1 in df.Gene1.unique():
+            return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1)].Recommendation.values[0]
+        else:
+            return df[(df.Gene2 == gene1) & (df.Phenotype2 == phenotype1)].Recommendation.values[0]
+
+    if gene1 in df.Gene1.unique():
+        return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1) & (df.Gene2 == gene2) & (df.Phenotype2 == phenotype2)].Recommendation.values[0]
+    else:
+        return df[(df.Gene2 == gene1) & (df.Phenotype2 == phenotype1) & (df.Gene1 == gene2) & (df.Phenotype1 == phenotype2)].Recommendation.values[0]
+
 def get_ref_allele(gene):
     """
     Get the reference allele for target gene.
@@ -1159,6 +1257,31 @@ def load_phenotype_table():
     4     CFTR                          Indeterminate                         None
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/phenotype-table.csv'))
+    return pd.read_csv(b)
+
+def load_recommendation_table():
+    """
+    Load the recommendation table.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Requested table.
+
+    Examples
+    --------
+
+    >>> import pypgx
+    >>> df = pypgx.load_recommendation_table()
+    >>> df.head()
+             Drug   Gene1                         Phenotype1 Gene2 Phenotype2                                     Recommendation
+    0  tacrolimus  CYP3A5                 Normal Metabolizer  None       None  Increase starting dose 1.5 to 2 times recommen...
+    1  tacrolimus  CYP3A5           Intermediate Metabolizer  None       None  Increase starting dose 1.5 to 2 times recommen...
+    2  tacrolimus  CYP3A5  Possible Intermediate Metabolizer  None       None                                               None
+    3  tacrolimus  CYP3A5                   Poor Metabolizer  None       None  Initiate therapy with standard recommended dos...
+    4  tacrolimus  CYP3A5                      Indeterminate  None       None                                               None
+    """
+    b = BytesIO(pkgutil.get_data(__name__, 'data/recommendation-table.csv'))
     return pd.read_csv(b)
 
 def load_variant_table():
