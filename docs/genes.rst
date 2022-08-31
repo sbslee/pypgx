@@ -728,13 +728,13 @@ Recommendations for CACNA1S
 
 - Isoflurane
 
-"The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
-such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
-sevoflurane and the depolarizing muscle relaxants succinylcholine are
-relatively contraindicated in persons with malignant hyperthermia
-susceptibility (MHS). See full guideline for disclaimers, further details
-and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
-chemical/PA450106/guidelineAnnotation/PA166180457>`__)
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450106/guidelineAnnotation/PA166180457>`__)
 
 - Methoxyflurane
 
@@ -1498,6 +1498,16 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 Recommendations for CYP2C19
 ---------------------------
 
+- Amitriptyline
+
+  "The CPIC Dosing Guideline update for amitriptyline recommends an
+  alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19
+  ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted,
+  consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For
+  CYP2D6 intermediate metabolizers, a 25% dose reduction should be
+  considered." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166105006>`__)
+
 - Citalopram
 
   "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
@@ -1508,6 +1518,18 @@ Recommendations for CYP2C19
   predominantly metabolized by CYP2C19." (Source: `PharmGKB
   <https://www.pharmgkb.org/chemical/PA449015/guidelineAnnotation/
   PA166127638>`__)
+
+- Clomipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including clomipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105007>`__)
 
 - Clopidogrel
 
@@ -1532,6 +1554,18 @@ Recommendations for CYP2C19
   guideline for further details and supporting evidence." (Source: `PharmGKB
   <https://www.pharmgkb.org/guidelineAnnotation/PA166219301>`__)
 
+- Doxepin
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including doxepin. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105000>`__)
+
 - Escitalopram
 
   "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
@@ -1542,6 +1576,18 @@ Recommendations for CYP2C19
   predominantly metabolized by CYP2C19." (Source: `PharmGKB
   <https://www.pharmgkb.org/chemical/PA10074/guidelineAnnotation/
   PA166127638>`__)
+
+- Imipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including imipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166104999>`__)
 
 - Lansoprazole
 
@@ -1601,6 +1647,18 @@ Recommendations for CYP2C19
   case dosing, then therapeutic dosing monitoring should be used to titrate
   dose to therapeutic trough concentrations." (Source: `PharmGKB
   <https://www.pharmgkb.org/guidelineAnnotation/PA166161537>`__)
+
+- Trimipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including trimipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105001>`__)
 
 Resources for CYP2C19
 ---------------------
@@ -1897,6 +1955,177 @@ Activity score is used for phenotype prediction.
      - Unknown score
      - \*1/\*22
      - None
+
+Recommendations for CYP2D6
+--------------------------
+
+- Amitriptyline
+
+  "The CPIC Dosing Guideline update for amitriptyline recommends an
+  alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19
+  ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted,
+  consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For
+  CYP2D6 intermediate metabolizers, a 25% dose reduction should be
+  considered." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166105006>`__)
+
+- Atomoxetine
+
+  "The CPIC Dosing Guideline for atomoxetine provides therapeutic
+  recommendations for CYP2D6 ultrarapid, normal, intermediate, and poor
+  metabolizer, which includes guidance for plasma drug concentration testing,
+  as a means to estimate atomoxetine exposure, if no clinical response and in
+  the absence of adverse events after 2 weeks of therapy." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166181885>`__)
+
+- Clomipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including clomipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105007>`__)
+
+- Codeine
+
+  "Alternate non-tramadol analgesics are recommended for CYP2D6 ultrarapid
+  and poor metabolizers. A label recommended age- or weight-specific dose of
+  codeine is warranted for CYP2D6 normal and intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104996>`__)
+
+- Desipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for
+  amitriptyline/nortriptyline and CYP2C19, CYP2D6 to other tricyclics
+  including
+  desipramine. The CPIC Dosing Guideline update for nortriptyline recommends
+  a 25% dose reduction for CYP2D6 intermediate metabolizers. For CYP2D6
+  ultrarapid or poor metabolizers, an alternative drug should be considered.
+  If nortriptyline is warranted, consider a 50% dose reduction in CYP2D6 poor
+  metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166105002>`__)
+
+- Doxepin
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including doxepin. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105000>`__)
+
+- Fluvoxamine
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  fluvoxamine recommends to consider a 25-50% reduction of recommended
+  starting dose and titrate to response or use an alternative drug not
+  metabolized by CYP2D6 for CYP2D6 poor metabolizers." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166127637>`__)
+
+- Hydrocodone
+
+  "CYP2D6 intermediate and poor metabolizers should initiate hydrocodone
+  therapy using the label recommended age- or weight-specific dosing.
+  However, if there is no response to hydrocodone in these patients, an
+  alternative analgesic should be considered.
+
+  There is insufficient evidence to provide a dosing recommendation for
+  hydrocodone in CYP2D6 ultrarapid metabolizers." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166228121>`__)
+
+- Imipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including imipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166104999>`__)
+
+- Nortriptyline
+
+  "The CPIC Dosing Guideline update for nortriptyline recommends a 25% dose
+  reduction for CYP2D6 intermediate metabolizers. For CYP2D6 ultrarapid or
+  poor metabolizers, an alternative drug should be considered. If
+  nortriptyline is warranted, consider a 50% dose reduction in CYP2D6 poor
+  metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166104999>`__)
+
+- Ondansetron
+
+  "The CPIC dosing guideline for ondansetron recommends selecting an
+  alternate drug for CYP2D6 ultrarapid metabolizers. It is recommended that
+  the alternate drug not be predominantly metabolized by CYP2D6 (eg.
+  granisetron)." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166161954>`__)
+
+- Paroxetine
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  paroxetine recommends an alternative drug not predominantly metabolized by
+  CYP2D6 for CYP2D6 ultrarapid metabolizers and for CYP2D6 poor metabolizers.
+  For CYP2D6 poor metabolizers, if paroxetine use is warranted, consider a
+  50% reduction of recommended starting dose and titrate to response."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166127636>`__)
+
+- Tamoxifen
+
+  "The CPIC Dosing Guideline for tamoxifen recommends the use of alternative
+  hormonal therapy such as an aromatase inhibitor for postmenopausal women or
+  aromatase inhibitor along with ovarian function suppression in
+  premenopausal women for CYP2D6 poor metabolizer, if aromatase inhibitor use
+  is not contraindicated. For CYP2D6 intermediate metabolizers and CYP2D6
+  allele combinations resulting in an activity score (AS) of 1 the
+  recommendation is to consider the recommendations stated for the CYP2D6
+  poor metabolizer. If aromatase inhibitor use is contraindicated,
+  consideration should be given to use a higher but FDA approved tamoxifen
+  dose for CYP2D6 intermediate metabolizers and CYP2D6 allele combinations
+  resulting in an AS of 1. For poor metabolizer, higher dose tamoxifen (40
+  mg/day) increases but does not normalize endoxifen concentrations and can
+  be considered if there are contraindications to aromatase inhibitor
+  therapy." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166176068>`__)
+
+- Tramadol
+
+  "Alternate non-codeine analgesics are recommended for CYP2D6 ultrarapid and
+  poor metabolizers. A label recommended age- or weight-specific dose of
+  tramadol is warranted for CYP2D6 normal and intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166228101>`__)
+
+- Trimipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including trimipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105001>`__)
+
+- Tropisetron
+
+  "The CPIC dosing guideline for tropisetron recommends selecting an
+  alternate drug for CYP2D6 ultrarapid metabolizers. It is recommended that
+  the alternate drug not be predominantly metabolized by CYP2D6 (eg.
+  granisetron)." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166161955>`__)
 
 Filtered alleles for CYP2D6
 ---------------------------
