@@ -154,6 +154,11 @@ Below is an incomplete list of publications which have used PyPGx:
 - Wroblewski et al., 2022. `Pharmacogenetic variation in Neanderthals and Denisovans and implications for human health and response to medications <https://doi.org/10.1101/2021.11.27.470071>`__. bioRxiv.
 - Botton et al., 2020. `Phased Haplotype Resolution of the SLC6A4 Promoter Using Long-Read Single Molecule Real-Time (SMRT) Sequencing <https://doi.org/10.3390/genes11111333>`__. Genes.
 
+Support PyPGx
+=============
+
+If you find my work useful, please consider becoming a `sponsor <https://github.com/sponsors/sbslee>`__.
+
 Installation
 ============
 
@@ -671,7 +676,7 @@ genotype results from PyPGx.
      - \*10;\*74;\*2;
      - ;
      - \*4:22-42524947-C-T:0.913;\*10:22-42523943-A-G,22-42526694-G-A:1.0,1.0;\*74:22-42525821-G-T:1.0;\*2:default;
-     - DeletionHet
+     - WholeDel1
    * - NA19207
      - \*2x2/\*10
      - Normal Metabolizer
@@ -679,14 +684,14 @@ genotype results from PyPGx.
      - \*2;
      - ;
      - \*10:22-42523943-A-G,22-42526694-G-A:0.361,0.25;\*2:default;
-     - Duplication
+     - WholeDup1
 
 This list explains each of the columns in the example results.
 
-- **Genotype**: Diplotype call. This simply combines the two top-ranked star alleles from **Haplotype1** and **Haplotype2** with '/'.
+- **Genotype**: Diplotype call. When there is no SV this simply combines the two top-ranked star alleles from **Haplotype1** and **Haplotype2** with the delimiter '/'. In the presence of SV the final diplotype is determined using one of the genotypers in the ``pypgx.api.genotype`` module (e.g. `CYP2D6Genotyper <https://pypgx.readthedocs.io/en/latest/api.html#pypgx.api.genotype.CYP2D6Genotyper>`__).
 - **Phenotype**: Phenotype call.
-- **Haplotype1**, **Haplotype2**: List of candidate star alleles for each haplotype. For example, if a given haplotype contains three variants 22-42523943-A-G, 22-42524947-C-T, and 22-42526694-G-A, then it will get assigned ``*4;*10;`` because the haplotype pattern can fit both \*4 (22-42524947-C-T) and \*10 (22-42523943-A-G and 22-42526694-G-A). Note that \*4 comes first before \*10 because it has higher priority for reporting purposes (see the ``pypgx.sort_alleles`` `method <https://pypgx.readthedocs.io/en/latest/api.html#pypgx.api.core.sort_alleles>`__ for detailed implementation).
-- **AlternativePhase**: List of star alleles that could be missed due to potentially incorrect statistical phasing. For example, let's assume that statistical phasing has put 22-42526694-G-A for **Haplotype1** and 22-42523805-C-T for **Haplotype2**. Even though the two variants are in trans orientation, PyPGx will also consider alternative phase in case the two variants are actually in cis orientation, resulting in ``*69;`` as **AlternativePhase** because \*69 is defined by 22-42526694-G-A and 22-42523805-C-T.
+- **Haplotype1**, **Haplotype2**: List of candidate star alleles for each haplotype. For example, if a given haplotype contains three variants ``22-42523943-A-G``, ``22-42524947-C-T``, and ``22-42526694-G-A``, then it will get assigned ``*4;*10;`` because the haplotype pattern can fit both \*4 (``22-42524947-C-T``) and \*10 (``22-42523943-A-G`` and ``22-42526694-G-A``). Note that \*4 comes first before \*10 because it has higher priority for reporting purposes (see the ``pypgx.sort_alleles`` `method <https://pypgx.readthedocs.io/en/latest/api.html#pypgx.api.core.sort_alleles>`__ for detailed implementation).
+- **AlternativePhase**: List of star alleles that could be missed due to potentially incorrect statistical phasing. For example, let's assume that statistical phasing has put ``22-42526694-G-A`` for **Haplotype1** and ``22-42523805-C-T`` for **Haplotype2**. Even though the two variants are in trans orientation, PyPGx will also consider alternative phase in case the two variants are actually in cis orientation, resulting in ``*69;`` as **AlternativePhase** because \*69 is defined by ``22-42526694-G-A`` and ``22-42523805-C-T``.
 - **VariantData**: Information for SNVs/indels used to define observed star alleles, including allele fraction which is important for allelic decomposition after identifying CNV (e.g. the sample NA19207). In some situations, there will not be any variants for a given star allele because the allele itself is "default" allele for the selected reference assembly (e.g. GRCh37 has \*2 as default while GRCh38 has \*1).
 - **CNV**: Structural variation call. See the `Structural variation detection <https://pypgx.readthedocs.io/en/latest/readme.html#structural-variation-detection>`__ section for more details.
 
@@ -849,7 +854,7 @@ We can obtain allele function for the CYP2D6 gene:
     >>> pypgx.get_function('CYP2D6', '*140')
     'Unknown Function'
 
-We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
+We can predict phenotype for CYP2D6 based on two haplotype calls:
 
 .. code:: python3
 
@@ -862,3 +867,18 @@ We can predict phenotype for the CYP2D6 gene based on two haplotype calls:
     'Indeterminate'
     >>> pypgx.predict_phenotype('CYP2D6', '*1', '*1x2') # Gene duplication
     'Ultrarapid Metabolizer'
+
+We can also obtain recommendation (e.g. CPIC) for certain drug-phenotype combination:
+
+.. code:: python3
+
+    >>> import pypgx
+    >>> # Codeine, an opiate and prodrug of morphine, is metabolized by CYP2D6
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Normal Metabolizer')
+    'Use codeine label recommended age- or weight-specific dosing.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Ultrarapid Metabolizer')
+    'Avoid codeine use because of potential for serious toxicity. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Poor Metabolizer')
+    'Avoid codeine use because of possibility of diminished analgesia. If opioid use is warranted, consider a non-tramadol opioid.'
+    >>> pypgx.get_recommendation('codeine', 'CYP2D6', 'Indeterminate')
+    'None'

@@ -4,15 +4,22 @@ Genes
 This page describes gene-specific information. PyPGx currently supports
 genotyping of a total of 59 pharmacogenes.
 
+In order to provide the most accurate information, this page borrows heavily
+from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
+Consortium (CPIC)` and the :ref:`glossary:Pharmacogenomics Knowledge Base
+(PharmGKB)`. All curated contents published by CPIC and PharmGKB are
+available free of restriction under the `CC0 1.0 Universal (CC0 1.0) Public
+Domain Dedication <https://cpicpgx.org/license/>`__ and the `Creative Commons
+Attribution-ShareAlike 4.0 International License <https://www.pharmgkb.org/
+page/dataUsagePolicy>`__, repsectively.
+
 Many of the genes are known to have :ref:`structural variation (SV)
 <glossary:Structural variation (SV)>` including gene deletions, duplications,
 and hybrids. Please read the :ref:`readme:Structural variation detection`
 page for more details.
 
-Some genes have a genotype-phenotype table available from the
-:ref:`glossary:Clinical Pharmacogenetics Implementation Consortium (CPIC)` or
-the :ref:`glossary:Pharmacogenomics Knowledge Base (PharmGKB)`. Please read
-the :ref:`readme:Phenotype prediction` page for more details.
+Some genes have a genotype-phenotype table available from CPIC or PharmGKB.
+Please read the :ref:`readme:Phenotype prediction` page for more details.
 
 Below is a summary table:
 
@@ -633,18 +640,37 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Function
      - Reference/Reference
+     - Normal/Routine/Low Risk
    * - Decreased Function
      - Reference/rs2231142
+     - Abnormal/Priority/High Risk
    * - Poor Function
      - rs2231142/rs2231142
+     - Abnormal/Priority/High Risk
+
+Recommendations for ABCG2
+-------------------------
+
+- Rosuvastatin
+
+  "Prescribe ≤20mg as a starting dose and adjust doses of rosuvastatin based
+  on disease-specific and specific population guidelines for patients who are
+  SLCO1B1 or ABCG2 poor function phenotype. If dose >20mg needed for desired
+  efficacy, consider combination therapy (i.e. rosuvastatin plus non-statin
+  guideline directed medical therapy). Patients with both ABCG2 poor function
+  and SLCO1B1 poor/decreased function should be prescribed ≤10mg as a
+  starting dose." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262321>`__)
 
 Resources for ABCG2
 -------------------
 
 - `CPIC® guideline for statins and SLCO1B1, ABCG2, and CYP2C9 <https://cpicpgx.org/guidelines/cpic-guideline-for-statins/>`__
 - `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
+- `PharmGKB: Annotation of CPIC Guideline for rosuvastatin and ABCG2, SLCO1B1 <https://www.pharmgkb.org/guidelineAnnotation/PA166262321>`__
 
 CACNA1S
 =======
@@ -659,15 +685,91 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Uncertain Susceptibility
       - Reference/Reference
+      - Normal Risk
     * - Malignant Hyperthermia Susceptibility
       - Reference/c.520C>T
+      - Abnormal/Priority/High Risk
+
+Recommendations for CACNA1S
+---------------------------
+
+- Desflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  uch as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA164749136/guidelineAnnotation/PA166180457>`__)
+
+- Enflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449461/guidelineAnnotation/PA166180457>`__)
+
+- Halothane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449845/guidelineAnnotation/PA166180457>`__)
+
+- Isoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450106/guidelineAnnotation/PA166180457>`__)
+
+- Methoxyflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450434/guidelineAnnotation/PA166180457>`__)
+
+- Sevoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451341/guidelineAnnotation/PA166180457>`__)
+
+- Succinylcholine
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451522/guidelineAnnotation/PA166180457>`__)
 
 Resources for CACNA1S
 ---------------------
 
-- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `PharmGKB: Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
@@ -684,17 +786,32 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Favorable Response
       - Reference/G551D
+      - None
     * - Unfavorable Response
       - F508del/F508del
+      - None
     * - Indeterminate
       - Reference/F508del
+      - None
+
+Recommendations for CFTR
+------------------------
+
+- Ivacaftor
+
+  "Ivacaftor treatment is recommended only in cystic fibrosis (CF) patients
+  that are either homozygous or heterozygous for certain CFTR variants. See
+  full guideline for disclaimers, further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166114461>`__)
 
 Resources for CFTR
 ------------------
 
-- `Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
+- `PharmGKB: Annotation of CPIC Guideline for ivacaftor and CFTR <https://www.pharmgkb.org/chemical/PA165950341/guidelineAnnotation/PA166114461>`__
 - `CPIC® Guideline for Ivacaftor and CFTR <https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guidelines for Ivacaftor Therapy in the Context of CFTR Genotype <https://doi.org/10.1038/clpt.2014.54>`__
 
@@ -1169,24 +1286,43 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Ultrarapid Metabolizer
       - \*4/\*4
+      - Normal/Routine/Low Risk
     * - Rapid Metabolizer
       - \*1/\*4
+      - Normal/Routine/Low Risk
     * - Normal Metabolizer
       - \*1/\*2
+      - Normal/Routine/Low Risk
     * - Intermediate Metabolizer
       - \*1/\*29
+      - Abnormal/Priority/High Risk
     * - Poor Metabolizer
       - \*6/\*6
+      - Abnormal/Priority/High Risk
     * - Indeterminate
       - \*1/\*3
+      - None
+
+Recommendations for CYP2B6
+--------------------------
+
+- Efavirenz
+
+  "Consider initiating efavirenz with a decreased dose of either 400 or 200
+  mg/day for patients who are CYP2B6 poor metabolizers. Consider initiating
+  efavirenz with a decreased dose of 400 mg/day for patients who are CYP2B6
+  intermediate metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166182603>`__)
 
 Resources for CYP2B6
 --------------------
 
 - `PharmVar CYP2B6 page <https://www.pharmvar.org/gene/CYP2B6>`__
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
+- `PharmGKB: Annotation of CPIC Guideline for efavirenz and CYP2B6 <https://www.pharmgkb.org/guidelineAnnotation/PA166182603>`__
 
 CYP2C8
 ======
@@ -1210,15 +1346,108 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Normal Metabolizer
      - 2 == score
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 1 <= score < 2
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 1
      - \*2/\*3
+     - Abnormal/Priority/High Risk
+   * - Indeterminate
+     - Unknown score
+     - \*1/\*7
+     - Normal/Routine/Low Risk
+
+Recommendations for CYP2C9
+--------------------------
+
+- Celecoxib
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA448871/guidelineAnnotation/PA166191841>`__)
+
+- Flurbiprofen
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA449683/guidelineAnnotation/PA166191841>`__)
+
+- Fluvastatin
+
+  "CYP2C9 IMs should avoid fluvastatin doses greater than 40mg while CYP2C9
+  PMs should avoid doses greater than 20mg. If higher doses are required for
+  desired efficacy, an alternative statin should be considered. Patients with
+  SLCO1B1 poor function should also avoid fluvastatin doses greater than 40mg
+  and and adjust doses of fluvastatin based on disease-specific guidelines.
+  Patients with both SLCO1B1 poor function and CYP2C9 IM/PM should be
+  prescribed an alternative statin depending on the desired potency."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166262341>`__)
+
+- Ibuprofen
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA449957/guidelineAnnotation/PA166191841>`__)
+
+- Lornoxicam
+
+  "The CPIC Dosing Guideline for celecoxib, flurbiprofen, ibuprofen and
+  lornoxicam recommends initiating therapy with 25-50% of the lowest
+  recommended starting dose for CYP2C9 poor metabolizers and initiating
+  therapy with lowest recommended starting dose for CYP2C9 intermediate
+  metabolizers with activity score of 1. See full guideline for further
+  details and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.
+  org/chemical/PA165958395/guidelineAnnotation/PA166191841>`__)
+
+- Meloxicam
+
+  "The CPIC Dosing Guideline for meloxicam recommends alternative therapy for
+  CYP2C9 poor metabolizers due to markedly prolonged half-life, and
+  initiating therapy with 50% of the lowest recommended starting dose or
+  choose an alternative therapy for CYP2C9 intermediate metabolizers with
+  activity score of 1. See full guideline for further details and supporting
+  evidence." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166192301>`__)
+
+- Piroxicam
+
+  "The CPIC Dosing Guideline for piroxicam recommends that CYP2C9 poor
+  metabolizers and intermediate metabolizers with activity score of 1 should
+  choose an alternative therapy not metabolized by CYP2C9 or not
+  significantly impacted by CYP2C9 genetic variants in vivo or choose an
+  NSAID metabolized by CYP2C9 but with a shorter half-life. See full
+  guideline for further details and supporting evidence." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166192321>`__)
+
+- Tenoxicam
+
+  "The CPIC Dosing Guideline for tenoxicam recommends that CYP2C9 poor
+  metabolizers and intermediate metabolizers with activity score of 1 should
+  choose an alternative therapy not metabolized by CYP2C9 or not
+  significantly impacted by CYP2C9 genetic variants in vivo or choose an
+  NSAID metabolized by CYP2C9 but with a shorter half-life. See full
+  guideline for further details and supporting evidence." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166192341>`__)
 
 Resources for CYP2C9
 --------------------
@@ -1240,22 +1469,196 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Ultrarapid Metabolizer
      - \*17/\*17
+     - Abnormal/Priority/High Risk
    * - Rapid Metabolizer
      - \*1/\*17
+     - Abnormal/Priority/High Risk
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Likely Intermediate Metabolizer
      - \*1/\*10
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Likely Poor Metabolizer
      - \*10/\*22
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*2
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*12
+     - None
+
+Recommendations for CYP2C19
+---------------------------
+
+- Amitriptyline
+
+  "The CPIC Dosing Guideline update for amitriptyline recommends an
+  alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19
+  ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted,
+  consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For
+  CYP2D6 intermediate metabolizers, a 25% dose reduction should be
+  considered." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166105006>`__)
+
+- Citalopram
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
+  citalopram and escitalopram recommends an alternative drug not
+  predominantly metabolized by CYP2C19 for CYP2C19 ultrarapid metabolizers.
+  For CYP2C19 poor metabolizers, consider a 50% reduction of recommended
+  starting dose and titrate to response or select alternative drug not
+  predominantly metabolized by CYP2C19." (Source: `PharmGKB
+  <https://www.pharmgkb.org/chemical/PA449015/guidelineAnnotation/
+  PA166127638>`__)
+
+- Clomipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including clomipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105007>`__)
+
+- Clopidogrel
+
+  "The CPIC Dosing Guideline for clopidogrel recommends an alternative
+  antiplatelet therapy for CYP2C19 poor or intermediate metabolizers
+  (cardiovascular indications: prasugrel or ticagrelor if no
+  contraindication; neurovascular indications: alternative P2Y12 inhibitor
+  if clinically indicated and no contraindication.)" (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166104948>`__)
+
+- Dexlansoprazole
+
+  "The CPIC Dosing Guideline recommendations for dexlansoprazole are based on
+  the similarity in its metabolism and lansoprazole and extrapolated from the
+  first-generation PPIs. The guideline recommends to increase the starting
+  daily dose and to monitor efficacy in CYP2C19 ultrarapid metabolizer. For
+  CYP2C19 rapid and normal metabolizers in the treatment of H. pylori
+  infection and erosive esophagitis increasing the dose might be considered
+  after initiation with the standard starting daily dose. The recommendations
+  for intermediate and poor metabolizers for chronic therapy (>12 weeks) and
+  efficacy achieved is to consider 50% reduction in daily dose. See full
+  guideline for further details and supporting evidence." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166219301>`__)
+
+- Doxepin
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including doxepin. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105000>`__)
+
+- Escitalopram
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitors
+  citalopram and escitalopram recommends an alternative drug not
+  predominantly metabolized by CYP2C19 for CYP2C19 ultrarapid metabolizers.
+  For CYP2C19 poor metabolizers, consider a 50% reduction of recommended
+  starting dose and titrate to response or select alternative drug not
+  predominantly metabolized by CYP2C19." (Source: `PharmGKB
+  <https://www.pharmgkb.org/chemical/PA10074/guidelineAnnotation/
+  PA166127638>`__)
+
+- Imipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including imipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166104999>`__)
+
+- Lansoprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Omeprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Pantoprazole
+
+  "The CPIC Dosing Guideline for omeprazole, lansoprazole, pantoprazole
+  recommends to increase the starting daily dose and to monitor efficacy in
+  CYP2C19 ultrarapid metabolizer. For CYP2C19 rapid and normal metabolizers in
+  the treatment of H. pylori infection and erosive esophagitis increasing the
+  dose might be considered after initiation with the standard starting daily
+  dose. The recommendations for intermediate and poor metabolizer for chronic
+  therapy (>12 weeks) and efficacy achieved is to consider 50% reduction in
+  daily dose. See full guideline for further details and supporting evidence."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166219103>`__)
+
+- Sertraline
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  sertraline recommends to consider a 50% reduction of recommended starting
+  dose and titrate to response or select alternative drug not predominantly
+  metabolized by CYP2C19 for CYP2C19 poor metabolizers." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166127639>`__)
+
+- Voriconazole
+
+  "The CPIC dosing guideline for voriconazole recommends selecting an
+  alternative agent that is not dependent on CYP2C19 metabolism in adults who
+  are CYP2C19 ultrarapid metabolizers, rapid metabolizers or poor
+  metabolizers. In pediatric patients, an alternative agent should be used in
+  patients who are ultrarapid metabolizers or poor metabolizers. In pediatric
+  rapid metabolizers, therapy should be initiated at recommended standard
+  case dosing, then therapeutic dosing monitoring should be used to titrate
+  dose to therapeutic trough concentrations." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166161537>`__)
+
+- Trimipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including trimipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105001>`__)
 
 Resources for CYP2C19
 ---------------------
@@ -1531,18 +1934,198 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Ultrarapid Metabolizer
      - 2.5 <= score
      - \*1/\*2x2
+     - Abnormal/Priority/High Risk
    * - Normal Metabolizer
      - 1.25 <= score < 2.5
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 0.25 <= score < 1.25
      - \*1/\*4
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 0.25
      - \*4/\*5
+     - Abnormal/Priority/High Risk
+   * - Indeterminate
+     - Unknown score
+     - \*1/\*22
+     - None
+
+Recommendations for CYP2D6
+--------------------------
+
+- Amitriptyline
+
+  "The CPIC Dosing Guideline update for amitriptyline recommends an
+  alternative drug for CYP2D6 ultrarapid or poor metabolizers and CYP2C19
+  ultrarapid, rapid or poor metabolizers. If amitriptyline is warranted,
+  consider a 50% dose reduction in CYP2D6 or CYP2C19 poor metabolizers. For
+  CYP2D6 intermediate metabolizers, a 25% dose reduction should be
+  considered." (Source: `PharmGKB <https://www.pharmgkb.org
+  /guidelineAnnotation/PA166105006>`__)
+
+- Atomoxetine
+
+  "The CPIC Dosing Guideline for atomoxetine provides therapeutic
+  recommendations for CYP2D6 ultrarapid, normal, intermediate, and poor
+  metabolizer, which includes guidance for plasma drug concentration testing,
+  as a means to estimate atomoxetine exposure, if no clinical response and in
+  the absence of adverse events after 2 weeks of therapy." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166181885>`__)
+
+- Clomipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including clomipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105007>`__)
+
+- Codeine
+
+  "Alternate non-tramadol analgesics are recommended for CYP2D6 ultrarapid
+  and poor metabolizers. A label recommended age- or weight-specific dose of
+  codeine is warranted for CYP2D6 normal and intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104996>`__)
+
+- Desipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for
+  amitriptyline/nortriptyline and CYP2C19, CYP2D6 to other tricyclics
+  including
+  desipramine. The CPIC Dosing Guideline update for nortriptyline recommends
+  a 25% dose reduction for CYP2D6 intermediate metabolizers. For CYP2D6
+  ultrarapid or poor metabolizers, an alternative drug should be considered.
+  If nortriptyline is warranted, consider a 50% dose reduction in CYP2D6 poor
+  metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166105002>`__)
+
+- Doxepin
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including doxepin. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105000>`__)
+
+- Fluvoxamine
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  fluvoxamine recommends to consider a 25-50% reduction of recommended
+  starting dose and titrate to response or use an alternative drug not
+  metabolized by CYP2D6 for CYP2D6 poor metabolizers." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166127637>`__)
+
+- Hydrocodone
+
+  "CYP2D6 intermediate and poor metabolizers should initiate hydrocodone
+  therapy using the label recommended age- or weight-specific dosing.
+  However, if there is no response to hydrocodone in these patients, an
+  alternative analgesic should be considered.
+
+  There is insufficient evidence to provide a dosing recommendation for
+  hydrocodone in CYP2D6 ultrarapid metabolizers." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166228121>`__)
+
+- Imipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including imipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166104999>`__)
+
+- Nortriptyline
+
+  "The CPIC Dosing Guideline update for nortriptyline recommends a 25% dose
+  reduction for CYP2D6 intermediate metabolizers. For CYP2D6 ultrarapid or
+  poor metabolizers, an alternative drug should be considered. If
+  nortriptyline is warranted, consider a 50% dose reduction in CYP2D6 poor
+  metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166104999>`__)
+
+- Ondansetron
+
+  "The CPIC dosing guideline for ondansetron recommends selecting an
+  alternate drug for CYP2D6 ultrarapid metabolizers. It is recommended that
+  the alternate drug not be predominantly metabolized by CYP2D6 (eg.
+  granisetron)." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166161954>`__)
+
+- Paroxetine
+
+  "The CPIC Dosing Guideline for the selective serotonin reuptake inhibitor
+  paroxetine recommends an alternative drug not predominantly metabolized by
+  CYP2D6 for CYP2D6 ultrarapid metabolizers and for CYP2D6 poor metabolizers.
+  For CYP2D6 poor metabolizers, if paroxetine use is warranted, consider a
+  50% reduction of recommended starting dose and titrate to response."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166127636>`__)
+
+- Tamoxifen
+
+  "The CPIC Dosing Guideline for tamoxifen recommends the use of alternative
+  hormonal therapy such as an aromatase inhibitor for postmenopausal women or
+  aromatase inhibitor along with ovarian function suppression in
+  premenopausal women for CYP2D6 poor metabolizer, if aromatase inhibitor use
+  is not contraindicated. For CYP2D6 intermediate metabolizers and CYP2D6
+  allele combinations resulting in an activity score (AS) of 1 the
+  recommendation is to consider the recommendations stated for the CYP2D6
+  poor metabolizer. If aromatase inhibitor use is contraindicated,
+  consideration should be given to use a higher but FDA approved tamoxifen
+  dose for CYP2D6 intermediate metabolizers and CYP2D6 allele combinations
+  resulting in an AS of 1. For poor metabolizer, higher dose tamoxifen (40
+  mg/day) increases but does not normalize endoxifen concentrations and can
+  be considered if there are contraindications to aromatase inhibitor
+  therapy." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166176068>`__)
+
+- Tramadol
+
+  "Alternate non-codeine analgesics are recommended for CYP2D6 ultrarapid and
+  poor metabolizers. A label recommended age- or weight-specific dose of
+  tramadol is warranted for CYP2D6 normal and intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166228101>`__)
+
+- Trimipramine
+
+  "Tricyclic antidepressants have comparable pharmacokinetic properties, it
+  may be reasonable to apply the CPIC Dosing Guideline for amitriptyline and
+  CYP2C19, CYP2D6 to other tricyclics including trimipramine. The CPIC Dosing
+  Guideline update for amitriptyline recommends an alternative drug for
+  CYP2D6 ultrarapid or poor metabolizers and CYP2C19 ultrarapid, rapid or
+  poor metabolizers. If amitriptyline is warranted, consider a 50% dose
+  reduction in CYP2D6 or CYP2C19 poor metabolizers. For CYP2D6 intermediate
+  metabolizers, a 25% dose reduction should be considered." (Source:
+  `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/PA166105001>`__)
+
+- Tropisetron
+
+  "The CPIC dosing guideline for tropisetron recommends selecting an
+  alternate drug for CYP2D6 ultrarapid metabolizers. It is recommended that
+  the alternate drug not be predominantly metabolized by CYP2D6 (eg.
+  granisetron)." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166161955>`__)
 
 Filtered alleles for CYP2D6
 ---------------------------
@@ -1799,22 +2382,41 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*3
+     - Abnormal/Priority/High Risk
    * - Possible Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*6/\*6
+     - Normal/Routine/Low Risk
    * - Indeterminate
      - \*2/\*2
+     - None
+
+Recommendations for CYP3A5
+--------------------------
+
+- Tacrolimus
+
+  "The CPIC dosing guideline for tacrolimus recommends increasing the starting
+  dose by 1.5 to 2 times the recommended starting dose in patients who are
+  CYP3A5 intermediate or extensive metabolizers, though total starting dose
+  should not exceed 0.3 mg/kg/day. Therapeutic drug monitoring should also
+  be used to guide dose adjustments." (Source: `PharmGKB <https://
+  www.pharmgkb.org/guidelineAnnotation/PA166124619>`__)
 
 Resources for CYP3A5
 --------------------
 
 - `PharmVar CYP3A5 page <https://www.pharmvar.org/gene/CYP3A5>`__
 - `CPIC® Guideline for Tacrolimus and CYP3A5 <https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/>`__
+- `PharmGKB: Annotation of CPIC Guideline for tacrolimus and CYP3A5 <https://www.pharmgkb.org/guidelineAnnotation/PA166124619>`__
 
 CYP3A7
 ======
@@ -1952,15 +2554,50 @@ Activity score is used for phenotype prediction.
    * - Phenotype
      - Activity Score
      - Example
+     - Priority
    * - Normal Metabolizer
      - 2 == score
      - Reference/Reference
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - 1 <= score < 2
      - Reference/c.1905+1G>A (\*2A)
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - 0 <= score < 1
      - c.295_298delTCAT (\*7)/c.703C>T (\*8)
+     - Abnormal/Priority/High Risk
+
+Recommendations for DPYD
+------------------------
+
+- Capecitabine
+
+  "The CPIC Dosing Guideline for 5-fluorouracil and capecitabine recommends
+  an alternative drug for patients who are DPYD poor metabolizers with an
+  activity score of 0. In those who are poor metabolizers with an activity
+  score of 0.5, an alternative drug is also recommended, but if this is not
+  considered a suitable therapeutic option, 5-fluorouracil or capecitabine
+  should be administered at a strongly reduced dose with early therapeutic
+  drug monitoring. Patients who are intermediate metabolizers with an
+  activity score of 1 or 1.5 should receive a dose reduction of 50%. Patients
+  with the c.[2846A>T];[2846A>T] genotype may require a >50% dose reduction."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166109594>`__)
+
+- Fluorouracil
+
+  "The CPIC Dosing Guideline for 5-fluorouracil and capecitabine recommends
+  an alternative drug for patients who are DPYD poor metabolizers with an
+  activity score of 0. In those who are poor metabolizers with an activity
+  score of 0.5, an alternative drug is also recommended, but if this is not
+  considered a suitable therapeutic option, 5-fluorouracil or capecitabine
+  should be administered at a strongly reduced dose with early therapeutic
+  drug monitoring. Patients who are intermediate metabolizers with an
+  activity score of 1 or 1.5 should receive a dose reduction of 50%. Patients
+  with the c.[2846A>T];[2846A>T] genotype may require a >50% dose reduction."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166122686>`__)
 
 Resources for DPYD
 ------------------
@@ -1981,15 +2618,29 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
     * - Phenotype
       - Example
+      - Priority
     * - Favorable Response
       - Reference/Reference
+      - None
     * - Unfavorable Response
       - Reference/Leiden
+      - None
+
+Recommendations for F5
+----------------------
+
+- Hormonal contraceptives
+
+  "In individuals who carry the Factor V Leiden allele (rs6025 T) and have a
+  family history of thrombotic events, estrogen-containing oral
+  contraceptives should be avoided and alternative forms of contraception
+  used." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104955>`__)
 
 Resources for F5
 ----------------
 
-- `Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
+- `PharmGKB: Annotation of DPWG Guideline for hormonal contraceptives for systemic use and F5 <https://www.pharmgkb.org/chemical/PA452637/guidelineAnnotation/PA166104955>`__
 
 G6PD
 ====
@@ -2285,17 +2936,57 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Favorable Response
      - Reference/Reference
+     - None
    * - Unfavorable Response
      - Reference/rs12979860
+     - None
    * - Indeterminate
      - Reference/rs8099917
+     - None
+
+Recommendations for IFNL3
+-------------------------
+
+- Peginterferon alfa-2a
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA164749390/guidelineAnnotation/PA166110235>`__)
+
+- Peginterferon alfa-2b
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA164784024/guidelineAnnotation/PA166110235>`__)
+
+- Ribavirin
+
+"IFNL3 (IL28B) variation (rs12979860) is the strongest baseline predictor of
+response to PEG-interferon-alpha-containing regimens in HCV genotype 1
+patients. Patients with the favorable response genotype (rs12979860 CC) have
+increased likelihood of response (higher SVR rate) to PEG-interferon-alpha-
+containing regimens as compared to patients with unfavorable response
+genotype (rs12979860 CT or TT). Consider implications before initiating
+PEG-IFN alpha and RBV containing regimens." (Source: `PharmGKB <https://www.
+pharmgkb.org/chemical/PA451241/guidelineAnnotation/PA166110235>`__)
 
 Resources for IFNL3
 -------------------
 
-- `Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
+- `PharmGKB: Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
 - `CPIC® Guideline for PEG Interferon-Alpha-Based Regimens and IFNL3 <https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/>`__
 
 NUDT15
@@ -2311,16 +3002,49 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Possible Intermediate Metabolizer
      - \*3/\*4
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*3
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*4
+     - Abnormal/Priority/High Risk
+
+Recommendations for NUDT15
+--------------------------
+
+- Azathioprine
+
+  "Consider an alternate agent or extreme dose reduction of azathioprine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104933>`__)
+
+- Mercaptopurine
+
+  "Consider an alternate agent or extreme dose reduction of mercaptopurine
+  for patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104945>`__)
+
+- Thioguanine
+
+  "Consider an alternate agent or extreme dose reduction of thioguanine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 50-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104965>`__)
 
 Resources for NUDT15
 --------------------
@@ -2357,15 +3081,91 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
   * - Phenotype
     - Example
+    - Priority
   * - Uncertain Susceptibility
     - Reference/Reference
+    - Normal Risk
   * - Malignant Hyperthermia Susceptibility
     - Reference/c.103T>C
+    - Abnormal/Priority/High Risk
+
+Recommendations for RYR1
+------------------------
+
+- Desflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  uch as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA164749136/guidelineAnnotation/PA166180457>`__)
+
+- Enflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449461/guidelineAnnotation/PA166180457>`__)
+
+- Halothane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA449845/guidelineAnnotation/PA166180457>`__)
+
+- Isoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450106/guidelineAnnotation/PA166180457>`__)
+
+- Methoxyflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA450434/guidelineAnnotation/PA166180457>`__)
+
+- Sevoflurane
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451341/guidelineAnnotation/PA166180457>`__)
+
+- Succinylcholine
+
+  "The CPIC Dosing Guideline recommends that halogenated volatile anesthetics
+  such as desflurane, enflurane, halothane, isoflurane, methoxyflurane,
+  sevoflurane and the depolarizing muscle relaxants succinylcholine are
+  relatively contraindicated in persons with malignant hyperthermia
+  susceptibility (MHS). See full guideline for disclaimers, further details
+  and supporting evidence." (Source: `PharmGKB <https://www.pharmgkb.org/
+  chemical/PA451522/guidelineAnnotation/PA166180457>`__)
 
 Resources for RYR1
 ------------------
 
-- `Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
+- `PharmGKB: Annotation of CPIC Guideline for desflurane and CACNA1S, RYR1 <https://www.pharmgkb.org/chemical/PA164749136/guidelineAnnotation/PA166180457>`__
 - `CPIC® Guideline for Potent Volatile Anesthetic Agents and Succinylcholine and RYR1 and CACNA1S <https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/>`__
 - `Clinical Pharmacogenetics Implementation Consortium (CPIC) Guideline for the Use of Potent Volatile Anesthetic Agents and Succinylcholine in the Context of RYR1 or CACNA1S Genotypes <https://doi.org/10.1002/cpt.1319>`__
 
@@ -2483,18 +3283,98 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Increased Function
      - \*14/\*14
+     - None
    * - Normal Function
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Possible Decreased Function
      - \*2/\*15
+     - Abnormal/Priority/High Risk
    * - Decreased Function
      - \*1/\*5
+     - Abnormal/Priority/High Risk
    * - Poor Function
      - \*5/\*5
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*2/\*38
+     - None
+
+Recommendations for SLCO1B1
+---------------------------
+
+- Atorvastatin
+
+  "Prescribe ≤20mg for patients with SLCO1B1 poor function phenotype and
+  ≤40mg for patients with SLCO1B1 decreased or possible decreased phenotype
+  as a starting dose. Adjust doses of atorvastatin based on disease-specific
+  guidelines. Prescriber should be aware of possible increased risk for
+  myopathy especially for 40mg dose." (Source: `PharmGKB <https://www.
+  pharmgkb.org/guidelineAnnotation/PA166262221>`__)
+
+- Fluvastatin
+
+  "CYP2C9 IMs should avoid fluvastatin doses greater than 40mg while CYP2C9
+  PMs should avoid doses greater than 20mg. If higher doses are required for
+  desired efficacy, an alternative statin should be considered. Patients with
+  SLCO1B1 poor function should also avoid fluvastatin doses greater than 40mg
+  and and adjust doses of fluvastatin based on disease-specific guidelines.
+  Patients with both SLCO1B1 poor function and CYP2C9 IM/PM should be
+  prescribed an alternative statin depending on the desired potency."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166262341>`__)
+
+- Lovastatin
+
+  "Prescribe an alternative statin depending on the desired potency for
+  patients with SLCO1B1 decreased function, possible decreased function or
+  poor function phenotype. If lovastatin therapy is warranted in patients
+  with SLCO1B1 decreased or possible decreased phenotype, limit dose to
+  <20mg/day." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262241>`__)
+
+- Pitavastatin
+
+  "Prescribe ≤1mg as a starting dose for patients with SLCO1B1 poor function
+  phenotype. Prescribe ≤2mg as a starting dose for patients with SLCO1B1
+  decreased or possible decreased phenotype. Adjust doses of pitavastatin
+  based on disease-specific guidelines. Consider an alternative statin or
+  combination therapy if higher doses are needed." (Source: `PharmGKB
+  <https://www.pharmgkb.org/guidelineAnnotation/PA166262261>`__)
+
+- Pravastatin
+
+  "Prescribe ≤40mg as a starting dose and adjust doses of pravastatin based
+  on disease-specific guidelines for patients with SLCO1B1 poor function
+  phenotype. Prescribe desired starting dose and adjust doses of pravastatin
+  based on disease-specific guidelines for patients with SLCO1B1 decreased or
+  possible decreased phenotype. Prescriber should be aware of possible
+  increased risk for myopathy with pravastatin especially with doses >40mg
+  per day." (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation
+  /PA166262281>`__)
+
+- Rosuvastatin
+
+  "Prescribe ≤20mg as a starting dose and adjust doses of rosuvastatin based
+  on disease-specific and specific population guidelines for patients who are
+  SLCO1B1 or ABCG2 poor function phenotype. If dose >20mg needed for desired
+  efficacy, consider combination therapy (i.e. rosuvastatin plus non-statin
+  guideline directed medical therapy). Patients with both ABCG2 poor function
+  and SLCO1B1 poor/decreased function should be prescribed ≤10mg as a
+  starting dose." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166262321>`__)
+
+- Simvastatin
+
+  "Prescribe an alternative statin depending on the desired potency for
+  patients with SLCO1B1 decreased function, possible decreased function or
+  poor function phenotype. If simvastatin therapy is warranted in patients
+  with SLCO1B1 decreased or possible decreased phenotype, limit dose to
+  <20mg/day." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166105005>`__)
 
 Resources for SLCO1B1
 ---------------------
@@ -2502,6 +3382,7 @@ Resources for SLCO1B1
 - `PharmVar SLCO1B1 page <https://www.pharmvar.org/gene/SLCO1B1>`__
 - `CPIC® Guideline for Simvastatin and SLCO1B1 <https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/>`__
 - `The Clinical Pharmacogenetics Implementation Consortium Guideline for SLCO1B1, ABCG2, and CYP2C9 genotypes and Statin-Associated Musculoskeletal Symptoms <https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2557>`__
+- `PharmGKB: Annotation of CPIC Guideline for rosuvastatin and ABCG2, SLCO1B1 <https://www.pharmgkb.org/guidelineAnnotation/PA166262321>`__
 
 SULT1A1
 =======
@@ -2685,16 +3566,49 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Possible Intermediate Metabolizer
      - \*3A/\*12
+     - Abnormal/Priority/High Risk
    * - Intermediate Metabolizer
      - \*1/\*2
+     - Abnormal/Priority/High Risk
    * - Poor Metabolizer
      - \*2/\*3A
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*1/\*18
+     - Abnormal/Priority/High Risk
+
+Recommendations for TPMT
+------------------------
+
+- Azathioprine
+
+  "Consider an alternate agent or extreme dose reduction of azathioprine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104933>`__)
+
+- Mercaptopurine
+
+  "Consider an alternate agent or extreme dose reduction of mercaptopurine
+  for patients who are TPMT or NUDT15 poor metabolizers. Start at 30-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104945>`__)
+
+- Thioguanine
+
+  "Consider an alternate agent or extreme dose reduction of thioguanine for
+  patients who are TPMT or NUDT15 poor metabolizers. Start at 50-80% of
+  target dose for patients who are TPMT or NUDT15 intermediate metabolizers."
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166104965>`__)
 
 Resources for TPMT
 ------------------
@@ -2714,14 +3628,33 @@ Diplotype-phenotype mapping is used for phenotype prediction.
 
    * - Phenotype
      - Example
+     - Priority
    * - Normal Metabolizer
      - \*1/\*1
+     - Normal/Routine/Low Risk
    * - Intermediate Metabolizer
      - \*1/\*6
+     - Normal/Routine/Low Risk
    * - Poor Metabolizer
      - \*6/\*27
+     - Abnormal/Priority/High Risk
    * - Indeterminate
      - \*28/\*80
+     - None
+
+Recommendations for UGT1A1
+--------------------------
+
+- Atazanavir
+
+  "The CPIC dosing guideline recommends considering advising individuals who
+  carry two decreased function UGT1A1 alleles about a substantial likelihood
+  of developing jaundice, which may cause non-adherence. The dosing guideline
+  recommends that alternative agents be considered if the risk of
+  non-adherence due to jaundice is high. The risk of discontinuation is low
+  and very low for individuals carrying one, or no decreased function UGT1A1
+  alleles, respectively." (Source: `PharmGKB <https://www.pharmgkb.org/
+  guidelineAnnotation/PA166128738>`__)
 
 Resources for UGT1A1
 --------------------

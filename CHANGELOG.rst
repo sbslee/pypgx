@@ -1,6 +1,14 @@
 Changelog
 *********
 
+0.19.0 (2022-09-13)
+-------------------
+
+* Add new method :meth:`api.core.has_sv`.
+* Update :meth:`api.core.sort_alleles` method to handle ``'Indeterminate'`` haplotype call when ``by='name'``.
+* Update :meth:`api.utils.estimate_phase_beagle` method to handle situations where there are overlapping samples between input VCF and reference panel -- i.e. users are no longer required to change sample names. Before this update, the Beagle program would throw an error if there were overlapping samples (e.g. 1KGP samples). From now on, offending samples will be temporarily renamed before statistical phasing.
+* Add new methods :meth:`api.core.load_recommendation_table` and :meth:`api.core.get_recommendation`.
+
 0.18.0 (2022-08-12)
 -------------------
 
