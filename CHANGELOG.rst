@@ -4,6 +4,8 @@ Changelog
 0.20.0 (in development)
 -----------------------
 
+* :issue:`73`: Fix bug in :command:`run-ngs-pipeline` command where empty VCF (i.e. no variants were found in the target gene) was causing error when plotting allele fraction. From now on, a warning will be produced telling users to specify ``--do-not-plot-allele-fraction`` to suppress this warning.
+
 0.19.0 (2022-09-13)
 -------------------
 
