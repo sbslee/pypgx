@@ -940,7 +940,7 @@ run-ngs-pipeline
      CYP2D6 \
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
-     --depth-of-coverage depth-of-coverage.tsv \
+     --depth-of-coverage depth-of-coverage.zip \
      --control-statistics control-statistics-VDR.zip
    
    [Example] To genotype the CYP2D6 gene from targeted sequencing data:
@@ -948,7 +948,7 @@ run-ngs-pipeline
      CYP2D6 \
      CYP2D6-pipeline \
      --variants variants.vcf.gz \
-     --depth-of-coverage depth-of-coverage.tsv \
+     --depth-of-coverage depth-of-coverage.zip \
      --control-statistics control-statistics-VDR.zip \
      --platform Targeted
 
