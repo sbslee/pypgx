@@ -20,9 +20,6 @@ README
 .. image:: https://anaconda.org/bioconda/pypgx/badges/downloads.svg
    :target: https://anaconda.org/bioconda/pypgx/files
 
-.. image:: https://anaconda.org/bioconda/pypgx/badges/installer/conda.svg
-   :target: https://conda.anaconda.org/bioconda
-
 Introduction
 ============
 
@@ -708,7 +705,7 @@ For getting help on the CLI:
    $ pypgx -h
 
    usage: pypgx [-h] [-v] COMMAND ...
-   
+
    positional arguments:
      COMMAND
        call-genotypes      Call genotypes for target gene.
@@ -758,7 +755,7 @@ For getting help on the CLI:
        slice-bam           Slice BAM file for all genes used by PyPGx.
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
-   
+
    optional arguments:
      -h, --help            Show this help message and exit.
      -v, --version         Show the version number and exit.
