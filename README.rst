@@ -20,9 +20,6 @@ README
 .. image:: https://anaconda.org/bioconda/pypgx/badges/downloads.svg
    :target: https://anaconda.org/bioconda/pypgx/files
 
-.. image:: https://anaconda.org/bioconda/pypgx/badges/installer/conda.svg
-   :target: https://conda.anaconda.org/bioconda
-
 Introduction
 ============
 

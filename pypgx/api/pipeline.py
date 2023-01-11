@@ -248,10 +248,19 @@ def run_ngs_pipeline(
         alleles.to_file(f'{output}/alleles.zip')
 
         if not do_not_plot_allele_fraction:
-            os.mkdir(f'{output}/allele-fraction-profile')
-            plot.plot_vcf_allele_fraction(
-                imported_variants, path=f'{output}/allele-fraction-profile'
-            )
+            if imported_variants.data.empty:
+                message = (
+                    "Cannot plot allele fraction because input VCF is empty. "
+                    "Use '--do-not-plot-allele-fraction' to suppress this "
+                    "warning."
+                )
+                warnings.warn(message)
+            else:
+                os.mkdir(f'{output}/allele-fraction-profile')
+                plot.plot_vcf_allele_fraction(
+                    imported_variants,
+                    path=f'{output}/allele-fraction-profile'
+                )
 
     if large_var and depth_of_coverage is not None:
         if isinstance(depth_of_coverage, str):
