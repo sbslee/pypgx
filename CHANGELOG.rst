@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.20.0 (in development)
------------------------
+0.20.0 (2023-01-12)
+-------------------
 
 * :issue:`73`: Fix bug in :command:`run-ngs-pipeline` command where empty VCF (i.e. no variants were found in the target gene) was causing error when plotting allele fraction. From now on, a warning will be produced telling users to specify ``--do-not-plot-allele-fraction`` to suppress this warning.
 * :issue:`78`: Fix bug in :command:`compute-copy-number` command where it threw an error "Different sample sets found" when the sample name consists of only numbers.
