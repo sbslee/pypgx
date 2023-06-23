@@ -4,6 +4,8 @@ Changelog
 0.21.0 (in development)
 -----------------------
 
+* :issue:`96`: Fix bug in :command:`compute-copy-number` command where it threw an error "Different sample sets found" when the sample name consists of only numbers with one or more leading zeros.
+
 0.20.0 (2023-01-12)
 -------------------
 
