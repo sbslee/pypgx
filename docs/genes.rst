@@ -413,8 +413,8 @@ Below is a summary table:
      -
      -
      - Other
-     - `chr19:39731245-39738646 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39731245%2D39738646&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
-     - `chr19:39240552-39248006 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39248006&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr19:39731245-39744165 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39731245%2D39744165&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr19:39240552-39253525 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39253525&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT1
      - ✅

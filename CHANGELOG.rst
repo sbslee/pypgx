@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * :issue:`96`: Fix bug in :command:`compute-copy-number` command where it threw an error "Different sample sets found" when the sample name consists of only numbers with one or more leading zeros.
+* :issue:`97`: Fix bug in IFNL3 genotyping where certain variants were not considered because they were located outside of the target region.
 
 0.20.0 (2023-01-12)
 -------------------
