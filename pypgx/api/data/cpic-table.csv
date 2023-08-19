@@ -1,444 +1,519 @@
-Gene,Drug,Guideline,CPICLevel,CPICLevelStatus,PharmGKBLevel,FDALabel,PMID
-HLA-B,abacavir,https://cpicpgx.org/guidelines/guideline-for-abacavir-and-hla-b/,A,Final,1A,Testing required,24561393;22378157
-HLA-B,allopurinol,https://cpicpgx.org/guidelines/guideline-for-allopurinol-and-hla-b/,A,Final,1A,Testing recommended,23232549;26094938
-MT-RNR1,amikacin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,3,,34032273
-CYP2C19,amitriptyline,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,,23486447;27997040
-CYP2D6,amitriptyline,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,23486447;27997040
-UGT1A1,atazanavir,https://cpicpgx.org/guidelines/guideline-for-atazanavir-and-ugt1a1/,A,Final,1A,,26417955
-CYP2D6,atomoxetine,https://cpicpgx.org/guidelines/cpic-guideline-for-atomoxetine-based-on-cyp2d6-genotype/,A,Final,1A,Actionable PGx,30801677
-NUDT15,azathioprine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
-TPMT,azathioprine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
-DPYD,capecitabine,https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,A,Final,1A,Actionable PGx,23988873;29152729
-HLA-A,carbamazepine,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Actionable PGx,23695185;29392710
-HLA-B,carbamazepine,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Testing required,23695185;29392710
-CYP2C9,celecoxib,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
-CYP2C19,citalopram,https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,25974703
-CYP2C19,clopidogrel,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,A,Final,1A,Actionable PGx,21716271;23698643
-CYP2D6,codeine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,A,Final,1A,Actionable PGx,22205192;24458010;33387367
-CACNA1S,desflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-RYR1,desflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-CYP2B6,efavirenz,https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/,A,Final,1A,Actionable PGx,31006110
-CACNA1S,enflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-RYR1,enflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-CYP2C19,escitalopram,https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,25974703
-DPYD,fluorouracil,https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,A,Final,1A,Actionable PGx,23988873;29152729
-CYP2C9,flurbiprofen,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
-CYP2C9,fosphenytoin,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,,Actionable PGx,25099164;32779747
-HLA-B,fosphenytoin,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,,Actionable PGx,25099164;32779747
-MT-RNR1,gentamicin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
-CACNA1S,halothane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
-RYR1,halothane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
-CYP2C9,ibuprofen,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
-UGT1A1,irinotecan,,A,Provisional,1A,Actionable PGx,
-CACNA1S,isoflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-RYR1,isoflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-CFTR,ivacaftor,https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/,A,Final,1A,Testing required,24598717
-MT-RNR1,kanamycin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,3,,34032273
-CYP2C19,lansoprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Informative PGx,32770672
-CYP2C9,lornoxicam,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
-CYP2C9,meloxicam,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
-NUDT15,mercaptopurine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
-TPMT,mercaptopurine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
-CACNA1S,methoxyflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
-RYR1,methoxyflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
-CYP2D6,nortriptyline,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,23486447;27997040
-CYP2C19,omeprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Actionable PGx,32770672
-CYP2D6,ondansetron,https://cpicpgx.org/guidelines/guideline-for-ondansetron-and-tropisetron-and-cyp2d6-genotype/,A,Final,1A,Informative PGx,28002639
-HLA-B,oxcarbazepine,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Testing recommended,29392710
-CYP2C19,pantoprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Actionable PGx,32770672
-MT-RNR1,paromomycin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,,,34032273
-CYP2D6,paroxetine,https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/,A,Final,1A,Informative PGx,25974703
-IFNL3,peginterferon alfa-2a,https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,24096968
-IFNL4,peginterferon alfa-2a,https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,
-IFNL3,peginterferon alfa-2b,https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,Actionable PGx,24096968
-IFNL4,peginterferon alfa-2b,https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,
-CYP2C9,phenytoin,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,1A,Actionable PGx,25099164;32779747
-HLA-B,phenytoin,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,1A,Actionable PGx,25099164;32779747
-CYP2C9,piroxicam,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
-CYP2D6,pitolisant,,A,Provisional,,Actionable PGx,
-MT-RNR1,plazomicin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,,,34032273
-G6PD,rasburicase,https://cpicpgx.org/guidelines/guideline-for-rasburicase-and-g6pd/,A,Final,1A,Testing required,24787449
-CACNA1S,sevoflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-RYR1,sevoflurane,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-SLCO1B1,simvastatin,https://cpicpgx.org/guidelines/guideline-for-simvastatin-and-slco1b1/,A,Final,1A,Informative PGx,22617227;24918167
-CYP2C9,siponimod,,A,Provisional,1A,Testing required,
-MT-RNR1,streptomycin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
-CACNA1S,succinylcholine,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-RYR1,succinylcholine,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
-CYP3A5,tacrolimus,https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,A,Final,1A,,25801146
-G6PD,tafenoquine,,A,Provisional,,Testing required,
-CYP2D6,tamoxifen,https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/,A,Final,1A,Actionable PGx,29385237
-CYP2C9,tenoxicam,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
-NUDT15,thioguanine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,3,Testing recommended,21270794;23422873;30447069
-TPMT,thioguanine,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,3,Testing recommended,21270794;23422873;30447069
-MT-RNR1,tobramycin,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,3,,34032273
-CYP2D6,tramadol,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,A,Final,1A,Actionable PGx,33387367
-CYP2D6,tropisetron,https://cpicpgx.org/guidelines/guideline-for-ondansetron-and-tropisetron-and-cyp2d6-genotype/,A,Final,1A,,28002639
-CYP2C19,voriconazole,https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/,A,Final,1A,Actionable PGx,27981572
-CYP2C9,warfarin,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,Actionable PGx,21900891;28198005
-CYP4F2,warfarin,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,,21900891;28198005
-VKORC1,warfarin,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,Actionable PGx,21900891;28198005
-G6PD,aspirin,,A/B,Provisional,3,,
-POLG,divalproex sodium,,A/B,Provisional,,Testing required,
-CYP2D6,eliglustat,,A/B,Provisional,,Testing required,
-NAT2,hydralazine,,A/B,Provisional,3,,
-CYP2D6,oliceridine,,A/B,Provisional,,Actionable PGx,
-CYP2D6,pimozide,,A/B,Provisional,3,Testing required,
-CYP2D6,tetrabenazine,,A/B,Provisional,,Testing required,
-POLG,valproic acid,,A/B,Provisional,3,Testing required,
-GBA,velaglucerase alfa,,A/B,Provisional,,Testing required,
-CYP2D6,venlafaxine,,A/B,Provisional,1A,Actionable PGx,
-CYP2D6,vortioxetine,,A/B,Provisional,3,Actionable PGx,
-CYP2C9,acenocoumarol,,B,Provisional,1B,,
-CYP4F2,acenocoumarol,,B,Provisional,2A,,
-CYP2D6,aripiprazole,,B,Provisional,1A,Actionable PGx,
-UGT1A1,belinostat,,B,Provisional,,Actionable PGx,
-CYP2C19,brivaracetam,,B,Provisional,3,Actionable PGx,
-SCN1A,carbamazepine,,B,Provisional,2B,,
-NAGS,carglumic acid,,B,Provisional,,Testing required,
-G6PD,chloramphenicol,,B,Provisional,3,,
-G6PD,chlorpropamide,,B,Provisional,,Actionable PGx,
-G6PD,ciprofloxacin,,B,Provisional,3,,
-CYP2C19,clomipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
-CYP2D6,clomipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-G6PD,dapsone,,B,Provisional,4,Actionable PGx,
-CYP2D6,desipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-CYP2C19,dexlansoprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,B,Final,1A,Actionable PGx,32770672
-G6PD,dimercaprol,,B,Provisional,3,,
-CYP2C19,doxepin,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-CYP2D6,doxepin,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-CYP2D6,fluvoxamine,https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,25974703
-G6PD,glibenclamide,,B,Provisional,3,Actionable PGx,
-G6PD,glimepiride,,B,Provisional,,Actionable PGx,
-G6PD,glipizide,,B,Provisional,,Actionable PGx,
-CYP2D6,hydrocodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,B,Final,1A,,33387367
-CYP2C19,imipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
-CYP2D6,imipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-G6PD,mafenide,,B,Provisional,,Actionable PGx,
-G6PD,mesalazine,,B,Provisional,,,
-CYP2B6,methadone,,B,Provisional,2A,,
-G6PD,methylene blue,,B,Provisional,3,Actionable PGx,
-G6PD,moxifloxacin,,B,Provisional,,,
-HPRT1,mycophenolic acid,,B,Provisional,,Actionable PGx,
-G6PD,nalidixic acid,,B,Provisional,,Actionable PGx,
-G6PD,nitrofurantoin,,B,Provisional,3,Actionable PGx,
-G6PD,norfloxacin,,B,Provisional,,Actionable PGx,
-G6PD,pegloticase,,B,Provisional,3,Testing required,
-G6PD,phenazopyridine,,B,Provisional,3,,
-CYP4F2,phenprocoumon,,B,Provisional,3,,
-SCN1A,phenytoin,,B,Provisional,3,,
-G6PD,primaquine,,B,Provisional,3,Testing required,
-G6PD,probenecid,,B,Provisional,,Actionable PGx,
-G6PD,quinine,,B,Provisional,,Actionable PGx,
-CYP2D6,risperidone,,B,Provisional,1A,Informative PGx,
-ABCG2,rosuvastatin,,B,Provisional,2A,,
-CYP2C19,sertraline,https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/,B,Final,1A,,25974703
-G6PD,sodium nitrite,,B,Provisional,,Actionable PGx,
-G6PD,sulfacetamide,,B,Provisional,,,
-G6PD,sulfadiazine,,B,Provisional,,Actionable PGx,
-G6PD,sulfamethoxazole / trimethoprim,,B,Provisional,4,Actionable PGx,
-G6PD,sulfasalazine,,B,Provisional,3,Actionable PGx,
-G6PD,sulfisoxazole,,B,Provisional,,,
-CYP2C19,trimipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
-CYP2D6,trimipramine,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
-ABL2,valproic acid,,B,Provisional,,,
-ASL,valproic acid,,B,Provisional,,,
-ASS1,valproic acid,,B,Provisional,,,
-CPS1,valproic acid,,B,Provisional,,,
-NAGS,valproic acid,,B,Provisional,,,
-OTC,valproic acid,,B,Provisional,,Actionable PGx,
-HLA-A,allopurinol,,B/C,Provisional,2B,,
-NAT2,amifampridine,,B/C,Provisional,,Actionable PGx,
-NAT2,amifampridine phosphate,,B/C,Provisional,,Actionable PGx,
-CYP2D6,amoxapine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,amphetamine,,B/C,Provisional,,Informative PGx,
-CYP2D6,aripiprazole lauroxil,,B/C,Provisional,,Actionable PGx,
-ADRB1,atenolol,,B/C,Provisional,,,
-GRK5,atenolol,,B/C,Provisional,,,
-CYP2C9,avatrombopag,,B/C,Provisional,,Informative PGx,
-CYP2D6,brexpiprazole,,B/C,Provisional,,Actionable PGx,
-ADRB1,bucindolol,,B/C,Provisional,3,,
-CYP2B6,bupropion,,B/C,Provisional,2A,,
-CYP2C19,carisoprodol,,B/C,Provisional,4,Actionable PGx,
-ADRB1,carvedilol,,B/C,Provisional,3,,
-CYP2D6,carvedilol,,B/C,Provisional,3,Actionable PGx,
-GRK5,carvedilol,,B/C,Provisional,,,
-CYP2D6,cevimeline,,B/C,Provisional,,Actionable PGx,
-SLC6A4,citalopram,,B/C,Provisional,3,,
-CYP2C19,clobazam,,B/C,Provisional,3,Actionable PGx,
-CYP2D6,clozapine,,B/C,Provisional,,Actionable PGx,
-G6PD,dabrafenib,,B/C,Provisional,,Actionable PGx,
-SLC28A3,daunorubicin,,B/C,Provisional,,,
-CYP2D6,deutetrabenazine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,dextromethorphan,,B/C,Provisional,3,,
-CYP2C19,diazepam,,B/C,Provisional,3,Actionable PGx,
-UGT1A1,dolutegravir,,B/C,Provisional,,Actionable PGx,
-CYP2D6,donepezil,,B/C,Provisional,3,Actionable PGx,
-SLC28A3,doxorubicin,,B/C,Provisional,,,
-CYP2C9,dronabinol,,B/C,Provisional,,Actionable PGx,
-SLCO1B1,elagolix,,B/C,Provisional,,Actionable PGx,
-CYP2C9,erdafitinib,,B/C,Provisional,,Actionable PGx,
-SLC6A4,escitalopram,,B/C,Provisional,3,,
-CYP2D6,flecainide,,B/C,Provisional,1A,,
-CYP2D6,gefitinib,,B/C,Provisional,3,Actionable PGx,
-CYP2D6,haloperidol,,B/C,Provisional,1A,,
-G6PD,hydroxychloroquine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,iloperidone,,B/C,Provisional,3,Actionable PGx,
-CYP2D6,labetalol,,B/C,Provisional,,,
-HLA-DRB1,lapatinib,,B/C,Provisional,3,Actionable PGx,
-CYP2C9,lesinurad,,B/C,Provisional,,Actionable PGx,
-G6PD,lidocaine,,B/C,Provisional,,,
-MTHFR,l-methylfolate,,B/C,Provisional,3,,
-CYP2D6,lofexidine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,meclizine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,metoclopramide,,B/C,Provisional,,Actionable PGx,
-ADRB1,metoprolol,,B/C,Provisional,3,,
-CYP2D6,metoprolol,,B/C,Provisional,1A,Informative PGx,
-GRK5,metoprolol,,B/C,Provisional,,,
-CYP2D6,mirabegron,,B/C,Provisional,,Actionable PGx,
-CYP2D6,mirtazapine,,B/C,Provisional,2A,,
-BCHE,mivacurium,,B/C,Provisional,,,
-CYP2D6,nebivolol,,B/C,Provisional,,Informative PGx,
-CYP2B6,nevirapine,,B/C,Provisional,2A,,
-UGT1A1,nilotinib,,B/C,Provisional,3,Actionable PGx,
-HLA-B,pazopanib,,B/C,Provisional,,Actionable PGx,
-UGT1A1,pazopanib,,B/C,Provisional,3,Actionable PGx,
-CYP2D6,perphenazine,,B/C,Provisional,,Actionable PGx,
-NAT2,procainamide,,B/C,Provisional,,Informative PGx,
-CYP2D6,propafenone,,B/C,Provisional,1A,Actionable PGx,
-CYP2D6,propranolol,,B/C,Provisional,4,Informative PGx,
-CYP2D6,protriptyline,,B/C,Provisional,,Actionable PGx,
-UGT1A1,raltegravir,,B/C,Provisional,,Informative PGx,
-BCHE,succinylcholine,,B/C,Provisional,3,Actionable PGx,
-NAT2,sulfamethoxazole / trimethoprim,,B/C,Provisional,,Actionable PGx,
-NAT2,sulfasalazine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,tamsulosin,,B/C,Provisional,,Actionable PGx,
-CYP2D6,thioridazine,,B/C,Provisional,3,Actionable PGx,
-CYP2D6,timolol,,B/C,Provisional,3,,
-CYP2D6,valbenazine,,B/C,Provisional,,Actionable PGx,
-CYP2D6,zuclopenthixol,,B/C,Provisional,1A,,
-CYP2C9,aceclofenac,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
-TNF,adalimumab,,C,Provisional,,,
-COMT,alfentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,alfentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-HLA-C,allopurinol,,C,Provisional,2B,,
-MC4R,amisulpride,,C,Provisional,3,,
-MC4R,aripiprazole,,C,Provisional,3,,
-CYP2C9,aspirin,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
-HLA-DPB1,aspirin,,C,Provisional,2B,,
-CFTR,ataluren,,C,Provisional,3,,
-COMT,buprenorphine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,buprenorphine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-HLA-B,carbimazole,,C,Provisional,3,,
-MTHFR,carboplatin,,C,Provisional,3,,
-G6PD,chloroquine,,C,Provisional,4,Actionable PGx,
-COMT,citalopram,,C,Provisional,,,
-GRIK4,citalopram,,C,Provisional,,,
-HTR2A,citalopram,,C,Provisional,3,,
-CES1,clopidogrel,,C,Provisional,2B,,
-HTR2C,clozapine,,C,Provisional,3,,
-MC4R,clozapine,,C,Provisional,3,,
-COMT,codeine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,codeine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP3A5,cyclosporine,,C,Provisional,3,,
-HLA-B,dapsone,,C,Provisional,2A,,
-CYP2D6,darifenacin,,C,Provisional,,Actionable PGx,
-CYP2C8,diclofenac,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
-CYP2C9,diclofenac,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
-ABCB1,digoxin,,C,Provisional,3,,
-CYP2D6,dolasetron,,C,Provisional,4,,
-CYP2D6,duloxetine,,C,Provisional,,Actionable PGx,
-F5,eltrombopag,,C,Provisional,,Actionable PGx,
-COMT,escitalopram,,C,Provisional,,,
-GRIK4,escitalopram,,C,Provisional,,,
-CYP2C19,esomeprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,C,Final,3,Actionable PGx,32770672
-TNF,etanercept,,C,Provisional,2B,,
-ABCB1,fentanyl,,C,Provisional,3,,
-COMT,fentanyl,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,fentanyl,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP2D6,fesoterodine,,C,Provisional,,Actionable PGx,
-CYP2C19,flibanserin,,C,Provisional,,Actionable PGx,
-CYP2C9,flibanserin,,C,Provisional,,Actionable PGx,
-CYP2D6,flibanserin,,C,Provisional,,Actionable PGx,
-CYP2D6,fluoxetine,,C,Provisional,3,Informative PGx,
-GRIK4,fluoxetine,,C,Provisional,,,
-CYP2D6,galantamine,,C,Provisional,3,Informative PGx,
-MC4R,haloperidol,,C,Provisional,3,,
-F5,hormonal contraceptives for systemic use,,C,Provisional,1A,,
-COMT,hydrocodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,hydrocodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-COMT,hydromorphone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,hydromorphone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-CYP2C8,ibuprofen,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
-CYP2C9,indomethacin,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
-TNF,infliximab,,C,Provisional,3,,
-NAT2,isoniazid,,C,Provisional,1B,,
-HLA-DQA1,lapatinib,,C,Provisional,3,Actionable PGx,
-COMT,levomethadone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,levomethadone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-CYP2C9,lumiracoxib,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
-COMT,methadone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP2D6,methadone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,methadone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-HLA-B,methazolamide,,C,Provisional,2A,,
-HLA-C,methazolamide,,C,Provisional,2B,,
-HLA-B,methimazole,,C,Provisional,3,,
-ABCB1,methotrexate,,C,Provisional,3,,
-MTHFR,methotrexate,,C,Provisional,2A,,
-SLCO1B1,methotrexate,,C,Provisional,3,,
-CYP2D6,methylphenidate,,C,Provisional,3,,
-CYP2D6,modafinil,,C,Provisional,,Actionable PGx,
-COMT,morphine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,morphine,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP2C9,nabumetone,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
-OPRM1,naloxone,,C,Provisional,3,,
-COMT,naltrexone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
-OPRM1,naltrexone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,4,,33387367
-CYP2C9,naproxen,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
-ABCB1,nevirapine,,C,Provisional,3,,
-HLA-B,nevirapine,,C,Provisional,3,,
-HLA-DRB1,nevirapine,,C,Provisional,2B,,
-HTR2C,olanzapine,,C,Provisional,3,,
-MC4R,olanzapine,,C,Provisional,3,,
-HLA-A,oxcarbazepine,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,C,Final,3,,29392710
-COMT,oxycodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP2D6,oxycodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,2A,,33387367
-OPRM1,oxycodone,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-MC4R,paliperidone,,C,Provisional,3,,
-CYP2D6,palonosetron,,C,Provisional,,Informative PGx,
-GRIK4,paroxetine,,C,Provisional,,,
-SLCO1B1,pravastatin,,C,Provisional,2A,,
-HLA-B,propylthiouracil,,C,Provisional,3,,
-MC4R,quetiapine,,C,Provisional,3,,
-CYP2D6,quinidine,,C,Provisional,,Informative PGx,
-CYP2D6,quinine,,C,Provisional,,Actionable PGx,
-CYP2C19,rabeprazole,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,C,Final,2A,Actionable PGx,32770672
-COMT,remifentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,remifentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-DRD2,risperidone,,C,Provisional,3,,
-HTR2C,risperidone,,C,Provisional,3,,
-MC4R,risperidone,,C,Provisional,3,,
-CYP2C8,rosiglitazone,,C,Provisional,3,,
-SLCO1B1,rosuvastatin,,C,Provisional,2A,Actionable PGx,
-CYP2D6,sertraline,,C,Provisional,3,,
-GRIK4,sertraline,,C,Provisional,,,
-ABCB1,simvastatin,,C,Provisional,3,,
-CYP3A5,sirolimus,,C,Provisional,3,,
-COMT,sufentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,sufentanil,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-CYP3A4,tacrolimus,,C,Provisional,1B,,
-DPYD,tegafur,https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,C,Final,1A,,23988873;29152729
-CYP2D6,terbinafine,,C,Provisional,,Informative PGx,
-CYP2D6,tolterodine,,C,Provisional,3,Actionable PGx,
-COMT,tramadol,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-OPRM1,tramadol,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
-GRIK4,venlafaxine,,C,Provisional,,,
-G6PD,vitamin c,,C,Provisional,,,
-MC4R,ziprasidone,,C,Provisional,,,
-ITPA,"interferon alfa-2b, recombinant",,C/D,Provisional,3,,
-CYP3A5,midazolam,,C/D,Provisional,3,,
-COMT,nicotine,,C/D,Provisional,3,,
-ABCB1,ondansetron,,C/D,Provisional,3,,
-UGT2B15,oxazepam,,C/D,Provisional,3,,
-FDPS,alendronate,,D,Provisional,,,
-GP1BA,aspirin,,D,Provisional,3,,
-LTC4S,aspirin,,D,Provisional,3,,
-PTGS1,aspirin,,D,Provisional,3,,
-APOE,atorvastatin,,D,Provisional,2B,,
-CETP,atorvastatin,,D,Provisional,4,,
-COQ2,atorvastatin,,D,Provisional,3,,
-KIF6,atorvastatin,,D,Provisional,3,,
-LDLR,atorvastatin,,D,Provisional,,Informative PGx,
-LPA,atorvastatin,,D,Provisional,,,
-CRHR1,budesonide,,D,Provisional,,,
-ADORA2A,caffeine,,D,Provisional,3,,
-TYMS,capecitabine,,D,Provisional,3,,
-ACE,captopril,,D,Provisional,2A,,
-EPHX1,carbamazepine,,D,Provisional,3,,
-CETP,cerivastatin,,D,Provisional,,,
-LPA,cerivastatin,,D,Provisional,,,
-EGF,cetuximab,,D,Provisional,3,,
-ACYP2,cisplatin,,D,Provisional,3,,
-ERCC1,cisplatin,,D,Provisional,3,,
-GSTM1,cisplatin,,D,Provisional,3,,
-NQO1,cisplatin,,D,Provisional,,,
-XPC,cisplatin,,D,Provisional,3,,
-FKBP5,citalopram,,D,Provisional,3,,
-ANKK1,clozapine,,D,Provisional,,,
-GSTP1,cyclophosphamide,,D,Provisional,3,,
-NQO1,cyclophosphamide,,D,Provisional,3,,
-SOD2,cyclophosphamide,,D,Provisional,3,,
-CBR3,daunorubicin,,D,Provisional,,,
-HAS3,daunorubicin,,D,Provisional,,,
-CBR3,doxorubicin,,D,Provisional,3,,
-HAS3,doxorubicin,,D,Provisional,,,
-NQO1,doxorubicin,,D,Provisional,,,
-SERPINC1,eltrombopag,,D,Provisional,,Actionable PGx,
-CBR3,epirubicin,,D,Provisional,3,,
-GSTP1,epirubicin,,D,Provisional,3,,
-HAS3,epirubicin,,D,Provisional,,,
-NQO1,epirubicin,,D,Provisional,3,,
-DYNC2H1,etoposide,,D,Provisional,3,,
-GSTP1,fluorouracil,,D,Provisional,3,,
-NQO1,fluorouracil,,D,Provisional,3,,
-TYMS,fluorouracil,,D,Provisional,3,,
-UMPS,fluorouracil,,D,Provisional,3,,
-FKBP5,fluoxetine,,D,Provisional,3,,
-CRHR1,fluticasone propionate,,D,Provisional,,,
-CRHR1,fluticasone/salmeterol,,D,Provisional,,,
-CETP,fluvastatin,,D,Provisional,3,,
-LPA,fluvastatin,,D,Provisional,,,
-ADD1,furosemide,,D,Provisional,3,,
-NT5C2,gemcitabine,,D,Provisional,3,,
-NEDD4L,hydrochlorothiazide,,D,Provisional,3,,
-PRKCA,hydrochlorothiazide,,D,Provisional,3,,
-YEATS4,hydrochlorothiazide,,D,Provisional,3,,
-CBR3,idarubicin,,D,Provisional,,,
-HAS3,idarubicin,,D,Provisional,,,
-C8orf34,irinotecan,,D,Provisional,3,,
-SEMA3C,irinotecan,,D,Provisional,3,,
-UGT1A4,lamotrigine,,D,Provisional,3,,
-PTGFR,latanoprost,,D,Provisional,3,,
-C11orf65,metformin,,D,Provisional,4,,
-ATIC,methotrexate,,D,Provisional,2B,,
-MTRR,methotrexate,,D,Provisional,3,,
-CYB5R1,metoclopramide,,D,Provisional,,Actionable PGx,
-CYB5R2,metoclopramide,,D,Provisional,,Actionable PGx,
-CYB5R3,metoclopramide,,D,Provisional,,Actionable PGx,
-CYB5R4,metoclopramide,,D,Provisional,,Actionable PGx,
-FKBP5,mirtazapine,,D,Provisional,3,,
-CCHCR1,nevirapine,,D,Provisional,3,,
-CHRNA3,nicotine,,D,Provisional,3,,
-ANKK1,olanzapine,,D,Provisional,3,,
-GSTM1,oxaliplatin,,D,Provisional,3,,
-GSTP1,oxaliplatin,,D,Provisional,3,,
-FKBP5,paroxetine,,D,Provisional,3,,
-HTR1A,paroxetine,,D,Provisional,3,,
-VDR,peginterferon alfa-2b,,D,Provisional,3,,
-CETP,pravastatin,,D,Provisional,3,,
-HMGCR,pravastatin,,D,Provisional,3,,
-KIF6,pravastatin,,D,Provisional,2B,,
-LPA,pravastatin,,D,Provisional,,,
-FDPS,raloxifene,,D,Provisional,,,
-VDR,ribavirin,,D,Provisional,3,,
-FDPS,risedronate,,D,Provisional,,,
-ANKK1,risperidone,,D,Provisional,3,,
-FCGR3A,rituximab,,D,Provisional,2B,,
-COQ2,rosuvastatin,,D,Provisional,3,,
-LPA,rosuvastatin,,D,Provisional,3,,
-ADRB2,salbutamol,,D,Provisional,3,,
-COL22A1,salbutamol,,D,Provisional,3,,
-CRHR2,salbutamol,,D,Provisional,3,,
-ADRB2,salmeterol,,D,Provisional,2A,,
-GNB3,sildenafil,,D,Provisional,3,,
-CETP,simvastatin,,D,Provisional,3,,
-HMGCR,simvastatin,,D,Provisional,3,,
-LPA,simvastatin,,D,Provisional,,,
-ADD1,spironolactone,,D,Provisional,3,,
-ABCC4,tenofovir,,D,Provisional,3,,
-CRHR1,triamcinolone,,D,Provisional,,,
-FKBP5,venlafaxine,,D,Provisional,3,,
-CALU,warfarin,,D,Provisional,3,,
-GGCX,warfarin,,D,Provisional,3,,
-PROC,warfarin,,D,Provisional,,Actionable PGx,
-PROS1,warfarin,,D,Provisional,,Actionable PGx,
+Gene,Drug,RxNorm,ATC,Guideline,CPICLevel,CPICLevelStatus,PharmGKBLevel,FDALabel,PMID
+HLA-B,abacavir,190521,"J05AF06, J05AR02, J05AR13, J05AR04",https://cpicpgx.org/guidelines/guideline-for-abacavir-and-hla-b/,A,Final,1A,Testing required,24561393;22378157
+HLA-B,allopurinol,519,"M04AA01, M04AA51",https://cpicpgx.org/guidelines/guideline-for-allopurinol-and-hla-b/,A,Final,1A,Testing recommended,23232549;26094938
+MT-RNR1,amikacin,641,"D06AX12, J01GB06, S01AA21",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+CYP2C19,amitriptyline,704,"N06AA09, N06CA01",https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,,23486447;27997040
+CYP2D6,amitriptyline,704,"N06AA09, N06CA01",https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,23486447;27997040
+UGT1A1,atazanavir,343047,"J05AE08, J05AR15",https://cpicpgx.org/guidelines/guideline-for-atazanavir-and-ugt1a1/,A,Final,1A,,26417955
+CYP2D6,atomoxetine,38400,N06BA09,https://cpicpgx.org/guidelines/cpic-guideline-for-atomoxetine-based-on-cyp2d6-genotype/,A,Final,1A,Actionable PGx,30801677
+SLCO1B1,atorvastatin,83367,C10AA05,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,Informative PGx,35152405
+NUDT15,azathioprine,1256,L04AX01,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
+TPMT,azathioprine,1256,L04AX01,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
+DPYD,capecitabine,194000,L01BC06,https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,A,Final,1A,Actionable PGx,23988873;29152729
+HLA-A,carbamazepine,2002,N03AF01,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Actionable PGx,23695185;29392710
+HLA-B,carbamazepine,2002,N03AF01,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Testing required,23695185;29392710
+CYP2C9,celecoxib,140587,"L01XX33, M01AH01",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
+CYP2C19,citalopram,2556,N06AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,A,Final,1A,Actionable PGx,25974703;37032427
+CYP2C19,clopidogrel,32968,B01AC04,https://cpicpgx.org/guidelines/guideline-for-clopidogrel-and-cyp2c19/,A,Final,1A,Actionable PGx,21716271;23698643;35034351
+CYP2D6,codeine,2670,"R05DA04, N02AA59, N02AA79",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,A,Final,1A,Actionable PGx,22205192;24458010;33387367
+G6PD,dapsone,3108,"D10AX05, J04BA02",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,4,Actionable PGx,36049896
+CACNA1S,desflurane,27340,N01AB07,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+RYR1,desflurane,27340,N01AB07,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+MT-RNR1,dibekacin,3328,J01GB09,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+CYP2B6,efavirenz,195085,J05AG03,https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/,A,Final,1A,Actionable PGx,31006110
+CACNA1S,enflurane,3920,N01AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+RYR1,enflurane,3920,N01AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+CYP2C19,escitalopram,321988,N06AB10,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,A,Final,1A,Actionable PGx,25974703;37032427
+DPYD,fluorouracil,4492,"L01BC02, L01BC52",https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,A,Final,1A,Actionable PGx,23988873;29152729
+CYP2C9,flurbiprofen,4502,"M01AE09, M02AA19, R02AX01, S01BC04",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
+CYP2C9,fluvastatin,41127,C10AA04,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+SLCO1B1,fluvastatin,41127,C10AA04,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+CYP2C9,fosphenytoin,72236,N03AB05,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,,Actionable PGx,25099164;32779747
+HLA-B,fosphenytoin,72236,N03AB05,https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,,Actionable PGx,25099164;32779747
+MT-RNR1,gentamicin,1596450,"D06AX07, J01GB03, S01AA11, S02AA14, S03AA06",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+CACNA1S,halothane,5095,N01AB01,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
+RYR1,halothane,5095,N01AB01,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
+CYP2C9,ibuprofen,5640,"C01EB16, G02CC01, M01AE01, M02AA13",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
+UGT1A1,irinotecan,51499,L01XX19,,A,Provisional,1A,Actionable PGx,
+CACNA1S,isoflurane,6026,N01AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+RYR1,isoflurane,6026,N01AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+CFTR,ivacaftor,1243041,"R07AX02, R07AX30",https://cpicpgx.org/guidelines/guideline-for-ivacaftor-and-cftr/,A,Final,1A,Testing required,24598717
+MT-RNR1,kanamycin,6099,"A07AA08, J01GB04, S01AA24",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+CYP2C19,lansoprazole,17128,A02BC03,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Informative PGx,32770672
+CYP2C9,lornoxicam,20890,M01AC05,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
+SLCO1B1,lovastatin,6472,C10AA02,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+CYP2C9,meloxicam,41493,M01AC06,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
+NUDT15,mercaptopurine,103,L01BB02,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
+TPMT,mercaptopurine,103,L01BB02,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,1A,Testing recommended,21270794;23422873;30447069
+CACNA1S,methoxyflurane,6857,N02BG09,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
+RYR1,methoxyflurane,6857,N02BG09,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,,30499100
+G6PD,methylene blue,6878,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,3,Actionable PGx,36049896
+MT-RNR1,neomycin,7299,"A01AB08, A07AA01, B05CA09, D06AX04, J01GB05, R02AB01, S01AA03, S02AA07, S03AA01",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+MT-RNR1,netilmicin,7337,"J01GB07, S01AA23",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+G6PD,nitrofurantoin,7454,J01XE01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,3,Actionable PGx,36049896
+CYP2D6,nortriptyline,7531,N06AA10,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,A,Final,1A,Actionable PGx,23486447;27997040
+CYP2C19,omeprazole,7646,A02BC01,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Actionable PGx,32770672
+CYP2D6,ondansetron,26225,A04AA01,https://cpicpgx.org/guidelines/guideline-for-ondansetron-and-tropisetron-and-cyp2d6-genotype/,A,Final,1A,Informative PGx,28002639
+HLA-B,oxcarbazepine,32624,N03AF02,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,A,Final,1A,Testing recommended,29392710
+CYP2C19,pantoprazole,40790,A02BC02,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,A,Final,1A,Actionable PGx,32770672
+MT-RNR1,paromomycin,7934,A07AA06,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,,,34032273
+CYP2D6,paroxetine,32937,N06AB05,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,A,Final,1A,Informative PGx,25974703;37032427
+IFNL3,peginterferon alfa-2a,120608,"L03AB11, L03AB61",https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,24096968
+IFNL4,peginterferon alfa-2a,120608,"L03AB11, L03AB61",https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,
+IFNL3,peginterferon alfa-2b,253453,"L03AB10, L03AB60",https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,Actionable PGx,24096968
+IFNL4,peginterferon alfa-2b,253453,"L03AB10, L03AB60",https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/,A,Final,1A,,
+G6PD,pegloticase,1011650,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,3,Testing required,36049896
+CYP2C9,phenytoin,8183,"N03AB02, N03AB52",https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,1A,Actionable PGx,25099164;32779747
+HLA-B,phenytoin,8183,"N03AB02, N03AB52",https://cpicpgx.org/guidelines/guideline-for-phenytoin-and-cyp2c9-and-hla-b/,A,Final,1A,Actionable PGx,25099164;32779747
+CYP2C9,piroxicam,8356,M01AC01,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,Actionable PGx,32189324
+SLCO1B1,pitavastatin,861634,C10AA08,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+CYP2D6,pitolisant,2197878,N07XX11,,A,Provisional,,Actionable PGx,
+MT-RNR1,plazomicin,2049549,,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,,,34032273
+SLCO1B1,pravastatin,42463,C10AA03,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+G6PD,primaquine,8687,P01BA03,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,3,Testing required,36049896
+G6PD,rasburicase,283821,"M04AX01, V03AF07",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,1A,Testing required,24787449;36049896
+MT-RNR1,ribostamycin,NA,J01GB10,https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+ABCG2,rosuvastatin,301542,C10AA07,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,,35152405
+SLCO1B1,rosuvastatin,301542,C10AA07,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,Actionable PGx,35152405
+CYP2C19,sertraline,36437,N06AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,A,Final,1A,,25974703;37032427
+CACNA1S,sevoflurane,36453,N01AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+RYR1,sevoflurane,36453,N01AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+SLCO1B1,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,A,Final,1A,Informative PGx,22617227;24918167;35152405
+CYP2C9,siponimod,2121085,,,A,Provisional,1A,Testing required,
+MT-RNR1,streptomycin,10109,"A07AA04, J01GA01",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+CACNA1S,succinylcholine,10154,M03AB01,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+RYR1,succinylcholine,10154,M03AB01,https://cpicpgx.org/guidelines/cpic-guideline-for-ryr1-and-cacna1s/,A,Final,1A,Actionable PGx,30499100
+CYP3A5,tacrolimus,42316,"D11AH01, L04AD02",https://cpicpgx.org/guidelines/guideline-for-tacrolimus-and-cyp3a5/,A,Final,1A,,25801146
+G6PD,tafenoquine,2054023,P01BA07,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,,Testing required,36049896
+CYP2D6,tamoxifen,10324,L02BA01,https://cpicpgx.org/guidelines/cpic-guideline-for-tamoxifen-based-on-cyp2d6-genotype/,A,Final,1A,Actionable PGx,29385237
+CYP2C9,tenoxicam,37790,M01AC02,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,A,Final,1A,,32189324
+NUDT15,thioguanine,10485,L01BB03,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,3,Testing recommended,21270794;23422873;30447069
+TPMT,thioguanine,10485,L01BB03,https://cpicpgx.org/guidelines/guideline-for-thiopurines-and-tpmt/,A,Final,3,Testing recommended,21270794;23422873;30447069
+MT-RNR1,tobramycin,10627,"J01GB01, S01AA12",https://cpicpgx.org/guidelines/cpic-guideline-for-aminoglycosides-and-mt-rnr1/,A,Final,1A,,34032273
+G6PD,toluidine blue,10638,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,A,Final,,,36049896
+CYP2D6,tramadol,10689,N02AX02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,A,Final,1A,Actionable PGx,33387367
+CYP2D6,tropisetron,27392,A04AA03,https://cpicpgx.org/guidelines/guideline-for-ondansetron-and-tropisetron-and-cyp2d6-genotype/,A,Final,1A,,28002639
+CYP2C19,voriconazole,121243,J02AC03,https://cpicpgx.org/guidelines/guideline-for-voriconazole-and-cyp2c19/,A,Final,1A,Actionable PGx,27981572
+CYP2D6,vortioxetine,1455099,N06AX26,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,A,Final,1A,Actionable PGx,37032427
+CYP2C9,warfarin,11289,B01AA03,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,Actionable PGx,21900891;28198005
+CYP4F2,warfarin,11289,B01AA03,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,,21900891;28198005
+VKORC1,warfarin,11289,B01AA03,https://cpicpgx.org/guidelines/guideline-for-warfarin-and-cyp2c9-and-vkorc1/,A,Final,1A,Actionable PGx,21900891;28198005
+POLG,divalproex sodium,266856,,,A/B,Provisional,,Testing required,
+CYP2D6,eliglustat,1547220,,,A/B,Provisional,,Testing required,
+NAT2,hydralazine,5470,C02DB02,,A/B,Provisional,3,,
+CYP2D6,oliceridine,2392230,,,A/B,Provisional,,Actionable PGx,
+CYP2D6,pimozide,8331,N05AG02,,A/B,Provisional,,Testing required,
+CYP2D6,tetrabenazine,10390,N07XX06,,A/B,Provisional,,Testing required,
+POLG,valproic acid,11118,N03AG01,,A/B,Provisional,3,Testing required,
+GBA,velaglucerase alfa,901805,,,A/B,Provisional,,Testing required,
+CYP2C9,acenocoumarol,154,B01AA07,,B,Provisional,1B,,
+CYP4F2,acenocoumarol,154,B01AA07,,B,Provisional,2A,,
+CYP2D6,aripiprazole,89013,N05AX12,,B,Provisional,1A,Actionable PGx,
+UGT1A1,belinostat,1543543,,,B,Provisional,,Actionable PGx,
+CYP2C19,brivaracetam,1739745,,,B,Provisional,3,Actionable PGx,
+SCN1A,carbamazepine,2002,N03AF01,,B,Provisional,2B,,
+NAGS,carglumic acid,401713,A16AA05,,B,Provisional,,Testing required,
+CYP2C19,clomipramine,2597,N06AA04,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
+CYP2D6,clomipramine,2597,N06AA04,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+CYP2D6,desipramine,3247,N06AA01,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+CYP2C19,dexlansoprazole,816346,A02BC06,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,B,Final,1A,Actionable PGx,32770672
+CYP2C19,doxepin,3638,N06AA12,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+CYP2D6,doxepin,3638,N06AA12,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+CYP2D6,fluvoxamine,42355,N06AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,B,Final,1A,Actionable PGx,25974703;37032427
+CYP2D6,hydrocodone,5489,R05DA03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,B,Final,1A,,33387367
+CYP2C19,imipramine,5691,N06AA02,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
+CYP2D6,imipramine,5691,N06AA02,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+CYP2B6,methadone,6813,N07BC02,,B,Provisional,2A,,
+HPRT1,mycophenolic acid,7145,L04AA06,,B,Provisional,,Actionable PGx,
+CYP4F2,phenprocoumon,8150,B01AA04,,B,Provisional,3,,
+SCN1A,phenytoin,8183,"N03AB02, N03AB52",,B,Provisional,3,,
+CYP2D6,risperidone,35636,N05AX08,,B,Provisional,1A,Informative PGx,
+CYP2B6,sertraline,36437,N06AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,B,Final,1A,,37032427
+CYP2C19,trimipramine,10834,N06AA06,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,,23486447;27997040
+CYP2D6,trimipramine,10834,N06AA06,https://cpicpgx.org/guidelines/guideline-for-tricyclic-antidepressants-and-cyp2d6-and-cyp2c19/,B,Final,1A,Actionable PGx,23486447;27997040
+ABL2,valproic acid,11118,N03AG01,,B,Provisional,,,
+ASL,valproic acid,11118,N03AG01,,B,Provisional,,,
+ASS1,valproic acid,11118,N03AG01,,B,Provisional,,,
+CPS1,valproic acid,11118,N03AG01,,B,Provisional,,,
+NAGS,valproic acid,11118,N03AG01,,B,Provisional,,,
+OTC,valproic acid,11118,N03AG01,,B,Provisional,,Actionable PGx,
+CYP2D6,venlafaxine,39786,N06AX16,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,B,Final,1A,Actionable PGx,37032427
+HLA-A,allopurinol,519,"M04AA01, M04AA51",,B/C,Provisional,2B,,
+NAT2,amifampridine,2106338,N07XX05,,B/C,Provisional,,Actionable PGx,
+NAT2,amifampridine phosphate,2106337,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,amoxapine,722,N06AA17,,B/C,Provisional,,Actionable PGx,
+CYP2D6,amphetamine,725,N06BA01,,B/C,Provisional,,Informative PGx,
+CYP2D6,aripiprazole lauroxil,1673265,,,B/C,Provisional,,Actionable PGx,
+ADRB1,atenolol,1202,C07AB03,,B/C,Provisional,,,
+GRK5,atenolol,1202,C07AB03,,B/C,Provisional,,,
+CYP2C9,avatrombopag,2045726,B02BX08,,B/C,Provisional,,Informative PGx,
+CYP2D6,brexpiprazole,1658314,,,B/C,Provisional,,Actionable PGx,
+ADRB1,bucindolol,,,,B/C,Provisional,3,,
+CYP2B6,bupropion,42347,N06AX12,,B/C,Provisional,2A,,
+CYP2C19,carisoprodol,2101,M03BA02,,B/C,Provisional,4,Actionable PGx,
+ADRB1,carvedilol,20352,C07AG02,,B/C,Provisional,3,,
+CYP2D6,carvedilol,20352,C07AG02,,B/C,Provisional,3,Actionable PGx,
+GRK5,carvedilol,20352,C07AG02,,B/C,Provisional,,,
+CYP2D6,cevimeline,44281,N07AX03,,B/C,Provisional,,Actionable PGx,
+CYP2C19,clobazam,21241,N05BA09,,B/C,Provisional,3,Actionable PGx,
+CYP2D6,clozapine,2626,N05AH02,,B/C,Provisional,,Actionable PGx,
+SLC28A3,daunorubicin,3109,L01DB02,,B/C,Provisional,,,
+CYP2D6,deutetrabenazine,1876905,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,dextromethorphan,3289,R05DA09,,B/C,Provisional,3,,
+CYP2C19,diazepam,3322,N05BA01,,B/C,Provisional,3,Actionable PGx,
+UGT1A1,dolutegravir,1433868,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,donepezil,135447,N06DA02,,B/C,Provisional,3,Actionable PGx,
+SLC28A3,doxorubicin,3639,L01DB01,,B/C,Provisional,,,
+CYP2C9,dronabinol,224925,A04AD10,,B/C,Provisional,,Actionable PGx,
+SLCO1B1,elagolix,2049846,,,B/C,Provisional,,Actionable PGx,
+CYP2C9,erdafitinib,2123125,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,flecainide,4441,C01BC04,,B/C,Provisional,1A,,
+CYP2D6,gefitinib,328134,L01XE02,,B/C,Provisional,3,Actionable PGx,
+CYP2D6,haloperidol,5093,N05AD01,,B/C,Provisional,1A,,
+CYP2D6,iloperidone,73178,,,B/C,Provisional,3,Actionable PGx,
+CYP2D6,labetalol,6185,C07AG01,,B/C,Provisional,,,
+HLA-DRB1,lapatinib,480167,L01XE07,,B/C,Provisional,3,Actionable PGx,
+CYP2C9,lesinurad,1731031,,,B/C,Provisional,,Actionable PGx,
+G6PD,lidocaine,6387,"C01BB01, C05AD01, D04AB01, N01BB02, R02AD02, S01HA07, S02DA01",,B/C,Provisional,,,
+MTHFR,l-methylfolate,1025342,,,B/C,Provisional,3,,
+CYP2D6,lofexidine,28863,N07BC04,,B/C,Provisional,,Actionable PGx,
+CYP2D6,meclizine,6676,R06AE05,,B/C,Provisional,,Actionable PGx,
+CYP2D6,metoclopramide,6915,A03FA01,,B/C,Provisional,,Actionable PGx,
+ADRB1,metoprolol,6918,C07AB02,,B/C,Provisional,3,,
+CYP2D6,metoprolol,6918,C07AB02,,B/C,Provisional,1A,Informative PGx,
+GRK5,metoprolol,6918,C07AB02,,B/C,Provisional,,,
+CYP2D6,mirabegron,1300786,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,mirtazapine,15996,N06AX11,,B/C,Provisional,2A,,
+BCHE,mivacurium,30077,M03AC,,B/C,Provisional,,,
+CYP2D6,nebivolol,31555,C07AB12,,B/C,Provisional,,Informative PGx,
+CYP2B6,nevirapine,53654,J05AG01,,B/C,Provisional,2A,,
+UGT1A1,nilotinib,662281,L01XE08,,B/C,Provisional,3,Actionable PGx,
+HLA-B,pazopanib,714438,L01XE,,B/C,Provisional,,Actionable PGx,
+UGT1A1,pazopanib,714438,L01XE,,B/C,Provisional,3,Actionable PGx,
+CYP2D6,perphenazine,8076,N05AB03,,B/C,Provisional,,Actionable PGx,
+NAT2,procainamide,8700,C01BA02,,B/C,Provisional,,Informative PGx,
+CYP2D6,propafenone,8754,C01BC03,,B/C,Provisional,1A,Actionable PGx,
+CYP2D6,propranolol,8787,C07AA05,,B/C,Provisional,4,Informative PGx,
+CYP2D6,protriptyline,8886,N06AA11,,B/C,Provisional,,Actionable PGx,
+UGT1A1,raltegravir,719872,,,B/C,Provisional,,Informative PGx,
+BCHE,succinylcholine,10154,M03AB01,,B/C,Provisional,3,Actionable PGx,
+NAT2,sulfamethoxazole / trimethoprim,10831,NA,,B/C,Provisional,3,Actionable PGx,
+NAT2,sulfasalazine,9524,A07EC01,,B/C,Provisional,,Actionable PGx,
+CYP2D6,tamsulosin,77492,G04CA02,,B/C,Provisional,,Actionable PGx,
+CYP2D6,thioridazine,10502,N05AC02,,B/C,Provisional,3,Actionable PGx,
+CYP2D6,timolol,10600,"C07AA06, S01ED01",,B/C,Provisional,3,,
+CYP2D6,valbenazine,1918219,,,B/C,Provisional,,Actionable PGx,
+CYP2D6,zuclopenthixol,114176,N05AF05,,B/C,Provisional,1A,,
+CYP2C9,aceclofenac,16689,M01AB16,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
+TNF,adalimumab,327361,L04AB04,,C,Provisional,,,
+COMT,alfentanil,480,N01AH02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,alfentanil,480,N01AH02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+HLA-C,allopurinol,519,"M04AA01, M04AA51",,C,Provisional,2B,,
+G6PD,aminosalicylic acid,7833,J04AA01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+MC4R,amisulpride,46303,N05AL05,,C,Provisional,3,,
+MC4R,aripiprazole,89013,N05AX12,,C,Provisional,3,,
+CYP2C9,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
+G6PD,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,,36049896
+HLA-DPB1,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",,C,Provisional,2B,,
+CFTR,ataluren,,M09AX03,,C,Provisional,3,,
+CYP3A4,atorvastatin,83367,C10AA05,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,atorvastatin,83367,C10AA05,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+HMGCR,atorvastatin,83367,C10AA05,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+COMT,buprenorphine,1819,"N02AE01, N07BC01",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,buprenorphine,1819,"N02AE01, N07BC01",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+HLA-B,carbimazole,2020,H03BB01,,C,Provisional,3,,
+MTHFR,carboplatin,40048,L01XA02,,C,Provisional,3,,
+G6PD,chloramphenicol,2348,"D06AX02, D10AF03, G01AA05, J01BA01, S01AA01, S02AA01, S03AA08",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,,36049896
+G6PD,chloroquine,2393,P01BA01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,4,Actionable PGx,36049896
+G6PD,chlorpropamide,2404,A10BB02,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+G6PD,ciprofloxacin,2551,"J01MA02, S01AE03, S02AA15, S03AA07",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,,36049896
+COMT,citalopram,2556,N06AB04,,C,Provisional,,,
+CYP2D6,citalopram,2556,N06AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,Informative PGx,37032427
+GRIK4,citalopram,2556,N06AB04,,C,Provisional,,,
+HTR2A,citalopram,2556,N06AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+SLC6A4,citalopram,2556,N06AB04,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+CES1,clopidogrel,32968,B01AC04,,C,Provisional,2B,,
+HTR2C,clozapine,2626,N05AH02,,C,Provisional,3,,
+MC4R,clozapine,2626,N05AH02,,C,Provisional,3,,
+COMT,codeine,2670,"R05DA04, N02AA59, N02AA79",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,codeine,2670,"R05DA04, N02AA59, N02AA79",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+CYP3A5,cyclosporine,3008,"L04AD01, S01XA18",,C,Provisional,3,,
+G6PD,dabrafenib,1424911,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+HLA-B,dapsone,3108,"D10AX05, J04BA02",,C,Provisional,2A,,
+CYP2D6,darifenacin,136198,G04BD10,,C,Provisional,,Actionable PGx,
+HTR2A,desvenlafaxine,734064,N06AX23,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,desvenlafaxine,734064,N06AX23,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+CYP2C8,diclofenac,3355,"D11AX18, M01AB05, M02AA15, S01BC03",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
+CYP2C9,diclofenac,3355,"D11AX18, M01AB05, M02AA15, S01BC03",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
+ABCB1,digoxin,3407,C01AA05,,C,Provisional,3,,
+G6PD,dimercaprol,3445,V03AB09,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,,36049896
+CYP2D6,dolasetron,68091,A04AA04,,C,Provisional,4,,
+G6PD,doxorubicin,3639,L01DB01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2C19,duloxetine,72625,N06AX21,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+CYP2D6,duloxetine,72625,N06AX21,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,Actionable PGx,37032427
+HTR2A,duloxetine,72625,N06AX21,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,duloxetine,72625,N06AX21,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+F5,eltrombopag,711942,B02BX,,C,Provisional,,Actionable PGx,
+COMT,escitalopram,321988,N06AB10,,C,Provisional,,,
+CYP2D6,escitalopram,321988,N06AB10,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,Informative PGx,37032427
+GRIK4,escitalopram,321988,N06AB10,,C,Provisional,,,
+HTR2A,escitalopram,321988,N06AB10,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+SLC6A4,escitalopram,321988,N06AB10,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+CYP2C19,esomeprazole,283742,A02BC05,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,C,Final,3,Actionable PGx,32770672
+TNF,etanercept,214555,L04AB01,,C,Provisional,2B,,
+ABCB1,fentanyl,4337,"N01AH01, N02AB03",,C,Provisional,3,,
+COMT,fentanyl,4337,"N01AH01, N02AB03",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,fentanyl,4337,"N01AH01, N02AB03",https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+CYP2D6,fesoterodine,797195,G04BD11,,C,Provisional,,Actionable PGx,
+CYP2C19,flibanserin,1665509,,,C,Provisional,,Actionable PGx,
+CYP2C9,flibanserin,1665509,,,C,Provisional,,Actionable PGx,
+CYP2D6,flibanserin,1665509,,,C,Provisional,,Actionable PGx,
+CYP2C19,fluoxetine,4493,N06AB03,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+CYP2D6,fluoxetine,4493,N06AB03,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,Informative PGx,37032427
+GRIK4,fluoxetine,4493,N06AB03,,C,Provisional,,,
+HTR2A,fluoxetine,4493,N06AB03,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+SLC6A4,fluoxetine,4493,N06AB03,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+CYP3A4,fluvastatin,41127,C10AA04,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,fluvastatin,41127,C10AA04,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+HMGCR,fluvastatin,41127,C10AA04,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP2C19,fluvoxamine,42355,N06AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+HTR2A,fluvoxamine,42355,N06AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+SLC6A4,fluvoxamine,42355,N06AB08,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+G6PD,furazolidone,4601,G01AX06,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2D6,galantamine,4637,N06DA04,,C,Provisional,3,Informative PGx,
+G6PD,gliclazide,4816,A10BB09,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,glimepiride,25789,A10BB12,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,
+G6PD,glipizide,4821,A10BB07,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+G6PD,glyburide,4815,A10BB01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,Actionable PGx,36049896
+MC4R,haloperidol,5093,N05AD01,,C,Provisional,3,,
+F5,hormonal contraceptives for systemic use,,G03A,,C,Provisional,1A,,
+COMT,hydrocodone,5489,R05DA03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,hydrocodone,5489,R05DA03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+COMT,hydromorphone,3423,N02AA03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,hydromorphone,3423,N02AA03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+G6PD,hydroxychloroquine,5521,P01BA02,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+CYP2C8,ibuprofen,5640,"C01EB16, G02CC01, M01AE01, M02AA13",https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
+CYP2C9,indomethacin,5781,C01EB03,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
+TNF,infliximab,191831,L04AB02,,C,Provisional,3,,
+NAT2,isoniazid,6038,J04AC01,,C,Provisional,1B,,
+HLA-DQA1,lapatinib,480167,L01XE07,,C,Provisional,3,Actionable PGx,
+COMT,levomethadone,236913,N07BC05,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,levomethadone,236913,N07BC05,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+HTR2A,levomilnacipran,1433212,N06AX28,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,levomilnacipran,1433212,N06AX28,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+CYP3A4,lovastatin,6472,C10AA02,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,lovastatin,6472,C10AA02,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+HMGCR,lovastatin,6472,C10AA02,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP2C9,lumiracoxib,,M01AH06,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
+G6PD,mafenide,6572,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+G6PD,mepacrine,9061,P01AX05,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,mesalazine,52582,A07EC02,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+COMT,methadone,6813,N07BC02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+CYP2D6,methadone,6813,N07BC02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,methadone,6813,N07BC02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+HLA-B,methazolamide,6826,S01EC05,,C,Provisional,2A,,
+HLA-C,methazolamide,6826,S01EC05,,C,Provisional,2B,,
+HLA-B,methimazole,6835,H03BB02,,C,Provisional,3,,
+ABCB1,methotrexate,6851,"L01BA01, L04AX03",,C,Provisional,3,,
+MTHFR,methotrexate,6851,"L01BA01, L04AX03",,C,Provisional,2A,,
+SLCO1B1,methotrexate,6851,"L01BA01, L04AX03",,C,Provisional,3,,
+CYP2D6,methylphenidate,6901,N06BA04,,C,Provisional,3,,
+HTR2A,milnacipran,588250,N06AX17,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,milnacipran,588250,N06AX17,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+CYP2D6,modafinil,30125,N06BA07,,C,Provisional,,Actionable PGx,
+COMT,morphine,7052,N02AA01,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,morphine,7052,N02AA01,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+G6PD,moxifloxacin,139462,"J01MA14, S01AE07",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2C9,nabumetone,31448,M01AX01,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,,,32189324
+G6PD,nalidixic acid,7240,J01MB02,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+OPRM1,naloxone,7242,V03AB15,,C,Provisional,3,,
+COMT,naltrexone,7243,N07BB04,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,,,33387367
+OPRM1,naltrexone,7243,N07BB04,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,4,,33387367
+CYP2C9,naproxen,7258,M01AE56,https://cpicpgx.org/guidelines/cpic-guideline-for-nsaids-based-on-cyp2c9-genotype/,C,Final,3,,32189324
+ABCB1,nevirapine,53654,J05AG01,,C,Provisional,3,,
+HLA-B,nevirapine,53654,J05AG01,,C,Provisional,3,,
+HLA-DRB1,nevirapine,53654,J05AG01,,C,Provisional,2B,,
+G6PD,nicorandil,31748,C01DX16,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,nitrofural,7455,"B05CA03, D08AF01, D09AA03, P01CC02, S01AX04, S02AA02",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,norfloxacin,7517,"J01MA06, S01AE02",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+G6PD,ofloxacin,7623,"J01MA01, S01AE01, S02AA16",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+HTR2C,olanzapine,61381,N05AH03,,C,Provisional,3,,
+MC4R,olanzapine,61381,N05AH03,,C,Provisional,3,,
+HLA-A,oxcarbazepine,32624,N03AF02,https://cpicpgx.org/guidelines/guideline-for-carbamazepine-and-hla-b/,C,Final,3,,29392710
+COMT,oxycodone,7804,N02AA05,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+CYP2D6,oxycodone,7804,N02AA05,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,2A,,33387367
+OPRM1,oxycodone,7804,N02AA05,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+MC4R,paliperidone,679314,N05AX13,,C,Provisional,3,,
+CYP2D6,palonosetron,70561,A04AA05,,C,Provisional,,Informative PGx,
+CYP2C19,paroxetine,32937,N06AB05,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+GRIK4,paroxetine,32937,N06AB05,,C,Provisional,,,
+HTR2A,paroxetine,32937,N06AB05,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+SLC6A4,paroxetine,32937,N06AB05,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+G6PD,phenazopyridine,8120,G04BX06,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,,36049896
+CYP3A4,pitavastatin,861634,C10AA08,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,pitavastatin,861634,C10AA08,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+HMGCR,pitavastatin,861634,C10AA08,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A4,pravastatin,42463,C10AA03,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,pravastatin,42463,C10AA03,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+G6PD,probenecid,8698,M04AB01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+HLA-B,propylthiouracil,8794,H03BA02,,C,Provisional,3,,
+MC4R,quetiapine,51272,N05AH04,,C,Provisional,3,,
+CYP2D6,quinidine,9068,C01BA01,,C,Provisional,,Informative PGx,
+CYP2D6,quinine,9071,P01BC01,,C,Provisional,,Actionable PGx,
+G6PD,quinine,9071,P01BC01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+CYP2C19,rabeprazole,114979,A02BC04,https://cpicpgx.org/guidelines/cpic-guideline-for-proton-pump-inhibitors-and-cyp2c19/,C,Final,2A,Actionable PGx,32770672
+COMT,remifentanil,73032,N01AH06,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,remifentanil,73032,N01AH06,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+DRD2,risperidone,35636,N05AX08,,C,Provisional,3,,
+HTR2C,risperidone,35636,N05AX08,,C,Provisional,3,,
+MC4R,risperidone,35636,N05AX08,,C,Provisional,3,,
+CYP2C8,rosiglitazone,84108,A10BG02,,C,Provisional,3,,
+CYP3A4,rosuvastatin,301542,C10AA07,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,rosuvastatin,301542,C10AA07,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+HMGCR,rosuvastatin,301542,C10AA07,https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP2D6,sertraline,36437,N06AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+GRIK4,sertraline,36437,N06AB06,,C,Provisional,,,
+HTR2A,sertraline,36437,N06AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+SLC6A4,sertraline,36437,N06AB06,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+ABCB1,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",,C,Provisional,3,,
+CYP3A4,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",https://cpicpgx.org/guidelines/cpic-guideline-for-statins/,C,Final,,,
+CYP3A5,sirolimus,35302,L04AA10,,C,Provisional,3,,
+G6PD,sodium nitrite,9894,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+COMT,sufentanil,56795,N01AH03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,sufentanil,56795,N01AH03,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+G6PD,sulfacetamide,10169,"D10AF06, S01AB04",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,sulfadiazine,10171,J01EC02,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,Actionable PGx,36049896
+G6PD,sulfadimidine,10178,J01EB03,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,sulfamethoxazole / trimethoprim,10831,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,4,Actionable PGx,36049896
+G6PD,sulfanilamide,10184,"D06BA05, J01EB06",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,sulfasalazine,9524,A07EC01,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,3,Actionable PGx,36049896
+G6PD,sulfisoxazole,10207,"J01EB05, S01AB02",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP3A4,tacrolimus,42316,"D11AH01, L04AD02",,C,Provisional,1B,,
+DPYD,tegafur,4582,"L01BC03, L01BC53",https://cpicpgx.org/guidelines/guideline-for-fluoropyrimidines-and-dpyd/,C,Final,1A,,23988873;29152729
+CYP2D6,terbinafine,37801,"D01AE15, D01BA02",,C,Provisional,,Informative PGx,
+G6PD,tolazamide,10633,A10BB05,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,tolbutamide,10635,"A10BB03, V04CA01",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2D6,tolterodine,119565,G04BD07,,C,Provisional,3,Actionable PGx,
+COMT,tramadol,10689,N02AX02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+OPRM1,tramadol,10689,N02AX02,https://cpicpgx.org/guidelines/guideline-for-codeine-and-cyp2d6/,C,Final,3,,33387367
+G6PD,trametinib,1425099,NA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2C19,venlafaxine,39786,N06AX16,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+GRIK4,venlafaxine,39786,N06AX16,,C,Provisional,,,
+HTR2A,venlafaxine,39786,N06AX16,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,3,,37032427
+SLC6A4,venlafaxine,39786,N06AX16,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,4,,37032427
+HTR2A,vilazodone,1086769,N06AX24,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,vilazodone,1086769,N06AX24,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+G6PD,vitamin c,1151,"G01AD03, S01XA15",https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+G6PD,vitamin k,11258,B02BA,https://cpicpgx.org/guidelines/cpic-guideline-for-g6pd/,C,Final,,,36049896
+CYP2C19,vortioxetine,1455099,N06AX26,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+HTR2A,vortioxetine,1455099,N06AX26,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+SLC6A4,vortioxetine,1455099,N06AX26,https://cpicpgx.org/guidelines/cpic-guideline-for-ssri-and-snri-antidepressants/,C,Final,,,37032427
+MC4R,ziprasidone,115698,N05AE04,,C,Provisional,,,
+ITPA,"interferon alfa-2b, recombinant",5880,L03AB05,,C/D,Provisional,3,,
+CYP3A5,midazolam,6960,N05CD08,,C/D,Provisional,3,,
+COMT,nicotine,7407,N07BA01,,C/D,Provisional,3,,
+ABCB1,ondansetron,26225,A04AA01,,C/D,Provisional,3,,
+UGT2B15,oxazepam,7781,N05BA04,,C/D,Provisional,3,,
+FDPS,alendronate,46041,M05BA04,,D,Provisional,,,
+GP1BA,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",,D,Provisional,3,,
+LTC4S,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",,D,Provisional,3,,
+PTGS1,aspirin,1191,"A01AD05, B01AC06, B01AC56, C10BX01, C10BX02, C10BX04, C10BX05, C10BX06, C10BX08, M01BA03, N02BA01, N02BA51, N02BA71",,D,Provisional,3,,
+APOE,atorvastatin,83367,C10AA05,,D,Provisional,2B,,
+CETP,atorvastatin,83367,C10AA05,,D,Provisional,4,,
+COQ2,atorvastatin,83367,C10AA05,,D,Provisional,3,,
+KIF6,atorvastatin,83367,C10AA05,,D,Provisional,3,,
+LDLR,atorvastatin,83367,C10AA05,,D,Provisional,,Informative PGx,
+LPA,atorvastatin,83367,C10AA05,,D,Provisional,,,
+CRHR1,budesonide,19831,"A07EA06, D07AC09, R01AD05, R03BA02",,D,Provisional,,,
+ADORA2A,caffeine,1886,N06BC01,,D,Provisional,3,,
+TYMS,capecitabine,194000,L01BC06,,D,Provisional,3,,
+ACE,captopril,1998,C09AA01,,D,Provisional,2A,,
+EPHX1,carbamazepine,2002,N03AF01,,D,Provisional,3,,
+CETP,cerivastatin,596723,C10AA06,,D,Provisional,,,
+LPA,cerivastatin,596723,C10AA06,,D,Provisional,,,
+EGF,cetuximab,318341,L01XC06,,D,Provisional,3,,
+ACYP2,cisplatin,2555,L01XA01,,D,Provisional,3,,
+ERCC1,cisplatin,2555,L01XA01,,D,Provisional,3,,
+GSTM1,cisplatin,2555,L01XA01,,D,Provisional,3,,
+NQO1,cisplatin,2555,L01XA01,,D,Provisional,,,
+XPC,cisplatin,2555,L01XA01,,D,Provisional,3,,
+FKBP5,citalopram,2556,N06AB04,,D,Provisional,3,,
+ANKK1,clozapine,2626,N05AH02,,D,Provisional,,,
+GSTP1,cyclophosphamide,3002,L01AA01,,D,Provisional,3,,
+NQO1,cyclophosphamide,3002,L01AA01,,D,Provisional,3,,
+SOD2,cyclophosphamide,3002,L01AA01,,D,Provisional,3,,
+CBR3,daunorubicin,3109,L01DB02,,D,Provisional,,,
+HAS3,daunorubicin,3109,L01DB02,,D,Provisional,,,
+CBR3,doxorubicin,3639,L01DB01,,D,Provisional,3,,
+HAS3,doxorubicin,3639,L01DB01,,D,Provisional,,,
+NQO1,doxorubicin,3639,L01DB01,,D,Provisional,,,
+SERPINC1,eltrombopag,711942,B02BX,,D,Provisional,,Actionable PGx,
+CBR3,epirubicin,3995,L01DB03,,D,Provisional,3,,
+GSTP1,epirubicin,3995,L01DB03,,D,Provisional,3,,
+HAS3,epirubicin,3995,L01DB03,,D,Provisional,,,
+NQO1,epirubicin,3995,L01DB03,,D,Provisional,3,,
+DYNC2H1,etoposide,4179,L01CB01,,D,Provisional,3,,
+GSTP1,fluorouracil,4492,"L01BC02, L01BC52",,D,Provisional,3,,
+NQO1,fluorouracil,4492,"L01BC02, L01BC52",,D,Provisional,3,,
+TYMS,fluorouracil,4492,"L01BC02, L01BC52",,D,Provisional,3,,
+UMPS,fluorouracil,4492,"L01BC02, L01BC52",,D,Provisional,3,,
+FKBP5,fluoxetine,4493,N06AB03,,D,Provisional,3,,
+CRHR1,fluticasone propionate,50121,"D07AC17, R01AD08, R03BA05",,D,Provisional,,,
+CRHR1,fluticasone/salmeterol,284635,,,D,Provisional,,,
+CETP,fluvastatin,41127,C10AA04,,D,Provisional,3,,
+LPA,fluvastatin,41127,C10AA04,,D,Provisional,,,
+ADD1,furosemide,4603,C03CA01,,D,Provisional,3,,
+NT5C2,gemcitabine,12574,L01BC05,,D,Provisional,3,,
+NEDD4L,hydrochlorothiazide,5487,"C03AA03, C03AB03, C09DX01, C09DX03, C09XA52, C03EA01, C03AX01, G01AE10, C09XA54",,D,Provisional,3,,
+PRKCA,hydrochlorothiazide,5487,"C03AA03, C03AB03, C09DX01, C09DX03, C09XA52, C03EA01, C03AX01, G01AE10, C09XA54",,D,Provisional,3,,
+YEATS4,hydrochlorothiazide,5487,"C03AA03, C03AB03, C09DX01, C09DX03, C09XA52, C03EA01, C03AX01, G01AE10, C09XA54",,D,Provisional,3,,
+CBR3,idarubicin,5650,L01DB06,,D,Provisional,,,
+HAS3,idarubicin,5650,L01DB06,,D,Provisional,,,
+C8orf34,irinotecan,51499,L01XX19,,D,Provisional,3,,
+SEMA3C,irinotecan,51499,L01XX19,,D,Provisional,3,,
+UGT1A4,lamotrigine,28439,N03AX09,,D,Provisional,3,,
+PTGFR,latanoprost,43611,S01EE01,,D,Provisional,3,,
+C11orf65,metformin,6809,A10BA02,,D,Provisional,4,,
+ATIC,methotrexate,6851,"L01BA01, L04AX03",,D,Provisional,2B,,
+MTRR,methotrexate,6851,"L01BA01, L04AX03",,D,Provisional,3,,
+CYB5R1,metoclopramide,6915,A03FA01,,D,Provisional,,Actionable PGx,
+CYB5R2,metoclopramide,6915,A03FA01,,D,Provisional,,Actionable PGx,
+CYB5R3,metoclopramide,6915,A03FA01,,D,Provisional,,Actionable PGx,
+CYB5R4,metoclopramide,6915,A03FA01,,D,Provisional,,Actionable PGx,
+FKBP5,mirtazapine,15996,N06AX11,,D,Provisional,3,,
+CCHCR1,nevirapine,53654,J05AG01,,D,Provisional,3,,
+CHRNA3,nicotine,7407,N07BA01,,D,Provisional,3,,
+ANKK1,olanzapine,61381,N05AH03,,D,Provisional,3,,
+GSTM1,oxaliplatin,32592,L01XA03,,D,Provisional,3,,
+GSTP1,oxaliplatin,32592,L01XA03,,D,Provisional,3,,
+FKBP5,paroxetine,32937,N06AB05,,D,Provisional,3,,
+HTR1A,paroxetine,32937,N06AB05,,D,Provisional,3,,
+VDR,peginterferon alfa-2b,253453,"L03AB10, L03AB60",,D,Provisional,3,,
+CETP,pravastatin,42463,C10AA03,,D,Provisional,3,,
+HMGCR,pravastatin,42463,C10AA03,,D,Provisional,3,,
+KIF6,pravastatin,42463,C10AA03,,D,Provisional,2B,,
+LPA,pravastatin,42463,C10AA03,,D,Provisional,,,
+FDPS,raloxifene,72143,G03XC01,,D,Provisional,,,
+VDR,ribavirin,9344,J05AB04,,D,Provisional,3,,
+FDPS,risedronate,73056,M05BA07,,D,Provisional,,,
+ANKK1,risperidone,35636,N05AX08,,D,Provisional,3,,
+FCGR3A,rituximab,121191,L01XC02,,D,Provisional,2B,,
+COQ2,rosuvastatin,301542,C10AA07,,D,Provisional,3,,
+LPA,rosuvastatin,301542,C10AA07,,D,Provisional,3,,
+ADRB2,salbutamol,435,"R03AC02, R03CC02",,D,Provisional,3,,
+COL22A1,salbutamol,435,"R03AC02, R03CC02",,D,Provisional,3,,
+CRHR2,salbutamol,435,"R03AC02, R03CC02",,D,Provisional,3,,
+ADRB2,salmeterol,36117,R03AC12,,D,Provisional,2A,,
+GNB3,sildenafil,136411,G04BE03,,D,Provisional,3,,
+CETP,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",,D,Provisional,3,,
+HMGCR,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",,D,Provisional,3,,
+LPA,simvastatin,36567,"C10AA01, C10BA02, C10BX04, A10BH51, C10BA04, C10BX01",,D,Provisional,,,
+ADD1,spironolactone,9997,C03DA01,,D,Provisional,3,,
+ABCC4,tenofovir,117466,J05AF,,D,Provisional,3,,
+CRHR1,triamcinolone,10759,"A01AC01, C05AA12, D07AB09, D07XB02, H02AB08, R01AD11, R03BA06, S01BA05",,D,Provisional,,,
+FKBP5,venlafaxine,39786,N06AX16,,D,Provisional,3,,
+CALU,warfarin,11289,B01AA03,,D,Provisional,3,,
+GGCX,warfarin,11289,B01AA03,,D,Provisional,3,,
+PROC,warfarin,11289,B01AA03,,D,Provisional,,Actionable PGx,
+PROS1,warfarin,11289,B01AA03,,D,Provisional,,Actionable PGx,
