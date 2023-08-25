@@ -1,6 +1,14 @@
 Changelog
 *********
 
+0.21.0 (2023-08-25)
+-------------------
+
+* :issue:`96`: Fix bug in :command:`compute-copy-number` command where it threw an error "Different sample sets found" when the sample name consists of only numbers with one or more leading zeros.
+* :issue:`97`: Fix bug in IFNL3 genotyping where certain variants were not considered because they were located outside of the target region.
+* :issue:`99`: Refresh the CPIC table for :meth:`api.core.load_cpic_table` method. The table's latest update was on February 6, 2022.
+* :issue:`63`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method where Beagle throws an error "Window has only one position" even when multiple overlapping variants exist.
+
 0.20.0 (2023-01-12)
 -------------------
 

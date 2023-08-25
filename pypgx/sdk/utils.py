@@ -117,8 +117,9 @@ class Archive:
                 data = pycov.CovFrame.from_file(fh)
         elif 'SampleTable' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.tsv') as fh:
-                data = pd.read_table(fh, index_col=0)
-                data.index = data.index.astype(str)
+                data = pd.read_table(fh, dtype={0: str})
+                data = data.set_index(data.columns[0])
+                data.index.name = None
         elif 'VcfFrame' in metadata['SemanticType']:
             with zf.open(f'{parent}/data.vcf') as fh:
                 data = pyvcf.VcfFrame.from_file(fh)

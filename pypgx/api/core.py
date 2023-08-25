@@ -1138,6 +1138,10 @@ def load_cpic_table():
     """
     Load the CPIC table.
 
+    The copy of the CPIC table in PyPGx is current as of August 19, 2023. To 
+    obtain the latest CPIC table, you can visit the Genes-Drugs page on the 
+    CPIC website.
+
     Returns
     -------
     pandas.DataFrame
@@ -1149,12 +1153,12 @@ def load_cpic_table():
     >>> import pypgx
     >>> df = pypgx.load_cpic_table()
     >>> df.head()
-          Gene           Drug                                          Guideline CPICLevel CPICLevelStatus PharmGKBLevel             FDALabel               PMID
-    0    HLA-B       abacavir  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A     Testing required  24561393;22378157
-    1    HLA-B    allopurinol  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A  Testing recommended  23232549;26094938
-    2  MT-RNR1       amikacin  https://cpicpgx.org/guidelines/cpic-guideline-...         A           Final             3                  NaN           34032273
-    3  CYP2C19  amitriptyline  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A                  NaN  23486447;27997040
-    4   CYP2D6  amitriptyline  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A       Actionable PGx  23486447;27997040
+        Gene           Drug    RxNorm                                 ATC                                          Guideline CPICLevel CPICLevelStatus PharmGKBLevel             FDALabel               PMID
+    0    HLA-B       abacavir  190521.0  J05AF06, J05AR02, J05AR13, J05AR04  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A     Testing required  24561393;22378157
+    1    HLA-B    allopurinol     519.0                    M04AA01, M04AA51  https://cpicpgx.org/guidelines/guideline-for-a...         A           Final            1A  Testing recommended  23232549;26094938
+    2  MT-RNR1       amikacin     641.0           D06AX12, J01GB06, S01AA21  https://cpicpgx.org/guidelines/cpic-guideline-...         A           Final            1A                  NaN           34032273
+    3  CYP2C19  amitriptyline     704.0                    N06AA09, N06CA01  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A                  NaN  23486447;27997040
+    4   CYP2D6  amitriptyline     704.0                    N06AA09, N06CA01  https://cpicpgx.org/guidelines/guideline-for-t...         A           Final            1A       Actionable PGx  23486447;27997040
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/cpic-table.csv'))
     return pd.read_csv(b)

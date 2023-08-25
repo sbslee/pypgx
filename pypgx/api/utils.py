@@ -873,12 +873,29 @@ def estimate_phase_beagle(
                 f'out={t}/output',
                 f'impute={str(impute).lower()}'
             ]
-            subprocess.run(command, check=True, stdout=subprocess.DEVNULL)
-            vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-        if common_samples:
-            vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
-        if has_chr_prefix:
-            vf3 = vf3.update_chr_prefix('remove')
+            try:
+                subprocess.run(
+                    command,
+                    check=True,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE
+                )
+                vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+                if common_samples:
+                    vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
+                if has_chr_prefix:
+                    vf3 = vf3.update_chr_prefix('remove')
+            # Beagle may throw an error even when multiple overlapping markers 
+            # exist because they are too distant from each other -- that is, 
+            # located in separate haplotype windows.
+            except subprocess.CalledProcessError as e:
+                message = e.stderr.decode()
+                if "Window has only one position" in message:
+                    warnings.warn("Beagle: Window has only one position")
+                    vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
+                else:
+                    print(message)
+                    raise e
 
     return sdk.Archive(metadata, vf3)
 
