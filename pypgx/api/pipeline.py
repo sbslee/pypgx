@@ -32,7 +32,7 @@ def run_chip_pipeline(
         Reference genome assembly.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (compressed or
-        uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
+        uncompressed). By default, the 1KGP panel in the ``pypgx-bundle``
         directory will be used.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
@@ -166,7 +166,7 @@ def run_ngs_pipeline(
         Reference genome assembly.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (compressed or
-        uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
+        uncompressed). By default, the 1KGP panel in the ``pypgx-bundle``
         directory will be used.
     force : bool, default : False
         Overwrite output directory if it already exists.
@@ -184,7 +184,7 @@ def run_ngs_pipeline(
         Do not plot allele fraction profile.
     cnv_caller : str or pypgx.Archive, optional
         Archive file or object with the semantic type Model[CNV]. By default,
-        a pre-trained CNV caller in the ``~/pypgx-bundle`` directory will be
+        a pre-trained CNV caller in the ``pypgx-bundle`` directory will be
         used.
     """
     if not core.is_target_gene(gene):

@@ -39,7 +39,7 @@ SampleTable[CNVCalls]."""
         metavar='PATH',
         help=
 """Archive file with the semantic type Model[CNV]. By
-default, a pre-trained CNV caller in the ~/pypgx-bundle
+default, a pre-trained CNV caller in the pypgx-bundle
 directory will be used."""
     )
 

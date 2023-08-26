@@ -794,7 +794,7 @@ def estimate_phase_beagle(
         VCF's contig names.
     panel : str, optional
         VCF file corresponding to a reference haplotype panel (compressed or
-        uncompressed). By default, the 1KGP panel in the ``~/pypgx-bundle``
+        uncompressed). By default, the 1KGP panel in the ``pypgx-bundle``
         directory will be used.
     impute : bool, default: False
         If True, perform imputation of missing genotypes.
@@ -819,8 +819,7 @@ def estimate_phase_beagle(
     metadata['Program'] = 'Beagle'
 
     if panel is None:
-        home = os.path.expanduser('~')
-        panel = f'{home}/pypgx-bundle/1kgp/{assembly}/{gene}.vcf.gz'
+        panel = f'{sdk.get_bundle_path()}/1kgp/{assembly}/{gene}.vcf.gz'
 
     has_chr_prefix = pyvcf.has_chr_prefix(panel)
 
@@ -1203,7 +1202,7 @@ def predict_cnv(copy_number, cnv_caller=None):
         Archive file or object with the semantic type CovFrame[CopyNumber].
     cnv_caller : str or pypgx.Archive, optional
         Archive file or object with the semantic type Model[CNV]. By default,
-        a pre-trained CNV caller in the ``~/pypgx-bundle`` directory will be
+        a pre-trained CNV caller in the ``pypgx-bundle`` directory will be
         used.
 
     Returns
@@ -1218,8 +1217,7 @@ def predict_cnv(copy_number, cnv_caller=None):
 
     gene = copy_number.metadata['Gene']
     assembly = copy_number.metadata['Assembly']
-    home = os.path.expanduser('~')
-    model_file = f'{home}/pypgx-bundle/cnv/{assembly}/{gene}.zip'
+    model_file = f'{sdk.get_bundle_path()}/cnv/{assembly}/{gene}.zip'
 
     if cnv_caller is None:
         cnv_caller = sdk.Archive.from_file(model_file)

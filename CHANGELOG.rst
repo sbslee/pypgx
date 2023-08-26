@@ -4,6 +4,8 @@ Changelog
 0.22.0 (in development)
 -----------------------
 
+* :issue:`100`: Add new method :meth:`sdk.utils.get_bundle_path` to enable customization of the ``pypgx-bundle`` directory's location instead of the user's home directory.
+
 0.21.0 (2023-08-25)
 -------------------
 

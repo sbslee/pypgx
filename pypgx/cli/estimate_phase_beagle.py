@@ -41,7 +41,7 @@ VcfFrame[Phased]."""
         help=
 """VCF file (compressed or uncompressed) corresponding to a
 reference haplotype panel. By default, the 1KGP panel in
-the ~/pypgx-bundle directory will be used."""
+the pypgx-bundle directory will be used."""
     )
     parser.add_argument(
         '--impute',
