@@ -504,7 +504,11 @@ def get_paralog(gene):
     >>> import pypgx
     >>> pypgx.get_paralog('CYP2D6')
     'CYP2D7'
+    >>> pypgx.get_paralog('CYP2D7')
+    'CYP2D6'
     >>> pypgx.get_paralog('CYP2B6')
+    'CYP2B7'
+    >>> pypgx.get_paralog('CYP2E1')
     ''
     """
     df = load_gene_table()
