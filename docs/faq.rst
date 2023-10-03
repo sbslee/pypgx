@@ -143,3 +143,24 @@ CYP2D6*21, PyPGx will first check which of the two haplotypes contains
 2851C>T and 4181G>C and then assign 2580_2581insC to that haplotype. Note
 that the phase-by-extension algorithm can handle multiallelic sites in
 addition to biallelic sites.
+
+Genotyping multiple genes
+=========================
+
+Many users have asked if it's possible to genotype multiple genes 
+simultaneously using a pipeline command (e.g. :command:`run-ngs-pipeline`). 
+The short answer is no; all the genotyping pipelines are designed to 
+investigate a single gene at a time. However, one can easily loop through the 
+target genes to achieve the same results:
+
+.. code-block:: text
+
+   for gene in `pypgx create-regions-bed --target-genes | awk '{print $4}'`
+   do
+     pypgx run-ngs-pipeline \
+     $gene \
+     grch37-$gene-pipeline \
+     --variants grch37-variants.vcf.gz \
+     --depth-of-coverage grch37-depth-of-coverage.zip \
+     --control-statistics grch37-control-statistics-VDR.zip
+   done
