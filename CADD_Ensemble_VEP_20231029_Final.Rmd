@@ -1,0 +1,113 @@
+---
+title: "CADD_Ensembl_20231029"
+author: "Carissa Sherman"
+date: "2023-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Background ##
+# Reformat CADD variant data for Ensemble VEP #
+Need to reformat the data as: 
+
+Chr start end ref_allele/alt_allele strand(+) (optional: identifier)
+
+```{r}
+#Libraries
+library(readr)
+library(dplyr)
+library(readxl)
+library(xlsx)
+library(tidyverse)
+library(data.table)
+```
+
+The default format is a simple whitespace-separated format (columns may be separated by space or tab characters), containing five required columns plus an optional identifier column:
+
+chromosome - just the name or number, with no 'chr' prefix start end allele - pair of alleles separated by a '/', with the reference allele first (or structural variant type) strand - defined as + (forward) or - (reverse). The strand will only be used for VEP to know which alleles to use. identifier - this identifier will be used in VEP's output. If not provided, VEP will construct an identifier from the given coordinates and alleles. Example: 1   881907    881906    -/C   +
+
+RECALL: There were challenges with indels, but SNVs in this list will work... 
+```{r}
+#Import CADD30 dataset Supplemental Table 9
+cadd30 = read.csv("SNVs and indels/cadd30-variants.csv") %>%
+  select("GeneName", "X.Chrom" , "Pos",	"Ref", "Alt", "Type", "Length", "AnnoType", "Consequence", "ConsScore", "ConsDetail", "GeneName", "GeneID", "FeatureID", "PHRED")
+
+#Need to reformat the data for Ensembl VEP (https://grch37.ensembl.org/info/docs/tools/vep/vep_formats.html#input) add start and end position: 
+cadd30 = cadd30 %>%
+  mutate(Start_Pos = Pos) %>% 
+  mutate(End_Pos = Pos + Length) %>%
+  add_column(strand = "+")
+
+#Adding the positions, here only duplicating - need to see if I need to add/subtract
+start_end_pos = paste(cadd30$Start_Pos, cadd30$End_Pos)
+
+#Creating reference allele/alternative allele
+ref_alt = paste(cadd30$Ref,cadd30$Alt, sep = "/")
+
+#combining everything into a column to load into Ensembl VEP
+vep_format = paste(cadd30$X.Chrom, start_end_pos, ref_alt, cadd30$strand)
+
+#add columns to df and export to VEP
+cadd30$vep_format = vep_format
+
+cadd30 = relocate(cadd30, vep_format, .before = GeneName)
+
+#write.xlsx(cadd30, "cadd30_reformat_for_vep_20231029.xlsx")
+```
+
+##Upload Variants into Ensembl VEP##
+
+```{r}
+#Import Dataset 
+cadd_vep = fread("SNVs and indels/Ensembl_VEP/vep output/VEP_appropriate_format_20230215.txt")
+```
+
+# Filtered VEP output ClinVar 
+We filtered VEP output (ClinVar) by pathogenic/likely pathogenic, pathogenic, and drug response, as these are the ones most likely to be actionable. 
+```{r}
+pathogenic = c("Pathogenic/Likely_pathogenic","Pathogenic","drug_response")
+cadd_vep_patho = filter(cadd_vep, clinvar_clnsig %in% pathogenic)
+#Potential Variants to keep in mind
+unique_patho_variants = unique(cadd_vep_patho$`#Uploaded_variation`)
+# [1] "19_38987106_C/T" "19_39014567_C/T" "2_38298167_G/A"  "22_42523528_C/T" "3_14199648_G/A" 
+# [6] "7_87175304_G/A"  "7_117188877_G/T" "7_117227865_C/T"
+cadd_vep_patho = cadd_vep %>%
+  filter(`#Uploaded_variation` %in% unique_patho_variants) 
+
+cadd_vep_patho = cadd_vep_patho %>% 
+  relocate(SYMBOL, .after = `#Uploaded_variation`) %>%
+  relocate(clinvar_clnsig, .before = SYMBOL) %>%
+  relocate(Existing_variation, .before = SYMBOL)
+
+#write.xlsx(cadd_vep_patho, "cadd_vep_pathogenic_20230221.xlsx")
+```
+
+#VEP notes
+Returning multiple annotations, possible to filter only severe annotation possible for each variant. We want to extract for specific PGx, all annotations and then select ones that are relevant to us. 
+#neeed to select which transcript we'll be looking at 
+
+#Looking at SNVs and InDels 
+```{r}
+indels_vep = fread("SNVs and indels/Ensembl_VEP/vep output/Indels_20230301.txt")
+#location: chr:start-end
+indels = read_excel("SNVs and indels/Ensembl_VEP/cadd30_indels_20230227.xlsx")
+
+indels$location = paste(indels$`#Chrom`,":",indels$Start_Pos,"-",indels$End_Pos)
+
+indels$location  <- gsub(" ", "", indels$location)
+
+#Working towards filtering
+location_vep = unique(indels_vep$Location)
+
+indels_included_vep = subset(indels, location %in% location_vep)
+
+#write.xlsx(indels_included_vep, "indels_vep_included_20230227.xlsx")
+```
+
+
+```{r}
+sessionInfo()
+```
+

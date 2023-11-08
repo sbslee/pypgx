@@ -1,0 +1,128 @@
+---
+title: "Genotype_Phenotype_PGx"
+author: "Carissa Sherman"
+date: "2022-08-29"
+output: html_document
+---
+
+In this file, I include the relevant libraries. I upload data provided by Dr. Lee for our PGx project as well as data from the 1000 Genomes Project (1KGP) to identify individuals with genotype-phenotype combinations that would result in "Abnormal/Priority/High Risk" priority from CPIC.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Libraries##
+```{r}
+library(xlsx)
+library(dplyr)
+library(plyr)
+library(tidyr)
+library(writexl)
+library(stringr)
+library(ggplot2)
+library(readxl)
+library(readr)
+```
+
+```{r}
+#list of the genotypes and phenotypes of the 1KGP individuals - output from Stargazer
+geno = read_csv("Burden Phenotype/genotype_phenotype_combined.csv") %>%  mutate_all(na_if,"")
+
+#each of the genes, unique, there are 58
+genes = unique(geno$Gene)
+
+#list of genes for burden 
+gene_pheno = read_excel("Burden Phenotype/Table_Gene_Phenotypes_Steven_Github_20220902_CS.xlsx", sheet = 1)
+
+#filtering to only look at the abnormal/priority/high risk 
+gene_pheno = gene_pheno %>% filter(Priority == "Abnormal/Priority/High Risk") %>%
+  unite("Gene_Pheno", Gene:Phenotype, remove = FALSE)
+
+#Putting info into a table to use as supp of the list of genes and phenotypes we used for filtering 
+#write.xlsx(gene_pheno, "gene_phenotype_abnormal_high_risk_filter_20220914.xlsx")
+```
+
+```{r}
+#creating a list of genes to use for filtering
+nontypical_genes = unique(gene_pheno$Gene)
+
+#subset data based on the unique genes in CPIC: 13 of them, filtered out 3: CFTR, F5, and IFNL3 since the priority was listed as none
+all_dat_nontypical = subset(geno, geno$Gene %in% nontypical_genes)
+
+
+#making a matching column in all individual data
+all_dat_nontypical = all_dat_nontypical %>%
+  unite("Gene_Pheno", c(Gene,Phenotype), remove = FALSE)
+
+#get 13 CPIC genes per individual = 13 x 2504
+all_dat_nontypical_indivi = split(all_dat_nontypical, all_dat_nontypical$Sample)
+
+#create a list of genotype-phenotype combinations to look for in our participants 
+nontypical_sep_conditions = gene_pheno$Gene_Pheno
+```
+
+
+#getting counts for the nontypical burden based on CPIC genes
+```{r}
+atypical_burden_phenotypes = data.frame() #columns, superpopulation.code, number of atypical
+
+#getting the number of non-typical phenotypes, and phenotypes have a 1:1 relationship in this instance, so could help us to identify the number of genes that have atypical responses 
+
+for (i in 1:length(all_dat_nontypical_indivi)){
+  #i = 5
+  
+  num_atypical = sum(all_dat_nontypical_indivi[[i]]$Gene_Pheno %in% nontypical_sep_conditions)
+  
+  num_atypical_true = as.numeric(num_atypical)
+  
+  Population = unique(all_dat_nontypical_indivi[[i]]$`Superpopulation code`)
+  
+  indiv_pop_count = cbind(Population, num_atypical_true)
+  
+  atypical_burden_phenotypes = rbind(atypical_burden_phenotypes, indiv_pop_count)
+}
+
+atypical_burden_phenotypes[is.na(atypical_burden_phenotypes)]= 0
+```
+
+#Getting the percentage of individuals#
+#Summarize values in R instead of excel: 
+```{r}
+atypical_burden_phenotypes_counts = atypical_burden_phenotypes %>% 
+  group_by(Population,num_atypical_true) %>%
+  tally()
+burden_phenotypes_plot = group_by(atypical_burden_phenotypes_counts, Population) %>% 
+  transmute(num_atypical_true, percent = n/sum(n)*100)
+```
+
+#Plotting the burden#
+```{r}
+colnames(burden_phenotypes_plot) = c("Population","Gene_Burden","Percentage")
+
+#Removing the 1kgp
+burden_phenotypes_plot = burden_phenotypes_plot %>% filter(Population != "EUR,AFR")
+
+# The palette with grey:
+# cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7")
+# "#F0E442"
+#changing the order of color palette
+cbPalette <- c("#999999", "#D55E00", "#E69F00", "#009E73", "#0072B2",  "#CC79A7")
+
+
+burden_plot = ggplot(burden_phenotypes_plot, aes(fill=Population, y=Percentage, x=Gene_Burden)) + 
+  geom_bar(position="dodge", stat="identity")+
+  labs(title = "Number of PGx genes with atypical Phenotypes - 'abnormal, priority, and high risk' - as determined by CPIC",
+       x = "Number of PGx genes",
+       y = "Percent of subjects %")+
+  theme_classic(base_size = 25) +
+  # To use for fills, add
+  scale_fill_manual(values=cbPalette,
+                    name = "Populations", labels = c("African","American","East Asian","European","South Asian"))
+
+burden_plot
+```
+
+```{r}
+sessionInfo()
+```
+

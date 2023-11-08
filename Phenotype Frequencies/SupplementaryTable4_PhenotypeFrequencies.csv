@@ -1,0 +1,541 @@
+Gene,Superpopulation code,Phenotype,Frequency
+ABCG2,AFR,Normal Function,0.981845688
+ABCG2,AFR,Poor Function,0
+ABCG2,AFR,Possible Poor Function,0
+ABCG2,AFR,Decreased Function,0.018154312
+ABCG2,AFR,Possible Decreased Function,0
+ABCG2,AFR,Possible Increased Function,0
+ABCG2,AFR,Indeterminate,0
+ABCG2,AMR,Normal Function,0.792507205
+ABCG2,AMR,Poor Function,0.008645533
+ABCG2,AMR,Possible Poor Function,0
+ABCG2,AMR,Decreased Function,0.198847262
+ABCG2,AMR,Possible Decreased Function,0
+ABCG2,AMR,Possible Increased Function,0
+ABCG2,AMR,Indeterminate,0
+ABCG2,EAS,Normal Function,0.720238095
+ABCG2,EAS,Poor Function,0.041666667
+ABCG2,EAS,Possible Poor Function,0
+ABCG2,EAS,Decreased Function,0.238095238
+ABCG2,EAS,Possible Decreased Function,0
+ABCG2,EAS,Possible Increased Function,0
+ABCG2,EAS,Indeterminate,0
+ABCG2,EUR,Normal Function,0.890438247
+ABCG2,EUR,Poor Function,0.007968127
+ABCG2,EUR,Possible Poor Function,0
+ABCG2,EUR,Decreased Function,0.101593625
+ABCG2,EUR,Possible Decreased Function,0
+ABCG2,EUR,Possible Increased Function,0
+ABCG2,EUR,Indeterminate,0
+ABCG2,SAS,Normal Function,0.81390593
+ABCG2,SAS,Poor Function,0.00408998
+ABCG2,SAS,Possible Poor Function,0
+ABCG2,SAS,Decreased Function,0.18200409
+ABCG2,SAS,Possible Decreased Function,0
+ABCG2,SAS,Possible Increased Function,0
+ABCG2,SAS,Indeterminate,0
+CACNA1S,AFR,Uncertain Susceptibility,1
+CACNA1S,AFR,Malignant Hyperthermia Susceptibility,0
+CACNA1S,AMR,Uncertain Susceptibility,1
+CACNA1S,AMR,Malignant Hyperthermia Susceptibility,0
+CACNA1S,EAS,Uncertain Susceptibility,1
+CACNA1S,EAS,Malignant Hyperthermia Susceptibility,0
+CACNA1S,EUR,Uncertain Susceptibility,1
+CACNA1S,EUR,Malignant Hyperthermia Susceptibility,0
+CACNA1S,SAS,Uncertain Susceptibility,1
+CACNA1S,SAS,Malignant Hyperthermia Susceptibility,0
+CFTR,AFR,Favorable Response,0.037821483
+CFTR,AFR,Unfavorable Response,0
+CFTR,AFR,Indeterminate,0.962178517
+CFTR,AMR,Favorable Response,0.002881844
+CFTR,AMR,Unfavorable Response,0
+CFTR,AMR,Indeterminate,0.997118156
+CFTR,EAS,Favorable Response,0
+CFTR,EAS,Unfavorable Response,0
+CFTR,EAS,Indeterminate,1
+CFTR,EUR,Favorable Response,0.003984064
+CFTR,EUR,Unfavorable Response,0
+CFTR,EUR,Indeterminate,0.996015936
+CFTR,SAS,Favorable Response,0.00204499
+CFTR,SAS,Unfavorable Response,0
+CFTR,SAS,Indeterminate,0.99795501
+CYP2B6,AFR,Normal Metabolizer,0.254160363
+CYP2B6,AFR,Poor Metabolizer,0.214826021
+CYP2B6,AFR,Likely Poor Metabolizer,0
+CYP2B6,AFR,Intermediate Metabolizer,0.476550681
+CYP2B6,AFR,Likely Intermediate Metabolizer,0
+CYP2B6,AFR,Possible Intermediate Metabolizer,0
+CYP2B6,AFR,Rapid Metabolizer,0.027231467
+CYP2B6,AFR,Ultrarapid Metabolizer,0.004538578
+CYP2B6,AFR,Indeterminate,0.02269289
+CYP2B6,AMR,Normal Metabolizer,0.354466859
+CYP2B6,AMR,Poor Metabolizer,0.16426513
+CYP2B6,AMR,Likely Poor Metabolizer,0
+CYP2B6,AMR,Intermediate Metabolizer,0.435158501
+CYP2B6,AMR,Likely Intermediate Metabolizer,0
+CYP2B6,AMR,Possible Intermediate Metabolizer,0
+CYP2B6,AMR,Rapid Metabolizer,0.014409222
+CYP2B6,AMR,Ultrarapid Metabolizer,0
+CYP2B6,AMR,Indeterminate,0.031700288
+CYP2B6,EAS,Normal Metabolizer,0.511904762
+CYP2B6,EAS,Poor Metabolizer,0.051587302
+CYP2B6,EAS,Likely Poor Metabolizer,0
+CYP2B6,EAS,Intermediate Metabolizer,0.331349206
+CYP2B6,EAS,Likely Intermediate Metabolizer,0
+CYP2B6,EAS,Possible Intermediate Metabolizer,0
+CYP2B6,EAS,Rapid Metabolizer,0.093253968
+CYP2B6,EAS,Ultrarapid Metabolizer,0.003968254
+CYP2B6,EAS,Indeterminate,0.007936508
+CYP2B6,EUR,Normal Metabolizer,0.511952191
+CYP2B6,EUR,Poor Metabolizer,0.057768924
+CYP2B6,EUR,Likely Poor Metabolizer,0
+CYP2B6,EUR,Intermediate Metabolizer,0.35059761
+CYP2B6,EUR,Likely Intermediate Metabolizer,0
+CYP2B6,EUR,Possible Intermediate Metabolizer,0
+CYP2B6,EUR,Rapid Metabolizer,0.047808765
+CYP2B6,EUR,Ultrarapid Metabolizer,0.003984064
+CYP2B6,EUR,Indeterminate,0.027888446
+CYP2B6,SAS,Normal Metabolizer,0.308793456
+CYP2B6,SAS,Poor Metabolizer,0.151329243
+CYP2B6,SAS,Likely Poor Metabolizer,0
+CYP2B6,SAS,Intermediate Metabolizer,0.45398773
+CYP2B6,SAS,Likely Intermediate Metabolizer,0
+CYP2B6,SAS,Possible Intermediate Metabolizer,0
+CYP2B6,SAS,Rapid Metabolizer,0.065439673
+CYP2B6,SAS,Ultrarapid Metabolizer,0
+CYP2B6,SAS,Indeterminate,0.020449898
+CYP2C19,AFR,Normal Metabolizer,0.290468986
+CYP2C19,AFR,Poor Metabolizer,0.04387292
+CYP2C19,AFR,Likely Poor Metabolizer,0.001512859
+CYP2C19,AFR,Intermediate Metabolizer,0.310136157
+CYP2C19,AFR,Likely Intermediate Metabolizer,0.019667171
+CYP2C19,AFR,Possible Intermediate Metabolizer,0
+CYP2C19,AFR,Rapid Metabolizer,0.263237519
+CYP2C19,AFR,Ultrarapid Metabolizer,0.052950076
+CYP2C19,AFR,Indeterminate,0.018154312
+CYP2C19,AMR,Normal Metabolizer,0.596541787
+CYP2C19,AMR,Poor Metabolizer,0.011527378
+CYP2C19,AMR,Likely Poor Metabolizer,0
+CYP2C19,AMR,Intermediate Metabolizer,0.195965418
+CYP2C19,AMR,Likely Intermediate Metabolizer,0.005763689
+CYP2C19,AMR,Possible Intermediate Metabolizer,0
+CYP2C19,AMR,Rapid Metabolizer,0.172910663
+CYP2C19,AMR,Ultrarapid Metabolizer,0.017291066
+CYP2C19,AMR,Indeterminate,0
+CYP2C19,EAS,Normal Metabolizer,0.365079365
+CYP2C19,EAS,Poor Metabolizer,0.117063492
+CYP2C19,EAS,Likely Poor Metabolizer,0
+CYP2C19,EAS,Intermediate Metabolizer,0.503968254
+CYP2C19,EAS,Likely Intermediate Metabolizer,0
+CYP2C19,EAS,Possible Intermediate Metabolizer,0
+CYP2C19,EAS,Rapid Metabolizer,0.013888889
+CYP2C19,EAS,Ultrarapid Metabolizer,0
+CYP2C19,EAS,Indeterminate,0
+CYP2C19,EUR,Normal Metabolizer,0.376494024
+CYP2C19,EUR,Poor Metabolizer,0.011952191
+CYP2C19,EUR,Likely Poor Metabolizer,0
+CYP2C19,EUR,Intermediate Metabolizer,0.274900398
+CYP2C19,EUR,Likely Intermediate Metabolizer,0
+CYP2C19,EUR,Possible Intermediate Metabolizer,0
+CYP2C19,EUR,Rapid Metabolizer,0.292828685
+CYP2C19,EUR,Ultrarapid Metabolizer,0.043824701
+CYP2C19,EUR,Indeterminate,0
+CYP2C19,SAS,Normal Metabolizer,0.231083845
+CYP2C19,SAS,Poor Metabolizer,0.163599182
+CYP2C19,SAS,Likely Poor Metabolizer,0
+CYP2C19,SAS,Intermediate Metabolizer,0.404907975
+CYP2C19,SAS,Likely Intermediate Metabolizer,0
+CYP2C19,SAS,Possible Intermediate Metabolizer,0
+CYP2C19,SAS,Rapid Metabolizer,0.149284254
+CYP2C19,SAS,Ultrarapid Metabolizer,0.024539877
+CYP2C19,SAS,Indeterminate,0.026584867
+CYP2C9,AFR,Normal Metabolizer,0.785173979
+CYP2C9,AFR,Poor Metabolizer,0.003025719
+CYP2C9,AFR,Likely Poor Metabolizer,0
+CYP2C9,AFR,Intermediate Metabolizer,0.211800303
+CYP2C9,AFR,Likely Intermediate Metabolizer,0
+CYP2C9,AFR,Possible Intermediate Metabolizer,0
+CYP2C9,AFR,Rapid Metabolizer,0
+CYP2C9,AFR,Ultrarapid Metabolizer,0
+CYP2C9,AFR,Indeterminate,0
+CYP2C9,AMR,Normal Metabolizer,0.729106628
+CYP2C9,AMR,Poor Metabolizer,0.008645533
+CYP2C9,AMR,Likely Poor Metabolizer,0
+CYP2C9,AMR,Intermediate Metabolizer,0.262247839
+CYP2C9,AMR,Likely Intermediate Metabolizer,0
+CYP2C9,AMR,Possible Intermediate Metabolizer,0
+CYP2C9,AMR,Rapid Metabolizer,0
+CYP2C9,AMR,Ultrarapid Metabolizer,0
+CYP2C9,AMR,Indeterminate,0
+CYP2C9,EAS,Normal Metabolizer,0.916666667
+CYP2C9,EAS,Poor Metabolizer,0.001984127
+CYP2C9,EAS,Likely Poor Metabolizer,0
+CYP2C9,EAS,Intermediate Metabolizer,0.081349206
+CYP2C9,EAS,Likely Intermediate Metabolizer,0
+CYP2C9,EAS,Possible Intermediate Metabolizer,0
+CYP2C9,EAS,Rapid Metabolizer,0
+CYP2C9,EAS,Ultrarapid Metabolizer,0
+CYP2C9,EAS,Indeterminate,0
+CYP2C9,EUR,Normal Metabolizer,0.631474104
+CYP2C9,EUR,Poor Metabolizer,0.021912351
+CYP2C9,EUR,Likely Poor Metabolizer,0
+CYP2C9,EUR,Intermediate Metabolizer,0.346613546
+CYP2C9,EUR,Likely Intermediate Metabolizer,0
+CYP2C9,EUR,Possible Intermediate Metabolizer,0
+CYP2C9,EUR,Rapid Metabolizer,0
+CYP2C9,EUR,Ultrarapid Metabolizer,0
+CYP2C9,EUR,Indeterminate,0
+CYP2C9,SAS,Normal Metabolizer,0.687116564
+CYP2C9,SAS,Poor Metabolizer,0.026584867
+CYP2C9,SAS,Likely Poor Metabolizer,0
+CYP2C9,SAS,Intermediate Metabolizer,0.27198364
+CYP2C9,SAS,Likely Intermediate Metabolizer,0
+CYP2C9,SAS,Possible Intermediate Metabolizer,0
+CYP2C9,SAS,Rapid Metabolizer,0
+CYP2C9,SAS,Ultrarapid Metabolizer,0
+CYP2C9,SAS,Indeterminate,0.014314928
+CYP2D6,AFR,Normal Metabolizer,0.50075643
+CYP2D6,AFR,Poor Metabolizer,0.02118003
+CYP2D6,AFR,Likely Poor Metabolizer,0
+CYP2D6,AFR,Intermediate Metabolizer,0.361573374
+CYP2D6,AFR,Likely Intermediate Metabolizer,0
+CYP2D6,AFR,Possible Intermediate Metabolizer,0
+CYP2D6,AFR,Rapid Metabolizer,0
+CYP2D6,AFR,Ultrarapid Metabolizer,0.051437216
+CYP2D6,AFR,Indeterminate,0.06505295
+CYP2D6,AMR,Normal Metabolizer,0.65129683
+CYP2D6,AMR,Poor Metabolizer,0.034582133
+CYP2D6,AMR,Likely Poor Metabolizer,0
+CYP2D6,AMR,Intermediate Metabolizer,0.242074928
+CYP2D6,AMR,Likely Intermediate Metabolizer,0
+CYP2D6,AMR,Possible Intermediate Metabolizer,0
+CYP2D6,AMR,Rapid Metabolizer,0
+CYP2D6,AMR,Ultrarapid Metabolizer,0.031700288
+CYP2D6,AMR,Indeterminate,0.040345821
+CYP2D6,EAS,Normal Metabolizer,0.523809524
+CYP2D6,EAS,Poor Metabolizer,0
+CYP2D6,EAS,Likely Poor Metabolizer,0
+CYP2D6,EAS,Intermediate Metabolizer,0.446428571
+CYP2D6,EAS,Likely Intermediate Metabolizer,0
+CYP2D6,EAS,Possible Intermediate Metabolizer,0
+CYP2D6,EAS,Rapid Metabolizer,0
+CYP2D6,EAS,Ultrarapid Metabolizer,0.009920635
+CYP2D6,EAS,Indeterminate,0.01984127
+CYP2D6,EUR,Normal Metabolizer,0.484063745
+CYP2D6,EUR,Poor Metabolizer,0.061752988
+CYP2D6,EUR,Likely Poor Metabolizer,0
+CYP2D6,EUR,Intermediate Metabolizer,0.384462151
+CYP2D6,EUR,Likely Intermediate Metabolizer,0
+CYP2D6,EUR,Possible Intermediate Metabolizer,0
+CYP2D6,EUR,Rapid Metabolizer,0
+CYP2D6,EUR,Ultrarapid Metabolizer,0.029880478
+CYP2D6,EUR,Indeterminate,0.039840637
+CYP2D6,SAS,Normal Metabolizer,0.597137014
+CYP2D6,SAS,Poor Metabolizer,0.028629857
+CYP2D6,SAS,Likely Poor Metabolizer,0
+CYP2D6,SAS,Intermediate Metabolizer,0.253578732
+CYP2D6,SAS,Likely Intermediate Metabolizer,0
+CYP2D6,SAS,Possible Intermediate Metabolizer,0
+CYP2D6,SAS,Rapid Metabolizer,0
+CYP2D6,SAS,Ultrarapid Metabolizer,0.012269939
+CYP2D6,SAS,Indeterminate,0.108384458
+CYP3A5,AFR,Normal Metabolizer,0.310136157
+CYP3A5,AFR,Poor Metabolizer,0.214826021
+CYP3A5,AFR,Likely Poor Metabolizer,0
+CYP3A5,AFR,Intermediate Metabolizer,0.475037821
+CYP3A5,AFR,Likely Intermediate Metabolizer,0
+CYP3A5,AFR,Possible Intermediate Metabolizer,0
+CYP3A5,AFR,Rapid Metabolizer,0
+CYP3A5,AFR,Ultrarapid Metabolizer,0
+CYP3A5,AFR,Indeterminate,0
+CYP3A5,AMR,Normal Metabolizer,0.043227666
+CYP3A5,AMR,Poor Metabolizer,0.688760807
+CYP3A5,AMR,Likely Poor Metabolizer,0
+CYP3A5,AMR,Intermediate Metabolizer,0.268011527
+CYP3A5,AMR,Likely Intermediate Metabolizer,0
+CYP3A5,AMR,Possible Intermediate Metabolizer,0
+CYP3A5,AMR,Rapid Metabolizer,0
+CYP3A5,AMR,Ultrarapid Metabolizer,0
+CYP3A5,AMR,Indeterminate,0
+CYP3A5,EAS,Normal Metabolizer,0.079365079
+CYP3A5,EAS,Poor Metabolizer,0.505952381
+CYP3A5,EAS,Likely Poor Metabolizer,0
+CYP3A5,EAS,Intermediate Metabolizer,0.412698413
+CYP3A5,EAS,Likely Intermediate Metabolizer,0
+CYP3A5,EAS,Possible Intermediate Metabolizer,0
+CYP3A5,EAS,Rapid Metabolizer,0
+CYP3A5,EAS,Ultrarapid Metabolizer,0
+CYP3A5,EAS,Indeterminate,0.001984127
+CYP3A5,EUR,Normal Metabolizer,0.003984064
+CYP3A5,EUR,Poor Metabolizer,0.898406375
+CYP3A5,EUR,Likely Poor Metabolizer,0
+CYP3A5,EUR,Intermediate Metabolizer,0.097609562
+CYP3A5,EUR,Likely Intermediate Metabolizer,0
+CYP3A5,EUR,Possible Intermediate Metabolizer,0
+CYP3A5,EUR,Rapid Metabolizer,0
+CYP3A5,EUR,Ultrarapid Metabolizer,0
+CYP3A5,EUR,Indeterminate,0
+CYP3A5,SAS,Normal Metabolizer,0.118609407
+CYP3A5,SAS,Poor Metabolizer,0.45603272
+CYP3A5,SAS,Likely Poor Metabolizer,0
+CYP3A5,SAS,Intermediate Metabolizer,0.425357873
+CYP3A5,SAS,Likely Intermediate Metabolizer,0
+CYP3A5,SAS,Possible Intermediate Metabolizer,0
+CYP3A5,SAS,Rapid Metabolizer,0
+CYP3A5,SAS,Ultrarapid Metabolizer,0
+CYP3A5,SAS,Indeterminate,0
+DPYD,AFR,Normal Metabolizer,0.945537065
+DPYD,AFR,Poor Metabolizer,0
+DPYD,AFR,Likely Poor Metabolizer,0
+DPYD,AFR,Intermediate Metabolizer,0.054462935
+DPYD,AFR,Likely Intermediate Metabolizer,0
+DPYD,AFR,Possible Intermediate Metabolizer,0
+DPYD,AFR,Rapid Metabolizer,0
+DPYD,AFR,Ultrarapid Metabolizer,0
+DPYD,AFR,Indeterminate,0
+DPYD,AMR,Normal Metabolizer,0.971181556
+DPYD,AMR,Poor Metabolizer,0
+DPYD,AMR,Likely Poor Metabolizer,0
+DPYD,AMR,Intermediate Metabolizer,0.028818444
+DPYD,AMR,Likely Intermediate Metabolizer,0
+DPYD,AMR,Possible Intermediate Metabolizer,0
+DPYD,AMR,Rapid Metabolizer,0
+DPYD,AMR,Ultrarapid Metabolizer,0
+DPYD,AMR,Indeterminate,0
+DPYD,EAS,Normal Metabolizer,0.996031746
+DPYD,EAS,Poor Metabolizer,0
+DPYD,EAS,Likely Poor Metabolizer,0
+DPYD,EAS,Intermediate Metabolizer,0.003968254
+DPYD,EAS,Likely Intermediate Metabolizer,0
+DPYD,EAS,Possible Intermediate Metabolizer,0
+DPYD,EAS,Rapid Metabolizer,0
+DPYD,EAS,Ultrarapid Metabolizer,0
+DPYD,EAS,Indeterminate,0
+DPYD,EUR,Normal Metabolizer,0.926294821
+DPYD,EUR,Poor Metabolizer,0
+DPYD,EUR,Likely Poor Metabolizer,0
+DPYD,EUR,Intermediate Metabolizer,0.073705179
+DPYD,EUR,Likely Intermediate Metabolizer,0
+DPYD,EUR,Possible Intermediate Metabolizer,0
+DPYD,EUR,Rapid Metabolizer,0
+DPYD,EUR,Ultrarapid Metabolizer,0
+DPYD,EUR,Indeterminate,0
+DPYD,SAS,Normal Metabolizer,0.934560327
+DPYD,SAS,Poor Metabolizer,0.00204499
+DPYD,SAS,Likely Poor Metabolizer,0
+DPYD,SAS,Intermediate Metabolizer,0.063394683
+DPYD,SAS,Likely Intermediate Metabolizer,0
+DPYD,SAS,Possible Intermediate Metabolizer,0
+DPYD,SAS,Rapid Metabolizer,0
+DPYD,SAS,Ultrarapid Metabolizer,0
+DPYD,SAS,Indeterminate,0
+F5,AFR,Favorable Response,1
+F5,AFR,Unfavorable Response,0
+F5,AFR,Indeterminate,0
+F5,AMR,Favorable Response,0.979827089
+F5,AMR,Unfavorable Response,0.020172911
+F5,AMR,Indeterminate,0
+F5,EAS,Favorable Response,1
+F5,EAS,Unfavorable Response,0
+F5,EAS,Indeterminate,0
+F5,EUR,Favorable Response,0.978087649
+F5,EUR,Unfavorable Response,0.021912351
+F5,EUR,Indeterminate,0
+F5,SAS,Favorable Response,0.977505112
+F5,SAS,Unfavorable Response,0.022494888
+F5,SAS,Indeterminate,0
+IFNL3,AFR,Favorable Response,0.201210287
+IFNL3,AFR,Unfavorable Response,0
+IFNL3,AFR,Indeterminate,0.798789713
+IFNL3,AMR,Favorable Response,0.374639769
+IFNL3,AMR,Unfavorable Response,0
+IFNL3,AMR,Indeterminate,0.625360231
+IFNL3,EAS,Favorable Response,0.827380952
+IFNL3,EAS,Unfavorable Response,0
+IFNL3,EAS,Indeterminate,0.172619048
+IFNL3,EUR,Favorable Response,0.488047809
+IFNL3,EUR,Unfavorable Response,0
+IFNL3,EUR,Indeterminate,0.511952191
+IFNL3,SAS,Favorable Response,0.601226994
+IFNL3,SAS,Unfavorable Response,0
+IFNL3,SAS,Indeterminate,0.398773006
+NUDT15,AFR,Normal Metabolizer,0.992435703
+NUDT15,AFR,Poor Metabolizer,0
+NUDT15,AFR,Likely Poor Metabolizer,0
+NUDT15,AFR,Intermediate Metabolizer,0.001512859
+NUDT15,AFR,Likely Intermediate Metabolizer,0
+NUDT15,AFR,Possible Intermediate Metabolizer,0
+NUDT15,AFR,Rapid Metabolizer,0
+NUDT15,AFR,Ultrarapid Metabolizer,0
+NUDT15,AFR,Indeterminate,0.006051437
+NUDT15,AMR,Normal Metabolizer,0.893371758
+NUDT15,AMR,Poor Metabolizer,0.005763689
+NUDT15,AMR,Likely Poor Metabolizer,0
+NUDT15,AMR,Intermediate Metabolizer,0.083573487
+NUDT15,AMR,Likely Intermediate Metabolizer,0
+NUDT15,AMR,Possible Intermediate Metabolizer,0
+NUDT15,AMR,Rapid Metabolizer,0
+NUDT15,AMR,Ultrarapid Metabolizer,0
+NUDT15,AMR,Indeterminate,0.017291066
+NUDT15,EAS,Normal Metabolizer,0.773809524
+NUDT15,EAS,Poor Metabolizer,0.015873016
+NUDT15,EAS,Likely Poor Metabolizer,0
+NUDT15,EAS,Intermediate Metabolizer,0.156746032
+NUDT15,EAS,Likely Intermediate Metabolizer,0
+NUDT15,EAS,Possible Intermediate Metabolizer,0.001984127
+NUDT15,EAS,Rapid Metabolizer,0
+NUDT15,EAS,Ultrarapid Metabolizer,0
+NUDT15,EAS,Indeterminate,0.051587302
+NUDT15,EUR,Normal Metabolizer,0.992031873
+NUDT15,EUR,Poor Metabolizer,0
+NUDT15,EUR,Likely Poor Metabolizer,0
+NUDT15,EUR,Intermediate Metabolizer,0.003984064
+NUDT15,EUR,Likely Intermediate Metabolizer,0
+NUDT15,EUR,Possible Intermediate Metabolizer,0
+NUDT15,EUR,Rapid Metabolizer,0
+NUDT15,EUR,Ultrarapid Metabolizer,0
+NUDT15,EUR,Indeterminate,0.003984064
+NUDT15,SAS,Normal Metabolizer,0.860940695
+NUDT15,SAS,Poor Metabolizer,0.006134969
+NUDT15,SAS,Likely Poor Metabolizer,0
+NUDT15,SAS,Intermediate Metabolizer,0.126789366
+NUDT15,SAS,Likely Intermediate Metabolizer,0
+NUDT15,SAS,Possible Intermediate Metabolizer,0
+NUDT15,SAS,Rapid Metabolizer,0
+NUDT15,SAS,Ultrarapid Metabolizer,0
+NUDT15,SAS,Indeterminate,0.006134969
+RYR1,AFR,Uncertain Susceptibility,1
+RYR1,AFR,Malignant Hyperthermia Susceptibility,0
+RYR1,AMR,Uncertain Susceptibility,1
+RYR1,AMR,Malignant Hyperthermia Susceptibility,0
+RYR1,EAS,Uncertain Susceptibility,0.998015873
+RYR1,EAS,Malignant Hyperthermia Susceptibility,0.001984127
+RYR1,EUR,Uncertain Susceptibility,0.998007968
+RYR1,EUR,Malignant Hyperthermia Susceptibility,0.001992032
+RYR1,SAS,Uncertain Susceptibility,1
+RYR1,SAS,Malignant Hyperthermia Susceptibility,0
+SLCO1B1,AFR,Normal Function,0.517397882
+SLCO1B1,AFR,Poor Function,0.001512859
+SLCO1B1,AFR,Possible Poor Function,0.006051437
+SLCO1B1,AFR,Decreased Function,0.013615734
+SLCO1B1,AFR,Possible Decreased Function,0.051437216
+SLCO1B1,AFR,Possible Increased Function,0.077155825
+SLCO1B1,AFR,Indeterminate,0.332829047
+SLCO1B1,AMR,Normal Function,0.504322767
+SLCO1B1,AMR,Poor Function,0.017291066
+SLCO1B1,AMR,Possible Poor Function,0.002881844
+SLCO1B1,AMR,Decreased Function,0.198847262
+SLCO1B1,AMR,Possible Decreased Function,0
+SLCO1B1,AMR,Possible Increased Function,0.13832853
+SLCO1B1,AMR,Indeterminate,0.13832853
+SLCO1B1,EAS,Normal Function,0.722222222
+SLCO1B1,EAS,Poor Function,0.01984127
+SLCO1B1,EAS,Possible Poor Function,0
+SLCO1B1,EAS,Decreased Function,0.198412698
+SLCO1B1,EAS,Possible Decreased Function,0
+SLCO1B1,EAS,Possible Increased Function,0.005952381
+SLCO1B1,EAS,Indeterminate,0.053571429
+SLCO1B1,EUR,Normal Function,0.392430279
+SLCO1B1,EUR,Poor Function,0.019920319
+SLCO1B1,EUR,Possible Poor Function,0
+SLCO1B1,EUR,Decreased Function,0.201195219
+SLCO1B1,EUR,Possible Decreased Function,0
+SLCO1B1,EUR,Possible Increased Function,0.199203187
+SLCO1B1,EUR,Indeterminate,0.187250996
+SLCO1B1,SAS,Normal Function,0.72597137
+SLCO1B1,SAS,Poor Function,0.00408998
+SLCO1B1,SAS,Possible Poor Function,0
+SLCO1B1,SAS,Decreased Function,0.069529652
+SLCO1B1,SAS,Possible Decreased Function,0
+SLCO1B1,SAS,Possible Increased Function,0.116564417
+SLCO1B1,SAS,Indeterminate,0.083844581
+TPMT,AFR,Normal Metabolizer,0.786686838
+TPMT,AFR,Poor Metabolizer,0.009077156
+TPMT,AFR,Likely Poor Metabolizer,0
+TPMT,AFR,Intermediate Metabolizer,0.111951589
+TPMT,AFR,Likely Intermediate Metabolizer,0
+TPMT,AFR,Possible Intermediate Metabolizer,0.004538578
+TPMT,AFR,Rapid Metabolizer,0
+TPMT,AFR,Ultrarapid Metabolizer,0
+TPMT,AFR,Indeterminate,0.08774584
+TPMT,AMR,Normal Metabolizer,0.867435159
+TPMT,AMR,Poor Metabolizer,0.005763689
+TPMT,AMR,Likely Poor Metabolizer,0
+TPMT,AMR,Intermediate Metabolizer,0.112391931
+TPMT,AMR,Likely Intermediate Metabolizer,0
+TPMT,AMR,Possible Intermediate Metabolizer,0.002881844
+TPMT,AMR,Rapid Metabolizer,0
+TPMT,AMR,Ultrarapid Metabolizer,0
+TPMT,AMR,Indeterminate,0.011527378
+TPMT,EAS,Normal Metabolizer,0.954365079
+TPMT,EAS,Poor Metabolizer,0
+TPMT,EAS,Likely Poor Metabolizer,0
+TPMT,EAS,Intermediate Metabolizer,0.043650794
+TPMT,EAS,Likely Intermediate Metabolizer,0
+TPMT,EAS,Possible Intermediate Metabolizer,0
+TPMT,EAS,Rapid Metabolizer,0
+TPMT,EAS,Ultrarapid Metabolizer,0
+TPMT,EAS,Indeterminate,0.001984127
+TPMT,EUR,Normal Metabolizer,0.920318725
+TPMT,EUR,Poor Metabolizer,0
+TPMT,EUR,Likely Poor Metabolizer,0
+TPMT,EUR,Intermediate Metabolizer,0.069721116
+TPMT,EUR,Likely Intermediate Metabolizer,0
+TPMT,EUR,Possible Intermediate Metabolizer,0
+TPMT,EUR,Rapid Metabolizer,0
+TPMT,EUR,Ultrarapid Metabolizer,0
+TPMT,EUR,Indeterminate,0.009960159
+TPMT,SAS,Normal Metabolizer,0.965235174
+TPMT,SAS,Poor Metabolizer,0
+TPMT,SAS,Likely Poor Metabolizer,0
+TPMT,SAS,Intermediate Metabolizer,0.034764826
+TPMT,SAS,Likely Intermediate Metabolizer,0
+TPMT,SAS,Possible Intermediate Metabolizer,0
+TPMT,SAS,Rapid Metabolizer,0
+TPMT,SAS,Ultrarapid Metabolizer,0
+TPMT,SAS,Indeterminate,0
+UGT1A1,AFR,Normal Metabolizer,0.243570348
+UGT1A1,AFR,Poor Metabolizer,0.232980333
+UGT1A1,AFR,Likely Poor Metabolizer,0
+UGT1A1,AFR,Intermediate Metabolizer,0.523449319
+UGT1A1,AFR,Likely Intermediate Metabolizer,0
+UGT1A1,AFR,Possible Intermediate Metabolizer,0
+UGT1A1,AFR,Rapid Metabolizer,0
+UGT1A1,AFR,Ultrarapid Metabolizer,0
+UGT1A1,AFR,Indeterminate,0
+UGT1A1,AMR,Normal Metabolizer,0.357348703
+UGT1A1,AMR,Poor Metabolizer,0.141210375
+UGT1A1,AMR,Likely Poor Metabolizer,0
+UGT1A1,AMR,Intermediate Metabolizer,0.501440922
+UGT1A1,AMR,Likely Intermediate Metabolizer,0
+UGT1A1,AMR,Possible Intermediate Metabolizer,0
+UGT1A1,AMR,Rapid Metabolizer,0
+UGT1A1,AMR,Ultrarapid Metabolizer,0
+UGT1A1,AMR,Indeterminate,0
+UGT1A1,EAS,Normal Metabolizer,0.553571429
+UGT1A1,EAS,Poor Metabolizer,0.089285714
+UGT1A1,EAS,Likely Poor Metabolizer,0
+UGT1A1,EAS,Intermediate Metabolizer,0.357142857
+UGT1A1,EAS,Likely Intermediate Metabolizer,0
+UGT1A1,EAS,Possible Intermediate Metabolizer,0
+UGT1A1,EAS,Rapid Metabolizer,0
+UGT1A1,EAS,Ultrarapid Metabolizer,0
+UGT1A1,EAS,Indeterminate,0
+UGT1A1,EUR,Normal Metabolizer,0.478087649
+UGT1A1,EUR,Poor Metabolizer,0.091633466
+UGT1A1,EUR,Likely Poor Metabolizer,0
+UGT1A1,EUR,Intermediate Metabolizer,0.430278884
+UGT1A1,EUR,Likely Intermediate Metabolizer,0
+UGT1A1,EUR,Possible Intermediate Metabolizer,0
+UGT1A1,EUR,Rapid Metabolizer,0
+UGT1A1,EUR,Ultrarapid Metabolizer,0
+UGT1A1,EUR,Indeterminate,0
+UGT1A1,SAS,Normal Metabolizer,0.294478528
+UGT1A1,SAS,Poor Metabolizer,0.196319018
+UGT1A1,SAS,Likely Poor Metabolizer,0
+UGT1A1,SAS,Intermediate Metabolizer,0.509202454
+UGT1A1,SAS,Likely Intermediate Metabolizer,0
+UGT1A1,SAS,Possible Intermediate Metabolizer,0
+UGT1A1,SAS,Rapid Metabolizer,0
+UGT1A1,SAS,Ultrarapid Metabolizer,0
+UGT1A1,SAS,Indeterminate,0

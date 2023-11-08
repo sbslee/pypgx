@@ -1,0 +1,161 @@
+---
+title: "Comparing Haplotype Frequencies to Lit (PharmGKB)"
+author: "Carissa Sherman"
+date: "2023-01-06"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Background##
+In this code, I'm comparing our haplotype frequencies to tables from PharmGKB: https://www.pharmgkb.org/page/pgxGeneRef. There may not be comparison for all of the genes available on PharmGKB. 
+
+##Libraries##
+```{r}
+library(xlsx)
+library(dplyr)
+library(tidyr)
+library(readxl)
+```
+
+##Dataset with allele frequency##
+```{r}
+Alleles <- read_excel("Haplotype Frequencies/SupplementaryTable3_AlleleFrequencies.xlsx")
+
+Alleles = Alleles[,-3]
+
+#Available from literature (PharmGKB)
+genes_lit = c("CYP2D6","CYP2B6","CYP2C9","CYP2C19","DPYD","G6PD","SLCO1B1","TPMT")
+
+Alleles = Alleles[Alleles$Gene %in% genes_lit,]
+
+allele_gene = Alleles %>% 
+  group_split(Gene)
+
+names(allele_gene) = unique(Alleles$Gene)
+
+```
+
+#CYP2B6
+```{r}
+CYP2B6_lit = read_excel("Haplotype Frequencies/CYP2B6_frequency_table.xlsx", sheet = 2) 
+
+CYP2B6_and_lit = merge(allele_gene[["CYP2B6"]], CYP2B6_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR")
+
+CYP2B6_and_lit = CYP2B6_and_lit[, col_order]
+
+CYP2B6_and_lit_na_rm = na.omit(CYP2B6_and_lit)
+```
+
+#CYP2C9
+```{r}
+CYP2C9_lit = read_excel("Haplotype Frequencies/CYP2C9_frequency_table.xlsx", sheet = 2) 
+
+CYP2C9_and_lit = merge(allele_gene[["CYP2C9"]], CYP2C9_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR","AMR_lit")
+
+CYP2C9_and_lit = CYP2C9_and_lit[, col_order]
+
+CYP2C9_and_lit_na_rm = na.omit(CYP2C9_and_lit)
+```
+
+#CYP2C19
+```{r}
+CYP2C19_lit = read_excel("Haplotype Frequencies/CYP2C19_frequency_table.xlsx", sheet = 2) 
+
+CYP2C19_and_lit = merge(allele_gene[["CYP2C19"]], CYP2C19_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR","AMR_lit")
+
+CYP2C19_and_lit = CYP2C19_and_lit[, col_order]
+
+CYP2C19_and_lit_na_rm = na.omit(CYP2C19_and_lit)
+```
+
+#CYP2D6
+```{r}
+CYP2D6_lit = read_excel("Haplotype Frequencies/CYP2D6_frequency_table.xlsx", sheet = 2) 
+
+CYP2D6_and_lit = merge(allele_gene[["CYP2D6"]], CYP2D6_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR","AMR_lit")
+
+CYP2D6_and_lit = CYP2D6_and_lit[, col_order]
+
+CYP2D6_and_lit_na_rm = na.omit(CYP2D6_and_lit)
+```
+
+#DPYD
+```{r}
+DPYD_lit = read_excel("Haplotype Frequencies/DPYD_frequency_table.xlsx", sheet = 2) 
+
+DPYD_and_lit = merge(allele_gene[["DPYD"]], DPYD_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR")
+
+DPYD_and_lit = DPYD_and_lit[, col_order]
+
+DPYD_and_lit_na_rm = na.omit(DPYD_and_lit)
+```
+
+#G6PD
+```{r}
+G6PD_lit = read_excel("Haplotype Frequencies/G6PD_frequency_table.xlsx", sheet = 2) 
+
+G6PD_and_lit = merge(allele_gene[["G6PD"]], G6PD_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AMR","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit")
+
+G6PD_and_lit = G6PD_and_lit[, col_order]
+
+G6PD_and_lit_na_rm = na.omit(G6PD_and_lit)
+
+#write.xlsx(G6PD_and_lit_na_rm, file = 'G6PD_Redo_20230203_NA_rm.xlsx')
+```
+
+#SLCO1B1
+```{r}
+SLCO1B1_lit = read_excel("Haplotype Frequencies/SLCO1B1_frequency_table.xlsx", sheet = 2) 
+
+SLCO1B1_and_lit = merge(allele_gene[["SLCO1B1"]], SLCO1B1_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR","AMR_lit")
+
+SLCO1B1_and_lit = SLCO1B1_and_lit[, col_order]
+
+SLCO1B1_and_lit_na_rm = na.omit(SLCO1B1_and_lit)
+```
+
+#TPMT
+```{r}
+TPMT_lit = read_excel("Haplotype Frequencies/TPMT_frequency_table.xlsx", sheet = 2) 
+
+TPMT_and_lit = merge(allele_gene[["TPMT"]], TPMT_lit, by = "Haplotype")
+
+col_order = c("Haplotype", "Gene","AFR","AFR_lit","EAS","EAS_lit","EUR","EUR_lit","SAS","SAS_lit","AMR")
+
+TPMT_and_lit = TPMT_and_lit[, col_order]
+
+TPMT_and_lit_na_rm = na.omit(TPMT_and_lit)
+```
+
+#Export Datasets 
+```{r}
+dataset_names <- list('CYP2B6' = CYP2B6_and_lit, 'CYP2C19' = CYP2C19_and_lit, 'CYP2C9' = CYP2C9_and_lit, 'CYP2D6' = CYP2D6_and_lit, 'DPYD' = DPYD_and_lit, 'G6PD' = G6PD_and_lit, 'SLCO1B1' = SLCO1B1_and_lit, 'TPMT' = TPMT_and_lit)
+
+#write.xlsx(dataset_names, file = 'Haplotype_Frequencies_8_genes_20230124_NA_rm.xlsx')
+
+dataset_names_na <- list('CYP2B6' = CYP2B6_and_lit_na_rm, 'CYP2C19' = CYP2C19_and_lit_na_rm, 'CYP2C9' = CYP2C9_and_lit_na_rm, 'CYP2D6' = CYP2D6_and_lit_na_rm, 'DPYD' = DPYD_and_lit_na_rm, 'G6PD' = G6PD_and_lit_na_rm, 'SLCO1B1' = SLCO1B1_and_lit_na_rm, 'TPMT' = TPMT_and_lit_na_rm)
+
+#write.xlsx(dataset_names_na, file = 'Haplotype_Frequencies_8_genes_20230203_NA_rm.xlsx')
+```
+
+```{r}
+sessionInfo()
+```
+
