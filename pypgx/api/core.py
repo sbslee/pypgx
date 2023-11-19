@@ -1290,7 +1290,7 @@ def load_recommendation_table():
     4  tacrolimus  CYP3A5                      Indeterminate  None       None                                               None
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/recommendation-table.csv'))
-    return pd.read_csv(b)
+    return pd.read_csv(b, na_filter=False)
 
 def load_variant_table():
     """
