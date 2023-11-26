@@ -6,6 +6,7 @@ Changelog
 
 * :issue:`100`: Add new method :meth:`sdk.utils.get_bundle_path` to enable customization of the ``pypgx-bundle`` directory's location instead of the user's home directory.
 * :issue:`114`: Fix bug in :meth:`api.core.get_recommendation` method where string ``'None'`` was treated as missing value by ``pandas.read_csv`` version 2.0 or higher.
+* :issue:`113`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method where Beagle estimated a parameter value that was outside the permitted range.
 
 0.21.0 (2023-08-25)
 -------------------

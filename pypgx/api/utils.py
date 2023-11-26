@@ -870,7 +870,8 @@ def estimate_phase_beagle(
                 f'chrom={region}',
                 f'ref={panel}',
                 f'out={t}/output',
-                f'impute={str(impute).lower()}'
+                f'impute={str(impute).lower()}',
+                'em=false'
             ]
             try:
                 subprocess.run(
