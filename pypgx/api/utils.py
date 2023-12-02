@@ -838,6 +838,31 @@ def estimate_phase_beagle(
     if metadata['Platform'] == 'Chip':
         vf1 = vf1.filter_gsa()
 
+    def run_beagle(vf1, em):
+        with tempfile.TemporaryDirectory() as t:
+            vf1.to_file(f'{t}/input.vcf')
+            command = [
+                'java', '-Xmx2g', '-jar', beagle,
+                f'gt={t}/input.vcf',
+                f'chrom={region}',
+                f'ref={panel}',
+                f'out={t}/output',
+                f'impute={str(impute).lower()}',
+                f'em={em}'
+            ]
+            subprocess.run(
+                command,
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.PIPE
+            )
+            vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
+            if common_samples:
+                vf = vf3.rename({f'{x}_TEMP': x for x in common_samples})
+            if has_chr_prefix:
+                vf = vf3.update_chr_prefix('remove')
+        return vf3
+
     # Beagle will throw an error if there is only one marker overlapping with
     # the reference panel in a given window. This typically occurs when the
     # input VCF has very few markers or only one marker. Therefore, these
@@ -862,40 +887,26 @@ def estimate_phase_beagle(
         common_samples = list(set(vf1.samples) & set(vf2.samples))
         if common_samples:
             vf1 = vf1.rename({x: f'{x}_TEMP' for x in common_samples})
-        with tempfile.TemporaryDirectory() as t:
-            vf1.to_file(f'{t}/input.vcf')
-            command = [
-                'java', '-Xmx2g', '-jar', beagle,
-                f'gt={t}/input.vcf',
-                f'chrom={region}',
-                f'ref={panel}',
-                f'out={t}/output',
-                f'impute={str(impute).lower()}',
-                'em=false'
-            ]
-            try:
-                subprocess.run(
-                    command,
-                    check=True,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.PIPE
-                )
-                vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
-                if common_samples:
-                    vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
-                if has_chr_prefix:
-                    vf3 = vf3.update_chr_prefix('remove')
+
+        try:
+            vf3 = run_beagle(vf1, em='true')
+        except subprocess.CalledProcessError as e:
+            message = e.stderr.decode()
             # Beagle may throw an error even when multiple overlapping markers 
             # exist because they are too distant from each other -- that is, 
             # located in separate haplotype windows.
-            except subprocess.CalledProcessError as e:
-                message = e.stderr.decode()
-                if "Window has only one position" in message:
-                    warnings.warn("Beagle: Window has only one position")
-                    vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
-                else:
-                    print(message)
-                    raise e
+            if "Window has only one position" in message:
+                warnings.warn("Beagle: Window has only one position")
+                vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
+            # Beagle will throw an error if the expectation-maximization 
+            # algorithm estimates a parameter value outside the permitted 
+            # range. When this happens, we skip the expectation-maximization.
+            elif "IllegalArgumentException: 1.0" in message:
+                warnings.warn("Beagle: Expectation-maximization skipped")
+                vf3 = run_beagle(vf1, em='false')
+            else:
+                print(message)
+                raise e
 
     return sdk.Archive(metadata, vf3)
 
