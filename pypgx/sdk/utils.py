@@ -33,6 +33,9 @@ class SemanticTypeNotFoundError(Exception):
 class VariantNotFoundError(Exception):
     """Raise if specified variant is not present in the variant table."""
 
+class BundleNotFoundError(Exception):
+    """Raise if the given path to the pypgx-bundle directory does not exist."""
+
 class Archive:
     """
     Class for storing various data.
@@ -364,3 +367,20 @@ def add_cn_samples(target, source, samples):
     df = source.data.df[samples]
     target.data.df = pd.concat([target.data.df, df], axis=1)
     return target
+
+def get_bundle_path():
+    """
+    Return the path to the pypgx-bundle directory.
+
+    This function utilizes the ``PYPGX_BUNDLE`` environment variable to 
+    ascertain the filesystem location of the ``pypgx-bundle`` directory. In 
+    cases where the environment variable is not defined, the function defaults 
+    to the user's home directory.
+    """
+    try:
+        bundle_path = os.environ['PYPGX_BUNDLE']
+    except KeyError:
+        bundle_path = os.path.expanduser('~') + '/pypgx-bundle'
+    if not os.path.exists(bundle_path):
+        raise BundleNotFoundError(f'{bundle_path}')
+    return bundle_path

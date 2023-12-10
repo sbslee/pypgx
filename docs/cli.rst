@@ -65,7 +65,7 @@ For getting help on the CLI:
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    
-   optional arguments:
+   options:
      -h, --help            Show this help message and exit.
      -v, --version         Show the version number and exit.
 
@@ -409,7 +409,7 @@ estimate-phase-beagle
      -h, --help         Show this help message and exit.
      --panel PATH       VCF file (compressed or uncompressed) corresponding to a
                         reference haplotype panel. By default, the 1KGP panel in
-                        the ~/pypgx-bundle directory will be used.
+                        the pypgx-bundle directory will be used.
      --impute           Perform imputation of missing genotypes.
 
 filter-samples
@@ -700,7 +700,7 @@ predict-cnv
    Optional arguments:
      -h, --help         Show this help message and exit.
      --cnv-caller PATH  Archive file with the semantic type Model[CNV]. By
-                        default, a pre-trained CNV caller in the ~/pypgx-bundle
+                        default, a pre-trained CNV caller in the pypgx-bundle
                         directory will be used.
 
 prepare-depth-of-coverage
@@ -813,7 +813,7 @@ run-chip-pipeline
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel
                            (compressed or uncompressed). By default, the 1KGP
-                           panel in the ~/pypgx-bundle directory will be used.
+                           panel in the pypgx-bundle directory will be used.
      --impute              Perform imputation of missing genotypes.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
@@ -911,7 +911,7 @@ run-ngs-pipeline
                            (choices: 'GRCh37', 'GRCh38').
      --panel PATH          VCF file corresponding to a reference haplotype panel
                            (compressed or uncompressed). By default, the 1KGP panel
-                           in the ~/pypgx-bundle directory will be used.
+                           in the pypgx-bundle directory will be used.
      --force               Overwrite output directory if it already exists.
      --samples TEXT [TEXT ...]
                            Specify which samples should be included for analysis
@@ -926,7 +926,7 @@ run-ngs-pipeline
      --do-not-plot-allele-fraction
                            Do not plot allele fraction profile.
      --cnv-caller PATH     Archive file with the semantic type Model[CNV]. By
-                           default, a pre-trained CNV caller in the ~/pypgx-bundle
+                           default, a pre-trained CNV caller in the pypgx-bundle
                            directory will be used.
    
    [Example] To genotype the CYP3A5 gene, which does not have SV, from WGS data:

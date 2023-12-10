@@ -57,7 +57,7 @@ Reference genome assembly (default: 'GRCh37')
         help=
 """VCF file corresponding to a reference haplotype panel
 (compressed or uncompressed). By default, the 1KGP
-panel in the ~/pypgx-bundle directory will be used."""
+panel in the pypgx-bundle directory will be used."""
     )
     parser.add_argument(
         '--impute',

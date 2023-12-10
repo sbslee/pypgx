@@ -504,7 +504,11 @@ def get_paralog(gene):
     >>> import pypgx
     >>> pypgx.get_paralog('CYP2D6')
     'CYP2D7'
+    >>> pypgx.get_paralog('CYP2D7')
+    'CYP2D6'
     >>> pypgx.get_paralog('CYP2B6')
+    'CYP2B7'
+    >>> pypgx.get_paralog('CYP2E1')
     ''
     """
     df = load_gene_table()
@@ -1286,7 +1290,7 @@ def load_recommendation_table():
     4  tacrolimus  CYP3A5                      Indeterminate  None       None                                               None
     """
     b = BytesIO(pkgutil.get_data(__name__, 'data/recommendation-table.csv'))
-    return pd.read_csv(b)
+    return pd.read_csv(b, na_filter=False)
 
 def load_variant_table():
     """

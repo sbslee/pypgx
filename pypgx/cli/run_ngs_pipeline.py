@@ -103,7 +103,7 @@ SampleTable[Statistics]."""
         help=
 """VCF file corresponding to a reference haplotype panel
 (compressed or uncompressed). By default, the 1KGP panel
-in the ~/pypgx-bundle directory will be used."""
+in the pypgx-bundle directory will be used."""
     )
     parser.add_argument(
         '--force',
@@ -151,7 +151,7 @@ can provide a list of samples."""
         metavar='PATH',
         help=
 """Archive file with the semantic type Model[CNV]. By
-default, a pre-trained CNV caller in the ~/pypgx-bundle
+default, a pre-trained CNV caller in the pypgx-bundle
 directory will be used."""
     )
 

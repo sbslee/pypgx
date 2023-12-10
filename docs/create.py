@@ -256,18 +256,28 @@ structural variant classifier files in PyPGx are moved to the
 (only those files are moved; other files such as ``allele-table.csv`` and
 ``variant-table.csv`` are intact). Therefore, the user must clone the
 ``pypgx-bundle`` repository with matching PyPGx version to their home
-directory in order for PyPGx to correctly access the moved files:
+directory in order for PyPGx to correctly access the moved files (i.e. replace 
+``x.x.x`` with the version number of PyPGx you're using, such as ``0.18.0``):
 
 .. code-block:: text
 
    $ cd ~
-   $ git clone --branch 0.12.0 --depth 1 https://github.com/sbslee/pypgx-bundle
+   $ git clone --branch x.x.x --depth 1 https://github.com/sbslee/pypgx-bundle
 
 This is undoubtedly annoying, but absolutely necessary for portability
 reasons because PyPGx has been growing exponentially in file size due to the
 increasing number of genes supported and their variation complexity, to the
 point where it now exceeds upload size limit for PyPI (100 Mb). After removal
 of those files, the size of PyPGx has reduced from >100 Mb to <1 Mb.
+
+Starting with version 0.22.0, you can now specify a custom location for the 
+``pypgx-bundle`` directory instead of using the home directory. This can be 
+achieved by setting the bundle location using the ``PYPGX_BUNDLE`` environment 
+variable:
+
+.. code-block:: text
+
+   $ export PYPGX_BUNDLE=/path/to/pypgx-bundle
 
 Structural variation detection
 ==============================
