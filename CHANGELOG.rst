@@ -4,6 +4,8 @@ Changelog
 0.23.0 (in development)
 -----------------------
 
+* :issue:`115`: Add new gene MTHFR.
+
 0.22.0 (2023-12-11)
 -------------------
 
