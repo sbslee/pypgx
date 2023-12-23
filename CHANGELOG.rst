@@ -4,7 +4,7 @@ Changelog
 0.23.0 (in development)
 -----------------------
 
-* :issue:`115`: Add new gene MTHFR.
+* :issue:`115`: Add new genes MTHFR and COMT (thanks `@nbiesot <https://github.com/nbiesot>`__).
 
 0.22.0 (2023-12-11)
 -------------------
