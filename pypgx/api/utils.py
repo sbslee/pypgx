@@ -858,9 +858,9 @@ def estimate_phase_beagle(
             )
             vf3 = pyvcf.VcfFrame.from_file(f'{t}/output.vcf.gz')
             if common_samples:
-                vf = vf3.rename({f'{x}_TEMP': x for x in common_samples})
+                vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
             if has_chr_prefix:
-                vf = vf3.update_chr_prefix('remove')
+                vf3 = vf3.update_chr_prefix('remove')
         return vf3
 
     # Beagle will throw an error if there is only one marker overlapping with

@@ -5,6 +5,7 @@ Changelog
 -----------------------
 
 * :issue:`115`: Add new genes MTHFR and COMT (thanks `@nbiesot <https://github.com/nbiesot>`__).
+* :issue:`117`: Fix major bug in :meth:`api.utils.estimate_phase_beagle` method. The bug was introduced in version 0.22.0 (:issue:`113`) and carries significant implications, especially if the user's input VCF contains sample names that overlap with the reference panel or if there are differences in chromosome annotation compared to the reference panel (e.g. ``chr22`` vs. ``22``).
 
 0.22.0 (2023-12-11)
 -------------------
