@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 59 pharmacogenes.
+genotyping of a total of 61 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -75,6 +75,16 @@ Below is a summary table:
      - Target
      - `chr7:117117016-117311719 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A117117016%2D117311719&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr7:117477024-117671665 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr7%3A117477024%2D117671665&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     -
+   * - COMT
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr22:19917359-19962473 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A19917359%2D19962473&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr22:19929836-19974950 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A19929836%2D19974950&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - :ref:`genes:CYP1A1`
      - ✅
@@ -415,6 +425,16 @@ Below is a summary table:
      - Other
      - `chr19:39731245-39744165 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39731245%2D39744165&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr19:39240552-39253525 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39253525&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     -
+   * - MTHFR
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr1:11842779-11869021 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A11842779%2D11869021&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
+     - `chr1:11782722-11808964 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A11782722%2D11808964&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
    * - NAT1
      - ✅
