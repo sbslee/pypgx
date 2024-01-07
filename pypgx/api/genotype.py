@@ -356,7 +356,7 @@ class G6PDGenotyper:
         if r.CNV in ['Female', 'AssumeNormal']:
             result = [a1, a2]
         elif r.CNV == 'Male':
-            result = [s1, '*MALE']
+            result = [s1, 'MALE']
         else:
             result = ['Indeterminate']
         return '/'.join(core.sort_alleles(result, by='name'))
