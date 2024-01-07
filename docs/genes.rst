@@ -2692,7 +2692,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Description
   * -
     - Female
-    - B/B
+    - B (reference)/B (reference)
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-G6PD-1.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-1.png>`
@@ -2704,7 +2704,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     -
   * - MALE
     - Male
-    - B/MALE
+    - MALE/B (reference)
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-G6PD-2.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-2.png>`

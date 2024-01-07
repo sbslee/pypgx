@@ -735,57 +735,58 @@ DPYD,c.525G>A,1,Normal Function,1-98165062-C-T,N/A,1-97699506-C-T,N/A,FALSE
 DPYD,c.1371C>T,1,Normal Function,1-98015269-G-A,N/A,1-97549713-G-A,N/A,FALSE
 F5,Reference,N/A,Normal Function,1-169519049-T-C,N/A,N/A,N/A,FALSE
 F5,Leiden,N/A,Unknown Function,N/A,N/A,1-169549811-C-T,N/A,FALSE
-G6PD,B,N/A,Class IV (Normal),N/A,N/A,N/A,N/A,FALSE
+G6PD,B (reference),N/A,Class IV (Normal),N/A,N/A,N/A,N/A,FALSE
 G6PD,A,N/A,Class IV (Normal),X-153763492-T-C,N/A,X-154535277-T-C,N/A,FALSE
-G6PD,A-.202A.376G,N/A,Class III (Deficient),"X-153763492-T-C,X-153764217-C-T",N/A,"X-154535277-T-C,X-154536002-C-T",N/A,FALSE
-G6PD,A-.680T.376G,N/A,Class III (Deficient),"X-153762340-C-A,X-153763492-T-C",N/A,"X-154534125-C-A,X-154535277-T-C",N/A,FALSE
-G6PD,A-.968C.376G,N/A,Class III (Deficient),"X-153761240-A-G,X-153763492-T-C",N/A,"X-154533025-A-G,X-154535277-T-C",N/A,FALSE
+G6PD,A- 202A_376G,N/A,Class III (Deficient),"X-153763492-T-C,X-153764217-C-T",N/A,"X-154535277-T-C,X-154536002-C-T",N/A,FALSE
+G6PD,A- 680T_376G,N/A,Class III (Deficient),"X-153762340-C-A,X-153763492-T-C",N/A,"X-154534125-C-A,X-154535277-T-C",N/A,FALSE
+G6PD,A- 968C_376G,N/A,Class III (Deficient),"X-153761240-A-G,X-153763492-T-C",N/A,"X-154533025-A-G,X-154535277-T-C",N/A,FALSE
 G6PD,Santa Maria,N/A,Class II (Deficient),"X-153762655-T-A,X-153763492-T-C",N/A,"X-154534440-T-A,X-154535277-T-C",N/A,FALSE
 G6PD,Sierra Leone,N/A,Class III (Deficient),"X-153763492-T-C,X-153763557-C-T",N/A,"X-154535277-T-C,X-154535342-C-T",N/A,FALSE
-G6PD,"Canton,Taiwan-Hakka,Gifu-like,Agrigento-like",N/A,Class II (Deficient),X-153760484-C-A,N/A,X-154532269-C-A,N/A,FALSE
+G6PD,"Canton, Taiwan-Hakka, Gifu-like, Agrigento-like",N/A,Class II (Deficient),X-153760484-C-A,N/A,X-154532269-C-A,N/A,FALSE
 G6PD,Asahi,N/A,Class III (Deficient),X-153764217-C-T,N/A,X-154536002-C-T,N/A,FALSE
-G6PD,"Mediterranean,Dallas,Panama Sassari,Cagliari,Birmingham",N/A,Class II (Deficient),X-153762634-G-A,N/A,X-154534419-G-A,N/A,FALSE
+G6PD,Mediterranean Haplotype,N/A,Class II (Deficient),"X-153760654-G-A,X-153762634-G-A",N/A,X-154534419-G-A,N/A,FALSE
+G6PD,"Mediterranean, Dallas, Panama, Sassari, Cagliari, Birmingham",N/A,Class II (Deficient),X-153762634-G-A,N/A,"X-154532439-A-G,X-154534419-G-A",N/A,FALSE
 G6PD,202G>A_376A>G_1264C>G,N/A,Class I (Deficient with CNSHA),"X-153760805-G-C,X-153763492-T-C,X-153764217-C-T",N/A,"X-154532590-G-C,X-154535277-T-C,X-154536002-C-T",N/A,FALSE
 G6PD,Mt Sinai,N/A,Class I (Deficient with CNSHA),"X-153760910-G-A,X-153763492-T-C",N/A,"X-154532695-G-A,X-154535277-T-C",N/A,FALSE
 G6PD,Acrokorinthos,N/A,Class II (Deficient),"X-153763405-G-C,X-153763492-T-C",N/A,"X-154535190-G-C,X-154535277-T-C",N/A,FALSE
 G6PD,Ananindeua,N/A,Class II (Deficient),"X-153761337-C-T,X-153763492-T-C",N/A,"X-154533122-C-T,X-154535277-T-C",N/A,FALSE
 G6PD,Alhambra,N/A,Class I (Deficient with CNSHA),X-153760889-C-G,N/A,X-154532674-C-G,N/A,FALSE
 G6PD,Andalus,N/A,Class II (Deficient),X-153760604-C-T,N/A,X-154532389-C-T,N/A,FALSE
-G6PD,"Beverly Hills,Genova,Iwate,Niigata,Yamaguchi",N/A,Class I (Deficient with CNSHA),X-153760909-C-T,N/A,X-154532694-C-T,N/A,FALSE
+G6PD,"Beverly Hills, Genova, Iwate, Niigata, Yamaguchi",N/A,Class I (Deficient with CNSHA),X-153760909-C-T,N/A,X-154532694-C-T,N/A,FALSE
 G6PD,Cassano,N/A,Class II (Deficient),X-153760618-C-G,N/A,X-154532403-C-G,N/A,FALSE
 G6PD,Chatham,N/A,Class II (Deficient),X-153761205-C-T,N/A,X-154532990-C-T,N/A,FALSE
-G6PD,"Taipei,Chinese-3",N/A,Class II (Deficient),X-153762704-T-C,N/A,X-154534489-T-C,N/A,FALSE
-G6PD,"Chinese-4,Quing Yan",N/A,Class III (Deficient),X-153763476-C-A,N/A,X-154535261-C-A,N/A,FALSE
+G6PD,"Taipei, Chinese-3",N/A,Class II (Deficient),X-153762704-T-C,N/A,X-154534489-T-C,N/A,FALSE
+G6PD,Quing Yan,N/A,Class III (Deficient),X-153763476-C-A,N/A,X-154535261-C-A,N/A,FALSE
 G6PD,Coimbra Shunde,N/A,Class II (Deficient),X-153762605-G-A,N/A,X-154534390-G-A,N/A,FALSE
 G6PD,Cosenza,N/A,Class II (Deficient),X-153760484-C-G,N/A,X-154532269-C-G,N/A,FALSE
 G6PD,Fushan,N/A,Class II (Deficient),X-153761204-G-T,N/A,X-154532989-G-T,N/A,FALSE
 G6PD,Guadalajara,N/A,Class I (Deficient with CNSHA),X-153760910-G-A,N/A,X-154532695-G-A,N/A,FALSE
 G6PD,Ilesha,N/A,Class III (Deficient),X-153763402-C-T,N/A,X-154535187-C-T,N/A,FALSE
-G6PD,"Iowa,Walter Reed,Springfield",N/A,Class I (Deficient with CNSHA),X-153760913-T-C,N/A,X-154532698-T-C,N/A,FALSE
-G6PD,"Kaiping,Anant,Dhon,Sapporo-like,Wosera",N/A,Class II (Deficient),X-153760472-C-T,N/A,X-154532257-C-T,N/A,FALSE
-G6PD,"Kalyan-Kerala,Jamnaga,Rohini",N/A,Class III (Deficient),X-153761259-C-T,N/A,X-154533044-C-T,N/A,FALSE
+G6PD,"Iowa, Walter Reed, Springfield",N/A,Class I (Deficient with CNSHA),X-153760913-T-C,N/A,X-154532698-T-C,N/A,FALSE
+G6PD,"Kaiping, Anant, Dhon, Sapporo-like, Wosera",N/A,Class II (Deficient),X-153760472-C-T,N/A,X-154532257-C-T,N/A,FALSE
+G6PD,"Kalyan-Kerala, Jamnaga, Rohini",N/A,Class III (Deficient),X-153761259-C-T,N/A,X-154533044-C-T,N/A,FALSE
 G6PD,Lagosanto,N/A,Class III (Deficient),X-153764177-C-T,N/A,X-154535962-C-T,N/A,FALSE
 G6PD,Mahidol,N/A,Class III (Deficient),X-153762710-C-T,N/A,X-154534495-C-T,N/A,FALSE
 G6PD,Cincinnati,N/A,Class I (Deficient with CNSHA),"X-153761171-T-A,X-153762560-C-A",N/A,"X-154532956-T-A,X-154534345-C-A",N/A,FALSE
 G6PD,Metaponto,N/A,Class III (Deficient),X-153764247-C-T,N/A,X-154536032-C-T,N/A,FALSE
-G6PD,"Minnesota,Marion,Gastonia,LeJeune",N/A,Class I (Deficient with CNSHA),X-153762560-C-A,N/A,X-154534345-C-A,N/A,FALSE
+G6PD,"Minnesota, Marion, Gastonia, LeJeune",N/A,Class I (Deficient with CNSHA),X-153762560-C-A,N/A,X-154534345-C-A,N/A,FALSE
 G6PD,Nara,N/A,Class I (Deficient with CNSHA),X-153761229-TGGGGTCGTCCAGGTACCCTTTGGT-T,N/A,X-154533014-TGGGGTCGTCCAGGTACCCTTTGGT-T,N/A,FALSE
-G6PD,"Nashville,Anaheim,Portici",N/A,Class I (Deficient with CNSHA),X-153760891-C-T,N/A,X-154532676-C-T,N/A,FALSE
+G6PD,"Nashville, Anaheim, Portici",N/A,Class I (Deficient with CNSHA),X-153760891-C-T,N/A,X-154532676-C-T,N/A,FALSE
 G6PD,Olomouc,N/A,Class I (Deficient with CNSHA),X-153760928-A-G,N/A,X-154532713-A-G,N/A,FALSE
 G6PD,Pawnee,N/A,Class II (Deficient),X-153760649-C-G,N/A,X-154532434-C-G,N/A,FALSE
 G6PD,Plymouth,N/A,Class I (Deficient with CNSHA),X-153762709-C-T,N/A,X-154534494-C-T,N/A,FALSE
 G6PD,Praha,N/A,Class I (Deficient with CNSHA),X-153760903-T-C,N/A,X-154532688-T-C,N/A,FALSE
 G6PD,Puerto Limon,N/A,Class I (Deficient with CNSHA),X-153760877-C-T,N/A,X-154532662-C-T,N/A,FALSE
 G6PD,Santiago,N/A,Class I (Deficient with CNSHA),X-153762604-C-G,N/A,X-154534389-C-G,N/A,FALSE
-G6PD,"Santiago de Cuba,Morioka",N/A,Class I (Deficient with CNSHA),X-153760626-C-T,N/A,X-154532411-C-T,N/A,FALSE
+G6PD,"Santiago de Cuba, Morioka",N/A,Class I (Deficient with CNSHA),X-153760626-C-T,N/A,X-154532411-C-T,N/A,FALSE
 G6PD,Sao Borja,N/A,Class IV (Normal),X-153763531-C-T,N/A,X-154535316-C-T,N/A,FALSE
 G6PD,Shinshu,N/A,Class I (Deficient with CNSHA),X-153762670-T-C,N/A,X-154534455-T-C,N/A,FALSE
 G6PD,Sibari,N/A,Class III (Deficient),X-153762563-T-C,N/A,X-154534348-T-C,N/A,FALSE
-G6PD,"Telti,Kobe",N/A,Class I (Deficient with CNSHA),X-153760647-G-A,N/A,X-154532432-G-A,N/A,FALSE
+G6PD,"Telti, Kobe",N/A,Class I (Deficient with CNSHA),X-153760647-G-A,N/A,X-154532432-G-A,N/A,FALSE
 G6PD,Tomah,N/A,Class I (Deficient with CNSHA),X-153760916-A-G,N/A,X-154532701-A-G,N/A,FALSE
 G6PD,Ube Konan,N/A,Class III (Deficient),X-153764178-G-A,N/A,X-154535963-G-A,N/A,FALSE
-G6PD,"Union,Maewo,Chinese-2,Kalo",N/A,Class II (Deficient),X-153760605-G-A,N/A,X-154532390-G-A,N/A,FALSE
-G6PD,"Viangchan,Jammu",N/A,Class II (Deficient),X-153761337-C-T,N/A,X-154533122-C-T,N/A,FALSE
+G6PD,"Union,Maewo, Chinese-2, Kalo",N/A,Class II (Deficient),X-153760605-G-A,N/A,X-154532390-G-A,N/A,FALSE
+G6PD,"Viangchan, Jammu",N/A,Class II (Deficient),X-153761337-C-T,N/A,X-154533122-C-T,N/A,FALSE
 G6PD,West Virginia,N/A,Class I (Deficient with CNSHA),X-153761298-C-A,N/A,X-154533083-C-A,N/A,FALSE
 G6PD,Honiara,N/A,Class I (Deficient with CNSHA),"X-153760605-G-A,X-153774272-T-C",N/A,"X-154532390-G-A,X-154546057-T-C",N/A,FALSE
 G6PD,Sunderland,N/A,Class I (Deficient with CNSHA),X-153774261-ATGATGATGA-ATGATGA,N/A,X-154546046-ATGATGATGA-ATGATGA,N/A,FALSE
@@ -837,7 +838,7 @@ G6PD,Clinic,N/A,Class I (Deficient with CNSHA),X-153760854-C-T,N/A,X-154532639-C
 G6PD,Utrecht,N/A,Class I (Deficient with CNSHA),X-153760844-G-A,N/A,X-154532629-G-A,N/A,FALSE
 G6PD,Suwalki,N/A,Class I (Deficient with CNSHA),X-153760843-G-C,N/A,X-154532628-G-C,N/A,FALSE
 G6PD,Riverside,N/A,Class I (Deficient with CNSHA),X-153760841-C-A,N/A,X-154532626-C-A,N/A,FALSE
-G6PD,"Japan,Shinagawa",N/A,Class I (Deficient with CNSHA),X-153760840-C-T,N/A,X-154532625-C-T,N/A,FALSE
+G6PD,"Japan, Shinagawa",N/A,Class I (Deficient with CNSHA),X-153760840-C-T,N/A,X-154532625-C-T,N/A,FALSE
 G6PD,Kawasaki,N/A,Class I (Deficient with CNSHA),X-153760840-C-G,N/A,X-154532625-C-G,N/A,FALSE
 G6PD,Munich,N/A,Class I (Deficient with CNSHA),X-153760838-T-C,N/A,X-154532623-T-C,N/A,FALSE
 G6PD,Georgia,N/A,Class I (Deficient with CNSHA),X-153760785-G-T,N/A,X-154532570-G-T,N/A,FALSE
@@ -898,16 +899,16 @@ G6PD,Murcia Oristano,N/A,Class III (Deficient),X-153764210-T-C,N/A,X-154535995-T
 G6PD,Guangzhou,N/A,Class III (Deficient),X-153763594-G-A,N/A,X-154535379-G-A,N/A,FALSE
 G6PD,Hammersmith,N/A,Class III (Deficient),X-153763545-A-T,N/A,X-154535330-A-T,N/A,FALSE
 G6PD,Salerno Pyrgos,N/A,Class III (Deficient),X-153763485-A-C,N/A,X-154535270-A-C,N/A,FALSE
-G6PD,"Tokyo,Fukushima",N/A,Class I (Deficient with CNSHA),X-153760823-C-T,N/A,X-154532608-C-T,N/A,FALSE
+G6PD,"Tokyo, Fukushima",N/A,Class I (Deficient with CNSHA),X-153760823-C-T,N/A,X-154532608-C-T,N/A,FALSE
 G6PD,Malaga,N/A,Class III (Deficient),X-153762655-T-A,N/A,X-154534440-T-A,N/A,FALSE
 G6PD,Mexico City,N/A,Class III (Deficient),X-153762340-C-T,N/A,X-154534125-C-T,N/A,FALSE
 G6PD,Nanning,N/A,Class III (Deficient),X-153762317-G-A,N/A,X-154534102-G-A,N/A,FALSE
-G6PD,"Seattle,Lodi,Modena,Ferrara-II,Athens-like",N/A,Class III (Deficient),X-153761811-C-G,N/A,X-154533596-C-G,N/A,FALSE
+G6PD,"Seattle, Lodi, Modena, Ferrara II, Athens-like",N/A,Class III (Deficient),X-153761811-C-G,N/A,X-154533596-C-G,N/A,FALSE
 G6PD,Bajo Maumere,N/A,Class III (Deficient),X-153761811-C-A,N/A,X-154533596-C-A,N/A,FALSE
 G6PD,Montalbano,N/A,Class III (Deficient),X-153761801-C-T,N/A,X-154533586-C-T,N/A,FALSE
 G6PD,Chinese-5,N/A,Class III (Deficient),X-153761184-G-A,N/A,X-154532969-G-A,N/A,FALSE
-G6PD,G6PDNice,N/A,Class III (Deficient),X-153760480-C-G,N/A,X-154532265-C-G,N/A,FALSE
-G6PD,"Kamiube,Keelung",N/A,Class III (Deficient),X-153760473-G-A,N/A,X-154532258-G-A,N/A,FALSE
+G6PD,Nice,N/A,Class III (Deficient),X-153760480-C-G,N/A,X-154532265-C-G,N/A,FALSE
+G6PD,"Kamiube, Keelung",N/A,Class III (Deficient),X-153760473-G-A,N/A,X-154532258-G-A,N/A,FALSE
 G6PD,Neapolis,N/A,Class III (Deficient),X-153760460-G-C,N/A,X-154532245-G-C,N/A,FALSE
 G6PD,Split,N/A,Class III (Deficient),X-153760418-G-C,N/A,X-154532203-G-C,N/A,FALSE
 G6PD,No name,N/A,Unknown Function,X-153774346-G-A,N/A,X-154546131-G-A,N/A,FALSE
