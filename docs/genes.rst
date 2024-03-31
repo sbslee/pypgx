@@ -379,7 +379,7 @@ Below is a summary table:
    * - :ref:`genes:G6PD`
      - ✅
      - ✅
-     -
+     - ✅
      -
      -
      - Disease
@@ -2692,7 +2692,7 @@ Below is comprehensive summary of SV described from real NGS studies:
     - Description
   * -
     - Female
-    - \*B/\*B
+    - B (reference)/B (reference)
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-G6PD-1.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-1.png>`
@@ -2702,9 +2702,9 @@ Below is comprehensive summary of SV described from real NGS studies:
     - HG00276
     - 0.12.0
     -
-  * - \*MALE
+  * - MALE
     - Male
-    - \*B/\*MALE
+    - MALE/B (reference)
     -
     - :download:`Model <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/gene-model-G6PD-2.png>`
     - :download:`Profile <https://raw.githubusercontent.com/sbslee/pypgx-data/main/dpsv/GRCh37-G6PD-2.png>`
@@ -2719,6 +2719,33 @@ PyPGx was recently applied to the entire high-coverage WGS dataset from 1KGP
 (N=2,504). Click `here <https://github.com/sbslee/1kgp-pgx-paper/blob/main/
 sv-tables/G6PD.md>`__ to see individual SV calls for G6PD, and
 corresponding copy number profiles and allele fraction profiles.
+
+Phenotype summary for G6PD
+--------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+ .. list-table::
+    :header-rows: 1
+
+    * - Phenotype
+      - Example
+      - Priority
+    * - G6PD Normal
+      - A/B (reference)
+      - Normal Risk
+    * - G6PD Deficient with CNSHA
+      - Alhambra/Bari
+      - Abnormal/Priority/High Risk
+    * - G6PD Variable
+      - 202G>A_376A>G_1264C>G/B (reference)
+      - Abnormal/Priority/High Risk
+    * - G6PD Deficient
+      - 202G>A_376A>G_1264C>G/A- 680T_376G
+      - Abnormal/Priority/High Risk
+    * - G6PD Indeterminate
+      - A- 202A_376G/Dagua
+      - Abnormal/Priority/High Risk
 
 GSTM1
 =====

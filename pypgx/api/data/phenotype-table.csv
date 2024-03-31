@@ -40,6 +40,11 @@ DPYD,Intermediate Metabolizer,Abnormal/Priority/High Risk
 DPYD,Poor Metabolizer,Abnormal/Priority/High Risk
 F5,Favorable Response,None
 F5,Unfavorable Response,None
+G6PD,G6PD Normal,Normal Risk
+G6PD,G6PD Deficient with CNSHA,Abnormal/Priority/High Risk
+G6PD,G6PD Variable,Abnormal/Priority/High Risk
+G6PD,G6PD Deficient,Abnormal/Priority/High Risk
+G6PD,G6PD Indeterminate,Abnormal/Priority/High Risk
 IFNL3,Favorable Response,None
 IFNL3,Unfavorable Response,None
 IFNL3,Indeterminate,None
