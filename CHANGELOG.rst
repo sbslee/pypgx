@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.24.0 (in development)
------------------------
+0.24.0 (2024-03-31)
+-------------------
 
 * Change G6PD haplotype name from ``*MALE`` to ``MALE``, as the gene does not utilize star allele nomenclature.
 * Update G6PD haplotype nomenclature in accordance with the latest CPIC version (2024-01-07).
