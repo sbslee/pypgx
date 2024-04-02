@@ -56,6 +56,16 @@ Below is a summary table:
      - `chr4:89008420-89082791 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A89008420%2D89082791&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      - `chr4:88087268-88161639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A88087268%2D88161639&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      -
+   * - ACYP2
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr2:54339751-54535437 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54339751%2D54535437&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
+     - `chr2:54112614-54308300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54112614%2D54308300&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
+     - NM_138448.4 was used as the main transcript.
    * - :ref:`genes:CACNA1S`
      - ✅
      -
