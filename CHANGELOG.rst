@@ -4,7 +4,7 @@ Changelog
 0.25.0 (in development)
 -----------------------
 
-* Add new genes ACYP2 and ADRA2A.
+* Add new genes ACYP2, ADRA2A, and ADRB2.
 
 0.24.0 (2024-03-31)
 -------------------
