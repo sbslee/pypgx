@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 62 pharmacogenes.
+genotyping of a total of 63 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -66,6 +66,16 @@ Below is a summary table:
      - `chr2:54339751-54535437 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54339751%2D54535437&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
      - `chr2:54112614-54308300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54112614%2D54308300&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
      - NM_138448.4 was used as the main transcript.
+   * - ADRA2A
+     - ✅
+     -
+     -
+     -
+     -
+     - Absorption
+     - `chr10:112833786-112843665 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A112833786%2D112843665&hgsid=2091670486_9UK3D1ZLOfc1KFoEhawm0PTpFAer>`__
+     - `chr10:111074028-111083907 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A111074028%2D111083907&hgsid=2091670486_9UK3D1ZLOfc1KFoEhawm0PTpFAer>`__
+     - NM_000681.4 was used as the main transcript.
    * - :ref:`genes:CACNA1S`
      - ✅
      -

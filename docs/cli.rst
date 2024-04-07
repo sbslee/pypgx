@@ -65,7 +65,7 @@ For getting help on the CLI:
        test-cnv-caller     Test CNV caller for target gene.
        train-cnv-caller    Train CNV caller for target gene.
    
-   optional arguments:
+   options:
      -h, --help            Show this help message and exit.
      -v, --version         Show the version number and exit.
 
