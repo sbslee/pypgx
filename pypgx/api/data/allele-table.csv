@@ -11,6 +11,8 @@ ADRB2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 ADRB2,rs1042713,N/A,Unknown Function,5-148206440-G-A,N/A,5-148826877-G-A,N/A,FALSE
 ANKK1,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 ANKK1,Taq1A,N/A,Unknown Function,11-113270828-G-A,N/A,11-113400106-G-A,N/A,FALSE
+ATM,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
+ATM,rs11212617,N/A,Unknown Function,11-108283161-C-A,N/A,11-108412434-C-A,N/A,FALSE
 CACNA1S,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 CACNA1S,c.520C>T,N/A,Malignant Hyperthermia Associated,1-201061121-G-A,N/A,1-201091993-G-A,N/A,FALSE
 CACNA1S,c.3257G>A,N/A,Malignant Hyperthermia Associated,1-201029943-C-T,N/A,1-201060815-C-T,N/A,FALSE
