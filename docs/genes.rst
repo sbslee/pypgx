@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 70 pharmacogenes.
+genotyping of a total of 71 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -445,7 +445,7 @@ Below is a summary table:
      - Efficacy
      - `chr9:136498484-136527451 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A136498484%2D136527451&hgsid=2104624522_XC5vAwAl5AD08pCV2WxGd1Z49TF6>`__
      - `chr9:133633362-133662329 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A133633362%2D133662329&hgsid=2104624522_XC5vAwAl5AD08pCV2WxGd1Z49TF6>`__
-     - NM_000787.4 was used as the main transcript
+     - NM_000787.4 was used as the main transcript.
    * - :ref:`genes:DPYD`
      - ✅
      -
@@ -456,6 +456,16 @@ Below is a summary table:
      - `chr1:97540298-98389615 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97540298%2D98389615&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr1:97074742-97924034 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97074742%2D97924034&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - DRD2
+     - ✅
+     -
+     -
+     -
+     -
+     - Toxicity
+     - `chr11:113277326-113349120 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113277326%2D113349120&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr11:113406604-113478398 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113406604%2D113478398&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_000795.4 was used as the main transcript.
    * - :ref:`genes:F5`
      - ✅
      -
