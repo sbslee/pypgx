@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 73 pharmacogenes.
+genotyping of a total of 74 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -506,6 +506,16 @@ Below is a summary table:
      - `chr21:30906253-31315314 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A30906253%2D31315314&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
      - `chr21:29533932-29942996 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A29533932%2D29942996&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
      - NM_001330994.2 was used as the main transcript.
+   * - GRIK4
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr11:120379456-120862615 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A120379456%2D120862615&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr11:120508747-120991906 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A120508747%2D120991906&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_014619.5 was used as the main transcript.
    * - :ref:`genes:GSTM1`
      - ✅
      - ✅
