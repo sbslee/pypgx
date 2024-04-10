@@ -4,7 +4,7 @@ Changelog
 0.25.0 (in development)
 -----------------------
 
-* Add new genes ACYP2, ADRA2A, ADRB2, ANKK1, APOE, ATM, and BCHE.
+* Add 8 new genes: ACYP2, ADRA2A, ADRB2, ANKK1, APOE, ATM, BCHE, BDNF.
 
 0.24.0 (2024-03-31)
 -------------------
