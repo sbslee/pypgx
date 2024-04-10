@@ -769,6 +769,8 @@ DPYD,c.525G>A,1,Normal Function,1-98165062-C-T,N/A,1-97699506-C-T,N/A,FALSE
 DPYD,c.1371C>T,1,Normal Function,1-98015269-G-A,N/A,1-97549713-G-A,N/A,FALSE
 DRD2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 DRD2,rs1799978,N/A,Unknown Function,11-113346351-T-C,N/A,11-113475629-T-C,N/A,FALSE
+F2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
+F2,G20210A,N/A,Unknown Function,11-46761055-G-A,N/A,11-46739505-G-A,N/A,FALSE
 F5,Reference,N/A,Normal Function,1-169519049-T-C,N/A,N/A,N/A,FALSE
 F5,Leiden,N/A,Unknown Function,N/A,N/A,1-169549811-C-T,N/A,FALSE
 G6PD,B (reference),N/A,Class IV (Normal),N/A,N/A,N/A,N/A,FALSE
