@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 72 pharmacogenes.
+genotyping of a total of 73 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -496,6 +496,16 @@ Below is a summary table:
      - `chrX:153756604-153778233 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A153756604%2D153778233&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chrX:154528389-154550018 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A154528389%2D154550018&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - G6PD is located on X chromosome.
+   * - GRIK1
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr21:30906253-31315314 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A30906253%2D31315314&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr21:29533932-29942996 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A29533932%2D29942996&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_001330994.2 was used as the main transcript.
    * - :ref:`genes:GSTM1`
      - ✅
      - ✅
