@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 75 pharmacogenes.
+genotyping of a total of 76 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -556,6 +556,16 @@ Below is a summary table:
      - `chr22:24373132-24387311 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A24373132%2D24387311&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr22_KI270879v1_alt:267307-281486 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22_KI270879v1_alt%3A267307%2D281486&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - GSTT1 is located on different contigs between GRCh37 and GRCh38.
+   * - HTR1A
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr5:63250700-63261272 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A63250700%2D63261272&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - `chr5:63954873-63965445 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A63954873%2D63965445&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - NM_000524.4 was used as the main transcript.
    * - :ref:`genes:IFNL3`
      - ✅
      -
