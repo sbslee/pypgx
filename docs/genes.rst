@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 78 pharmacogenes.
+genotyping of a total of 79 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -596,6 +596,16 @@ Below is a summary table:
      - `chr19:39733953-39742496 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39733953%2D39742496&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
      - `chr19:39243313-39251856 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39243313%2D39251856&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
      - NR_074079.1 was used as the main transcript.
+   * - ITGB3
+     - ✅
+     -
+     - 
+     -
+     -
+     - Efficacy
+     - `chr17:45328192-45394109 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A45328192%2D45394109&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr17:47250826-47316743 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A47250826%2D47316743&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_000212.3 was used as the main transcript.
    * - MTHFR
      - ✅
      -
