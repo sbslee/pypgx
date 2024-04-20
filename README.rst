@@ -52,7 +52,7 @@ glossary.html#structural-variation-sv>`__ using a machine learning-based
 approach. Finally, note that PyPGx is compatible with both of the Genome
 Reference Consortium Human (GRCh) builds, GRCh37 (hg19) and GRCh38 (hg38).
 
-There are currently 86 pharmacogenes in PyPGx:
+There are currently 87 pharmacogenes in PyPGx:
 
 .. list-table::
 
@@ -137,12 +137,12 @@ There are currently 86 pharmacogenes in PyPGx:
      - TPMT
      - UGT1A1
    * - UGT1A4
+     - UGT1A6
      - UGT2B7
      - UGT2B15
      - UGT2B17
-     - VKORC1
-   * - XPC
-     -
+   * - VKORC1
+     - XPC
      -
      -
      -
