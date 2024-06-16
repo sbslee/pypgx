@@ -1,6 +1,11 @@
 Changelog
 *********
 
+0.25.0 (2024-06-16)
+-------------------
+
+* Add 26 new genes: ACYP2, ADRA2A, ADRB2, ANKK1, APOE, ATM, BCHE, BDNF, DBH, DRD2, F2, GRIK1, GRIK4, GRIN2B, HTR1A, HTR2A, IFNL4, ITGB3, ITPA, OPRK1, OPRM1, RARG, SLC6A4, SLC28A3, SLC47A2, UGT1A6.
+
 0.24.0 (2024-03-31)
 -------------------
 

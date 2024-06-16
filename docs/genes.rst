@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 61 pharmacogenes.
+genotyping of a total of 87 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -56,6 +56,86 @@ Below is a summary table:
      - `chr4:89008420-89082791 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A89008420%2D89082791&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      - `chr4:88087268-88161639 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr4%3A88087268%2D88161639&hgsid=1298429733_BSyanNFtoxsgwNZmMlPdvfYamJmW>`__
      -
+   * - ACYP2
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr2:54339751-54535437 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54339751%2D54535437&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
+     - `chr2:54112614-54308300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A54112614%2D54308300&hgsid=2075643426_jPVGUWohm3uLIv8bdQ6vCs7HSa7v>`__
+     - NM_138448.4 was used as the main transcript.
+   * - ADRA2A
+     - ✅
+     -
+     -
+     -
+     -
+     - Absorption
+     - `chr10:112833786-112843665 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A112833786%2D112843665&hgsid=2091670486_9UK3D1ZLOfc1KFoEhawm0PTpFAer>`__
+     - `chr10:111074028-111083907 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A111074028%2D111083907&hgsid=2091670486_9UK3D1ZLOfc1KFoEhawm0PTpFAer>`__
+     - NM_000681.4 was used as the main transcript.
+   * - ADRB2
+     - ✅
+     -
+     -
+     -
+     -
+     - Target
+     - `chr5:148203173-148211186 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A148203173%2D148211186&hgsid=2092325066_K6VvMJMxdGa5dur0C6kdxfWOxiwZ>`__
+     - `chr5:148823610-148831623 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A148823610%2D148831623&hgsid=2092325066_K6VvMJMxdGa5dur0C6kdxfWOxiwZ>`__
+     - NM_000024.6 was used as the main transcript.
+   * - ANKK1
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr11:113255500-113274138 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113255500%2D113274138&hgsid=2097319032_Yh0JY7nKAHHYsaU4mObJ1Km7fTXg>`__
+     - `chr11:113384778-113403416 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113384778%2D113403416&hgsid=2097319032_Yh0JY7nKAHHYsaU4mObJ1Km7fTXg>`__
+     - NM_178510.2 was used as the main transcript.
+   * - APOE
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr19:45406052-45415650 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A45406052%2D45415650&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - `chr19:44902795-44912393 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A44902795%2D44912393&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - NM_000041.4 was used as the main transcript.
+   * - ATM
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr11:108090793-108286161 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A108090793%2D108286161&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - `chr11:108220066-108415434 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A108220066%2D108415434&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - NM_000051.4 was used as the main transcript.
+   * - BCHE
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr3:165487691-165558211 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A165487691%2D165558211&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - `chr3:165769903-165840423 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr3%3A165769903%2D165840423&hgsid=2101995320_cUhlNCjppaGJN0dqC3j4Rz9XAqaD>`__
+     - NM_000055.4 was used as the main transcript.
+   * - BDNF
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr11:27673439-27725002 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A27673439%2D27725002&hgsid=2104479616_zVjvFDwop6R0m6VrmJkHXmy2Wayd>`__
+     - `chr11:27651892-27703455 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A27651892%2D27703455&hgsid=2104479616_zVjvFDwop6R0m6VrmJkHXmy2Wayd>`__
+     - NM_001709.5 was used as the main transcript.
    * - :ref:`genes:CACNA1S`
      - ✅
      -
@@ -356,6 +436,16 @@ Below is a summary table:
      - `chr10:94830646-94840641 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A94830646%2D94840641&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr10:93070892-93080885 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr10%3A93070892%2D93080885&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - DBH
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr9:136498484-136527451 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A136498484%2D136527451&hgsid=2104624522_XC5vAwAl5AD08pCV2WxGd1Z49TF6>`__
+     - `chr9:133633362-133662329 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A133633362%2D133662329&hgsid=2104624522_XC5vAwAl5AD08pCV2WxGd1Z49TF6>`__
+     - NM_000787.4 was used as the main transcript.
    * - :ref:`genes:DPYD`
      - ✅
      -
@@ -366,6 +456,26 @@ Below is a summary table:
      - `chr1:97540298-98389615 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97540298%2D98389615&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr1:97074742-97924034 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr1%3A97074742%2D97924034&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - DRD2
+     - ✅
+     -
+     -
+     -
+     -
+     - Toxicity
+     - `chr11:113277326-113349120 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113277326%2D113349120&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr11:113406604-113478398 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A113406604%2D113478398&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_000795.4 was used as the main transcript.
+   * - F2
+     - ✅
+     -
+     -
+     -
+     -
+     - Other
+     - `chr11:46737762-46764056 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A46737762%2D46764056&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr11:46716212-46742506 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A46716212%2D46742506&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_000506.5 was used as the main transcript.
    * - :ref:`genes:F5`
      - ✅
      -
@@ -386,6 +496,36 @@ Below is a summary table:
      - `chrX:153756604-153778233 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A153756604%2D153778233&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chrX:154528389-154550018 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrX%3A154528389%2D154550018&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - G6PD is located on X chromosome.
+   * - GRIK1
+     - ✅
+     -
+     -
+     -
+     -
+     - Metabolism
+     - `chr21:30906253-31315314 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A30906253%2D31315314&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr21:29533932-29942996 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr21%3A29533932%2D29942996&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_001330994.2 was used as the main transcript.
+   * - GRIK4
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr11:120379456-120862615 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A120379456%2D120862615&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - `chr11:120508747-120991906 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr11%3A120508747%2D120991906&hgsid=2104698958_hLTLhdTJW6B6oZE8Chuxao0Q7W9C>`__
+     - NM_014619.5 was used as the main transcript.
+   * - GRIN2B
+     - ✅
+     -
+     -
+     -
+     -
+     - Other
+     - `chr12:13687270-14137536 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A13687270%2D14137536&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - `chr12:13534336-13984602 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A13534336%2D13984602&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - NM_000834.5 was used as the main transcript.
    * - :ref:`genes:GSTM1`
      - ✅
      - ✅
@@ -416,6 +556,26 @@ Below is a summary table:
      - `chr22:24373132-24387311 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22%3A24373132%2D24387311&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr22_KI270879v1_alt:267307-281486 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr22_KI270879v1_alt%3A267307%2D281486&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - GSTT1 is located on different contigs between GRCh37 and GRCh38.
+   * - HTR1A
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr5:63250700-63261272 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A63250700%2D63261272&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - `chr5:63954873-63965445 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr5%3A63954873%2D63965445&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - NM_000524.4 was used as the main transcript.
+   * - HTR2A
+     - ✅
+     -
+     -
+     -
+     -
+     - Efficacy
+     - `chr13:47402680-47474188 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A47402680%2D47474188&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - `chr13:46828545-46900053 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A46828545%2D46900053&hgsid=2115857682_DJfHD4PWNV9r1eAAvajhTGuJCkl7>`__
+     - NM_000524.4 was used as the main transcript.
    * - :ref:`genes:IFNL3`
      - ✅
      -
@@ -426,6 +586,36 @@ Below is a summary table:
      - `chr19:39731245-39744165 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39731245%2D39744165&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr19:39240552-39253525 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39240552%2D39253525&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - IFNL4
+     - ✅
+     -
+     - 
+     -
+     -
+     - Other
+     - `chr19:39733953-39742496 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39733953%2D39742496&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr19:39243313-39251856 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A39243313%2D39251856&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NR_074079.1 was used as the main transcript.
+   * - ITGB3
+     - ✅
+     -
+     - 
+     -
+     -
+     - Efficacy
+     - `chr17:45328192-45394109 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A45328192%2D45394109&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr17:47250826-47316743 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A47250826%2D47316743&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_000212.3 was used as the main transcript.
+   * - ITPA
+     - ✅
+     -
+     - 
+     -
+     -
+     - Other
+     - `chr20:3187143-3207506 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A3187143%2D3207506&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr20:3206497-3226860 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A3206497%2D3226860&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_033453.4 was used as the main transcript.
    * - MTHFR
      - ✅
      -
@@ -466,6 +656,26 @@ Below is a summary table:
      - `chr13:48608702-48624364 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A48608702%2D48624364&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr13:48034725-48050221 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr13%3A48034725%2D48050221&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - OPRK1
+     - ✅
+     -
+     -
+     -
+     -
+     - Other
+     - `chr8:54135283-54167197 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A54135283%2D54167197&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr8:53222723-53254637 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr8%3A53222723%2D53254637&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3Y>`__
+     - NM_000912.5 was used as the main transcript.
+   * - OPRM1
+     - ✅
+     -
+     -
+     -
+     -
+     - Other
+     - `chr6:154357374-154456491 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A154357374%2D154456491&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr6:154036239-154135356 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A154036239%2D154135356&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_000914.5 was used as the main transcript.
    * - :ref:`genes:POR`
      - ✅
      -
@@ -486,6 +696,16 @@ Below is a summary table:
      - `chr20:48117410-48187674 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A48117410%2D48187674&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr20:49500873-49571137 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A49500873%2D49571137&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - RARG
+     - ✅
+     -
+     - 
+     - 
+     -
+     - Toxicity
+     - `chr12:53601352-53628993 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A53601352%2D53628993&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr12:53207568-53235209 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr12%3A53207568%2D53235209&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_000966.6 was used as the main transcript.
    * - :ref:`genes:RYR1`
      - ✅
      -
@@ -496,6 +716,16 @@ Below is a summary table:
      - `chr19:38921339-39081204 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A38921339%2D39081204&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr19:38430690-38590564 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr19%3A38430690%2D38590564&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - SLC6A4
+     - ✅
+     -
+     -
+     -
+     -
+     - Other
+     - `chr17:28518336-28565715 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A28518336%2D28565715&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr17:30191318-30238697 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A30191318%2D30238697&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_001045.6 was used as the main transcript.
    * - SLC15A2
      - ✅
      -
@@ -516,6 +746,26 @@ Below is a summary table:
      - `chr6:160627786-160689853 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A160627786%2D160689853&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr6:160206754-160268821 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr6%3A160206754%2D160268821&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - SLC28A3
+     - ✅
+     - ✅
+     -
+     -
+     -
+     - Excretion
+     - `chr9:86887371-86958673 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A86887371%2D86958673&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr9:84272456-84343758 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr9%3A84272456%2D84343758&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_001199633.2 was used as the main transcript.
+   * - SLC47A2
+     - ✅
+     - 
+     -
+     -
+     -
+     - Other
+     - `chr17:19578629-19622897 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A19578629%2D19622897&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr17:19675316-19719584 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr17%3A19675316%2D19719584&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_001099646.3 was used as the main transcript.
    * - :ref:`genes:SLCO1B1`
      - ✅
      -
@@ -596,6 +846,16 @@ Below is a summary table:
      - `chr2:234624437-234684945 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A234624437%2D234684945&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      - `chr2:233715735-233776300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A233715735%2D233776300&hgsid=1251392659_FCwuNEZja7PPePnsIvfT1wF8Ke9Y>`__
      -
+   * - UGT1A6
+     - ✅
+     - 
+     -
+     -
+     -
+     - Excretion
+     - `chr2:234598535-234684946 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A234598535%2D234684946&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
+     - `chr2:233689889-233776300 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr2%3A233689889%2D233776300&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
+     - NM_001072.4 was used as the main transcript.
    * - UGT2B7
      - ✅
      -

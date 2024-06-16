@@ -79,58 +79,83 @@ glossary.html#structural-variation-sv>`__ using a machine learning-based
 approach. Finally, note that PyPGx is compatible with both of the Genome
 Reference Consortium Human (GRCh) builds, GRCh37 (hg19) and GRCh38 (hg38).
 
-There are currently 61 pharmacogenes in PyPGx:
+There are currently 87 pharmacogenes in PyPGx:
 
 .. list-table::
 
    * - ABCB1
      - ABCG2
-     - CACNA1S
+     - ACYP2
+     - ADRA2A
+     - ADRB2
+   * - ANKK1
+     - APOE
+     - ATM
+     - BCHE
+     - BDNF
+   * - CACNA1S
      - CFTR
      - COMT
-   * - CYP1A1
+     - CYP1A1
      - CYP1A2
-     - CYP1B1
+   * - CYP1B1
      - CYP2A6/CYP2A7
      - CYP2A13
-   * - CYP2B6/CYP2B7
+     - CYP2B6/CYP2B7
      - CYP2C8
-     - CYP2C9
+   * - CYP2C9
      - CYP2C19
      - CYP2D6/CYP2D7
-   * - CYP2E1
+     - CYP2E1
      - CYP2F1
-     - CYP2J2
+   * - CYP2J2
      - CYP2R1
      - CYP2S1
-   * - CYP2W1
+     - CYP2W1
      - CYP3A4
-     - CYP3A5
+   * - CYP3A5
      - CYP3A7
      - CYP3A43
-   * - CYP4A11
+     - CYP4A11
      - CYP4A22
-     - CYP4B1
+   * - CYP4B1
      - CYP4F2
      - CYP17A1
-   * - CYP19A1
+     - CYP19A1
      - CYP26A1
+   * - DBH
      - DPYD
+     - DRD2
+     - F2
      - F5
-     - G6PD
-   * - GSTM1
-     - GSTP1
+   * - G6PD
+     - GRIK1
+     - GRIK4
+     - GRIN2B
+     - GSTM1
+   * - GSTP1
      - GSTT1
+     - HTR1A
+     - HTR2A
      - IFNL3
+   * - IFNL3
+     - ITGB3
+     - ITPA
      - MTHFR
-   * - NAT1
-     - NAT2
+     - NAT1
+   * - NAT2
      - NUDT15
+     - OPRK1
+     - OPRM1
      - POR
-     - PTGIS
-   * - RYR1
+   * - PTGIS
+     - RARG
+     - RYR1
+     - SLC6A4
      - SLC15A2
-     - SLC22A2
+   * - SLC22A2
+     - SLC28A3
+     - SLC47A2
      - SLCO1B1
      - SLCO1B3
    * - SLCO2B1
@@ -139,12 +164,12 @@ There are currently 61 pharmacogenes in PyPGx:
      - TPMT
      - UGT1A1
    * - UGT1A4
+     - UGT1A6
      - UGT2B7
      - UGT2B15
      - UGT2B17
-     - VKORC1
-   * - XPC
-     -
+   * - VKORC1
+     - XPC
      -
      -
      -
