@@ -347,6 +347,66 @@ Now you have successfully genotyped CYP3A5 as well!
     gene requires SV analysis. In other words, users can provide the same
     input files for all target genes.
 
+Genotyping with CRAM files
+--------------------------
+
+PyPGx also supports CRAM files as input.
+
+.. code-block:: text
+
+    $ mkdir grch37-cram
+    $ wget -P grch37-cram https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-cram/HG00276_PyPGx.sorted.markdup.recal.cram.crai
+    $ wget -P grch37-cram https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-cram/HG00276_PyPGx.sorted.markdup.recal.cram
+    $ wget -P grch37-cram https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-cram/HG00436_PyPGx.sorted.markdup.recal.cram.crai
+    $ wget -P grch37-cram https://storage.googleapis.com/sbslee-bucket/pypgx/getrm-wgs-tutorial/grch37-cram/HG00436_PyPGx.sorted.markdup.recal.cram
+
+Similar to before, we will need the reference FASTA file used to create the CRAM files:
+
+.. code-block:: text
+
+    $ wget https://storage.googleapis.com/sbslee-bucket/ref/grch37/genome.fa
+    $ wget https://storage.googleapis.com/sbslee-bucket/ref/grch37/genome.fa.fai
+
+We can create input files as usual:
+
+.. code-block:: text
+
+    $ pypgx create-input-vcf \
+    cram-variants.vcf.gz \
+    genome.fa \
+    grch37-cram/*.cram
+
+.. code-block:: text
+
+    $ pypgx prepare-depth-of-coverage \
+    cram-depth-of-coverage.zip \
+    grch37-cram/*.cram
+
+.. code-block:: text
+
+    $ pypgx compute-control-statistics \
+    VDR \
+    cram-control-statistics-VDR.zip \
+    grch37-cram/*.cram
+
+Finally, we can run the NGS pipeline:
+
+.. code-block:: text
+
+    $ pypgx run-ngs-pipeline \
+    CYP2D6 \
+    cram-CYP2D6-pipeline \
+    --variants cram-variants.vcf.gz \
+    --depth-of-coverage cram-depth-of-coverage.zip \
+    --control-statistics cram-control-statistics-VDR.zip
+
+.. code-block:: text
+
+    $ pypgx print-data cram-CYP2D6/results.zip
+        Genotype	Phenotype	Haplotype1	Haplotype2	AlternativePhase	VariantData	CNV
+    HG00276_PyPGx	*4/*5	Poor Metabolizer	*4;*10;*74;*2;	*4;*10;*74;*2;	;	*4:22-42524947-C-T:0.87;*10:22-42523943-A-G,22-42526694-G-A:1.0,1.0;*74:22-42525821-G-T:1.0;*2:default;	WholeDel1
+    HG00436_PyPGx	*2x2/*71	Indeterminate	*71;*1;	*2;	;	*71:22-42526669-C-T:0.433;*1:22-42523943-A-G,22-42522613-G-C:0.353,0.462;*2:default;	WholeDup1
+
 Genotyping with GRCh38 data
 ---------------------------
 
