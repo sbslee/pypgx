@@ -619,11 +619,13 @@ def call_genotypes(alleles=None, cnv_calls=None):
 
     if alleles is not None and cnv_calls is not None:
         if set(alleles.data.index) != set(cnv_calls.data.index):
-            raise ValueError('SampleTable[Alleles] and '
-                'SampleTable[CNVCalls] have different samples')
+            _diff = set(cnv_calls.data.index)- set(alleles.data.index)
+            print(_diff)
+            print("Are missing and will be droped")
         if alleles.metadata['Gene'] != cnv_calls.metadata['Gene']:
             raise ValueError('Found two different target genes')
         df = pd.concat([alleles.data, cnv_calls.data], axis=1)
+        df = df.dropna()
         gene = alleles.metadata['Gene']
         assembly = alleles.metadata['Assembly']
     elif alleles is not None and cnv_calls is None:

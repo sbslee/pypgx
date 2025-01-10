@@ -1299,6 +1299,12 @@ def prepare_depth_of_coverage(
         exclude=exclude
     ).to_regions()
 
+    
+    regions = [
+        item for item in regions
+        if item.split(':')[0].isdigit() or item.split(':')[0] in {'X', 'Y'}
+    ]
+
     cf = pycov.CovFrame.from_bam(bams, regions=regions, zero=True)
 
     if bed:
