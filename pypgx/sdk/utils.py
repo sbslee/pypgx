@@ -81,6 +81,7 @@ class Archive:
             elif 'SampleTable' in self.metadata['SemanticType']:
                 self.data.to_csv(f'{t}/data.tsv', sep='\t')
             elif 'VcfFrame' in self.metadata['SemanticType']:
+                self.data.meta.append('##fileformat=VCFv4.2')
                 self.data.to_file(f'{t}/data.vcf')
             elif 'Model' in self.metadata['SemanticType']:
                 pickle.dump(self.data, open(f'{t}/data.sav', 'wb'))
