@@ -20025,6 +20025,30 @@ IFNL3,rs12979860/rs12980275,Unfavorable Response
 IFNL3,rs8099917/rs8099917,Indeterminate
 IFNL3,rs8099917/rs12980275,Indeterminate
 IFNL3,rs12980275/rs12980275,Indeterminate
+MT-RNR1,Reference/Reference,Normal Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.663A>G/m.663A>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.669T>C/m.669T>C,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.747A>G/m.747A>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.786G>A/m.786G>A,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.807A>C/m.807A>C,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.807A>G/m.807A>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.827A>G/m.827A>G,Normal Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.839A>G/m.839A>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.896A>G/m.896A>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.930G>A/m.930G>A,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.951G>A/m.951G>A,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.960C>del/m.960C>del,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.961T>del/m.961T>del,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.961T>G/m.961T>G,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.988G>A/m.988G>A,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1095T>C/m.1095T>C,Increased Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1189T>C/m.1189T>C,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1243T>C/m.1243T>C,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1494C>T/m.1494C>T,Increased Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1520T>C/m.1520T>C,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1537C>T/m.1537C>T,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1555A>G/m.1555A>G,Increased Risk of Aminoglycoside-Induced Hearing Loss
+MT-RNR1,m.1556C>T/m.1556C>T,Uncertain Risk of Aminoglycoside-Induced Hearing Loss
 NUDT15,*1/*4,Indeterminate
 NUDT15,*1/*5,Indeterminate
 NUDT15,*1/*6,Indeterminate
