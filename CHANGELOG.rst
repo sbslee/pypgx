@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.26.0 (in development)
------------------------
+0.26.0 (2026-01-04)
+-------------------
 * :issue:`135`: Fix GRCh38 coordinate of a CYP17A1 variant (thanks `@NeiH4207 <https://github.com/NeiH4207>`__).
 * Add the ``fileformat`` field to the VCF header when writing VCF files.
 * :issue:`150`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method when overlapping samples exist between the input VCF and reference panel, but the window contains only a single position (thanks `@toddknutson <https://github.com/toddknutson>`__).
