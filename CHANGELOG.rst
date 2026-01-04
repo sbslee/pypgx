@@ -1,6 +1,9 @@
 Changelog
 *********
 
+0.27.0 (in development)
+-----------------------
+
 0.26.0 (2026-01-04)
 -------------------
 * :issue:`135`: Fix GRCh38 coordinate of a CYP17A1 variant (thanks `@NeiH4207 <https://github.com/NeiH4207>`__).
