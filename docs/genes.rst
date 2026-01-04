@@ -2,7 +2,7 @@ Genes
 *****
 
 This page describes gene-specific information. PyPGx currently supports
-genotyping of a total of 87 pharmacogenes.
+genotyping of a total of 88 pharmacogenes.
 
 In order to provide the most accurate information, this page borrows heavily
 from the works of the :ref:`glossary:Clinical Pharmacogenetics Implementation
@@ -616,6 +616,16 @@ Below is a summary table:
      - `chr20:3187143-3207506 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A3187143%2D3207506&hgsid=2144291390_4bmNOa6wq7Mk8crO6QNojSla7rfr>`__
      - `chr20:3206497-3226860 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chr20%3A3206497%2D3226860&hgsid=2144291444_9qcI5Mpt1r7ap1R1ceKlp0aFJjS3>`__
      - NM_033453.4 was used as the main transcript.
+   * - :ref:`genes:MT-RNR1`
+     - ✅
+     -
+     - ✅
+     -
+     -
+     - Disease
+     - `chrM:410-1840 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg19&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrMT%3A410%2D1840&hgsid=3332880867_aVXAZCwJTtLSGNhbga0xleh3qxVY>`__
+     - `chrM:410-1840 <https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=chrM%3A410%2D1840&hgsid=3332880867_aVXAZCwJTtLSGNhbga0xleh3qxVY>`__
+     -
    * - MTHFR
      - ✅
      -
@@ -3295,6 +3305,30 @@ Resources for IFNL3
 
 - `PharmGKB: Annotation of CPIC Guideline for peginterferon alfa-2a,peginterferon alfa-2b,ribavirin and IFNL3 <https://www.pharmgkb.org/guidelineAnnotation/PA166110235>`__
 - `CPIC® Guideline for PEG Interferon-Alpha-Based Regimens and IFNL3 <https://cpicpgx.org/guidelines/guideline-for-peg-interferon-alpha-based-regimens-and-ifnl3/>`__
+
+MT-RNR1
+=======
+
+Phenotype summary for MT-RNR1
+-----------------------------
+
+Diplotype-phenotype mapping is used for phenotype prediction.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Phenotype
+     - Example
+     - Priority
+   * - Normal Risk of Aminoglycoside-Induced Hearing Loss
+     - Reference/Reference
+     - None
+   * - Increased Risk of Aminoglycoside-Induced Hearing Loss
+     - m.1494C>T/m.1494C>T
+     - None
+   * - Uncertain Risk of Aminoglycoside-Induced Hearing Loss
+     - m.663A>G/m.663A>G
+     - None
 
 NUDT15
 ======

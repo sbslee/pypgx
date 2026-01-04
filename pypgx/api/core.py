@@ -1498,17 +1498,17 @@ def sort_alleles(
     impact protein coding (e.g. two misssense variants > one missense variant
     plus one intron variant), and 4. reference allele status (e.g.
     non-reference allele with two SNVs > reference allele with two SNVs such
-    that CYP2D6\*46 > CYP2D6\*1 in GRCh37). Note that the priority of allele
+    that CYP2D6\\*46 > CYP2D6\\*1 in GRCh37). Note that the priority of allele
     function decreases in the following order: 'No Function', 'Decreased
     Function', 'Possible Decreased Function', 'Increased Function', 'Possible
     Increased Function', 'Uncertain Function', 'Unknown Function', 'Normal
     Function'.
 
     When ``by='name'`` the method will report alleles with a smaller
-    number first. This means, for example, '\*4' will come before '\*10'
+    number first. This means, for example, '\\*4' will come before '\\*10'
     whereas lexicographic sorting would produce the opposite result. This is
-    particularly useful when forming a diplotype (e.g. '\*4/\*10' vs.
-    '\*10/\*4').
+    particularly useful when forming a diplotype (e.g. '\\*4/\\*10' vs.
+    '\\*10/\\*4').
 
     Parameters
     ----------

@@ -898,6 +898,8 @@ def estimate_phase_beagle(
             if "Window has only one position" in message:
                 warnings.warn("Beagle: Window has only one position")
                 vf3 = pyvcf.VcfFrame([], vf1.df[0:0])
+                if common_samples:
+                    vf3 = vf3.rename({f'{x}_TEMP': x for x in common_samples})
             # Beagle will throw an error if the expectation-maximization 
             # algorithm estimates a parameter value outside the permitted 
             # range. When this happens, we skip the expectation-maximization.

@@ -235,6 +235,13 @@ def run_ngs_pipeline(
         # Skip statistical phasing if input VCF is already fully phased.
         if imported_variants.type == 'VcfFrame[Consolidated]':
             consolidated_variants = imported_variants
+        # MT-RNR1 variants are haploid and do not require phasing.
+        elif gene == 'MT-RNR1':
+            consolidated_variants = imported_variants
+            consolidated_variants.metadata['SemanticType'] = 'VcfFrame[Consolidated]'
+            consolidated_variants.data = consolidated_variants.data.pseudophase()
+            consolidated_variants.to_file(
+                f'{output}/consolidated-variants.zip')
         else:
             phased_variants = utils.estimate_phase_beagle(
                 imported_variants, panel=panel)
