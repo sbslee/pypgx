@@ -5,7 +5,7 @@ Changelog
 -----------------------
 * Update ``test_allele_table`` in ``test.py`` to support the same definition for multiple genes.
 * Fix an error in ``allele-table.csv`` where ``2-54168122-G-A`` was erroneously assigned to ``GRCh37Tag`` when it should have been ``GRCh38Core``.
-* Fix the CYP17A1 L465P allele's definition in ``allele-table.csv`` (this was mistakenly omitted from :issue:`135`) (thanks `@barGeneyx <https://github.com/barGeneyx>`__).
+* :issue:`166`: Fix the CYP17A1 L465P allele's definition in ``allele-table.csv`` (this was mistakenly omitted from :issue:`135`) (thanks `@barGeneyx <https://github.com/barGeneyx>`__).
 * Update ``phenotype-table.csv`` to include MT-RNR1.
 
 0.26.0 (2026-01-04)
