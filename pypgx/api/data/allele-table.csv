@@ -4,7 +4,7 @@ ABCB1,*2,N/A,Increased Function,N/A,N/A,N/A,N/A,FALSE
 ABCG2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 ABCG2,rs2231142,N/A,Decreased Function,4-89052323-G-T,N/A,4-88131171-G-T,N/A,FALSE
 ACYP2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
-ACYP2,rs1872328,N/A,Unknown Function,2-54395259-G-A,2-54168122-G-A,N/A,N/A,FALSE
+ACYP2,rs1872328,N/A,Unknown Function,2-54395259-G-A,N/A,2-54168122-G-A,N/A,FALSE
 ADRA2A,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
 ADRA2A,rs1800544,N/A,Unknown Function,10-112836503-G-C,N/A,10-111076745-G-C,N/A,FALSE
 ADRB2,Reference,N/A,Normal Function,N/A,N/A,N/A,N/A,FALSE
