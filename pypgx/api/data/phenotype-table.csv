@@ -48,6 +48,9 @@ G6PD,G6PD Indeterminate,Abnormal/Priority/High Risk
 IFNL3,Favorable Response,None
 IFNL3,Unfavorable Response,None
 IFNL3,Indeterminate,None
+MT-RNR1,Normal Risk of Aminoglycoside-Induced Hearing Loss,Normal/Routine/Low Risk
+MT-RNR1,Uncertain Risk of Aminoglycoside-Induced Hearing Loss,Normal/Routine/Low Risk
+MT-RNR1,Increased Risk of Aminoglycoside-Induced Hearing Loss,Abnormal/Priority/High Risk
 NUDT15,Possible Intermediate Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Poor Metabolizer,Abnormal/Priority/High Risk
 NUDT15,Normal Metabolizer,Normal/Routine/Low risk
