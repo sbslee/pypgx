@@ -12,8 +12,9 @@ class TestPypgx(unittest.TestCase):
 
         for assembly in ['GRCh37', 'GRCh38']:
             # Find duplicate alleles with the same definition.
-            i = df[[f'{assembly}Core', 'SV']].dropna().duplicated(keep=False)
-            l = sorted(df[[f'{assembly}Core', 'SV']].dropna()[i][f'{assembly}Core'].to_list())
+            # The same definition may apply to multiple genes (e.g., rs12979860 for IFNL3 and IFNL4).
+            i = df[['Gene', f'{assembly}Core', 'SV']].dropna().duplicated(keep=False)
+            l = sorted(df[['Gene', f'{assembly}Core', 'SV']].dropna()[i][f'{assembly}Core'].to_list())
             if l:
                 raise ValueError(f'Found duplicate alleles in {assembly}: {l}')
 
