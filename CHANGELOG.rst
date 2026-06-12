@@ -1,6 +1,9 @@
 Changelog
 *********
 
+0.28.0 (in development)
+-----------------------
+
 0.27.0 (2026-06-12)
 -------------------
 * Update :meth:`test_allele_table` method to support the same definition for multiple genes.
