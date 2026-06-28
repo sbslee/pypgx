@@ -4,8 +4,11 @@ Changelog
 0.28.0 (in development)
 -----------------------
 
+* :issue:`172`: Fix compatibility issue with newer pandas versions when storing lists/dicts.
+
 0.27.0 (2026-06-12)
 -------------------
+
 * Update :meth:`test_allele_table` method to support the same definition for multiple genes.
 * Fix an error in ``allele-table.csv`` where ``2-54168122-G-A`` in ACYP2 was erroneously assigned to ``GRCh37Tag`` when it should have been ``GRCh38Core``.
 * :issue:`166`: Fix the CYP17A1 L465P allele's definition in ``allele-table.csv`` (this was mistakenly omitted from :issue:`135`) (thanks `@barGeneyx <https://github.com/barGeneyx>`__).
@@ -14,6 +17,7 @@ Changelog
 
 0.26.0 (2026-01-04)
 -------------------
+
 * :issue:`135`: Fix GRCh38 coordinate of a CYP17A1 variant (thanks `@NeiH4207 <https://github.com/NeiH4207>`__).
 * Add the ``fileformat`` field to the VCF header when writing VCF files.
 * :issue:`150`: Fix bug in :meth:`api.utils.estimate_phase_beagle` method when overlapping samples exist between the input VCF and reference panel, but the window contains only a single position (thanks `@toddknutson <https://github.com/toddknutson>`__).
