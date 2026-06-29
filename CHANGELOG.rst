@@ -4,7 +4,7 @@ Changelog
 0.28.0 (in development)
 -----------------------
 
-* :issue:`172`: Fix compatibility issue with newer pandas versions when storing lists/dicts.
+* :issue:`172`: Fix compatibility issues with newer pandas versions.
 
 0.27.0 (2026-06-12)
 -------------------

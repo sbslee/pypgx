@@ -148,8 +148,8 @@ def _process_copy_number(copy_number):
         temp = temp.merge(df, left_on='Temp', right_on='Position', how='outer')
         df = temp.drop(columns='Temp')
 
-    df = df.fillna(method='ffill')
-    df = df.fillna(method='bfill')
+    df = df.ffill()
+    df = df.bfill()
 
     df.iloc[:, 2:] = df.iloc[:, 2:].apply(lambda c: median_filter(c, size=1000), axis=0)
 
@@ -453,6 +453,11 @@ def compute_copy_number(
     # Apply intra-sample normalization.
     df = read_depth.data.copy_df()
     medians = control_statistics.data['50%']
+
+    # Cast to float first to prevent LossySetitemError in newer pandas versions.
+    float_cols = df.columns[2:]
+    df[float_cols] = df[float_cols].astype(float)
+
     df.iloc[:, 2:] = df.iloc[:, 2:] / medians * 2
 
     # Apply inter-sample normalization.
