@@ -6,6 +6,7 @@ Changelog
 
 * :issue:`172`: Fix compatibility issues with newer pandas versions.
 * :issue:`174`: Update ``recommendation-table.csv`` to include CYP2B6 for sertraline in accordance with the 2023 CPIC guideline update (PMID: 37032427). Sertraline recommendations are now determined by CYP2C19 and CYP2B6 together.
+* :issue:`175`: Fill in 37 rows of ``recommendation-table.csv`` that were empty even though CPIC provides a recommendation, affecting the seven malignant hyperthermia drugs (including the CACNA1S/RYR1 double-positive combination), doxepin, and tacrolimus.
 
 0.27.0 (2026-06-12)
 -------------------
