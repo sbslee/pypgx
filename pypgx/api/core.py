@@ -597,14 +597,16 @@ def get_recommendation(drug, gene1, phenotype1, gene2=None, phenotype2=None):
     >>> pypgx.get_recommendation('tacrolimus', 'CYP3A5', 'Normal Metabolizer')
     'Increase starting dose 1.5 to 2 times recommended starting dose. Total starting dose should not exceed 0.3 mg/kg/day. Use therapeutic drug monitoring to guide dose adjustments.'
     >>> # Some recommendations are determined by multiple genes (the order doesn't matter)
+    >>> # When only one gene is given, the recommendation for the other gene
+    >>> # being ungenotyped is returned
     >>> pypgx.get_recommendation('fluvastatin', 'CYP2C9', 'Normal Metabolizer')
-    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:633: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:650: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
       warnings.warn(message)
-    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    'Based on CYP2C9 status, prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines. SLCO1B1 genotype result is not available.'
     >>> pypgx.get_recommendation('fluvastatin', 'SLCO1B1', 'Normal Function')
-    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:633: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
+    /Users/sbslee/Desktop/pypgx/pypgx/api/core.py:650: UserWarning: Recommendations for fluvastatin are determined by multiple genes (CYP2C9, SLCO1B1); for best results, specify phenotype for each gene
       warnings.warn(message)
-    'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
+    'Based on SLCO1B1 status, prescribe desired starting dose and adjust doses based on disease-specific guidelines. CYP2C9 genotype result is not available.'
     >>> pypgx.get_recommendation('fluvastatin', 'CYP2C9', 'Normal Metabolizer', 'SLCO1B1', 'Normal Function')
     'Prescribe desired starting dose and adjust doses of fluvastatin based on disease-specific guidelines.'
     >>> pypgx.get_recommendation('fluvastatin', 'SLCO1B1', 'Normal Function', 'CYP2C9', 'Normal Metabolizer')
@@ -639,17 +641,20 @@ def get_recommendation(drug, gene1, phenotype1, gene2=None, phenotype2=None):
     if gene2 is not None and gene2 not in target_genes:
         raise ValueError(f"{gene2} does not have any recommendations for {drug}")
 
-    if df.Gene2.unique() == ['None']:
+    if (df.Gene2 == 'None').all():
         return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1)].Recommendation.values[0]
 
     if gene2 is None:
         message = (f"Recommendations for {drug} are determined by multiple genes "
                    f"({', '.join(target_genes)}); for best results, specify phenotype for each gene")
         warnings.warn(message)
+        # Use the row where the unspecified gene was not genotyped, which is how
+        # CPIC frames its recommendations for a single gene.
         if gene1 in df.Gene1.unique():
-            return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1)].Recommendation.values[0]
+            i = (df.Gene1 == gene1) & (df.Phenotype1 == phenotype1) & (df.Phenotype2 == 'None')
         else:
-            return df[(df.Gene2 == gene1) & (df.Phenotype2 == phenotype1)].Recommendation.values[0]
+            i = (df.Gene2 == gene1) & (df.Phenotype2 == phenotype1) & (df.Phenotype1 == 'None')
+        return df[i].Recommendation.values[0]
 
     if gene1 in df.Gene1.unique():
         return df[(df.Gene1 == gene1) & (df.Phenotype1 == phenotype1) & (df.Gene2 == gene2) & (df.Phenotype2 == phenotype2)].Recommendation.values[0]
