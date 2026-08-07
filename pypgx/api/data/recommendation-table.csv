@@ -199,14 +199,69 @@ voriconazole,CYP2C19,Intermediate Metabolizer,None,None,Initiate therapy with re
 voriconazole,CYP2C19,Likely Poor Metabolizer,None,None,"Choose an alternative agent that is not dependent on CYP2C19 metabolism as primary therapy in lieu of voriconazole. Such agents include isavuconazole, liposomal amphotericin B, and posaconazole. In the event that voriconazole is considered to be the most appropriate agent, based on clinical advice, for a patient with poor metabolizer genotype, voriconazole should be administered at a preferably lower than standard dosage with careful therapeutic drug monitoring."
 voriconazole,CYP2C19,Poor Metabolizer,None,None,"Choose an alternative agent that is not dependent on CYP2C19 metabolism as primary therapy in lieu of voriconazole. Such agents include isavuconazole, liposomal amphotericin B, and posaconazole. In the event that voriconazole is considered to be the most appropriate agent, based on clinical advice, for a patient with poor metabolizer genotype, voriconazole should be administered at a preferably lower than standard dosage with careful therapeutic drug monitoring."
 voriconazole,CYP2C19,Indeterminate,None,None,None
-sertraline,CYP2C19,Ultrarapid Metabolizer,None,None,"Initiate therapy with recommended starting dose. If patient does not respond to recommended maintenance dosing, consider alternative drug not predominantly metabolized by CYP2C19."
-sertraline,CYP2C19,Rapid Metabolizer,None,None,"Initiate therapy with recommended starting dose. If patient does not respond to recommended maintenance dosing, consider alternative drug not predominantly metabolized by CYP2C19."
-sertraline,CYP2C19,Normal Metabolizer,None,None,Initiate therapy with recommended starting dose.
-sertraline,CYP2C19,Likely Intermediate Metabolizer,None,None,Initiate therapy with recommended starting dose.
-sertraline,CYP2C19,Intermediate Metabolizer,None,None,Initiate therapy with recommended starting dose.
-sertraline,CYP2C19,Likely Poor Metabolizer,None,None,Consider a 50% reduction of recommended starting dose and titrate to response or select alternative drug not predominantly metabolized by CYP2C19.
-sertraline,CYP2C19,Poor Metabolizer,None,None,Consider a 50% reduction of recommended starting dose and titrate to response or select alternative drug not predominantly metabolized by CYP2C19.
-sertraline,CYP2C19,Indeterminate,None,None,None
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Ultrarapid Metabolizer,"Initiate therapy with recommended starting dose. If patient does not adequately respond to recommended maintenance dosing, consider titrating to a higher maintenance dose or switching to a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19 or CYP2B6."
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Rapid Metabolizer,"Initiate therapy with recommended starting dose. If patient does not adequately respond to recommended maintenance dosing, consider titrating to a higher maintenance dose or switching to a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19 or CYP2B6."
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Poor Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,Indeterminate,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Ultrarapid Metabolizer,CYP2B6,None,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Ultrarapid Metabolizer,"Initiate therapy with recommended starting dose. If patient does not adequately respond to recommended maintenance dosing, consider titrating to a higher maintenance dose or switching to a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19 or CYP2B6."
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Rapid Metabolizer,"Initiate therapy with recommended starting dose. If patient does not adequately respond to recommended maintenance dosing, consider titrating to a higher maintenance dose or switching to a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19 or CYP2B6."
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Poor Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,Indeterminate,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Rapid Metabolizer,CYP2B6,None,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Ultrarapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Rapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Poor Metabolizer,"Consider a lower starting dose, slower titration schedule and 25% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2B6."
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,Indeterminate,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Normal Metabolizer,CYP2B6,None,Initiate therapy with recommended starting dose
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Ultrarapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Rapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than normal metabolizers.
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Poor Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers"
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,Indeterminate,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Likely Intermediate Metabolizer,CYP2B6,None,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than normal metabolizers.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Ultrarapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Rapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than normal metabolizers.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Poor Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers"
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,Indeterminate,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Intermediate Metabolizer,CYP2B6,None,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than CYP2C19 normal metabolizers.
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Ultrarapid Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Rapid Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Normal Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Intermediate Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Poor Metabolizer,Select an alternative antidepressant not primarily metabolized by CYP2C19 or CYP2B6.
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,Indeterminate,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Likely Poor Metabolizer,CYP2B6,None,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Ultrarapid Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Rapid Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Normal Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Intermediate Metabolizer,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Poor Metabolizer,Select an alternative antidepressant not primarily metabolized by CYP2C19 or CYP2B6.
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,Indeterminate,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Poor Metabolizer,CYP2B6,None,"Consider a lower starting dose, slower titration schedule and 50% reduction of standard maintenance dose as compared to CYP2C19 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2C19."
+sertraline,CYP2C19,Indeterminate,CYP2B6,Ultrarapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Indeterminate,CYP2B6,Rapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Indeterminate,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,Indeterminate,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose.
+sertraline,CYP2C19,Indeterminate,CYP2B6,Poor Metabolizer,"Consider a lower starting dose, slower titration schedule and 25% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2B6."
+sertraline,CYP2C19,Indeterminate,CYP2B6,Indeterminate,None
+sertraline,CYP2C19,Indeterminate,CYP2B6,None,None
+sertraline,CYP2C19,None,CYP2B6,Ultrarapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,None,CYP2B6,Rapid Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,None,CYP2B6,Normal Metabolizer,Initiate therapy with recommended starting dose.
+sertraline,CYP2C19,None,CYP2B6,Intermediate Metabolizer,Initiate therapy with recommended starting dose. Consider a slower titration schedule and lower maintenance dose than CYP2B6 normal metabolizers.
+sertraline,CYP2C19,None,CYP2B6,Poor Metabolizer,"Consider a lower starting dose, slower titration schedule and 25% reduction of standard maintenance dose as compared to CYP2B6 normal metabolizers or select a clinically appropriate alternative antidepressant not predominantly metabolized by CYP2B6."
+sertraline,CYP2C19,None,CYP2B6,Indeterminate,None
+sertraline,CYP2C19,None,CYP2B6,None,None
 lansoprazole,CYP2C19,Ultrarapid Metabolizer,None,None,Increase starting daily dose by 100%. Daily dose may be given in divided doses. Monitor for efficacy.
 lansoprazole,CYP2C19,Rapid Metabolizer,None,None,Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of H. pylori infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy.
 lansoprazole,CYP2C19,Normal Metabolizer,None,None,Initiate standard starting daily dose. Consider increasing dose by 50-100% for the treatment of H. pylori infection and erosive esophagitis. Daily dose may be given in divided doses. Monitor for efficacy.
