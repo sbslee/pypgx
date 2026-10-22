@@ -35,6 +35,89 @@ FUNCTION_ORDER = [
     'Class IV (Normal)',
 ]
 
+class _AlleleMetadata:
+    """Reuse metadata within one operation without caching public tables.
+
+    Load lazily so empty inputs and singleton collapse inputs retain their
+    existing behavior, including when the gene or assembly is invalid.
+    """
+
+    def __init__(self, gene, assembly):
+        self.gene = gene
+        self.assembly = assembly
+        self._gene = None
+        self._alleles = None
+        self._variants = None
+        self._core = {}
+        self._impacts = {}
+        self._priorities = {}
+
+    def _allele(self, allele):
+        if self._gene is None:
+            df = load_gene_table()
+            df = df[(df.Gene == self.gene) & df.Target]
+            if df.empty:
+                raise sdk.utils.NotTargetGeneError(self.gene)
+            self._gene = df.iloc[0]
+        if self._alleles is None:
+            df = load_allele_table()
+            df = df[df.Gene == self.gene]
+            # Public lookups use the first matching row.
+            self._alleles = {
+                row.StarAllele: row for _, row in
+                df.drop_duplicates('StarAllele').iterrows()
+            }
+        if allele not in self._alleles:
+            raise sdk.utils.AlleleNotFoundError(self.gene, allele)
+        return self._alleles[allele]
+
+    def core_variants(self, allele):
+        if allele not in self._core:
+            value = self._allele(allele)[f'{self.assembly}Core']
+            self._core[allele] = frozenset(
+                () if pd.isna(value) else value.split(','))
+        return self._core[allele]
+
+    def _impact(self, variant):
+        if variant not in self._impacts:
+            if self._variants is None:
+                self._variants = load_variant_table()
+            df = self._variants
+            df = df[(df.GRCh37Name == variant) | (df.GRCh38Name == variant)]
+            if df.empty:
+                raise sdk.utils.VariantNotFoundError(variant)
+            value = df.Impact.values[0]
+            self._impacts[variant] = '' if pd.isna(value) else value
+        return self._impacts[variant]
+
+    def priority(self, allele):
+        if self.gene is None:
+            raise ValueError('Gene is required when sorting by priority')
+        if allele not in self._priorities:
+            function = self._allele(allele).Function
+            a = FUNCTION_ORDER.index(function)
+            variants = common.sort_variants(self.core_variants(allele))
+            b = -len(variants)
+            c = -sum(bool(self._impact(x)) for x in variants)
+            d = allele == self._gene.RefAllele
+            self._priorities[allele] = (a, b, c, d)
+        return self._priorities[allele]
+
+
+def _collapse_alleles(alleles, core_variants):
+    results = []
+    for a in alleles:
+        result = False
+        for b in alleles:
+            if a == b:
+                continue
+            if core_variants(a).issubset(core_variants(b)):
+                result = True
+                break
+        results.append(result)
+    return [x for i, x in enumerate(alleles) if not results[i]]
+
+
 def build_definition_table(gene, assembly='GRCh37'):
     """
     Build the definition table of star alleles for specified gene.
@@ -149,20 +232,8 @@ def collapse_alleles(gene, alleles, assembly='GRCh37'):
     >>> pypgx.collapse_alleles('CYP2B6', ['*6', '*7'])
     ['*7']
     """
-    results = []
-    for a in alleles:
-        result = False
-        for b in alleles:
-            if a == b:
-                continue
-            v1 = set(list_variants(gene, alleles=a, assembly=assembly, mode='core'))
-            v2 = set(list_variants(gene, alleles=b, assembly=assembly, mode='core'))
-            if v1.issubset(v2):
-                result = True
-                break
-        results.append(result)
-
-    return [x for i, x in enumerate(alleles) if not results[i]]
+    metadata = _AlleleMetadata(gene, assembly)
+    return _collapse_alleles(alleles, metadata.core_variants)
 
 def has_phenotype(gene):
     """
@@ -1562,20 +1633,7 @@ def sort_alleles(
     >>> pypgx.sort_alleles(alleles, by='name')
     ['Reference', 'c.496A>G', 'c.557A>G', 'c.1627A>G (*5)', 'c.2194G>A (*6)']
     """
-    def func1(allele):
-        if gene is None:
-            raise ValueError('Gene is required when sorting by priority')
-        if not is_target_gene(gene):
-            raise sdk.utils.NotTargetGeneError(gene)
-        function = get_function(gene, allele)
-        a = FUNCTION_ORDER.index(function)
-        core_variants = list_variants(gene, alleles=allele, assembly=assembly, mode='core')
-        b = len(core_variants) * -1
-        impacts = [get_variant_impact(x) for x in core_variants]
-        impacts = [x for x in impacts if x]
-        c = len(impacts) * -1
-        d = allele == get_ref_allele(gene)
-        return (a, b, c, d)
+    metadata = _AlleleMetadata(gene, assembly)
 
     def func2(allele):
         n = 99999
@@ -1598,6 +1656,6 @@ def sort_alleles(
                 cn = int(allele.split('+')[0].split('x')[1])
         return (n, cn, len(allele), allele)
 
-    funcs = {'priority': func1, 'name': func2}
+    funcs = {'priority': metadata.priority, 'name': func2}
 
     return sorted(alleles, key=funcs[by])

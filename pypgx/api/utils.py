@@ -1130,6 +1130,7 @@ def predict_alleles(consolidated_variants):
                 warnings.warn(f"Multiple variant synonyms detected for {y}: PyPGx will report information for {x}")
             reformatted_variants[y] = x
     star_alleles = {}
+    allele_metadata = core._AlleleMetadata(gene, assembly)
 
     for allele in definition_table.samples:
         df = definition_table.df[definition_table.df[allele] == '1']
@@ -1145,12 +1146,12 @@ def predict_alleles(consolidated_variants):
         for allele, variants in star_alleles.items():
             if variants.issubset(observed):
                 candidates.append(allele)
-        candidates = core.collapse_alleles(gene, candidates, assembly=assembly)
+        candidates = core._collapse_alleles(candidates, allele_metadata.core_variants)
         if ref_allele != default_allele and ref_allele not in candidates and default_allele not in candidates:
             candidates.append(default_allele)
         if not candidates:
             candidates.append(default_allele)
-        candidates = core.sort_alleles(candidates, by='priority', gene=gene, assembly=assembly)
+        candidates = sorted(candidates, key=allele_metadata.priority)
         return candidates
 
     def one_row(r, sample, i):
@@ -1178,7 +1179,7 @@ def predict_alleles(consolidated_variants):
                 candidates = one_haplotype(set(alt_phase))
                 candidates = [x for x in candidates if x not in all_alleles]
                 all_alleles += [x for x in candidates if x not in all_alleles]
-                all_alleles = core.sort_alleles(all_alleles, by='priority', gene=gene, assembly=assembly)
+                all_alleles = sorted(all_alleles, key=allele_metadata.priority)
             else:
                 observed = consolidated_variants.data.df.apply(one_row, args=(sample, i), axis=1)
                 observed = [x for x in observed if x]
