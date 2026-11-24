@@ -1,8 +1,8 @@
 Changelog
 *********
 
-0.28.0 (in development)
------------------------
+0.28.0 (2026-11-24)
+-------------------
 
 * :issue:`172`: Fix compatibility issues with newer pandas versions.
 * :issue:`174`: Update ``recommendation-table.csv`` to include CYP2B6 for sertraline in accordance with the 2023 CPIC guideline update (PMID: 37032427). Sertraline recommendations are now determined by CYP2C19 and CYP2B6 together.
