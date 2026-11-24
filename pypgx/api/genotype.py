@@ -640,6 +640,7 @@ def call_genotypes(alleles=None, cnv_calls=None):
 
     def one_row(r):
         if 'Haplotype1' in r.index:
+            r = r.astype(object) # Required for compatibility with newer pandas versions to store lists/dicts
             r.Haplotype1 = r.Haplotype1.strip(';').split(';')
             r.Haplotype2 = r.Haplotype2.strip(';').split(';')
             d = {}

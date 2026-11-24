@@ -1607,12 +1607,28 @@ Recommendations for CYP2B6
   intermediate metabolizers." (Source: `PharmGKB <https://www.pharmgkb.org
   /guidelineAnnotation/PA166182603>`__)
 
+- Sertraline
+
+  CYP2B6 was added to the sertraline guideline in February 2023. When only
+  CYP2B6 results are available, CPIC recommends to "consider a lower starting
+  dose, slower titration schedule and 25% reduction of standard maintenance
+  dose as compared to CYP2B6 normal metabolizers or select a clinically
+  appropriate alternative antidepressant not predominantly metabolized by
+  CYP2B6" for CYP2B6 poor metabolizers, and to "consider a slower titration
+  schedule and lower maintenance dose than CYP2B6 normal metabolizers" for
+  CYP2B6 intermediate metabolizers. Sertraline recommendations are determined
+  by CYP2C19 and CYP2B6 together (see :ref:`genes:CYP2C19`). (Source: `PharmGKB
+  <https://www.pharmgkb.org/chemical/PA451333/guidelineAnnotation/
+  PA166127639>`__)
+
 Resources for CYP2B6
 --------------------
 
 - `PharmVar CYP2B6 page <https://www.pharmvar.org/gene/CYP2B6>`__
 - `CPIC® Guideline for Efavirenz based on CYP2B6 genotype <https://cpicpgx.org/guidelines/cpic-guideline-for-efavirenz-based-on-cyp2b6-genotype/>`__
 - `PharmGKB: Annotation of CPIC Guideline for efavirenz and CYP2B6 <https://www.pharmgkb.org/guidelineAnnotation/PA166182603>`__
+- `CPIC® Guideline for CYP2D6, CYP2C19, CYP2B6, SLC6A4, and HTR2A Genotypes and Serotonin Reuptake Inhibitor Antidepressants <https://cpicpgx.org/guidelines/guideline-for-selective-serotonin-reuptake-inhibitors-and-cyp2d6-and-cyp2c19/>`__
+- `PharmGKB: Annotation of CPIC Guideline for sertraline, CYP2B6 and CYP2C19 <https://www.pharmgkb.org/chemical/PA451333/guidelineAnnotation/PA166127639>`__
 
 CYP2C8
 ======
@@ -1925,6 +1941,15 @@ Recommendations for CYP2C19
   dose and titrate to response or select alternative drug not predominantly
   metabolized by CYP2C19 for CYP2C19 poor metabolizers." (Source: `PharmGKB
   <https://www.pharmgkb.org/guidelineAnnotation/PA166127639>`__)
+
+  The guideline was updated in February 2023 to also cover CYP2B6, and the
+  CYP2C19 recommendations were revised at the same time. CPIC "provided
+  recommendations when only CYP2C19 or only CYP2B6 are available, or when both
+  CYP2C19 and CYP2B6 genotype results are available", so PyPGx determines
+  sertraline recommendations from CYP2C19 and CYP2B6 together (see
+  :ref:`genes:CYP2B6`). The PharmGKB summary quoted above predates this update.
+  (Source: `PharmGKB <https://www.pharmgkb.org/guidelineAnnotation/
+  PA166127639>`__)
 
 - Voriconazole
 

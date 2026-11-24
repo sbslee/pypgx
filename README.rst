@@ -111,7 +111,7 @@ There are currently 88 pharmacogenes in PyPGx:
      - HTR1A
      - HTR2A
      - IFNL3
-   * - IFNL3
+   * - IFNL4
      - ITGB3
      - ITPA
      - MT-RNR1
