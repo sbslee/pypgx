@@ -1133,12 +1133,7 @@ def predict_alleles(consolidated_variants):
 
     for allele in definition_table.samples:
         df = definition_table.df[definition_table.df[allele] == '1']
-        star_alleles[allele] = set(df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1))
-
-    sorted_star_alleles = {
-        allele: common.sort_variants(variants)
-        for allele, variants in star_alleles.items()
-    }
+        star_alleles[allele] = common.sort_variants(set(df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)))
 
     samples = {}
 
@@ -1148,7 +1143,7 @@ def predict_alleles(consolidated_variants):
         """
         candidates = []
         for allele, variants in star_alleles.items():
-            if variants.issubset(observed):
+            if set(variants).issubset(observed):
                 candidates.append(allele)
         candidates = core.collapse_alleles(gene, candidates, assembly=assembly)
         if ref_allele != default_allele and ref_allele not in candidates and default_allele not in candidates:
@@ -1199,9 +1194,8 @@ def predict_alleles(consolidated_variants):
             if allele == default_allele:
                 af_list.append(f'{allele}:default')
             else:
-                target_variants = sorted_star_alleles[allele]
-                variants = ','.join(target_variants)
-                fractions = ','.join([str(consolidated_variants.data.get_af(sample, reformatted_variants[x])) if x in reformatted_variants else str(consolidated_variants.data.get_af(sample, x)) for x in target_variants])
+                variants = ','.join(star_alleles[allele])
+                fractions = ','.join([str(consolidated_variants.data.get_af(sample, reformatted_variants[x])) if x in reformatted_variants else str(consolidated_variants.data.get_af(sample, x)) for x in star_alleles[allele]])
                 af_list.append(f'{allele}:{variants}:{fractions}')
 
         results.append(';'.join(af_list) + ';')
