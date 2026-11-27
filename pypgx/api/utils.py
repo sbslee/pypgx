@@ -1133,7 +1133,7 @@ def predict_alleles(consolidated_variants):
 
     for allele in definition_table.samples:
         df = definition_table.df[definition_table.df[allele] == '1']
-        star_alleles[allele] = set(df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1))
+        star_alleles[allele] = common.sort_variants(set(df.apply(lambda r: f'{r.CHROM}-{r.POS}-{r.REF}-{r.ALT}', axis=1)))
 
     samples = {}
 
@@ -1143,7 +1143,7 @@ def predict_alleles(consolidated_variants):
         """
         candidates = []
         for allele, variants in star_alleles.items():
-            if variants.issubset(observed):
+            if set(variants).issubset(observed):
                 candidates.append(allele)
         candidates = core.collapse_alleles(gene, candidates, assembly=assembly)
         if ref_allele != default_allele and ref_allele not in candidates and default_allele not in candidates:
