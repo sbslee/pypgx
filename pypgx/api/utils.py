@@ -1121,9 +1121,12 @@ def predict_alleles(consolidated_variants):
     defining_variants = core.list_variants(gene, assembly=assembly)
     variant_synonyms = core.get_variant_synonyms(gene, assembly=assembly)
 
+    defining_positions = {common.parse_variant(x)[1] for x in defining_variants + list(variant_synonyms)}
+    vf = pyvcf.VcfFrame(consolidated_variants.data.meta, consolidated_variants.data.df[consolidated_variants.data.df['POS'].isin(defining_positions)])
+
     reformatted_variants = {}
 
-    for x in consolidated_variants.data.to_variants():
+    for x in ([] if vf.df.empty else vf.to_variants()):
         if x in variant_synonyms:
             y = variant_synonyms[x]
             if y in reformatted_variants:
@@ -1180,7 +1183,7 @@ def predict_alleles(consolidated_variants):
                 all_alleles += [x for x in candidates if x not in all_alleles]
                 all_alleles = core.sort_alleles(all_alleles, by='priority', gene=gene, assembly=assembly)
             else:
-                observed = consolidated_variants.data.df.apply(one_row, args=(sample, i), axis=1)
+                observed = [] if vf.df.empty else vf.df.apply(one_row, args=(sample, i), axis=1)
                 observed = [x for x in observed if x]
                 alt_phase += [x for x in observed if x not in alt_phase]
                 candidates = one_haplotype(observed)
@@ -1195,7 +1198,7 @@ def predict_alleles(consolidated_variants):
                 af_list.append(f'{allele}:default')
             else:
                 variants = ','.join(star_alleles[allele])
-                fractions = ','.join([str(consolidated_variants.data.get_af(sample, reformatted_variants[x])) if x in reformatted_variants else str(consolidated_variants.data.get_af(sample, x)) for x in star_alleles[allele]])
+                fractions = ','.join([str(vf.get_af(sample, reformatted_variants[x])) if x in reformatted_variants else str(vf.get_af(sample, x)) for x in star_alleles[allele]])
                 af_list.append(f'{allele}:{variants}:{fractions}')
 
         results.append(';'.join(af_list) + ';')
